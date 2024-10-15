@@ -253,8 +253,6 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-
-
                 is PaymentSessionState.SessionProblemOccurred -> {
                     Log.d("SwedbankPay", "Payment Session Problem Occurred")
                 }

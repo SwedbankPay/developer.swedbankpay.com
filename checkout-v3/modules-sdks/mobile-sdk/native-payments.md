@@ -91,7 +91,7 @@ Minimum Implementation chapter.
 
 You need to listen to some state updates from the Native Payment session,
 updating your UI and informing the user according to the events. You do this
-by observing the `NativePayment.nativePaymentState` LiveData. In the
+by observing the `PaymentSession.paymentSessionState` LiveData. In the
 following example, we implement the five base payment states. Note that the
 actions to perform in these callbacks are completely dependent on the checkout
 user experience of your application.
@@ -125,28 +125,27 @@ PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
 ```
 
 The main component for Native Payments in the Android SDK is the class
-`NativePayment`, a helper class that makes it possible to start
+`PaymentSession`, a helper class that makes it possible to start
 and interact with a native payment session. To start a native payment session,
-simply create a `NativePayment` and call the `startPaymentSession()` method.
+simply create a `PaymentSession` and call the `fetchPaymentSession()` method.
 Provide the `view-paymentsession` operation `href` in the `sessionURL`
 parameter.
 
 ```kotlin
-val configuration = TestConfiguration()
-val nativePayment = NativePayment(configuration.orderInfo)
+val paymentSession = PaymentSession()
 
-nativePayment.startPaymentSession(sessionURL = "{{ page.front_end_url }}/psp/paymentsessions/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959")
+paymentSession.fetchPaymentSession(sessionURL = "{{ page.front_end_url }}/psp/paymentsessions/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959")
 ```
 
 This will fetch the session information and initiate the Native Payment routine.
 It is advisable to present a loading indicator at this stage. As a next step,
-you can expect the `AvailableInstrumentsFetched` state to be called with the
+you can expect the `PaymentSessionFetched` state to be called with the
 payment methods available to use.
 
 ```kotlin
-NativePayment.nativePaymentState.observe(viewLifecycleOwner) { paymentState ->
+PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
     when (paymentState) {
-        is NativePaymentState.AvailableInstrumentsFetched -> {
+        is PaymentSessionState.PaymentSessionFetched -> {
             // TODO: Present `paymentState.availableInstruments` list to user
         }
 ...
@@ -160,7 +159,7 @@ local Swish payment on the same device (for which you need to provide the
 application `context`).
 
 ```kotlin
-nativePayment.makePaymentAttempt(instrument = PaymentAttemptInstrument.Swish(localStartContext = context))
+paymentSession.makeNativePaymentAttempt(instrument = PaymentAttemptInstrument.Swish(localStartContext = context))
 ```
 
 You should once again show indication of loading in the app. Calling the method
@@ -170,13 +169,13 @@ launch the Swish app. After the user is sent back to your app, you will receive
 result of the payment attempt.
 
 ```kotlin
-NativePayment.nativePaymentState.observe(viewLifecycleOwner) { paymentState ->
+PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
     when (paymentState) {
-        is NativePaymentState.PaymentComplete -> {
+        is PaymentSessionState.PaymentSessionComplete -> {
             // TODO: Continue checkout flow
         }
 
-        is NativePaymentState.SessionProblemOccurred -> {
+        is PaymentSessionState.SessionProblemOccurred -> {
             // TODO: Inform user of problem details for `paymentState.problem.type`, give option to make new payment attempt or cancel
         }
 ...
@@ -187,13 +186,13 @@ either make a new attempt (with any available payment method) or to abort the
 whole payment session.
 
 ```kotlin
-nativePayment.abortPaymentSession()
+paymentSession.abortPaymentSession()
 ```
 
 ```kotlin
-NativePayment.nativePaymentState.observe(viewLifecycleOwner) { paymentState ->
+PaymentSession.paymentSessionStatenativePaymentState.observe(viewLifecycleOwner) { paymentState ->
     when (paymentState) {
-        is NativePaymentState.PaymentCanceled -> {
+        is PaymentSessionState.PaymentSessionCanceled -> {
             // TODO: Return to cart
         }
 ...
