@@ -391,22 +391,24 @@ dismiss the payment fragment when the payment ends.
 PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
     when (paymentState) {
         is PaymentSessionState.ShowPaymentFragment -> {
+            Log.d("SwedbankPay", "Show Payment Fragment")
+
             val containerViewId = R.id.sdk_payment_fragment // Specify a container ID for the fragment
             supportFragmentManager.beginTransaction()
                 .add(containerViewId, paymentState.fragment, "PaymentFragment")
                 .commit() 
-            Log.d("SwedbankPay", "Show Payment Fragment")
         }
 
         is PaymentSessionState.PaymentSessionComplete,
         is PaymentSessionState.PaymentSessionCanceled -> {
+            Log.d("SwedbankPay", "Payment Session Complete / Canceled")
+
             val paymentFragment = supportFragmentManager.findFragmentByTag("PaymentFragment")
             if (paymentFragment != null) {
                 supportFragmentManager.beginTransaction()
                     .remove(paymentFragment)
                     .commit()
             }
-            Log.d("SwedbankPay", "Payment Session Complete / Canceled")
         }
 
         else -> {}

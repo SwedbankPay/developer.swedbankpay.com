@@ -155,8 +155,12 @@ PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
             Log.d("SwedbankPay", "Payment Session Fetched")
         }
 
-        is PaymentSessionState.PaymentFragmentCreated -> {
-            Log.d("SwedbankPay", "Payment Fragment Created")
+        is PaymentSessionState.PaymentSessionComplete -> {
+            Log.d("SwedbankPay", "Payment Session Complete")
+        }
+
+        is PaymentSessionState.PaymentSessionCanceled -> {
+            Log.d("SwedbankPay", "Payment Session Canceled")
         }
 
         is PaymentSessionState.SessionProblemOccurred -> {
@@ -189,26 +193,19 @@ meaning this code is implemented in an `Activity` of the app.
 ```kotlin
 val containerViewId = R.id.sdk_payment_fragment // Specify a container ID for the fragment
 supportFragmentManager.beginTransaction()
-    .add(containerViewId, paymentFragment)
+    .add(containerViewId, paymentFragment, "PaymentFragment")
     .commit()
 ```
 
-You want to listen to some basic state updates from the payment UI and dismiss
-the view when it's finished. You do this by accessing the `paymentViewModel`
-that is available on all Activities. In the following example, we observe the
-`state` variable in the same Activity as above, and remove the payment fragment
-from the screen after the payment is finalized (again, in this example we’re
-accessing the Appcompat FragmentManager via supportFragmentManager, so we're
-removing the payment view in a fragment transaction to close it:
+When the payment is finished, you need to remove the payment fragment from the
+screen (again, in this example we’re accessing the Appcompat FragmentManager via
+supportFragmentManager, so we're removing the payment view in a fragment
+transaction to close it:
 
 ```kotlin
-paymentViewModel.state.observe(this, Observer {
-    if (it.isFinal == true) {
-        supportFragmentManager.beginTransaction()
-            .remove(paymentFragment)
-            .commit()
-    }
-})
+supportFragmentManager.beginTransaction()
+    .remove(paymentFragment)
+    .commit()
 ```
 
 ## Android Complete Code
@@ -233,15 +230,30 @@ class MainActivity : AppCompatActivity() {
                     paymentSession.createPaymentFragment()
                 }
 
-                is PaymentSessionState.PaymentFragmentCreated -> {
-                    Log.d("SwedbankPay", "Payment Fragment Created")
+                is PaymentSessionState.ShowPaymentFragment -> {
+                    Log.d("SwedbankPay", "Show Payment Fragment")
 
                     // Present payment fragment to user
                     val containerViewId = R.id.sdk_payment_fragment // Specify a container ID for the fragment
                     supportFragmentManager.beginTransaction()
-                        .add(containerViewId, paymentState.fragment, "paymentFragment")
+                        .add(containerViewId, paymentState.fragment, "PaymentFragment")
                         .commit()
                 }
+
+                is PaymentSessionState.PaymentSessionComplete,
+                is PaymentSessionState.PaymentSessionCanceled -> {
+                    Log.d("SwedbankPay", "Payment Session Complete / Canceled")
+
+                    // Remove the payment fragment
+                    val paymentFragment = supportFragmentManager.findFragmentByTag("PaymentFragment")
+                    if (paymentFragment != null) {
+                        supportFragmentManager.beginTransaction()
+                            .remove(paymentFragment)
+                            .commit()
+                    }
+                }
+
+
 
                 is PaymentSessionState.SessionProblemOccurred -> {
                     Log.d("SwedbankPay", "Payment Session Problem Occurred")
@@ -252,16 +264,6 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 else -> {}
-            }
-        }
-
-        paymentViewModel.state.observe(this) {
-            // Dismiss payment fragment for user
-            if (it.isFinal) {
-                val paymentFragment = supportFragmentManager.findFragmentByTag("paymentFragment")
-                if (paymentFragment != null) {
-                    supportFragmentManager.beginTransaction().remove(paymentFragment).commit()
-                }
             }
         }
     }
@@ -352,6 +354,10 @@ func paymentSessionComplete() {
 
 func paymentSessionCanceled() {
     print("Payment Session Canceled")
+}
+
+func showSwedbankPaySDKController(viewController: SwedbankPaySDK.SwedbankPaySDKController) {
+    print("Show Swedbank Pay SDK Controller")
 }
 
 func show3DSecureViewController(viewController: UIViewController) {
