@@ -103,8 +103,8 @@ included regardless of your UI choice.
 
 [dp]: /checkout-v3/
 [pci]: https://www.swedbankpay.se/globalassets/global-documents/risk-and-security/pci-dss-v4-0-saq-a-r2.pdf
-[post-response]: /old-implementations/payment-instruments-v1/trustly/redirect#redirect-payment-response
-[post-request]: /old-implementations/payment-instruments-v1/trustly/redirect#redirect-payment-request
+[post-response]: /old-implementations/payment-instruments-v1/trustly/redirect#redirect-response
+[post-request]: /old-implementations/payment-instruments-v1/trustly/redirect#redirect-request
 [seamless-view]: /old-implementations/payment-instruments-v1/trustly/seamless-view
 [redirect]: /old-implementations/payment-instruments-v1/trustly/redirect
 [da]: https://www.swedbankpay.dk/risiko-og-sikkerhed/pci-sadan-bliver-du-pavirketswe
