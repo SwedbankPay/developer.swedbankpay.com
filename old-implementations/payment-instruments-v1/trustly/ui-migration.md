@@ -3,7 +3,7 @@ title: Change UI Option
 permalink: /:path/ui-migration/
 description: |
     Walking you through switching from Seamless View to Redirect
-menu_order: 600
+menu_order: 1100
 ---
 
 As parts of the PCI-DSS best practice becomes requirements with
@@ -30,26 +30,26 @@ need to do:
 #### Use Redirect Operation
 
 In the operations node of the [payment response][post-response], right next to
-`view-authorization` which you should currently be using, you'll find
-`redirect-authorization`. The corresponding `href` contains a url which leads to
-a Swedbank Pay domain where the payment UI will be displayed and processed. All
-you need to do is direct the Payer to this url and wait until one of the
-functions are called (`completeUrl`, `cancelUrl` or `callbackUrl`) to proceed
-with the payment process.
+`view-sale` which you should currently be using, you'll find `redirect-sale`.
+The corresponding `href` contains a url which leads to a Swedbank Pay domain
+where the payment UI will be displayed and processed. All you need to do is
+direct the Payer to this url and wait until one of the functions are called
+(`completeUrl`, `cancelUrl` or `callbackUrl`) to proceed with the payment
+process.
 
 {% capture response_content %}{
     "operations": [
         {
           "method": "GET",
-          "href": "https://ecom.externalintegration.payex.com/creditcard/payments/authorize/5a17c24e-d459-4567-bbad-aa0f17a76119",
-          "rel": "redirect-authorization",
+          "href": "https://ecom.externalintegration.payex.com/trustly/payments/sales/8f3ba6c8f4e3f6125ae6c18bec15c612747cf2c35dc5cac35d4bebc10cf7317e",
+          "rel": "redirect-sale"
           "contentType": "text/html"
         },
     ]
 }{% endcapture %}
 
  {% include code-example.html
-    title='Redirect-Authorization Operation'
+    title='Redirect-Sale Operation'
     header=response_header
     json= response_content
     %}
@@ -103,10 +103,10 @@ included regardless of your UI choice.
 
 [dp]: /checkout-v3/
 [pci]: https://www.swedbankpay.se/globalassets/global-documents/risk-and-security/pci-dss-v4-0-saq-a-r2.pdf
-[post-response]: /old-implementations/payment-instruments-v1/card/redirect#card-payment-response
-[post-request]: /old-implementations/payment-instruments-v1/card/redirect#card-payment-request
-[seamless-view]: /old-implementations/payment-instruments-v1/card/seamless-view
-[redirect]: /old-implementations/payment-instruments-v1/card/redirect
+[post-response]: /old-implementations/payment-instruments-v1/trustly/redirect#redirect-payment-response
+[post-request]: /old-implementations/payment-instruments-v1/trustly/redirect#redirect-payment-request
+[seamless-view]: /old-implementations/payment-instruments-v1/trustly/seamless-view
+[redirect]: /old-implementations/payment-instruments-v1/trustly/redirect
 [da]: https://www.swedbankpay.dk/risiko-og-sikkerhed/pci-sadan-bliver-du-pavirketswe
 [fi]: https://www.swedbankpay.fi/riskit-ja-turvallisuus/nain-pci-vaikuttaa-sinuun
 [no]: https://www.swedbankpay.no/risiko-og-sikkerhet/pci-slik-pavirkes-dus

@@ -3,7 +3,7 @@ title: Change UI Option
 permalink: /:path/ui-migration/
 description: |
     Walking you through switching from Seamless View to Redirect
-menu_order: 600
+menu_order: 1000
 ---
 
 As parts of the PCI-DSS best practice becomes requirements with
@@ -41,8 +41,8 @@ with the payment process.
     "operations": [
         {
           "method": "GET",
-          "href": "https://ecom.externalintegration.payex.com/creditcard/payments/authorize/5a17c24e-d459-4567-bbad-aa0f17a76119",
-          "rel": "redirect-authorization",
+          "href": "https://ecom.externalintegration.payex.com/mobilepay/payments/authorize/ec2a9b09-601a-42ae-8e33-a5737e1cf177",
+          "rel": "redirect-authorization"
           "contentType": "text/html"
         },
     ]
@@ -103,10 +103,10 @@ included regardless of your UI choice.
 
 [dp]: /checkout-v3/
 [pci]: https://www.swedbankpay.se/globalassets/global-documents/risk-and-security/pci-dss-v4-0-saq-a-r2.pdf
-[post-response]: /old-implementations/payment-instruments-v1/card/redirect#card-payment-response
-[post-request]: /old-implementations/payment-instruments-v1/card/redirect#card-payment-request
-[seamless-view]: /old-implementations/payment-instruments-v1/card/seamless-view
-[redirect]: /old-implementations/payment-instruments-v1/card/redirect
+[post-response]: /old-implementations/payment-instruments-v1/mobile-pay/redirect#redirect-payment-response
+[post-request]: /old-implementations/payment-instruments-v1/mobile-pay/redirect#redirect-payment-request
+[seamless-view]: /old-implementations/payment-instruments-v1/mobile-pay/seamless-view
+[redirect]: /old-implementations/payment-instruments-v1/mobile-pay/redirect
 [da]: https://www.swedbankpay.dk/risiko-og-sikkerhed/pci-sadan-bliver-du-pavirketswe
 [fi]: https://www.swedbankpay.fi/riskit-ja-turvallisuus/nain-pci-vaikuttaa-sinuun
 [no]: https://www.swedbankpay.no/risiko-og-sikkerhet/pci-slik-pavirkes-dus
