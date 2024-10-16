@@ -555,7 +555,7 @@ new?
 *   Re-worded [split settlement][split-settlement]
 *   Clarified that [callback][callback] is a fail-safe
 *   Updated tables and code examples with payerReference in various places, like [card purchase][card-purchase]
-*   Updated Mobile SDK configurations for both [iOS][ios-configuration] and [Android][android-configuration] to include integration with custom backends
+*   Updated Mobile SDK configurations for both iOS and Android to include integration with custom backends
 *   Updated GitHub references for Mobile SDK
 *   Re-wrote [Prices][prices] section
 
@@ -1050,7 +1050,6 @@ more convenient for both the integration and the payer.
 [3ds2-test]: /checkout-v3/test-data#3-d-secure-cards
 [afd-payments]: /checkout-v3/features/optional/afd
 [age-restrictions]: /checkout-v3/features/optional/age-restrictions
-[android-configuration]: /checkout-v3/modules-sdks/mobile-sdk/configuration#android
 [android-sdk-documentation]: /checkout-v3/modules-sdks/mobile-sdk/android
 [apple-pay]: /checkout-v3/apple-pay-presentation
 [astopb]: /checkout-v3/features/customize-ui/action-specific-text-on-payment-button
@@ -1126,7 +1125,6 @@ more convenient for both the integration and the payer.
 [invoice-direct]: /old-implementations/payment-instruments-v1/invoice/direct
 [invoice]: /old-implementations/payment-instruments-v1/invoice
 [int-com]: /checkout-v3/features/optional/integrated-commerce
-[ios-configuration]: /checkout-v3/modules-sdks/mobile-sdk/configuration#ios
 [ios-sdk-documentation]: /checkout-v3/modules-sdks/mobile-sdk/ios
 [mac-checkout]: /old-implementations/checkout-v2/features/optional/mac
 [magic-amount]: /checkout-v3/test-data/#magic-amounts-error-testing-using-amounts

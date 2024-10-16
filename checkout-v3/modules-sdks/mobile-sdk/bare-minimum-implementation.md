@@ -476,8 +476,8 @@ This causes several issues in a production environment:
     return a view that redirects the user to the app. We provide example on how
     to implement this in the next chapter [Custom Backend][payemnt-url].
 
-{% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/configuration"
-                         prev_title="Back: Configuration"
+{% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/"
+                         prev_title="Back: Introduction"
                          next_href="/checkout-v3/modules-sdks/mobile-sdk/custom-backend"
                          next_title="Next: Custom Backend" %}
 
