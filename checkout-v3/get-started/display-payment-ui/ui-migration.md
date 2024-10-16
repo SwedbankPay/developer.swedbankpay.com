@@ -14,6 +14,12 @@ than they currently have. This is because Seamless View is hosted by you. As the
 responsibilities. The two main points affecting you in this context is **6.4.3**
 and **11.6.1** in the PCI-DSS link above.
 
+Please note that this only applies to payment methods that are affected by
+PCI-DSS (Card, Vipps and/or Mobile Pay). If you only offer payment methods not
+affected by PCI-DSS (Invoice, Swish and/or Trustly), no actions are necessary.
+If you want to add PCI-DSS affected payment methods later, this is something
+you need to consider.
+
 To learn more about how PCI-DSS affects you, we also have reading available
 in [Danish][da]{:target="_blank"}, [Finnish][fi]{:target="_blank"},
 [Norwegian][no]{:target="_blank"} and [Swedish][se]{:target="_blank"}.
