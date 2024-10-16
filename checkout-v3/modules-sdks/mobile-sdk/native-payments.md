@@ -39,7 +39,6 @@ sequenceDiagram
     participant App
     participant SDK
 
-    App ->> SDK: Initiate SDK Configuration
     App ->> SDK: fetchPaymentSession()
     activate SDK
     App ->> App: Show loading indicator
@@ -148,7 +147,10 @@ PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
         is PaymentSessionState.PaymentSessionFetched -> {
             // TODO: Present `paymentState.availableInstruments` list to user
         }
-...
+
+        else -> {}
+    }
+}
 ```
 
 After receiving the available payment methods and presenting these to the user
@@ -178,7 +180,10 @@ PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
         is PaymentSessionState.SessionProblemOccurred -> {
             // TODO: Inform user of problem details for `paymentState.problem.type`, give option to make new payment attempt or cancel
         }
-...
+
+        else -> {}
+    }
+}
 ```
 
 If there was a problem, you should inform the user and give them the ability to
@@ -195,7 +200,10 @@ PaymentSession.paymentSessionStatenativePaymentState.observe(viewLifecycleOwner)
         is PaymentSessionState.PaymentSessionCanceled -> {
             // TODO: Return to cart
         }
-...
+
+        else -> {}
+    }
+}
 ```
 
 ## Android Payment methods

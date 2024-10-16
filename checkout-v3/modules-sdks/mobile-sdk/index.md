@@ -49,16 +49,12 @@ SDK.
 
 The Mobile SDK currently provides a mobile component to show Digital Payments
 [Enterprise][checkout-enterprise] or [Payments Only][checkout-payments-only] in
-a mobile application. The integrating application must set a Configuration,
-which is responsible for making the necessary calls to your backend. A
-Configuration for a server implementing the Merchant Backend API is bundled with
-the SDK, but it is simple to implement a Configuration for your custom server.
-The [Post-Purchase][post-purchase-capture] part is the same as when using
-Checkout on a web page, and is thus intentionally left out of the scope of the
-SDK.
+a mobile application. The [Post-Purchase][post-purchase-capture] part is the
+same as when using Checkout on a web page, and is thus intentionally left out of
+the scope of the SDK.
 
-{% include iterator.html next_href="configuration"
-                         next_title="Next: Configuration" %}
+{% include iterator.html next_href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation"
+                         next_title="Next: Bare Minimum Implementation" %}
 
 [plain-webview]: /checkout-v3/modules-sdks/mobile-sdk/plain-webview
 [checkout]: /checkout-v3
