@@ -461,6 +461,15 @@ to possibly show a web view fragment containing the 3D Secure process. For SCA
 on Google Pay payments, the process in the SDK is identical to when paying with
 [Saved Credit Cards][android-saved-credit-cards].
 
+For Google Pay payments in test environments, you need to follow the
+[Google Test Card suite guidelines][google-pay-test]. This involves
+adding the email of your Google Account that is logged in on your Android test
+device to the [test card suite group][google-pay-test-group] and using one of
+the Mock test cards that are automatically available when performing payments.
+When testing Google Pay, you must use a the Mock test cards. Production Google
+Pay cards will not work and you should never use production credit cards in
+testing environments.
+
 ## iOS
 
 For this documentation, we're assuming a basic setup is done for the iOS SDK.
@@ -496,7 +505,7 @@ func paymentSessionCanceled() {
     print("Payment Session Canceled")
 }
 
-func showSwedbankPaySDKController(viewController: SwedbankPaySDK.SwedbankPaySDKController) {
+func showSwedbankPaySDKController(viewController: SwedbankPaySDKController) {
     print("Show Swedbank Pay SDK Controller")
 }
 
@@ -543,7 +552,7 @@ the following example, we assume the user wish to do a local Swish payment on
 the same device.
 
 ```swift
-paymentSession.makeNativePaymentAttempt(with: .swish(msisdn: nil))
+paymentSession.makeNativePaymentAttempt(instrument: .swish(msisdn: nil))
 ```
 
 You should once again show indication of loading in the app. Calling the method
@@ -598,10 +607,10 @@ MSISDN for the Swish payment to be started on another device.
 
 ```swift
 // Start Swish payment with local start of the Swish app on the users device
-paymentSession.makeNativePaymentAttempt(with: .swish(msisdn: nil))
+paymentSession.makeNativePaymentAttempt(instrument: .swish(msisdn: nil))
 
 // Start Swish payment with the Swish app on another device using a specific MSISDN
-paymentSession.makeNativePaymentAttempt(with: .swish(msisdn: "+46739000001"))
+paymentSession.makeNativePaymentAttempt(instrument: .swish(msisdn: "+46739000001"))
 ```
 
 If you are starting the payment on another device, you need to specify the
@@ -633,7 +642,7 @@ must be set to the credit card picked by the user.
 
 ```swift
 // Start saved credit card paymnent
-paymentSession.makeNativePaymentAttempt(with: .creditCard(prefill: pickedCard))
+paymentSession.makeNativePaymentAttempt(instrument: .creditCard(prefill: pickedCard))
 ```
 
 After starting a saved credit card payment, there is a possibility that the user
@@ -713,10 +722,10 @@ you can read more about
 
 ```swift
 // Start new credit card paymnent, showing the consent checkbox
-paymentSession.makeNativePaymentAttempt(with: .newCreditCard(enabledPaymentDetailsConsentCheckbox: true))
+paymentSession.makeNativePaymentAttempt(instrument: .newCreditCard(enabledPaymentDetailsConsentCheckbox: true))
 
 // Start new credit card paymnent, hiding the consent checkbox and using the Payment Order `generatePaymentToken` parameter instead
-paymentSession.makeNativePaymentAttempt(with: .newCreditCard(enabledPaymentDetailsConsentCheckbox: false))
+paymentSession.makeNativePaymentAttempt(instrument: .newCreditCard(enabledPaymentDetailsConsentCheckbox: false))
 ```
 
 To simplify PCI-DSS compliance, the collection of credit card details is
@@ -729,7 +738,7 @@ responsible for presenting it to the user. In this example, we'll simply present
 the view controller modally. Don't forget to dismiss it when the payment ends.
 
 ```swift
-func showSwedbankPaySDKController(viewController: SwedbankPaySDK.SwedbankPaySDKController) {
+func showSwedbankPaySDKController(viewController: SwedbankPaySDKController) {
     present(viewController, animated: true)
     print("Show Swedbank Pay SDK Controller")
 }
@@ -781,11 +790,19 @@ session.
 
 ```swift
 // Start Apple Pay payment
-paymentSession.makeNativePaymentAttempt(with: .applePay(merchantIdentifier: "merchant.com.swedbankpay.exampleapp"))
+paymentSession.makeNativePaymentAttempt(instrument: .applePay(merchantIdentifier: "merchant.com.swedbankpay.exampleapp"))
 ```
 
 The Apple Pay interface will automatically be shown over your application UI,
 where the user can choose credit card.
+
+For Apple Pay payments in test environments, you need to follow the
+[Apple Guidelines for Sandbox Testing][apple-pay-sandbox]. This involves
+creating a Sandbox Tester Apple ID Account, signing in on that Apple ID on your
+iOS test device and finally adding one or more of the available Test Card
+Numbers in the Wallet app of the device. When testing Apple Pay, you must use a
+Sandbox Apple ID and Test Cards. Production Apple Pay Cards will not work and
+you should never use production credit cards in testing environments.
 
 ## Problem handling
 
@@ -1048,4 +1065,7 @@ sequenceDiagram
 [one-click-consent-checkbox]: /checkout-v3/features/optional/one-click-payments/#disable-store-details-and-toggle-consent-checkbox
 [payer-aware-payment-menu]: /checkout-v3/features/optional/payer-aware-payment-menu
 [verify-payments]: /checkout-v3/features/optional/verify
+[google-pay-test]: https://developers.google.com/pay/api/android/guides/resources/test-card-suite
+[google-pay-test-group]: https://groups.google.com/g/googlepay-test-mode-stub-data
 [apple-pay-setup]: https://developer.apple.com/documentation/passkit_apple_pay_and_wallet/apple_pay/setting_up_apple_pay
+[apple-pay-sandbox]: https://developer.apple.com/apple-pay/sandbox-testing/
