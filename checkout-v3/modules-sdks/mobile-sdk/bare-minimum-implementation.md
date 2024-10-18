@@ -354,7 +354,7 @@ func paymentSessionCanceled() {
     print("Payment Session Canceled")
 }
 
-func showSwedbankPaySDKController(viewController: SwedbankPaySDK.SwedbankPaySDKController) {
+func showSwedbankPaySDKController(viewController: SwedbankPaySDKController) {
     print("Show Swedbank Pay SDK Controller")
 }
 
@@ -429,7 +429,7 @@ works in your application (again, in the example we're presenting the view
 controller modally):
 
 ```swift
-func showSwedbankPaySDKController(viewController: SwedbankPaySDK.SwedbankPaySDKController) {
+func showSwedbankPaySDKController(viewController: SwedbankPaySDKController) {
     present(viewController, animated: true)
     print("Show Swedbank Pay SDK Controller")
 }
@@ -438,6 +438,62 @@ func showSwedbankPaySDKController(viewController: SwedbankPaySDK.SwedbankPaySDKC
 You can now finish the payment in the web based Swedbank Pay Menu, and when the
 payment is complete, you will be called with the `paymentComplete()` delegate
 method and the payment menu will close.
+
+## iOS Complete Code
+
+```swift
+class ViewController: UIViewController, SwedbankPaySDKPaymentSessionDelegate {
+    let paymentSession = SwedbankPaySDK.SwedbankPayPaymentSession()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        paymentSession.delegate = self
+
+        paymentSession.fetchPaymentSession(sessionURL: URL(string: "{{ page.front_end_url }}/psp/paymentsessions/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959")!)
+    }
+
+    func paymentSessionFetched(availableInstruments: [SwedbankPaySDK.AvailableInstrument]) {
+        print("Available Instruments Fetched")
+        paymentSession.createSwedbankPaySDKController()
+    }
+
+    func sessionProblemOccurred(problem: SwedbankPaySDK.ProblemDetails) {
+        print("Session Problem Occurred")
+    }
+
+    func sdkProblemOccurred(problem: SwedbankPaySDK.PaymentSessionProblem) {
+        print("SDK Problem Occurred")
+    }
+
+    func paymentSessionComplete() {
+        dismiss(animated: true)
+        print("Payment Session Complete")
+    }
+
+    func paymentSessionCanceled() {
+        dismiss(animated: true)
+        print("Payment Session Canceled")
+    }
+
+    func showSwedbankPaySDKController(viewController: SwedbankPaySDKController) {
+        present(viewController, animated: true)
+        print("Show Swedbank Pay SDK Controller")
+    }
+
+    func show3DSecureViewController(viewController: UIViewController) {
+        print("Show 3D Secure View Controller")
+    }
+
+    func dismiss3DSecureViewController() {
+        print("Dismiss 3D Secure View Controller")
+    }
+
+    func paymentSession3DSecureViewControllerLoadFailed(error: Error, retry: @escaping ()->Void) {
+        print("3D Secure View Controller Load Failed")
+    }
+}
+```
 
 ## Limitations of the minimal implementation
 

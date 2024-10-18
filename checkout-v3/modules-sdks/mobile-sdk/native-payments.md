@@ -496,7 +496,7 @@ func paymentSessionCanceled() {
     print("Payment Session Canceled")
 }
 
-func showSwedbankPaySDKController(viewController: SwedbankPaySDK.SwedbankPaySDKController) {
+func showSwedbankPaySDKController(viewController: SwedbankPaySDKController) {
     print("Show Swedbank Pay SDK Controller")
 }
 
@@ -543,7 +543,7 @@ the following example, we assume the user wish to do a local Swish payment on
 the same device.
 
 ```swift
-paymentSession.makeNativePaymentAttempt(with: .swish(msisdn: nil))
+paymentSession.makeNativePaymentAttempt(instrument: .swish(msisdn: nil))
 ```
 
 You should once again show indication of loading in the app. Calling the method
@@ -598,10 +598,10 @@ MSISDN for the Swish payment to be started on another device.
 
 ```swift
 // Start Swish payment with local start of the Swish app on the users device
-paymentSession.makeNativePaymentAttempt(with: .swish(msisdn: nil))
+paymentSession.makeNativePaymentAttempt(instrument: .swish(msisdn: nil))
 
 // Start Swish payment with the Swish app on another device using a specific MSISDN
-paymentSession.makeNativePaymentAttempt(with: .swish(msisdn: "+46739000001"))
+paymentSession.makeNativePaymentAttempt(instrument: .swish(msisdn: "+46739000001"))
 ```
 
 If you are starting the payment on another device, you need to specify the
@@ -633,7 +633,7 @@ must be set to the credit card picked by the user.
 
 ```swift
 // Start saved credit card paymnent
-paymentSession.makeNativePaymentAttempt(with: .creditCard(prefill: pickedCard))
+paymentSession.makeNativePaymentAttempt(instrument: .creditCard(prefill: pickedCard))
 ```
 
 After starting a saved credit card payment, there is a possibility that the user
@@ -713,10 +713,10 @@ you can read more about
 
 ```swift
 // Start new credit card paymnent, showing the consent checkbox
-paymentSession.makeNativePaymentAttempt(with: .newCreditCard(enabledPaymentDetailsConsentCheckbox: true))
+paymentSession.makeNativePaymentAttempt(instrument: .newCreditCard(enabledPaymentDetailsConsentCheckbox: true))
 
 // Start new credit card paymnent, hiding the consent checkbox and using the Payment Order `generatePaymentToken` parameter instead
-paymentSession.makeNativePaymentAttempt(with: .newCreditCard(enabledPaymentDetailsConsentCheckbox: false))
+paymentSession.makeNativePaymentAttempt(instrument: .newCreditCard(enabledPaymentDetailsConsentCheckbox: false))
 ```
 
 To simplify PCI-DSS compliance, the collection of credit card details is
@@ -729,7 +729,7 @@ responsible for presenting it to the user. In this example, we'll simply present
 the view controller modally. Don't forget to dismiss it when the payment ends.
 
 ```swift
-func showSwedbankPaySDKController(viewController: SwedbankPaySDK.SwedbankPaySDKController) {
+func showSwedbankPaySDKController(viewController: SwedbankPaySDKController) {
     present(viewController, animated: true)
     print("Show Swedbank Pay SDK Controller")
 }
@@ -781,7 +781,7 @@ session.
 
 ```swift
 // Start Apple Pay payment
-paymentSession.makeNativePaymentAttempt(with: .applePay(merchantIdentifier: "merchant.com.swedbankpay.exampleapp"))
+paymentSession.makeNativePaymentAttempt(instrument: .applePay(merchantIdentifier: "merchant.com.swedbankpay.exampleapp"))
 ```
 
 The Apple Pay interface will automatically be shown over your application UI,
