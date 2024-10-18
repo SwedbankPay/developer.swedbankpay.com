@@ -461,6 +461,15 @@ to possibly show a web view fragment containing the 3D Secure process. For SCA
 on Google Pay payments, the process in the SDK is identical to when paying with
 [Saved Credit Cards][android-saved-credit-cards].
 
+For Google Pay payments in test environments, you need to follow the
+[Google Test Card suite guidelines][google-pay-test]. This involves
+adding the email of your Google Account that is logged in on your Android test
+device to the [test card suite group][google-pay-test-group] and using one of
+the Mock test cards that are automatically available when performing payments.
+When testing Google Pay, you must use a the Mock test cards. Production Google
+Pay cards will not work and you should never use production credit cards in
+testing environments.
+
 ## iOS
 
 For this documentation, we're assuming a basic setup is done for the iOS SDK.
@@ -787,6 +796,14 @@ paymentSession.makeNativePaymentAttempt(instrument: .applePay(merchantIdentifier
 The Apple Pay interface will automatically be shown over your application UI,
 where the user can choose credit card.
 
+For Apple Pay payments in test environments, you need to follow the
+[Apple Guidelines for Sandbox Testing][apple-pay-sandbox]. This involves
+creating a Sandbox Tester Apple ID Account, signing in on that Apple ID on your
+iOS test device and finally adding one or more of the available Test Card
+Numbers in the Wallet app of the device. When testing Apple Pay, you must use a
+Sandbox Apple ID and Test Cards. Production Apple Pay Cards will not work and
+you should never use production credit cards in testing environments.
+
 ## Problem handling
 
 There are two categories of problems that can occur during a payment session,
@@ -1048,4 +1065,7 @@ sequenceDiagram
 [one-click-consent-checkbox]: /checkout-v3/features/optional/one-click-payments/#disable-store-details-and-toggle-consent-checkbox
 [payer-aware-payment-menu]: /checkout-v3/features/optional/payer-aware-payment-menu
 [verify-payments]: /checkout-v3/features/optional/verify
+[google-pay-test]: https://developers.google.com/pay/api/android/guides/resources/test-card-suite
+[google-pay-test-group]: https://groups.google.com/g/googlepay-test-mode-stub-data
 [apple-pay-setup]: https://developer.apple.com/documentation/passkit_apple_pay_and_wallet/apple_pay/setting_up_apple_pay
+[apple-pay-sandbox]: https://developer.apple.com/apple-pay/sandbox-testing/
