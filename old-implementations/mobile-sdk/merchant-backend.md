@@ -5,7 +5,7 @@ description: |
   To use the **Swedbank Pay Mobile SDK**, you must have a backend server
   that communicates with your Configuration. One way to start developing
   is to use the Merchant Backend API.
-menu_order: 1200
+menu_order: 100
 ---
 
 The Merchant Backend API serves as a simple starting point, and an illustrative
@@ -687,9 +687,7 @@ Your implementation is encouraged to define its own problem types for any
 domain-specific errors; you should namespace those problem types under a domain
 name under your control – usually the host name of the Merchant Backend.
 
-{% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/ios"
-                         prev_title="Back: iOS"
-                         next_href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-sample-code"
+{% include iterator.html next_href="/old-implementations/mobile-sdk/merchant-backend-sample-code"
                          next_title="Next: Merchant Backend Sample Code" %}
 
 [swagger]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/main/documentation/swedbankpaysdk_openapi.yaml

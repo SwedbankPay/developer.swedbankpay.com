@@ -3,7 +3,7 @@ title: Merchant Backend V2
 permalink: /:path/merchant-backend-v2/
 description: |
   This document contains information for the older version of the Backend Merchant of the **Swedbank Pay Mobile SDK**.
-menu_order: 9800
+menu_order: 300
 ---
 
 The Merchant Backend API serves as a simple starting point, and an illustrative
@@ -799,6 +799,9 @@ All these Merchant Backend problem types will have a URL in the format
 | `badrequest`     | `400`  | The Merchant Backend did not undestand the request.                             |
 
 Your implementation is encouraged to define its own problem types for any domain-specific errors; you should namespace those problem types under a domain name under your control – usually the host name of the Merchant Backend.
+
+{% include iterator.html prev_href="/old-implementations/mobile-sdk/merchant-backend-sample-code"
+                         prev_title="Back: Merchant Backend Sample Code" %}
 
 [swagger]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/main/documentation/swedbankpaysdk_openapi.yaml
 [swagger-editor]: https://editor.swagger.io/?url=https://raw.githubusercontent.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/main/documentation/swedbankpaysdk_openapi.yaml
