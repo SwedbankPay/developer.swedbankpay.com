@@ -75,10 +75,10 @@ View and can be **removed**.
 The url you need to **add** is the `cancelUrl`, so we know where to redirect the
 payer if they chose to cancel, or you chose to abort the payment.
 
-While you need permission to add your own logo when using Seamless View, no such
-agreement is needed for Redirect. If you want to add one, you also need to
-include a `logoUrl`. Follow the guidelines in the section linked above. If no
-`logoUrl` is added, Swedbank Pay's logo will be shown by default.
+If you have permission to add your own logo in the payment UI and want to add
+one, you also need to include a `logoUrl`. Follow the guidelines in the section
+linked above. If no `logoUrl` is added, Swedbank Pay's logo will be shown by
+default.
 
 The `completeUrl`, `hostUrls` and `callbackUrl` is universal and must be
 included regardless of your UI choice.
