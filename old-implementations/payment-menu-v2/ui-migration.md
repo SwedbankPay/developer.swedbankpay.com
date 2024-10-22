@@ -122,7 +122,7 @@ included regardless of your UI choice.
 [post-response]: /old-implementations/payment-menu-v2/payment-order/#payment-order-response
 [post-request]: /old-implementations/payment-menu-v2/payment-order/#payment-order-request
 [seamless-view]: /old-implementations/payment-menu-v2/payment-order/#step-2-display-the-payment-menu
-[da]: https://www.swedbankpay.dk/risiko-og-sikkerhed/pci-sadan-bliver-du-pavirketswe
+[da]: https://www.swedbankpay.dk/risiko-og-sikkerhed/pci-sadan-bliver-du-pavirket
 [fi]: https://www.swedbankpay.fi/riskit-ja-turvallisuus/nain-pci-vaikuttaa-sinuun
-[no]: https://www.swedbankpay.no/risiko-og-sikkerhet/pci-slik-pavirkes-dus
+[no]: https://www.swedbankpay.no/risiko-og-sikkerhet/pci-slik-pavirkes-du
 [se]: https://www.swedbankpay.se/risk-och-sakerhet/pci-sa-paverkas-du

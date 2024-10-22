@@ -116,7 +116,7 @@ included regardless of your UI choice.
 [pci]: https://www.swedbankpay.se/globalassets/global-documents/risk-and-security/pci-dss-v4-0-saq-a-r2.pdf
 [seamless-view]: /checkout-v3/get-started/display-payment-ui/seamless-view
 [redirect]: /checkout-v3/get-started/display-payment-ui/redirect
-[da]: https://www.swedbankpay.dk/risiko-og-sikkerhed/pci-sadan-bliver-du-pavirketswe
+[da]: https://www.swedbankpay.dk/risiko-og-sikkerhed/pci-sadan-bliver-du-pavirket
 [fi]: https://www.swedbankpay.fi/riskit-ja-turvallisuus/nain-pci-vaikuttaa-sinuun
-[no]: https://www.swedbankpay.no/risiko-og-sikkerhet/pci-slik-pavirkes-dus
+[no]: https://www.swedbankpay.no/risiko-og-sikkerhet/pci-slik-pavirkes-du
 [se]: https://www.swedbankpay.se/risk-och-sakerhet/pci-sa-paverkas-du

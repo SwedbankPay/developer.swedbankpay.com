@@ -114,7 +114,7 @@ included regardless of your UI choice.
 [post-request]: /old-implementations/payment-instruments-v1/mobile-pay/redirect#redirect-request
 [seamless-view]: /old-implementations/payment-instruments-v1/mobile-pay/seamless-view
 [redirect]: /old-implementations/payment-instruments-v1/mobile-pay/redirect
-[da]: https://www.swedbankpay.dk/risiko-og-sikkerhed/pci-sadan-bliver-du-pavirketswe
+[da]: https://www.swedbankpay.dk/risiko-og-sikkerhed/pci-sadan-bliver-du-pavirket
 [fi]: https://www.swedbankpay.fi/riskit-ja-turvallisuus/nain-pci-vaikuttaa-sinuun
-[no]: https://www.swedbankpay.no/risiko-og-sikkerhet/pci-slik-pavirkes-dus
+[no]: https://www.swedbankpay.no/risiko-og-sikkerhet/pci-slik-pavirkes-du
 [se]: https://www.swedbankpay.se/risk-och-sakerhet/pci-sa-paverkas-du
