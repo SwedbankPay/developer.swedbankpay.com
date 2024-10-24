@@ -293,6 +293,17 @@ returned if the quota for the period gets to 5 attempts remaining, as follows:
     "title": "SuspensionWarning. The card might be blocked.",
     "status": 403,
     "detail": "5 attempts left before the card is blocked.",
+    "problems": [{
+            "name": "ExternalResponse",
+            "description": "Forbidden-AuthenticationRequired"
+        }, {
+            "name": "AUTHENTICATION_REQUIRED",
+            "description": "Acquirer soft-decline, 3-D Secure authentication required, response-code: O5, hostId: 20, hostName: PayEx Test"
+        }, {
+            "name": "Component",
+            "description": "pospay-ecommerce-financial-service"
+        }
+    ],
     "suspension": {
             "attempts": 12,
             "remaining": 3,
@@ -323,7 +334,7 @@ MasterCard:
             "name": "REJECTED_BY_POSPAY_DAILY_LIMIT",
             "description": "Intent with intentId 85ac3576-1e69-4aef-a066-84a0e6dcfa61, agreementId 80d0244c-2b15-4719-8ab1-ed83eddfee61 was suspended after exceeding the rolling 24 hour constraint of 10 attempts"
         },
-  {
+        {
             "name": "Component",
             "description": "pospay-ecommerce-financial-service"
         }
@@ -345,7 +356,7 @@ MasterCard:
             "name": "REJECTED_BY_POSPAY_MONTHLY_LIMIT",
             "description": "Intent with intentId 80456a1d-1cb1-429b-bf4e-8e1313362800, agreementId 3a47c702-7963-4915-9567-e1bce06d20dd was suspended after exceeding the rolling 30 day constraint of 15 attempts"
         },
-  {
+        {
             "name": "Component",
             "description": "pospay-ecommerce-financial-service"
         }
@@ -391,12 +402,20 @@ transaction is declined, but might be accepted after modifications:
     "type": "https://api.payex.com/psp/errordetail/creditcard/authenticationrequired",
     "title": "AUTHENTICATION_REQUIRED",
     "status": 403,
-    "detail": "Acquirer soft-decline, 3-D Secure authentication required, response-code: O5, hostId: 20, hostName: PayEx Test",
+    "detail": "Acquirer soft-decline, 3-D Secure authentication required, response-code: O5,   hostId: 20, hostName: PayEx Test - ModificationsRequired",
+    "problems": [{
+            "name": "AUTHENTICATION_REQUIRED",
+            "description": "Acquirer soft-decline, 3-D Secure authentication required,   response-code: O5, hostId: 20, hostName: PayEx Test"
+        }, {
+            "name": "Component",
+            "description": "pospay-ecommerce-financial-service"
+        }
+    ],
     "modification": {
-        "required": "YES",
-        "reason": "AUTHENTICATION_REQUIRED",
-        "acquirerCode": "O5",
-        "acquirerDetail": "AUTHENTICATION_REQUIRED"
+            "required": "YES",
+            "reason": "AUTHENTICATION_REQUIRED",
+            "acquirerCode": "O5",
+            "acquirerDetail": "AUTHENTICATION_REQUIRED"
     }
 }{% endcapture %}
 

@@ -56,5 +56,3 @@ by using the `description` and `amount` fields from the `paymentOrder`.
 | {% icon check %} | {% f vatAmount, 2 %}          | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                          |
 {% endcapture %}
 {% include accordion-table.html content=table %}
-
-[payment-order-capture]: /old-implementations/checkout-v2/capture

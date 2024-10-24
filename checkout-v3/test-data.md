@@ -12,7 +12,7 @@ menu_order: 6
 
 When implementing Digital Payments, you can use the test data related to the
 different payment methods listed below. To see Digital Payments in live action,
-please visit the [Playground][playground].
+please visit the [Playground][playground]{:target="_blank"}.
 
 To test a checked-in user in the Playground, please use the following test data:
 
@@ -145,13 +145,6 @@ A selection of cards not connected to Network Tokenization or 3D-Secure.
 | :---------------- | :---------------------- | :------------  | :---------------- |
 | `377601000000000` | After the current month | Any (4 digits) | Amex & loopback   |
 
-### JCB
-
-{:.table .table-striped}
-| Card number        | Expiry                  | CVC   |
-| :----------------- | :---------------------- | :---- |
-| `3569990010082211` | After the current month | Any   |
-
 ### Maestro
 
 {:.table .table-striped}
@@ -215,7 +208,7 @@ The amounts that can be used to trigger error codes
 | `952400` | `DONOTRETRY`                              | Transaction declined, do not retry              |
 | `952507` | `MODIFICATIONSREQUIRED`                   | Transaction is declined and needs modifications |
 | `952100` | `DAILYLIMITEXCEEDED`                      | The daily attempt limit has been exceeded       |
-| `900305` | `MONTHLYLIMITEXCEEDED`                    | The monthly attempt limit has been exceeded     |
+| `952100` | `MONTHLYLIMITEXCEEDED`                    | The monthly attempt limit has been exceeded     |
 
 The `DAILYLIMITEXCEEDED` must be performed 10 times to be triggered, and the
 `MONTHLYLIMITEXCEEDED` has to be performed 15 times to be triggered. The

@@ -4,9 +4,7 @@ title: Introduction
 description: |
   **Swedbank Pay Mobile SDK** provides an easy way of integrating Swedbank Pay
   Digital Payments to your Android and iOS applications.
-  The Mobile SDK consists of three components: An Android library, an iOS
-  library, and a backend component with example implementations in Node.js
-  and Java.
+  The Mobile SDK consists an Android and an iOS library.
 permalink: /:path/
 menu_order: 600
 ---
@@ -27,25 +25,19 @@ inside your application's native UI. It generates any html pages required to
 show the Swedbank Pay UI internally; it does not support using a Checkout or
 Payments web page that you host yourself. If doing the latter fits your case
 better, you can show your web page in a Web View instead. In that case, you may
-benefit from the [collection of information about showing Checkout or Payments
-in a Web View][plain-webview].
+benefit from the
+[collection of information about showing Checkout or Payments in a Web View][plain-webview].
 
 ## Prerequisites
 
 To start integrating the Swedbank Pay Mobile SDK, you need the following:
 
 *   An agreement that includes [Swedbank Pay Digital Payments][checkout],
-    specifically [Enterprise][checkout-enterprise] or [Payments
-    Only][checkout-payments-only].
+    specifically [Enterprise][checkout-enterprise] or
+    [Payments Only][checkout-payments-only].
 *   Obtained credentials (merchant Access Token) from Swedbank Pay through
     the Merchant Portal. Please observe that the Swedbank Pay Digital Payments
     implementations currently available encompasses the **`paymentmenu`** scope.
-*   Optionally, a [HTTPS][https] enabled web server.
-
-It is important to secure all communication between your app and your servers.
-If you wish to use the example Merchant Backend API to communicate between your
-app and your server, an example implementation is provided for Node.js and for
-Java.
 
 ## Introduction
 
@@ -57,16 +49,12 @@ SDK.
 
 The Mobile SDK currently provides a mobile component to show Digital Payments
 [Enterprise][checkout-enterprise] or [Payments Only][checkout-payments-only] in
-a mobile application. The integrating application must set a Configuration,
-which is responsible for making the necessary calls to your backend. A
-Configuration for a server implementing the Merchant Backend API is bundled with
-the SDK, but it is simple to implement a Configuration for your custom server.
-The [Post-Purchase][post-purchase-capture] part is the same as when using
-Checkout on a web page, and is thus intentionally left out of the scope of the
-SDK.
+a mobile application. The [Post-Purchase][post-purchase-capture] part is the
+same as when using Checkout on a web page, and is thus intentionally left out of
+the scope of the SDK.
 
-{% include iterator.html next_href="configuration"
-                         next_title="Next: Configuration" %}
+{% include iterator.html next_href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation"
+                         next_title="Next: Bare Minimum Implementation" %}
 
 [plain-webview]: /checkout-v3/modules-sdks/mobile-sdk/plain-webview
 [checkout]: /checkout-v3

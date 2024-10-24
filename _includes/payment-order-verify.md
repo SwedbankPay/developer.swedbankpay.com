@@ -279,7 +279,6 @@ api-supported-versions: 3.x/2.0{% endcapture %}
                         "Visa",
                         "Amex",
                         "Dankort",
-                        "Jcb",
                         "Maestro"
                     ]
                 }

@@ -77,12 +77,12 @@ Content-Type: application/json;version=3.1,3.0{% endcapture %}
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
-            "hostUrls": [ "https://example.com", "https://example.net" ], //Seamless View only
+            "hostUrls": [ "https://example.com", "https://example.net" ],
             "paymentUrl": "https://example.com/perform-payment", //Seamless View only
             "completeUrl": "https://example.com/payment-completed",
             "cancelUrl": "https://example.com/payment-cancelled", //Redirect only
             "callbackUrl": "https://api.example.com/payment-callback",
-            "logoUrl": "https://example.com/logo.png" //Redirect only
+            "logoUrl": "https://example.com/logo.png"
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}",
