@@ -8,6 +8,36 @@ menu_order: 7
 release_notes: true
 ---
 
+## 24 October 2025
+
+### Version 5.3.2
+
+Stricter PCI-CSS requirements are coming in the spring of 2025, and they could
+affect merchants using our Seamless View integration. We have addressed these
+changes and written a guide for [transferring from Seamless View][trans-guide]
+to the Redirect integration.
+
+Not on our newest implementantion yet? There are guides for
+[Payment Menu v2][pmv2] and the Payment Methods which are inside the PCI-DSS
+zone ([card][card-guide], [Vipps][vipps-guide] and [MobilePay][mp-guide])
+available too. Information about [Checkout v2][cv2] can be found here.
+
+Version 5.0.0 of our Mobile SDK is also going live. The new additions are
+[native payment features][nat-pay] and a new automatic configuration feature
+introduced by the Session URL, making setup and usage simpler and quicker.
+
+In that occasion, a new operation called view-paymentsession can be found in the
+[payment order response][sdk-response], and is only meant to be used when
+merchants are starting up the new SDK.
+
+We have done some changes to the [magic amounts][magic-amount] for testing
+Monthly Limits Exceeded. It has been merged with the amount for Daily Limits
+Exceeded for easier testing, and they now share 952100.
+
+Additions to the code examples for [Excessive Reattempts][ex-re] are live too.
+Both Suspension Warning and Modifications Required now have nodes for Problems.
+Suspension Warning also has a small change in the type field.
+
 ## 29 August 2024
 
 ### Version 5.3.1
@@ -1067,6 +1097,7 @@ more convenient for both the integration and the payer.
 [card]: /old-implementations/payment-instruments-v1/card
 [card-3ds-info]: /old-implementations/payment-instruments-v1/card#sequence-diagram
 [card-3ds2]: /old-implementations/payment-instruments-v1/card/features/core/frictionless-payments
+[card-guide]: /old-implementations/payment-instruments-v1/card/ui-migration/
 [card-redirect]: /old-implementations/payment-instruments-v1/card/redirect
 [card-seamless-view]: /old-implementations/payment-instruments-v1/card/seamless-view
 [checkin]: /old-implementations/checkout-v2/checkin
@@ -1098,6 +1129,7 @@ more convenient for both the integration and the payer.
 [custom-styling]: /checkout-v3/features/customize-ui/custom-styling
 [cuspay]: /checkout-v3/features/customize-payments/
 [cus-ui]: /checkout-v3/features/customize-ui/
+[cv2]: /old-implementations/checkout-v2/ui-migration/
 [integrated-commerce]: /checkout-v3/features/optional/integrated-commerce
 [data-protection]: /old-implementations/checkout-v2/data-protection
 [delete-payment-tokens]: /checkout-v3/features/optional/delete-token#delete-paymenttoken-request
@@ -1134,7 +1166,9 @@ more convenient for both the integration and the payer.
 [mobilepay-seamless-view]: /old-implementations/payment-instruments-v1/mobile-pay/seamless-view
 [mobilepay-capture]: /old-implementations/payment-instruments-v1/mobile-pay/capture
 [modules-sdks]: /checkout-v3/modules-sdks
+[mp-guide]: /old-implementations/payment-instruments-v1/mobile-pay/ui-migration/
 [moto-payment-card]: /old-implementations/payment-instruments-v1/card/features/optional/moto
+[nat-pay]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/
 [nwt]: /checkout-v3/features/customize-payments/network-tokenization
 [nwt-test]: /checkout-v3/test-data/#network-tokenization
 [old-implementations]: /old-implementations/
@@ -1155,6 +1189,7 @@ more convenient for both the integration and the payer.
 [pay-op]: /checkout-v3/features/payment-operations/
 [pax-net-sdk]: https://developer.stage.swedbankpay.com/pax-terminal/NET/
 [pax-terminal]: /pax-terminal/
+[pmv2]: /old-implementations/payment-menu-v2/ui-migration/
 [pp-3-1]: /checkout-v3/get-started/post-purchase-3-1
 [prices]: /old-implementations/checkout-v2/features/technical-reference/prices
 [update-order-checkout]: /old-implementations/checkout-v2/features/core/update
@@ -1170,6 +1205,7 @@ more convenient for both the integration and the payer.
 [settlement-reconcilitation]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation
 [sdk-guidelines]: /checkout-v3/modules-sdks/development-guidelines
 [sdk-modules]: /checkout-v3/modules-sdks
+[sdk-response]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#payment
 [sort-order]: /checkout-v3/features/customize-ui/sort-order-payment-menu
 [split-settlement]: /checkout-v3/features/balancing-the-books/split-settlement
 [spp]: https://playground.swedbankpay.com
@@ -1197,6 +1233,7 @@ more convenient for both the integration and the payer.
 [token-problems]: /checkout-v3/features/technical-reference/problems/#token-problems
 [tos-url]: /checkout-v3/features/customize-ui/tos
 [trustly-pres]: /checkout-v3/trustly-presentation
+[trans-guide]: /checkout-v3/get-started/display-payment-ui/ui-migration/
 [transaction-on-file]: /old-implementations/payment-instruments-v1/card/features/optional/transaction-on-file
 [tra-exemption]: /old-implementations/checkout-v2/features/optional/tra
 [trustly-payments]: /old-implementations/payment-instruments-v1/trustly
@@ -1205,6 +1242,7 @@ more convenient for both the integration and the payer.
 [unscheduled-mit]: /checkout-v3/features/optional/unscheduled
 [v3-setup]: /checkout-v3/get-started/setup
 [validate-status]: /checkout-v3/get-started/validate-status
+[vipps-guide]: /old-implementations/payment-instruments-v1/vipps/ui-migration/
 [vipps-payment-resource]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-resource
 [vipps-payment-url]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-url
 [vipps]: /old-implementations/payment-instruments-v1/vipps
