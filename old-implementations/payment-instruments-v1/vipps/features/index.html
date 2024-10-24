@@ -14,6 +14,8 @@
         <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
         <meta property="og:type" value="website">
         <meta property="og:url" value="https://developer.swedbankpay.com/old-implementations/payment-instruments-v1/vipps/features/">
+<meta name="robots" content="noindex">
+        
         <meta property="og:title" value="Vipps – Features">
         <meta name="title" content="Vipps – Features">
         <meta property="og:description" value="Swedbank Pay Developer Portal">
@@ -191,6 +193,10 @@
 <li class="nav-leaf"><a href="/checkout-v3/get-started/display-payment-ui/seamless-view/#seamless-view-sequence-diagram">Seamless View Sequence Diagram</a></li>
           
       </ul>
+        </li>
+<li class=" group">
+          <a href="/checkout-v3/get-started/display-payment-ui/ui-migration/">Change UI Option</a>
+          
         </li>
       </ul>
         </li>
@@ -970,28 +976,20 @@
 </ul>
         </li>
           <li class=" group">
-          <a href="/checkout-v3/modules-sdks/mobile-sdk/configuration/">Configuration</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/configuration/#ios">iOS</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/configuration/#android">Android</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/configuration/#backend">Backend</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
           <a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/">Bare Minimum Implementation</a>
           <ul class="">
           
           <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#payment">Payment</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android">Android</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-setup">Android Setup</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-sdk-configuration">Android SDK Configuration</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-sdk-payment-session">Android SDK Payment Session</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-present-payment">Android Present Payment</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-complete-code">Android Complete Code</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios">iOS</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-setup">iOS Setup</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-sdk-configuration">iOS SDK Configuration</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-sdk-payment-session">iOS SDK Payment Session</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-present-payment">iOS Present Payment</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-complete-code">iOS Complete Code</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#limitations-of-the-minimal-implementation">Limitations of the minimal implementation</a></li>
           
       </ul>
@@ -1033,6 +1031,7 @@
           <ul class="">
           
           <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/android/#installation">Installation</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/android/#custom-url-scheme">Custom URL Scheme</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/android/#usage">Usage</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/android/#errors">Errors</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/android/#problems">Problems</a></li>
@@ -1047,7 +1046,7 @@
           <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#installation">Installation</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#swift-package-manager">Swift Package Manager</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#cocoapods">CocoaPods</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#url-scheme-and-associated-domain">Url Scheme and Associated Domain</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#custom-url-scheme-and-associated-domain">Custom URL Scheme and Associated Domain</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#usage">Usage</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#problems">Problems</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#payment-url-and-external-applications">Payment URL And External Applications</a></li>
@@ -1055,27 +1054,27 @@
       </ul>
         </li>
 <li class=" group">
-          <a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/">Merchant Backend V3</a>
+          <a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/">Native Payments</a>
           <ul class="">
           
-          <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#authentication-and-authorization">Authentication And Authorization</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#root-endpoint">Root Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#payment-orders-endpoint">Payment Orders Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#patching-the-payment-order">Patching The Payment Order</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#android-payment-url-helper">Android Payment Url Helper</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#ios-payment-url-helper">iOS Payment Url Helper</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#ios-payment-url-system">iOS Payment Url System</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#apple-app-site-association">Apple App Site Association</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#problems">Problems</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#merchant-backend-problems">Merchant Backend Problems</a></li>
+          <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#usage">Usage</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#the-session-url">The Session URL</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#android">Android</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#android-payment-methods">Android Payment methods</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#swish">Swish</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#saved-credit-cards">Saved Credit Cards</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#new-credit-card">New Credit Card</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#google-pay">Google Pay</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#ios">iOS</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#ios-payment-methods">iOS Payment methods</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#swish-1">Swish</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#saved-credit-cards-1">Saved Credit Cards</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#new-credit-card-1">New Credit Card</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#apple-pay">Apple Pay</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#problem-handling">Problem handling</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#detailed-usage-flows">Detailed usage flows</a></li>
           
       </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-sample-code/">Merchant Backend Sample Code</a>
-          
         </li>
 <li class=" leaf">
           <a href="/checkout-v3/modules-sdks/mobile-sdk/features/">Features</a>
@@ -1261,26 +1260,6 @@
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/plain-webview/#autoverify-to-the-rescue">Autoverify To The Rescue?</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/plain-webview/#android-have-paymenturl-redirect-to-an-intent-url">Android: Have PaymentUrl Redirect To An Intent Url</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/plain-webview/#dealing-with-picky-web-pages">Dealing with Picky Web Pages</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/">Merchant Backend V2</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#authentication-and-authorization">Authentication And Authorization</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#root-endpoint">Root Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#consumers-endpoint">Consumers Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#payment-orders-endpoint">Payment Orders Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#set-instrument-endpoint">Set Instrument Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#android-payment-url-helper">Android Payment Url Helper</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#ios-payment-url-helper">iOS Payment Url Helper</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#ios-payment-url-system">iOS Payment Url System</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#apple-app-site-association">Apple App Site Association</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#problems">Problems</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#merchant-backend-problems">Merchant Backend Problems</a></li>
           
       </ul>
         </li>
@@ -1716,6 +1695,10 @@
 </ul>
         </li>
           <li class=" group">
+          <a href="/old-implementations/checkout-v2/ui-migration/">Change UI Option</a>
+          
+        </li>
+<li class=" group">
           <a href="/old-implementations/checkout-v2/checkin/">Checkout – Checkin</a>
           <ul class="">
           
@@ -2322,6 +2305,10 @@
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/card/seamless-view#explanations">Explanations</a></li>
           
       </ul>
+        </li>
+<li class=" group">
+          <a href="/old-implementations/payment-instruments-v1/card/ui-migration/">Change UI Option</a>
+          
         </li>
 <li class=" group">
           <a href="/old-implementations/payment-instruments-v1/card/capture">Capture</a>
@@ -3434,6 +3421,10 @@
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/mobile-pay/after-payment#abort-response">Abort Response</a></li>
           
       </ul>
+        </li>
+<li class=" group">
+          <a href="/old-implementations/payment-instruments-v1/mobile-pay/ui-migration/">Change UI Option</a>
+          
         </li>
 <li class=" leaf">
           <a href="/old-implementations/payment-instruments-v1/mobile-pay/features/">Features</a>
@@ -4604,6 +4595,10 @@
           
       </ul>
         </li>
+<li class=" group">
+          <a href="/old-implementations/payment-instruments-v1/vipps/ui-migration/">Change UI Option</a>
+          
+        </li>
 <li class=" leaf active">
           <a href="/old-implementations/payment-instruments-v1/vipps/features/">Features</a>
           <ul class="">
@@ -4944,6 +4939,10 @@
 </ul>
         </li>
           <li class=" group">
+          <a href="/old-implementations/payment-menu-v2/ui-migration/">Change UI Option</a>
+          
+        </li>
+<li class=" group">
           <a href="/old-implementations/payment-menu-v2/payment-order/">Payment Order</a>
           <ul class="">
           
@@ -5519,6 +5518,60 @@
         </li>
       </ul>
         </li>
+      </ul>
+        </li>
+      </ul>
+        </li>
+<li class="secondary-nav-li leaf">
+          <a href="/old-implementations/mobile-sdk/">Mobile SDK</a>
+          <ul class="">
+          <a href="/old-implementations/mobile-sdk/.." title="test4" class="previous-nav">
+                <i class="material-icons" aria-hidden="true">arrow_back_ios</i>
+                <span>Back to Introduction</span>
+              </a>
+              <header>Mobile SDK</header>
+          
+          <li class=" group">
+          <a href="/old-implementations/mobile-sdk/merchant-backend/">Merchant Backend V3</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#authentication-and-authorization">Authentication And Authorization</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#root-endpoint">Root Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#payment-orders-endpoint">Payment Orders Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#patching-the-payment-order">Patching The Payment Order</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#android-payment-url-helper">Android Payment Url Helper</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#ios-payment-url-helper">iOS Payment Url Helper</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#ios-payment-url-system">iOS Payment Url System</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#apple-app-site-association">Apple App Site Association</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#merchant-backend-problems">Merchant Backend Problems</a></li>
+          
+      </ul>
+        </li>
+<li class=" group">
+          <a href="/old-implementations/mobile-sdk/merchant-backend-sample-code/">Merchant Backend Sample Code</a>
+          
+        </li>
+<li class=" group">
+          <a href="/old-implementations/mobile-sdk/merchant-backend-v2/">Merchant Backend V2</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#authentication-and-authorization">Authentication And Authorization</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#root-endpoint">Root Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#consumers-endpoint">Consumers Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#payment-orders-endpoint">Payment Orders Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#set-instrument-endpoint">Set Instrument Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#android-payment-url-helper">Android Payment Url Helper</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#ios-payment-url-helper">iOS Payment Url Helper</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#ios-payment-url-system">iOS Payment Url System</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#apple-app-site-association">Apple App Site Association</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#merchant-backend-problems">Merchant Backend Problems</a></li>
+          
       </ul>
         </li>
       </ul>

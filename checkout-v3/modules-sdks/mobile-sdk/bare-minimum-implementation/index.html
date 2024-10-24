@@ -14,6 +14,7 @@
         <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
         <meta property="og:type" value="website">
         <meta property="og:url" value="https://developer.swedbankpay.com/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/">
+        
         <meta property="og:title" value="Mobile SDK – Bare Minimum Implementation">
         <meta name="title" content="Mobile SDK – Bare Minimum Implementation">
         <meta property="og:description" value="Swedbank Pay Developer Portal">
@@ -191,6 +192,10 @@
 <li class="nav-leaf"><a href="/checkout-v3/get-started/display-payment-ui/seamless-view/#seamless-view-sequence-diagram">Seamless View Sequence Diagram</a></li>
           
       </ul>
+        </li>
+<li class=" group">
+          <a href="/checkout-v3/get-started/display-payment-ui/ui-migration/">Change UI Option</a>
+          
         </li>
       </ul>
         </li>
@@ -969,29 +974,21 @@
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/#introduction">Introduction</a></li>
 </ul>
         </li>
-          <li class=" group">
-          <a href="/checkout-v3/modules-sdks/mobile-sdk/configuration/">Configuration</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/configuration/#ios">iOS</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/configuration/#android">Android</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/configuration/#backend">Backend</a></li>
-          
-      </ul>
-        </li>
-<li class=" group active">
+          <li class=" group active">
           <a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/">Bare Minimum Implementation</a>
           <ul class="">
           
           <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#payment">Payment</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android">Android</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-setup">Android Setup</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-sdk-configuration">Android SDK Configuration</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-sdk-payment-session">Android SDK Payment Session</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-present-payment">Android Present Payment</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-complete-code">Android Complete Code</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios">iOS</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-setup">iOS Setup</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-sdk-configuration">iOS SDK Configuration</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-sdk-payment-session">iOS SDK Payment Session</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-present-payment">iOS Present Payment</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-complete-code">iOS Complete Code</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#limitations-of-the-minimal-implementation">Limitations of the minimal implementation</a></li>
           
       </ul>
@@ -1033,6 +1030,7 @@
           <ul class="">
           
           <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/android/#installation">Installation</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/android/#custom-url-scheme">Custom URL Scheme</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/android/#usage">Usage</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/android/#errors">Errors</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/android/#problems">Problems</a></li>
@@ -1047,7 +1045,7 @@
           <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#installation">Installation</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#swift-package-manager">Swift Package Manager</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#cocoapods">CocoaPods</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#url-scheme-and-associated-domain">Url Scheme and Associated Domain</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#custom-url-scheme-and-associated-domain">Custom URL Scheme and Associated Domain</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#usage">Usage</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#problems">Problems</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#payment-url-and-external-applications">Payment URL And External Applications</a></li>
@@ -1055,27 +1053,27 @@
       </ul>
         </li>
 <li class=" group">
-          <a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/">Merchant Backend V3</a>
+          <a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/">Native Payments</a>
           <ul class="">
           
-          <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#authentication-and-authorization">Authentication And Authorization</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#root-endpoint">Root Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#payment-orders-endpoint">Payment Orders Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#patching-the-payment-order">Patching The Payment Order</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#android-payment-url-helper">Android Payment Url Helper</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#ios-payment-url-helper">iOS Payment Url Helper</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#ios-payment-url-system">iOS Payment Url System</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#apple-app-site-association">Apple App Site Association</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#problems">Problems</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#merchant-backend-problems">Merchant Backend Problems</a></li>
+          <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#usage">Usage</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#the-session-url">The Session URL</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#android">Android</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#android-payment-methods">Android Payment methods</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#swish">Swish</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#saved-credit-cards">Saved Credit Cards</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#new-credit-card">New Credit Card</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#google-pay">Google Pay</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#ios">iOS</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#ios-payment-methods">iOS Payment methods</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#swish-1">Swish</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#saved-credit-cards-1">Saved Credit Cards</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#new-credit-card-1">New Credit Card</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#apple-pay">Apple Pay</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#problem-handling">Problem handling</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#detailed-usage-flows">Detailed usage flows</a></li>
           
       </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-sample-code/">Merchant Backend Sample Code</a>
-          
         </li>
 <li class=" leaf">
           <a href="/checkout-v3/modules-sdks/mobile-sdk/features/">Features</a>
@@ -1261,26 +1259,6 @@
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/plain-webview/#autoverify-to-the-rescue">Autoverify To The Rescue?</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/plain-webview/#android-have-paymenturl-redirect-to-an-intent-url">Android: Have PaymentUrl Redirect To An Intent Url</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/plain-webview/#dealing-with-picky-web-pages">Dealing with Picky Web Pages</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/">Merchant Backend V2</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#authentication-and-authorization">Authentication And Authorization</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#root-endpoint">Root Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#consumers-endpoint">Consumers Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#payment-orders-endpoint">Payment Orders Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#set-instrument-endpoint">Set Instrument Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#android-payment-url-helper">Android Payment Url Helper</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#ios-payment-url-helper">iOS Payment Url Helper</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#ios-payment-url-system">iOS Payment Url System</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#apple-app-site-association">Apple App Site Association</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#problems">Problems</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#merchant-backend-problems">Merchant Backend Problems</a></li>
           
       </ul>
         </li>
@@ -1716,6 +1694,10 @@
 </ul>
         </li>
           <li class=" group">
+          <a href="/old-implementations/checkout-v2/ui-migration/">Change UI Option</a>
+          
+        </li>
+<li class=" group">
           <a href="/old-implementations/checkout-v2/checkin/">Checkout – Checkin</a>
           <ul class="">
           
@@ -2322,6 +2304,10 @@
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/card/seamless-view#explanations">Explanations</a></li>
           
       </ul>
+        </li>
+<li class=" group">
+          <a href="/old-implementations/payment-instruments-v1/card/ui-migration/">Change UI Option</a>
+          
         </li>
 <li class=" group">
           <a href="/old-implementations/payment-instruments-v1/card/capture">Capture</a>
@@ -3434,6 +3420,10 @@
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/mobile-pay/after-payment#abort-response">Abort Response</a></li>
           
       </ul>
+        </li>
+<li class=" group">
+          <a href="/old-implementations/payment-instruments-v1/mobile-pay/ui-migration/">Change UI Option</a>
+          
         </li>
 <li class=" leaf">
           <a href="/old-implementations/payment-instruments-v1/mobile-pay/features/">Features</a>
@@ -4604,6 +4594,10 @@
           
       </ul>
         </li>
+<li class=" group">
+          <a href="/old-implementations/payment-instruments-v1/vipps/ui-migration/">Change UI Option</a>
+          
+        </li>
 <li class=" leaf">
           <a href="/old-implementations/payment-instruments-v1/vipps/features/">Features</a>
           <ul class="">
@@ -4944,6 +4938,10 @@
 </ul>
         </li>
           <li class=" group">
+          <a href="/old-implementations/payment-menu-v2/ui-migration/">Change UI Option</a>
+          
+        </li>
+<li class=" group">
           <a href="/old-implementations/payment-menu-v2/payment-order/">Payment Order</a>
           <ul class="">
           
@@ -5523,6 +5521,60 @@
         </li>
       </ul>
         </li>
+<li class="secondary-nav-li leaf">
+          <a href="/old-implementations/mobile-sdk/">Mobile SDK</a>
+          <ul class="">
+          <a href="/old-implementations/mobile-sdk/.." title="test4" class="previous-nav">
+                <i class="material-icons" aria-hidden="true">arrow_back_ios</i>
+                <span>Back to Introduction</span>
+              </a>
+              <header>Mobile SDK</header>
+          
+          <li class=" group">
+          <a href="/old-implementations/mobile-sdk/merchant-backend/">Merchant Backend V3</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#authentication-and-authorization">Authentication And Authorization</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#root-endpoint">Root Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#payment-orders-endpoint">Payment Orders Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#patching-the-payment-order">Patching The Payment Order</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#android-payment-url-helper">Android Payment Url Helper</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#ios-payment-url-helper">iOS Payment Url Helper</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#ios-payment-url-system">iOS Payment Url System</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#apple-app-site-association">Apple App Site Association</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#merchant-backend-problems">Merchant Backend Problems</a></li>
+          
+      </ul>
+        </li>
+<li class=" group">
+          <a href="/old-implementations/mobile-sdk/merchant-backend-sample-code/">Merchant Backend Sample Code</a>
+          
+        </li>
+<li class=" group">
+          <a href="/old-implementations/mobile-sdk/merchant-backend-v2/">Merchant Backend V2</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#authentication-and-authorization">Authentication And Authorization</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#root-endpoint">Root Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#consumers-endpoint">Consumers Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#payment-orders-endpoint">Payment Orders Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#set-instrument-endpoint">Set Instrument Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#android-payment-url-helper">Android Payment Url Helper</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#ios-payment-url-helper">iOS Payment Url Helper</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#ios-payment-url-system">iOS Payment Url System</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#apple-app-site-association">Apple App Site Association</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#merchant-backend-problems">Merchant Backend Problems</a></li>
+          
+      </ul>
+        </li>
+      </ul>
+        </li>
       </ul>
               </nav>
         </li>
@@ -5658,7 +5710,7 @@ bare minimum implementation to provide URLs to actual working sites:</p>
 
 <p>After the payment order is created, you can fetch it to get the available
 operations. The operation you’re interested in for the sake of the bare minimum
-implementation is the <code class="language-html highlighter-rouge">view-checkout</code>.</p>
+implementation is the <code class="language-html highlighter-rouge">view-paymentsession</code>.</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
@@ -5679,17 +5731,18 @@ implementation is the <code class="language-html highlighter-rouge">view-checkou
   </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ecom.externalintegration.payex.com/payment/core/js/px.payment.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119&amp;culture=nb-NO&amp;_tc_tid=30f2168171e142d38bcd4af2c3721959"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view-checkout"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/javascript"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ecom.externalintegration.payex.com/psp/paymentsessions/5a17c24e-d459-4567-bbad-aa0f17a76119?_tc_tid=30f2168171e142d38bcd4af2c3721959"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view-paymentsession"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
     </span><span class="err">...</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
 
-<p>The <code class="language-html highlighter-rouge">href</code> from the operation is then used in the Android and iOS implementations below.</p>
+<p>The <code class="language-html highlighter-rouge">href</code> from the operation is then used in the Android and iOS
+implementations below.</p>
     
       <h2 id="android">
         
@@ -5708,7 +5761,7 @@ implementation is the <code class="language-html highlighter-rouge">view-checkou
 3
 </pre></td>
 <td class="code-view-code"><pre><span class="n">dependencies</span> <span class="o">{</span>
-    <span class="n">implementation</span> <span class="s1">'com.swedbankpay.mobilesdk:mobilesdk:4.1.1'</span>
+    <span class="n">implementation</span> <span class="s1">'com.swedbankpay.mobilesdk:mobilesdk:5.0.0'</span>
 <span class="o">}</span>
 </pre></td>
 </tr></tbody></table></code></pre></div></div>
@@ -5721,7 +5774,7 @@ implementation is the <code class="language-html highlighter-rouge">view-checkou
 3
 </pre></td>
 <td class="code-view-code"><pre><span class="nf">dependencies</span> <span class="p">{</span>
-    <span class="nf">implementation</span><span class="p">(</span><span class="s">"com.swedbankpay.mobilesdk:mobilesdk:4.1.1"</span><span class="p">)</span>
+    <span class="nf">implementation</span><span class="p">(</span><span class="s">"com.swedbankpay.mobilesdk:mobilesdk:5.0.0"</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></td>
 </tr></tbody></table></code></pre></div></div>
@@ -5741,10 +5794,72 @@ implementation is the <code class="language-html highlighter-rouge">view-checkou
 (that is, having the ability for external apps like Vipps and BankID to return
 back to your app automatically after they are done) you need to make sure that
 the payment URL will launch the app. A basic way to enable this is a custom URL
-scheme (<code class="language-html highlighter-rouge">examplepayment://</code>). To make the your app launch for such URLs in the
-system, you need to add the following to your manifest file:</p>
+scheme (<code class="language-html highlighter-rouge">examplepayment://</code>).</p>
 
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<p>You can set this up using the template intent filter prepared in the SDK, that
+uses a <a href="https://developer.android.com/build/manage-manifests#inject_build_variables_into_the_manifest">Gradle Manifest Placeholder</a>. You do this
+by specifying your custom URL scheme in you <code class="language-html highlighter-rouge">build.gradle</code> file:</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+</pre></td>
+<td class="code-view-code"><pre><span class="n">defaultConfig</span> <span class="o">{</span>
+    <span class="n">manifestPlaceholders</span> <span class="o">=</span> <span class="o">[</span><span class="nl">swedbankPaymentUrlScheme:</span><span class="s2">"examplepayment"</span><span class="o">]</span>
+<span class="o">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p>Or in your <code class="language-html highlighter-rouge">gradle.kts</code> file:</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+</pre></td>
+<td class="code-view-code"><pre><span class="nf">defaultConfig</span> <span class="p">{</span>
+    <span class="n">manifestPlaceholders</span><span class="p">[</span><span class="s">"swedbankPaymentUrlScheme"</span><span class="p">]</span> <span class="p">=</span> <span class="s">"examplepayment"</span>
+<span class="p">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p>If you plan to use something other than <code class="language-html highlighter-rouge">examplepayment://</code>, make sure to modify
+the manifest placeholder value accordingly.</p>
+    
+      <h2 id="android-sdk-payment-session">
+        
+        
+          Android SDK Payment Session <a href="#android-sdk-payment-session" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>Next, you provide the Session URL and initiate a fetch of the payment session.
+This will automatically configure the SDK with the URLs provided when creating
+the payment order. You need to provide the <code class="language-html highlighter-rouge">view-paymentsession</code> operation
+<code class="language-html highlighter-rouge">href</code> in the <code class="language-html highlighter-rouge">sessionURL</code> parameter of <code class="language-html highlighter-rouge">fetchPaymentSession()</code>.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+</pre></td>
+<td class="code-view-code"><pre><span class="kd">val</span> <span class="py">paymentSession</span> <span class="p">=</span> <span class="nc">PaymentSession</span><span class="p">()</span>
+
+<span class="n">paymentSession</span><span class="p">.</span><span class="nf">fetchPaymentSession</span><span class="p">(</span><span class="n">sessionURL</span> <span class="p">=</span> <span class="s">"https://ecom.externalintegration.payex.com/psp/paymentsessions/5a17c24e-d459-4567-bbad-aa0f17a76119?_tc_tid=30f2168171e142d38bcd4af2c3721959"</span><span class="p">)</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p>You have to wait until the payment session is fetched by the SDK, and can then
+continue with either making payment attempts for native payment instruments, or
+request a web view based payment flow.</p>
+
+<p>You need to listen to some state updates from the Payment session. You do this
+by observing <code class="language-html highlighter-rouge">PaymentSession.paymentSessionState</code>. In the following example, we
+implement observers for the four required states.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
 2
 3
@@ -5753,31 +5868,111 @@ system, you need to add the following to your manifest file:</p>
 6
 7
 8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
 </pre></td>
-<td class="code-view-code"><pre><span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">".MainActivity"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;intent-filter&gt;</span>
-        <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">"android.intent.action.VIEW"</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">"android.intent.category.DEFAULT"</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">"android.intent.category.BROWSABLE"</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;data</span> <span class="na">android:scheme=</span><span class="s">"examplepayment"</span> <span class="na">android:host=</span><span class="s">"path"</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;/intent-filter&gt;</span>
-<span class="nt">&lt;/activity&gt;</span>
+<td class="code-view-code"><pre><span class="nc">PaymentSession</span><span class="p">.</span><span class="n">paymentSessionState</span><span class="p">.</span><span class="nf">observe</span><span class="p">(</span><span class="n">viewLifecycleOwner</span><span class="p">)</span> <span class="p">{</span> <span class="n">paymentState</span> <span class="p">-&gt;</span>
+    <span class="k">when</span> <span class="p">(</span><span class="n">paymentState</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">is</span> <span class="nc">PaymentSessionState</span><span class="p">.</span><span class="nc">PaymentSessionFetched</span> <span class="p">-&gt;</span> <span class="p">{</span>
+            <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="s">"SwedbankPay"</span><span class="p">,</span> <span class="s">"Payment Session Fetched"</span><span class="p">)</span>
+        <span class="p">}</span>
+
+        <span class="k">is</span> <span class="nc">PaymentSessionState</span><span class="p">.</span><span class="nc">PaymentSessionComplete</span> <span class="p">-&gt;</span> <span class="p">{</span>
+            <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="s">"SwedbankPay"</span><span class="p">,</span> <span class="s">"Payment Session Complete"</span><span class="p">)</span>
+        <span class="p">}</span>
+
+        <span class="k">is</span> <span class="nc">PaymentSessionState</span><span class="p">.</span><span class="nc">PaymentSessionCanceled</span> <span class="p">-&gt;</span> <span class="p">{</span>
+            <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="s">"SwedbankPay"</span><span class="p">,</span> <span class="s">"Payment Session Canceled"</span><span class="p">)</span>
+        <span class="p">}</span>
+
+        <span class="k">is</span> <span class="nc">PaymentSessionState</span><span class="p">.</span><span class="nc">SessionProblemOccurred</span> <span class="p">-&gt;</span> <span class="p">{</span>
+            <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="s">"SwedbankPay"</span><span class="p">,</span> <span class="s">"Payment Session Problem Occurred"</span><span class="p">)</span>
+        <span class="p">}</span>
+
+        <span class="k">is</span> <span class="nc">PaymentSessionState</span><span class="p">.</span><span class="nc">SdkProblemOccurred</span> <span class="p">-&gt;</span> <span class="p">{</span>
+            <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="s">"SwedbankPay"</span><span class="p">,</span> <span class="s">"SDK Problem Occurred"</span><span class="p">)</span>
+        <span class="p">}</span>
+
+        <span class="k">else</span> <span class="p">-&gt;</span> <span class="p">{}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></td>
 </tr></tbody></table></code></pre></div></div>
     
-      <h2 id="android-sdk-configuration">
+      <h2 id="android-present-payment">
         
         
-          Android SDK Configuration <a href="#android-sdk-configuration" class="header-anchor"></a>
+          Android Present Payment <a href="#android-present-payment" class="header-anchor"></a>
         
         
       </h2>
 
-<p>Next, you provide the configuration for the payment UI. We don’t use consumer
-identification for the bare minimum implementation, so that method is
-implemented but does not return any data. The payment order returned have
-URLs matching the payment order you created earlier. Provide the <code class="language-html highlighter-rouge">view-checkout</code>
-operation <code class="language-html highlighter-rouge">href</code> in the <code class="language-html highlighter-rouge">viewPaymentLink</code> parameter of <code class="language-html highlighter-rouge">ViewPaymentOrderInfo</code>.</p>
+<p>You are now ready to present the payment UI. You can ask the payment session
+class to create a <code class="language-html highlighter-rouge">PaymentFragment</code> for web view based payments:</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+</pre></td>
+<td class="code-view-code"><pre><span class="n">paymentSession</span><span class="p">.</span><span class="nf">createPaymentFragment</span><span class="p">()</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p>After getting back the <code class="language-html highlighter-rouge">PaymentFragment</code> instance , you can present it in a way
+that works in your application. In this example we will be using Appcompat
+<code class="language-html highlighter-rouge">FragmentManager</code> via <code class="language-html highlighter-rouge">supportFragmentManager</code> to present the payment fragment,
+meaning this code is implemented in an <code class="language-html highlighter-rouge">Activity</code> of the app.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+</pre></td>
+<td class="code-view-code"><pre><span class="kd">val</span> <span class="py">containerViewId</span> <span class="p">=</span> <span class="nc">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">sdk_payment_fragment</span> <span class="c1">// Specify a container ID for the fragment</span>
+<span class="n">supportFragmentManager</span><span class="p">.</span><span class="nf">beginTransaction</span><span class="p">()</span>
+    <span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">containerViewId</span><span class="p">,</span> <span class="n">paymentFragment</span><span class="p">,</span> <span class="s">"PaymentFragment"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">commit</span><span class="p">()</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p>When the payment is finished, you need to remove the payment fragment from the
+screen (again, in this example we’re accessing the Appcompat FragmentManager via
+supportFragmentManager, so we’re removing the payment view in a fragment
+transaction to close it:</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+</pre></td>
+<td class="code-view-code"><pre><span class="n">supportFragmentManager</span><span class="p">.</span><span class="nf">beginTransaction</span><span class="p">()</span>
+    <span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="n">paymentFragment</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">commit</span><span class="p">()</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+    
+      <h2 id="android-complete-code">
+        
+        
+          Android Complete Code <a href="#android-complete-code" class="header-anchor"></a>
+        
+        
+      </h2>
 
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
@@ -5807,113 +6002,92 @@ operation <code class="language-html highlighter-rouge">href</code> in the <code
 25
 26
 27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
 </pre></td>
-<td class="code-view-code"><pre><span class="kd">class</span> <span class="nc">TestConfiguration</span> <span class="p">:</span> <span class="nc">Configuration</span><span class="p">()</span> <span class="p">{</span>
+<td class="code-view-code"><pre><span class="kd">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="nc">AppCompatActivity</span><span class="p">()</span> <span class="p">{</span>
 
-    <span class="c1">// This method is required but not used</span>
-    <span class="k">override</span> <span class="k">suspend</span> <span class="k">fun</span> <span class="nf">postConsumers</span><span class="p">(</span>
-        <span class="n">context</span><span class="p">:</span> <span class="nc">Context</span><span class="p">,</span>
-        <span class="n">consumer</span><span class="p">:</span> <span class="nc">Consumer</span><span class="p">?,</span>
-        <span class="n">userData</span><span class="p">:</span> <span class="nc">Any</span><span class="p">?</span>
-    <span class="p">):</span> <span class="nc">ViewConsumerIdentificationInfo</span> <span class="p">{</span>
-        <span class="k">throw</span> <span class="nc">Exception</span><span class="p">()</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="nc">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+        <span class="nf">setContentView</span><span class="p">(</span><span class="nc">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">activity_main</span><span class="p">)</span>
+
+        <span class="kd">val</span> <span class="py">paymentSession</span> <span class="p">=</span> <span class="nc">PaymentSession</span><span class="p">()</span>
+
+        <span class="n">paymentSession</span><span class="p">.</span><span class="nf">fetchPaymentSession</span><span class="p">(</span><span class="n">sessionURL</span> <span class="p">=</span> <span class="s">"https://ecom.externalintegration.payex.com/psp/paymentsessions/5a17c24e-d459-4567-bbad-aa0f17a76119?_tc_tid=30f2168171e142d38bcd4af2c3721959"</span><span class="p">)</span>
+
+        <span class="nc">PaymentSession</span><span class="p">.</span><span class="n">paymentSessionState</span><span class="p">.</span><span class="nf">observe</span><span class="p">(</span><span class="k">this</span><span class="p">)</span> <span class="p">{</span> <span class="n">paymentState</span> <span class="p">-&gt;</span>
+            <span class="k">when</span> <span class="p">(</span><span class="n">paymentState</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">is</span> <span class="nc">PaymentSessionState</span><span class="p">.</span><span class="nc">PaymentSessionFetched</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                    <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="s">"SwedbankPay"</span><span class="p">,</span> <span class="s">"Payment Session Fetched"</span><span class="p">)</span>
+
+                    <span class="c1">// Reqeust a web based payment fragment instance</span>
+                    <span class="n">paymentSession</span><span class="p">.</span><span class="nf">createPaymentFragment</span><span class="p">()</span>
+                <span class="p">}</span>
+
+                <span class="k">is</span> <span class="nc">PaymentSessionState</span><span class="p">.</span><span class="nc">ShowPaymentFragment</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                    <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="s">"SwedbankPay"</span><span class="p">,</span> <span class="s">"Show Payment Fragment"</span><span class="p">)</span>
+
+                    <span class="c1">// Present payment fragment to user</span>
+                    <span class="kd">val</span> <span class="py">containerViewId</span> <span class="p">=</span> <span class="nc">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">sdk_payment_fragment</span> <span class="c1">// Specify a container ID for the fragment</span>
+                    <span class="n">supportFragmentManager</span><span class="p">.</span><span class="nf">beginTransaction</span><span class="p">()</span>
+                        <span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">containerViewId</span><span class="p">,</span> <span class="n">paymentState</span><span class="p">.</span><span class="n">fragment</span><span class="p">,</span> <span class="s">"PaymentFragment"</span><span class="p">)</span>
+                        <span class="p">.</span><span class="nf">commit</span><span class="p">()</span>
+                <span class="p">}</span>
+
+                <span class="k">is</span> <span class="nc">PaymentSessionState</span><span class="p">.</span><span class="nc">PaymentSessionComplete</span><span class="p">,</span>
+                <span class="k">is</span> <span class="nc">PaymentSessionState</span><span class="p">.</span><span class="nc">PaymentSessionCanceled</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                    <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="s">"SwedbankPay"</span><span class="p">,</span> <span class="s">"Payment Session Complete / Canceled"</span><span class="p">)</span>
+
+                    <span class="c1">// Remove the payment fragment</span>
+                    <span class="kd">val</span> <span class="py">paymentFragment</span> <span class="p">=</span> <span class="n">supportFragmentManager</span><span class="p">.</span><span class="nf">findFragmentByTag</span><span class="p">(</span><span class="s">"PaymentFragment"</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">paymentFragment</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="n">supportFragmentManager</span><span class="p">.</span><span class="nf">beginTransaction</span><span class="p">()</span>
+                            <span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="n">paymentFragment</span><span class="p">)</span>
+                            <span class="p">.</span><span class="nf">commit</span><span class="p">()</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+
+                <span class="k">is</span> <span class="nc">PaymentSessionState</span><span class="p">.</span><span class="nc">SessionProblemOccurred</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                    <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="s">"SwedbankPay"</span><span class="p">,</span> <span class="s">"Payment Session Problem Occurred"</span><span class="p">)</span>
+                <span class="p">}</span>
+
+                <span class="k">is</span> <span class="nc">PaymentSessionState</span><span class="p">.</span><span class="nc">SdkProblemOccurred</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                    <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="s">"SwedbankPay"</span><span class="p">,</span> <span class="s">"SDK Problem Occurred"</span><span class="p">)</span>
+                <span class="p">}</span>
+
+                <span class="k">else</span> <span class="p">-&gt;</span> <span class="p">{}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="k">override</span> <span class="k">suspend</span> <span class="k">fun</span> <span class="nf">postPaymentorders</span><span class="p">(</span>
-        <span class="n">context</span><span class="p">:</span> <span class="nc">Context</span><span class="p">,</span>
-        <span class="n">paymentOrder</span><span class="p">:</span> <span class="nc">PaymentOrder</span><span class="p">?,</span>
-        <span class="n">userData</span><span class="p">:</span> <span class="nc">Any</span><span class="p">?,</span>
-        <span class="n">consumerProfileRef</span><span class="p">:</span> <span class="nc">String</span><span class="p">?</span>
-    <span class="p">):</span> <span class="nc">ViewPaymentOrderInfo</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nc">ViewPaymentOrderInfo</span><span class="p">(</span>
-            <span class="n">viewPaymentLink</span> <span class="p">=</span> <span class="s">"https://ecom.externalintegration.payex.com/payment/core/js/px.payment.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119&amp;culture=nb-NO&amp;_tc_tid=30f2168171e142d38bcd4af2c3721959"</span><span class="p">,</span>
-            <span class="n">webViewBaseUrl</span> <span class="p">=</span> <span class="s">"https://example.com/"</span><span class="p">,</span>
-            <span class="n">completeUrl</span> <span class="p">=</span> <span class="s">"https://example.com/complete"</span><span class="p">,</span>
-            <span class="n">cancelUrl</span> <span class="p">=</span> <span class="s">"https://example.com/cancel"</span><span class="p">,</span>
-            <span class="n">paymentUrl</span> <span class="p">=</span> <span class="s">"examplepayment://payment/"</span><span class="p">,</span>
-            <span class="n">isV3</span> <span class="p">=</span> <span class="k">true</span>
-        <span class="p">)</span>
-    <span class="p">}</span>
 <span class="p">}</span>
-</pre></td>
-</tr></tbody></table></code></pre></div></div>
-    
-      <h2 id="android-present-payment">
-        
-        
-          Android Present Payment <a href="#android-present-payment" class="header-anchor"></a>
-        
-        
-      </h2>
-
-<p>You are now ready to present the payment UI. First, you set our configuration as
-the global <code class="language-html highlighter-rouge">defaultConfiguration</code> for <code class="language-html highlighter-rouge">PaymentFragment</code> in your app:</p>
-
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
-<td class="code-view-numbers gl"><pre class="lineno">1
-2
-</pre></td>
-<td class="code-view-code"><pre><span class="kd">val</span> <span class="py">configuration</span> <span class="p">=</span> <span class="nc">TestConfiguration</span><span class="p">()</span>
-<span class="nc">PaymentFragment</span><span class="p">.</span><span class="n">defaultConfiguration</span> <span class="p">=</span> <span class="n">configuration</span>
-</pre></td>
-</tr></tbody></table></code></pre></div></div>
-
-<p>After this, you simply create a <code class="language-html highlighter-rouge">PaymentFragment</code> instance and present it in a
-way that works in your application (in this example, we’re accessing the
-Appcompat <code class="language-html highlighter-rouge">FragmentManager</code> via <code class="language-html highlighter-rouge">supportFragmentManager</code>, meaning this code is
-implemented in an <code class="language-html highlighter-rouge">Activity</code> of the app):</p>
-
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
-<td class="code-view-numbers gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-</pre></td>
-<td class="code-view-code"><pre><span class="kd">val</span> <span class="py">arguments</span> <span class="p">=</span> <span class="nc">PaymentFragment</span><span class="p">.</span><span class="nc">ArgumentsBuilder</span><span class="p">()</span>
-    <span class="p">.</span><span class="nf">checkoutV3</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
-    <span class="p">.</span><span class="nf">build</span><span class="p">()</span>
-
-<span class="kd">val</span> <span class="py">paymentFragment</span> <span class="p">=</span> <span class="nc">PaymentFragment</span><span class="p">()</span>
-<span class="n">paymentFragment</span><span class="p">.</span><span class="n">arguments</span> <span class="p">=</span> <span class="n">arguments</span>
-
-<span class="kd">val</span> <span class="py">containerViewId</span> <span class="p">=</span> <span class="nc">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">sdk_payment_fragment</span> <span class="c1">// Specify a container ID for the fragment</span>
-<span class="n">supportFragmentManager</span><span class="p">.</span><span class="nf">beginTransaction</span><span class="p">()</span>
-    <span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">containerViewId</span><span class="p">,</span> <span class="n">paymentFragment</span><span class="p">)</span>
-    <span class="p">.</span><span class="nf">commit</span><span class="p">()</span>
-</pre></td>
-</tr></tbody></table></code></pre></div></div>
-
-<p>You want to listen to some basic state updates from the payment UI and dismiss
-the view when it’s finished. You do this by accessing the <code class="language-html highlighter-rouge">paymentViewModel</code>
-that is available on all Activities. In the following example, we observe the
-<code class="language-html highlighter-rouge">state</code> variable in the same Activity as above, and remove the payment fragment
-from the screen after the payment is finalized (again, this is done with
-<code class="language-html highlighter-rouge">supportFragmentManager</code>, you can modify this depending on how you presented the
-fragment):</p>
-
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
-<td class="code-view-numbers gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-</pre></td>
-<td class="code-view-code"><pre><span class="n">paymentViewModel</span><span class="p">.</span><span class="n">state</span><span class="p">.</span><span class="nf">observe</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nc">Observer</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">it</span><span class="p">.</span><span class="n">isFinal</span> <span class="p">==</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">supportFragmentManager</span><span class="p">.</span><span class="nf">beginTransaction</span><span class="p">()</span>
-            <span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="n">paymentFragment</span><span class="p">)</span>
-            <span class="p">.</span><span class="nf">commit</span><span class="p">()</span>
-    <span class="p">}</span>
-<span class="p">})</span>
 </pre></td>
 </tr></tbody></table></code></pre></div></div>
     
@@ -5937,7 +6111,7 @@ CocoaPods.</p>
       </h3>
 
 <p>The package repository URL for the SDK is
-<a href="https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git"><code class="language-html highlighter-rouge">https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git</code></a>.
+<a href="https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git" target="_blank"><code class="language-html highlighter-rouge">https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git</code></a>.
 Add the <code class="language-html highlighter-rouge">SwedbankPaySDK</code> library, there is no need to add the
 <code class="language-html highlighter-rouge">SwedbankPaySDKMerchantBackend</code> library for the bare minimum implementation.</p>
     
@@ -5954,7 +6128,7 @@ Add the <code class="language-html highlighter-rouge">SwedbankPaySDK</code> libr
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
 </pre></td>
-<td class="code-view-code"><pre><span class="n">pod</span> <span class="s1">'SwedbankPaySDK'</span><span class="p">,</span> <span class="s1">'~&gt; 4.0.5'</span>
+<td class="code-view-code"><pre><span class="n">pod</span> <span class="s1">'SwedbankPaySDK'</span><span class="p">,</span> <span class="s1">'~&gt; 5.0.0'</span>
 </pre></td>
 </tr></tbody></table></code></pre></div></div>
     
@@ -5987,10 +6161,13 @@ properties</code>, and add a property with the key
 
 <p><img src="/assets/img/mobile-sdk/ios-custom-scheme-2.png" alt="Payment url scheme added in Info.plist editor"></p>
 
+<p>If you plan to use something other than <code class="language-html highlighter-rouge">examplepayment://</code>, make sure to modify
+the URL scheme value accordingly.</p>
+
 <p>To forward the custom-scheme payment urls to the SDK, implement the
-<a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623112-application"><code class="language-html highlighter-rouge">application(_:open:options:)</code></a> method in your
-application delegate, and call <code class="language-html highlighter-rouge">SwedbankPaySDK.open(url: url)</code> to let the SDK
-handle the url.</p>
+<a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623112-application" target="_blank"><code class="language-html highlighter-rouge">application(_:open:options:)</code></a> method
+in your application delegate, and call <code class="language-html highlighter-rouge">SwedbankPaySDK.open(url: url)</code> to let
+the SDK handle the url.</p>
 
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
@@ -6003,22 +6180,18 @@ handle the url.</p>
 </pre></td>
 </tr></tbody></table></code></pre></div></div>
     
-      <h2 id="ios-sdk-configuration">
+      <h2 id="ios-sdk-payment-session">
         
         
-          iOS SDK Configuration <a href="#ios-sdk-configuration" class="header-anchor"></a>
+          iOS SDK Payment Session <a href="#ios-sdk-payment-session" class="header-anchor"></a>
         
         
       </h2>
 
-<p>Next, you provide the configuration for the payment UI. We don’t use consumer
-identification for the bare minimum implementation, so that method is
-implemented but does not return any data. The payment order returned have
-URLs matching the payment order you created earlier. Provide the <code class="language-html highlighter-rouge">view-checkout</code>
-operation <code class="language-html highlighter-rouge">href</code> in the <code class="language-html highlighter-rouge">viewPaymentLink</code> parameter of <code class="language-html highlighter-rouge">ViewPaymentOrderInfo</code>.</p>
-
-<p>Provide the <code class="language-html highlighter-rouge">view-checkout</code> operation <code class="language-html highlighter-rouge">href</code> in the <code class="language-html highlighter-rouge">viewPaymentLink</code> parameter
-of <code class="language-html highlighter-rouge">ViewPaymentOrderInfo</code>;</p>
+<p>You need to listen to some state updates from the Payment session. You do this
+by implementing the <code class="language-html highlighter-rouge">SwedbankPaySDKPaymentSessionDelegate</code> protocol. In the
+following example, we implement the delegate protocol and the required
+methods.</p>
 
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
@@ -6050,35 +6223,84 @@ of <code class="language-html highlighter-rouge">ViewPaymentOrderInfo</code>;</p
 27
 28
 29
+30
+31
+32
+33
+34
+35
 </pre></td>
-<td class="code-view-code"><pre><span class="kd">enum</span> <span class="kt">SwedbankPayConfigurationError</span><span class="p">:</span> <span class="kt">Error</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">notImplemented</span>
+<td class="code-view-code"><pre><span class="kd">func</span> <span class="nf">paymentSessionFetched</span><span class="p">(</span><span class="nv">availableInstruments</span><span class="p">:</span> <span class="p">[</span><span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="kt">AvailableInstrument</span><span class="p">])</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Available Instruments Fetched"</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="kd">class</span> <span class="kt">TestConfiguration</span><span class="p">:</span> <span class="kt">SwedbankPaySDKConfiguration</span> <span class="p">{</span>
+<span class="kd">func</span> <span class="nf">sessionProblemOccurred</span><span class="p">(</span><span class="nv">problem</span><span class="p">:</span> <span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="kt">ProblemDetails</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Session Problem Occurred"</span><span class="p">)</span>
+<span class="p">}</span>
 
-    <span class="c1">// This delegate method is required but not used</span>
-    <span class="kd">func</span> <span class="nf">postConsumers</span><span class="p">(</span><span class="nv">consumer</span><span class="p">:</span> <span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="kt">Consumer</span><span class="p">?,</span>
-                       <span class="nv">userData</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?,</span>
-                       <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Result</span><span class="o">&lt;</span><span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="kt">ViewConsumerIdentificationInfo</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nf">completion</span><span class="p">(</span><span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="kt">SwedbankPayConfigurationError</span><span class="o">.</span><span class="n">notImplemented</span><span class="p">))</span>
-    <span class="p">}</span>
+<span class="kd">func</span> <span class="nf">sdkProblemOccurred</span><span class="p">(</span><span class="nv">problem</span><span class="p">:</span> <span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="kt">PaymentSessionProblem</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"SDK Problem Occurred"</span><span class="p">)</span>
+<span class="p">}</span>
 
-    <span class="kd">func</span> <span class="nf">postPaymentorders</span><span class="p">(</span><span class="nv">paymentOrder</span><span class="p">:</span> <span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="kt">PaymentOrder</span><span class="p">?,</span>
-                           <span class="nv">userData</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?,</span>
-                           <span class="nv">consumerProfileRef</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span>
-                           <span class="nv">options</span><span class="p">:</span> <span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="kt">VersionOptions</span><span class="p">,</span>
-                           <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Result</span><span class="o">&lt;</span><span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="kt">ViewPaymentOrderInfo</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">let</span> <span class="nv">info</span> <span class="o">=</span> <span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="kt">ViewPaymentOrderInfo</span><span class="p">(</span><span class="nv">isV3</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-                                                       <span class="nv">webViewBaseURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://example.com/"</span><span class="p">),</span>
-                                                       <span class="nv">viewPaymentLink</span><span class="p">:</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://ecom.externalintegration.payex.com/payment/core/js/px.payment.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119&amp;culture=nb-NO&amp;_tc_tid=30f2168171e142d38bcd4af2c3721959"</span><span class="p">)</span><span class="o">!</span><span class="p">,</span>
-                                                       <span class="nv">completeUrl</span><span class="p">:</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://example.com/complete"</span><span class="p">)</span><span class="o">!</span><span class="p">,</span>
-                                                       <span class="nv">cancelUrl</span><span class="p">:</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://example.com/cancel"</span><span class="p">),</span>
-                                                       <span class="nv">paymentUrl</span><span class="p">:</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"examplepayment://payment/"</span><span class="p">),</span>
-                                                       <span class="nv">termsOfServiceUrl</span><span class="p">:</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://example.com/tos"</span><span class="p">))</span>
-        <span class="nf">completion</span><span class="p">(</span><span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="n">info</span><span class="p">))</span>
-    <span class="p">}</span>
+<span class="kd">func</span> <span class="nf">paymentSessionComplete</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Payment Session Complete"</span><span class="p">)</span>
+<span class="p">}</span>
 
+<span class="kd">func</span> <span class="nf">paymentSessionCanceled</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Payment Session Canceled"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">showSwedbankPaySDKController</span><span class="p">(</span><span class="nv">viewController</span><span class="p">:</span> <span class="kt">SwedbankPaySDKController</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Show Swedbank Pay SDK Controller"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">show3DSecureViewController</span><span class="p">(</span><span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Show 3D Secure View Controller"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">dismiss3DSecureViewController</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Dismiss 3D Secure View Controller"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">paymentSession3DSecureViewControllerLoadFailed</span><span class="p">(</span><span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">,</span> <span class="nv">retry</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">()</span><span class="o">-&gt;</span><span class="kt">Void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"3D Secure View Controller Load Failed"</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p>Next, you provide the Session URL and initiate a fetch of the payment session.
+This will automatically configure the SDK with the URLs provided when creating
+the payment order. You need to provide the <code class="language-html highlighter-rouge">view-paymentsession</code> operation
+<code class="language-html highlighter-rouge">href</code> in the <code class="language-html highlighter-rouge">sessionURL</code> parameter of <code class="language-html highlighter-rouge">fetchPaymentSession()</code>.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td>
+<td class="code-view-code"><pre><span class="k">let</span> <span class="nv">paymentSession</span> <span class="o">=</span> <span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="kt">SwedbankPayPaymentSession</span><span class="p">()</span>
+
+<span class="n">paymentSession</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+
+<span class="n">paymentSession</span><span class="o">.</span><span class="nf">fetchPaymentSession</span><span class="p">(</span><span class="nv">sessionURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://ecom.externalintegration.payex.com/psp/paymentsessions/5a17c24e-d459-4567-bbad-aa0f17a76119?_tc_tid=30f2168171e142d38bcd4af2c3721959"</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p>You have to wait until the payment session is fetched by the SDK, and can then
+continue with either making payment attempts for native payment instruments, or
+request a web view based payment flow. For the bare minimum implementation,
+we’re only looking at the web view based payment flow, and you can therefore
+ignore the <code class="language-html highlighter-rouge">availableInstruments</code> parameter.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+</pre></td>
+<td class="code-view-code"><pre><span class="kd">func</span> <span class="nf">paymentSessionFetched</span><span class="p">(</span><span class="nv">availableInstruments</span><span class="p">:</span> <span class="p">[</span><span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="kt">AvailableInstrument</span><span class="p">])</span> <span class="p">{</span>
+    <span class="c1">// No need to look at availableInstruments, continue with showing the payment menu</span>
 <span class="p">}</span>
 </pre></td>
 </tr></tbody></table></code></pre></div></div>
@@ -6092,11 +6314,73 @@ of <code class="language-html highlighter-rouge">ViewPaymentOrderInfo</code>;</p
       </h2>
 
 <p>You want to listen to some basic state updates from the payment UI and dismiss
-the view when it’s finished. You do this by implementing the
-<code class="language-html highlighter-rouge">SwedbankPaySDKDelegate</code> protocol. In the following example, we implement
-the delegate protocol and the following three delegate methods in a view
-controller. We will be presenting the payment view controller modally in the
-implementation further down, so we can use <code class="language-html highlighter-rouge">dismiss()</code> to close it:</p>
+the view when it’s finished. We will be presenting the payment view controller
+modally in the implementation further down, so we can use <code class="language-html highlighter-rouge">dismiss()</code> to close
+it:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+<td class="code-view-code"><pre><span class="kd">func</span> <span class="nf">paymentSessionComplete</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">dismiss</span><span class="p">(</span><span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Payment Session Complete"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">paymentSessionCanceled</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">dismiss</span><span class="p">(</span><span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Payment Session Canceled"</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p>You are now ready to present the payment UI. You can ask the payment session
+class to create a <code class="language-html highlighter-rouge">SwedbankPaySDKController</code> for web view based payments.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+</pre></td>
+<td class="code-view-code"><pre><span class="n">paymentSession</span><span class="o">.</span><span class="nf">createSwedbankPaySDKController</span><span class="p">()</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p>The <code class="language-html highlighter-rouge">SwedbankPaySDKController</code> instance is returned via the
+<code class="language-html highlighter-rouge">showSwedbankPaySDKController(viewController:)</code> delegate method. After getting
+back the <code class="language-html highlighter-rouge">SwedbankPaySDKController</code> instance , you can present it in a way that
+works in your application (again, in the example we’re presenting the view
+controller modally):</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+</pre></td>
+<td class="code-view-code"><pre><span class="kd">func</span> <span class="nf">showSwedbankPaySDKController</span><span class="p">(</span><span class="nv">viewController</span><span class="p">:</span> <span class="kt">SwedbankPaySDKController</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">present</span><span class="p">(</span><span class="n">viewController</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Show Swedbank Pay SDK Controller"</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p>You can now finish the payment in the web based Swedbank Pay Menu, and when the
+payment is complete, you will be called with the <code class="language-html highlighter-rouge">paymentComplete()</code> delegate
+method and the payment menu will close.</p>
+    
+      <h2 id="ios-complete-code">
+        
+        
+          iOS Complete Code <a href="#ios-complete-code" class="header-anchor"></a>
+        
+        
+      </h2>
 
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
@@ -6113,51 +6397,95 @@ implementation further down, so we can use <code class="language-html highlighte
 12
 13
 14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
 </pre></td>
-<td class="code-view-code"><pre><span class="kd">func</span> <span class="nf">paymentComplete</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nf">dismiss</span><span class="p">(</span><span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Payment Complete"</span><span class="p">)</span>
+<td class="code-view-code"><pre><span class="kd">class</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="kt">SwedbankPaySDKPaymentSessionDelegate</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">paymentSession</span> <span class="o">=</span> <span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="kt">SwedbankPayPaymentSession</span><span class="p">()</span>
+
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+
+        <span class="n">paymentSession</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+
+        <span class="n">paymentSession</span><span class="o">.</span><span class="nf">fetchPaymentSession</span><span class="p">(</span><span class="nv">sessionURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://ecom.externalintegration.payex.com/psp/paymentsessions/5a17c24e-d459-4567-bbad-aa0f17a76119?_tc_tid=30f2168171e142d38bcd4af2c3721959"</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">paymentSessionFetched</span><span class="p">(</span><span class="nv">availableInstruments</span><span class="p">:</span> <span class="p">[</span><span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="kt">AvailableInstrument</span><span class="p">])</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Available Instruments Fetched"</span><span class="p">)</span>
+        <span class="n">paymentSession</span><span class="o">.</span><span class="nf">createSwedbankPaySDKController</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">sessionProblemOccurred</span><span class="p">(</span><span class="nv">problem</span><span class="p">:</span> <span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="kt">ProblemDetails</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Session Problem Occurred"</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">sdkProblemOccurred</span><span class="p">(</span><span class="nv">problem</span><span class="p">:</span> <span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="kt">PaymentSessionProblem</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"SDK Problem Occurred"</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">paymentSessionComplete</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">dismiss</span><span class="p">(</span><span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Payment Session Complete"</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">paymentSessionCanceled</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">dismiss</span><span class="p">(</span><span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Payment Session Canceled"</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">showSwedbankPaySDKController</span><span class="p">(</span><span class="nv">viewController</span><span class="p">:</span> <span class="kt">SwedbankPaySDKController</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">present</span><span class="p">(</span><span class="n">viewController</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Show Swedbank Pay SDK Controller"</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">show3DSecureViewController</span><span class="p">(</span><span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Show 3D Secure View Controller"</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">dismiss3DSecureViewController</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Dismiss 3D Secure View Controller"</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">paymentSession3DSecureViewControllerLoadFailed</span><span class="p">(</span><span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">,</span> <span class="nv">retry</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">()</span><span class="o">-&gt;</span><span class="kt">Void</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"3D Secure View Controller Load Failed"</span><span class="p">)</span>
+    <span class="p">}</span>
 <span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">paymentCanceled</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nf">dismiss</span><span class="p">(</span><span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Payment Canceled"</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">paymentFailed</span><span class="p">(</span><span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nf">dismiss</span><span class="p">(</span><span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Payment Failed"</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></td>
-</tr></tbody></table></code></pre></div></div>
-
-<p>You are now ready to present the payment UI. Simply create a
-<code class="language-html highlighter-rouge">SwedbankPaySDKController</code>, provide the configuration, assign the <code class="language-html highlighter-rouge">delegate</code>
-and present it in a way that works in your application (again, in the example
-we’re presenting the view modally in a separate View Controller):</p>
-
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
-<td class="code-view-numbers gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-</pre></td>
-<td class="code-view-code"><pre><span class="k">let</span> <span class="nv">configuration</span> <span class="o">=</span> <span class="kt">TestConfiguration</span><span class="p">()</span>
-<span class="k">let</span> <span class="nv">paymentController</span> <span class="o">=</span> <span class="kt">SwedbankPaySDKController</span><span class="p">(</span><span class="nv">configuration</span><span class="p">:</span> <span class="n">configuration</span><span class="p">,</span>
-                                                 <span class="nv">withCheckin</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-                                                 <span class="nv">consumer</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span>
-                                                 <span class="nv">paymentOrder</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span>
-                                                 <span class="nv">userData</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
-
-<span class="n">paymentController</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
-
-<span class="nf">present</span><span class="p">(</span><span class="n">paymentController</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
 </pre></td>
 </tr></tbody></table></code></pre></div></div>
     
@@ -6173,20 +6501,17 @@ we’re presenting the view modally in a separate View Controller):</p>
 little work, there are several limitations to the implementation that you should
 consider before choosing how to implement the full payment in your apps.</p>
     
-      <h3 id="dynamic-configuration">
+      <h3 id="dynamic-session-url">
         
         
-          Dynamic configuration <a href="#dynamic-configuration" class="header-anchor"></a>
+          Dynamic Session URL <a href="#dynamic-session-url" class="header-anchor"></a>
         
         
       </h3>
 
-<p>For simplicity, we’ve hardcoded all URLs needed to initiliaze the configuration.
-In an actual application, you instead need to fetch one ore more URLs from your
-backend and supply it to the payment UI. The obvious URL that is required to be
-dynamic is the payment order specific <code class="language-html highlighter-rouge">viewPaymentLink</code>, but also URLs such as
-<code class="language-html highlighter-rouge">paymentUrl</code> should ideally be dynamic (depending on mobile platform and even
-the payment order, more on this below).</p>
+<p>For simplicity, we’ve hardcoded the Session URL needed to fetch the payment
+session in the SDK. In an actual application, you instead need to fetch this URL
+from your own backend and supply it to the SDK.</p>
     
       <h3 id="cancelling-payment">
         
@@ -6214,28 +6539,23 @@ backend.</p>
 This causes several issues in a production environment:</p>
 
 <ul>
-  <li>On iOS, using custom URL schemes instead of Universal Links comes with several
-drawbacks, including prompting the user with an additional confirmation popup
-as well as being unable to verify URL ownership to your specific app (other
-apps can declare the same custom URL scheme outside of your control).</li>
-  <li>On Android, the SDK expects the app to be launched by external apps using an
-<code class="language-html highlighter-rouge">intent:</code> scheme URL. This ties into the intent filter contained in the SDK,
-that will bring the containing application to the foreground and reload the
-payment menu. Because we’re using the simpler custom URL scheme in this
-implementation, the payment menu will not reload and this will result in some
-payment instruments not behaving correctly.</li>
+  <li>On iOS, using custom URL schemes instead of Universal Links comes with
+several drawbacks, including prompting the user with an additional
+confirmation popup as well as being unable to verify URL ownership to your
+specific app (other apps can declare the same custom URL scheme outside of
+your control).</li>
   <li>There are a few, albeit rare, scenarios where the user can end up launching
 the Payment URL in the mobile browser on their phone. For URLs with custom
-schemes that’s handled nicely, but for universal URLs, it’s more problematic.
-This means that browsing to the payment URL ideally should return a view that
-redirects the user to the app. We provide example on how to implement this in
-the next chapter <a href="/checkout-v3/modules-sdks/mobile-sdk/custom-backend/#payment-url">Custom Backend</a>.</li>
+schemes that’s handled nicely, but for universal URLs, it’s more
+problematic. This means that browsing to the payment URL ideally should
+return a view that redirects the user to the app. We provide example on how
+to implement this in the next chapter <a href="/checkout-v3/modules-sdks/mobile-sdk/custom-backend/#payment-url">Custom Backend</a>.</li>
 </ul>
 
 <nav class="iterator d-flex">
     
-    <a class="mr-auto btn btn-secondary" role="button" rel="prev" href="/checkout-v3/modules-sdks/mobile-sdk/configuration">
-        Back: Configuration
+    <a class="mr-auto btn btn-secondary" role="button" rel="prev" href="/checkout-v3/modules-sdks/mobile-sdk/">
+        Back: Introduction
     </a>
     
 

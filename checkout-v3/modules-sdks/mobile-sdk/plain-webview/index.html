@@ -14,6 +14,7 @@
         <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
         <meta property="og:type" value="website">
         <meta property="og:url" value="https://developer.swedbankpay.com/checkout-v3/modules-sdks/mobile-sdk/plain-webview/">
+        
         <meta property="og:title" value="Mobile SDK – Plain Web View">
         <meta name="title" content="Mobile SDK – Plain Web View">
         <meta property="og:description" value="Swedbank Pay Developer Portal">
@@ -191,6 +192,10 @@
 <li class="nav-leaf"><a href="/checkout-v3/get-started/display-payment-ui/seamless-view/#seamless-view-sequence-diagram">Seamless View Sequence Diagram</a></li>
           
       </ul>
+        </li>
+<li class=" group">
+          <a href="/checkout-v3/get-started/display-payment-ui/ui-migration/">Change UI Option</a>
+          
         </li>
       </ul>
         </li>
@@ -970,28 +975,20 @@
 </ul>
         </li>
           <li class=" group">
-          <a href="/checkout-v3/modules-sdks/mobile-sdk/configuration/">Configuration</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/configuration/#ios">iOS</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/configuration/#android">Android</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/configuration/#backend">Backend</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
           <a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/">Bare Minimum Implementation</a>
           <ul class="">
           
           <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#payment">Payment</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android">Android</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-setup">Android Setup</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-sdk-configuration">Android SDK Configuration</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-sdk-payment-session">Android SDK Payment Session</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-present-payment">Android Present Payment</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-complete-code">Android Complete Code</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios">iOS</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-setup">iOS Setup</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-sdk-configuration">iOS SDK Configuration</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-sdk-payment-session">iOS SDK Payment Session</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-present-payment">iOS Present Payment</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-complete-code">iOS Complete Code</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#limitations-of-the-minimal-implementation">Limitations of the minimal implementation</a></li>
           
       </ul>
@@ -1033,6 +1030,7 @@
           <ul class="">
           
           <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/android/#installation">Installation</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/android/#custom-url-scheme">Custom URL Scheme</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/android/#usage">Usage</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/android/#errors">Errors</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/android/#problems">Problems</a></li>
@@ -1047,7 +1045,7 @@
           <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#installation">Installation</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#swift-package-manager">Swift Package Manager</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#cocoapods">CocoaPods</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#url-scheme-and-associated-domain">Url Scheme and Associated Domain</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#custom-url-scheme-and-associated-domain">Custom URL Scheme and Associated Domain</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#usage">Usage</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#problems">Problems</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#payment-url-and-external-applications">Payment URL And External Applications</a></li>
@@ -1055,27 +1053,27 @@
       </ul>
         </li>
 <li class=" group">
-          <a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/">Merchant Backend V3</a>
+          <a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/">Native Payments</a>
           <ul class="">
           
-          <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#authentication-and-authorization">Authentication And Authorization</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#root-endpoint">Root Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#payment-orders-endpoint">Payment Orders Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#patching-the-payment-order">Patching The Payment Order</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#android-payment-url-helper">Android Payment Url Helper</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#ios-payment-url-helper">iOS Payment Url Helper</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#ios-payment-url-system">iOS Payment Url System</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#apple-app-site-association">Apple App Site Association</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#problems">Problems</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#merchant-backend-problems">Merchant Backend Problems</a></li>
+          <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#usage">Usage</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#the-session-url">The Session URL</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#android">Android</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#android-payment-methods">Android Payment methods</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#swish">Swish</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#saved-credit-cards">Saved Credit Cards</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#new-credit-card">New Credit Card</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#google-pay">Google Pay</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#ios">iOS</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#ios-payment-methods">iOS Payment methods</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#swish-1">Swish</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#saved-credit-cards-1">Saved Credit Cards</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#new-credit-card-1">New Credit Card</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#apple-pay">Apple Pay</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#problem-handling">Problem handling</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#detailed-usage-flows">Detailed usage flows</a></li>
           
       </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-sample-code/">Merchant Backend Sample Code</a>
-          
         </li>
 <li class=" leaf">
           <a href="/checkout-v3/modules-sdks/mobile-sdk/features/">Features</a>
@@ -1261,26 +1259,6 @@
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/plain-webview/#autoverify-to-the-rescue">Autoverify To The Rescue?</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/plain-webview/#android-have-paymenturl-redirect-to-an-intent-url">Android: Have PaymentUrl Redirect To An Intent Url</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/plain-webview/#dealing-with-picky-web-pages">Dealing with Picky Web Pages</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/">Merchant Backend V2</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#authentication-and-authorization">Authentication And Authorization</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#root-endpoint">Root Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#consumers-endpoint">Consumers Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#payment-orders-endpoint">Payment Orders Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#set-instrument-endpoint">Set Instrument Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#android-payment-url-helper">Android Payment Url Helper</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#ios-payment-url-helper">iOS Payment Url Helper</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#ios-payment-url-system">iOS Payment Url System</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#apple-app-site-association">Apple App Site Association</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#problems">Problems</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#merchant-backend-problems">Merchant Backend Problems</a></li>
           
       </ul>
         </li>
@@ -1716,6 +1694,10 @@
 </ul>
         </li>
           <li class=" group">
+          <a href="/old-implementations/checkout-v2/ui-migration/">Change UI Option</a>
+          
+        </li>
+<li class=" group">
           <a href="/old-implementations/checkout-v2/checkin/">Checkout – Checkin</a>
           <ul class="">
           
@@ -2322,6 +2304,10 @@
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/card/seamless-view#explanations">Explanations</a></li>
           
       </ul>
+        </li>
+<li class=" group">
+          <a href="/old-implementations/payment-instruments-v1/card/ui-migration/">Change UI Option</a>
+          
         </li>
 <li class=" group">
           <a href="/old-implementations/payment-instruments-v1/card/capture">Capture</a>
@@ -3434,6 +3420,10 @@
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/mobile-pay/after-payment#abort-response">Abort Response</a></li>
           
       </ul>
+        </li>
+<li class=" group">
+          <a href="/old-implementations/payment-instruments-v1/mobile-pay/ui-migration/">Change UI Option</a>
+          
         </li>
 <li class=" leaf">
           <a href="/old-implementations/payment-instruments-v1/mobile-pay/features/">Features</a>
@@ -4604,6 +4594,10 @@
           
       </ul>
         </li>
+<li class=" group">
+          <a href="/old-implementations/payment-instruments-v1/vipps/ui-migration/">Change UI Option</a>
+          
+        </li>
 <li class=" leaf">
           <a href="/old-implementations/payment-instruments-v1/vipps/features/">Features</a>
           <ul class="">
@@ -4944,6 +4938,10 @@
 </ul>
         </li>
           <li class=" group">
+          <a href="/old-implementations/payment-menu-v2/ui-migration/">Change UI Option</a>
+          
+        </li>
+<li class=" group">
           <a href="/old-implementations/payment-menu-v2/payment-order/">Payment Order</a>
           <ul class="">
           
@@ -5523,6 +5521,60 @@
         </li>
       </ul>
         </li>
+<li class="secondary-nav-li leaf">
+          <a href="/old-implementations/mobile-sdk/">Mobile SDK</a>
+          <ul class="">
+          <a href="/old-implementations/mobile-sdk/.." title="test4" class="previous-nav">
+                <i class="material-icons" aria-hidden="true">arrow_back_ios</i>
+                <span>Back to Introduction</span>
+              </a>
+              <header>Mobile SDK</header>
+          
+          <li class=" group">
+          <a href="/old-implementations/mobile-sdk/merchant-backend/">Merchant Backend V3</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#authentication-and-authorization">Authentication And Authorization</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#root-endpoint">Root Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#payment-orders-endpoint">Payment Orders Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#patching-the-payment-order">Patching The Payment Order</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#android-payment-url-helper">Android Payment Url Helper</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#ios-payment-url-helper">iOS Payment Url Helper</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#ios-payment-url-system">iOS Payment Url System</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#apple-app-site-association">Apple App Site Association</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#merchant-backend-problems">Merchant Backend Problems</a></li>
+          
+      </ul>
+        </li>
+<li class=" group">
+          <a href="/old-implementations/mobile-sdk/merchant-backend-sample-code/">Merchant Backend Sample Code</a>
+          
+        </li>
+<li class=" group">
+          <a href="/old-implementations/mobile-sdk/merchant-backend-v2/">Merchant Backend V2</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#authentication-and-authorization">Authentication And Authorization</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#root-endpoint">Root Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#consumers-endpoint">Consumers Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#payment-orders-endpoint">Payment Orders Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#set-instrument-endpoint">Set Instrument Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#android-payment-url-helper">Android Payment Url Helper</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#ios-payment-url-helper">iOS Payment Url Helper</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#ios-payment-url-system">iOS Payment Url System</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#apple-app-site-association">Apple App Site Association</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#merchant-backend-problems">Merchant Backend Problems</a></li>
+          
+      </ul>
+        </li>
+      </ul>
+        </li>
       </ul>
               </nav>
         </li>
@@ -5593,14 +5645,14 @@ This page serves as a repository of that experience.</p>
   <li>On Android, you need to set <code class="language-html highlighter-rouge">webView.settings.domStorageEnabled = true</code>
 (used by some 3D-Secure pages)</li>
   <li>Web Views will not launch apps by themselves. You <em>must</em> intercept
-navigations and launch apps yourself. See <a href="#external-applications">External
-Applications</a> for details.</li>
+navigations and launch apps yourself. See
+<a href="#external-applications">External Applications</a> for details.</li>
   <li>On Android, <code class="language-html highlighter-rouge">@JavascriptInterface</code> methods only take primitive arguments.
 You will need to <code class="language-html highlighter-rouge">JSON.stringify</code> any complex arguments.</li>
   <li>Some 3D-Secure pages will not work if you open them in a Web View. This
 appears to be related to them launching an external application, which, in
-turn, opens a url in the browser app. See <a href="#dealing-with-picky-web-pages">Dealing with Picky Web
-Pages</a> for strategies.</li>
+turn, opens a url in the browser app. See
+<a href="#dealing-with-picky-web-pages">Dealing with Picky Web Pages</a> for strategies.</li>
   <li>Some pages make use of Javascript dialogs. Web Views do not display these on
 their own; you must add support by your <code class="language-html highlighter-rouge">WebCromeClient</code> or <code class="language-html highlighter-rouge">WKUIDelegate</code>.</li>
   <li>On Android, remember to call <code class="language-html highlighter-rouge">webView.onResume()</code> and <code class="language-html highlighter-rouge">webView.onPause()</code>.</li>
@@ -6304,11 +6356,13 @@ there is little your app can do beyond notifying the user about the missing app.
 <p>When the <code class="language-html highlighter-rouge">WebView</code> navigates to an http(s) url, your app should not simply start
 an Activity with the url, as that would usually mean opening the url in the
 browser. Instead, the Activity should only be started if it is not a browser.
-Since Android 11 there is an <code class="language-html highlighter-rouge">Intent</code> <a href="https://developer.android.com/reference/android/content/Intent#FLAG_ACTIVITY_REQUIRE_NON_BROWSER">flag</a> that does
-exactly that. On earlier versions, your app must first query the system about
-which app would be launched. Because of <a href="https://developer.android.com/training/package-visibility">privacy
-enhancements</a> in Android 11, it is not possible to
-use this method on Android 11; you must use the non-browser flag instead.</p>
+Since Android 11 there is an <code class="language-html highlighter-rouge">Intent</code>
+<a href="https://developer.android.com/reference/android/content/Intent#FLAG_ACTIVITY_REQUIRE_NON_BROWSER" target="_blank">flag</a> that does exactly that. On
+earlier versions, your app must first query the system about which app would be
+launched. Because of
+<a href="https://developer.android.com/training/package-visibility" target="_blank">privacy enhancements</a> in Android
+11, it is not possible to use this method on Android 11; you must use the
+non-browser flag instead.</p>
 
 <p class="code-view-header"><strong>Android</strong></p>
 
@@ -6506,14 +6560,14 @@ only be compatible with http(s) urls</li>
         
       </h2>
 
-<p>On iOS, the recommended way of assigning urls to apps is to use <a href="https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content">Universal
-Links</a>. This fits our use-case quite well, and indeed it is
-what the SDK is designed to do too. When an external app executes the
-<code class="language-html highlighter-rouge">UIApplication.shared.open("https://example.com/perform-payment")</code>, then,
-assuming Universal Links are configured correctly, that url will not be opened
-in Safari, but will instead be opened in the application. You must then examine
-the url, determine that it is a <code class="language-html highlighter-rouge">paymentUrl</code> from your app, and reload the
-<code class="language-html highlighter-rouge">paymentUrl</code> in your web view. The payment process should then continue
+<p>On iOS, the recommended way of assigning urls to apps is to use
+<a href="https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content" target="_blank">Universal Links</a>. This fits our use-case
+quite well, and indeed it is what the SDK is designed to do too. When an
+external app executes the <code class="language-html highlighter-rouge">UIApplication.shared.open("https://example.com/perform-payment")</code>,
+then, assuming Universal Links are configured correctly, that url will not be
+opened in Safari, but will instead be opened in the application. You must then
+examine the url, determine that it is a <code class="language-html highlighter-rouge">paymentUrl</code> from your app, and reload
+the <code class="language-html highlighter-rouge">paymentUrl</code> in your web view. The payment process should then continue
 normally. Make sure that any navigation listeners and JavaScript hooks are in
 place before loading the <code class="language-html highlighter-rouge">paymentUrl</code>.</p>
 
@@ -6587,11 +6641,12 @@ here, and it is anyway a bad user experience.</p>
         
       </h2>
 
-<p>Since Android 6.0 it has been possible to use a <a href="https://developer.android.com/training/app-links/verify-android-applinks">mechanism</a>
-very similar to Apple’s Universal Links to “strongly” assing http(s) urls to
-applications. This works by adding an <code class="language-html highlighter-rouge">android:autoVerify="true"</code> attribute to
-the intent filter, plus a <code class="language-html highlighter-rouge">.well-known/assetlinks.json</code> file to the server. This
-could solve the problems above, but it has its own issues, namely:</p>
+<p>Since Android 6.0 it has been possible to use a
+<a href="https://developer.android.com/training/app-links/verify-android-applinks" target="_blank">mechanism</a> very similar to Apple’s
+Universal Links to “strongly” assing http(s) urls to applications. This works by
+adding an <code class="language-html highlighter-rouge">android:autoVerify="true"</code> attribute to the intent filter, plus a
+<code class="language-html highlighter-rouge">.well-known/assetlinks.json</code> file to the server. This could solve the problems
+above, but it has its own issues, namely:</p>
 
 <ul>
   <li>Requires Android 6.0</li>
@@ -6609,11 +6664,12 @@ could solve the problems above, but it has its own issues, namely:</p>
       </h2>
 
 <p>Another option on Android is to allow the https <code class="language-html highlighter-rouge">paymentUrl</code> to be opened in
-Chrome normally, but have that url redirect to an <a href="https://developer.chrome.com/docs/android/intents">intent
-url</a>. That intent url can be made specific to your
-application, making it so that unless the user has installed an application with
-the same package id (from a non-Google-Play source, presumably), it will always
-be opened in your app. This is what the SDK does.</p>
+Chrome normally, but have that url redirect to an
+<a href="https://developer.chrome.com/docs/android/intents" target="_blank">intent url</a>. That intent url can be
+made specific to your application, making it so that unless the user has
+installed an application with the same package id (from a non-Google-Play
+source, presumably), it will always be opened in your app. This is what the SDK
+does.</p>
 
 <p>The SDK does this by having <code class="language-html highlighter-rouge">paymentUrl</code> return an html page that immediately
 redirects. In some cases the redirect will be blocked, so the page also contains

@@ -14,6 +14,8 @@
         <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
         <meta property="og:type" value="website">
         <meta property="og:url" value="https://developer.swedbankpay.com/old-implementations/payment-menu-v2/features/technical-reference/user-agent/">
+<meta name="robots" content="noindex">
+        
         <meta property="og:title" value="Payment Menu v2 – User Agent">
         <meta name="title" content="Payment Menu v2 – User Agent">
         <meta property="og:description" value="Swedbank Pay Developer Portal">
@@ -191,6 +193,10 @@
 <li class="nav-leaf"><a href="/checkout-v3/get-started/display-payment-ui/seamless-view/#seamless-view-sequence-diagram">Seamless View Sequence Diagram</a></li>
           
       </ul>
+        </li>
+<li class=" group">
+          <a href="/checkout-v3/get-started/display-payment-ui/ui-migration/">Change UI Option</a>
+          
         </li>
       </ul>
         </li>
@@ -970,28 +976,20 @@
 </ul>
         </li>
           <li class=" group">
-          <a href="/checkout-v3/modules-sdks/mobile-sdk/configuration/">Configuration</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/configuration/#ios">iOS</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/configuration/#android">Android</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/configuration/#backend">Backend</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
           <a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/">Bare Minimum Implementation</a>
           <ul class="">
           
           <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#payment">Payment</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android">Android</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-setup">Android Setup</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-sdk-configuration">Android SDK Configuration</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-sdk-payment-session">Android SDK Payment Session</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-present-payment">Android Present Payment</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-complete-code">Android Complete Code</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios">iOS</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-setup">iOS Setup</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-sdk-configuration">iOS SDK Configuration</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-sdk-payment-session">iOS SDK Payment Session</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-present-payment">iOS Present Payment</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-complete-code">iOS Complete Code</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#limitations-of-the-minimal-implementation">Limitations of the minimal implementation</a></li>
           
       </ul>
@@ -1033,6 +1031,7 @@
           <ul class="">
           
           <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/android/#installation">Installation</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/android/#custom-url-scheme">Custom URL Scheme</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/android/#usage">Usage</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/android/#errors">Errors</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/android/#problems">Problems</a></li>
@@ -1047,7 +1046,7 @@
           <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#installation">Installation</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#swift-package-manager">Swift Package Manager</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#cocoapods">CocoaPods</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#url-scheme-and-associated-domain">Url Scheme and Associated Domain</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#custom-url-scheme-and-associated-domain">Custom URL Scheme and Associated Domain</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#usage">Usage</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#problems">Problems</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/ios/#payment-url-and-external-applications">Payment URL And External Applications</a></li>
@@ -1055,27 +1054,27 @@
       </ul>
         </li>
 <li class=" group">
-          <a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/">Merchant Backend V3</a>
+          <a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/">Native Payments</a>
           <ul class="">
           
-          <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#authentication-and-authorization">Authentication And Authorization</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#root-endpoint">Root Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#payment-orders-endpoint">Payment Orders Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#patching-the-payment-order">Patching The Payment Order</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#android-payment-url-helper">Android Payment Url Helper</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#ios-payment-url-helper">iOS Payment Url Helper</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#ios-payment-url-system">iOS Payment Url System</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#apple-app-site-association">Apple App Site Association</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#problems">Problems</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend/#merchant-backend-problems">Merchant Backend Problems</a></li>
+          <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#usage">Usage</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#the-session-url">The Session URL</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#android">Android</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#android-payment-methods">Android Payment methods</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#swish">Swish</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#saved-credit-cards">Saved Credit Cards</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#new-credit-card">New Credit Card</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#google-pay">Google Pay</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#ios">iOS</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#ios-payment-methods">iOS Payment methods</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#swish-1">Swish</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#saved-credit-cards-1">Saved Credit Cards</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#new-credit-card-1">New Credit Card</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#apple-pay">Apple Pay</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#problem-handling">Problem handling</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/native-payments/#detailed-usage-flows">Detailed usage flows</a></li>
           
       </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-sample-code/">Merchant Backend Sample Code</a>
-          
         </li>
 <li class=" leaf">
           <a href="/checkout-v3/modules-sdks/mobile-sdk/features/">Features</a>
@@ -1261,26 +1260,6 @@
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/plain-webview/#autoverify-to-the-rescue">Autoverify To The Rescue?</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/plain-webview/#android-have-paymenturl-redirect-to-an-intent-url">Android: Have PaymentUrl Redirect To An Intent Url</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/plain-webview/#dealing-with-picky-web-pages">Dealing with Picky Web Pages</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/">Merchant Backend V2</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#authentication-and-authorization">Authentication And Authorization</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#root-endpoint">Root Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#consumers-endpoint">Consumers Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#payment-orders-endpoint">Payment Orders Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#set-instrument-endpoint">Set Instrument Endpoint</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#android-payment-url-helper">Android Payment Url Helper</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#ios-payment-url-helper">iOS Payment Url Helper</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#ios-payment-url-system">iOS Payment Url System</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#apple-app-site-association">Apple App Site Association</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#problems">Problems</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-v2/#merchant-backend-problems">Merchant Backend Problems</a></li>
           
       </ul>
         </li>
@@ -1716,6 +1695,10 @@
 </ul>
         </li>
           <li class=" group">
+          <a href="/old-implementations/checkout-v2/ui-migration/">Change UI Option</a>
+          
+        </li>
+<li class=" group">
           <a href="/old-implementations/checkout-v2/checkin/">Checkout – Checkin</a>
           <ul class="">
           
@@ -2322,6 +2305,10 @@
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/card/seamless-view#explanations">Explanations</a></li>
           
       </ul>
+        </li>
+<li class=" group">
+          <a href="/old-implementations/payment-instruments-v1/card/ui-migration/">Change UI Option</a>
+          
         </li>
 <li class=" group">
           <a href="/old-implementations/payment-instruments-v1/card/capture">Capture</a>
@@ -3434,6 +3421,10 @@
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/mobile-pay/after-payment#abort-response">Abort Response</a></li>
           
       </ul>
+        </li>
+<li class=" group">
+          <a href="/old-implementations/payment-instruments-v1/mobile-pay/ui-migration/">Change UI Option</a>
+          
         </li>
 <li class=" leaf">
           <a href="/old-implementations/payment-instruments-v1/mobile-pay/features/">Features</a>
@@ -4604,6 +4595,10 @@
           
       </ul>
         </li>
+<li class=" group">
+          <a href="/old-implementations/payment-instruments-v1/vipps/ui-migration/">Change UI Option</a>
+          
+        </li>
 <li class=" leaf">
           <a href="/old-implementations/payment-instruments-v1/vipps/features/">Features</a>
           <ul class="">
@@ -4944,6 +4939,10 @@
 </ul>
         </li>
           <li class=" group">
+          <a href="/old-implementations/payment-menu-v2/ui-migration/">Change UI Option</a>
+          
+        </li>
+<li class=" group">
           <a href="/old-implementations/payment-menu-v2/payment-order/">Payment Order</a>
           <ul class="">
           
@@ -5523,6 +5522,60 @@
         </li>
       </ul>
         </li>
+<li class="secondary-nav-li leaf">
+          <a href="/old-implementations/mobile-sdk/">Mobile SDK</a>
+          <ul class="">
+          <a href="/old-implementations/mobile-sdk/.." title="test4" class="previous-nav">
+                <i class="material-icons" aria-hidden="true">arrow_back_ios</i>
+                <span>Back to Introduction</span>
+              </a>
+              <header>Mobile SDK</header>
+          
+          <li class=" group">
+          <a href="/old-implementations/mobile-sdk/merchant-backend/">Merchant Backend V3</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#authentication-and-authorization">Authentication And Authorization</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#root-endpoint">Root Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#payment-orders-endpoint">Payment Orders Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#patching-the-payment-order">Patching The Payment Order</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#android-payment-url-helper">Android Payment Url Helper</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#ios-payment-url-helper">iOS Payment Url Helper</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#ios-payment-url-system">iOS Payment Url System</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#apple-app-site-association">Apple App Site Association</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend/#merchant-backend-problems">Merchant Backend Problems</a></li>
+          
+      </ul>
+        </li>
+<li class=" group">
+          <a href="/old-implementations/mobile-sdk/merchant-backend-sample-code/">Merchant Backend Sample Code</a>
+          
+        </li>
+<li class=" group">
+          <a href="/old-implementations/mobile-sdk/merchant-backend-v2/">Merchant Backend V2</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#authentication-and-authorization">Authentication And Authorization</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#root-endpoint">Root Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#consumers-endpoint">Consumers Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#payment-orders-endpoint">Payment Orders Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#set-instrument-endpoint">Set Instrument Endpoint</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#android-payment-url-helper">Android Payment Url Helper</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#ios-payment-url-helper">iOS Payment Url Helper</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#ios-payment-url-system">iOS Payment Url System</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#apple-app-site-association">Apple App Site Association</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/old-implementations/mobile-sdk/merchant-backend-v2/#merchant-backend-problems">Merchant Backend Problems</a></li>
+          
+      </ul>
+        </li>
+      </ul>
+        </li>
       </ul>
               </nav>
         </li>
@@ -5579,10 +5632,10 @@
         
       </h2>
 
-<p>The term <a href="https://en.wikipedia.org/wiki/User_agent">user agent</a> is used for both the web browser used by the
-payer as well as the system making HTTP requests towards Swedbank Pay’s APIs.
-The difference between these two and how they relate to each other is
-illustrated in the below sequence diagram:</p>
+<p>The term <a href="https://en.wikipedia.org/wiki/User_agent" target="_blank">user agent</a> is used for both the web
+browser used by the payer as well as the system making HTTP requests towards
+Swedbank Pay’s APIs. The difference between these two and how they relate to
+each other is illustrated in the below sequence diagram:</p>
 
 <div class="plantuml theme-swedbankpay"><svg contentstyletype="text/css" height="607.2917px" preserveaspectratio="none" style="width:848px;height:607px;background:#FFFFFF;" version="1.1" viewbox="0 0 848 607" width="848.9583px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" zoomandpan="magnify"><defs></defs><g><rect fill="#FFFFFF" height="180.0781" style="stroke:#F35B1C;stroke-width:1.0416666666666667;" width="10.4167" x="96.3542" y="231.1198"></rect><rect fill="#FFFFFF" height="114.8438" style="stroke:#F35B1C;stroke-width:1.0416666666666667;" width="10.4167" x="299.4792" y="281.7708"></rect><rect fill="#FFFFFF" height="165.4948" style="stroke:#F35B1C;stroke-width:1.0416666666666667;" width="10.4167" x="664.0625" y="231.1198"></rect><line style="stroke:#F35B1C;stroke-width:0.5208333333333334;stroke-dasharray:5.0,5.0;" x1="101.0417" x2="101.0417" y1="178.3854" y2="429.9479"></line><line style="stroke:#F35B1C;stroke-width:0.5208333333333334;stroke-dasharray:5.0,5.0;" x1="304.1667" x2="304.1667" y1="178.3854" y2="429.9479"></line><line style="stroke:#F35B1C;stroke-width:0.5208333333333334;stroke-dasharray:5.0,5.0;" x1="668.75" x2="668.75" y1="178.3854" y2="429.9479"></line><rect fill="#FFFFFF" height="152.3438" rx="10.4167" ry="10.4167" style="stroke:#F5B895;stroke-width:0.0;" width="109.375" x="46.875" y="25"></rect><image height="82.2917" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAABPCAIAAAAsva+rAAACcElEQVR4Xu2XXU7DMAyAd/937gK34AAcgAvwUAnJdHg1rp0mTmqvacknC/Uncf3VycZucHVu8kKK78+P6f1tjq/XlznwgP/FAzqmUx58imUwzynGUyqeU6fC4k2G4vEnCrAYUgPPGDAM75zXcN6WMAzvDMN+YxguDMN+YxguDMN+YxguDMN+YxguDMN+4/qG0+V/AU/D8AEazn8tQan1FXsSl6gwpKFFeN7k9flA3IrDarhVdJL8yPxdd0yGpGepDAdnumTM44XJkPQslRWHFV+BL2VDHEG7Vt5WFA3hd0wvhnz78bWaj2L1ekp0wJYh3YZLGuI9Kvdqhnx9iivFYGnS6CnRAdqQbhDnNUz8tsAbYrEZDTFdHj0rNKQhmui9ZDSc+u8hXv0rZ+G8hhPfh3SuMRrq5mv0rOgAiyHYKuvQEEu6G+K5LGeNni9CTkihZ8UFvXGrYQb7dP5gPBVXIjjMkLb3eog/D8M9L9JeKH+QfdZOWgzFl7u9VnoQTql6aDMtq5SPx8VmrBVHPm19Iu2GaIXlyhEb4MTax+2kxRDYlKq5pGfsuQt3w6qVRjQ0pHa8C6b/aZLQdrJPrBrsxcqwuY3yxgYNj9hP+bdFnqqiqwZ7sdewioMNn/A1dbAhxLfxeMO2rw070W8wycoQgot4wkbQpA2j2xiXXyMNIbiNEJ9fcIBh9G4XJAwhXjI6P+e/GkYvpOj8nLQhxL/m4w2jX3Nocs6mIQS3cRi6kTOESMlh6EbBMO7zJiitpmAIYW3syDCojRE5k5QNIaaNPRr6FuSecAuTIQS0cRi6YTV0/7zxzZbBagjebezR8KT8ANRE1OnNW5mUAAAAAElFTkSuQmCC" width="78.125" x="62.5" y="40.625"></image><text fill="#2F2424" font-family='"Arial"' font-size="16.6667" lengthadjust="spacing" textlength="5.2083" x="98.9583" y="138.387"> </text><text fill="#2F2424" font-family='"Arial"' font-size="16.6667" lengthadjust="spacing" textlength="45.8333" x="78.6458" y="157.7881">Payer</text><rect fill="#FFFFFF" height="152.3438" rx="10.4167" ry="10.4167" style="stroke:#F5B895;stroke-width:0.0;" width="109.375" x="46.875" y="428.9063"></rect><image height="82.2917" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAABPCAIAAAAsva+rAAACcElEQVR4Xu2XXU7DMAyAd/937gK34AAcgAvwUAnJdHg1rp0mTmqvacknC/Uncf3VycZucHVu8kKK78+P6f1tjq/XlznwgP/FAzqmUx58imUwzynGUyqeU6fC4k2G4vEnCrAYUgPPGDAM75zXcN6WMAzvDMN+YxguDMN+YxguDMN+YxguDMN+YxguDMN+4/qG0+V/AU/D8AEazn8tQan1FXsSl6gwpKFFeN7k9flA3IrDarhVdJL8yPxdd0yGpGepDAdnumTM44XJkPQslRWHFV+BL2VDHEG7Vt5WFA3hd0wvhnz78bWaj2L1ekp0wJYh3YZLGuI9Kvdqhnx9iivFYGnS6CnRAdqQbhDnNUz8tsAbYrEZDTFdHj0rNKQhmui9ZDSc+u8hXv0rZ+G8hhPfh3SuMRrq5mv0rOgAiyHYKuvQEEu6G+K5LGeNni9CTkihZ8UFvXGrYQb7dP5gPBVXIjjMkLb3eog/D8M9L9JeKH+QfdZOWgzFl7u9VnoQTql6aDMtq5SPx8VmrBVHPm19Iu2GaIXlyhEb4MTax+2kxRDYlKq5pGfsuQt3w6qVRjQ0pHa8C6b/aZLQdrJPrBrsxcqwuY3yxgYNj9hP+bdFnqqiqwZ7sdewioMNn/A1dbAhxLfxeMO2rw070W8wycoQgot4wkbQpA2j2xiXXyMNIbiNEJ9fcIBh9G4XJAwhXjI6P+e/GkYvpOj8nLQhxL/m4w2jX3Nocs6mIQS3cRi6kTOESMlh6EbBMO7zJiitpmAIYW3syDCojRE5k5QNIaaNPRr6FuSecAuTIQS0cRi6YTV0/7zxzZbBagjebezR8KT8ANRE1OnNW5mUAAAAAElFTkSuQmCC" width="78.125" x="62.5" y="444.5313"></image><text fill="#2F2424" font-family='"Arial"' font-size="16.6667" lengthadjust="spacing" textlength="5.2083" x="98.9583" y="542.2933"> </text><text fill="#2F2424" font-family='"Arial"' font-size="16.6667" lengthadjust="spacing" textlength="45.8333" x="78.6458" y="561.6943">Payer</text><rect fill="#FFFFFF" height="134.6354" rx="10.4167" ry="10.4167" style="stroke:#F5B895;stroke-width:0.0;" width="109.375" x="250" y="42.7083"></rect><image height="64.5833" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAAA+CAIAAADsw3HPAAAClklEQVR4Xu2aUY7bMAxE9/7/vUt7ix6gB+gF+iEggJqGwSyXI9KUrCBKqsFgYcjkWE+WlZ/9qO+uDzvQ0uX3r/Lzx/q+ztNOPUMY96+g68T0OzB3DwibPcsKnHowIpQGO7q2eM7vRlhv+05/UBEhv/GXUDeh+M/3b/qvXIxZ2rW5JmkvZ4QwtpxmgbnFM/eORYFiAuEl8SvCXZ5tJ4lbmka9S5hfrQUJrzsW9S4ht3lekLCoWbmE+QPgkDC/Hco8QkS5hNzg2XaSnkKIjdomnDunuWn5zSX1Zwn1N+0pn1YShNziWT6fNiFXB7bNJG4JbJtJ3OJ5E+Z8eJDWnrSSIOzd8w3CroiVCeWMaBByaWDb3FK5LQT3Nm2bSfmocnvuWUJJCcz1sTnhTOBlCuHidgnj1cJd20xC5VMCJ7zDy9FJwy2x5wbW5klT+1MCcf2hbYRS/N7Y1SPMBMliI4ilN14yMN6r+i63s2WGbcJ6FIG9pL8K3c5z5ZCuQFTySNNodwmrv/Dm2dV5GJd5gaasTg2MCOvXc5UfYISyuFIKHhQ4Qhinr6ZNSPofCbHXpxixfCtpNbXPHD0ySHiSk48EGey1TkCOGXwOIYzYshrhLCO29K/aJrxrE27Ck0Zs2YTsTXjXJtyEJ43YsgnF5l9KdAJyzOBahMbqsV8kt16PEPkxHvRYwpOcaEcsrlGDW54GCWX9zGxMgb570ojV10l1EwZTV/VR2YARq6+T6iPE3vPemB58hAYe0UfIN7Sw5GKzClMUPN1TByGPGhnCw/oBDQT2EQavhdkeATmQNocwPle8rgHxXA81h5CpjG3DqAaiNuFdnycN/07EW5SzhiUP8lbZU7OLZ/WPMEPyWraEInlp72EFWP8CeeozeLCFJQsAAAAASUVORK5CYII=" width="78.125" x="265.625" y="58.3333"></image><text fill="#2F2424" font-family='"Arial"' font-size="16.6667" lengthadjust="spacing" textlength="5.2083" x="302.0833" y="138.387"> </text><text fill="#2F2424" font-family='"Arial"' font-size="16.6667" lengthadjust="spacing" textlength="76.0417" x="266.6667" y="157.7881">Merchant</text><rect fill="#FFFFFF" height="134.6354" rx="10.4167" ry="10.4167" style="stroke:#F5B895;stroke-width:0.0;" width="109.375" x="250" y="428.9063"></rect><image height="64.5833" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAAA+CAIAAADsw3HPAAAClklEQVR4Xu2aUY7bMAxE9/7/vUt7ix6gB+gF+iEggJqGwSyXI9KUrCBKqsFgYcjkWE+WlZ/9qO+uDzvQ0uX3r/Lzx/q+ztNOPUMY96+g68T0OzB3DwibPcsKnHowIpQGO7q2eM7vRlhv+05/UBEhv/GXUDeh+M/3b/qvXIxZ2rW5JmkvZ4QwtpxmgbnFM/eORYFiAuEl8SvCXZ5tJ4lbmka9S5hfrQUJrzsW9S4ht3lekLCoWbmE+QPgkDC/Hco8QkS5hNzg2XaSnkKIjdomnDunuWn5zSX1Zwn1N+0pn1YShNziWT6fNiFXB7bNJG4JbJtJ3OJ5E+Z8eJDWnrSSIOzd8w3CroiVCeWMaBByaWDb3FK5LQT3Nm2bSfmocnvuWUJJCcz1sTnhTOBlCuHidgnj1cJd20xC5VMCJ7zDy9FJwy2x5wbW5klT+1MCcf2hbYRS/N7Y1SPMBMliI4ilN14yMN6r+i63s2WGbcJ6FIG9pL8K3c5z5ZCuQFTySNNodwmrv/Dm2dV5GJd5gaasTg2MCOvXc5UfYISyuFIKHhQ4Qhinr6ZNSPofCbHXpxixfCtpNbXPHD0ySHiSk48EGey1TkCOGXwOIYzYshrhLCO29K/aJrxrE27Ck0Zs2YTsTXjXJtyEJ43YsgnF5l9KdAJyzOBahMbqsV8kt16PEPkxHvRYwpOcaEcsrlGDW54GCWX9zGxMgb570ojV10l1EwZTV/VR2YARq6+T6iPE3vPemB58hAYe0UfIN7Sw5GKzClMUPN1TByGPGhnCw/oBDQT2EQavhdkeATmQNocwPle8rgHxXA81h5CpjG3DqAaiNuFdnycN/07EW5SzhiUP8lbZU7OLZ/WPMEPyWraEInlp72EFWP8CeeozeLCFJQsAAAAASUVORK5CYII=" width="78.125" x="265.625" y="444.5313"></image><text fill="#2F2424" font-family='"Arial"' font-size="16.6667" lengthadjust="spacing" textlength="5.2083" x="302.0833" y="524.585"> </text><text fill="#2F2424" font-family='"Arial"' font-size="16.6667" lengthadjust="spacing" textlength="76.0417" x="266.6667" y="543.986">Merchant</text><rect fill="#FFFFFF" height="172.1354" rx="10.4167" ry="10.4167" style="stroke:#F5B895;stroke-width:0.0;" width="148.9583" x="594.7917" y="5.2083"></rect><image height="102.0833" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAABiCAIAAACXj7lDAAAC8UlEQVR4Xu2aXY7rIAyFu//3u5eZXdwF3AXMBvIQKRI3kumJYwNJUyC1h6MzVWMg4YuB/HQe4an577cng+ux/i0//3QNB165IiFtA9qHABUJCdeZiOtBQ1QWulAkpG+6bPr6Y8tJijQhGtgydZuDzAVC3d6E157zBWVOzsN10y4hWRLSNx617iuEIZPbV+N9zFmOCfncFT1ONuH1afz3N+9YW0Kxq27mHTgmnJ8L1Pvxbj4mvGv+1PIB4Y0rxPs+dT0Mar4ZMl8FQi6H4ZlGYeyCb+og/+QV9GayZrJ+MoIgjj7tExgKhKS1zJYlQGGUutEuh8lzYFrI3PYWI5driyK8jTCkLvQOTGiRkLg9GVwboVdthDrLpr0jXG69UW7qSIgNT5KEfGq6EXFl79ocqERIKeY3tR/u5ETLEvI2hkzd5iBzgVC3N+FThIu/Z3xBqJtd8L3n6GVCnBXd71fjfUxHDycJ+cgWPU424fXvulXiHbtOmIsXdtXHvGPzGUJqg08dz7lc2tQHhKbXUrJnwunM1SKoeWXIfBKGAmF43rhVN/rRyIIiEtKaLsp8qJRDH9oR+oPE2NwIiZjKrBtEkZBDejKhRUJInw+L5kSS0J82wuWmR4FG3hE6Y4NpuLq9WgAqEorZ6UCSUJbbF029UCBcUv+R8bHWY/CAcL71If2yOcJGiG+QRTYYFKUc2iWc1Ju+cJJQR8p+tX4tXyTEJD4Zx950vLWvEPI2oseIi8Pk4h1ckzAX57uykUNqhs934h18kdCQzxLqloYMitIVfzH72hvLO1HMuRyieFK3fx9rgQeEkCN0oN9H6A8SUBshDWUfBlEk5JCeTGiRsI/EsftoEFbVIGyiQVhVg7CJBmFVDcImGoRVNQibaBBWEti4ZaU26kGo2XpCdiVEBI/hi/rttrqaE2q8cry6ThGKoXXBOlf8bcpli30mNQjfVq43uXh1NScMKRgdaacehIUBKas2UA/CkILUM7OROhFC3cCg/2yXwe7ySxbPAAAAAElFTkSuQmCC" width="78.125" x="630.2083" y="20.8333"></image><text fill="#2F2424" font-family='"Arial"' font-size="16.6667" lengthadjust="spacing" textlength="5.2083" x="666.6667" y="138.387"> </text><text fill="#2F2424" font-family='"Arial"' font-size="16.6667" lengthadjust="spacing" textlength="117.7083" x="610.4167" y="157.7881">Swedbank Pay</text><rect fill="#FFFFFF" height="172.1354" rx="10.4167" ry="10.4167" style="stroke:#F5B895;stroke-width:0.0;" width="148.9583" x="594.7917" y="428.9063"></rect><image height="102.0833" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAABiCAIAAACXj7lDAAAC8UlEQVR4Xu2aXY7rIAyFu//3u5eZXdwF3AXMBvIQKRI3kumJYwNJUyC1h6MzVWMg4YuB/HQe4an577cng+ux/i0//3QNB165IiFtA9qHABUJCdeZiOtBQ1QWulAkpG+6bPr6Y8tJijQhGtgydZuDzAVC3d6E157zBWVOzsN10y4hWRLSNx617iuEIZPbV+N9zFmOCfncFT1ONuH1afz3N+9YW0Kxq27mHTgmnJ8L1Pvxbj4mvGv+1PIB4Y0rxPs+dT0Mar4ZMl8FQi6H4ZlGYeyCb+og/+QV9GayZrJ+MoIgjj7tExgKhKS1zJYlQGGUutEuh8lzYFrI3PYWI5driyK8jTCkLvQOTGiRkLg9GVwboVdthDrLpr0jXG69UW7qSIgNT5KEfGq6EXFl79ocqERIKeY3tR/u5ETLEvI2hkzd5iBzgVC3N+FThIu/Z3xBqJtd8L3n6GVCnBXd71fjfUxHDycJ+cgWPU424fXvulXiHbtOmIsXdtXHvGPzGUJqg08dz7lc2tQHhKbXUrJnwunM1SKoeWXIfBKGAmF43rhVN/rRyIIiEtKaLsp8qJRDH9oR+oPE2NwIiZjKrBtEkZBDejKhRUJInw+L5kSS0J82wuWmR4FG3hE6Y4NpuLq9WgAqEorZ6UCSUJbbF029UCBcUv+R8bHWY/CAcL71If2yOcJGiG+QRTYYFKUc2iWc1Ju+cJJQR8p+tX4tXyTEJD4Zx950vLWvEPI2oseIi8Pk4h1ckzAX57uykUNqhs934h18kdCQzxLqloYMitIVfzH72hvLO1HMuRyieFK3fx9rgQeEkCN0oN9H6A8SUBshDWUfBlEk5JCeTGiRsI/EsftoEFbVIGyiQVhVg7CJBmFVDcImGoRVNQibaBBWEti4ZaU26kGo2XpCdiVEBI/hi/rttrqaE2q8cry6ThGKoXXBOlf8bcpli30mNQjfVq43uXh1NScMKRgdaacehIUBKas2UA/CkILUM7OROhFC3cCg/2yXwe7ySxbPAAAAAElFTkSuQmCC" width="78.125" x="630.2083" y="444.5313"></image><text fill="#2F2424" font-family='"Arial"' font-size="16.6667" lengthadjust="spacing" textlength="5.2083" x="666.6667" y="562.085"> </text><text fill="#2F2424" font-family='"Arial"' font-size="16.6667" lengthadjust="spacing" textlength="117.7083" x="610.4167" y="581.486">Swedbank Pay</text><rect fill="#FFFFFF" height="180.0781" style="stroke:#F35B1C;stroke-width:1.0416666666666667;" width="10.4167" x="96.3542" y="231.1198"></rect><rect fill="#FFFFFF" height="114.8438" style="stroke:#F35B1C;stroke-width:1.0416666666666667;" width="10.4167" x="299.4792" y="281.7708"></rect><rect fill="#FFFFFF" height="165.4948" style="stroke:#F35B1C;stroke-width:1.0416666666666667;" width="10.4167" x="664.0625" y="231.1198"></rect><polygon fill="#F35B1C" points="292.1875,226.9531,302.6042,231.1198,292.1875,235.2865,296.3542,231.1198" style="stroke:#F35B1C;stroke-width:1.0416666666666667;"></polygon><line style="stroke:#F35B1C;stroke-width:1.0416666666666667;" x1="106.7708" x2="298.4375" y1="231.1198" y2="231.1198"></line><text fill="#2F2424" font-family="Consolas" font-size="16.6667" lengthadjust="spacing" textlength="113.5417" x="122.3958" y="216.7725">User-Agent: P</text><text fill="#2F2424" font-family='"Arial"' font-size="16.6667" lengthadjust="spacing" textlength="5.2083" x="235.9375" y="216.7725"> </text><text fill="#2F2424" font-family='"Arial"' font-size="16.6667" font-weight="bold" lengthadjust="spacing" textlength="14.5833" x="241.1458" y="216.7725">①</text><polygon fill="#F35B1C" points="651.5625,277.6042,661.9792,281.7708,651.5625,285.9375,655.7292,281.7708" style="stroke:#F35B1C;stroke-width:1.0416666666666667;"></polygon><line style="stroke:#F35B1C;stroke-width:1.0416666666666667;" x1="309.8958" x2="657.8125" y1="281.7708" y2="281.7708"></line><text fill="#2F2424" font-family="Consolas" font-size="16.6667" lengthadjust="spacing" textlength="270.8333" x="325.5208" y="267.4235">User-Agent: M { userAgent: "P" }</text><text fill="#2F2424" font-family='"Arial"' font-size="16.6667" lengthadjust="spacing" textlength="5.2083" x="596.3542" y="267.4235"> </text><text fill="#2F2424" font-family='"Arial"' font-size="16.6667" font-weight="bold" lengthadjust="spacing" textlength="14.5833" x="601.5625" y="267.4235">②</text><line style="stroke:#F35B1C;stroke-width:1.0416666666666667;stroke-dasharray:2.0,2.0;" x1="674.4792" x2="718.2292" y1="332.4219" y2="332.4219"></line><line style="stroke:#F35B1C;stroke-width:1.0416666666666667;stroke-dasharray:2.0,2.0;" x1="718.2292" x2="718.2292" y1="332.4219" y2="345.9635"></line><line style="stroke:#F35B1C;stroke-width:1.0416666666666667;stroke-dasharray:2.0,2.0;" x1="675.5208" x2="718.2292" y1="345.9635" y2="345.9635"></line><polygon fill="#F35B1C" points="685.9375,341.7969,675.5208,345.9635,685.9375,350.1302,681.7708,345.9635" style="stroke:#F35B1C;stroke-width:1.0416666666666667;"></polygon><text fill="#2F2424" font-family='"Arial"' font-size="16.6667" lengthadjust="spacing" textlength="152.0833" x="690.1042" y="318.0745">Store request data</text><polygon fill="#F35B1C" points="316.1458,392.4479,305.7292,396.6146,316.1458,400.7813,311.9792,396.6146" style="stroke:#F35B1C;stroke-width:1.0416666666666667;"></polygon><line style="stroke:#F35B1C;stroke-width:1.0416666666666667;stroke-dasharray:2.0,2.0;" x1="309.8958" x2="668.2292" y1="396.6146" y2="396.6146"></line><text fill="#2F2424" font-family="Consolas" font-size="16.6667" lengthadjust="spacing" textlength="292.7083" x="330.7292" y="382.2673">{ "initiatingSystemUserAgent": "M" }</text><text fill="#2F2424" font-family='"Arial"' font-size="16.6667" lengthadjust="spacing" textlength="5.2083" x="623.4375" y="382.2673"> </text><text fill="#2F2424" font-family='"Arial"' font-size="16.6667" font-weight="bold" lengthadjust="spacing" textlength="14.5833" x="628.6458" y="382.2673">③</text><polygon fill="#F35B1C" points="113.0208,407.0313,102.6042,411.1979,113.0208,415.3646,108.8542,411.1979" style="stroke:#F35B1C;stroke-width:1.0416666666666667;"></polygon><line style="stroke:#F35B1C;stroke-width:1.0416666666666667;stroke-dasharray:2.0,2.0;" x1="106.7708" x2="303.6458" y1="411.1979" y2="411.1979"></line></g></svg></div>
 <ol>
