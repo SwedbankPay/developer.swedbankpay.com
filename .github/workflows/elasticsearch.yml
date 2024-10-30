@@ -22,19 +22,24 @@ jobs:
         bundle install
         bundle exec jekyll build
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.11'
-      
-    - name: Install Dependencies
+    # New step: Install wkhtmltopdf
+    - name: Install wkhtmltopdf
       run: |
-        python -m pip install --upgrade pip
-        pip install beautifulsoup4 elasticsearch openai
+        sudo apt-get update
+        sudo apt-get install -y wkhtmltopdf
 
-    - name: Index Processed HTML files to Elasticsearch
-      run: python .github/scripts/index_to_es.py
-      env:
-        ELASTICSEARCH_URL: https://${{ secrets.ELASTICSEARCH_HOST }}
-        ELASTICSEARCH_API_KEY: ${{ secrets.ELASTICSEARCH_CLOUD_API_KEY_DEV }}
-        OPENAI_EMBEDDING_API_KEY: ${{ secrets.OPENAI_EMBEDDING_API_KEY }}
+    # New step: Generate PDF
+    - name: Generate PDF
+      working-directory: ./_site
+      run: |
+        wkhtmltopdf --enable-local-file-access all_content.html full_site.pdf
+
+    # New step: Upload PDF to Azure Storage
+    - name: Upload PDF to Azure Storage
+      run: |
+        az storage blob upload \
+          --container-name pdf \
+          --file "_site/full_site.pdf" \
+          --name "full_site.pdf" \
+          --account-name stagedeveloperecomsa2 \
+          --overwrite

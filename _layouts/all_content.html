@@ -1,0 +1,14 @@
+---
+layout: pdf
+permalink: /all_content.html
+---
+
+{% comment %} Include all regular pages {% endcomment %}
+{% for page in site.html_pages %}
+  {% if page.path != 'all_content.html' and page.path != '404.html' %}
+    <div class="page">
+      <h1>{{ page.title }}</h1>
+      {{ page.content }}
+    </div>
+  {% endif %}
+{% endfor %}
