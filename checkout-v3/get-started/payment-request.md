@@ -47,7 +47,7 @@ request, you can find the `payerReference` there.
 
 Sometimes you might need to abort purchases. An example could be if a payer does
 not complete the purchase within a reasonable timeframe. For those instances we
-have `abort`, which you can read about in the [core features][abort-feature].
+have `abort`, which you can read about in the [payment operations][abort-feature].
 You can only use `abort` if the payer **has not** completed an `authorize` or a
 `sale`. If the payer is performing an action at a 3rd party, like the MobilePay,
 Swish or Vipps apps, `abort` is unavailable.
@@ -75,7 +75,7 @@ Read more about possible additions to the request in our
                          next_href="/checkout-v3/get-started/display-payment-ui/"
                          next_title="Display Payment UI" %}
 
-[abort-feature]: /checkout-v3/features/core/abort
+[abort-feature]: /checkout-v3/features/payment-operations/abort
 [features]: /checkout-v3/features/
 [frictionless]: /checkout-v3/features/customize-payments/frictionless-payments
 [order-items]: /checkout-v3/features/optional/order-items

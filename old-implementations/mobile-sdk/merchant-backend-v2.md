@@ -3,7 +3,7 @@ title: Merchant Backend V2
 permalink: /:path/merchant-backend-v2/
 description: |
   This document contains information for the older version of the Backend Merchant of the **Swedbank Pay Mobile SDK**.
-menu_order: 9800
+menu_order: 300
 ---
 
 The Merchant Backend API serves as a simple starting point, and an illustrative
@@ -18,8 +18,8 @@ should behave.
 
 The Mobile SDK Merchant Backend API contains a total of six endpoints, three of
 which have statically defined paths. An OpenAPI specification is
-[available][swagger]. (It may be easier to view it in the [Swagger
-Editor][swagger-editor].)
+[available][swagger]{:target="_blank"}. (It may be easier to view it in the
+[Swagger Editor][swagger-editor]{:target="_blank"}.)
 
 The main part of the API is designed as a transparent wrapper around the
 Swedbank Pay API, which is the same one used in Checkout. Additionally, two
@@ -101,15 +101,15 @@ hosts, you must manually allow them in your mobile app's configuration.
 ## Consumers Endpoint
 
 The `consumers` endpoint is used to start a consumer identification session. It
-is specified as a transparent wrapper around the corresponding [Swedbank Pay
-API][initiate-consumer-session]. The sample implementations do superficial input
-validation, and forward the request to the Swedbank Pay API without further
-processing. You are free to override this default behavior as you see fit in
-your implementation, but the default should be fine for most use-cases. The
-expected response is the same as the expected response to the Swedbank Pay API.
-The default is to pass the response from Swedbank as-is; you should probably not
-modify this behavior. Specifically, the response must contain the
-`view-consumer-identification` operation.
+is specified as a transparent wrapper around the corresponding
+[Swedbank Pay API][initiate-consumer-session]. The sample implementations do
+superficial input validation, and forward the request to the Swedbank Pay API
+without further processing. You are free to override this default behavior as
+you see fit in your implementation, but the default should be fine for most
+use-cases. The expected response is the same as the expected response to the
+Swedbank Pay API. The default is to pass the response from Swedbank as-is; you
+should probably not modify this behavior. Specifically, the response must
+contain the `view-consumer-identification` operation.
 
 {:.code-view-header}
 **Request**
@@ -195,21 +195,21 @@ Content-Type: application/json
 ## Payment Orders Endpoint
 
 The `paymentorders` endpoint is used to create a new Payment Order. It is
-specified as a transparent wrapper around the corresponding [Swedbank Pay
-API][create-payment-order]. However, it is to be expected that your backend will
-need to process the payment order both before making the Swedbank Pay API call,
-and after receiving the response from Swedbank Pay. The sample implementations
-validate the input, then create an internal unique identitifer for the payment
-order, and set that as `paymentorder.payeeInfo.payeeReference`, before making
-the Swedbank Pay call. After receiving the response, the backend stores the `id`
-of the Payment Order for future use, and forwards the response to the SDK.
+specified as a transparent wrapper around the corresponding
+[Swedbank Pay API][create-payment-order]. However, it is to be expected that
+your backend will need to process the payment order both before making the
+Swedbank Pay API call, and after receiving the response from Swedbank Pay. The
+sample implementations validate the input, then create an internal unique
+identifier for the payment order, and set that as
+`paymentorder.payeeInfo.payeeReference`, before making the Swedbank Pay call.
+After receiving the response, the backend stores the `id` of the Payment Order
+for future use, and forwards the response to the SDK.
 
-Optionally, if your implementation uses [instrument mode
-payments][instrument-mode], your backend can return the list of valid
-instruments, along with an endpoint to change the instrument. If you do this,
-you must also implement the Change Instrument endpoint. The Merchant Backend
-Configuration on the client side can then use this endpoint to change the
-instrument of an ongoing payment order.
+Optionally, if your implementation uses [instrument mode payments][instrument-mode],
+your backend can return the list of valid instruments, along with an endpoint to
+change the instrument. If you do this, you must also implement the Change
+Instrument endpoint. The Merchant Backend Configuration on the client side can
+then use this endpoint to change the instrument of an ongoing payment order.
 
 A production implementation should validate the payment order also from a
 business logic perspective. This is, naturally, outside the scope of the SDK, as
@@ -236,7 +236,8 @@ Content-Type: application/json
 | :--------------: | :------------- | :------- | :-------------------------- |
 | {% icon check %} | {% f paymentOrder, 0 %} | `object` | The payment order to create |
 
-*   ① The contents of `paymentorder` are omitted here. See [Checkout Documentation][create-payment-order] for details.
+*   ① The contents of `paymentorder` are omitted here. See
+    [Checkout Documentation][create-payment-order] for details.
 
 At this point, the Merchant Backend will preform necessary processing, and make
 a corresponding request to the Swedbank Pay API, using its secret access token.
@@ -455,9 +456,9 @@ the root endpoint, and adding the `package` query parameter with the containing
 application's package name, and an `id` query parameter with a random value.
 
 The endpoint responds with an html document that attempts to immediately
-redirect to an [Intent-scheme Url][android-intent-scheme]. That url is
-constructed such that it uses the value of the `package` query parameter as the
-target package of the intent. The action of the intent shall be
+redirect to an [Intent-scheme Url][android-intent-scheme]{:target="_blank"}.
+That url is constructed such that it uses the value of the `package` query
+parameter as the target package of the intent. The action of the intent shall be
 `com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER`; the SDK has an intent filter for
 this action. The uri (data) of the intent shall be the full url used in the
 request. The html document shall also contain a link to that same url. This is
@@ -522,12 +523,12 @@ a specific `package`.
 ## iOS Payment Url Helper
 
 The iOS payment url helper endpoint is more involved than the Android one. While
-a similar mechanism could be used with [custom url schemes][ios-custom-scheme],
-doing so will not provide optimal user experience: custom schemes will show a
-confirmation dialog before being routed to the handling application, and the
-content of that dialog is not under developer control. Instead, the best
-practice for assigning urls to applications is to use [Universal
-Links][ios-universal-links].
+a similar mechanism could be used with
+[custom url schemes][ios-custom-scheme]{:target="_blank"}, doing so will not
+provide optimal user experience: custom schemes will show a confirmation
+dialogue before being routed to the handling application, and the content of
+that dialogue is not under developer control. Instead, the best practice for
+assigning urls to applications is to use [Universal Links][ios-universal-links]{:target="_blank"}.
 
 With the merchant backend host and the iOS application using the SDK configured
 correctly, the payment url becomes a universal link. Universal links function
@@ -538,16 +539,16 @@ this scenario, is does not matter what kind of response would be received by
 making a `GET` request to the payment url. Unfortunately, this is not guaranteed
 to happen.
 
-As [documented][ios-universal-links-routing], universal links open the
-registered application "when [the user] tap[s] links to your website within
-Safari", but "When a user browses your website in Safari and taps a universal
-link in the same domain, the system opens that link in Safari -- If the user
-taps a universal link in a different domain, the system opens the link in your
-app." This presents two preconditions: the navigation must originate from user
-interaction, and the domain of the universal link must be different to the
-domain of the current page. Also, practice has shown that universal links may
-still sometimes fail to work as intended, so we must have some way of escaping
-that situation.
+As [documented][ios-universal-links-routing]{:target="_blank"}, universal links
+open the registered application "when [the user] tap[s] links to your website
+within Safari", but "When a user browses your website in Safari and taps a
+universal link in the same domain, the system opens that link in Safari -- If
+the user taps a universal link in a different domain, the system opens the link
+in your app." This presents two preconditions: the navigation must originate
+from user interaction, and the domain of the universal link must be different to
+the domain of the current page. Also, practice has shown that universal links
+may still sometimes fail to work as intended, so we must have some way of
+escaping that situation.
 
 In order to have a foolproof system with optimal user experience, we must
 therefore work correctly in different scenarios:
@@ -735,8 +736,8 @@ registered to the application.
 
 The iOS payment url helper endpoint must be configured as a universal link to
 the application for it to work correctly. Doing this requires an [Apple app site
-association][ios-aasa] file on the host of the iOS payment url. This file must
-be at a path relative to the host root (namely
+association][ios-aasa]{:target="_blank"} file on the host of the iOS payment
+url. This file must be at a path relative to the host root (namely
 `/.well-known/apple-app-site-association`), and is thus outside the scope of,
 but linked to, the merchant backend API.
 
@@ -774,10 +775,10 @@ Content-Type: application/json
 ## Problems
 
 If there are any errors in servicing a request, they should be reported using
-[Problem Details for HTTP APIs (RFC 7807)][rfc-7807] messages, like the
-[Swedbank Pay APIs do][swedbankpay-problems]. In particular, if the Swedbank Pay
-API response contains a problem, that problem should be forwarded to the client
-making the original request.
+[Problem Details for HTTP APIs (RFC 7807)][rfc-7807]{:target="_blank"} messages,
+like the [Swedbank Pay APIs do][swedbankpay-problems]. In particular, if the
+Swedbank Pay API response contains a problem, that problem should be forwarded
+to the client making the original request.
 
 ## Merchant Backend Problems
 
@@ -799,11 +800,14 @@ All these Merchant Backend problem types will have a URL in the format
 
 Your implementation is encouraged to define its own problem types for any domain-specific errors; you should namespace those problem types under a domain name under your control – usually the host name of the Merchant Backend.
 
+{% include iterator.html prev_href="/old-implementations/mobile-sdk/merchant-backend-sample-code"
+                         prev_title="Back: Merchant Backend Sample Code" %}
+
 [swagger]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/main/documentation/swedbankpaysdk_openapi.yaml
 [swagger-editor]: https://editor.swagger.io/?url=https://raw.githubusercontent.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/main/documentation/swedbankpaysdk_openapi.yaml
-[payment-url]: /old-implementations/payment-menu-v2/features/technical-reference/payment-url
+[payment-url]: /checkout-v3/features/technical-reference/payment-url
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
-[create-payment-order]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
+[create-payment-order]: /checkout-v3/get-started/payment-request-3-1/#create-payment-order
 [android-intent-scheme]: https://developer.chrome.com/docs/android/intents
 [ios-custom-scheme]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app
 [ios-universal-links]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content
@@ -811,4 +815,4 @@ Your implementation is encouraged to define its own problem types for any domain
 [ios-aasa]: https://developer.apple.com/documentation/safariservices/supporting_associated_domains_in_your_app#3001215
 [rfc-7807]: https://tools.ietf.org/html/rfc7807
 [swedbankpay-problems]: /checkout-v3/features/technical-reference/problems
-[instrument-mode]: /old-implementations/payment-menu-v2/features/optional/instrument-mode
+[instrument-mode]: /checkout-v3/features/customize-ui/instrument-mode/

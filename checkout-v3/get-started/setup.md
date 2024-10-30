@@ -48,7 +48,7 @@ with an access token.
 
 How to generate your access token:
 
-**Log in to:** [The External Integration Merchant Portal](https://merchantportal.externalintegration.swedbankpay.com ) - For
+**Log in to:** [The External Integration Merchant Portal](https://merchantportal.externalintegration.swedbankpay.com){:target="_blank"} - For
 testing environment.
 
 **Merchant details:** Here you will find information about your

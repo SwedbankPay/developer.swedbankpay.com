@@ -2,9 +2,7 @@
 ## Supported Payment Methods
 
 Looking to get started with recurring services? They are currently supported
-in Digital Payments using these payment methods:
-
-*   Card payments
+using card payments.
 
 ## Step 1: Create a Payment Order
 
@@ -118,7 +116,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           "expiryDate": "12/2033"
         }
        // ... other details
-    }
+    ]
 }{% endcapture %}
 
 {% include code-example.html
@@ -202,12 +200,12 @@ compiled relevant documentation below.
 *   Post-purchase: [Capture][capture], [Cancel][cancel], [Reversal][reversal].
 
 [basic-request]: /checkout-v3/get-started/payment-request-3-1/#create-payment-order
-[callback]: /checkout-v3/features/core/callback
-[cancel]: /checkout-v3/features/core/cancel
-[capture]: /checkout-v3/features/core/payment-order-capture
+[callback]: /checkout-v3/features/payment-operations/callback
+[cancel]: /checkout-v3/features/payment-operations/cancel
+[capture]: /checkout-v3/features/payment-operations/payment-order-capture
 [delete-token]: /checkout-v3/features/optional/delete-token
 [paid]: https://api.externalintegration.payex.com/psp/paymentorders/<PaymentOrderIdHere>/paid
 [recur]: /checkout-v3/features/optional/recur
-[reversal]: /checkout-v3/features/core/reversal
+[reversal]: /checkout-v3/features/payment-operations/reversal
 [unscheduled]: /checkout-v3/features/optional/unscheduled
 [verify]: /checkout-v3/features/optional/verify

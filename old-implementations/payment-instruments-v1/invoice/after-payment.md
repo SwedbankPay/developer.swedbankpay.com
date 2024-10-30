@@ -12,7 +12,7 @@ the first step, to receive the state of the transaction. You will also be able
 to see the available operations after posting a payment.
 
 *   **Abort:** It is possible to abort the process if the payment has no
-  successful transactions. [See the `abort` description](#abort).
+  successful transactions. See the [`Abort` description](#abort).
 *   An invoice authorization must be followed by a `capture` or
   `cancel` request.
 *   For reversals, you will need to implement the `reversal` request.

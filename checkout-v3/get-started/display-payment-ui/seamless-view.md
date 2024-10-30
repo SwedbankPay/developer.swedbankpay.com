@@ -215,5 +215,5 @@ Merchant -->>- Payer: Show Purchase complete
 
 [seamless-view-events]: /checkout-v3/features/technical-reference/seamless-view-events
 [seamless-enterprise-menu]: /assets/img/wcag-seamless.png
-[payments-callback]: /checkout-v3/features/core/callback
+[payments-callback]: /checkout-v3/features/payment-operations/callback
 [payments-seamless-view-events]: /checkout-v3/features/technical-reference/seamless-view-events

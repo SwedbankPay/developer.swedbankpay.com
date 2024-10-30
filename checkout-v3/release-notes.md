@@ -8,6 +8,64 @@ menu_order: 7
 release_notes: true
 ---
 
+## 24 October 2025
+
+### Version 5.3.2
+
+Stricter PCI-CSS requirements are coming in the spring of 2025, and they could
+affect merchants using our Seamless View integration. We have addressed these
+changes and written a guide for [transferring from Seamless View][trans-guide]
+to the Redirect integration.
+
+Not on our newest implementantion yet? There are guides for
+[Payment Menu v2][pmv2] and the Payment Methods which are inside the PCI-DSS
+zone ([card][card-guide], [Vipps][vipps-guide] and [MobilePay][mp-guide])
+available too. Information about [Checkout v2][cv2] can be found here.
+
+Version 5.0.0 of our Mobile SDK is also going live. The new additions are
+[native payment features][nat-pay] and a new automatic configuration feature
+introduced by the Session URL, making setup and usage simpler and quicker.
+
+In that occasion, a new operation called view-paymentsession can be found in the
+[payment order response][sdk-response], and is only meant to be used when
+merchants are starting up the new SDK.
+
+We have done some changes to the [magic amounts][magic-amount] for testing
+Monthly Limits Exceeded. It has been merged with the amount for Daily Limits
+Exceeded for easier testing, and they now share 952100.
+
+Additions to the code examples for [Excessive Reattempts][ex-re] are live too.
+Both Suspension Warning and Modifications Required now have nodes for Problems.
+Suspension Warning also has a small change in the type field.
+
+## 29 August 2024
+
+### Version 5.3.1
+
+We are closing of August with a mellow, small release after being gone for
+summer, before gearing up for fall.
+
+The Features restructuring continues with Core Features being renamed to
+[Payment Operations][pay-op], and moving [Corporate Payment Menu][cpm] to
+Customize the Payment UI.
+
+We have added the [recurring][ruc] and [one-click][1cuc] use cases to the
+sidebar for easier access.
+
+As a part of our project to have error messages with better human readable
+information, the [Excessive Reattempts][ex-re] responses for
+`Modifications Required` and `Suspension Warning` got a facelift. The type and
+title field has been changed to `authenticationrequired`, and the `problems`
+node has been replaced by a `modification` and `suspension` node respectively,
+filled with information directly from POS.
+
+The [magic amount][magic-amount] for triggering the `modifications required`
+error has been changed to `952507`.
+
+We have also added info about a newly implemented MasterCard reattempt rule. In
+addition to a PAN being blocked after 10 attempts in 24 hours, there is also a
+limit of 35 failed attempts in 30 days.
+
 ## 18 June 2024
 
 ### Version 5.3.0
@@ -418,7 +476,7 @@ and integrations. There are a couple of other new additions as well:
 *   Added a new [card error code][card-error-codes] and restructured the tables.
 *   Fleshed out the [Unscheduled Purchase][unscheduled-mit] section.
 *   Fleshed out the [Recur][recur] section.
-*   Moved the [callback][callback] section to core features.
+*   Moved the [callback][callback] section to Payment Operations.
 *   Typos and minor bug fixes in code examples and tables.
 
 ## 16 March 2022
@@ -527,7 +585,7 @@ new?
 *   Re-worded [split settlement][split-settlement]
 *   Clarified that [callback][callback] is a fail-safe
 *   Updated tables and code examples with payerReference in various places, like [card purchase][card-purchase]
-*   Updated Mobile SDK configurations for both [iOS][ios-configuration] and [Android][android-configuration] to include integration with custom backends
+*   Updated Mobile SDK configurations for both iOS and Android to include integration with custom backends
 *   Updated GitHub references for Mobile SDK
 *   Re-wrote [Prices][prices] section
 
@@ -914,9 +972,9 @@ model.
 
 ### Welcome, Swedbank Pay Developer Portal
 
-PayEx' Commerce offerings are being rebranded to **Swedbank Pay**   and as a
+PayEx' Commerce offerings are being rebranded to **Swedbank Pay** and as a
 result of that rebranding, PayEx Checkout is now known as Swedbank Pay Checkout
-and its documentation can be found on [here][checkout].
+and its documentation can be found [here][checkout].
 
 {% comment %}
 
@@ -1022,15 +1080,14 @@ more convenient for both the integration and the payer.
 [3ds2-test]: /checkout-v3/test-data#3-d-secure-cards
 [afd-payments]: /checkout-v3/features/optional/afd
 [age-restrictions]: /checkout-v3/features/optional/age-restrictions
-[android-configuration]: /checkout-v3/modules-sdks/mobile-sdk/configuration#android
 [android-sdk-documentation]: /checkout-v3/modules-sdks/mobile-sdk/android
-[apple-pay]: /checkout-v3/payment-presentations#apple-pay
+[apple-pay]: /checkout-v3/apple-pay-presentation
 [astopb]: /checkout-v3/features/customize-ui/action-specific-text-on-payment-button
 [authorization-timeouts]: /old-implementations/checkout-v2/capture
 [bare-min]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/
 [btb]: /checkout-v3/features/balancing-the-books/
-[callback]: /checkout-v3/features/core/callback
-[callback-3-1]: /checkout-v3/features/core/callback#callback-example-v31
+[callback]: /checkout-v3/features/payment-operations/callback
+[callback-3-1]: /checkout-v3/features/payment-operations/callback#callback-example-v31
 [card-delete-token]: /old-implementations/payment-instruments-v1/card/features/optional/delete-token
 [card-error-codes]: /old-implementations/payment-instruments-v1/card/features/technical-reference/problems
 [card-payment-url]: /old-implementations/payment-instruments-v1/card/features/technical-reference/payment-url
@@ -1040,6 +1097,7 @@ more convenient for both the integration and the payer.
 [card]: /old-implementations/payment-instruments-v1/card
 [card-3ds-info]: /old-implementations/payment-instruments-v1/card#sequence-diagram
 [card-3ds2]: /old-implementations/payment-instruments-v1/card/features/core/frictionless-payments
+[card-guide]: /old-implementations/payment-instruments-v1/card/ui-migration/
 [card-redirect]: /old-implementations/payment-instruments-v1/card/redirect
 [card-seamless-view]: /old-implementations/payment-instruments-v1/card/seamless-view
 [checkin]: /old-implementations/checkout-v2/checkin
@@ -1061,25 +1119,28 @@ more convenient for both the integration and the payer.
 [checkout-v3]: /checkout-v3
 [checkout-v3-payments-only-redirect-request]: /checkout-v3/get-started/payment-request
 [checkout-v3-payments-only-seamless]: /checkout-v3/get-started/display-payment-ui/seamless-view
-[click-to-pay]: /checkout-v3/payment-presentations#click-to-pay
+[click-to-pay]: /checkout-v3/click-to-pay-presentation
 [consent-box]: /checkout-v3/features/optional/one-click-payments/#disable-store-details-and-toggle-consent-checkbox
 [contact-us]: /#front-page-contact-partners
 [co-badge-card]: /old-implementations/payment-instruments-v1/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
 [core-features]: /old-implementations/checkout-v2/features/core/
+[cpm]: /checkout-v3/features/customize-ui/corporate-limited-menu/
 [credit-card-abort]: /old-implementations/payment-instruments-v1/card/after-payment#abort
 [custom-styling]: /checkout-v3/features/customize-ui/custom-styling
 [cuspay]: /checkout-v3/features/customize-payments/
 [cus-ui]: /checkout-v3/features/customize-ui/
+[cv2]: /old-implementations/checkout-v2/ui-migration/
 [integrated-commerce]: /checkout-v3/features/optional/integrated-commerce
 [data-protection]: /old-implementations/checkout-v2/data-protection
 [delete-payment-tokens]: /checkout-v3/features/optional/delete-token#delete-paymenttoken-request
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [design-guide]: https://design.swedbankpay.com/
 [display-ui]: /checkout-v3/get-started/display-payment-ui/
-[dom-ver]: /checkout-v3/payment-presentations#domain-verification
+[dom-ver]: /checkout-v3/apple-pay-presentation#domain-verification
 [eligibility-check]: /checkout-v3/features/customize-ui/instrument-mode#eligibility-check
 [error-invoice]: /checkout-v3/features/technical-reference/problems/#invoice-problems
 [expand-first]: /checkout-v3/features/customize-ui/expand-method/
+[ex-re]: /checkout-v3/features/technical-reference/problems/#creditcard-payments-mit---do-not-try-again--excessive-reattempts
 [mac]: /old-implementations/checkout-v2/features/optional/mac
 [fa]: /checkout-v3/features/technical-reference/resource-sub-models#failedattempts
 [features]: /checkout-v3/features
@@ -1089,23 +1150,25 @@ more convenient for both the integration and the payer.
 [fundamental-principles]: /checkout-v3/get-started/fundamental-principles
 [get-started]: /checkout-v3/get-started
 [go-live]: /checkout-v3/get-started/#get-ready-to-go-live
-[google-pay]: /checkout-v3/payment-presentations#google-pay
+[google-pay]: /checkout-v3/google-pay-presentation
 [home-technical-information]: /checkout-v3/get-started/fundamental-principles
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [inacc]: /checkout-v3/features/technical-reference/problems/#installment-account-problems
 [invoice-direct]: /old-implementations/payment-instruments-v1/invoice/direct
 [invoice]: /old-implementations/payment-instruments-v1/invoice
 [int-com]: /checkout-v3/features/optional/integrated-commerce
-[ios-configuration]: /checkout-v3/modules-sdks/mobile-sdk/configuration#ios
 [ios-sdk-documentation]: /checkout-v3/modules-sdks/mobile-sdk/ios
 [mac-checkout]: /old-implementations/checkout-v2/features/optional/mac
+[magic-amount]: /checkout-v3/test-data/#magic-amounts-error-testing-using-amounts
 [mig-guide]: /checkout-v3/migration-guide/
 [mobile-card-payments]: /old-implementations/payment-instruments-v1/card/mobile-card-payments
 [mobile-pay]: /old-implementations/payment-instruments-v1/mobile-pay
 [mobilepay-seamless-view]: /old-implementations/payment-instruments-v1/mobile-pay/seamless-view
 [mobilepay-capture]: /old-implementations/payment-instruments-v1/mobile-pay/capture
 [modules-sdks]: /checkout-v3/modules-sdks
+[mp-guide]: /old-implementations/payment-instruments-v1/mobile-pay/ui-migration/
 [moto-payment-card]: /old-implementations/payment-instruments-v1/card/features/optional/moto
+[nat-pay]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/
 [nwt]: /checkout-v3/features/customize-payments/network-tokenization
 [nwt-test]: /checkout-v3/test-data/#network-tokenization
 [old-implementations]: /old-implementations/
@@ -1123,8 +1186,10 @@ more convenient for both the integration and the payer.
 [payout]: /checkout-v3/features/optional/payout
 [payout-patch]: /checkout-v3/features/optional/payout#patch-verify-request
 [partners]: /#front-page-contact-partners
+[pay-op]: /checkout-v3/features/payment-operations/
 [pax-net-sdk]: https://developer.stage.swedbankpay.com/pax-terminal/NET/
 [pax-terminal]: /pax-terminal/
+[pmv2]: /old-implementations/payment-menu-v2/ui-migration/
 [pp-3-1]: /checkout-v3/get-started/post-purchase-3-1
 [prices]: /old-implementations/checkout-v2/features/technical-reference/prices
 [update-order-checkout]: /old-implementations/checkout-v2/features/core/update
@@ -1140,6 +1205,7 @@ more convenient for both the integration and the payer.
 [settlement-reconcilitation]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation
 [sdk-guidelines]: /checkout-v3/modules-sdks/development-guidelines
 [sdk-modules]: /checkout-v3/modules-sdks
+[sdk-response]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#payment
 [sort-order]: /checkout-v3/features/customize-ui/sort-order-payment-menu
 [split-settlement]: /checkout-v3/features/balancing-the-books/split-settlement
 [spp]: https://playground.swedbankpay.com
@@ -1166,7 +1232,8 @@ more convenient for both the integration and the payer.
 [token04]: /checkout-v3/features/technical-reference/problems/#creditcard-payments-mit---do-not-try-again--excessive-reattempts
 [token-problems]: /checkout-v3/features/technical-reference/problems/#token-problems
 [tos-url]: /checkout-v3/features/customize-ui/tos
-[trustly-pres]: /checkout-v3/payment-presentations#trustly
+[trustly-pres]: /checkout-v3/trustly-presentation
+[trans-guide]: /checkout-v3/get-started/display-payment-ui/ui-migration/
 [transaction-on-file]: /old-implementations/payment-instruments-v1/card/features/optional/transaction-on-file
 [tra-exemption]: /old-implementations/checkout-v2/features/optional/tra
 [trustly-payments]: /old-implementations/payment-instruments-v1/trustly
@@ -1175,6 +1242,7 @@ more convenient for both the integration and the payer.
 [unscheduled-mit]: /checkout-v3/features/optional/unscheduled
 [v3-setup]: /checkout-v3/get-started/setup
 [validate-status]: /checkout-v3/get-started/validate-status
+[vipps-guide]: /old-implementations/payment-instruments-v1/vipps/ui-migration/
 [vipps-payment-resource]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-resource
 [vipps-payment-url]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-url
 [vipps]: /old-implementations/payment-instruments-v1/vipps

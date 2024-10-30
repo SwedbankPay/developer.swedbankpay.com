@@ -1,7 +1,7 @@
 ---
 title: Terminology
 permalink: /:path/terminology/
-menu_order: 9
+menu_order: 12
 ---
 
 ### 0-9
@@ -51,7 +51,7 @@ menu_order: 9
 {:.table .table-striped}
 | **One-phase payment flow**      | A [one-phase][fundamentals] payment is a payment done in one step. The amount is settled in one transactional step.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | **Operation**                   | A  payment operation determines what kind of payment that should be implemented. Available payment operations vary, depending on payment method. The most common operation all payment methods share is the Purchase operation. Card Payments have several others, such as [Verify][verify-url] and [Recur][recur].                                                                                                                                                                                                                                                                                                                                      |
-| **Operations**                  | Operations consist of an array of contextual links / actions that direct the payment flow in a given state of the payment resource (i.e. creating a capture transaction, creating a reversal transaction, returning a redirect URL, etc). Operations are [HATEOAS][hateoas] driven and managed through API calls.                                                                                                                                                                                                                                                                                                                                                           |
+| **Operations**                  | Operations consist of an array of contextual links / actions that direct the payment flow in a given state of the payment resource (i.e. creating a capture transaction, creating a reversal transaction, returning a redirect URL, etc). Operations are [HATEOAS][hateoas]{:target="_blank"} driven and managed through API calls.                                                                                                                                                                                                                                                                                                                                                           |
 
 ### P
 
@@ -96,7 +96,7 @@ menu_order: 9
 {:.table .table-striped}
 | **Verify**                      | The payment operation that initiates a [verification][verify-url] payment process. It is a payment that lets you post verifications to confirm the validity of card information, without reserving or charging any amount. This option is used to generate a payment- or recurrence token, that can be used in a recurring payments scenarios or for one-clickpayments, without charging the card in the process.                                                                                                                                                                                                                                                           |
 
-[callback-url]:/checkout-v3/features/core/callback/
+[callback-url]:/checkout-v3/features/payment-operations/callback/
 [cancel-url]: /checkout-v3/get-started/post-purchase-3-1/#cancel-v31
 [checkout-url]: /old-implementations/checkout-v2/
 [common-headers]: /checkout-v3/get-started/fundamental-principles#headers

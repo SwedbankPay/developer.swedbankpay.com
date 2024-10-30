@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/SwedbankPay/developer.swedbankpay.com",
   "dependencies": {
-    "npm": "^10.8.1"
+    "npm": "^10.9.0"
   },
   "devDependencies": {
     "braces": "^3.0.3",
@@ -47,7 +47,7 @@
     "remark-lint-list-item-content-indent": "^4.0.0",
     "remark-lint-list-item-indent": "^4.0.0",
     "remark-lint-maximum-heading-length": "^4.0.0",
-    "remark-lint-no-auto-link-without-protocol": "^3.1.2",
+    "remark-lint-no-auto-link-without-protocol": "^4.0.0",
     "remark-lint-no-blockquote-without-marker": "^6.0.0",
     "remark-lint-no-consecutive-blank-lines": "^5.0.0",
     "remark-lint-no-duplicate-definitions": "^4.0.0",
@@ -63,7 +63,7 @@
     "remark-lint-no-heading-content-indent": "^5.0.0",
     "remark-lint-no-heading-indent": "^5.0.0",
     "remark-lint-no-heading-like-paragraph": "^4.0.0",
-    "remark-lint-no-inline-padding": "^4.1.2",
+    "remark-lint-no-inline-padding": "^5.0.0",
     "remark-lint-no-literal-urls": "^4.0.0",
     "remark-lint-no-multiple-toplevel-headings": "^4.0.0",
     "remark-lint-no-reference-like-url": "^4.0.0",

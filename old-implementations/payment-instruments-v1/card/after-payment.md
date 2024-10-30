@@ -16,7 +16,7 @@ first step, to receive the state of the transaction. You will also be able to
 see the available operations after posting a payment.
 
 *   *Abort:* It is possible to abort the process if the payment has no successful
-  transactions. [See the Abort description here][abort].
+  transactions. See the [`Abort` description here][abort].
 *   If the payment shown above is done as a two phase (`Authorization`), you will
   need to implement the `Capture` and `Cancel` requests.
 *   For `reversals`, you will need to implement the [Reversal request][reversal].

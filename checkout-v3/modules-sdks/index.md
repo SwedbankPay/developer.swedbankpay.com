@@ -51,7 +51,7 @@ Swedbank Pay.
 {:.table .table-striped}
 |            Platform          | Module                                                           | Repository                                    |
 | :--------------------------: | :--------------------------------------------------------------- | :-------------------------------------------- |
-|   ![WooCommerce][woo-icon]   | [Swedbank Pay Payment Menu for WooCommerce][woo-checkout-link]   | [`…woocommerce-checkout`][woo-checkout-repo]  |
+|   ![WooCommerce][woo-icon]   | [Swedbank Pay Payment Menu for WooCommerce][woo-checkout-link]{:target="_blank"}   | [`…woocommerce-checkout`][woo-checkout-repo]{:target="_blank"}  |
 
 ## Official SDKs
 
@@ -68,10 +68,10 @@ SDKs are often used as a building block to construct a *Module*.
 {:.table .table-striped}
 |            Platform      | SDK                                          | Repository                     |
 | :----------------------: | :------------------------------------------- | :----------------------------- |
-| ![Android][android-icon] | [Swedbank Pay SDK for Android][android-link] | [`…sdk-android`][android-repo] |
-|     ![iOS][ios-icon]     | [Swedbank Pay SDK for iOS][ios-link]         | [`…sdk-ios`][ios-repo]         |
-|   ![.NET][dotnet-icon]   | [Swedbank Pay SDK for .NET][dotnet-link]     | [`…sdk-dotnet`][dotnet-repo]   |
-|     ![PHP][php-icon]     | [Swedbank Pay SDK for PHP][php-link]         | [`…sdk-php`][php-repo]         |
+| ![Android][android-icon] | [Swedbank Pay SDK for Android][android-link]{:target="_blank"} | [`…sdk-android`][android-repo]{:target="_blank"} |
+|     ![iOS][ios-icon]     | [Swedbank Pay SDK for iOS][ios-link]{:target="_blank"}         | [`…sdk-ios`][ios-repo]{:target="_blank"}         |
+|   ![.NET][dotnet-icon]   | [Swedbank Pay SDK for .NET][dotnet-link]{:target="_blank"}     | [`…sdk-dotnet`][dotnet-repo]{:target="_blank"}   |
+|     ![PHP][php-icon]     | [Swedbank Pay SDK for PHP][php-link]{:target="_blank"}         | [`…sdk-php`][php-repo]{:target="_blank"}         |
 
 ## Official Libraries
 
@@ -83,8 +83,8 @@ SDKs are often used as a building block to construct a *Module*.
 {:.table .table-striped}
 |            Platform      | Library                                                     | Repository                            |
 | :----------------------: | :---------------------------------------------------------- | :------------------------------------ |
-| ![WooCommerce][woo-icon] | [Swedbank Pay Core plugin for WooCommerce][woo-core-link]   | [`…woocommerce-core`][woo-core-repo]  |
-|   ![.NET][dotnet-icon]   | [Swedbank Pay SDK Extensions for .NET][dotnet-link]         | [`…sdk-dotnet`][dotnet-repo]          |
+| ![WooCommerce][woo-icon] | [Swedbank Pay Core plugin for WooCommerce][woo-core-link]{:target="_blank"}   | [`…woocommerce-core`][woo-core-repo]{:target="_blank"}  |
+|   ![.NET][dotnet-icon]   | [Swedbank Pay SDK Extensions for .NET][dotnet-link]{:target="_blank"}         | [`…sdk-dotnet`][dotnet-repo]{:target="_blank"}          |
 
 [android-icon]: /assets/img/logos/android.svg
 [android-link]: https://search.maven.org/artifact/com.swedbankpay.mobilesdk/mobilesdk

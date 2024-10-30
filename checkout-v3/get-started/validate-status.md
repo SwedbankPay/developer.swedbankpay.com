@@ -247,12 +247,12 @@ Returned when a payment has failed. You will find an error message in
 
 Returned when an authorized amount has been fully cancelled. It will contain
 fields from both the cancelled description and paid section.
-[See the `Cancelled` response][cancelled].
+See the [`Cancelled` response][cancelled].
 
 *   `Aborted`
 
 Returned when the merchant has aborted the payment, or if the payer cancelled
-the payment in the redirect integration. [See the `Aborted` response][aborted].
+the payment in the redirect integration. See the [`Aborted` response][aborted].
 
 [aborted]: /checkout-v3/features/technical-reference/resource-sub-models/#failed
 [cancelled]: /checkout-v3/features/technical-reference/resource-sub-models/#cancelled

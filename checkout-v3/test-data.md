@@ -12,7 +12,7 @@ menu_order: 6
 
 When implementing Digital Payments, you can use the test data related to the
 different payment methods listed below. To see Digital Payments in live action,
-please visit the [Playground][playground].
+please visit the [Playground][playground]{:target="_blank"}.
 
 To test a checked-in user in the Playground, please use the following test data:
 
@@ -145,13 +145,6 @@ A selection of cards not connected to Network Tokenization or 3D-Secure.
 | :---------------- | :---------------------- | :------------  | :---------------- |
 | `377601000000000` | After the current month | Any (4 digits) | Amex & loopback   |
 
-### JCB
-
-{:.table .table-striped}
-| Card number        | Expiry                  | CVC   |
-| :----------------- | :---------------------- | :---- |
-| `3569990010082211` | After the current month | Any   |
-
 ### Maestro
 
 {:.table .table-striped}
@@ -200,22 +193,22 @@ The amounts that can be used to trigger error codes
 (`transactionThirdPartyError`):
 
 {:.table .table-striped}
-| Amount   | Error Code                                | Description                              |
-| :------- | :---------------------------------------- | :--------------------------------------- |
-| `900305` | `MONTHLYLIMITEXCEEDED`                    | The monthly attempt limit has been exceeded |
-| `900313` | `REJECTED_BY_ACQUIRER_INVALID_AMOUNT`     | Invalid amount, response-code: 13        |
-| `900330` | `REJECTED_BY_ACQUIRER_FORMAT_ERROR`       | Format error, response-code: 30          |
-| `900334` | `REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD`     | Possible fraud, response-code: 34        |
-| `900343` | `REJECTED_BY_ACQUIRER_CARD_STOLEN`        | Card stolen, response-code: 43           |
-| `900354` | `REJECTED_BY_ACQUIRER_CARD_EXPIRED`       | Card expired, response-code: 54          |
-| `900351` | `REJECTED_BY_ACQUIRER`                    | Unknown error, response-code: 51         |
-| `900359` | `REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD`     | Possible fraud, response-code: 59        |
-| `900361` | `REJECTED_BY_ACQUIRER_INSUFFICIENT_FUNDS` | Insufficient funds, response-code: 61    |
-| `900362` | `REJECTED_BY_ACQUIRER`                    | Unknown error, response-code: 62         |
-| `900391` | `ACQUIRER_HOST_OFFLINE`                   | Acquirer host offline, response-code: 91 |
-| `952400` | `DONOTRETRY`                              | Transaction declined, do not retry       |
-| `952501` | `MODIFICATIONSREQUIRED`                   | Transaction is declined and needs modifications |
-| `952100` | `DAILYLIMITEXCEEDED`                      | The daily attempt limit has been exceeded |
+| Amount   | Error Code                                | Description                                     |
+| :------- | :---------------------------------------- | :---------------------------------------------- |
+| `900313` | `REJECTED_BY_ACQUIRER_INVALID_AMOUNT`     | Invalid amount, response-code: 13               |
+| `900330` | `REJECTED_BY_ACQUIRER_FORMAT_ERROR`       | Format error, response-code: 30                 |
+| `900334` | `REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD`     | Possible fraud, response-code: 34               |
+| `900343` | `REJECTED_BY_ACQUIRER_CARD_STOLEN`        | Card stolen, response-code: 43                  |
+| `900354` | `REJECTED_BY_ACQUIRER_CARD_EXPIRED`       | Card expired, response-code: 54                 |
+| `900351` | `REJECTED_BY_ACQUIRER`                    | Unknown error, response-code: 51                |
+| `900359` | `REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD`     | Possible fraud, response-code: 59               |
+| `900361` | `REJECTED_BY_ACQUIRER_INSUFFICIENT_FUNDS` | Insufficient funds, response-code: 61           |
+| `900362` | `REJECTED_BY_ACQUIRER`                    | Unknown error, response-code: 62                |
+| `900391` | `ACQUIRER_HOST_OFFLINE`                   | Acquirer host offline, response-code: 91        |
+| `952400` | `DONOTRETRY`                              | Transaction declined, do not retry              |
+| `952507` | `MODIFICATIONSREQUIRED`                   | Transaction is declined and needs modifications |
+| `952100` | `DAILYLIMITEXCEEDED`                      | The daily attempt limit has been exceeded       |
+| `952100` | `MONTHLYLIMITEXCEEDED`                    | The monthly attempt limit has been exceeded     |
 
 The `DAILYLIMITEXCEEDED` must be performed 10 times to be triggered, and the
 `MONTHLYLIMITEXCEEDED` has to be performed 15 times to be triggered. The

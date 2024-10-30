@@ -2,7 +2,7 @@
 title: Customize Payments
 description: Everything you need to customize your payments.
 permalink: /:path/
-menu_order: 1300
+menu_order: 1200
 anchor_headings: false
 ---
 

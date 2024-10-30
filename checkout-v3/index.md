@@ -26,8 +26,8 @@ menu_order: 1
 </section>
 
 There are three ways of implementing our digital payments, depending on what
-suits you best. The native implementation, which goes directly towards our APIs,
-modules (WooCommerce) or SDKs (.NET or Java).
+suits you best. The **native implementation**, which goes directly towards our
+APIs, **modules** (WooCommerce) or **SDKs** (.NET or Java).
 
 The modules and SDKs have their [own section][modules-sdks], which is where you
 need to go if you are planning on using them. A bit less flexible than the
@@ -48,7 +48,8 @@ this section. We recommend [getting started here][get-started].
          </span>
          <span class="cards-content">
             <span class="h4">One-Time Payments</span>
-            <span><p>Get things started with our basic implementation.</p>
+            <span>
+               <p>Get things started with our basic implementation for all payment methods.</p>
             </span>
          </span>
          <i class="material-icons">arrow_forward</i>
@@ -63,7 +64,9 @@ this section. We recommend [getting started here][get-started].
          </span>
          <span class="cards-content">
             <span class="h4">Recurring Payments</span>
-            <span><p>Start getting that steady cash flow with our subscription services.</p>
+            <span>
+               <p>Start getting that steady cash flow with our subscription services.</p>
+               <span class="badge badge-gray-light">Card</span>
             </span>
          </span>
          <i class="material-icons">arrow_forward</i>
@@ -78,7 +81,13 @@ this section. We recommend [getting started here][get-started].
          </span>
          <span class="cards-content">
             <span class="h4">One-Click Payments</span>
-            <span><p>Save your customer's details and make their checkout faster.</p>
+            <span>
+               <p>Save your customer's details and make their checkout faster.</p>
+               <span class="badge badge-gray-light">Card</span>
+               <span class="badge badge-gray-light">Invoice</span>
+               <span class="badge badge-gray-light">Swish</span>
+               <span class="badge badge-gray-light">Trustly</span>
+               <span class="badge badge-gray-light">Vipps</span>
             </span>
          </span>
          <i class="material-icons">arrow_forward</i>
@@ -113,21 +122,19 @@ below to read more." %}
 | ![Trustly][trustly-logo]         | [Trustly][trustly]               | {% flag se %} {% flag fi %}  |
 | ![Vipps][vipps-logo]             | Vipps                            | {% flag no %}                |
 
-[apple-pay]: /checkout-v3/payment-presentations#apple-pay
+[apple-pay]: /checkout-v3/apple-pay-presentation
 [apple-pay-logo]:/assets/img/applepay-logo.svg
-[click-to-pay]: /checkout-v3/payment-presentations#click-to-pay
+[click-to-pay]: /checkout-v3/click-to-pay-presentation
 [c2p-logo]:/assets/img/clicktopay-logo.svg
 [card-icon]: /assets/img/new-card-icon.svg
 [earth-icon]: /assets/img/globe-icon.png
-[google-pay]: /checkout-v3/payment-presentations#google-pay
+[google-pay]: /checkout-v3/google-pay-presentation
 [google-pay-logo]: /assets/img/googlepay-logo.svg
 [mobilepay-logo]: /assets/img/icon-mobilepay-simple.svg
 [vipps-logo]: /assets/img/icon-vipps-simple.svg
 [swp-logo]: /assets/img/swedbank-pay-vertical-black.svg
 [swish-logo]: /assets/img/icon-swish-simple.svg
-[trustly-logo]: /assets/img/icon-trustly-simple.svg
-[wcag-presentation]: https://www.swedbankpay.com/information/wcag
-[paid]: /checkout-v3/features/technical-reference/resource-sub-models#paid
-[trustly]: /checkout-v3/payment-presentations#trustly
+[trustly-logo]: /assets/img/icon-trustly-new.svg
+[trustly]: /checkout-v3/trustly-presentation
 [get-started]: /checkout-v3/get-started/
 [modules-sdks]: /checkout-v3/modules-sdks/
