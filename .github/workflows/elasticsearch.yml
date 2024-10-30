@@ -30,10 +30,10 @@ jobs:
         run: |
           wkhtmltopdf --enable-local-file-access "file://$(pwd)/all_content.html" full_site.pdf
 
-      - name: Azure Login
-        uses: azure/login@v2
+      - name: azure login
+        uses: azure/login@v2.2.0
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: '{"clientId":"${{ secrets.SUBSCRIPTION_CLIENT_ID_STAGE }}","clientSecret":"${{ secrets.SUBSCRIPTION_CLIENT_SECRET_STAGE }}","subscriptionId":"${{ secrets.SUBSCRIPTION_ID_STAGE }}","tenantId":"${{ secrets.TENANT_ID }}"}'
 
       - name: Upload PDF to Azure Storage
         run: |
