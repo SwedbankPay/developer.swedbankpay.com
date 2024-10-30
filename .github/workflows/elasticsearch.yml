@@ -19,16 +19,6 @@ jobs:
             --env=production \
             --site-url=https://developer-ecom.stage.swedbankpay.com
 
-      # Debugging Step: List files in _site
-      - name: List files in _site
-        run: |
-          ls -la ./_site
-
-      # If all_content.html is missing, copy it manually
-      - name: Copy all_content.html to _site
-        if: !contains(steps.list-files.outputs.stdout, 'all_content.html')
-        run: |
-          cp all_content.html ./_site/
 
       - name: Install wkhtmltopdf
         run: |
