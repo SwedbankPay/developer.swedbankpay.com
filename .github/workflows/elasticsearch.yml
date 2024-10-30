@@ -17,10 +17,14 @@ jobs:
       with:
         ruby-version: 2.7
 
-    - name: Build Jekyll site
+    - name: Jekyll Build
       run: |
-        bundle install
-        bundle exec jekyll build
+        docker compose run \
+          -e GITHUB_BRANCH=index-to-elasticsearch \
+          -e GITHUB_REPOSITORY_URL=https://github.com/SwedbankPay/developer.swedbankpay.com \
+          portal build \
+          --env=production \
+          --site-url=https://developer-ecom.stage.swedbankpay.com
 
     # New step: Install wkhtmltopdf
     - name: Install wkhtmltopdf
