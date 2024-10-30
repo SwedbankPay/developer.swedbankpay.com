@@ -5,45 +5,51 @@ on:
     branches: ['index-to-elasticsearch']
 
 jobs:
-  build-and-index:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-    - name: Setup Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 2.7
+      - name: Jekyll Build
+        run: |
+          docker compose run \
+            -e GITHUB_BRANCH=index-to-elasticsearch \
+            -e GITHUB_REPOSITORY_URL=https://github.com/SwedbankPay/developer.swedbankpay.com \
+            portal build \
+            --env=production \
+            --site-url=https://developer-ecom.stage.swedbankpay.com
 
-    - name: Jekyll Build
-      run: |
-        docker compose run \
-          -e GITHUB_BRANCH=index-to-elasticsearch \
-          -e GITHUB_REPOSITORY_URL=https://github.com/SwedbankPay/developer.swedbankpay.com \
-          portal build \
-          --env=production \
-          --site-url=https://developer-ecom.stage.swedbankpay.com
+      # Debugging Step: List files in _site
+      - name: List files in _site
+        run: |
+          ls -la ./_site
 
-    # New step: Install wkhtmltopdf
-    - name: Install wkhtmltopdf
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y wkhtmltopdf
+      # If all_content.html is missing, copy it manually
+      - name: Copy all_content.html to _site
+        if: !contains(steps.list-files.outputs.stdout, 'all_content.html')
+        run: |
+          cp all_content.html ./_site/
 
-    # New step: Generate PDF
-    - name: Generate PDF
-      working-directory: ./_site
-      run: |
-        wkhtmltopdf --enable-local-file-access all_content.html full_site.pdf
+      - name: Install wkhtmltopdf
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wkhtmltopdf
 
-    # New step: Upload PDF to Azure Storage
-    - name: Upload PDF to Azure Storage
-      run: |
-        az storage blob upload \
-          --container-name pdf \
-          --file "_site/full_site.pdf" \
-          --name "full_site.pdf" \
-          --account-name stagedeveloperecomsa2 \
-          --overwrite
+      - name: Generate PDF
+        working-directory: ./_site
+        run: |
+          wkhtmltopdf --enable-local-file-access "file://$(pwd)/all_content.html" full_site.pdf
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Upload PDF to Azure Storage
+        run: |
+          az storage blob upload \
+            --container-name pdf \
+            --file "_site/full_site.pdf" \
+            --name "full_site.pdf" \
+            --account-name stagedeveloperecomsa2 \
+            --overwrite
