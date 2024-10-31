@@ -22,10 +22,9 @@ secure that the URL provided is from us at Swedbank Pay.
 See points **6.4.3** and **11.6.1** in the PCI-DSS link above for more.
 
 Please note that this only applies to payment methods that are affected by
-PCI-DSS (Card, Vipps and/or Mobile Pay). If you only offer payment methods not
-affected by PCI-DSS (Invoice, Swish and/or Trustly), no actions are necessary.
-If you want to add PCI-DSS affected payment methods later, this is something
-you need to consider.
+PCI-DSS (Card and Click to Pay). If you only offer payment methods not affected
+by PCI-DSS, no actions are necessary. If you want to add PCI-DSS affected
+payment methods later, this is something you need to consider.
 
 To learn more about how PCI-DSS affects you, we also have reading available
 in [Danish][da]{:target="_blank"}, [Finnish][fi]{:target="_blank"},
