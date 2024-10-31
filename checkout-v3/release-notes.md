@@ -18,9 +18,8 @@ changes and written a guide for [transferring from Seamless View][trans-guide]
 to the Redirect integration.
 
 Not on our newest implementantion yet? There are guides for
-[Payment Menu v2][pmv2] and the Payment Methods which are inside the PCI-DSS
-zone ([card][card-guide], [Vipps][vipps-guide] and [MobilePay][mp-guide])
-available too. Information about [Checkout v2][cv2] can be found here.
+[Payment Menu v2][pmv2] and [card][card-guide] in Payment Methods v1 available
+too. Information about [Checkout v2][cv2] can be found here.
 
 Version 5.0.0 of our Mobile SDK is also going live. The new additions are
 [native payment features][nat-pay] and a new automatic configuration feature
