@@ -11,18 +11,13 @@ menu_order: 4
 ---
 
 Swedbank Pay offers APIs, SDKs, libraries, modules, extensions and plugins as
-different ways to integrate and use our products and services. It might not
-be obvious to everyone what these are, so to describe them we use the analogy
-of **baking a cake**.
+different ways to integrate and use our products and services.
 
 ### APIs
 
-APIs (Application Programming Interface) are the lowest level building block of
-our offering and can be compared to **raw ingredients**. They give you a whole
-lot of flexibility, but also requires you to have more knowledge in how to use
-them correctly and you need to know which recipe to cook in order to get a
-workable cake out in the other end. To efficiently use an API, you need to be
-a trained baker.
+APIs (Application Programming Interface) are the lowest level building blocks we
+offer. They give you a whole lot of flexibility, but also requires you to have
+more knowledge in how to use them correctly.
 
 ### SDKs
 
