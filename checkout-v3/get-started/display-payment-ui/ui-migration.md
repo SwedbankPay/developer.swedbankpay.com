@@ -17,7 +17,7 @@ The updated requirements will include stricter controls and monitoring,
 particularly around the security of your checkout process. A script or other
 monitoring needs to be in place to verify that the checkout URL is correct and
 has not been tampered with. This is to avoid phishing or hijacking, and to
-secure that the URL provided is from us at Swedbank Pay.
+secure that the URL provided is from Swedbank Pay or another trusted domain.
 
 See points **6.4.3** and **11.6.1** in the PCI-DSS link above for more.
 
@@ -108,7 +108,31 @@ included regardless of your UI choice.
     json= request_content
     %}
 
+## Monitoring The Script URL
+
+We recommend following the [Content Security Policy][csp] rules when setting up
+the monitoring and authorizing of scripts.
+
+Make sure to whitelist the sites listed below, so the browser only retrieves
+content from them. While `https://*.payex.com` and `https://*.swedbank.com`
+cover most of the payment methods we offer, the digital wallets Apple Pay, Click
+to Pay and Google Pay are delivered through Payair. In addition to the Payair
+URL, these wallets will also generate URLs from Apple, Google, MasterCard and/or
+Visa. Make sure you whitelist them too, and keep yourself updated on their
+status in case they change.
+
+The same goes for ACS URLs. If these are are not whitelisted and maintained, it
+could result in issues with loading the 3D Secure 2 authentication interface.
+
+{:.table .table-striped}
+| URL    | Description             |
+| :------ | :--------------- |
+| https://*.payex.com    | Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+| https://*.swedbank.com | Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+| https://*.payair.com | URL for the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+
 [custom-logo]: /checkout-v3/features/customize-ui/custom-logo/
+[csp]: https://www.w3.org/TR/CSP2/
 [post-response]: /checkout-v3/get-started/payment-request-3-1/#payment-order-response
 [post-request]: /checkout-v3/get-started/payment-request-3-1/#payment-order-request
 [pci]: https://www.swedbankpay.se/globalassets/global-documents/risk-and-security/pci-dss-v4-0-saq-a-r2.pdf

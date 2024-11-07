@@ -93,7 +93,7 @@ request.send();
 
 ## How Seamless View Looks
 
-The payment menu should appear in the iframe on your page, so the payer can
+The payment UI should appear in the iframe on your page, so the payer can
 select their preferred payment method and pay.
 
 {:.text-center}
@@ -102,9 +102,38 @@ select their preferred payment method and pay.
 Once the payer has completed the purchase, you can perform a GET towards the
 `paymentOrders` resource to see the purchase state.
 
+## Monitoring The Script URL
+
+With the [PCI-DSS v4][pci] changes taking effect March 31st 2025, stricter
+monitoring of the script URL used in the iframe becomes a compliance
+requirement. Seamless View merchants are responsible for making sure that the
+script url used is issued from Swedbank Pay or another trusted domain. See
+section **4.6.3** in the link above for further information.
+
+We recommend following the [Content Security Policy][csp] rules when setting up
+the monitoring and authorizing of scripts.
+
+Make sure to whitelist the sites listed below, so the browser only retrieves
+content from them. While `https://*.payex.com` and `https://*.swedbank.com`
+cover most of the payment methods we offer, the digital wallets Apple Pay, Click
+to Pay and Google Pay are delivered through Payair. In addition to the Payair
+URL, these wallets will also generate URLs from Apple, Google, MasterCard and/or
+Visa. Make sure you whitelist them too, and keep yourself updated on their
+status in case they change.
+
+The same goes for ACS URLs. If these are are not whitelisted and maintained, it
+could result in issues with loading the 3D Secure 2 authentication interface.
+
+{:.table .table-striped}
+| URL    | Description             |
+| :------ | :--------------- |
+| https://*.payex.com    | Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+| https://*.swedbank.com | Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+| https://*.payair.com | URL for the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+
 ### Events
 
-When integrating Seamless View, we strongly recommend that you implement the
+When integrating Seamless View we strongly recommend that you implement the
 `onPaid` event, which will give you the best setup. Even with this implemented,
 you need to check the payment status towards our APIs, as the payer can make
 changes in the browser at any time.
@@ -213,7 +242,9 @@ Merchant -->>- Payer: Show Purchase complete
 {% include iterator.html next_href="/checkout-v3/get-started/post-purchase-3-1"
                          next_title="Post-Purchase v3.1" %}
 
+[csp]: https://www.w3.org/TR/CSP2/
 [seamless-view-events]: /checkout-v3/features/technical-reference/seamless-view-events
 [seamless-enterprise-menu]: /assets/img/wcag-seamless.png
 [payments-callback]: /checkout-v3/features/payment-operations/callback
 [payments-seamless-view-events]: /checkout-v3/features/technical-reference/seamless-view-events
+[pci]: https://www.swedbankpay.se/globalassets/global-documents/risk-and-security/pci-dss-v4-0-saq-a-r2.pdf

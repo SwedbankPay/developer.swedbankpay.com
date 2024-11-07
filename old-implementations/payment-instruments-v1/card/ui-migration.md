@@ -17,7 +17,7 @@ The updated requirements will include stricter controls and monitoring,
 particularly around the security of your checkout process. A script or other
 monitoring needs to be in place to verify that the checkout URL is correct and
 has not been tampered with. This is to avoid phishing or hijacking, and to
-secure that the URL provided is from us at Swedbank Pay.
+secure that the URL provided is from Swedbank Pay or another trusted domain.
 
 See points **6.4.3** and **11.6.1** in the PCI-DSS link above for more.
 

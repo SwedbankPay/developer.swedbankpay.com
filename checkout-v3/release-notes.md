@@ -8,7 +8,7 @@ menu_order: 7
 release_notes: true
 ---
 
-## 24 October 2025
+## 24 October 2024
 
 ### Version 5.3.2
 
