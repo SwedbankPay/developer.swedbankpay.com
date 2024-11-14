@@ -210,9 +210,8 @@ PaymentSession.paymentSessionStatenativePaymentState.observe(viewLifecycleOwner)
 
 The `AvailableInstrumentsFetched` state contains a list of `AvailableInstrument`
 on the `availableInstruments` parameter. This list of payment methods that
-can be used for native payments. These instrument object also contain saved
-payment method data. This could be saved credit cards or known MSISDN for the
-user.
+can be used for payments. These instrument object also contain saved payment
+method data. This could be saved credit cards or known MSISDN for the user.
 
 ## Swish
 
@@ -590,9 +589,8 @@ func paymentSessionCanceled() {
 The `availableInstruments` array provided in the
 `paymentSessionFetched(_:)` delegate method is an array of
 `SwedbankPaySDK.AvailableInstrument` with information of payment methods that
-can be used for native payments. These instrument object also contain saved
-payment method data. This could be saved credit cards or known MSISDN for the
-user.
+can be used for payments. These instrument object also contain saved payment
+method data. This could be saved credit cards or known MSISDN for the user.
 
 ## Swish
 
@@ -950,9 +948,20 @@ the Native Payment feature slightly different.
 
 #### Payment menu fallback
 
-You might want to give the user an option to use the regular, web view based,
-payment menu in the SDK. One simple way to achieve this is to reuse the same
-payment order and present the regular SDK UI depending on the user choice:
+You might want to give the user an option to make payments in the regular, web
+view based, payment menu using the SDK. You can easily achieve this by reusing
+the same session and present the web view based SDK UI as a fallback depending
+on the user choice. You can also use this functionality to directly present one
+specific instrument for the user in the web view. This supports all instruments,
+including the instruments not supported as native payments, such as Invoice
+payments.
+
+In the `availableInstruments` array you receive from the session, you will find
+instruments indicated as "Web Based". These don't have a corresponding
+`PaymentAttemptInstrument`, and can therefore not be used to make native payment
+attempts. They can instead be used to configure the web view based SDK UI.
+
+An example flow for presenting a "More payment methods" for the user:
 
 ```mermaid
 sequenceDiagram
@@ -983,6 +992,74 @@ sequenceDiagram
         SDK ->> App: paymentComplete()
         deactivate SDK
     end
+```
+
+You request a web view based payment menu, and specify the mode, using the SDK
+with an ongoing session. This web based payment can be presented in three ways:
+
+1.  As a payment menu, displaying all available instruments for the payment
+    order.
+2.  As a payment menu, restricting the instruments to a specific subset of the
+    available instruments for the payment order.
+3.  As instrument mode, displaying only one specific instrument.
+
+##### Payment menu
+
+For a payment menu with all available instruments for the payment order, we
+specify the `mode` to `menu` and `restrictedToInstruments` to an empty value.
+
+```swift
+paymentSession.createSwedbankPaySDKController(mode: .menu(restrictedToInstruments: nil))
+```
+
+```kotlin
+paymentSession.createPaymentFragment(mode = SwedbankPayPaymentSessionSDKControllerMode.Menu(null))
+```
+
+##### Payment menu, restricted to instruments
+
+For a payment menu restricted to specific instruments, we specify the `mode` to
+`menu` and `restrictedToInstruments` to an array with the instruments that you
+want to show in the menu. In the example below, we filter out so that only the
+purely web based instruments are shown, but you are free to specify any logic.
+You are free to include both instruments that are web based and those that can
+be performed as native payments.
+
+```swift
+let restrictedToInstruments = availableInstruments.filter {
+    if case .webBased = $0 {
+        return true
+    }
+    
+    return false
+}
+paymentSession.createSwedbankPaySDKController(mode: .menu(restrictedToInstruments: restrictedToInstruments))
+```
+
+
+```kotlin
+val restrictedToInstruments = availableInstruments.filterIsInstance<AvailableInstrument.WebBased>()
+paymentSession.createPaymentFragment(mode = SwedbankPayPaymentSessionSDKControllerMode.Menu(restrictedToInstruments = restrictedToInstruments))
+```
+
+##### Instrument mode
+
+For instrument mode, we specify `mode` to `instrumentMode` and `instrument` to
+the specific instrument that was picked by the user. Note that the SDK exposes
+the instrument `paymentMethod` identifiers as strings, and it's up to you to
+identify the relevant instrument from the list of available instruments. In the
+example below, we explicitly look for the `Invoice-PayExFinancingSe` instrument.
+
+```swift
+if let instrument = availableInstruments.first(where: { $0.paymentMethod == "Invoice-PayExFinancingSe" }) {
+    paymentSession.createSwedbankPaySDKController(mode: .instrumentMode(instrument: instrument))
+}
+```
+
+```kotlin
+availableInstruments.firstOrNull { it.paymentMethod == "Invoice-PayExFinancingSe" }?.let { instrument ->
+    paymentSession?.createPaymentFragment(SwedbankPayPaymentSessionSDKControllerMode.InstrumentMode(instrument = instrument))
+}
 ```
 
 #### Present methods before payment order creation
