@@ -977,7 +977,7 @@ if let instrument = availableInstruments.first(where: { $0.paymentMethod == "Inv
 
 ```kotlin
 availableInstruments.firstOrNull { it.paymentMethod == "Invoice-PayExFinancingSe" }?.let { instrument ->
-    paymentSession?.createPaymentFragment(SwedbankPayPaymentSessionSDKControllerMode.InstrumentMode(instrument = instrument))
+    paymentSession.createPaymentFragment(SwedbankPayPaymentSessionSDKControllerMode.InstrumentMode(instrument = instrument))
 }
 ```
 
