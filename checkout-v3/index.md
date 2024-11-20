@@ -27,7 +27,7 @@ menu_order: 1
 
 There are three ways of implementing our digital payments, depending on what
 suits you best. The **native implementation**, which goes directly towards our
-APIs, **modules** (WooCommerce) or **SDKs** (*.NET* or *Java* for web, *iOS* and
+APIs, **modules** (WooCommerce) or **SDKs** (*.NET* or *PHP* for web, *iOS* and
 *Android* for mobile apps).
 
 The modules and SDKs have their [own section][modules-sdks], which is where you

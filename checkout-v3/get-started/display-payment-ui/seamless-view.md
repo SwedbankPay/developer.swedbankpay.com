@@ -104,25 +104,29 @@ Once the payer has completed the purchase, you can perform a GET towards the
 
 ## Monitoring The Script URL
 
-With the [PCI-DSS v4][pci] changes taking effect March 31st 2025, stricter
-monitoring of the script URL used in the iframe becomes a compliance
-requirement. Seamless View merchants are responsible for making sure that the
-script url used is issued from Swedbank Pay or another trusted domain. See
-section **4.6.3** in the link above for further information.
+With the [PCI-DSS v4][pci] changes taking effect on March 31st 2025, merchants
+are responsible for ensuring the integrity of the HTML script used in their
+integration, including monitoring what is loaded into or over it. Specifically,
+Seamless View merchants must verify that the script URL embedded in their iframe
+originates from Swedbank Pay or another trusted domain. It is important to note
+that Swedbank Pay’s PCI responsibility is strictly limited to the content within
+the payment iframe. For further details, refer to section 4.6.3 in the linked
+document.
 
-We recommend following the [Content Security Policy][csp] rules when setting up
-the monitoring and authorizing of scripts.
+To ensure compliance, we recommend implementing [Content Security Policy][csp]
+rules to monitor and authorize scripts.
 
-Make sure to whitelist the sites listed below, so the browser only retrieves
-content from them. While `https://*.payex.com` and `https://*.swedbank.com`
-cover most of the payment methods we offer, the digital wallets Apple Pay, Click
-to Pay and Google Pay are delivered through Payair. In addition to the Payair
-URL, these wallets will also generate URLs from Apple, Google, MasterCard and/or
-Visa. Make sure you whitelist them too, and keep yourself updated on their
-status in case they change.
+Merchants must whitelist the following domains to restrict browser content
+retrieval to approved sources. While `https://*.payex.com` and
+`https://*.swedbank.com` cover most payment methods, digital wallets such as
+Apple Pay, Click to Pay, and Google Pay are delivered via Payair. Alongside the
+Payair URL, these wallets may also generate URLs from Apple, Google, MasterCard,
+and Visa. Merchants are responsible for whitelisting these domains and keeping
+them up to date in case of changes.
 
-The same goes for ACS URLs. If these are are not whitelisted and maintained, it
-could result in issues with loading the 3D Secure 2 authentication interface.
+When it comes to ACS URLs, nothing is loaded from the ACS domain in the
+merchant's end. It will either happen within Swedbank Pay's domain or as a
+redirect, which will repeal the merchant's CSP.
 
 {:.table .table-striped}
 | URL    | Description             |

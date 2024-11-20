@@ -10,8 +10,10 @@ permalink: /:path/
 menu_order: 4
 ---
 
-Swedbank Pay offers APIs, SDKs, libraries, modules, extensions and plugins as
-different ways to integrate and use our products and services.
+Swedbank Pay offers SDKs, libraries, modules, extensions and plugins as
+different ways to integrate and use our products and services. Platform specific
+packaging that handles a lot of the logic towards our REST API, so you don't
+have to.
 
 **Modules, extensions and plugins** are typically used as a way to extend
 webshop platforms such as [WooCommerce][woocommerce]{:data-proofer-ignore=''}
