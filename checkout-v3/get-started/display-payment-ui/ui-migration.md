@@ -14,12 +14,16 @@ than they currently have. This is because Seamless View is hosted by you. As the
 responsibilities.
 
 The updated requirements will include stricter controls and monitoring,
-particularly around the security of your checkout process. A script or other
-monitoring needs to be in place to verify that the checkout URL is correct and
-has not been tampered with. This is to avoid phishing or hijacking, and to
-secure that the URL provided is from Swedbank Pay or another trusted domain.
+particularly around the security of your checkout process. Merchants are
+responsible for ensuring the integrity of the HTML script used in their
+integration, including monitoring what is loaded into or over it. Specifically,
+Seamless View merchants must verify that the script URL embedded in their iframe
+originates from Swedbank Pay or another trusted domain. It is important to note
+that Swedbank Pay’s PCI responsibility is strictly limited to the content within
+the payment iframe.
 
-See points **6.4.3** and **11.6.1** in the PCI-DSS link above for more.
+For further details, refer to section **4.6.3** and **11.6.1** in the linked
+PCI-DSS document.
 
 Please note that this only applies to payment methods that are affected by
 PCI-DSS (Card and Click to Pay). If you only offer payment methods not affected
@@ -110,19 +114,23 @@ included regardless of your UI choice.
 
 ## Monitoring The Script URL
 
-We recommend following the [Content Security Policy][csp] rules when setting up
-the monitoring and authorizing of scripts.
+If you choose to stay with Seamless View, please take the following under
+advisement.
 
-Make sure to whitelist the sites listed below, so the browser only retrieves
-content from them. While `https://*.payex.com` and `https://*.swedbank.com`
-cover most of the payment methods we offer, the digital wallets Apple Pay, Click
-to Pay and Google Pay are delivered through Payair. In addition to the Payair
-URL, these wallets will also generate URLs from Apple, Google, MasterCard and/or
-Visa. Make sure you whitelist them too, and keep yourself updated on their
-status in case they change.
+To ensure compliance, we recommend implementing [Content Security Policy][csp]
+rules to monitor and authorize scripts.
 
-The same goes for ACS URLs. If these are are not whitelisted and maintained, it
-could result in issues with loading the 3D Secure 2 authentication interface.
+Merchants must whitelist the following domains to restrict browser content
+retrieval to approved sources. While `https://*.payex.com` and
+`https://*.swedbank.com` cover most payment methods, digital wallets such as
+Apple Pay, Click to Pay, and Google Pay are delivered via Payair. Alongside the
+Payair URL, these wallets may also generate URLs from Apple, Google, MasterCard,
+and Visa. Merchants are responsible for whitelisting these domains and keeping
+them up to date in case of changes.
+
+When it comes to ACS URLs, nothing is loaded from the ACS domain in the
+merchant's end. It will either happen within Swedbank Pay's domain or as a
+redirect, which will repeal the merchant's CSP.
 
 {:.table .table-striped}
 | URL    | Description             |
