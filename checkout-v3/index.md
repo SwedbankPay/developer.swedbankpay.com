@@ -123,6 +123,19 @@ below to read more." %}
 | ![Trustly][trustly-logo]         | [Trustly][trustly]               | {% flag se %} {% flag fi %}  |
 | ![Vipps][vipps-logo]             | Vipps                            | {% flag no %}                |
 
+#### Browser And Operative System Limitations
+
+Browsers like Edge, Firefox, Google Chrome, Safari etc. are supported. The
+same goes for mobile operative systems like Android or iOS.
+
+However, there are limitations for iOS versions older than 12.2 and all versions
+of Internet Explorer. Due to their age, they are unable to load our payment
+UI.
+
+Payers using these must update to a newer iOS or switch to a supported browser
+respectively. If their device is too old to update to a viable iOS, they need to
+use another device.
+
 [apple-pay]: /checkout-v3/apple-pay-presentation
 [apple-pay-logo]:/assets/img/applepay-logo.svg
 [click-to-pay]: /checkout-v3/click-to-pay-presentation
