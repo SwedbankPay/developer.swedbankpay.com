@@ -274,6 +274,12 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           "contentType": "application/json"
         },
         {
+          "href": "https://api.payex.com/psp/paymentorders/{{ page.payment_order_id }}",
+          "rel": "abort-paymentattempt",
+          "method": "PATCH",
+          "contentType": "application/json"
+        },
+        {
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
           "rel": "set-instrument",
           "method": "PATCH",
