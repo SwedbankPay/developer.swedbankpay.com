@@ -320,6 +320,12 @@ api-supported-versions: 3.x{% endcapture %}
           "rel": "abort",
           "method": "PATCH",
           "contentType": "application/json"
+        },
+        {
+          "href": "https://api.payex.com/psp/paymentorders/{{ page.payment_order_id }}",
+          "rel": "abort-paymentattempt",
+          "method": "PATCH",
+          "contentType": "application/json"
         }
     ]
 }{% endcapture %}
