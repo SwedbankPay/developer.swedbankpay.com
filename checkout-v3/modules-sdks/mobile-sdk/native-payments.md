@@ -240,9 +240,9 @@ the MSISDN string before making the native Swish payment attempt.
 
 When requesting local start, the SDK will automatically launch the Swish app on
 the local device. If an error occurred when starting the app, your app will be
-informed by the problem by receiving the `SdkProblemOccurred` payment state,
-where the `problem` parameter will be
-`PaymentSessionProblem.ClientAppLaunchFailed`.
+informed by the problem by receiving the `SessionProblemOccurred` payment state,
+where the `problem` parameter will have the `type` value
+`"https://api.payex.com/psp/errordetail/paymentorders/clientapplaunchfailed"`.
 
 ## Saved Credit Cards
 
@@ -619,9 +619,9 @@ the MSISDN string before making the native Swish payment attempt.
 
 When requesting local start, the SDK will automatically launch the Swish app on
 the local device. If an error occurred when starting the app, the SDK will call
-the `sdkProblemOccurred(problem:)` delegate method, and provide the
-`SwedbankPaySDK.PaymentSessionProblem.clientAppLaunchFailed` problem as
-parameter.
+the `sessionProblemOccurred(problem:)` delegate method, and provide a problem
+with type `type` parameter set to
+`"https://api.payex.com/psp/errordetail/paymentorders/clientapplaunchfailed"`.
 
 ## Saved Credit Cards
 
@@ -832,11 +832,6 @@ handled in the following ways:
     callback function on Android that you can call to retry the underlying API
     call. You should inform the user of the error and give the option to either
     abort the payment session or retry the call.
-*   `ClientAppLaunchFailed` informs you that the SDK have attempted to launch an
-    external app (such as Swish) and that it failed to do so. You should inform
-    the user of the problem and give them the option to either make a new
-    attempt (with any available payment method) or to abort the whole payment
-    session.
 *   `InternalInconsistencyError` is the result of an logic inconsistency problem
     in the SDK. An example of this would be to call `abortPaymentSession()`
     before `startPaymentSession()`. If you receive this error during
