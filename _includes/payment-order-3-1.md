@@ -24,7 +24,8 @@ Content-Type: application/json;version=3.1{% endcapture %}
             "completeUrl": "https://example.com/payment-completed",
             "cancelUrl": "https://example.com/payment-cancelled", //Redirect only
             "callbackUrl": "https://api.example.com/payment-callback",
-            "logoUrl": "https://example.com/logo.png"
+            "logoUrl": "https://example.com/logo.png",
+            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf"
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}",
@@ -61,6 +62,7 @@ Content-Type: application/json;version=3.1{% endcapture %}
 | {% icon check %} | {% f cancelUrl, 2 %}               | `string`     | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
 | {% icon check %} | {% f callbackUrl, 2 %}             | `string`     | {% include fields/callback-url.md %}                                                                                                                                                                                              |
 |                  | {% f logoUrl, 2 %}                 | `string`     | {% include fields/logo-url.md %}                                                                                                                                                                                                                                                               |
+|                  | {% f termsOfServiceUrl, 2 %}                 | `string`     | {% include fields/terms-of-service-url.md %}                                                                                                                                                                                                                                                               |
 | {% icon check %} | {% f payeeInfo %}                | `object`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f payeeId, 2 %}                 | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                                                                                                            |
 | {% icon check %} | {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                                                                                                 |
