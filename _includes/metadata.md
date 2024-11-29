@@ -72,10 +72,21 @@ Content-Type: application/json{% endcapture %}
 
 ## GET Request
 
-{% capture request_header %}GET /psp/{{ api_resource }}/{% unless api_resource == "paymentorders" %}payments/{% endunless %}{{ page.payment_id }}/ HTTP/1.1
-Host: {{ page.api_host }}
+{% if documentation_section contains "old-implementations/payment-instruments-v1" %}
+
+{% capture request_header %}GET /psp/{{ api_resource }}/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/ HTTP/1.1
+Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json{% endcapture %}
+
+{% else %}
+
+{% capture request_header %}GET /psp/paymentorders/7e6cdfc3-1276-44e9-9992-7cf4419750e1/ HTTP/1.1
+Host: api.externalintegration.payex.com
+Authorization: Bearer <AccessToken>
+Content-Type: application/json{% endcapture %}
+
+{% endif %}
 
 {% include code-example.html
     title='Request'
