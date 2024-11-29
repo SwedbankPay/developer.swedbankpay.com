@@ -125,8 +125,9 @@ below to read more." %}
 
 #### Browser And Operative System Limitations
 
-Browsers like Edge, Firefox, Google Chrome, Safari etc. are supported. The
-same goes for mobile operative systems like Android or iOS.
+We support all major browsers like (but not limited to) Edge, Firefox, Google
+Chrome and Safari. The same goes for mobile operative systems like Android or
+iOS.
 
 However, there are limitations for iOS versions older than 12.2 and all versions
 of Internet Explorer. Due to their age, they are unable to load our payment
