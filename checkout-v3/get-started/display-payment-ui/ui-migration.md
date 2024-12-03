@@ -125,19 +125,27 @@ retrieval to approved sources. While `https://*.payex.com` and
 `https://*.swedbank.com` cover most payment methods, digital wallets such as
 Apple Pay, Click to Pay, and Google Pay are delivered via Payair. Alongside the
 Payair URL, these wallets may also generate URLs from Apple, Google, MasterCard,
-and Visa. Merchants are responsible for whitelisting these domains and keeping
-them up to date in case of changes.
+and Visa. See the table below for more information.
 
 When it comes to ACS URLs, nothing is loaded from the ACS domain in the
 merchant's end. It will either happen within Swedbank Pay's domain or as a
 redirect, which will repeal the merchant's CSP.
 
+{% include alert.html type="success" icon="info" body="The list below includes
+important URLs, but may not be exhaustive. Merchants need to stay up to date in
+case of URL changes, or if you need to whitelist URLs not listed here." %}
+
 {:.table .table-striped}
 | URL    | Description             |
 | :------ | :--------------- |
+| https://*.cdn-apple.com | URL needed for Apple Pay.     |
+| https://*.google.com | URL needed for Google Pay.     |
+| https://*.gstatic.com | Domain used by Google that hosts images, CSS, and javascript code to reduce bandwidth usage online.     |
+| https://*.mastercard.com | URL needed for Click to Pay.     |
+| https://*.payair.com | URL for the digital wallets Apple Pay, Click to Pay and Google Pay.     |
 | https://*.payex.com    | Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.     |
 | https://*.swedbank.com | Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.     |
-| https://*.payair.com | URL for the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+| https://*.visa.com | URL needed for Click to Pay.     |
 
 [custom-logo]: /checkout-v3/features/customize-ui/custom-logo/
 [csp]: https://www.w3.org/TR/CSP2/
