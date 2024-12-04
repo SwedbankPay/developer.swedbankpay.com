@@ -189,7 +189,7 @@ rules to monitor and authorize scripts.
 
 Merchants must whitelist the following domains to restrict browser content
 retrieval to approved sources. While `https://*.payex.com` and
-`https://*.swedbank.com` cover most payment methods, digital wallets such as
+`https://*.swedbankpay.com` cover most payment methods, digital wallets such as
 Apple Pay, Click to Pay, and Google Pay are delivered via Payair. Alongside the
 Payair URL, these wallets may also generate URLs from Apple, Google, MasterCard,
 and Visa. Merchants are responsible for whitelisting these domains and keeping
@@ -203,7 +203,7 @@ redirect, which will repeal the merchant's CSP.
 | URL    | Description             |
 | :------ | :--------------- |
 | https://*.payex.com    | Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.     |
-| https://*.swedbank.com | Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+| https://*.swedbankpay.com | Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.     |
 | https://*.payair.com | URL for the digital wallets Apple Pay, Click to Pay and Google Pay.     |
 
 This should bring up the Payment Menu in a Seamless View looking like
