@@ -435,6 +435,12 @@ api-supported-versions: 3.x{% endcapture %}
     ]
 }{% endcapture %}
 
+{% include code-example.html
+    title='Abort Payment Attempt Response'
+    header=response_header
+    json= response_content
+    %}
+
 {% capture table %}
 {:.table .table-striped .mb-5}
 | Field                                  | Type         | Description                                                                                                                                                                                                               |
@@ -472,11 +478,5 @@ api-supported-versions: 3.x{% endcapture %}
 | {% f operations %}                   | `array`      | {% include fields/operations.md %} [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
 {% endcapture %}
 {% include accordion-table.html content=table %}
-
-{% include code-example.html
-    title='Abort Payment Attempt Response'
-    header=response_header
-    json= response_content
-    %}
 
 {% endif %}
