@@ -8,6 +8,33 @@ menu_order: 7
 release_notes: true
 ---
 
+## 09 December 2024
+
+### Version 5.3.3
+
+From all of us, to all of you, the last release of the year!
+
+We have updated the [iOS and Android SDK documentation][nat-pay] to include
+handling of web based payment methods in payment sessions. A small clean-up of
+the [introduction][modules-sdks] is also in place.
+
+An explanation of the payment UI's browser and OS limitations has been added
+under [Availability][limitations].
+
+As a continuation of Release 5.3.2's migration guide for merchants who want to
+go from Seamless View to Redirect, we give some recommendations regarding
+monitoring of the script URL for those who wish to continue with Seamless View.
+You can find the information in both the regular
+[Seamless View][seamless-view-script] integration and the
+["Change UI option" guide][trans-guide-script]. It is also available in older
+implementation where it is relevant.
+
+A new operation called `abort-paymentattempt` has been added to 3.x versions. As
+the name implies, it is meant for instances where the merchant wants to abort
+the payment _attempt_, and not the payment _order_ as a whole. Read more about
+it in the [Abort section][abort-payattempt] of the payment options category in
+Digital Payments' Features.
+
 ## 24 October 2024
 
 ### Version 5.3.2
@@ -1078,6 +1105,7 @@ more convenient for both the integration and the payer.
 [3-1]: /checkout-v3/get-started/payment-request-3-1
 [3ds2-test]: /checkout-v3/test-data#3-d-secure-cards
 [afd-payments]: /checkout-v3/features/optional/afd
+[abort-payattempt]: /checkout-v3/features/optional/payment-operations/abort/#abort-payment-attempt
 [age-restrictions]: /checkout-v3/features/optional/age-restrictions
 [android-sdk-documentation]: /checkout-v3/modules-sdks/mobile-sdk/android
 [apple-pay]: /checkout-v3/apple-pay-presentation
@@ -1157,6 +1185,7 @@ more convenient for both the integration and the payer.
 [invoice]: /old-implementations/payment-instruments-v1/invoice
 [int-com]: /checkout-v3/features/optional/integrated-commerce
 [ios-sdk-documentation]: /checkout-v3/modules-sdks/mobile-sdk/ios
+[limitations]: https://developer.stage.swedbankpay.com/checkout-v3/#browser-and-operative-system-limitations
 [mac-checkout]: /old-implementations/checkout-v2/features/optional/mac
 [magic-amount]: /checkout-v3/test-data/#magic-amounts-error-testing-using-amounts
 [mig-guide]: /checkout-v3/migration-guide/
@@ -1200,6 +1229,7 @@ more convenient for both the integration and the payer.
 [resource-models]: /checkout-v3/features/technical-reference/resource-sub-models
 [request-delivery-information]: /checkout-v3/features/optional/request-delivery-info
 [ruc]: /checkout-v3/get-started/recurring
+[seamless-view-script]: /checkout-v3/get-started/display-payment-ui/seamless-view/#monitoring-the-script-url
 [settlement-balance-report]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation#balance-report
 [settlement-reconcilitation]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation
 [sdk-guidelines]: /checkout-v3/modules-sdks/development-guidelines
@@ -1233,6 +1263,7 @@ more convenient for both the integration and the payer.
 [tos-url]: /checkout-v3/features/customize-ui/tos
 [trustly-pres]: /checkout-v3/trustly-presentation
 [trans-guide]: /checkout-v3/get-started/display-payment-ui/ui-migration/
+[trans-guide-script]: /checkout-v3/get-started/display-payment-ui/ui-migration/#monitoring-the-script-url
 [transaction-on-file]: /old-implementations/payment-instruments-v1/card/features/optional/transaction-on-file
 [tra-exemption]: /old-implementations/checkout-v2/features/optional/tra
 [trustly-payments]: /old-implementations/payment-instruments-v1/trustly
