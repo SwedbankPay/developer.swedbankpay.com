@@ -108,6 +108,47 @@ embedded on your website.
 </script>
 ```
 
+## Monitoring The Script URL
+
+With the [PCI-DSS v4][pci] changes taking effect on March 31st 2025, merchants
+are responsible for ensuring the integrity of the HTML script used in their
+integration, including monitoring what is loaded into or over it. Specifically,
+Seamless View merchants must verify that the script URL embedded in their iframe
+originates from Swedbank Pay or another trusted domain. It is important to note
+that Swedbank Pay’s PCI responsibility is strictly limited to the content within
+the payment iframe. For further details, refer to section 4.6.3 in the linked
+document.
+
+To ensure compliance, we recommend implementing [Content Security Policy][csp]
+rules to monitor and authorize scripts.
+
+Merchants must whitelist the following domains to restrict browser content
+retrieval to approved sources. While `https://*.payex.com` and
+`https://*.swedbankpay.com` cover most payment methods, digital wallets such as
+Apple Pay, Click to Pay, and Google Pay are delivered via Payair. Alongside the
+Payair URL, these wallets may also generate URLs from Apple, Google, MasterCard,
+and Visa. See the table below for more information.
+
+When it comes to ACS URLs, nothing is loaded from the ACS domain in the
+merchant's end. It will either happen within Swedbank Pay's domain or as a
+redirect, which will repeal the merchant's CSP.
+
+{% include alert.html type="success" icon="info" body="The list below includes
+important URLs, but may not be exhaustive. Merchants need to stay up to date in
+case of URL changes, or if you need to whitelist URLs not listed here." %}
+
+{:.table .table-striped}
+| URL    | Description             |
+| :------ | :--------------- |
+| https://*.cdn-apple.com | URL needed for Apple Pay.     |
+| https://*.google.com | URL needed for Google Pay.     |
+| https://*.gstatic.com | Domain used by Google that hosts images, CSS, and javascript code to reduce bandwidth usage online.     |
+| https://*.mastercard.com | URL needed for Click to Pay.     |
+| https://*.payair.com | URL for the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+| https://*.payex.com    | Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+| https://*.swedbankpay.com | Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+| https://*.visa.com | URL needed for Click to Pay.     |
+
 ## Events
 
 When a user actively attempts to perform a payment, the `onPaymentCreated` event
@@ -221,3 +262,5 @@ next_href="/old-implementations/payment-instruments-v1/card/capture" next_title=
 [purchase]: /old-implementations/payment-instruments-v1/card/features/core/purchase
 [seamless-view-card]: /assets/img/payments/seamless-view-card.png
 [swedish-seamless-view-card]: /assets/img/payments/swedish-seamless-view-card.png
+[pci]: https://www.swedbankpay.se/globalassets/global-documents/risk-and-security/pci-dss-v4-0-saq-a-r2.pdf
+[csp]: https://www.w3.org/TR/CSP2/

@@ -179,10 +179,11 @@ PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
 ## Android Present Payment
 
 You are now ready to present the payment UI. You can ask the payment session
-class to create a `PaymentFragment` for web view based payments:
+class to create a `PaymentFragment` for web view based payments.  We request a
+menu mode web view, without any restriction of instruments.
 
 ```kotlin
-paymentSession.createPaymentFragment()
+paymentSession.createPaymentFragment(mode = SwedbankPayPaymentSessionSDKControllerMode.Menu(null))
 ```
 
 After getting back the `PaymentFragment` instance , you can present it in a way
@@ -227,7 +228,7 @@ class MainActivity : AppCompatActivity() {
                     Log.d("SwedbankPay", "Payment Session Fetched")
 
                     // Reqeust a web based payment fragment instance
-                    paymentSession.createPaymentFragment()
+                    paymentSession.createPaymentFragment(mode = SwedbankPayPaymentSessionSDKControllerMode.Menu(null))
                 }
 
                 is PaymentSessionState.ShowPaymentFragment -> {
@@ -416,10 +417,11 @@ func paymentSessionCanceled() {
 ```
 
 You are now ready to present the payment UI. You can ask the payment session
-class to create a `SwedbankPaySDKController` for web view based payments.
+class to create a `SwedbankPaySDKController` for web view based payments. We
+request a menu mode web view, without any restriction of instruments.
 
 ```swift
-paymentSession.createSwedbankPaySDKController()
+paymentSession.createSwedbankPaySDKController(mode: .menu(restrictedToInstruments: nil))
 ```
 
 The `SwedbankPaySDKController` instance is returned via the
@@ -455,7 +457,7 @@ class ViewController: UIViewController, SwedbankPaySDKPaymentSessionDelegate {
 
     func paymentSessionFetched(availableInstruments: [SwedbankPaySDK.AvailableInstrument]) {
         print("Available Instruments Fetched")
-        paymentSession.createSwedbankPaySDKController()
+        paymentSession.createSwedbankPaySDKController(mode: .menu(restrictedToInstruments: nil))
     }
 
     func sessionProblemOccurred(problem: SwedbankPaySDK.ProblemDetails) {

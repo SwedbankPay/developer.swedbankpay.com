@@ -27,7 +27,8 @@ menu_order: 1
 
 There are three ways of implementing our digital payments, depending on what
 suits you best. The **native implementation**, which goes directly towards our
-APIs, **modules** (WooCommerce) or **SDKs** (.NET or Java).
+APIs, **modules** (WooCommerce) or **SDKs** (*.NET* or *PHP* for web, *iOS* and
+*Android* for mobile apps).
 
 The modules and SDKs have their [own section][modules-sdks], which is where you
 need to go if you are planning on using them. A bit less flexible than the
@@ -49,7 +50,7 @@ this section. We recommend [getting started here][get-started].
          <span class="cards-content">
             <span class="h4">One-Time Payments</span>
             <span>
-               <p>Get things started with our basic implementation for all payment methods.</p>
+               <p>Kick things off with our basic implementation for all payment methods.</p>
             </span>
          </span>
          <i class="material-icons">arrow_forward</i>
@@ -121,6 +122,20 @@ below to read more." %}
 | ![Swish][swish-logo]             | Swish                            | {% flag se %}                |
 | ![Trustly][trustly-logo]         | [Trustly][trustly]               | {% flag se %} {% flag fi %}  |
 | ![Vipps][vipps-logo]             | Vipps                            | {% flag no %}                |
+
+#### Browser And Operative System Limitations
+
+We support all major browsers like (but not limited to) Edge, Firefox, Google
+Chrome and Safari. The same goes for mobile operative systems like Android or
+iOS.
+
+However, there are limitations for iOS versions older than 12.2 and all versions
+of Internet Explorer. Due to their age, they are unable to load our payment
+UI.
+
+Payers using these must update to a newer iOS or switch to a supported browser
+respectively. If their device is too old to update to a viable iOS, they need to
+use another device.
 
 [apple-pay]: /checkout-v3/apple-pay-presentation
 [apple-pay-logo]:/assets/img/applepay-logo.svg

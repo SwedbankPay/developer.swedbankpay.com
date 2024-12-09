@@ -173,6 +173,39 @@ request.send(JSON.stringify({
 }));
 ```
 
+## Monitoring The Script URL
+
+With the [PCI-DSS v4][pci] changes taking effect on March 31st 2025, merchants
+are responsible for ensuring the integrity of the HTML script used in their
+integration, including monitoring what is loaded into or over it. Specifically,
+Seamless View merchants must verify that the script URL embedded in their iframe
+originates from Swedbank Pay or another trusted domain. It is important to note
+that Swedbank Pay’s PCI responsibility is strictly limited to the content within
+the payment iframe. For further details, refer to section 4.6.3 in the linked
+document.
+
+To ensure compliance, we recommend implementing [Content Security Policy][csp]
+rules to monitor and authorize scripts.
+
+Merchants must whitelist the following domains to restrict browser content
+retrieval to approved sources. While `https://*.payex.com` and
+`https://*.swedbankpay.com` cover most payment methods, digital wallets such as
+Apple Pay, Click to Pay, and Google Pay are delivered via Payair. Alongside the
+Payair URL, these wallets may also generate URLs from Apple, Google, MasterCard,
+and Visa. Merchants are responsible for whitelisting these domains and keeping
+them up to date in case of changes.
+
+When it comes to ACS URLs, nothing is loaded from the ACS domain in the
+merchant's end. It will either happen within Swedbank Pay's domain or as a
+redirect, which will repeal the merchant's CSP.
+
+{:.table .table-striped}
+| URL    | Description             |
+| :------ | :--------------- |
+| https://*.payex.com    | Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+| https://*.swedbankpay.com | Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+| https://*.payair.com | URL for the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+
 This should bring up the Payment Menu in a Seamless View looking like
 this, depending on whether the payer is logged in (top) or a guest user
 (bottom). Payments done in SEK will have radio buttons for choosing debit
@@ -306,3 +339,5 @@ finalizing the payment in the [After Payment section][after-payment].
 [operations]: /old-implementations/checkout-v2/features/technical-reference/operations
 [technical-reference-onconsumer-identified]: /old-implementations/checkout-v2/checkin#step-2-display-swedbank-pay-checkin-module
 [urls]: /old-implementations/checkout-v2/features/technical-reference/urls#urls-resource
+[pci]: https://www.swedbankpay.se/globalassets/global-documents/risk-and-security/pci-dss-v4-0-saq-a-r2.pdf
+[csp]: https://www.w3.org/TR/CSP2/

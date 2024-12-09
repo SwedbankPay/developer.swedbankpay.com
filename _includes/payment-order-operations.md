@@ -29,6 +29,12 @@ is given below.
             "contentType": "application/json"
         },
         {
+            "method": "PATCH",
+            "href": "https://api.payex.com/psp/paymentorders/{{ page.payment_order_id }}",
+            "rel": "abort-paymentattempt",
+            "contentType": "application/json"
+        },
+        {
             "method": "POST",
             "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/cancellations",
             "rel": "cancel",
@@ -188,6 +194,7 @@ for the given operation.
 | :--------- | :------------ |
 | `update-order` | Updates the order with a change in `orderItems`, `amount` and/or `vatAmount`.                                                                             |
 | `abort`       | Aborts the payment order before any financial transactions are performed.                                                                              |
+| `abort-paymentattempt`       | Aborts the payment attempt, but not the order as a whole, before any financial transactions are performed.                                                                              |
 | `cancel`      | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                     |
 | `capture`     | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
 | `reversal`    | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                     |

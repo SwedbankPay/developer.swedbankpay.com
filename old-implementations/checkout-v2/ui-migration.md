@@ -14,12 +14,16 @@ Redirect integration is hosted by Swedbank Pay, we also handle these
 responsibilities.
 
 The updated requirements will include stricter controls and monitoring,
-particularly around the security of your checkout process. A script or other
-monitoring needs to be in place to verify that the checkout URL is correct and
-has not been tampered with. This is to avoid phishing or hijacking, and to
-secure that the URL provided is from us at Swedbank Pay.
+particularly around the security of your checkout process. Merchants are
+responsible for ensuring the integrity of the HTML script used in their
+integration, including monitoring what is loaded into or over it. Specifically,
+Seamless View merchants must verify that the script URL embedded in their iframe
+originates from Swedbank Pay or another trusted domain. It is important to note
+that Swedbank Pay’s PCI responsibility is strictly limited to the content within
+the payment iframe.
 
-See points **6.4.3** and **11.6.1** in the PCI-DSS link above for more.
+For further details, refer to section **4.6.3** and **11.6.1** in the linked
+PCI-DSS document.
 
 Please note that this only applies to payment methods that are affected by
 PCI-DSS (Card and Click to Pay). If you only offer payment methods not affected
@@ -37,6 +41,41 @@ module used in Checkout v2 is only available using Seamless View. We
 and choose the Redirect UI option. We have written a [migration guide][mp] to
 help you.
 
+## Monitoring The Script URL
+
+If you choose to stay with Seamless View, please take the following under
+advisement.
+
+To ensure compliance, we recommend implementing [Content Security Policy][csp]
+rules to monitor and authorize scripts.
+
+Merchants must whitelist the following domains to restrict browser content
+retrieval to approved sources. While `https://*.payex.com` and
+`https://*.swedbankpay.com` cover most payment methods, digital wallets such as
+Apple Pay, Click to Pay, and Google Pay are delivered via Payair. Alongside the
+Payair URL, these wallets may also generate URLs from Apple, Google, MasterCard,
+and Visa. See the table below for more information.
+
+When it comes to ACS URLs, nothing is loaded from the ACS domain in the
+merchant's end. It will either happen within Swedbank Pay's domain or as a
+redirect, which will repeal the merchant's CSP.
+
+{% include alert.html type="success" icon="info" body="The list below includes
+important URLs, but may not be exhaustive. Merchants need to stay up to date in
+case of URL changes, or if you need to whitelist URLs not listed here." %}
+
+{:.table .table-striped}
+| URL    | Description             |
+| :------ | :--------------- |
+| https://*.cdn-apple.com | URL needed for Apple Pay.     |
+| https://*.google.com | URL needed for Google Pay.     |
+| https://*.gstatic.com | Domain used by Google that hosts images, CSS, and javascript code to reduce bandwidth usage online.     |
+| https://*.mastercard.com | URL needed for Click to Pay.     |
+| https://*.payair.com | URL for the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+| https://*.payex.com    | Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+| https://*.swedbankpay.com | Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+| https://*.visa.com | URL needed for Click to Pay.     |
+
 [dp]: /checkout-v3/
 [mp]: /checkout-v3/migration-guide/
 [pci]: https://www.swedbankpay.se/globalassets/global-documents/risk-and-security/pci-dss-v4-0-saq-a-r2.pdf
@@ -45,3 +84,4 @@ help you.
 [fi]: https://www.swedbankpay.fi/riskit-ja-turvallisuus/nain-pci-vaikuttaa-sinuun
 [no]: https://www.swedbankpay.no/risiko-og-sikkerhet/pci-slik-pavirkes-du
 [se]: https://www.swedbankpay.se/risk-och-sakerhet/pci-sa-paverkas-du
+[csp]: https://www.w3.org/TR/CSP2/
