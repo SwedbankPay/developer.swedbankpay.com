@@ -1105,7 +1105,7 @@ more convenient for both the integration and the payer.
 [3-1]: /checkout-v3/get-started/payment-request-3-1
 [3ds2-test]: /checkout-v3/test-data#3-d-secure-cards
 [afd-payments]: /checkout-v3/features/optional/afd
-[abort-payattempt]: /checkout-v3/features/optional/payment-operations/abort/#abort-payment-attempt
+[abort-payattempt]: /checkout-v3/features/payment-operations/abort/#abort-payment-attempt
 [age-restrictions]: /checkout-v3/features/optional/age-restrictions
 [android-sdk-documentation]: /checkout-v3/modules-sdks/mobile-sdk/android
 [apple-pay]: /checkout-v3/apple-pay-presentation
