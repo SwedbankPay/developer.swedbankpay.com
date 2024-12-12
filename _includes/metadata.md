@@ -64,7 +64,7 @@ Content-Type: application/json{% endcapture %}
 
 ## GET Request
 
-{% capture request_header %}POST /psp/{{ api_resource }}/{% unless api_resource == "paymentorders" %}payments/{% endunless %}{{ page.payment_id }}/ HTTP/1.1
+{% capture request_header %}GET /psp/{{ api_resource }}/{% unless api_resource == "paymentorders" %}payments/{% endunless %}{{ page.payment_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json{% endcapture %}

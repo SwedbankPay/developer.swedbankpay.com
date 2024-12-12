@@ -1011,7 +1011,6 @@ Content-Type: application/json;version=3.x{% endcapture %}
 {% include code-example.html
     title='Request'
     header=request_header
-    json= request_content
     %}
 
 ### Card `Reversed` Resource

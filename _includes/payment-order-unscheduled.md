@@ -386,7 +386,6 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 {% include code-example.html
     title='Request'
     header=request_header
-    json= request_content
     %}
 
 As an alternative, you can also retrieve it by using the expand option when you
@@ -402,7 +401,6 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 {% include code-example.html
     title='Request'
     header=request_header
-    json= request_content
     %}
 
 {% else %}
@@ -420,7 +418,6 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 {% include code-example.html
     title='Request'
     header=request_header
-    json= request_content
     %}
 
 {% endif %}
