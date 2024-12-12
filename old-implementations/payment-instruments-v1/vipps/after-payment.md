@@ -220,7 +220,6 @@ Content-Type: application/json{% endcapture %}
 {% include code-example.html
     title='Request'
     header=request_header
-    json= request_content
     %}
 
 ## GET Response Authorizations
@@ -242,7 +241,6 @@ Content-Type: application/json{% endcapture %}
 {% include code-example.html
     title='Request'
     header=request_header
-    json= request_content
     %}
 
 ## GET Response Cancel
@@ -296,7 +294,6 @@ Content-Type: application/json{% endcapture %}
 {% include code-example.html
     title='Request'
     header=request_header
-    json= request_content
     %}
 
 ## GET Response Reversal

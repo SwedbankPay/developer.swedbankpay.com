@@ -371,7 +371,6 @@ Content-Type: application/json{% endcapture %}
 {% include code-example.html
     title='Request'
     header=request_header
-    json= request_content
     %}
 
 As an alternative, you can also retrieve it by using the expand option when you
@@ -396,7 +395,6 @@ Content-Type: application/json{% endcapture %}
 {% include code-example.html
     title='Request'
     header=request_header
-    json= request_content
     %}
 
 ## Performing The Unscheduled Purchase

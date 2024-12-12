@@ -241,7 +241,6 @@ Host: {{ page.api_host }}{% endcapture %}
 {% include code-example.html
     title='HTTP Request with expansion'
     header=request_header
-    json= request_content
     %}
 
 To avoid unnecessary overhead, you should only expand the fields you need info

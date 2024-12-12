@@ -305,7 +305,6 @@ Content-Type: application/json{% endcapture %}
 {% include code-example.html
     title='GET Request'
     header=request_header
-    json= request_content
     %}
 
 ## GET Payment Response
