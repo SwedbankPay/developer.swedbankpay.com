@@ -16,9 +16,9 @@ packaging that handles a lot of the logic towards our REST API, so you don't
 have to.
 
 **Modules, extensions and plugins** are typically used as a way to extend
-webshop platforms such as [WooCommerce][woocommerce]{:data-proofer-ignore=''}
-with functionality that isn't provided in the core platform. Such functionality
-may be to allow visitors of your website to pay with a payment provider such as
+webshop platforms such as [WooCommerce][woocommerce]{:target="_blank"} with
+functionality that isn't provided in the core platform. Such functionality may
+be to allow visitors of your website to pay with a payment provider such as
 Swedbank Pay.
 
 **Software Development Kits** allow developers to integrate with Swedbank Pay's
