@@ -24,7 +24,7 @@
 {%- endcapture -%}
 {%- capture text -%}
 The intent of the payment identifies how and when the charge will be
-effectuated. This determine the type transactions used during the payment
+effectuated. This determines the transactions types used during the payment
 process.
 
 `Authorization`. Reserves the amount, and is followed by a {% clink cancellation

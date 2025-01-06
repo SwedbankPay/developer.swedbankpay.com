@@ -10,8 +10,8 @@
     and 400px width. Requires HTTPS. Read more about this in
     {% if documentation_section contains "checkout-v3" %} [Custom Logo]({{ features_url }}/customize-ui/custom-logo) {% else %} [Custom Logo]({{ features_url }}/optional/custom-logo) {% endif %}.
     {%- else -%}
-    The URL that will be used for showing the customer logo. Must be a picture
-    with maximum 50px height and 400px width. Requires HTTPS.
+    The URL that will be used for showing the customer logo. It must be a
+    picture with maximum 50px height and 400px width. HTTPS is required.
      {%- endif -%}
 {%- endcapture -%}
 {{- logo_description | strip_newlines -}}
