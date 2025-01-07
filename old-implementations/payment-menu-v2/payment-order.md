@@ -149,16 +149,16 @@ request.send(JSON.stringify({ amount: 1200 }));
 
 ## Monitoring The Script URL
 
-With the [PCI-DSS v4][pci] changes taking effect on March 31st 2025, merchants
-are responsible for ensuring the integrity of the HTML script used in their
-integration, including monitoring what is loaded into or over it. Specifically,
-Seamless View merchants must verify that the script URL embedded in their iframe
-originates from Swedbank Pay or another trusted domain. It is important to note
-that Swedbank Pay’s PCI responsibility is strictly limited to the content within
-the payment iframe. For further details, refer to section 4.6.3 in the linked
-document.
+With the [PCI-DSS v4][pci]{:target="_blank"} changes taking effect on March 31st
+2025, merchants are responsible for ensuring the integrity of the HTML script
+used in their integration, including monitoring what is loaded into or over it.
+Specifically, Seamless View merchants must verify that the script URL embedded
+in their iframe originates from Swedbank Pay or another trusted domain. It is
+important to note that Swedbank Pay’s PCI responsibility is strictly limited to
+the content within the payment iframe. For further details, refer to section
+4.6.3 in the linked document.
 
-To ensure compliance, we recommend implementing [Content Security Policy][csp]
+To ensure compliance, we recommend implementing [Content Security Policy][csp]{:target="_blank"}
 rules to monitor and authorize scripts.
 
 Merchants must whitelist the following domains to restrict browser content
