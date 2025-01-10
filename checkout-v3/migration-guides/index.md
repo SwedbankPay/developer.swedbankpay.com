@@ -1,10 +1,13 @@
 ---
 title: Migration Guides
-permalink: /:path/migration-guides/
+redirect_from: /checkout-v3/migration-guides
 description: |
   A collection of Digital Payments migration guides
+permalink: /:path/migration-guides
 menu_order: 5
 ---
+
+Testing testing 1-2-3
 
 <a href="/checkout-v3/migration-guides/migration-guide-v2-v3" class="cards ">
     <i class="cards-icon at-document" aria-hidden="true"></i>
