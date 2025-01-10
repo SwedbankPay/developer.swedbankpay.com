@@ -112,7 +112,7 @@ below to read more." %}
 |        | Payment Method | Region                                    |
 | :--------------------------: | :--------------: | :---------------------------------------- |
 | ![Apple Pay][apple-pay-logo]     | [Apple Pay][apple-pay]           |  ![EarthIcon][earth-icon]    |
-| ![Card][card-icon]               | Card                             |  ![EarthIcon][earth-icon]    |
+| ![Card][card-icon]               | [Card][card]                     |  ![EarthIcon][earth-icon]    |
 | ![Click to Pay][c2p-logo]        | [Click to Pay][click-to-pay]     |  ![EarthIcon][earth-icon]    |
 | ![Google Pay][google-pay-logo]   | [Google Pay][google-pay]&trade;  |  ![EarthIcon][earth-icon]    |
 | ![MobilePay][mobilepay-logo]     | MobilePay                        | {% flag dk %} {% flag fi %}  |
@@ -139,6 +139,7 @@ use another device.
 
 [apple-pay]: /checkout-v3/apple-pay-presentation
 [apple-pay-logo]:/assets/img/applepay-logo.svg
+[card]: /checkout-v3/card-presentation
 [click-to-pay]: /checkout-v3/click-to-pay-presentation
 [c2p-logo]:/assets/img/clicktopay-logo.svg
 [card-icon]: /assets/img/new-card-icon.svg
