@@ -6,8 +6,6 @@ description: |
 menu_order: 5
 ---
 
-Lorem Ipsum introduction
-
 <a href="/checkout-v3/migration-guides/migration-guide-v2-v3" class="cards ">
     <i class="cards-icon at-document" aria-hidden="true"></i>
     <span class="h4">Version 2.0 to 3.1</span>

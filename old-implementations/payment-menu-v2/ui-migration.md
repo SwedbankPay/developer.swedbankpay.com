@@ -154,7 +154,7 @@ case of URL changes, or if you need to whitelist URLs not listed here." %}
 
 [custom-logo]: /old-implementations/payment-menu-v2/features/optional/custom-logo
 [dp]: /checkout-v3/
-[mp]: /checkout-v3/migration-guides/
+[mp]: /checkout-v3/migration-guides
 [pci]: https://www.swedbankpay.se/globalassets/global-documents/risk-and-security/pci-dss-v4-0-saq-a-r2.pdf
 [post-response]: /old-implementations/payment-menu-v2/payment-order/#payment-order-response
 [post-request]: /old-implementations/payment-menu-v2/payment-order/#payment-order-request
