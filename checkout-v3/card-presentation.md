@@ -7,11 +7,14 @@ description: |
 menu_order: 700
 ---
 
-As it is a global payment solution, merchants can reach out to an
-international market by enabling card as a part of their payment offering.
+As a global payment solution, Swedbank Pay enables merchants to tap into
+international markets by seamlessly integrating card payments into their
+offering.
 
-By choosing Swedbank Pay there's no need to contact a separate acquirer and/or
-Payment Service Provider, as we have gathered all the expertise under one roof.
+With Swedbank Pay, you gain a one-stop shop solution – no need to juggle
+multiple acquirers or Payment Service Providers. We’ve brought all the expertise
+you need under one roof, simplifying your payment process and setting your
+business up for success.
 
 ### Availability
 
