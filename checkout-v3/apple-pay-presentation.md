@@ -8,17 +8,36 @@ description: |
 menu_order: 700
 ---
 
-Apple Pay provides an easy and secure way to make payments. By using Face ID,
-Touch ID, or double-clicking their Apple Watch, payers can quickly and securely
-check out. Payers love the simplicity, and you’ll love the increased conversion
-rates and new user adoption that comes with it.
+<section class="panel panel-brand">
+ <header>
+ <h3 class="panel-title">Looking to streamline payments for your customers?</h3>
+ <p class="panel-sub-title"></p>
+ </header>
+ <div class="panel-body">
 
-### Domain Verification
+ With Apple Pay, you can offer a fast, secure, and seamless checkout experience that customers love.
+ <br>
 
-To ensure that we can enable Apple Pay for you, there are a few steps you need
-to take. If you're using a Redirect integration, you are all set and can skip
-this step. If you're using a Seamless View integration, you need to do the
-following:
+ <ul>
+ <li>Speed: Transactions are completed with a single touch.</li>
+ <li>Security: Built-in encryption and biometric authentication (Face ID or Touch ID) ensure every payment is safe. Your customer’s card details are never shared.</li>
+ <li>Wide Reach: Apple Pay works online, in apps, and in stores, making it easier for customers to pay wherever they are.</li>
+ <li>Higher Conversions: Customers are more likely to complete purchases with quick, frictionless checkouts.</li>
+ <li>Active Users: 500 million active users worldwide.</li>
+ </ul>
+ </div>
+</section>
+
+## Domain Verification
+
+To ensure that we can enable Apple Pay for you, there are a few steps you may
+need to complete.
+
+If you’re using a Redirect integration, you are all set - no further action is
+needed.
+
+If you’re using a Seamless View integration, you need to complete the
+steps below to get started.
 
 1.  Download the [domain file][payex-domain-file]{:target="_blank"}
    (right click and "Save as").
@@ -60,21 +79,7 @@ the validation to fail. If you have further questions about how to upload the
 file and make it available, contact your domain administrator or provider for
 further instructions and assistance.
 
-### Accepting Donations
-
-Apple Pay provides nonprofit organizations a simple and secure way to accept
-donations. To register your nonprofit organization for Apple Pay, please visit
-[Benevity][benevity-donation-setup]{:target="_blank"}.
-
-You’ll be asked to provide basic information about your organization. Note that
-the **Apple Developer Team ID** is an **optional** field, so this is not needed.
-
-When you get your approval from Benevity, you need to share it with Swedbank Pay
-before we can activate Apple Pay for you. You can e-mail it to
-**agreement@swedbankpay.com** together with **Name**, **Organizational** and
-**Customer number**.
-
-### Apple Pay Terms And Conditions
+## Apple Pay Terms And Conditions
 
 Apple requires Swedbank Pay to identify whether and when you have accessed the
 Apple Pay Platform Web Merchant Terms and Conditions, and to record whether you
@@ -96,6 +101,20 @@ Norwegian digitally, please use the
 download) in English, and e-mail it to **agreement@swedbankpay.com** together
 with **Name**, **Organizational** and **Customer number**. Your acceptance is
 needed before we can activate Apple Pay for you.
+
+## Accepting Donations
+
+Apple Pay provides nonprofit organizations a simple and secure way to accept
+donations. To register your nonprofit organization for Apple Pay, please visit
+[Benevity][benevity-donation-setup]{:target="_blank"}.
+
+You’ll be asked to provide basic information about your organization. Note that
+the **Apple Developer Team ID** is an **optional** field, so this is not needed.
+
+When you get your approval from Benevity, you need to share it with Swedbank Pay
+before we can activate Apple Pay for you. You can e-mail it to
+**agreement@swedbankpay.com** together with **Name**, **Organizational** and
+**Customer number**.
 
 {% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Introduction" %}
