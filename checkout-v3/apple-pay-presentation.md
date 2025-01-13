@@ -14,10 +14,10 @@ menu_order: 700
  <p class="panel-sub-title"></p>
  </header>
  <div class="panel-body">
-
+<div>
  With Apple Pay, you can offer a fast, secure, and seamless checkout experience that customers love.
- <br>
-
+ </div>
+ <br/>
  <ul>
  <li>Speed: Transactions are completed with a single touch.</li>
  <li>Security: Built-in encryption and biometric authentication (Face ID or Touch ID) ensure every payment is safe. Your customer’s card details are never shared.</li>
