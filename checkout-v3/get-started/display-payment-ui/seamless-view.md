@@ -259,4 +259,4 @@ Merchant -->>- Payer: Show Purchase complete
 [seamless-enterprise-menu]: /assets/img/wcag-seamless.png
 [payments-callback]: /checkout-v3/features/payment-operations/callback
 [payments-seamless-view-events]: /checkout-v3/features/technical-reference/seamless-view-events
-[pci]: https://www.swedbankpay.se/globalassets/global-documents/risk-and-security/pci-dss-v4-0-saq-a-r2.pdf
+[pci]: /assets/documents/PCI-DSS-v4-0-1-SAQ-A.pdf

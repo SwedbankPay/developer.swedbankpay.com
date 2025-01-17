@@ -316,5 +316,5 @@ rect rgba(138, 205, 195, 0.1)
 [guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu.png
 [login-payment-menu-image]: /assets/img/checkout/swedish-logged-in-payment-menu.png
 [operations]: /old-implementations/checkout-v2/features/technical-reference/operations
-[pci]: https://www.swedbankpay.se/globalassets/global-documents/risk-and-security/pci-dss-v4-0-saq-a-r2.pdf
+[pci]: /assets/documents/PCI-DSS-v4-0-1-SAQ-A.pdf
 [csp]: https://www.w3.org/TR/CSP2/
