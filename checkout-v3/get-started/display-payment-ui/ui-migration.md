@@ -151,7 +151,7 @@ case of URL changes, or if you need to whitelist URLs not listed here." %}
 [csp]: https://www.w3.org/TR/CSP2/
 [post-response]: /checkout-v3/get-started/payment-request-3-1/#payment-order-response
 [post-request]: /checkout-v3/get-started/payment-request-3-1/#payment-order-request
-[pci]: https://www.swedbankpay.se/globalassets/global-documents/risk-and-security/pci-dss-v4-0-saq-a-r2.pdf
+[pci]: /assets/documents/PCI-DSS-v4-0-1-SAQ-A.pdf
 [seamless-view]: /checkout-v3/get-started/display-payment-ui/seamless-view
 [redirect]: /checkout-v3/get-started/display-payment-ui/redirect
 [da]: https://www.swedbankpay.dk/risiko-og-sikkerhed/pci-sadan-bliver-du-pavirket
