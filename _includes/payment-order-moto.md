@@ -7,10 +7,11 @@
 
 {% include alert-agreement-required.md %}
 
-MOTO (Mail Order / Telephone Order) is a purchase where you, as a merchant,
-enter the payer's card details in order to make a payment. The payer provides
-the card details to the sales representative by telephone or in writing.
-The sales representative will then enter the details into the payment interface.
+Card-based home orders, also known as MOTO (Mail Order / Telephone Order), is a
+purchase where you, as a merchant, enter the payer's card details in order to
+make a payment. The payer provides the card details to the sales representative
+by telephone or in writing. The sales representative will then enter the details
+into the payment interface.
 
 Common use cases are travel or hotel bookings, where the payer calls the sales
 representative to make a booking. This feature is only supported with the
