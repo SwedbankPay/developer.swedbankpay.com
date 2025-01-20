@@ -1,7 +1,7 @@
 ---
 title: From Payment Methods v1 to Digital Payments v3.1
 section: Migration Guides
-permalink: /:path/migration-guides/
+permalink: /:path/migration-guides/v1-v3
 hide_from_sidebar: true
 description: |
   The why and how to migrate from v1 to v3.1
@@ -15,16 +15,17 @@ features and capabilities are exclusively released to Digital Payments, and will
 not be available when using payment methods v1.
 
 Likewise, new payment method additions like Google Pay, Apple Pay and Click to
-Pay are only available when using payment order, and can't be set up as
+Pay are only available when using the `paymentOrder` API, and can't be set up as
 individual payment methods.
 
-The second main reason is maintenance. If you have 5 or 6 individual payments
-methods, you also have 5 or 6 payment methods integrations. By switching to
-Digital Payments v3.1 you only have the one.
+The second reason would be maintenance. With an integration made towards v1 and
+each individual method's unique API, when new functionality, changes in behavior
+or new instruments are introduced, they both come with their own separate need
+for maintaining the existing integration.
 
-Instead of having to do a new integration if you want to expand your payment
-method offering, all of your activated payment methods are available in the same
-integration.
+By switching to Digital Payments v3.1, you will eliminate the need for
+maintenance on multiple integrations due to the design of v3.1 and its one-size
+fits all structure.
 
 ## How
 
