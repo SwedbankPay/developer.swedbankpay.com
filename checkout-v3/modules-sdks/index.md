@@ -41,8 +41,9 @@ SDKs are often used as a building block to construct a *Module*.
 
 ## Official SDKs
 
-Supported SDKs are using our session API, and the ApplePay and Android SDKs
-enable merchants to integrate their own design or UI into our SDK payments.
+The Android and iOS SDKs are our currently supported SDKs. They both run using
+our session API, and enable merchants to integrate their own design or UI into
+our SDK payments.
 
 | ![Android][android-icon] | [Swedbank Pay SDK for Android][android-link]{:target="_blank"} | [`…sdk-android`][android-repo]{:target="_blank"} |
 |     ![iOS][ios-icon]     | [Swedbank Pay SDK for iOS][ios-link]{:target="_blank"}         | [`…sdk-ios`][ios-repo]{:target="_blank"}         |
