@@ -339,5 +339,5 @@ finalizing the payment in the [After Payment section][after-payment].
 [operations]: /old-implementations/checkout-v2/features/technical-reference/operations
 [technical-reference-onconsumer-identified]: /old-implementations/checkout-v2/checkin#step-2-display-swedbank-pay-checkin-module
 [urls]: /old-implementations/checkout-v2/features/technical-reference/urls#urls-resource
-[pci]: https://www.swedbankpay.se/globalassets/global-documents/risk-and-security/pci-dss-v4-0-saq-a-r2.pdf
+[pci]: /assets/documents/PCI-DSS-v4-0-1-SAQ-A.pdf
 [csp]: https://www.w3.org/TR/CSP2/

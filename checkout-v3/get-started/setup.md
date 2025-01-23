@@ -9,6 +9,14 @@ description: |
 menu_order: 3
 ---
 
+{% include alert.html type="informative" icon="info" body="
+By creating a test account, you will not by default have a commercial
+relationship with Swedbank Pay, it is solely a test account for you to use and
+test towards our solution. To enjoy integration support, a commercial agreement
+with Swedbank Pay is required. Please contact Swedbank Pay Sales at
+sales@swedbankpay.se (Sweden), salg@swedbankpay.no (Norway) or
+salg@swedbankpay.dk (Denmark)." %}
+
 ## Step 1: Sign Up For A Test Account
 
 A test account gives you access to our unified dashboard for managing your
@@ -20,9 +28,11 @@ create an account for you, we need some specific information from your side:
 
 *   **Company name:** Your company name.
 
-*   **Email address:** To a developer or the CTO.
-
 *   **Organization number**: Your organization number.
+
+*   **Technical contact**: Email and phone number.
+
+*   **Commercial contact**: Email and phone number.
 
 ## Step 2: Wait For Response
 

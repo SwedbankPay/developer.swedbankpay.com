@@ -262,5 +262,5 @@ next_href="/old-implementations/payment-instruments-v1/card/capture" next_title=
 [purchase]: /old-implementations/payment-instruments-v1/card/features/core/purchase
 [seamless-view-card]: /assets/img/payments/seamless-view-card.png
 [swedish-seamless-view-card]: /assets/img/payments/swedish-seamless-view-card.png
-[pci]: https://www.swedbankpay.se/globalassets/global-documents/risk-and-security/pci-dss-v4-0-saq-a-r2.pdf
+[pci]: /assets/documents/PCI-DSS-v4-0-1-SAQ-A.pdf
 [csp]: https://www.w3.org/TR/CSP2/

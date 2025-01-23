@@ -342,5 +342,5 @@ and its duration.
 [data-protection]: /old-implementations/checkout-v2/data-protection#paymentorder-consumer-data
 [payment-menu]: /old-implementations/checkout-v2/payment-menu
 [iso-3166]: https://www.iso.org/iso-3166-country-codes.html
-[pci]: https://www.swedbankpay.se/globalassets/global-documents/risk-and-security/pci-dss-v4-0-saq-a-r2.pdf
+[pci]: /assets/documents/PCI-DSS-v4-0-1-SAQ-A.pdf
 [csp]: https://www.w3.org/TR/CSP2/

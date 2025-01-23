@@ -148,7 +148,7 @@ case of URL changes, or if you need to whitelist URLs not listed here." %}
 | https://*.visa.com | URL needed for Click to Pay.     |
 
 [dp]: /checkout-v3/
-[pci]: https://www.swedbankpay.se/globalassets/global-documents/risk-and-security/pci-dss-v4-0-saq-a-r2.pdf
+[pci]: /assets/documents/PCI-DSS-v4-0-1-SAQ-A.pdf
 [post-response]: /old-implementations/payment-instruments-v1/card/redirect#card-payment-response
 [post-request]: /old-implementations/payment-instruments-v1/card/redirect#card-payment-request
 [seamless-view]: /old-implementations/payment-instruments-v1/card/seamless-view
