@@ -1,6 +1,7 @@
 ---
 title: Migration Guide
-permalink: /:path/migration-guide/
+permalink: /:path/migration-guide-v2-v3/
+hide_from_sidebar: true
 description: |
   How to migrate from Checkout v2 to Digital Payments v3.1
 menu_order: 5

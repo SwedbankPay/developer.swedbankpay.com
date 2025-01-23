@@ -102,7 +102,7 @@ when we get there.
 [e-mail]: mailto:support.psp@swedbankpay.se
 [https]: /checkout-v3/get-started/fundamental-principles#connection-and-protocol
 [json]: https://www.json.org/
-[migrate]: /checkout-v3/migration-guide/
+[migrate]: /checkout-v3/migration-guides
 [modules-sdks]: /checkout-v3/modules-sdks/
 [nwt]: /checkout-v3/features/customize-payments/network-tokenization/
 [post-purchase]: /checkout-v3/get-started/post-purchase-3-1/
