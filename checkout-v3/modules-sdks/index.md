@@ -48,7 +48,7 @@ our SDK payments.
 | ![Android][android-icon] | [Swedbank Pay SDK for Android][android-link]{:target="_blank"} | [`…sdk-android`][android-repo]{:target="_blank"} |
 |     ![iOS][ios-icon]     | [Swedbank Pay SDK for iOS][ios-link]{:target="_blank"}         | [`…sdk-ios`][ios-repo]{:target="_blank"}         |
 
-### Unsupported SDKs
+### Unofficial SDKs
 
 {% include alert-unsupported.md type='SDKs' %}
 
@@ -68,7 +68,7 @@ our SDK payments.
 | :----------------------: | :---------------------------------------------------------- | :------------------------------------ |
 | ![WooCommerce][woo-icon] | [Swedbank Pay Core plugin for WooCommerce][woo-core-link]{:target="_blank"}   | [`…woocommerce-core`][woo-core-repo]{:target="_blank"}  |
 
-### Unsupported Libraries
+### Unofficial Libraries
 
 {% include alert-unsupported.md type='libraries' %}
 
