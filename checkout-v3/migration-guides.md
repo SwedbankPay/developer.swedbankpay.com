@@ -7,9 +7,9 @@ permalink: /:path/migration-guides
 menu_order: 5
 ---
 
-Making changes your integration might seem like a sizeable task, but most times
-it really isn't. We have written a handful of step-by-step guides and gathered
-them here, to help make the transition as smooth as possible for you.
+Making changes to your integration might seem like a sizeable task, but most
+times it really isn't. We have written a handful of step-by-step guides and
+gathered them here, to help make the transition as smooth as possible for you.
 
 <div class="row mt-4">
     <div class="col-xl-4 col-lg-4 d-flex">
@@ -20,9 +20,9 @@ them here, to help make the transition as smooth as possible for you.
             </i>
          </span>
          <span class="cards-content">
-            <span class="h4">Digital Payments Version 2.0 to 3.1</span>
+            <span class="h4">Digital Payments v2.0 to v3.1</span>
             <span>
-               <p>How to migrate from Digital Payments v2 to the newest version of v3.</p>
+               <p>How to migrate from Digital Payments v2 to the newest edition of v3.</p>
             </span>
          </span>
          <i class="material-icons">arrow_forward</i>
@@ -52,12 +52,16 @@ them here, to help make the transition as smooth as possible for you.
             </i>
          </span>
          <span class="cards-content">
-            <span class="h4">Payment Methods to Digital Payments v3.1</span>
+            <span class="h4">Payment Methods v1 to Digital Payments v3.1</span>
             <span>
-               <p>How to migrate from Payment Methods to the newest version of v3.</p>
+               <p>How to migrate from Payment Methods v1 to the newest edition of v3.</p>
             </span>
          </span>
          <i class="material-icons">arrow_forward</i>
       </a>
     </div>
 </div>
+
+![Migration Version Summary][mig-sum]
+
+[mig-sum]: /assets/img/checkout/MigrationVersionsSummary.png

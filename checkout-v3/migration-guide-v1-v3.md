@@ -10,7 +10,7 @@ menu_order: 10
 
 ## Why
 
-The first main reason for migrating is the access to new development. All fresh
+The first reason for migrating is the access to new development. All fresh
 features and capabilities are exclusively released to Digital Payments, and will
 not be available when using payment methods v1.
 
