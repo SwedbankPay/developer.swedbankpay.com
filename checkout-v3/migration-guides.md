@@ -11,7 +11,7 @@ Testing testing 1-2-3
 
 <div class="row mt-4">
     <div class="col-xl-4 col-lg-4 d-flex">
-       <a href="/checkout-v3/migration-guides/migration-guide-v2-v3" class="cards cards-primary">
+       <a href="/checkout-v3/migration-guide-v2-v3" class="cards cards-primary">
          <span class="cards-icon">
             <i class="material-icons-outlined">
                 storefront
