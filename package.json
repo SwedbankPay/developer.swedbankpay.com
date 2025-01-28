@@ -40,7 +40,7 @@
     "remark-lint-final-newline": "^3.0.0",
     "remark-lint-hard-break-spaces": "^4.0.0",
     "remark-lint-heading-increment": "^4.0.0",
-    "remark-lint-heading-style": "^4.0.0",
+    "remark-lint-heading-style": "^4.0.1",
     "remark-lint-heading-whitespace": "^1.0.0",
     "remark-lint-link-title-style": "^4.0.0",
     "remark-lint-list-item-bullet-indent": "^5.0.0",
