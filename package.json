@@ -66,7 +66,7 @@
     "remark-lint-no-inline-padding": "^5.0.0",
     "remark-lint-no-literal-urls": "^4.0.0",
     "remark-lint-no-multiple-toplevel-headings": "^4.0.1",
-    "remark-lint-no-reference-like-url": "^4.0.0",
+    "remark-lint-no-reference-like-url": "^4.0.1",
     "remark-lint-no-repeat-punctuation": "^0.1.4",
     "remark-lint-no-shell-dollars": "^4.0.1",
     "remark-lint-no-shortcut-reference-image": "^4.0.1",
