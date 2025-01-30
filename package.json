@@ -64,7 +64,7 @@
     "remark-lint-no-heading-indent": "^5.0.1",
     "remark-lint-no-heading-like-paragraph": "^4.0.1",
     "remark-lint-no-inline-padding": "^5.0.0",
-    "remark-lint-no-literal-urls": "^4.0.0",
+    "remark-lint-no-literal-urls": "^4.0.1",
     "remark-lint-no-multiple-toplevel-headings": "^4.0.1",
     "remark-lint-no-reference-like-url": "^4.0.1",
     "remark-lint-no-repeat-punctuation": "^0.1.4",
