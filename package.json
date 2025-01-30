@@ -39,7 +39,7 @@
     "remark-lint-final-definition": "^4.0.2",
     "remark-lint-final-newline": "^3.0.0",
     "remark-lint-hard-break-spaces": "^4.1.1",
-    "remark-lint-heading-increment": "^4.0.0",
+    "remark-lint-heading-increment": "^4.0.1",
     "remark-lint-heading-style": "^4.0.1",
     "remark-lint-heading-whitespace": "^1.0.0",
     "remark-lint-link-title-style": "^4.0.0",
