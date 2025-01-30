@@ -79,7 +79,7 @@
     "remark-lint-strong-marker": "^4.0.0",
     "remark-lint-table-cell-padding": "^5.0.0",
     "remark-lint-table-pipe-alignment": "^4.0.0",
-    "remark-lint-table-pipes": "^5.0.0",
+    "remark-lint-table-pipes": "^5.0.1",
     "remark-lint-unordered-list-marker-style": "^4.0.1",
     "remark-preset-lint-consistent": "^6.0.1",
     "remark-preset-lint-markdown-style-guide": "^6.0.0",
