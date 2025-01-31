@@ -61,7 +61,3 @@ gathered them here, to help make the transition as smooth as possible for you.
       </a>
     </div>
 </div>
-
-![Migration Version Summary][mig-sum]
-
-[mig-sum]: /assets/img/checkout/MigrationVersionsSummary.png
