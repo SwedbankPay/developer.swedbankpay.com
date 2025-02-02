@@ -3,8 +3,8 @@ title: Google Pay&trade;
 permalink: /:path/google-pay-presentation/
 hide_from_sidebar: true
 description: |
-  What is Google Pay, and what has to be done before you can offer it as a
-  payment method?
+  What is Google Pay&trade;, and what has to be done before you can offer it as
+  a payment method?
 menu_order: 500
 ---
 
@@ -14,13 +14,15 @@ in-app solution. If you want to implement Google Pay&trade; in your web-view
 application, you will need to open it in a browser and open the Checkout from
 there." %}
 
-Google Pay&trade; enables quicker, safer checkout in apps and websites, and
-makes it easy for customers to pay with their phones. With a simple integration,
-you can access hundreds of millions of cards saved to Google Accounts and open
-up your business for more business.
+Pay Smarter with Google Pay&trade;!
 
-With a click, the payers can choose any payment method saved in their Google
-Account and check out almost instantly across apps and sites.
+Simplify your checkout experience with Google Pay&trade; — the fast, secure, and
+hassle-free way to pay online, in-store and in apps.
+
+*   Fast Transactions: Tap, click, or swipe—pay in seconds.
+*   Secure Payments: Advanced encryption keeps your card details safe.
+*   Seamless Convenience: Save cards, loyalty programs and tickets all in one place.
+*   Widely Accepted: Use it anywhere Google Pay is supported.
 
 ### Merchant ID
 

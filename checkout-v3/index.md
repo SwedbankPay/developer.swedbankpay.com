@@ -115,13 +115,13 @@ below to read more." %}
 | ![Card][card-icon]               | [Card][card]                     |  ![EarthIcon][earth-icon]    |
 | ![Click to Pay][c2p-logo]        | [Click to Pay][click-to-pay]     |  ![EarthIcon][earth-icon]    |
 | ![Google Pay][google-pay-logo]   | [Google Pay][google-pay]&trade;  |  ![EarthIcon][earth-icon]    |
-| ![MobilePay][mobilepay-logo]     | MobilePay                        | {% flag dk %} {% flag fi %}  |
+| ![MobilePay][mobilepay-logo]     | [MobilePay][mobilepay]           | {% flag dk %} {% flag fi %}  |
 | ![Swedbank Pay][swp-logo]        | Swedbank Pay Installment Account | {% flag se %} {% flag no %}  |
 | ![Swedbank Pay][swp-logo]        | Swedbank Pay Invoice             | {% flag no %} {% flag se %}  |
 | ![Swedbank Pay][swp-logo]        | Swedbank Pay Monthly Payments    | {% flag se %}                |
 | ![Swish][swish-logo]             | Swish                            | {% flag se %}                |
 | ![Trustly][trustly-logo]         | [Trustly][trustly]               | {% flag se %} {% flag fi %}  |
-| ![Vipps][vipps-logo]             | Vipps                            | {% flag no %}                |
+| ![Vipps][vipps-logo]             | [Vipps][vipps]                   | {% flag no %}                |
 
 #### Browser And Operative System Limitations
 
@@ -147,6 +147,7 @@ use another device.
 [google-pay]: /checkout-v3/google-pay-presentation
 [google-pay-logo]: /assets/img/googlepay-logo.svg
 [mobilepay-logo]: /assets/img/icon-mobilepay-simple.svg
+[mobilepay]: /checkout-v3/mobilepay-presentation
 [vipps-logo]: /assets/img/icon-vipps-simple.svg
 [swp-logo]: /assets/img/swedbank-pay-vertical-black.svg
 [swish-logo]: /assets/img/icon-swish-simple.svg
@@ -154,3 +155,4 @@ use another device.
 [trustly]: /checkout-v3/trustly-presentation
 [get-started]: /checkout-v3/get-started/
 [modules-sdks]: /checkout-v3/modules-sdks/
+[vipps]: /checkout-v3/vipps-presentation
