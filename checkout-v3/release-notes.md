@@ -1188,7 +1188,7 @@ more convenient for both the integration and the payer.
 [limitations]: https://developer.stage.swedbankpay.com/checkout-v3/#browser-and-operative-system-limitations
 [mac-checkout]: /old-implementations/checkout-v2/features/optional/mac
 [magic-amount]: /checkout-v3/test-data/#magic-amounts-error-testing-using-amounts
-[mig-guide]: /checkout-v3/migration-guides
+[mig-guide]: /checkout-v3/migrate
 [mobile-card-payments]: /old-implementations/payment-instruments-v1/card/mobile-card-payments
 [mobile-pay]: /old-implementations/payment-instruments-v1/mobile-pay
 [mobilepay-seamless-view]: /old-implementations/payment-instruments-v1/mobile-pay/seamless-view

@@ -9,7 +9,7 @@ menu_order: 5
 
 <div class="row mt-4">
     <div class="col-xl-4 col-lg-4 d-flex">
-       <a href="/checkout-v3/migration-guide-v2-v3" class="cards cards-primary">
+       <a href="/checkout-v3/migration-guide-v2" class="cards cards-primary">
          <span class="cards-icon">
             <i class="material-icons-outlined">
                 storefront
@@ -41,7 +41,7 @@ menu_order: 5
       </a>
     </div>
     <div class="col-xl-4 col-lg-4 d-flex">
-       <a href="/checkout-v3/migration-guide-v1-v3" class="cards cards-primary">
+       <a href="/checkout-v3/migration-guide-v1" class="cards cards-primary">
          <span class="cards-icon">
             <i class="material-icons-outlined">
                 storefront
