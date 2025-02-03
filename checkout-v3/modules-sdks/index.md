@@ -63,11 +63,6 @@ our SDK payments.
 **Software libraries** are bundles of code often used by an *SDK* or in a
 *Module* to solve one or a set of specific problems.
 
-{:.table .table-striped}
-|            Platform      | Library                                                     | Repository                            |
-| :----------------------: | :---------------------------------------------------------- | :------------------------------------ |
-| ![WooCommerce][woo-icon] | [Swedbank Pay Core plugin for WooCommerce][woo-core-link]{:target="_blank"}   | [`…woocommerce-core`][woo-core-repo]{:target="_blank"}  |
-
 ### Unofficial Libraries
 
 {% include alert-unsupported.md type='libraries' %}
@@ -75,6 +70,7 @@ our SDK payments.
 {:.table .table-striped}
 |            Platform      | Library                                                     | Repository                            |
 | :----------------------: | :---------------------------------------------------------- | :------------------------------------ |
+| ![WooCommerce][woo-icon] | [Swedbank Pay Core plugin for WooCommerce][woo-core-link]{:target="_blank"}   | [`…woocommerce-core`][woo-core-repo]{:target="_blank"}  |
 |   ![.NET][dotnet-icon]   | [Swedbank Pay SDK Extensions for .NET][dotnet-link]{:target="_blank"}         | [`…sdk-dotnet`][dotnet-repo]{:target="_blank"}          |
 
 [android-icon]: /assets/img/logos/android.svg
