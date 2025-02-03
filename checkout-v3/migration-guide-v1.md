@@ -1,7 +1,7 @@
 ---
 title: From Payment Methods v1 to Digital Payments v3.1
 section: Migration Guides
-permalink: /:path/migration-guide-v1-v3/
+permalink: /:path/migration-guide-v1/
 hide_from_sidebar: true
 description: |
   The why and how to migrate from v1 to v3.1

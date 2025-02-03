@@ -8,8 +8,6 @@ menu_order: 7
 release_notes: true
 ---
 
-Test text
-
 ## 09 December 2024
 
 ### Version 5.3.3

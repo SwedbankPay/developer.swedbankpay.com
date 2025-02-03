@@ -3,13 +3,9 @@ title: Migration Guides
 redirect_from: /checkout-v3/migration-guide
 description: |
   A collection of Digital Payments migration guides
-permalink: /:path/migration-guides
+permalink: /:path/migrate/
 menu_order: 5
 ---
-
-Making changes to your integration might seem like a sizeable task, but most
-times it really isn't. We have written a handful of step-by-step guides and
-gathered them here, to help make the transition as smooth as possible for you.
 
 <div class="row mt-4">
     <div class="col-xl-4 col-lg-4 d-flex">
