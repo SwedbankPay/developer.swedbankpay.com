@@ -154,7 +154,7 @@ case of URL changes, or if you need to whitelist URLs not listed here." %}
 
 [custom-logo]: /old-implementations/payment-menu-v2/features/optional/custom-logo
 [dp]: /checkout-v3/
-[mp]: /checkout-v3/migration-guides
+[mp]: /checkout-v3/migrate
 [pci]: /assets/documents/PCI-DSS-v4-0-1-SAQ-A.pdf
 [post-response]: /old-implementations/payment-menu-v2/payment-order/#payment-order-response
 [post-request]: /old-implementations/payment-menu-v2/payment-order/#payment-order-request
