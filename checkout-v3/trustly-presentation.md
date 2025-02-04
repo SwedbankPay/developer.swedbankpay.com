@@ -8,15 +8,24 @@ description: |
 menu_order: 400
 ---
 
-Pay Smarter with Trustly!
-
-Experience seamless online payments with Trustly — the fast, secure, and direct
-way to pay from your bank account without cards or apps.
-
-* Fast & Easy: Complete transactions in seconds.
-* Secure & Reliable: Bank-level encryption protects your data.
-* No Cards Needed: Pay directly from your bank account.
-* Widely Accepted: Trusted by thousands of merchants worldwide.
+<section class="panel panel-brand">
+ <header>
+ <h3 class="panel-title">Pay Smarter with Trustly!</h3>
+ <p class="panel-sub-title"></p>
+ </header>
+ <div class="panel-body">
+<div>
+ Experience seamless online payments with Trustly — the fast, secure, and direct way to pay from your bank account without cards or apps.
+ </div>
+ <br/>
+ <ul>
+ <li>Fast & Easy: Complete transactions in seconds.</li>
+ <li>Secure & Reliable: Bank-level encryption protects your data.</li>
+ <li>No Cards Needed: Pay directly from your bank account.</li>
+ <li>Widely Accepted: Trusted by thousands of merchants worldwide.</li>
+ </ul>
+ </div>
+</section>
 
 ### Overlay
 

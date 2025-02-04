@@ -14,15 +14,25 @@ in-app solution. If you want to implement Google Pay&trade; in your web-view
 application, you will need to open it in a browser and open the Checkout from
 there." %}
 
-Pay Smarter with Google Pay&trade;!
-
-Simplify your checkout experience with Google Pay&trade; — the fast, secure, and
-hassle-free way to pay online, in-store and in apps.
-
-*   Fast Transactions: Tap, click, or swipe—pay in seconds.
-*   Secure Payments: Advanced encryption keeps your card details safe.
-*   Seamless Convenience: Save cards, loyalty programs and tickets all in one place.
-*   Widely Accepted: Use it anywhere Google Pay is supported.
+<section class="panel panel-brand">
+ <header>
+ <h3 class="panel-title">Pay Smarter with Google Pay&trade;!</h3>
+ <p class="panel-sub-title"></p>
+ </header>
+ <div class="panel-body">
+<div>
+ Simplify your checkout experience with Google Pay&trade; — the fast, secure, and
+ hassle-free way to pay online, in-store and in apps.
+ </div>
+ <br/>
+ <ul>
+ <li>Fast Transactions: Tap, click, or swipe—pay in seconds.</li>
+ <li>Secure Payments: Advanced encryption keeps your card details safe.</li>
+ <li>Seamless Convenience: Save cards, loyalty programs and tickets all in one place.</li>
+ <li>Widely Accepted: Use it anywhere Google Pay is supported..</li>
+ </ul>
+ </div>
+</section>
 
 ### Merchant ID
 
