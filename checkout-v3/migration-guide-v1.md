@@ -30,8 +30,17 @@ fits all structure.
 ## How
 
 Migrating from individual payment methods to Digital Payments v3 does require a
-full new integration, but as we already mentioned, you only have to do it once!
+full new integration. The good news is that even if you are working with a new
+(paymentOrder) resource, the integration is very similar to what you are used
+to with payment method integrations.
 
-Head over to [Get Started][get-started], and we'll walk the steps with you.
+We still have support for both Seamless View and Redirect, and the payment flow
+is similar to payment methods – with authorizations, captures, cancellations and
+reversals.
 
+Check in with the [setup team][e-mail] to find out what needs to be changed in
+the merchant setup at our end, then head over to [Get Started][get-started], and
+we'll walk the steps with you.
+
+[e-mail]: mailto:support.psp@swedbankpay.se
 [get-started]: /checkout-v3/get-started/
