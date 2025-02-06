@@ -12,7 +12,7 @@ completing the payment. `paymentUrl` is only used in Seamless Views and should
 point to the page of where the Payment Order Seamless View is hosted. If both
 `cancelUrl` and `paymentUrl` is sent, the `paymentUrl` will used. Trustly will
 only be available if the `paymentUrl` is provided while using Seamless View.
-With Redirect Trustly will appear regardless.
+When using Redirect, Trustly will appear regardless.
 {%- endcapture -%}
 {%- comment -%}
 The following chain of Liquid filters converts newlines to spaces and removes

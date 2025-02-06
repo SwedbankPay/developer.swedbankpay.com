@@ -40,7 +40,7 @@ To start integrating Swedbank Pay Payments, you need the following:
 
 ## Platform Options
 
-Here are our three platform options at a glance. You can read more about the
+Here are the two platform options at a glance. You can read more about the
 integration process by visiting the sections for each payment method.
 
 ## Seamless View

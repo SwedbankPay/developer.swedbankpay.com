@@ -195,16 +195,16 @@ access them with our script." %}
 
 ## Monitoring The Script URL
 
-With the [PCI-DSS v4][pci] changes taking effect on March 31st 2025, merchants
-are responsible for ensuring the integrity of the HTML script used in their
-integration, including monitoring what is loaded into or over it. Specifically,
-Seamless View merchants must verify that the script URL embedded in their iframe
-originates from Swedbank Pay or another trusted domain. It is important to note
-that Swedbank Pay’s PCI responsibility is strictly limited to the content within
-the payment iframe. For further details, refer to section 4.6.3 in the linked
-document.
+With the [PCI-DSS v4][pci]{:target="_blank"} changes taking effect on March 31st
+2025, merchants are responsible for ensuring the integrity of the HTML script
+used in their integration, including monitoring what is loaded into or over it.
+Specifically, Seamless View merchants must verify that the script URL embedded
+in their iframe originates from Swedbank Pay or another trusted domain. It is
+important to note that Swedbank Pay’s PCI responsibility is strictly limited to
+the content within the payment iframe. For further details, refer to section
+4.6.3 in the linked document.
 
-To ensure compliance, we recommend implementing [Content Security Policy][csp]
+To ensure compliance, we recommend implementing [Content Security Policy][csp]{:target="_blank"}
 rules to monitor and authorize scripts.
 
 Merchants must whitelist the following domains to restrict browser content
@@ -342,5 +342,5 @@ and its duration.
 [data-protection]: /old-implementations/checkout-v2/data-protection#paymentorder-consumer-data
 [payment-menu]: /old-implementations/checkout-v2/payment-menu
 [iso-3166]: https://www.iso.org/iso-3166-country-codes.html
-[pci]: https://www.swedbankpay.se/globalassets/global-documents/risk-and-security/pci-dss-v4-0-saq-a-r2.pdf
+[pci]: /assets/documents/PCI-DSS-v4-0-1-SAQ-A.pdf
 [csp]: https://www.w3.org/TR/CSP2/

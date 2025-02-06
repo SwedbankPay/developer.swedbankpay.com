@@ -24,5 +24,4 @@ Host: {{ page.api_host }}{% endcapture %}
 {% include code-example.html
     title='Expansion'
     header=request_header
-    json= request_content
     %}

@@ -88,7 +88,6 @@ Authorization: Bearer <AccessToken>{% endcapture %}
 {% include code-example.html
     title='Request'
     header=request_header
-    json= request_content
     %}
 
 {% else %}
@@ -105,7 +104,6 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 {% include code-example.html
     title='Get Request Payment Resource'
     header=request_header
-    json= request_content
     %}
 
 You can also perform a GET request towards the `id` of a Payment Order and find
@@ -119,7 +117,6 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 {% include code-example.html
     title='GET Request Paid Resource'
     header=request_header
-    json= request_content
     %}
 
 {% endif %}

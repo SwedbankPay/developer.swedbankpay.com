@@ -33,7 +33,6 @@ Content-Type: application/json{% endcapture %}
 {% include code-example.html
     title='Request'
     header=request_header
-    json= request_content
     %}
 
 {% if documentation_section == "card" %}
@@ -244,7 +243,6 @@ Content-Type: application/json{% endcapture %}
 {% include code-example.html
     title='Request'
     header=request_header
-    json= request_content
     %}
 
 {% capture response_header %}HTTP/1.1 200 OK

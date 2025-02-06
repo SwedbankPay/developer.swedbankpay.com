@@ -8,6 +8,36 @@ menu_order: 7
 release_notes: true
 ---
 
+## 6 February 2025
+
+### Version 5.3.4
+
+A handful of small, but significant changes in the first update of 2025.
+
+First of all, the [Android and iOS SDKs][modules-sdks] have been promoted to
+supported status!
+
+As the number of migration guides is going up, we have gathered them on a
+[start page][mig-guide] for accessability. In addition to the already existing
+“v2 to v3.1” and “Seamless View to Redirect” guides, a guide for going from
+Payment Methods v1 to Digital Payments v3.1 is now available.
+
+[New IP addresses for callbacks][callback-ip] have been added in the callback
+section. They will be going live March 12th, so make sure you whitelist them as
+soon as possible.
+
+While setting up a test account is free, making the switch to a production
+account isn’t, and it will generate a support fee for merchants who do this.
+Information about this has been added to the [Test Account Setup][v3-setup]
+section.
+
+The payment method section under [Availability][availability] has been used for
+information about necessary steps to make certain payment methods available, but
+we are beefing it up by giving a general presentation of the different methods
+we offer.
+
+As usual, a handful of bug fixes and feedback requests have been remedied too!
+
 ## 09 December 2024
 
 ### Version 5.3.3
@@ -1188,7 +1218,7 @@ more convenient for both the integration and the payer.
 [limitations]: https://developer.stage.swedbankpay.com/checkout-v3/#browser-and-operative-system-limitations
 [mac-checkout]: /old-implementations/checkout-v2/features/optional/mac
 [magic-amount]: /checkout-v3/test-data/#magic-amounts-error-testing-using-amounts
-[mig-guide]: /checkout-v3/migration-guide/
+[mig-guide]: /checkout-v3/migrate
 [mobile-card-payments]: /old-implementations/payment-instruments-v1/card/mobile-card-payments
 [mobile-pay]: /old-implementations/payment-instruments-v1/mobile-pay
 [mobilepay-seamless-view]: /old-implementations/payment-instruments-v1/mobile-pay/seamless-view
@@ -1277,3 +1307,5 @@ more convenient for both the integration and the payer.
 [vipps-payment-url]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-url
 [vipps]: /old-implementations/payment-instruments-v1/vipps
 [wcag]: https://www.swedbankpay.com/information/wcag
+[callback-ip]: /checkout-v3/features/payment-operations/callback/#callback-ip-addresses
+[availability]: /checkout-v3/#availability

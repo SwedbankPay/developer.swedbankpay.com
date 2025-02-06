@@ -7,11 +7,14 @@ description: |
 menu_order: 700
 ---
 
-As it is a global payment solution, merchants can reach out to an
-international market by enabling card as a part of their payment offering.
+As a global payment solution, Swedbank Pay enables merchants to tap into
+international markets by seamlessly integrating card payments into their
+offering.
 
-By choosing Swedbank Pay there's no need to contact a separate acquirer and/or
-Payment Service Provider, as we have gathered all the expertise under one roof.
+With Swedbank Pay, you gain a one-stop shop solution – no need to juggle
+multiple acquirers or Payment Service Providers. We’ve brought all the expertise
+you need under one roof, simplifying your payment process and setting your
+business up for success.
 
 ### Availability
 
@@ -39,6 +42,9 @@ your business needs:
 *   [Network tokenization][nt] - Tokenize the card so you, as a merchant, can
 continue providing service to the payer without them having to re-enter
 their card details if it has expired and a new card is generated.
+
+{% include iterator.html prev_href="/checkout-v3/"
+                         prev_title="Back to Introduction" %}
 
 [one-click]: /checkout-v3/features/optional/one-click-payments/
 [recurring]: /checkout-v3/features/optional/unscheduled/

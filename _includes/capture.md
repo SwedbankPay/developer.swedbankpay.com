@@ -114,7 +114,6 @@ Content-Type: application/json{% endcapture %}
 {% include code-example.html
     title='Request'
     header=request_header
-    json= request_content
     %}
 
 {% include transaction-list-response.md api_resource=include.api_resource documentation_section=include.documentation_section transaction="capture" %}

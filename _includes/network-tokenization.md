@@ -70,7 +70,6 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 {% include code-example.html
     title='GET Tokens Request'
     header=request_header
-    json= request_content
     %}
 
 {% capture response_header %}HTTP/1.1 200 OK

@@ -4,7 +4,7 @@
     {%- assign description_url = description_url | prepend: "/old-implementations/payment-instruments-v1" -%}
 {%- endunless -%}
 {%- capture description -%}
-    A 40 character length textual [description]({{ description_url }}) of the purchase.
+    A textual [description]({{ description_url }}) of the purchase. Maximum length is 40 characters.
 {%- endcapture -%}
 {{- description | strip_newlines -}}
 {%- comment -%}

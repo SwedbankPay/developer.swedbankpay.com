@@ -129,7 +129,6 @@ Content-Type: application/json{% endcapture %}
 {% include code-example.html
     title='Request'
     header=request_header
-    json= request_content
     %}
 
 {% include transaction-list-response.md transaction="cancellation" %}
@@ -252,7 +251,6 @@ Content-Type: application/json{% endcapture %}
 {% include code-example.html
     title='Request'
     header=request_header
-    json= request_content
     %}
 
 {% include transaction-list-response.md transaction="reversal" %}

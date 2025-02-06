@@ -31,5 +31,5 @@ to find your section.
                          next_title="Payment Menu v2" %}
 
 [payments-only]: /checkout-v3
-[migration-guide]: /checkout-v3/migration-guide
+[migration-guide]: /checkout-v3/migrate
 [get-started]: /checkout-v3/get-started

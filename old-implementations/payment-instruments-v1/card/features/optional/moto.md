@@ -1,7 +1,7 @@
 ---
 title: MOTO
 description: |
-  Mail Order / Telephone Order transactions.
+  Card-based home order (Mail Order / Telephone Order) transactions.
 menu_order: 1600
 icon:
   content: dns

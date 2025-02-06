@@ -18,7 +18,6 @@ Content-Type: application/json;version=2.0      // Version optional for 2.0{% en
 {% include code-example.html
     title='Request'
     header=request_header
-    json= request_content
     %}
 
 ### Card `Paid` Resource

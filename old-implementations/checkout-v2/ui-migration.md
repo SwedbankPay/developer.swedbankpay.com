@@ -7,11 +7,11 @@ menu_order: 11
 ---
 
 As parts of the PCI-DSS best practice becomes requirements with
-[PCI-DSS v4][pci] coming in April 2025, using the [Seamless View][seamless-view]
-integration to display the payment UI will give merchants more responsibilities
-than they currently have. This is because Seamless View is hosted by you. As the
-Redirect integration is hosted by Swedbank Pay, we also handle these
-responsibilities.
+[PCI-DSS v4][pci]{:target="_blank"} coming in April 2025, using the
+[Seamless View][seamless-view] integration to display the payment UI will give
+merchants more responsibilities than they currently have. This is because
+Seamless View is hosted by you. As the Redirect integration is hosted by
+Swedbank Pay, we also handle these responsibilities.
 
 The updated requirements will include stricter controls and monitoring,
 particularly around the security of your checkout process. Merchants are
@@ -46,7 +46,7 @@ help you.
 If you choose to stay with Seamless View, please take the following under
 advisement.
 
-To ensure compliance, we recommend implementing [Content Security Policy][csp]
+To ensure compliance, we recommend implementing [Content Security Policy][csp]{:target="_blank"}
 rules to monitor and authorize scripts.
 
 Merchants must whitelist the following domains to restrict browser content
@@ -77,8 +77,8 @@ case of URL changes, or if you need to whitelist URLs not listed here." %}
 | https://*.visa.com | URL needed for Click to Pay.     |
 
 [dp]: /checkout-v3/
-[mp]: /checkout-v3/migration-guide/
-[pci]: https://www.swedbankpay.se/globalassets/global-documents/risk-and-security/pci-dss-v4-0-saq-a-r2.pdf
+[mp]: /checkout-v3/migrate
+[pci]: /assets/documents/PCI-DSS-v4-0-1-SAQ-A.pdf
 [seamless-view]: /old-implementations/checkout-v2/payment-menu/#step-4-display-the-payment-menu
 [da]: https://www.swedbankpay.dk/risiko-og-sikkerhed/pci-sadan-bliver-du-pavirket
 [fi]: https://www.swedbankpay.fi/riskit-ja-turvallisuus/nain-pci-vaikuttaa-sinuun
