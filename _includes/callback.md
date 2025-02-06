@@ -24,7 +24,7 @@ three example scenarios of why this is important:
     merchant website, the `callbackUrl` is what ensures that you receive the
     information about what happened with the payment.
 
-## Good To Know About Callbacks
+## Technical Information
 
 *   When a change or update from the back-end system is made on a payment or
     transaction, Swedbank Pay will perform an asynchronous server-to-server
@@ -54,6 +54,18 @@ three example scenarios of why this is important:
     *   1265 seconds
 *   A callback should return a `200 OK` response.
 
+To understand the nature of the callback, the type of transaction, its status,
+etc., you need to perform a `GET` request on the received URL and inspect the
+response. The transaction type or any other information can not and should not
+be inferred from the URL. See [URL usage][url-usage] for more information.
+
+For `paymentOrder` implementations (Digital Payments, Checkout v2 and Payment
+Menu v1), it is critical that you do **not** use the `paymentId` or
+`transactionId` when performing a `GET` to retrieve the payment's status. Use
+the `paymentOrderId`.
+
+### Callback IP Addresses
+
 The callbacks are currently sent from either `51.107.183.58` or `91.132.170.1`
 in both the test and production environment.
 
@@ -68,16 +80,6 @@ IP addresses, and we strongly advise you to whitelist them as soon as possible:
 *   `20.91.170.125`
 *   `20.91.170.126`
 *   `20.91.170.127`
-
-To understand the nature of the callback, the type of transaction, its status,
-etc., you need to perform a `GET` request on the received URL and inspect the
-response. The transaction type or any other information can not and should not
-be inferred from the URL. See [URL usage][url-usage] for more information.
-
-For `paymentOrder` implementations (Digital Payments, Checkout v2 and Payment
-Menu v1), it is critical that you do **not** use the `paymentId` or
-`transactionId` when performing a `GET` to retrieve the payment's status. Use
-the `paymentOrderId`.
 
 ## Callback Example
 
