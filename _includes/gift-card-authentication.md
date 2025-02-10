@@ -38,7 +38,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 |     Required     | Field                   | Type      | Description                                                                                                                     |
 | :--------------: | :---------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------ |
 | {% icon check %} | `accountIdentifier`     | `Object`  |                                                                                                                                 |
@@ -60,6 +61,8 @@ Content-Type: application/json
 | {% icon check %} | `paymentTransactionRef` | `string`  | Unique ID for each payment.                                                                                                     |
 |                  | `repeat`                | `boolean` | Notifies this is a repeat message.                                                                                              |
 |                  | `stan`                  | `string`  | Systems trace audit number.                                                                                                     |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Response
 

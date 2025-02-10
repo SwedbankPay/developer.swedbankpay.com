@@ -1,6 +1,6 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
-{%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
+{% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
+{%- capture documentation_section -%}{%- include utils/documentation-section.md -%}{%- endcapture -%}
 {% assign operations_url = '/technical-reference/operations' | prepend: features_url %}
 {% assign transaction = include.transaction | default: "capture" %}
 {% if transaction == "cancel" %}
@@ -16,16 +16,12 @@ towards the specific transaction's `id`.
 
 ## Transaction List Response
 
-{% if documentation_section contains "checkout" or "payment-menu" %}
+{% if documentation_section contains "checkout-v2" or "checkout-v3" or "payment-menu-v2" %}
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "paymentorder": "/psp/paymentorders/{{ page.payment_id }}",
     "{{ plural }}": { {% if api_resource == "invoice" %}
         "receiptReference": "AH12355", {% endif %}
@@ -71,19 +67,20 @@ Content-Type: application/json
             }
         }]
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% else %}
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "{{ plural }}": { {% if api_resource == "invoice" %}
         "receiptReference": "AH12355", {% endif %}
@@ -129,32 +126,38 @@ Content-Type: application/json
             }
         }]
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% endif %}
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                             | Type      | Required                                                                                                                                                                                                     |
 | :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | {% if documentation_section contains "checkout" or "payment-menu" %}
-| `paymentorder`                         | `string`  | {% include field-description-id.md %}                                                                                                                                                    | {% else %}
-| `payment`                         | `string`  | {% include field-description-id.md sub_resource=plural %}                                                                                                                                                    |
+| {% f paymentOrder, 0 %}                         | `string`  | {% include fields/id.md %}                                                                                                                                                    | {% else %}
+| {% f payment, 0 %}                         | `string`  | {% include fields/id.md sub_resource=plural %}                                                                                                                                                    |
 | `{{ plural }}`                    | `object`  | The current `{{ plural }}` resource.                                                                                                                                                                         | {% endif %}
-| └➔&nbsp;`id`                      | `string`  | {% include field-description-id.md resource=plural %}                                                                                                                                                        |
-| └➔&nbsp;`{{ transaction }}List`   | `array`   | The array of {{ transaction }} transaction objects.                                                                                                                                                          |
-| └➔&nbsp;`{{ transaction }}List[]` | `object`  | The {{ transaction }} transaction object described in the `{{ transaction }}` resource below.                                                                                                                |
-| └─➔&nbsp;`id`                     | `string`  | {% include field-description-id.md resource="transaction" %}                                                                                                                                                 |
-| └─➔&nbsp;`created`                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| └─➔&nbsp;`updated`                | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
-| └─➔&nbsp;`type`                   | `string`  | Indicates the transaction type.                                                                                                                                                                              |
-| └─➔&nbsp;`state`                  | `string`  | {% include field-description-state.md %}   |
-| └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where `id` should be used instead. |
-| └─➔&nbsp;`amount`                 | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
-| └─➔&nbsp;`vatAmount`              | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
-| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md %}                                                                                                                   |
-| └─➔&nbsp;`payeeReference`         | `string`  | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                         | {% if api_resource == "invoice" %}
-| └─➔&nbsp;`receiptReference`       | `string`  | A unique reference for the transaction. This reference is used as an invoice/receipt number.                                                                                                                 | {% endif %}
-| └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
-| └─➔&nbsp;`operations`             | `array`   | The array of [operations]({{ operations_url }}) that are possible to perform on the transaction in its current state.                                                                                                                |
-
-[operations]: {{ features_url }}/technical-reference/operations
+| {% f id %}                      | `string`  | {% include fields/id.md resource=plural %}                                                                                                                                                        |
+| {% f {{ transaction }}List %}   | `array`   | The array of {{ transaction }} transaction objects.                                                                                                                                                          |
+| {% f {{ transaction }}List[] %} | `object`  | The {{ transaction }} transaction object described in the `{{ transaction }}` resource below.                                                                                                                |
+| {% f id, 2 %}                     | `string`  | {% include fields/id.md resource="transaction" %}                                                                                                                                                 |
+| {% f created, 2 %}                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| {% f updated, 2 %}                | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
+| {% f type, 2 %}                   | `string`  | Indicates the transaction type.                                                                                                                                                                              |
+| {% f state, 2 %}                  | `string`  | {% include fields/state.md %}   |
+| {% f number, 2 %}                 | `integer` | {% include fields/number.md %} |
+| {% f amount, 2 %}                 | `integer` | {% include fields/amount.md %}                                                                                                                                                                    |
+| {% f vatAmount, 2 %}              | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
+| {% f description, 2 %}            | `string`  | {% include fields/description.md %}                                                                                                                   |
+| {% f payeeReference, 2 %}         | `string`  | {% include fields/payee-reference.md describe_receipt=true %}                                                                                         | {% if api_resource == "invoice" %}
+| {% f receiptReference, 2 %}       | `string`  | {% include fields/receipt-reference.md %}                                                                                                                 | {% endif %}
+| {% f isOperational, 2 %}          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
+| {% f operations, 2 %}             | `array`   | {% include fields/operations.md resource="transaction" %}                                                                                                                |
+{% endcapture %}
+{% include accordion-table.html content=table %}

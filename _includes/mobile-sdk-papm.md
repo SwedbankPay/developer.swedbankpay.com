@@ -17,9 +17,9 @@ information (if desired).
 ```swift
 var paymentOrder = ...
 payment.payer = .init(
-    consumerProfileRef: nil, 
-    email: "leia.ahlstrom@payex.com", 
-    msisdn: "+46739000001", 
+    consumerProfileRef: nil,
+    email: "leia.ahlstrom@payex.com",
+    msisdn: "+46739000001",
     payerReference: unique-identifier
 )
 
@@ -33,7 +33,7 @@ payment.payer = .init(
 val paymentOrder = PaymentOrder(
     ...
     payer = PaymentOrderPayer(
-        email = "leia.ahlstrom@payex.com", 
+        email = "leia.ahlstrom@payex.com",
         msisdn = "+46739000001",
         payerReference = unique-identifier
     ),
@@ -75,16 +75,14 @@ paymentOrder.payer = PaymentOrderPayer(
 )
 ```
 
-## Token Retrieval Checkout V3
+## Token Retrieval Digital Payments
 
-Retrieve the token by expanding the "paid" property of a previous successful
-payment. To see this in action, the example merchant backend has an endpoint
-called "/expand" that takes a "resource" (in this case the paymentId), and an
-array of properties to expand. You get a payment order back, and in the expanded
-paid property there is a "tokens" array (if the customer agreed to let you store
-the information). A good practice is to only do this on the backend and serve
-the token as part of user's info, to have the token available at the next
-purchase.
+Retrieve the token by expanding the `paid` property of a previous successful
+payment. You do this with a GET request where you add `?$expand=paid` after the
+`paymentOrderId`. You get a payment order back, and in the expanded paid
+property there is a "tokens" array (if the customer agreed to let you store the
+information). A good practice is to only do this on the backend and serve the
+token as part of user's info, to have the token available at the next purchase.
 
 {:.code-view-header}
 **iOS**
@@ -93,18 +91,18 @@ purchase.
 // ExpandResponse is a struct you define to match the response from your server, since you will want to adapt it to your needs.
 
 let request = configuration.expandOperation(paymentId: paymentId, expand: [.paid], endpoint: "expand") { (result: Result<ExpandResponse, Error>) in
-    
+
     if case .success(let success) = result, let token = success.paymentOrder.paid?.tokens.first?.token {
-        
+
         // Now save the token for the next purchase.
         // Notice that the backend never needs to respond with the complete expanded PaymentOrder.
         // This is just an illustration of how expansion can work
     } else {
-        
+
         //handle failure
     }
 }
-                        
+
 ```
 
 {:.code-view-header}
@@ -117,21 +115,21 @@ let request = configuration.expandOperation(paymentId: paymentId, expand: [.paid
 try {
     var result: ExpandedPaymentOrder = merchantConfiguration.expandOperation(
         context,
-        paymentId, 
-        arrayOf("paid"), 
+        paymentId,
+        arrayOf("paid"),
         "expand",
         ExpandedPaymentOrder::class.java
     )
-    
+
     return expandedOrder.paid?.tokens?.first()?.token
-    
+
 } catch (error: UnexpectedResponseException) {
-    
+
     //handle error
 }
 ```
 
-Read more on [expanding properties here][expanding_properties].
+Read more on [expanding properties here][expanding-properties].
 
 ## Token Retrieval In Checkout V2
 
@@ -241,6 +239,6 @@ val paymentOrder = PaymentOrder(
 paymentOrder.disableStoredPaymentDetails = true
 ```
 
-[add-stored-details]: /payment-menu/features/optional/payer-aware-payment-menu#add-stored-payment-instrument-details
-[enterprise-payer-ref]: https://developer.swedbankpay.com/checkout-v3/enterprise/features/optional/enterprise-payer-reference
-[expanding_properties]: https://developer.swedbankpay.com/introduction#expansion
+[add-stored-details]: /checkout-v3/features/optional/payer-aware-payment-menu/#add-stored-payment-method-details
+[enterprise-payer-ref]: https://developer.swedbankpay.com/old-implementations/enterprise/features/optional/enterprise-payer-reference
+[expanding-properties]: https://developer.swedbankpay.com/checkout-v3/get-started/fundamental-principles#expansion

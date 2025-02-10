@@ -1,11 +1,15 @@
-{% capture techref_url %}{% include documentation-section-url.md href='/features/technical-reference' %}{% endcapture %}
+{% capture techref_url %}{% include utils/documentation-section-url.md href='/features/technical-reference' %}{% endcapture %}
 {% assign transactions_url = '/transactions' | prepend: techref_url %}
 {% assign operations_url = '/operations' | prepend: techref_url %}
-{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
+{% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
 
 ## Reversal
 
 This transaction is used when a captured payment needs to be reversed.
+
+Please note that you have a maximum of 5 **consecutive** failed attempts at a
+reversal. The payment will be locked after this, and you need to contact us for
+another attempt.
 
 ## Reversal Request
 
@@ -19,24 +23,25 @@ The `create-reversal` operation will reverse a previously captured payment.
 
 {% endif %}
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/reversals HTTP/1.1
+{% capture request_header %}POST /psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "amount": 1500,
         "vatAmount": 0,
         "description": "Test Reversal",
         "payeeReference": "ABC123"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture request_table%}
 {:.table .table-striped .mb-5}
@@ -44,10 +49,10 @@ Content-Type: application/json
 | :--------------: | :----------------------- | :------------ | :--------------------------------------------------------------------------------------- | {% if documentation_section contains "checkout-v3" %}
 | {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic transaction resource. | {% else %}
 | {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource]({{ transactions_url }}). | {% endif %}
-| {% icon check %} | └➔&nbsp;`amount`         | `integer`     | {% include field-description-amount.md %}                                                |
-| {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | {% include field-description-vatamount.md %}                                             |
-| {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the `reversal`.                                                 |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md documentation_section=include.documentation_section %}          |
+| {% icon check %} | {% f amount %}         | `integer`     | {% include fields/amount.md %}                                                |
+| {% icon check %} | {% f vatAmount %}      | `integer`     | {% include fields/vat-amount.md %}                                             |
+| {% icon check %} | {% f description %}    | `string`      | A textual description of the `reversal`.                                                 |
+| {% icon check %} | {% f payeeReference %} | `string` | {% include fields/payee-reference.md documentation_section=include.documentation_section %}          |
 {% endcapture %}
 {% include accordion-table.html content = request_table
 %}
@@ -57,14 +62,10 @@ Content-Type: application/json
 The `reversal` resource contains information about the newly created reversal
 transaction.
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}",
     "reversal": {
         "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/reversal/{{ page.transaction_id }}",
@@ -84,31 +85,36 @@ Content-Type: application/json
             "operations": []
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture response_table %}
 {:.table .table-striped .mb-5}
 | Property                  | Type      | Description                                                                                                                                                                                                  |
 | :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                 | `string`  | The relative URL of the payment this `reversal` transaction belongs to.                                                                                                                                      |
-| `reversal`                | `object`  | The `reversal` resource contains information about the `reversal` transaction made against a card payment.                                                                                                    |
-| └➔&nbsp;`id`              | `string`  | The relative URL of the created `reversal` transaction.                                                                                                                                                       |{% if documentation_section contains "checkout-v3" %}
+| {% f payment, 0 %}                 | `string`  | The relative URL of the payment this `reversal` transaction belongs to.                                                                                                                                      |
+| {% f reversal, 0 %}                | `object`  | The `reversal` resource contains information about the `reversal` transaction made against a card payment.                                                                                                    |
+| {% f id %}              | `string`  | The relative URL of the created `reversal` transaction.                                                                                                                                                       |{% if documentation_section contains "checkout-v3" %}
 | {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic transaction resource. | {% else %}
 | {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource]({{ transactions_url }}). | {% endif %}
-| └─➔&nbsp;`id`             | `string`  | The relative URL of the current  transaction  resource.                                                                                                                                                      |
-| └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
-| └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
-| └─➔&nbsp;`state`          | `string`  | {% include field-description-state.md %}        |
-| └─➔&nbsp;`number`         | `string`  | The transaction number, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where `id` should be used instead.      |
-| └─➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
-| └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
-| └─➔&nbsp;`description`    | `string`  | {% include field-description-description.md documentation_section=include.documentation_section %}                                                                                                                                  |
-| └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md documentation_section=include.documentation_section %}                                                                                                                              |
-| └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
-| └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
-| └─➔&nbsp;`operations`     | `array`   | The array of [operations]({{ operations_url }}) that are possible to perform on the transaction in its current state.                                                                                                  |
+| {% f id, 2 %}             | `string`  | The relative URL of the current  transaction  resource.                                                                                                                                                      |
+| {% f created, 2 %}        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| {% f updated, 2 %}        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
+| {% f type, 2 %}           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
+| {% f state, 2 %}          | `string`  | {% include fields/state.md %}        |
+| {% f number, 2 %}         | `string`  | The transaction number, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where `id` should be used instead.      |
+| {% f amount, 2 %}         | `integer` | {% include fields/amount.md %}                                                                                                                                                                    |
+| {% f vatAmount, 2 %}      | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
+| {% f description, 2 %}    | `string`  | {% include fields/description.md documentation_section=include.documentation_section %}                                                                                                                                  |
+| {% f payeeReference, 2 %} | `string`  | {% include fields/payee-reference.md documentation_section=include.documentation_section %}                                                                                                                              |
+| {% f failedReason, 2 %}   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
+| {% f isOperational, 2 %}  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
+| {% f operations, 2 %}     | `array`   | {% include fields/operations.md resource="transaction" %}                                                                                                  |
 {% endcapture %}
 {% include accordion-table.html content = response_table %}
 
@@ -117,15 +123,15 @@ Content-Type: application/json
 The `reversals` resource lists the reversal transactions (one or more) on a
 specific payment.
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/reversals HTTP/1.1
+{% capture request_header %}GET /psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 {% include transaction-list-response.md api_resource=include.api_resource documentation_section=include.api_resource transaction="reversal" %}
 

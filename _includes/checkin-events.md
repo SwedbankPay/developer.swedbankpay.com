@@ -1,4 +1,4 @@
-{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
+{% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
 
 ## Checkin Events
 
@@ -34,29 +34,19 @@ sequenceDiagram
 ## `onConsumerIdentified`
 
 This event triggers when a consumer has performed Checkin and is identified,
-if the Payment Menu is not loaded and in the DOM.
-The `onConsumerIdentified` event is raised with the following event argument
-object:
+if the Payment Menu is not loaded and in the DOM. The `onConsumerIdentified`
+event is raised with the following event argument object:
 
-{:.code-view-header}
-**onConsumerIdentified event object**
-
-{% if documentation_section contains "checkout-v3" %}
-
-```json
-{
-  "actionType": "OnConsumerIdentified"
-}
-```
-
-{% else %}
-
-```json
-{
+{% capture response_content %}{
   "actionType": "OnConsumerIdentified",
   "consumerProfileRef": "{{ page.payment_token }}"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onConsumerIdentified event object'
+    header=response_header
+    json= response_content
+    %}
 
 ## `onShippingDetailsAvailable`
 
@@ -66,28 +56,28 @@ updated.
 completed before any shipping details are finalized, as the Checkin component
 provides shipping address via the `onShippingDetailsAvailable` event." %}
 
-{:.code-view-header}
-**onShippingDetailsAvailable event object**
-
-```json
-{
-  "actionType": "OnBillingDetailsAvailable",
+{% capture response_content %}{
+  "actionType": "OnShippingDetailsAvailable",
   "url": "/psp/consumers/{{ page.payment_token }}/shipping-details"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onShippingDetailsAvailable event object'
+    header=response_header
+    json= response_content
+    %}
 
 ## `onBillingDetailsAvailable`
 
 Triggered when a consumer has been identified.
 
-{:.code-view-header}
-**onBillingDetailsAvailable event object**
-
-```json
-{
+{% capture response_content %}{
   "actionType": "OnBillingDetailsAvailable",
   "url":"/psp/consumers/{{ page.payment_token }}/billing-details"
-}
-```
+}{% endcapture %}
 
-{% endif %}
+{% include code-example.html
+    title='onBillingDetailsAvailable event object'
+    header=response_header
+    json= response_content
+    %}

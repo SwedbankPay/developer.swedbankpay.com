@@ -6,7 +6,7 @@ jobs:
   misspell:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: haya14busa/action-cond@v1
         id: reporter
         with:
@@ -16,5 +16,4 @@ jobs:
       - uses: reviewdog/action-misspell@v1
         with:
           reporter: ${{ steps.reporter.outputs.value }}
-          locale: US
           ignore: cancelled

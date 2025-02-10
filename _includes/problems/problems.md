@@ -1,6 +1,6 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{% include documentation-section.md fallback="generic" %}{% endcapture %}
-{% if documentation_section contains "checkout" or documentation_section == "payment-menu" %}
+{% capture documentation_section %}{% include utils/documentation-section.md fallback="generic" %}{% endcapture %}
+{% if documentation_section contains "checkout" or documentation_section contains "payment-menu" %}
     {% assign documentation_section = "generic" %}
 {% endif %}
 {% assign problem_include_file = documentation_section | prepend: "problems/" | append: ".md" %}
@@ -20,11 +20,7 @@ usually to the field in the request that was missing or contained invalid data.
 
 The structure of a problem message will look like this:
 
-{:.code-view-header}
-**Problem Example**
-
-```json
-{
+{% capture response_content %}{
     "type": "https://api.payex.com/psp/errordetail/<resource>/inputerror",
     "title": "There was an input error",
     "detail": "Please correct the errors and retry the request",
@@ -34,21 +30,26 @@ The structure of a problem message will look like this:
         "name": "CreditCardParameters.Issuer",
         "description": "minimum one issuer must be enabled"
     }]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Problem Example'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field                 | Type      | Description                                                                                                                                                                                                                                         |
 | :-------------------- | :-------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`                | `string`  | The URL that identifies the error type. This is the **only field usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from. |
-| `title`               | `string`  | The title contains a human readable description of the error.                                                                                                                                                                                       |
-| `detail`              | `string`  | A detailed, human readable description of the error and how you can recover from it.                                                                                                                                                                |
-| `instance`            | `string`  | The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in.                                                                                       |
-| `status`              | `integer` | The HTTP status code that the problem was served with.                                                                                                                                                                                              |
-| `action`              | `string`  | The `action` indicates how the error can be recovered from.                                                                                                                                                                                         |
-| `problems`            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
-| └➔&nbsp;`name`        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
-| └➔&nbsp;`description` | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
+| {% f type, 0 %}                | `string`  | The URL that identifies the error type. This is the **only field usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from. |
+| {% f title, 0 %}               | `string`  | The title contains a human readable description of the error.                                                                                                                                                                                       |
+| {% f detail, 0 %}              | `string`  | A detailed, human readable description of the error and how you can recover from it.                                                                                                                                                                |
+| {% f instance, 0 %}            | `string`  | The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in.                                                                                       |
+| {% f status, 0 %}              | `integer` | The HTTP status code that the problem was served with.                                                                                                                                                                                              |
+| {% f action, 0 %}              | `string`  | The `action` indicates how the error can be recovered from.                                                                                                                                                                                         |
+| {% f problems, 0 %}            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
+| {% f name %}        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
+| {% f description %} | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
 
 ## Common Problems
 
@@ -61,11 +62,11 @@ future.
 {:.table .table-striped}
 | Type                 | Status | Description                                                                                                                                        |
 | :------------------- | :----: | :------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `inputerror`         | `400`  | The server cannot or will not process the request due to an apparent client error (e.g. malformed request syntax, size to large, invalid request). |
-| `configurationerror` | `403`  | A error relating to configuration issues.   |
-| `forbidden`          | `403`  | The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking.                   |
-| `notfound`           | `404`  | The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.                                |
-| `systemerror`        | `500`  | A generic error message.                 |
+| {% f inputerror, 0 %}         | `400`  | The server cannot or will not process the request due to an apparent client error (e.g. malformed request syntax, size to large, invalid request). |
+| {% f configurationerror, 0 %} | `403`  | A error relating to configuration issues.   |
+| {% f forbidden, 0 %}          | `403`  | The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking.                   |
+| {% f notfound, 0 %}           | `404`  | The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.                                |
+| {% f systemerror, 0 %}        | `500`  | A generic error message.                 |
 
 {% include {{ problem_include_file }} %}
 

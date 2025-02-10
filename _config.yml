@@ -14,7 +14,6 @@ plugins:
   - jekyll-material-icon-tag
   - kramdown-plantuml
   - jekyll-redirect-from
-  - searchyll
   - swedbank-pay-design-guide-jekyll-theme
 kramdown:
   input: GFM
@@ -41,7 +40,7 @@ opengraph:
   image: /assets/img/swedbank-pay-developer-portal.png
 design_guide:
   base_url: https://design.swedbankpay.com
-  version: 7.1.0
+  version: 10.10.1
 search:
   enabled: true
   url: /search
@@ -53,10 +52,8 @@ topbar:
     title: Payments
   - url: /gift-cards/
     title: Gift Cards
-  - url: /resources/
+  - url: /checkout-v3/resources/
     title: Resources
-google_analytics:
-  tracking_id: UA-156582708-1
 defaults:
   - values:
       layout: default
@@ -72,14 +69,5 @@ defaults:
       front_end_url: https://ecom.externalintegration.payex.com
       consumer_ssn_se: 199710202392
       consumer_ssn_no: 26026708248
-
-elasticsearch:
-  #url: "http://localhost"          # Required. Supports auth and SSL: https://user:pass@someurl.com
-                                    # Can also read URLs stored in environment variable named
-                                    # BONSAI_URL and ELASTICSEARCH_URL.
-  number_of_shards: 1               # Optional. Default is 1 primary shard.
-  number_of_replicas: 1             # Optional. Default is 1 replica.
-  index_name: test-psp-developer    # Optional. Default is "jekyll".
-  default_type: post                # Optional. Default type is "post".
-  environments:                     # Optional. Set environments where Searchyll should run
-    - stage                         # If set will only run in specified environments
+      mobile_sdk_ios_version: 5.0.0
+      mobile_sdk_android_version: 5.0.0

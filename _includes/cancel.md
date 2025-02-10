@@ -19,33 +19,30 @@ You can only cancel a payment - or part of payment - not yet captured.
 
 ## Cancel Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/cancellations HTTP/1.1
+{% capture request_header %}POST /psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/cancellations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "description": "Test Cancellation",
         "payeeReference": "ABC123"
     }
-}
-```
+}{% endcapture %}
 
-{% capture request_table%}
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
+
 {:.table .table-striped .mb-5}
 | {% icon check %}︎ | Field                    | Type         | Description                                                                           |
 | :--------------- | :----------------------- | :----------- | :------------------------------------------------------------------------------------ |
 | {% icon check %}︎ | `transaction`            | `string`     | The transaction object contains information about this cancellation.                  |
-| {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                             |
-| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md documentation_section=include.documentation_section %} |
-{% endcapture %}
-{% include accordion-table.html content = request_table
-%}
+| {% icon check %}︎ | {% f description %}    | `string`     | A textual description of the reason for the cancellation.                             |
+| {% icon check %}︎ | {% f payeeReference %} | `string` | {% include fields/payee-reference.md documentation_section=include.documentation_section %} |
 
 ## Cancel Response
 
@@ -55,7 +52,7 @@ documentation_section=include.documentation_section transaction="cancel" %}
 ### Cancel Sequence Diagram
 
 Cancel can only be done on a authorized transaction.
-If you do cancel after doing a part-capture you will cancel the different
+If you do cancel after doing a part-capture you will cancel the difference
 between the capture amount and the authorization amount.
 
 ```mermaid

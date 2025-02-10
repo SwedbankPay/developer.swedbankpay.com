@@ -2,76 +2,76 @@
 title: Developer Portal
 layout: front-page
 front_page:
-  ingress: |
-    We've compiled a complete toolbox for integrating our payment solutions, so you can familiarize yourself with their various features and functionalities.
+  ingress: The complete toolbox for integrating our easy and safe omnichannel payment solutions.
   show_merchants_bar: false
-  start_heading: Let's get your e-commerce website up and running with easy, flexible, and safe payments!
 hide_from_sidebar: true
 ---
 
-{% contentfor intro_cards %}
-  {% include card-extended.html
-          title='Discover Checkout v3'
-          no_icon=true
-          button_content="Let's get started"
-          text="Every business has its own unique needs. That's why we made it possible to fit a variety of needs with just one integration. To help you get started, we've created four options to choose from. That way, you can set up your check-in in just a few configurations, or switch to another stand-alone payment method if that suits you better. Ready to learn more? Here's what you need to know!"
-          button_type='primary'
-          button_alignment='align-self-end'
-          to='/checkout-v3/'
+{% assign card_col_class="col-xl-6 col-lg-6" %}
 
+{% contentfor intro_cards %}
+  <h2 id="front-page-contact-partners" class="heading-line">Products</h2>
+  <div class="row mt-4">
+      <div class="{{ card_col_class }}">
+          {% include card.html title='Digital Payments'
+              text='A guide through our Digital Payments'
+              icon_content='shopping_cart'
+              icon_outlined=true
+              to="/checkout-v3/"
           %}
+      </div>
+      <div class="{{ card_col_class }}">
+          {% include card.html title='Payment Terminals'
+              text='A guide through our Payment Terminals'
+              icon_content='point_of_sale'
+              to='/pax-terminal/'
+          %}
+      </div>
+  </div>
+{% endcontentfor %}
+
+{% contentfor intro_cards %}
 
       {% include card-extended.html
-          title='Want to try it yourself?'
+          title='Want to give Digital Payments a go?'
           no_icon=true
-          button_content='Visit our Demoshop'
-          text='Experience what it would be like to pay as a customer of yours in our demoshop.'
+          button_content='Head to the playground'
+          text='Experience our accessibility compliant payment UI in the Swedbank Pay Playground'
           button_type='secondary'
           button_alignment='align-self-start'
           card_container=true
           container_content='![demoshop](/assets/img/demoshop-image.svg)'
-          to='https://ecom.externalintegration.payex.com/pspdemoshop'
+          to='https://playground.swedbankpay.com'
           %}
 {% endcontentfor %}
 
-{% assign card_col_class="col-xxl-3 col-xl-6 col-lg-6" %}
-
-{% contentfor release_notes %}
-  <h2 id="front-page-release-notes" class="heading-line heading-line-green">What's new in the documentation</h2>
-  {% include release_notes.html num_dates=3 %}
-  <a href="/resources/release-notes">See full release notes</a>
-{% endcontentfor %}
+{% assign card_col_class="col-xl-6 col-lg-6" %}
 
 {% contentfor extras %}
-  <h2 id="front-page-extra-resources" class="heading-line">Extra resources</h2>
+  <h2 id="front-page-contact-partners" class="heading-line">Contact & Partners</h2>
   <div class="row mt-4">
       <div class="{{ card_col_class }}">
-          {% include card.html title='OS development guidelines'
-              text='This is how we create an inclusive environment'
-              icon_content='account_circle'
-              icon_outlined=true
-              to='/resources/development-guidelines'
+          {% include card.html title='Talk To Us'
+              text='Improve your payment solutions. Connect with our sales team to see all that we can offer. Contact us.'
+              to="mailto:sales.swedbankpay@swedbank.se"
+          %}
+      </div>
+            <div class="{{ card_col_class }}">
+          {% include card.html title='Denmark'
+              text='Discover our Danish payment solutions and partners. Dive in.'
+              to='https://www.swedbankpay.dk/partners'
           %}
       </div>
       <div class="{{ card_col_class }}">
-          {% include card.html title='Test data'
-              text='Get the required data for testing in our interfaces'
-              icon_content='content_paste'
-              to='/resources/test-data'
+          {% include card.html title='Norway'
+              text='Power up your payments through our Norwegian partnerships. Get started.'
+              to='https://www.swedbankpay.no/partners'
           %}
       </div>
       <div class="{{ card_col_class }}">
-          {% include card.html title='Terminology'
-              text='Get a better understanding of the terms we use'
-              icon_content='menu_book'
-              to='/resources/terminology'
-          %}
-      </div>
-      <div class="{{ card_col_class }}">
-          {% include card.html title='See all resources (7)'
-              text='Data protection, public migration key etc'
-              no_icon=true
-              to='/resources/'
+          {% include card.html title='Sweden'
+              text='Explore partnerships in Sweden for better payment experiences. Learn more.'
+              to='https://www.swedbankpay.se/partners'
           %}
       </div>
   </div>

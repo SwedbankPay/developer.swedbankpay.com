@@ -61,6 +61,7 @@ module SwedbankPay
         enforce_https: true,
         log_level: @log_level,
         only_4xx: true,
+        disable_external: true,
         parallel: { in_processes: Concurrent.processor_count },
         ignore_urls: [
           'https://api.payex.com/',

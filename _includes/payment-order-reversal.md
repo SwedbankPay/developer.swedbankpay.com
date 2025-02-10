@@ -1,13 +1,18 @@
-{% capture techref_url %}{% include documentation-section-url.md href='/features/technical-reference' %}{% endcapture %}
+{% capture techref_url %}{% include utils/documentation-section-url.md href='/features/technical-reference' %}{% endcapture %}
 {% assign transactions_url = '/transactions' | prepend: techref_url %}
 {% assign operations_url = '/operations' | prepend: techref_url %}
-{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
+{% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
 
 {% if documentation_section contains "checkout-v3" %}
 
 ## Reversal
 
-This transaction is used when a captured payment needs to be reversed.
+This transaction is used when a `Capture` or `Sale` payment needs to be
+reversed.
+
+Please note that you have a maximum of 5 **consecutive** failed attempts at a
+reversal. The payment will be locked after this, and you need to contact us for
+another attempt.
 
 ## Create Reversal Transaction
 
@@ -25,16 +30,12 @@ If we want to reverse a previously captured amount, we need to perform
 
 ## Reversal Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders/{{ page.payment_order_id }}/reversals HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders/{{ page.payment_order_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "description": "Reversal of captured transaction",
         "amount": 1500,
@@ -74,47 +75,52 @@ Content-Type: application/json
             }
         ]
     }
-}
-```
+}{% endcapture %}
 
-{:.table .table-striped}
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
+
+{% capture table %}
+{:.table .table-striped .mb-5}
 |     Required     | Field                          | Type         | Description                                                                                                                                                                                                                                                                           |
 | :--------------: | :----------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | {% icon check %} | `transaction`                  | `object`     | The transaction object.                                                                                                                                                                                                                                                               |
-| {% icon check %} | └➔&nbsp;`amount`               | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                             |
-| {% icon check %} | └➔&nbsp;`vatAmount`            | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                          |
-| {% icon check %} | └➔&nbsp;`payeeReference`       | `string` | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                                                                                                  |
-|                  | └➔&nbsp;`receiptReference`     | `string(30)` | A unique reference from the merchant system. It is used to supplement `payeeReference` as an additional receipt number.                                                                                                                                                               |
-| {% icon check %} | └➔&nbsp;`description`          | `string`     | Textual description of why the transaction is reversed.                                                                                                                                                                                                                               |
-| {% icon check %} | └➔&nbsp;`orderItems`           | `array`      | {% include field-description-orderitems.md %}                                                                                                                                                                                                                                         |
-| {% icon check %} | └─➔&nbsp;`reference`           | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                           |
-| {% icon check %} | └─➔&nbsp;`name`                | `string`     | The name of the order item.                                                                                                                                                                                                                                                           |
-| {% icon check %} | └─➔&nbsp;`type`                | `enum`       | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `PAYMENT_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.                                                                                                                                                                 |
-| {% icon check %} | └─➔&nbsp;`class`               | `string`     | The classification of the order item. Can be used for assigning the order item to a specific product category, such as `MobilePhone`. Note that `class` cannot contain spaces and must follow the regex pattern `[\w-]*`. Swedbank Pay may use this field for statistics. |
-|                  | └─➔&nbsp;`itemUrl`             | `string`     | The URL to a page that can display the purchased item, product or similar.                                                                                                                                                                                                            |
-|                  | └─➔&nbsp;`imageUrl`            | `string`     | The URL to an image of the order item.                                                                                                                                                                                                                                                |
-|                  | └─➔&nbsp;`description`         | `string`     | The human readable description of the order item.                                                                                                                                                                                                                                     |
-|                  | └─➔&nbsp;`discountDescription` | `string`     | The human readable description of the possible discount.                                                                                                                                                                                                                              |
-| {% icon check %} | └─➔&nbsp;`quantity`            | `integer`    | The 4 decimal precision quantity of order items being purchased.                                                                                                                                                                                                                      |
-| {% icon check %} | └─➔&nbsp;`quantityUnit`        | `string`     | The unit of the quantity, such as `pcs`, `grams`, or similar. This is used for your own book keeping.                                                                                                                                                        |
-| {% icon check %} | └─➔&nbsp;`unitPrice`           | `integer`    | The price per unit of order item, including VAT.                                                                                                                                                                                                                                      |
-|                  | └─➔&nbsp;`discountPrice`       | `integer`    | If the order item is purchased at a discounted price. This field should contain that price, including VAT.                                                                                                                                                                            |
-| {% icon check %} | └─➔&nbsp;`vatPercent`          | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                              |
-| {% icon check %} | └─➔&nbsp;`amount`              | `integer`    | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                                                                 |
-| {% icon check %} | └─➔&nbsp;`vatAmount`           | `integer`    | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                                                                        |
+| {% icon check %} | {% f amount %}               | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                             |
+| {% icon check %} | {% f vatAmount %}            | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                          |
+| {% icon check %} | {% f payeeReference %}       | `string` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                                  |
+|                  | {% f receiptReference %}     | `string(30)` | {% include fields/receipt-reference.md %}                                                                                                                                                               |
+| {% icon check %} | {% f description %}          | `string`     | Textual description of why the transaction is reversed.                                                                                                                                                                                                                               |
+| {% icon check %} | {% f orderItems %}           | `array`      | {% include fields/order-items.md %}                                                                                                                                                                                                                                         |
+| {% icon check %} | {% f reference, 2 %}           | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                           |
+| {% icon check %} | {% f name, 2 %}                | `string`     | The name of the order item.                                                                                                                                                                                                                                                           |
+| {% icon check %} | {% f type, 2 %}                | `enum`       | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `PAYMENT_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.                                                                                                                                                                 |
+| {% icon check %} | {% f class, 2 %}               | `string`     | The classification of the order item. Can be used for assigning the order item to a specific product category, such as `MobilePhone`. Note that `class` cannot contain spaces and must follow the regex pattern `[\w-]*`. Swedbank Pay may use this field for statistics. |
+|                  | {% f itemUrl, 2 %}             | `string`     | The URL to a page that can display the purchased item, product or similar.                                                                                                                                                                                                            |
+|                  | {% f imageUrl, 2 %}            | `string`     | The URL to an image of the order item.                                                                                                                                                                                                                                                |
+|                  | {% f description, 2 %}         | `string`     | The human readable description of the order item.                                                                                                                                                                                                                                     |
+|                  | {% f discountDescription, 2 %} | `string`     | The human readable description of the possible discount.                                                                                                                                                                                                                              |
+| {% icon check %} | {% f quantity, 2 %}            | `number`    | The 4 decimal precision quantity of order items being purchased.                                                                                                                                                                                                                      |
+| {% icon check %} | {% f quantityUnit, 2 %}        | `string`     | The unit of the quantity, such as `pcs`, `grams`, or similar. This is used for your own book keeping.                                                                                                                                                        |
+| {% icon check %} | {% f unitPrice, 2 %}           | `integer`    | The price per unit of order item, including VAT.                                                                                                                                                                                                                                      |
+|                  | {% f discountPrice, 2 %}       | `integer`    | If the order item is purchased at a discounted price. This field should contain that price, including VAT.                                                                                                                                                                            |
+| {% icon check %} | {% f vatPercent, 2 %}          | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                              |
+| {% icon check %} | {% f amount, 2 %}              | `integer`    | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                                                                 |
+| {% icon check %} | {% f vatAmount, 2 %}           | `integer`    | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                                                                        |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Reversal Response
 
 If the reversal request succeeds, the response should be similar to the example below:
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.0/2.0
+api-supported-versions: 3.0/2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": "/psp/creditcard/payments/{{ page.payment_order_id }}",
     "reversal": {
         "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/reversals/{{ page.transaction_id }}",
@@ -135,29 +141,35 @@ Content-Type: application/json
             "operations": []
         }
     }
-}
-```
+}{% endcapture %}
 
-{:.table .table-striped}
-| Property                   | Type         | Description                                                                                                                                                                                                  |
-| :------------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                  | `string`     | The relative URL of the payment this reversal transaction belongs to.                                                                                                                                        |
-| `reversals`                | `object`     | The reversal object, containing information about the reversal transaction.                                                                                                                                  |
-| └➔&nbsp;`id`               | `string`     | The relative URL of the reversal transaction.                                                                                                                                                                |
-| └➔&nbsp;`transaction`      | `object`     | The transaction object, containing information about the current transaction.                                                                                                                                |
-| └─➔&nbsp;`id`              | `string`     | The relative URL of the current `transaction` resource.                                                                                                                                                      |
-| └─➔&nbsp;`created`         | `string`     | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| └─➔&nbsp;`updated`         | `string`     | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
-| └─➔&nbsp;`type`            | `string`     | Indicates the transaction type.                                                                                                                                                                              |
-| └─➔&nbsp;`state`           | `string`     | {% include field-description-state.md %}        |
-| └─➔&nbsp;`number`          | `string`     | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where `id` should be used instead. |
-| └─➔&nbsp;`amount`          | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                    |
-| └─➔&nbsp;`vatAmount`       | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                 |
-| └─➔&nbsp;`description`     | `string`     | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
-| └─➔&nbsp;`payeeReference`  | `string`     | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                         |
-| └➔&nbsp;`receiptReference` | `string(30)` | A unique reference from the merchant system. It is used to supplement `payeeReference` as an additional receipt number.                                                                                      |
-| └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
-| └─➔&nbsp;`reconciliationNumber`          | `string`     | The number of the reconciliation batch file where the transaction can be found. |
-| └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
-[operations]: /{{ documentation_section }}/features/technical-reference/operations
+{% capture table %}
+{:.table .table-striped .mb-5}
+| Property                          | Type         | Description                                                                                                                                                                                                  |
+| :-------------------------------- | :----------- | :-------------------------------------------------------------------------------- |
+| {% f payment, 0 %}                | `string`     | The relative URL of the payment this reversal transaction belongs to.             |
+| {% f reversals, 0 %}              | `object`     | The reversal object, containing information about the reversal transaction.       |
+| {% f id %}                        | `string`     | The relative URL of the reversal transaction.                                     |
+| {% f transaction %}               | `object`     | {% include fields/transaction.md %}                                               |
+| {% f id, 2 %}                     | `string`     | The relative URL of the current `transaction` resource.                           |
+| {% f created, 2 %}                | `string`     | The ISO-8601 date and time of when the transaction was created.                   |
+| {% f updated, 2 %}                | `string`     | The ISO-8601 date and time of when the transaction was updated.                   |
+| {% f type, 2 %}                   | `string`     | Indicates the transaction type.                                                   |
+| {% f state, 2 %}                  | `string`     | {% include fields/state.md %}                                                     |
+| {% f number, 2 %}                 | `integer`    | {% include fields/number.md %}                                                    |
+| {% f amount, 2 %}                 | `integer`    | {% include fields/amount.md %}                                                    |
+| {% f vatAmount, 2 %}              | `integer`    | {% include fields/vat-amount.md %}                                                |
+| {% f description, 2 %}            | `string`     | A human readable description of maximum 40 characters of the transaction.         |
+| {% f payeeReference, 2 %}         | `string`     | {% include fields/payee-reference.md describe_receipt=true %}                     |
+| {% f receiptReference %}          | `string(30)` | {% include fields/receipt-reference.md %}                                         |
+| {% f isOperational, 2 %}          | `boolean`    | `true`  if the transaction is operational; otherwise  `false` .                   |
+| {% f reconciliationNumber, 2 %}   | `string`     | The number of the reconciliation batch file where the transaction can be found.   |
+| {% f operations, 2 %}             | `array`      | {% include fields/operations.md %}                                                |
+{% endcapture %}
+{% include accordion-table.html content=table %}

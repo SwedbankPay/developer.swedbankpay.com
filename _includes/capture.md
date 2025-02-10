@@ -5,6 +5,10 @@ the payer. This step usually takes place when the product has exchanged
 possession. You must first do a `GET` request on the payment to find the
 `create-capture` operation.
 
+Please note that you have a maximum of 5 **consecutive** failed attempts at a
+capture. The payment will be locked after this, and you need to contact us for
+another attempt.
+
 ## Create Capture Transaction
 
 To create a `capture` transaction to withdraw money from the payer's card, you
@@ -12,44 +16,41 @@ need to perform the `create-capture` operation.
 
 ## Capture Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/captures HTTP/1.1
+{% capture request_header %}POST /psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/captures HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "amount": 1500,
         "vatAmount": 250,
         "description": "Test Capture",
         "payeeReference": "ABC123"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 |     Required     | Field                    | Type          | Description                                                                                                   |
 | :--------------: | :----------------------- | :------------ | :------------------------------------------------------------------------------------------------------------ |
-| {% icon check %} | `transaction`            | `object`      | The object representation of the generic [transaction resource][transaction-resource].                        |
-| {% icon check %} | └➔&nbsp;`amount`         | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
-| {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
-| {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the capture transaction.                                                             |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md documentation_section=include.documentation_section %}                               |
+| {% icon check %} | `transaction`            | `object`      | {% include fields/transaction.md %}                        |
+| {% icon check %} | {% f amount %}         | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
+| {% icon check %} | {% f vatAmount %}      | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
+| {% icon check %} | {% f description %}    | `string`      | A textual description of the capture transaction.                                                             |
+| {% icon check %} | {% f payeeReference %} | `string` | {% include fields/payee-reference.md documentation_section=include.documentation_section %}                               |
 
 ## Capture Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}",
     "capture": {
         "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
@@ -68,44 +69,52 @@ Content-Type: application/json
             "operations": []
         }
     }
-}
-```
+}{% endcapture %}
 
-{:.table .table-striped}
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
+
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Property                  | Type      | Description                                                                                                                                                                                                  |
 | :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                 | `string`  | The relative URL of the payment this `capture` transaction belongs to.                                                                                                                                       |
-| `capture`                 | `object`  | The `capture` resource contains information about the `capture` transaction made against a card payment.                                                                                                     |
-| └➔&nbsp;`id`              | `string`  | The relative URL of the created `capture` transaction.                                                                                                                                                       |
-| └➔&nbsp;`transaction`     | `object`  | The object representation of the generic [`transaction resource`][transaction-resource].                                                                                                                     |
-| └─➔&nbsp;`id`             | `string`  | The relative URL of the current  `transaction`  resource.                                                                                                                                                    |
-| └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
-| └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
-| └─➔&nbsp;`state`          | `string`  | {% include field-description-state.md %} |
-| └─➔&nbsp;`number`         | `string`  | The transaction  number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
-| └─➔&nbsp;`amount`         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.                                                                                         |
-| └─➔&nbsp;`vatAmount`      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
-| └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction                                                                                                                                     |
-| └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md documentation_section=include.documentation_section %}                                                                                                                              |
-| └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
-| └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
-| └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
+| {% f payment, 0 %}                 | `string`  | The relative URL of the payment this `capture` transaction belongs to.                                                                                                                                       |
+| {% f capture, 0 %}                 | `object`  | The `capture` resource contains information about the `capture` transaction made against a card payment.                                                                                                     |
+| {% f id %}              | `string`  | The relative URL of the created `capture` transaction.                                                                                                                                                       |
+| {% f transaction %}     | `object`  | {% include fields/transaction.md %}                                                                                                                     |
+| {% f id, 2 %}             | `string`  | The relative URL of the current  `transaction`  resource.                                                                                                                                                    |
+| {% f created, 2 %}        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| {% f updated, 2 %}        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
+| {% f type, 2 %}           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
+| {% f state, 2 %}          | `string`  | {% include fields/state.md %} |
+| {% f number, 2 %}         | `integer` | {% include fields/number.md %} |
+| {% f amount, 2 %}         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.                                                                                         |
+| {% f vatAmount, 2 %}      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
+| {% f description, 2 %}    | `string`  | A human readable description of maximum 40 characters of the transaction                                                                                                                                     |
+| {% f payeeReference, 2 %} | `string`  | {% include fields/payee-reference.md documentation_section=include.documentation_section %}                                                                                                                              |
+| {% f failedReason, 2 %}   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
+| {% f isOperational, 2 %}  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
+| {% f operations, 2 %}     | `array`   | {% include fields/operations.md resource="transaction" %}                                                                                                  |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## List Capture Transactions
 
 The `captures` resource list the capture transactions (one or more) on a
 specific payment.
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/captures HTTP/1.1
+{% capture request_header %}GET /psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/captures HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 {% include transaction-list-response.md api_resource=include.api_resource documentation_section=include.documentation_section transaction="capture" %}
 
@@ -122,6 +131,3 @@ sequenceDiagram
   activate SwedbankPay
   SwedbankPay-->>-Merchant: transaction resource
 ```
-
-[operations]: /payment-instruments/card/features/technical-reference/payment-resource#operations
-[transaction-resource]: /payment-instruments/card/features/technical-reference/transactions

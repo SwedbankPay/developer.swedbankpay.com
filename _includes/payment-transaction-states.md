@@ -1,4 +1,4 @@
-{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 
 ## Payment And Transaction States
 
@@ -47,7 +47,7 @@ the course of a purchase. You can find a short description of each state below.
     If the payer reaches the maximum amount of retries, the payment itself will
     be set to `failed`.
 
-*   `awaitingActivity` is in use for a selection of payment instruments. A
+*   `awaitingActivity` is in use for a selection of payment methods. A
     transaction reaches this state when a payer is sent away from Swedbank Pay
     to do a confirmation or verification. Examples of this can be payment apps
     like Swish, Vipps or MobilePay, or 3-D Secure verifications for card

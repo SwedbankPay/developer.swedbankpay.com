@@ -10,33 +10,34 @@ operation.
 
 ## Capture Request
 
-{:.code-header}
-**Request**
-
-```http
-POST /psp/mobilepay/payments/{{ page.payment_id }}/captures HTTP/1.1
+{% capture request_header %}POST /psp/mobilepay/payments/{{ page.payment_id }}/captures HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "amount": 1000,
         "vatAmount": 250,
         "payeeReference": 1234,
         "description" : "description for transaction"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 |     Required     | Field                    | Type         | Description                                                                           |
 | :--------------: | :----------------------- | :----------- | :------------------------------------------------------------------------------------ |
 | {% icon check %}︎ | `transaction`            | `object`     | Object representing the capture transaction.                                          |
-| {% icon check %}︎ | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                             |
-| {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                          |
-| {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                     |
-| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md %} |
+| {% icon check %}︎ | {% f amount %}         | `integer`    | {% include fields/amount.md %}                                             |
+| {% icon check %}︎ | {% f vatAmount %}      | `integer`    | {% include fields/vat-amount.md %}                                          |
+| {% icon check %}︎ | {% f description %}    | `string`     | A textual description of the capture transaction.                                     |
+| {% icon check %}︎ | {% f payeeReference %} | `string` | {% include fields/payee-reference.md %} |
 
 ## Capture Response
 

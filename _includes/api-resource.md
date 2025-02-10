@@ -1,23 +1,21 @@
-{%- capture docsec -%}{%- include documentation-section.md -%}{%- endcapture -%}
+{%- capture docsec -%}{%- include utils/documentation-section.md -%}{%- endcapture -%}
 {%- capture api_resource -%}
     {%- case docsec -%}
-    {%- when "payment-instruments" -%}
+    {%- when "old-implementations/payment-instruments-v1" -%}
         creditcard
     {%- when "card" -%}
         creditcard
     {%- when "mobile-pay" -%}
         mobilepay
-    {%- when "checkout-v2" -%}
+    {%- when "old-implementations/checkout-v2" -%}
          paymentorders
-     {%- when "checkout-v3/enterprise" -%}
+    {%- when "checkout-v3" -%}
          paymentorders
-     {%- when "checkout-v3/starter" -%}
+    {%- when "old-implementations/enterprise" -%}
          paymentorders
-     {%- when "checkout-v3/business" -%}
+    {%- when "checkout-v3/payments-only" -%}
          paymentorders
-     {%- when "checkout-v3/payments-only" -%}
-         paymentorders
-    {%- when "payment-menu" -%}
+    {%- when "old-implementations/payment-menu-v2" -%}
         paymentorders
     {%- else -%}
         {{ docsec }}

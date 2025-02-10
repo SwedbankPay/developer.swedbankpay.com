@@ -1,15 +1,10 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
+{% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
 {% assign header_level = include.header_level | default: 3 %}
 {% assign next_header_level = header_level | plus: 1 %}
 {% capture top_h %}{% for i in (1..header_level) %}#{% endfor %}{% endcapture %}
 {% capture sub_h %}{% for i in (1..next_header_level) %}#{% endfor %}{% endcapture %}
-
-{% if documentation_section contains "checkout" or documentation_section == "payment-menu" %}
-    {% assign this_documentation_url = documentation_section %}
-{% else %}
-    {% assign this_documentation_url = "payment-instruments/" | append: documentation_section %}
-{% endif %}
+{% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 
 {{ top_h }} Transaction
 
@@ -32,24 +27,21 @@ When a transaction is created it will have one of three states:
 
 {% if documentation_section contains "checkout" or "payment-menu" %}
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_id }}/currentpayment HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_id }}/currentpayment HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json;version=3.x/2.0     // Version optional for 3.0 and 2.0{% endcapture %}
 
-{:.code-view-header}
-**Response**
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
     "paymentorder": "/psp/paymentorders/{{ page.payment_id }}",
     "transaction": {
         "id": "/psp/paymentorders/{{ page.payment_id }}/currentpayment/{{ page.transaction_id }}",
@@ -66,29 +58,30 @@ Content-Type: application/json
         "isOperational": true,
         "operations": []
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% else %}
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions HTTP/1.1
+{% capture request_header %}GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
 
-{:.code-view-header}
-**Response**
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture response_content %}{
     "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "transaction": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
@@ -105,8 +98,13 @@ Content-Type: application/json
         "isOperational": true,
         "operations": []
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% endif %}
 
@@ -115,6 +113,6 @@ Content-Type: application/json
 In the event that a transaction is `failed`, the `transaction` response will
 contain a `problem` property as seen in the example below. To view all the
 problems that can occur due to an unsuccessful transaction, head over to the
-[problems section](/{{ this_documentation_url }}/features/technical-reference/problems).
+[problems section]({{ features_url }}/technical-reference/problems).
 
 {% include transaction-response.md transaction="transaction" %}

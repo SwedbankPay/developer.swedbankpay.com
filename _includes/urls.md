@@ -6,39 +6,42 @@ going forward with or canceling a payment session, as well as the callback URL
 that is used to inform the payee (merchant) of changes or updates made to
 underlying payments or transaction.
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 |     Required      | Field               | Type     | Description                                                                                                                                                                                                                                                                                              |
 | :---------------: | :------------------ | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %} ︎︎︎︎︎ | `hostUrls`          | `array`  | The array of URLs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                                                      |
-| {% icon check %}  | `completeUrl`       | `string` | The URL that Swedbank Pay will redirect back to when the payer has completed their interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`][completeurl] for details.  |
-| {% icon check %}  | `termsOfServiceUrl` | `string` | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                                     |
+| {% icon check %} ︎︎︎︎︎ | `hostUrls`          | `array`  | The array of valid host URLs.                                                                                                                                                                                                                                |
+| {% icon check %}  | `completeUrl`       | `string` | {% include fields/complete-url.md resource="payment" %}  |
 |                   | `cancelUrl`         | `string` | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
-|                   | `paymentUrl`        | `string` | The URL that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See [`paymentUrl`][payment-url] for details.                                                                                                                                                       |
-|                   | `callbackUrl`       | `string` | The URL to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                                                                                                                                                                              |
-|                   | `logoUrl`           | `string` | {% include field-description-logourl.md %}                                                                                                                                                                                                               |
+|                   | `paymentUrl`        | `string` | {% include fields/payment-url.md %}                                                                                                                                                       |
+|                   | `callbackUrl`       | `string` | {% include fields/callback-url.md %}                                                                                                                                                                                              |
+|                   | `logoUrl`           | `string` | {% include fields/logo-url.md %}                                                                                                                                                                                                               |
+| {% icon check %}  | `termsOfServiceUrl` | `string` | {% include fields/terms-of-service-url.md %}                                                                                                                                                                                                                                                     |
 {% include payment-url.md full_reference=true when="selecting the payment
 instrument Vipps or in the 3-D Secure verification for Credit Card Payments" %}
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ### URLs Resource
 
 It is possible to perform a `GET` request on the `urls` resource to retrieve its
 contents.
 
-{:.code-view-header}
-Request
-```http
-GET /psp/paymentorders/{{ page.payment_order_id }}/urls/ HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/urls/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json;version=3.x/2.0     // Version optional for 3.0 and 2.0{% endcapture %}
 
-{:.code-view-header}
-Response
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-{
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
+
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
+
+{% capture response_content %}{
     "paymentorder": "/psp/paymentorders/{{ page.payment_order_id }}",
     "urls": {
         "id": "/psp/payments/{{ page.payment_order_id }}/urls",
@@ -48,25 +51,26 @@ Content-Type: application/json
         "paymentUrl": "https://example.com/perform-payment",
         "callbackUrl": "http://api.example.com/payment-callback",
         "logoUrl": "http://merchant.com/path/to/logo.png",
-        "termsOfServiceUrl": "http://merchant.com/path/to/tems"
+        "termsOfServiceUrl": "https://example.com/termsandconditions.pdf"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
-| Field                       | Type     | Description                                                                                                                                                                                                                                                                                              |
-| :-------------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `paymentorder`              | `string` | {% include field-description-id.md sub_resource="urls" %}                                                                                                                                                                                                                                                |
-| `urls`                      | `object` | The URLs object.                                                                                                                                                                                                                                                                                         |
-| └➔&nbsp;`id`                | `string` | {% include field-description-id.md resource="urls" %}                                                                                                                                                                                                                                                    |
-| └➔&nbsp;`hostsUrl`          | `string` | An array of the whitelisted URLs that are allowed as parents to a Hosted View, typically the URL of the web shop or similar that will embed a Hosted View within it.                                                                                                                                     |
-| └➔&nbsp;`completeUrl`       | `string` | The URL that Swedbank Pay will redirect back to when the payer has completed their interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`][completeurl] for details. |
-| └➔&nbsp;`cancelUrl`         | `string` | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
-| └➔&nbsp;`paymentUrl`        | `string` | The URL that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See [`paymentUrl`][payment-url] for details.                                                                                                          |
-| └➔&nbsp;`callbackUrl`       | `string` | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                                |
-| └➔&nbsp;`logoUrl`           | `string` | {% include field-description-logourl.md %}                                                                                                                                                                                     |
-| └➔&nbsp;`termsOfServiceUrl` | `string` | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                                     |
-
-[payment-url]: /checkout-v2/features/technical-reference/payment-url
-[completeurl]: /checkout-v2/features/technical-reference/complete-url
-[callback]: /checkout-v2/features/core/callback
+| Field                     | Type     | Description                                                                                                                                                                                                                                                                                              |
+| :------------------------ | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| {% f paymentOrder, 0 %}   | `string` | {% include fields/id.md sub_resource="urls" %}                                                                                                                                                                                                                                                |
+| {% f urls, 0 %}           | `object` | The URLs object.                                                                                                                                                                                                                                                                                         |
+| {% f id %}                | `string` | {% include fields/id.md resource="urls" %}                                                                                                                                                                                                                                                    |
+| {% f hostsUrl %}          | `string` | An array of the whitelisted URLs that are allowed as parents to a Hosted View, typically the URL of the web shop or similar that will embed a Hosted View within it.                                                                                                                                     |
+| {% f completeUrl %}       | `string` | {% include fields/complete-url.md resource="payment" %} |
+| {% f cancelUrl %}         | `string` | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
+| {% f paymentUrl %}        | `string` | {% include fields/payment-url.md %}                                                                                                          |
+| {% f callbackUrl %}       | `string` | {% include fields/callback-url.md resource="payment" %}                                                                                                                                                |
+| {% f logoUrl %}           | `string` | {% include fields/logo-url.md %}                                                                                                                                                                                     |
+| {% f termsOfServiceUrl %} | `string` | {% include fields/terms-of-service-url.md %}                                                                                                                                                                                                                                                     |

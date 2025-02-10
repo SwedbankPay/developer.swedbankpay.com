@@ -1,9 +1,9 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
+{%- capture documentation_section -%}{%- include utils/documentation-section.md -%}{%- endcapture -%}
 {% assign header_level = include.header_level | default: 2 %}
 {% assign next_header_level = header_level | plus: 1 %}
 {% capture h %}{% for i in (1..header_level) %}#{% endfor %}{% endcapture %}
-{%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
+{%- capture documentation_section -%}{%- include utils/documentation-section.md -%}{%- endcapture -%}
 
 {{ h }} Transactions
 
@@ -25,27 +25,27 @@ specific payment.
 
 {% if documentation_section contains "checkout" or "payment-menu" %}
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_id }}/currentpayment HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_id }}/currentpayment HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json;version=3.x/2.0     // Version optional for 3.0 and 2.0{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 {% else %}
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions HTTP/1.1
+{% capture request_header %}GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 {% endif %}
 

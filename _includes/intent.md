@@ -1,5 +1,5 @@
-{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
-{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
+{% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 {% assign autocapture = include.autocapture | default: false %}
 {% assign show_authorization = include.show_authorization %}
 {% assign sale = include.sale | default: false %}
@@ -12,15 +12,15 @@ process.
 
 {% if show_authorization == true %}
 
-*   **`Authorization` (two-phase)**: If you want the credit card to reserve the
+*   **`Authorization` (two-phase)**: If you want the card to reserve the
     amount, you will have to specify that the `intent` of the `Purchase` is
-    Authorization. The amount will be reserved but not charged. You will (i.e.
+    `Authorization`. The amount will be reserved but not charged. You will (i.e.
     when you are ready to ship the purchased products) have to make a
     [Capture]({{ features_url }}/capture) or [Cancel]({{ features_url }}/cancel)
     request later on to fulfill the transaction.
 {% endif %}
 {% if autocapture %}
-*   **`AutoCapture` (one-phase)**: If you want the credit card to be charged
+*   **`AutoCapture` (one-phase)**: If you want the card to be charged
     (without additional operations), you will have to specify that the `intent`
     of the `Purchase` is `AutoCapture`. This is normally only allowed if the
     payer purchases digital products with instant delivery/shipment. Check with
@@ -29,7 +29,7 @@ process.
     need to do any more financial operations to fulfill the transaction.
 {% endif %}
 {% if sale %}
-*   **`Sale` (one-phase)**: The `sale` intent is used by the payment instruments
+*   **`Sale` (one-phase)**: The `sale` intent is used by the payment methods
     like Swish, where the funds are reserved and drawn from the payer's account
     immediately. This means you don't need to do any more financial operations
     to fulfill the transaction. The only available after payment operation is

@@ -7,7 +7,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: build
         run: |
@@ -19,11 +19,11 @@ jobs:
             --site-url=https://developer.swedbankpay.com
 
       - name: login
-        uses: azure/login@v1.4.6
+        uses: azure/login@v2.2.0
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS_PROD }}
 
       - name: deploy
-        uses: azure/CLI@v1.0.7
+        uses: azure/CLI@v2.1.0
         with:
           inlineScript: az storage blob upload-batch -s _site -d "\$web" --account-name blobdevportalprod --overwrite

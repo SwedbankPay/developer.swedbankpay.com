@@ -99,7 +99,7 @@ let configuration = SwedbankPaySDK.MerchantBackendConfiguration(
 ```
 
 After you have verified that a domain works with WKWebView, please file an
-[issue][ios-issues] to have it added to the SDK's bundled list.
+[issue][ios-issues]{:target="_blank"} to have it added to the SDK's bundled list.
 
 [ios-issues]: https://github.com/SwedbankPay/swedbank-pay-sdk-ios/issues
-[ios-payment-url]: /modules-sdks/mobile-sdk/ios#payment-url-and-external-applications
+[ios-payment-url]: /checkout-v3/modules-sdks/mobile-sdk/ios#payment-url-and-external-applications

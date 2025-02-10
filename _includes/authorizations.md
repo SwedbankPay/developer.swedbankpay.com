@@ -5,15 +5,15 @@
 The `authorizations` resource will list the authorization transactions
 made on a specific payment.
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+{% capture request_header %}GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 {% include transaction-list-response.md transaction="authorization" %}
 
@@ -27,16 +27,12 @@ Note: The legal address must be the registered address of the payer." %}
 
 ## Authorization Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+{% capture request_header %}POST /psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "activity": "FinancingConsumer"
     },
@@ -63,47 +59,51 @@ Content-Type: application/json
         "city": "Saltnes",
         "countryCode": "no"
     }
-}
-```
+}{% endcapture %}
 
-{:.table .table-striped}
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
+
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Required          | Field                          | Data type | Description                                                                                                                                                      |
 | :---------------- | :----------------------------- | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %}  | `transaction.activity`         | `string`  | `FinancingConsumer`                                                                                                                                              |
 | {% icon check %}  | `consumer`                     | `object`  | The payer object.                                                                                                                                             |
-| {% icon check %}  | └➔&nbsp;`socialSecurityNumber` | `string`  | The social security number (national identity number) of the payer. Format Sweden: `YYMMDD-NNNN`. Format Norway: `DDMMYYNNNNN`. Format Finland: `DDMMYYNNNNN` |
-|                   | └➔&nbsp;`customerNumber`       | `string`  | The customer number in the merchant system.                                                                                                                      |
-|                   | └➔&nbsp;`email`                | `string`  | The e-mail address of the payer.                                                                                                                              |
-| {% icon check %}  | └➔&nbsp;`msisdn`               | `string`  | The mobile phone number of the payer. Format Sweden: `+46707777777`. Format Norway: `+4799999999`. Format Finland: `+358501234567`                            |
-| {% icon check %}  | └➔&nbsp;`ip`                   | `string`  | The IP address of the payer.                                                                                                                                  |
+| {% icon check %}  | {% f socialSecurityNumber %} | `string`  | The social security number (national identity number) of the payer. Format Sweden: `YYMMDD-NNNN`. Format Norway: `DDMMYYNNNNN`. Format Finland: `DDMMYYNNNNN` |
+|                   | {% f customerNumber %}       | `string`  | The customer number in the merchant system.                                                                                                                      |
+|                   | {% f email %}                | `string`  | The e-mail address of the payer.                                                                                                                              |
+| {% icon check %}  | {% f msisdn %}               | `string`  | The mobile phone number of the payer. Format Sweden: `+46707777777`. Format Norway: `+4799999999`. Format Finland: `+358501234567`                            |
+| {% icon check %}  | {% f ip %}                   | `string`  | The IP address of the payer.                                                                                                                                  |
 | {% icon check %}  | `legalAddress`                 | `object`  | The legal address object containing information about the payer's legal address.                                                                                |
-| {% icon check %}  | └➔&nbsp;`addressee`            | `string`  | The full (first and last) name of the payer.                                                                                                                  |
-|                   | └➔&nbsp;`coAddress`            | `string`  | The CO-address (if used)                                                                                                                                         |
-|                   | └➔&nbsp;`streetAddress`        | `string`  | The street address of the payer. Maximum 50 characters long.                                                                                                  |
-| {% icon check %}  | └➔&nbsp;`zipCode`              | `string`  | The postal code (ZIP code) of the payer.                                                                                                                      |
-| {% icon check %}  | └➔&nbsp;`city`                 | `string`  | The city of the payer.                                                                                                                                        |
-| {% icon check %}  | └➔&nbsp;`countryCode`          | `string`  | `SE`, `NO`, or `FI`. The country code of the payer.                                                                                                           |
+| {% icon check %}  | {% f addressee %}            | `string`  | The full (first and last) name of the payer.                                                                                                                  |
+|                   | {% f coAddress %}            | `string`  | The CO-address (if used)                                                                                                                                         |
+|                   | {% f streetAddress %}        | `string`  | The street address of the payer. Maximum 50 characters long.                                                                                                  |
+| {% icon check %}  | {% f zipCode %}              | `string`  | The postal code (ZIP code) of the payer.                                                                                                                      |
+| {% icon check %}  | {% f city %}                 | `string`  | The city of the payer.                                                                                                                                        |
+| {% icon check %}  | {% f countryCode %}          | `string`  | `SE`, `NO`, or `FI`. The country code of the payer.                                                                                                           |
 | {% icon check %}  | `billingAddress`               | `object`  | The billing address object containing information about the payer's billing address.                                                                            |
-| {% icon check %}  | └➔&nbsp;`addressee`            | `string`  | The full (first and last) name of the payer.                                                                                                                  |
-|                   | └➔&nbsp;`coAddress`            | `string`  | The CO-address (if used)                                                                                                                                         |
-| {% icon check %}︎︎︎︎ ︎ | └➔&nbsp;`streetAddress`        | `string`  | The street address of the payer. Maximum 50 characters long.                                                                                                   |
-| {% icon check %}  | └➔&nbsp;`zipCode`              | `string`  | The postal number (ZIP code) of the payer.                                                                                                                    |
-| {% icon check %}  | └➔&nbsp;`city`                 | `string`  | The city of the payer.                                                                                                                                        |
-| {% icon check %}  | └➔&nbsp;`countryCode`          | `string`  | `SE`, `NO`, or `FI`.                                                                                                                                             |
+| {% icon check %}  | {% f addressee %}            | `string`  | The full (first and last) name of the payer.                                                                                                                  |
+|                   | {% f coAddress %}            | `string`  | The CO-address (if used)                                                                                                                                         |
+| {% icon check %}︎︎︎︎ ︎ | {% f streetAddress %}        | `string`  | The street address of the payer. Maximum 50 characters long.                                                                                                   |
+| {% icon check %}  | {% f zipCode %}              | `string`  | The postal number (ZIP code) of the payer.                                                                                                                    |
+| {% icon check %}  | {% f city %}                 | `string`  | The city of the payer.                                                                                                                                        |
+| {% icon check %}  | {% f countryCode %}          | `string`  | `SE`, `NO`, or `FI`.                                                                                                                                             |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Authorization Response
 
 The `authorization` resource will be returned, containing information about
 the newly created authorization transaction.
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "authorization": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id}}",
@@ -137,5 +137,10 @@ Content-Type: application/json
             ]
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}

@@ -24,7 +24,7 @@ three example scenarios of why this is important:
     merchant website, the `callbackUrl` is what ensures that you receive the
     information about what happened with the payment.
 
-## Good To Know About Callbacks
+## Technical Information
 
 *   When a change or update from the back-end system is made on a payment or
     transaction, Swedbank Pay will perform an asynchronous server-to-server
@@ -40,6 +40,8 @@ three example scenarios of why this is important:
     must be made on the payment or on the transaction. The retrieved payment or
     transaction resource will give you the necessary information about the
     recent change/update.
+*   For unscheduled and recur transactions, no callback will be given for card
+    transactions, only Trustly.
 *   As it isn't scaled to be a primary source of updates, no given response time
     can be guaranteed, and a callback might fail. It will be retried if that
     should happen. Below are the retry timings, in seconds from the initial
@@ -52,41 +54,96 @@ three example scenarios of why this is important:
     *   1265 seconds
 *   A callback should return a `200 OK` response.
 
-The callback is sent from `91.132.170.1` in both the test and production
-environment.
-
 To understand the nature of the callback, the type of transaction, its status,
 etc., you need to perform a `GET` request on the received URL and inspect the
 response. The transaction type or any other information can not and should not
 be inferred from the URL. See [URL usage][url-usage] for more information.
 
-{% if api_resource == "paymentorders" %}
-{:.code-view-header}
-**Payment Order Callback**
+For `paymentOrder` implementations (Digital Payments, Checkout v2 and Payment
+Menu v1), it is critical that you do **not** use the `paymentId` or
+`transactionId` when performing a `GET` to retrieve the payment's status. Use
+the `paymentOrderId`.
 
-```json
-{
-    "paymentorder": {
+### Callback IP Addresses
+
+The callbacks are currently sent from either `51.107.183.58` or `91.132.170.1`
+in both the test and production environment.
+
+Starting from March 12th 2025, callbacks will be sent from one of the following
+IP addresses, and we strongly advise you to whitelist them as soon as possible:
+
+*   `20.91.170.120`
+*   `20.91.170.121`
+*   `20.91.170.122`
+*   `20.91.170.123`
+*   `20.91.170.124`
+*   `20.91.170.125`
+*   `20.91.170.126`
+*   `20.91.170.127`
+
+## Callback Example
+
+{% if api_resource == "paymentorders" %}
+
+{% capture response_content %}{
+    "paymentOrder": {
         "id": "/psp/{{ api_resource }}/{{ page.payment_id }}",
         "instrument": "{{ api_resource }}"
     },
     "payment": {
-        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}",
         "number": 222222222
     },
     "transaction": {
-        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "number": 333333333
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Payment Order Callback'
+    header=response_header
+    json= response_content
+    %}
+
+## Callback Example v3.1
+
+If you have implemented v3.1, the callback will only contain the `paymentOrder`
+node.
+
+This response format will only be triggered if you used `version=3.1` in the
+original `POST` when you created the `paymentOrder`.
+
+{% capture response_content %}{
+    "orderReference": "549213",
+    "paymentOrder": {
+        "id": "/psp/{{ api_resource }}/{{ page.payment_id }}",
+        "instrument": "{{ api_resource }}"
+        "number": 12345678
+    }
+}{% endcapture %}
+
+{% include code-example.html
+    title='Payment Order Callback v3.1'
+    header=response_header
+    json= response_content
+    %}
+
+{% capture table %}
+{:.table .table-striped .mb-5}
+| Field                    | Type         | Description                                                                                                                                                                                                               |
+| :----------------------- | :----------- | :------------------- |
+| {% f orderReference, 0 %}                | `string`     | The order reference found in the merchant's systems.  If included in the request, the orderReference will appear in the callback.                     |
+| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
+| {% f id %}  | `string`   | {% include fields/id.md resource="paymentorder" %} |
+| {% f instrument %}                | `string`     | The payment method used in the payment.                     |
+| {% f number %}                | `string`     | The attempt number which triggered the callback.                     |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 {% else %}
-{:.code-view-header}
-**Payment Instrument Callback**
 
-```json
-{
+{% capture response_content %}{
     "payment": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
         "number": 222222222
@@ -95,16 +152,21 @@ be inferred from the URL. See [URL usage][url-usage] for more information.
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "number": 333333333
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Payment Method Callback'
+    header=response_header
+    json= response_content
+    %}
 
 {% endif %}
 
 ## GET Response
 
 When performing an HTTP `GET` request towards the URL found in the
-`transaction.id` field of the callback, the response is going to look
-something like the abbreviated example provided below.
+`transaction.id` field of the callback, the response is going to include the
+abbreviated example provided below.
 
 {% include transaction-response.md transaction="authorization" %}
 
@@ -130,4 +192,4 @@ sequenceDiagram
     deactivate SwedbankPay
 ```
 
-[url-usage]: /introduction#url-usage
+[url-usage]: /checkout-v3/get-started/fundamental-principles#url-usage

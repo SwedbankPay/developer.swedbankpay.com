@@ -1,193 +1,158 @@
 ---
-section: Checkout v3
-title: Get Started
+section: Digital Payments
+sidebar_icon: shopping_cart
+title: Introduction
 description: |
-  **This page aims to provide you with a brief introduction to our four options
-  for implementing our checkout in a way that makes sense for your business.**
-menu_order: 200
-checkout_v3: true
-
-header:
-  - table_header: Data Ownership
-  - table_header: Swedbank Pay
-    badge_type: default
-  - table_header: Merchant Side
-    badge_type: inactive
-table_content:
-  - icon: lock
-    label: Authentication
-    swedbankPay: true
-  - icon: local_shipping
-    label: Delivery Info
-    swedbankPay: true
-  - icon: assignment_ind
-    label: Payer Info
-    swedbankPay: true
-  - icon: monetization_on
-    label: PSP
-    swedbankPay: true
-
-table_content_business:
-  - icon: lock
-    label: Authentication
-    swedbankPay: true
-  - icon: local_shipping
-    label: Delivery Info
-    merchantSide: true
-  - icon: assignment_ind
-    label: Payer Info
-    swedbankPay: true
-  - icon: monetization_on
-    label: PSP
-    swedbankPay: true
-
-table_content_enterprise:
-  - icon: lock
-    label: Authentication
-    merchantSide: true
-  - icon: local_shipping
-    label: Delivery Info
-    merchantSide: true
-  - icon: assignment_ind
-    label: Payer Info
-    swedbankPay: true
-  - icon: monetization_on
-    label: PSP
-    swedbankPay: true
-
-table_content_payments:
-  - icon: lock
-    label: Authentication
-    merchantSide: true
-  - icon: local_shipping
-    label: Delivery Info
-    merchantSide: true
-  - icon: assignment_ind
-    label: Payer Info
-    merchantSide: true
-  - icon: monetization_on
-    label: PSP
-    swedbankPay: true
-
+  **A brief introduction to implementing Digital Payments.**
+menu_order: 1
 ---
 
-## Choosing The Right Implementation For Your Business
+<section class="panel panel-brand">
+ <header>
+ <h3 class="panel-title">Why Swedbank Pay?</h3>
+ <p class="panel-sub-title"></p>
+ </header>
+ <div class="panel-body">
+ <ul>
+ <li>Get all your payment needs from one provider</li>
+ <li>Manage all digital sales channels through one platform</li>
+ <li>Customize your payment menu</li>
+ <li>Ensure ease of use for everyone with the latest accessibility standards (WCAG)</li>
+ <li>Simplify your financial management with one payout and one report</li>
+ <li>Enjoy uninterrupted service</li>
+ <li>Get started quickly</li>
+ </ul>
+ </div>
+</section>
 
-Each business vertical has a different customer journey. If you are selling
-physical goods like clothes, shoes, or computers, you need to collect a delivery
-address, unlike if you are selling digital goods. There is also the matter of
-which data you can and/or wish to collect and manage on your own.
+There are three ways of implementing our digital payments, depending on what
+suits you best. The **native implementation**, which goes directly towards our
+APIs, **modules** (WooCommerce) or **SDKs** (*.NET* or *PHP* for web, *iOS* and
+*Android* for mobile apps).
 
-There are two main paths you can take here. If you choose the **Full Checkout**
-solution (including payer identification as well as payment options), the payer
-chooses the method of payment. You can also choose the **Payment Only** option.
-In this case, you will collect and store payer data, along with the payment
-instruments you will present to the payer. It is possible to use different
-implementations per payment order within the **Full checkout** options.
-This is especially useful if you need different customer journeys based on the
-device used.
+The modules and SDKs have their [own section][modules-sdks], which is where you
+need to go if you are planning on using them. A bit less flexible than the
+native API option, but a lower threshold to get going.
 
-We offer a variety of payment instruments and features designed to meet your
-business' needs, regardless of whether you choose the **Full Checkout** or
-**Payments Only**. You can choose among **Apple Pay** (on iOS devices),
-**card, invoice (including monthly payments), MobilePay, Swish, Trustly** and
-**Vipps** depending on the country you are in.
+If you are looking for the native implementation, we have everything you need in
+this section. We recommend [getting started here][get-started].
 
--   **Authentication:** The process of verifying the payer's identity.
+### API Platform Use Cases
 
--   **Delivery Info:** Information about where the goods should be delivered.
+<div class="row mt-4">
+    <div class="col-xl-4 col-lg-4 d-flex">
+       <a href="/checkout-v3/get-started/" class="cards cards-primary">
+         <span class="cards-icon">
+            <i class="material-icons-outlined">
+                storefront
+            </i>
+         </span>
+         <span class="cards-content">
+            <span class="h4">One-Time Payments</span>
+            <span>
+               <p>Kick things off with our basic implementation for all payment methods.</p>
+            </span>
+         </span>
+         <i class="material-icons">arrow_forward</i>
+      </a>
+    </div>
+    <div class="col-xl-4 col-lg-4 d-flex">
+       <a href="/checkout-v3/get-started/recurring" class="cards cards-primary">
+         <span class="cards-icon">
+            <i class="material-icons-outlined">
+                storefront
+            </i>
+         </span>
+         <span class="cards-content">
+            <span class="h4">Recurring Payments</span>
+            <span>
+               <p>Start getting that steady cash flow with our subscription services.</p>
+               <span class="badge badge-gray-light">Card</span>
+            </span>
+         </span>
+         <i class="material-icons">arrow_forward</i>
+      </a>
+    </div>
+    <div class="col-xl-4 col-lg-4 d-flex">
+       <a href="/checkout-v3/get-started/one-click" class="cards cards-primary">
+         <span class="cards-icon">
+            <i class="material-icons-outlined">
+                storefront
+            </i>
+         </span>
+         <span class="cards-content">
+            <span class="h4">One-Click Payments</span>
+            <span>
+               <p>Save your customer's details and make their checkout faster.</p>
+               <span class="badge badge-gray-light">Card</span>
+               <span class="badge badge-gray-light">Invoice</span>
+               <span class="badge badge-gray-light">Swish</span>
+               <span class="badge badge-gray-light">Trustly</span>
+               <span class="badge badge-gray-light">Vipps</span>
+            </span>
+         </span>
+         <i class="material-icons">arrow_forward</i>
+      </a>
+    </div>
+</div>
 
--   **Payer Info:** The payer’s personal data e.g. name, address, card number
-    etc.
+### Availability
 
--   **PSP:** A service that provides payment methods at checkout.
+This implementation is available in Danish `da-DK`, English (US) `en-US`,
+Finnish `fi-FI`, Norwegian `nb-NO`, and Swedish `sv-SE`. You can choose the
+contents of your payment UI from the following payment methods, somewhat
+depending on which countries you are operating.
 
-## What Are You Looking For?
+{% include alert.html type="informative" icon="info" header="Digital Wallets"
+body="Some of the digital wallets we offer require you to take additional steps
+before we can activate them for you. Please follow the link(s) in the table
+below to read more." %}
 
-{% capture tab1_intro %}
+{:.table .table-plain}
+|        | Payment Method | Region                                    |
+| :--------------------------: | :--------------: | :---------------------------------------- |
+| ![Apple Pay][apple-pay-logo]     | [Apple Pay][apple-pay]           |  ![EarthIcon][earth-icon]    |
+| ![Card][card-icon]               | [Card][card]                     |  ![EarthIcon][earth-icon]    |
+| ![Click to Pay][c2p-logo]        | [Click to Pay][click-to-pay]     |  ![EarthIcon][earth-icon]    |
+| ![Google Pay][google-pay-logo]   | [Google Pay][google-pay]&trade;  |  ![EarthIcon][earth-icon]    |
+| ![MobilePay][mobilepay-logo]     | [MobilePay][mobilepay]           | {% flag dk %} {% flag fi %}  |
+| ![Swedbank Pay][swp-logo]        | Swedbank Pay Installment Account | {% flag se %} {% flag no %}  |
+| ![Swedbank Pay][swp-logo]        | Swedbank Pay Invoice             | {% flag no %} {% flag se %}  |
+| ![Swedbank Pay][swp-logo]        | Swedbank Pay Monthly Payments    | {% flag se %}                |
+| ![Swish][swish-logo]             | Swish                            | {% flag se %}                |
+| ![Trustly][trustly-logo]         | [Trustly][trustly]               | {% flag se %} {% flag fi %}  |
+| ![Vipps][vipps-logo]             | [Vipps][vipps]                   | {% flag no %}                |
 
-## Full Checkout
+#### Browser And Operative System Limitations
 
-The **Full Checkout** allows you to choose from a variety of payment options
-specific to your local market, while we help you collect and safely store payer
-data. Payment information can be stored so it can be prefilled next time the
-payer shops if they agree to do so.
-{:.heading-line}
-{% endcapture %}
+We support all major browsers like (but not limited to) Edge, Firefox, Google
+Chrome and Safari. The same goes for mobile operative systems like Android or
+iOS.
 
-{% capture tab1_content %}
+However, there are limitations for iOS versions older than 12.2 and all versions
+of Internet Explorer. Due to their age, they are unable to load our payment
+UI.
 
-{% include card-table.html
-  title='Starter'
-  icon_content='shopping_cart'
-  icon_outlined=true
-  button_content='Proceed'
-  text="This is the ultimate implementation pack for anyone new to this, who needs help with all aspects of the checkout process. Besides collecting and verifying payer identity, billing address, and shipping address, we also store payer data. You get everything you need to start accepting payments online."
-  table_content=page.table_content
-  header=page.header
-  button_type='secondary'
-  button_alignment='align-self-end'
-  to='/checkout-v3/starter/'
-  %}
+Payers using these must update to a newer iOS or switch to a supported browser
+respectively. If their device is too old to update to a viable iOS, they need to
+use another device.
 
-{% include card-table.html
-  title='Business'
-  icon_content='shopping_cart'
-  icon_outlined=true
-  button_content='Proceed'
-  text="Do you need someone to manage your payer data as you move forward on your growth journey? We’ve got you covered! Make it easier for returning customers by providing them with the option to store their payment information. Everything you need to grow your business."
-  table_content=page.table_content_business
-  header=page.header
-  button_type='secondary'
-  button_alignment='align-self-end'
-  to='/checkout-v3/business/'
-%}
-
-{% include card-table.html
-  title='Enterprise'
-  icon_content='shopping_cart'
-  icon_outlined=true
-  button_content='Proceed'
-  text="This is the most suitable option if you only need data storage and payment instruments. You collect and verify consumer data, and we handle the rest. Scaling your business has never been easier."
-  table_content=page.table_content_enterprise header=page.header
-  button_type='secondary'
-  button_alignment='align-self-end'
-  to='/checkout-v3/enterprise/'
-%}
-
-{% endcapture %}
-
-{% capture tab2_intro %}
-
-## Payments Only
-
-With our **Payments Only** package, you collect payer data and build your own
-checkout flow. Our full range of payment instruments is supported by this
-implementation.
-{:.heading-line}
-{% endcapture %}
-
-{% capture tab2_content %}
-
-{% include card-table.html
-  title='Payments Only'
-  icon_content='shopping_cart'
-  icon_outlined=true
-  button_content='Proceed'
-  text="Basically, if you're able to collect, verify and store your payer data*, plus the delivery address, this is the option for you. Our PSP lets you choose whether to offer a single payment instrument or the whole thing.
-
-  *We'll store the card data for you, but you own it. So you'll have to remove data in compliance with GDPR, but you won't have to worry about handling sensitive card info."
-  table_content=page.table_content_payments
-  header=page.header
-  button_type='secondary'
-  button_alignment='align-self-end'
-  to='/checkout-v3/payments-only/'
-%}
-{% endcapture %}
-
-{% include tabs.html
-  tab1_intro=tab1_intro
-  tab1_content=tab1_content
-  tab2_intro=tab2_intro
-  tab2_content=tab2_content
-  %}
+[apple-pay]: /checkout-v3/apple-pay-presentation
+[apple-pay-logo]:/assets/img/applepay-logo.svg
+[card]: /checkout-v3/card-presentation
+[click-to-pay]: /checkout-v3/click-to-pay-presentation
+[c2p-logo]:/assets/img/clicktopay-logo.svg
+[card-icon]: /assets/img/new-card-icon.svg
+[earth-icon]: /assets/img/globe-icon.png
+[google-pay]: /checkout-v3/google-pay-presentation
+[google-pay-logo]: /assets/img/googlepay-logo.svg
+[mobilepay-logo]: /assets/img/icon-mobilepay-simple.svg
+[mobilepay]: /checkout-v3/mobilepay-presentation
+[vipps-logo]: /assets/img/icon-vipps-simple.svg
+[swp-logo]: /assets/img/swedbank-pay-vertical-black.svg
+[swish-logo]: /assets/img/icon-swish-simple.svg
+[trustly-logo]: /assets/img/icon-trustly-new.svg
+[trustly]: /checkout-v3/trustly-presentation
+[get-started]: /checkout-v3/get-started/
+[modules-sdks]: /checkout-v3/modules-sdks/
+[vipps]: /checkout-v3/vipps-presentation

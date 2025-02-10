@@ -36,3 +36,5 @@ allow:
   - simple
   - special
   - whitespace
+  - straightforward
+  - bigger
