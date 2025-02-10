@@ -109,12 +109,25 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             "productCategory": "A123",
             "orderReference": "or-123456",
             "subsite": "MySubsite", {% if documentation_section contains "checkout-v3" %}
-            "siteId": "MySiteId", {% endif %}
+            "siteId": "MySiteId" {% endif %}
         },
         "payer": {
-            "requireConsumerInfo": true,
             "digitalProducts": false,
-            "shippingAddressRestrictedToCountryCodes": [ "NO", "US" ]
+            "firstName": "Leia",
+            "lastName": "Ahlström",
+            "email": "leia@payex.com",
+            "msisdn": "+46787654321",
+            "payerReference": "AB1234",
+            "shippingAddress": {
+                "firstName": "firstname/companyname",
+                "lastName": "lastname",
+                "email": "karl.anderssson@mail.se",
+                "msisdn": "+46759123456",
+                "streetAddress": "string",
+                "coAddress": "string",
+                "city": "Solna",
+                "zipCode": "17674",
+                "countryCode": "SE"
         },
         "orderItems": [
             {
