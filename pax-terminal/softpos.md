@@ -2,7 +2,7 @@
 title: Pay SoftPos
 permalink: /:path/softpos/
 description: |
-    An introduction to Pay SoftPos
+ An introduction to Pay SoftPos
 menu_order: 1100
 ---
 
@@ -27,9 +27,9 @@ the PIN and confirms. Shortly after the outcome of the processing is presented.
 
 ## Transactional Flow
 
-As illustrated below, the details from the transaction are sent to the backend.
-The backend processes the information and relays it to a payment processor or
-acquirer, which eventually communicates with the payer's card issuer.
+The details from the transaction are sent to the backend, which in turn
+processes the information and relays it to a payment processor or acquirer,
+which eventually communicates with the payer's card issuer.
 
 Besides processing payments, the backend also manages the terminals and
 continuously attempts to attest that the Pay SoftPos application, or the
@@ -50,6 +50,13 @@ Sales (POS) app.
 The features available are shown in the table below, and you can access the full
 set of APIs by contacting a sales representative.
 
+For both standalone and integrated scenarios, it is only the Pay SoftPos app
+that is within the PCI-DSS certification scope. This makes it simpler for
+customers to complete the integration.
+
+The Pay SoftPos app is delivered via Google Play Store. Mobile device management
+systems can orchestrate the installation on individual devices.
+
 {:.table .table-striped}
 | Feature                  | Stand-Alone  | AppSwitch            |
 | :----------------------- | :----------- | :------------------- |
@@ -65,10 +72,3 @@ set of APIs by contacting a sales representative.
 | On device switching      | 1-way        | 2-way                |
 | Off device switching, external POS | No          | No          |
 | Integration method     | URL link to app | Embedded library in Android POS |
-
-For both standalone and integrated scenarios, it is only the Pay SoftPos app
-that is within the PCI-DSS certification scope. This makes it simpler for
-customers to complete the integration.
-
-The Pay SoftPos app is delivered via Google Play Store. Mobile device management
-systems can orchestrate the installation on individual devices.
