@@ -3,7 +3,7 @@ title: Pay SoftPos
 permalink: /:path/softpos/
 description: |
  An introduction to Pay SoftPos
-menu_order: 1100
+menu_order: 2500
 ---
 
 Pay SoftPos allows a merchant to turn a commercial off-the-shelf mobile phone
@@ -48,7 +48,7 @@ This will require the AppSwitch SDK, which needs to be embedded in the Point of
 Sales (POS) app.
 
 The features available are shown in the table below, and you can access the full
-set of APIs by contacting a sales representative.
+set of APIs by [contacting a sales representative][contact].
 
 For both standalone and integrated scenarios, it is only the Pay SoftPos app
 that is within the PCI-DSS certification scope. This makes it simpler for
@@ -72,3 +72,5 @@ systems can orchestrate the installation on individual devices.
 | On device switching      | 1-way        | 2-way                |
 | Off device switching, external POS | No          | No          |
 | Integration method     | URL link to app | Embedded library in Android POS |
+
+[contact]: mailto:sales.swedbankpay@swedbank.se
