@@ -69,13 +69,13 @@ the `paymentOrderId`.
 The callbacks are currently sent from either `51.107.183.58` or `91.132.170.1`
 in both the test and production environment.
 
-Starting from March 12th 2025, callbacks will be sent from one of the IP
-addresses in this interval, and we strongly advise you to whitelist them as soon
-as possible:
+{% include alert.html type="warning" icon="warning" body="Starting from March
+12th 2025, callbacks will be sent from one of the IP addresses in this interval,
+and we strongly advise you to whitelist them as soon as possible:
 
-`20.91.170.120–127` (`20.91.170.120/29`)
+`20.91.170.120–127` (`20.91.170.120/29`)." %}
 
-### FAQ – Change of IP Addresses for Callbacks
+#### FAQ – Change of IP Addresses for Callbacks
 
 {% capture acc-1 %}
 We will be updating the IP addresses from which callbacks for eCommerce payments
