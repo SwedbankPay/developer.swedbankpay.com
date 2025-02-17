@@ -75,6 +75,93 @@ as possible:
 
 `20.91.170.120–127` (`20.91.170.120/29`)
 
+### FAQ – Change of IP Addresses for Callbacks
+
+{% capture acc-1 %}
+We will be updating the IP addresses from which callbacks for eCommerce payments
+are sent. This change will affect the external integration for both test and
+production environments.
+
+The current IP addresses are 91.132.170.1 and 51.107.183.58. The new IP range
+will be 20.91.170.120 – 127, with the prefix (20.91.170.120/29).
+{% endcapture %}
+{% include accordion-table.html content=acc-1 button_expand_text='What is changing?' button_collapse_text='What is changing?' %}
+{% capture acc-2 %}
+
+*   Update your firewall rules to allow incoming traffic from the new IP
+  addresses.
+
+*   Ensure these changes are made by March 12, 2025, to avoid potential
+disruptions in the callback functionality.
+{% endcapture %}
+{% include accordion-table.html content=acc-2 button_expand_text='What do you need to do?' button_collapse_text='What do you need to do?' %}
+{% capture acc-3 %}
+*   Date: March 12, 2025
+
+*   Time: 12:00 CET – 13:00 CET
+
+*   Grace period: See further details below.
+{% endcapture %}
+{% include accordion-table.html content=acc-3 button_expand_text='When will the change take place?' button_collapse_text='When will the change take place?' %}
+{% capture acc-4 %}
+We need to update and deploy new outbound IP addresses from our Azure Cloud
+environment. To ensure uninterrupted communication between our system and your
+systems, all merchants and partners must update their firewalls with the new IP
+range and prefix.
+
+This applies to all merchants, regardless of integration method. No technical
+code changes are required, but firewall adjustments must be made in your
+infrastructure, typically handled by your IT or infrastructure providers.
+{% endcapture %}
+{% include accordion-table.html content=acc-4 button_expand_text='Why are we making this change?' button_collapse_text='Why are we making this change?' %}
+{% capture acc-5 %}
+By migrating callbacks to the Azure Cloud, we are enhancing our ability to scale
+and manage traffic dynamically.
+
+This means:
+
+*   Improved operational stability – We can handle more concurrent callback
+requests without performance degradation.
+
+*   Faster recovery from technical issues or incidents – We can automatically
+redirect traffic in case of disruptions.
+
+*   Better monitoring and proactive issue resolution – We now have more tools to
+detect and address issues in real-time.
+{% endcapture %}
+{% include accordion-table.html content=acc-5 button_expand_text='How will this change affect the stability of callbacks?' button_collapse_text='How will this change affect the stability of callbacks?' %}
+{% capture acc-6 %}
+We understand that some merchants may not complete the update before March 12.
+Therefore, we will continue to run callbacks from the current solution during a
+grace period.
+
+However, it is important to migrate as soon as possible, as we will gradually
+phase out the old solution to reduce system maintenance and complexity.
+
+We will:
+
+*   Closely monitor traffic to ensure stable callbacks from the Azure Cloud.
+
+*   Actively monitor merchants and partners to ensure a smooth transition.
+{% endcapture %}
+{% include accordion-table.html content=acc-6 button_expand_text='What happens if we don’t make the change in time?' button_collapse_text='What happens if we don’t make the change in time?' %}
+{% capture acc-7 %}
+We recommend that merchants allow both the old and new IP addresses during the
+transition period. This ensures stable callback functionality, even if network
+issues arise during the migration.
+{% endcapture %}
+{% include accordion-table.html content=acc-7 button_expand_text='Recommendations during the grace period' button_collapse_text='Recommendations during the grace period' %}
+{% capture acc-8 %}
+Merchants must implement IP blocking (IP allowlisting). FQDN (domain name
+blocking) is not supported in this case, as we use fixed IP addresses.
+{% endcapture %}
+{% include accordion-table.html content=acc-8 button_expand_text='Do we need to implement IP blocking or FQDN blocking in our firewall?' button_collapse_text='Do we need to implement IP blocking or FQDN blocking in our firewall?' %}
+{% capture acc-9 %}
+If you have any questions or need support during implementation, please contact
+your TOM/TAM or our support team.
+{% endcapture %}
+{% include accordion-table.html content=acc-9 button_expand_text='Who can we contact for assistance?' button_collapse_text='Who can we contact for assistance?' %}
+
 ## Callback Example
 
 {% if api_resource == "paymentorders" %}
