@@ -69,17 +69,11 @@ the `paymentOrderId`.
 The callbacks are currently sent from either `51.107.183.58` or `91.132.170.1`
 in both the test and production environment.
 
-Starting from March 12th 2025, callbacks will be sent from one of the following
-IP addresses, and we strongly advise you to whitelist them as soon as possible:
+Starting from March 12th 2025, callbacks will be sent from one of the IP
+addresses in this interval, and we strongly advise you to whitelist them as soon
+as possible:
 
-*   `20.91.170.120`
-*   `20.91.170.121`
-*   `20.91.170.122`
-*   `20.91.170.123`
-*   `20.91.170.124`
-*   `20.91.170.125`
-*   `20.91.170.126`
-*   `20.91.170.127`
+`20.91.170.120–127` (`20.91.170.120/29`)
 
 ## Callback Example
 
