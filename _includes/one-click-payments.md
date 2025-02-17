@@ -395,7 +395,9 @@ deletes a specific token.
   and supply them with the relevant transaction reference or payment token." %}
 
 If you want to delete tokens by `payerReference`, the request and response
-should look like this:
+should look like the below. You should retrieve the tokens by performing a `GET`
+towards the payerReference below before doing the `PATCH`, to make sure you have
+the correct token input.
 
 ## Delete Payment Token Request
 
@@ -427,18 +429,27 @@ Content-Type: application/json; charset=utf-8; version=3.x/2.0
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
-  "payerOwnedTokens": {
-        "id": "/psp/paymentorders/payerownedtokens/{payerReference}",
-        "payerReference": "{payerReference}",
+    "payerOwnedTokens": {
+        "id": "/psp/paymentorders/payerownedtokens/123456",
+        "payerReference": "123456",
         "tokens": [
             {
                 "tokenType": "Payment",
-                "token": "{paymentToken}",
+                "token": "7fc5e705-d2c4-4c8b-8ff7-d40c355d6916",
                 "instrument": "CreditCard",
-                "instrumentDisplayName": "492500******0004",
-                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
+                "instrumentDisplayName": "522661******3406",
                 "instrumentParameters": {
-                    "expiryDate": "12/2020",
+                    "expiryDate": "12/2033",
+                    "cardBrand": "MasterCard"
+                }
+            },
+            {
+                "tokenType": "Payment",
+                "token": "ddd3ddf7-58ab-43f2-8d72-3a1899f33252",
+                "instrument": "CreditCard",
+                "instrumentDisplayName": "476173******0416",
+                "instrumentParameters": {
+                    "expiryDate": "12/2033",
                     "cardBrand": "Visa"
                 }
             }
