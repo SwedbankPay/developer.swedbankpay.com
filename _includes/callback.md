@@ -84,8 +84,8 @@ are sent. This change will affect the external integration for both test and
 production environments.
 
 {: .p .pl-3 .pr-3  }
-The current IP addresses are 91.132.170.1 and 51.107.183.58. The new IP range
-will be 20.91.170.120 – 127, with the prefix (20.91.170.120/29).
+The current IP addresses are `91.132.170.1` and `51.107.183.58`. The new IP range
+will be `20.91.170.120 – 127`, with the prefix (`20.91.170.120/29`).
 {% endcapture %}
 {% include accordion-table.html content=acc-1 header_expand_text='What is changing?' header_collapse_text='What is changing?' header_expand_css='font-weight-normal' %}
 {% capture acc-2 %}
@@ -93,7 +93,7 @@ will be 20.91.170.120 – 127, with the prefix (20.91.170.120/29).
 *   Update your firewall rules to allow incoming traffic from the new IP
   addresses.
 
-*   Ensure these changes are made by March 12, 2025, to avoid potential
+*   Ensure these changes are made by March 12th, 2025, to avoid potential
 disruptions in the callback functionality.
 {% endcapture %}
 {% include accordion-table.html content=acc-2 header_expand_text='What do you need to do?' header_collapse_text='What do you need to do?' header_expand_css='font-weight-normal' %}
