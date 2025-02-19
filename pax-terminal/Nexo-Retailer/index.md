@@ -4,6 +4,7 @@ permalink: /:path/
 title: Swedbank Pay nexo Retailer v3.1
 description: |
     Use the nexo Retailer integration if you are unable to use .NET or Java SDK. This interface requires a greater effort for both users and Swedbank Pay.
+menu_order: 2000
 ---
 The interface is based on nexo Retailer version 3.1 and uses XML message formats over HTTP/TCP.
 For reference it may be a good idea to download the nexo specifications from `www.nexo-standards.org`, but the essentials will be described here.

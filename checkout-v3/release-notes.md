@@ -8,6 +8,20 @@ menu_order: 7
 release_notes: true
 ---
 
+## 19 February 2025
+
+### Version 5.3.5
+
+A short and sweet one this time, with two important additions.
+
+To help make the upcoming switch of IP addresses for callbacks as easy as
+possible, we have gathered your most likely questions in a
+[FAQ section][callback-faq]. Stop by to see if possible uncertainties have been
+addressed!
+
+[Pay SoftPos][softpos] is going live this week, and that calls for a proper
+introduction. Head over to the brand new section to read about it!
+
 ## 6 February 2025
 
 ### Version 5.3.4
@@ -1309,3 +1323,5 @@ more convenient for both the integration and the payer.
 [wcag]: https://www.swedbankpay.com/information/wcag
 [callback-ip]: /checkout-v3/features/payment-operations/callback/#callback-ip-addresses
 [availability]: /checkout-v3/#availability
+[callback-faq]: /checkout-v3/features/payment-operations/callback/#faq--change-of-ip-addresses-for-callbacks
+[softpos]: /pax-terminal/softpos/
