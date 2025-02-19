@@ -1663,6 +1663,16 @@
         </li>
       </ul>
         </li>
+<li class="secondary-nav-li group">
+          <a href="/pax-terminal/softpos/">Pay SoftPos</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/pax-terminal/softpos/#the-user-experience">The User Experience</a></li>
+<li class="nav-leaf"><a href="/pax-terminal/softpos/#transactional-flow">Transactional Flow</a></li>
+<li class="nav-leaf"><a href="/pax-terminal/softpos/#stand-alone-or-integrated">Stand-Alone Or Integrated</a></li>
+          
+      </ul>
+        </li>
       </ul>
               </nav>
         </li>
@@ -5733,11 +5743,206 @@ the <code class="language-html highlighter-rouge">paymentOrderId</code>.</p>
 <p>The callbacks are currently sent from either <code class="language-html highlighter-rouge">51.107.183.58</code> or <code class="language-html highlighter-rouge">91.132.170.1</code>
 in both the test and production environment.</p>
 
-<p>Starting from March 12th 2025, callbacks will be sent from one of the IP
-addresses in this interval, and we strongly advise you to whitelist them as soon
-as possible:</p>
+<div class="alert alert-warning">
+    
+    <i class="material-icons alert-icon mr-3">warning</i>
+    
 
-<p><code class="language-html highlighter-rouge">20.91.170.120–127</code> (<code class="language-html highlighter-rouge">20.91.170.120/29</code>)</p>
+    
+    
+    <p>Starting from March
+12th 2025, callbacks will be sent from one of the IP addresses in this interval,
+and we strongly advise you to whitelist them as soon as possible:
+
+<code class="language-html highlighter-rouge">20.91.170.120–127</code> (<code class="language-html highlighter-rouge">20.91.170.120/29</code>).</p>
+    
+    
+</div>
+    
+      <h4 id="faq--change-of-ip-addresses-for-callbacks">
+        
+        
+          FAQ – Change of IP Addresses for Callbacks <a href="#faq--change-of-ip-addresses-for-callbacks" class="header-anchor"></a>
+        
+        
+      </h4>
+
+<div class="accordion">
+    <button type="button" class="accordion-header" aria-expanded="false" aria-controls="accordion-1">
+        <span class="mr-3 show font-weight-normal">What is changing?</span>
+        <span class="mr-3 hide ">What is changing?</span>
+    </button>
+    <div class="accordion-body" id="accordion-1">
+        
+<p class="p pl-3 pr-3">We will be updating the IP addresses from which callbacks for eCommerce payments
+are sent. This change will affect the external integration for both test and
+production environments.</p>
+
+<p class="p pl-3 pr-3">The current IP addresses are <code class="language-html highlighter-rouge">91.132.170.1</code> and <code class="language-html highlighter-rouge">51.107.183.58</code>. The new IP range
+will be <code class="language-html highlighter-rouge">20.91.170.120 – 127</code>, with the prefix (<code class="language-html highlighter-rouge">20.91.170.120/29</code>).</p>
+
+    </div>
+</div>
+
+<div class="accordion">
+    <button type="button" class="accordion-header" aria-expanded="false" aria-controls="accordion-1">
+        <span class="mr-3 show font-weight-normal">What do you need to do?</span>
+        <span class="mr-3 hide ">What do you need to do?</span>
+    </button>
+    <div class="accordion-body" id="accordion-1">
+        
+<ul>
+  <li>
+    <p>Update your firewall rules to allow incoming traffic from the new IP
+  addresses.</p>
+  </li>
+  <li>
+    <p>Ensure these changes are made by March 12th, 2025, to avoid potential
+disruptions in the callback functionality.</p>
+  </li>
+</ul>
+
+    </div>
+</div>
+
+<div class="accordion">
+    <button type="button" class="accordion-header" aria-expanded="false" aria-controls="accordion-1">
+        <span class="mr-3 show font-weight-normal">When will the change take place?</span>
+        <span class="mr-3 hide ">When will the change take place?</span>
+    </button>
+    <div class="accordion-body" id="accordion-1">
+        
+<ul>
+  <li>
+    <p>Date: March 12, 2025</p>
+  </li>
+  <li>
+    <p>Time: 12:00 CET – 13:00 CET</p>
+  </li>
+  <li>
+    <p>Grace period: See further details below.</p>
+  </li>
+</ul>
+
+    </div>
+</div>
+
+<div class="accordion">
+    <button type="button" class="accordion-header" aria-expanded="false" aria-controls="accordion-1">
+        <span class="mr-3 show font-weight-normal">Why are we making this change?</span>
+        <span class="mr-3 hide ">Why are we making this change?</span>
+    </button>
+    <div class="accordion-body" id="accordion-1">
+        
+<p class="p pl-3 pr-3">We need to update and deploy new outbound IP addresses from our Azure Cloud
+environment. To ensure uninterrupted communication between our system and your
+systems, all merchants and partners must update their firewalls with the new IP
+range and prefix.</p>
+
+<p class="p pl-3 pr-3">This applies to all merchants, regardless of integration method. No technical
+code changes are required, but firewall adjustments must be made in your
+infrastructure, typically handled by your IT or infrastructure providers.</p>
+
+    </div>
+</div>
+
+<div class="accordion">
+    <button type="button" class="accordion-header" aria-expanded="false" aria-controls="accordion-1">
+        <span class="mr-3 show font-weight-normal">How will this change affect the stability of callbacks?</span>
+        <span class="mr-3 hide ">How will this change affect the stability of callbacks?</span>
+    </button>
+    <div class="accordion-body" id="accordion-1">
+        
+<p class="p pl-3 pr-3">By migrating callbacks to the Azure Cloud, we are enhancing our ability to scale
+and manage traffic dynamically.</p>
+
+<p class="p pl-3 pr-3">This means:</p>
+
+<ul>
+  <li>
+    <p>Improved operational stability – We can handle more concurrent callback
+requests without performance degradation.</p>
+  </li>
+  <li>
+    <p>Faster recovery from technical issues or incidents – We can automatically
+redirect traffic in case of disruptions.</p>
+  </li>
+  <li>
+    <p>Better monitoring and proactive issue resolution – We now have more tools to
+detect and address issues in real-time.</p>
+  </li>
+</ul>
+
+    </div>
+</div>
+
+<div class="accordion">
+    <button type="button" class="accordion-header" aria-expanded="false" aria-controls="accordion-1">
+        <span class="mr-3 show font-weight-normal">What happens if we don’t make the change in time?</span>
+        <span class="mr-3 hide ">What happens if we don’t make the change in time?</span>
+    </button>
+    <div class="accordion-body" id="accordion-1">
+        
+<p class="p pl-3 pr-3">We understand that some merchants may not complete the update before March 12.
+Therefore, we will continue to run callbacks from the current solution during a
+grace period.</p>
+
+<p class="p pl-3 pr-3">However, it is important to migrate as soon as possible, as we will gradually
+phase out the old solution to reduce system maintenance and complexity.</p>
+
+<p class="p pl-3 pr-3">We will:</p>
+
+<ul>
+  <li>
+    <p>Closely monitor traffic to ensure stable callbacks from the Azure Cloud.</p>
+  </li>
+  <li>
+    <p>Actively monitor merchants and partners to ensure a smooth transition.</p>
+  </li>
+</ul>
+
+    </div>
+</div>
+
+<div class="accordion">
+    <button type="button" class="accordion-header" aria-expanded="false" aria-controls="accordion-1">
+        <span class="mr-3 show font-weight-normal">Recommendations during the grace period</span>
+        <span class="mr-3 hide ">Recommendations during the grace period</span>
+    </button>
+    <div class="accordion-body" id="accordion-1">
+        
+<p class="p pl-3 pr-3">We recommend that merchants allow both the old and new IP addresses during the
+transition period. This ensures stable callback functionality, even if network
+issues arise during the migration.</p>
+
+    </div>
+</div>
+
+<div class="accordion">
+    <button type="button" class="accordion-header" aria-expanded="false" aria-controls="accordion-1">
+        <span class="mr-3 show font-weight-normal">Do we need to implement IP blocking or FQDN blocking in our firewall?</span>
+        <span class="mr-3 hide ">Do we need to implement IP blocking or FQDN blocking in our firewall?</span>
+    </button>
+    <div class="accordion-body" id="accordion-1">
+        
+<p class="p pl-3 pr-3">Merchants must implement IP blocking (IP allowlisting). FQDN (domain name
+blocking) is not supported in this case, as we use fixed IP addresses.</p>
+
+    </div>
+</div>
+
+<div class="accordion">
+    <button type="button" class="accordion-header" aria-expanded="false" aria-controls="accordion-1">
+        <span class="mr-3 show font-weight-normal">Who can we contact for assistance?</span>
+        <span class="mr-3 hide ">Who can we contact for assistance?</span>
+    </button>
+    <div class="accordion-body" id="accordion-1">
+        
+<p class="p pl-3 pr-3">If you have any questions or need support during implementation, please contact
+your TOM/TAM or our support team.</p>
+
+    </div>
+</div>
     
       <h2 id="callback-example">
         
@@ -5942,11 +6147,11 @@ abbreviated example provided below.</p>
 </tr></tbody></table></code></pre></div></div>
 
 <div class="accordion">
-    <button type="button" class="accordion-header" aria-expanded="false" aria-controls="exp-1">
-        <span class="mr-3 show">Show fields</span>
-        <span class="mr-3 hide">Hide fields</span>
+    <button type="button" class="accordion-header" aria-expanded="false" aria-controls="accordion-1">
+        <span class="mr-3 show ">Show fields</span>
+        <span class="mr-3 hide ">Hide fields</span>
     </button>
-    <div class="accordion-body" id="exp-1">
+    <div class="accordion-body" id="accordion-1">
         
 <table class="table table-striped mb-5">
   <thead>

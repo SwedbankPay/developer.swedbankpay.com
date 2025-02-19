@@ -1663,6 +1663,16 @@
         </li>
       </ul>
         </li>
+<li class="secondary-nav-li group">
+          <a href="/pax-terminal/softpos/">Pay SoftPos</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/pax-terminal/softpos/#the-user-experience">The User Experience</a></li>
+<li class="nav-leaf"><a href="/pax-terminal/softpos/#transactional-flow">Transactional Flow</a></li>
+<li class="nav-leaf"><a href="/pax-terminal/softpos/#stand-alone-or-integrated">Stand-Alone Or Integrated</a></li>
+          
+      </ul>
+        </li>
       </ul>
               </nav>
         </li>
@@ -5701,11 +5711,11 @@ setting the initial operation to <a href="/checkout-v3/features/optional/verify"
 </tr></tbody></table></code></pre></div></div>
 
 <div class="accordion">
-    <button type="button" class="accordion-header" aria-expanded="false" aria-controls="exp-1">
-        <span class="mr-3 show">Show fields</span>
-        <span class="mr-3 hide">Hide fields</span>
+    <button type="button" class="accordion-header" aria-expanded="false" aria-controls="accordion-1">
+        <span class="mr-3 show ">Show fields</span>
+        <span class="mr-3 hide ">Hide fields</span>
     </button>
-    <div class="accordion-body" id="exp-1">
+    <div class="accordion-body" id="accordion-1">
         
 <table class="table table-striped mb-5">
   <thead>
@@ -6018,7 +6028,9 @@ deletes a specific token.</p>
 </div>
 
 <p>If you want to delete tokens by <code class="language-html highlighter-rouge">payerReference</code>, the request and response
-should look like this:</p>
+should look like the below. You should retrieve the tokens by performing a <code class="language-html highlighter-rouge">GET</code>
+towards the payerReference below before doing the <code class="language-html highlighter-rouge">PATCH</code>, to make sure you have
+the correct token input.</p>
     
       <h2 id="delete-payment-token-request">
         
@@ -6076,18 +6088,27 @@ should look like this:</p>
     Response
     
     <button aria-describedby="tooltipCopy" class="code-view-copy tooltip" aria-label="Copy json to clipboard" value='{
-  "payerOwnedTokens": {
-        "id": "/psp/paymentorders/payerownedtokens/{payerReference}",
-        "payerReference": "{payerReference}",
+    "payerOwnedTokens": {
+        "id": "/psp/paymentorders/payerownedtokens/123456",
+        "payerReference": "123456",
         "tokens": [
             {
                 "tokenType": "Payment",
-                "token": "{paymentToken}",
+                "token": "7fc5e705-d2c4-4c8b-8ff7-d40c355d6916",
                 "instrument": "CreditCard",
-                "instrumentDisplayName": "492500******0004",
-                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
+                "instrumentDisplayName": "522661******3406",
                 "instrumentParameters": {
-                    "expiryDate": "12/2020",
+                    "expiryDate": "12/2033",
+                    "cardBrand": "MasterCard"
+                }
+            },
+            {
+                "tokenType": "Payment",
+                "token": "ddd3ddf7-58ab-43f2-8d72-3a1899f33252",
+                "instrument": "CreditCard",
+                "instrumentDisplayName": "476173******0416",
+                "instrumentParameters": {
+                    "expiryDate": "12/2033",
                     "cardBrand": "Visa"
                 }
             }
@@ -6128,20 +6149,38 @@ should look like this:</p>
 17
 18
 19
+20
+21
+22
+23
+24
+25
+26
+27
+28
 </pre></td>
 <td class="code-view-code"><pre><span class="p">{</span><span class="w">
-  </span><span class="nl">"payerOwnedTokens"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/payerownedtokens/{payerReference}"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"payerReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{payerReference}"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payerOwnedTokens"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/payerownedtokens/123456"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"payerReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"tokens"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"tokenType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{paymentToken}"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7fc5e705-d2c4-4c8b-8ff7-d40c355d6916"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"instrumentDisplayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"492500******0004"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"correlationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e2f06785-805d-4605-bf40-426a725d313d"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"instrumentDisplayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"522661******3406"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"instrumentParameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"expiryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12/2020"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"expiryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12/2033"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"cardBrand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MasterCard"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"tokenType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ddd3ddf7-58ab-43f2-8d72-3a1899f33252"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"instrumentDisplayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"476173******0416"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"instrumentParameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"expiryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12/2033"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"cardBrand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Visa"</span><span class="w">
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">}</span><span class="w">

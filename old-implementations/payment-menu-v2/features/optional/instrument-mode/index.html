@@ -1663,6 +1663,16 @@
         </li>
       </ul>
         </li>
+<li class="secondary-nav-li group">
+          <a href="/pax-terminal/softpos/">Pay SoftPos</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/pax-terminal/softpos/#the-user-experience">The User Experience</a></li>
+<li class="nav-leaf"><a href="/pax-terminal/softpos/#transactional-flow">Transactional Flow</a></li>
+<li class="nav-leaf"><a href="/pax-terminal/softpos/#stand-alone-or-integrated">Stand-Alone Or Integrated</a></li>
+          
+      </ul>
+        </li>
       </ul>
               </nav>
         </li>
@@ -5712,9 +5722,22 @@ parameter with the specific payment method.</p>
             "subsite": "MySubsite", 
         },
         "payer": {
-            "requireConsumerInfo": true,
             "digitalProducts": false,
-            "shippingAddressRestrictedToCountryCodes": [ "NO", "US" ]
+            "firstName": "Leia",
+            "lastName": "Ahlström",
+            "email": "leia@payex.com",
+            "msisdn": "+46787654321",
+            "payerReference": "AB1234",
+            "shippingAddress": {
+                "firstName": "firstname/companyname",
+                "lastName": "lastname",
+                "email": "karl.anderssson@mail.se",
+                "msisdn": "+46759123456",
+                "streetAddress": "string",
+                "coAddress": "string",
+                "city": "Solna",
+                "zipCode": "17674",
+                "countryCode": "SE"
         },
         "orderItems": [
             {
@@ -5872,6 +5895,19 @@ parameter with the specific payment method.</p>
 83
 84
 85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
 </pre></td>
 <td class="code-view-code"><pre><span class="p">{</span><span class="w">
     </span><span class="nl">"paymentorder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -5900,9 +5936,22 @@ parameter with the specific payment method.</p>
             </span><span class="nl">"subsite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MySubsite"</span><span class="p">,</span><span class="w"> 
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"requireConsumerInfo"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="nl">"digitalProducts"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"shippingAddressRestrictedToCountryCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"NO"</span><span class="p">,</span><span class="w"> </span><span class="s2">"US"</span><span class="w"> </span><span class="p">]</span><span class="w">
+            </span><span class="nl">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Leia"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ahlström"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"leia@payex.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"msisdn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+46787654321"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payerReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB1234"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"shippingAddress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"firstname/companyname"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lastname"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"karl.anderssson@mail.se"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"msisdn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+46759123456"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"streetAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"coAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Solna"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17674"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SE"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"orderItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
