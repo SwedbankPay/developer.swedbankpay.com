@@ -104,9 +104,10 @@ contents of your payment UI from the following payment methods, somewhat
 depending on which countries you are operating.
 
 {% include alert.html type="informative" icon="info" header="Digital Wallets"
-body="Some of the digital wallets we offer require you to take additional steps
-before we can activate them for you. Please follow the link(s) in the table
-below to read more." %}
+body="We have gathered useful integration recommendations for the specific
+payment methods. Some of the digital wallets also require you to take additional
+steps before we can activate them for you. Please follow the link(s) in the
+table below to read more." %}
 
 {:.table .table-plain}
 |        | Payment Method | Region                                    |
@@ -119,7 +120,7 @@ below to read more." %}
 | ![Swedbank Pay][swp-logo]        | Swedbank Pay Installment Account | {% flag se %} {% flag no %}  |
 | ![Swedbank Pay][swp-logo]        | Swedbank Pay Invoice             | {% flag no %} {% flag se %}  |
 | ![Swedbank Pay][swp-logo]        | Swedbank Pay Monthly Payments    | {% flag se %}                |
-| ![Swish][swish-logo]             | Swish                            | {% flag se %}                |
+| ![Swish][swish-logo]             | [Swish][swish]                   | {% flag se %}                |
 | ![Trustly][trustly-logo]         | [Trustly][trustly]               | {% flag se %} {% flag fi %}  |
 | ![Vipps][vipps-logo]             | [Vipps][vipps]                   | {% flag no %}                |
 
@@ -156,3 +157,4 @@ use another device.
 [get-started]: /checkout-v3/get-started/
 [modules-sdks]: /checkout-v3/modules-sdks/
 [vipps]: /checkout-v3/vipps-presentation
+[swish]: /checkout-v3/swish-presentation
