@@ -52,6 +52,18 @@ You can only use `abort` if the payer **has not** completed an `authorize` or a
 `sale`. If the payer is performing an action at a 3rd party, like the MobilePay,
 Swish or Vipps apps, `abort` is unavailable.
 
+## Before You Start
+
+Depending on what you plan to include in your offering, we recommend stopping
+by the pages specific to each payment method.
+
+Some of them – like the digital wallets [Apple Pay][apple-pay]{:target="_blank"},
+[Click to Pay][c2p]{:target="_blank"} and [Google Pay][google-pay]{:target="_blank"} –
+have steps which must be completed before the payment method can be activated.
+
+For [Swish][swish]{:target="_blank"} and [Trustly][trustly]{:target="_blank"},
+we provide useful integration recommendations.
+
 {% include alert-risk-indicator.md %}
 
 {% include alert-gdpr-disclaimer.md %}
@@ -79,3 +91,8 @@ Read more about possible additions to the request in our
 [features]: /checkout-v3/features/
 [frictionless]: /checkout-v3/features/customize-payments/frictionless-payments
 [order-items]: /checkout-v3/features/optional/order-items
+[trustly]: /checkout-v3/trustly-presentation
+[swish]: /checkout-v3/swish-presentation
+[apple-pay]: /checkout-v3/apple-pay-presentation
+[c2p]: /checkout-v3/click-to-pay-presentation
+[google-pay]: /checkout-v3/google-pay-presentation

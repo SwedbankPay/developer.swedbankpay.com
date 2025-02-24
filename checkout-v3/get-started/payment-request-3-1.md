@@ -56,6 +56,18 @@ Swish or Vipps apps, `abort` is unavailable.
 To avoid unnecessary calls, we recommend doing a `GET` on your `paymentOrder` to
 check if `abort` is an available operation before performing it.
 
+## Before You Start
+
+Depending on what you plan to include in your offering, we recommend stopping
+by the pages specific to each payment method.
+
+Some of them – like the digital wallets [Apple Pay][apple-pay]{:target="_blank"},
+[Click to Pay][c2p]{:target="_blank"} and [Google Pay][google-pay]{:target="_blank"} –
+have steps which must be completed before the payment method can be activated.
+
+For [Swish][swish]{:target="_blank"} and [Trustly][trustly]{:target="_blank"},
+we provide useful integration recommendations.
+
 {% include alert-risk-indicator.md %}
 
 {% include alert-gdpr-disclaimer.md %}
@@ -87,3 +99,8 @@ Read more about possible additions to the request in our
 [history]: /checkout-v3/features/technical-reference/resource-sub-models#history
 [order-items]: /checkout-v3/features/optional/order-items
 [post-31]: /checkout-v3/get-started/post-purchase-3-1
+[trustly]: /checkout-v3/trustly-presentation
+[swish]: /checkout-v3/swish-presentation
+[apple-pay]: /checkout-v3/apple-pay-presentation
+[c2p]: /checkout-v3/click-to-pay-presentation
+[google-pay]: /checkout-v3/google-pay-presentation
