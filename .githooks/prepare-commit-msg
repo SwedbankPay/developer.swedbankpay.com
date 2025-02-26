@@ -10,7 +10,7 @@ COMMIT_MSG_FILE=$1
 # After this we match one out of two things:
 # The ticket number, not case sensitive, OR
 # the number. This is to support release branches.
-valid_branch_regex="^(hotfix|feature|release|bugfix)\/([a-zA-Z]+\-[0-9]+|[0-9]\..*).*"
+valid_branch_regex="^((develop-ecom|develop-sdk)|(hotfix|feature|release|bugfix)\/([a-zA-Z]+\-[0-9]+|[0-9]\..*)).*"
 branch_name="$(git rev-parse --abbrev-ref HEAD)"
 
 if [[ "$NO_VERIFY" ]]; then
