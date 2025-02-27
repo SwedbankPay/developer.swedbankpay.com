@@ -52,6 +52,11 @@ You can only use `abort` if the payer **has not** completed an `authorize` or a
 `sale`. If the payer is performing an action at a 3rd party, like the MobilePay,
 Swish or Vipps apps, `abort` is unavailable.
 
+{% include alert-risk-indicator.md %}
+
+{% include alert-gdpr-disclaimer.md %}
+
+
 ## Before You Start
 
 Depending on what you plan to include in your offering, we recommend stopping
@@ -63,10 +68,6 @@ have steps which must be completed before the payment method can be activated.
 
 For [Swish][swish]{:target="_blank"} and [Trustly][trustly]{:target="_blank"},
 we provide useful integration recommendations.
-
-{% include alert-risk-indicator.md %}
-
-{% include alert-gdpr-disclaimer.md %}
 
 {% include payment-order-checkout-payments-only.md %}
 

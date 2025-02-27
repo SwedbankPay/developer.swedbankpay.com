@@ -56,6 +56,11 @@ Swish or Vipps apps, `abort` is unavailable.
 To avoid unnecessary calls, we recommend doing a `GET` on your `paymentOrder` to
 check if `abort` is an available operation before performing it.
 
+{% include alert-risk-indicator.md %}
+
+{% include alert-gdpr-disclaimer.md %}
+
+
 ## Before You Start
 
 Depending on what you plan to include in your offering, we recommend stopping
@@ -67,11 +72,6 @@ have steps which must be completed before the payment method can be activated.
 
 For [Swish][swish]{:target="_blank"} and [Trustly][trustly]{:target="_blank"},
 we provide useful integration recommendations.
-
-{% include alert-risk-indicator.md %}
-
-{% include alert-gdpr-disclaimer.md %}
-
 {% include payment-order-3-1.md %}
 
 ## Adding To Your Request

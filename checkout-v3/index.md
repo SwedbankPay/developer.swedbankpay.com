@@ -103,11 +103,12 @@ Finnish `fi-FI`, Norwegian `nb-NO`, and Swedish `sv-SE`. You can choose the
 contents of your payment UI from the following payment methods, somewhat
 depending on which countries you are operating.
 
-{% include alert.html type="informative" icon="info" header="Digital Wallets"
-body="We have gathered useful integration recommendations for the specific
-payment methods. Some of the digital wallets also require you to take additional
-steps before we can activate them for you. Please follow the link(s) in the
-table below to read more." %}
+{% include alert.html type="informative" icon="info" header="Requirements and
+Recommendations" body="We have gathered useful integration recommendations for
+the specific payment methods. Some of the digital wallets - Apple Pay, Click to
+Pay and Google Pay&trade; - also require you to take additional steps before we
+can activate them for you. Please follow the link(s) in the table below to read
+more." %}
 
 {:.table .table-plain}
 |        | Payment Method | Region                                    |
