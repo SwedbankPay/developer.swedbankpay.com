@@ -1,4 +1,4 @@
-name: Deploy Ecom Developer Branch to Azure Stage
+name: Deploy Developer Branch to Azure Stage
 
 on:
   push:
