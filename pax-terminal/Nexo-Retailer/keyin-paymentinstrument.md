@@ -2,9 +2,6 @@
 title: Send Card Data
 description: Possibility to send a non-PCI regulated "card number" to the terminal
 permalink: /:path/keyin-paymentinstrument/
-icon:
-  content: keyboard
-  outlined: true
 menu_order: 80
 ---
 ## Manually Entered Card Data

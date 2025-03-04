@@ -3,9 +3,6 @@ title: Request To Print
 permalink: /:path/requesttoprint/
 description: |
     Call this method to use the A920pro printer for printing.
-icon:
-    content: print
-    outlined: true
 ---
 ### Method Signatures
 

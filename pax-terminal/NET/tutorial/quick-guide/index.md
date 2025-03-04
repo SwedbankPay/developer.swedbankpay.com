@@ -4,9 +4,6 @@ description: Quick guide to get going from scratch making a transaction
 permalink: /:path/
 hide_from_sidebar: true
 menu_order: 60
-icon:
-    content: play_circle
-    outlined: true
 ---
 ## Create an instance of PAXTrmImp_1
 

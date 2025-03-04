@@ -3,9 +3,6 @@ title: Request To Display
 permalink: /:path/requesttodisplayasync/
 description: |
     This method makes it possible to display a message on the terminal display.
-icon:
-    content: cast
-    outlined: true
 ---
 ### Method Signatures
 

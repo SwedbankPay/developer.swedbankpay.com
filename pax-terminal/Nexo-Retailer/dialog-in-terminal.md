@@ -3,9 +3,6 @@ title: Dialog with customer
 permalink: /:path/dialog-in-terminal/
 menu_order: 40
 description: Possibility to display message or ask customer for information
-icon:
-  content: live_help
-  outlined: true
 ---
 The terminal offers at the moment three different possibilities to communicate with the customer. There is a `DisplayRequest` and then two types of `InputRequest`. One to get a response on a Yes/No question and the other to ask a customer to enter a digit string. The request may be sent during a login session when no other request is on going.
 

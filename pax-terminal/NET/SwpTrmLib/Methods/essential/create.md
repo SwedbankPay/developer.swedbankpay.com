@@ -3,9 +3,6 @@ title: Create
 permalink: /:path/create/
 description: |
     Create is a static method that creates an instance and returns an **ISwpTrmIf_1** interface
-icon:
-    content: start
-    outlined: true
 menu_order: 1
 ---
 ### Method Signature

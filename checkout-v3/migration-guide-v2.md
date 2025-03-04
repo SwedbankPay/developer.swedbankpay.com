@@ -619,5 +619,5 @@ relevant documentation below.
 [3-1]: https://developer.swedbankpay.com/checkout-v3/get-started/payment-request-3-1
 [callback]: https://developer.swedbankpay.com/checkout-v3/features/payment-operations/callback
 [papm]: https://developer.swedbankpay.com/checkout-v3/features/optional/payer-aware-payment-menu
-[post-purchase]: https://developer.swedbankpay.com/checkout-v3/get-started/post-purchase-3-1
+[post-purchase]: https://developer.swedbankpay.com/checkout-v3/get-started/post-purchase
 [sv-events]: https://developer.swedbankpay.com/checkout-v3/features/technical-reference/seamless-view-events

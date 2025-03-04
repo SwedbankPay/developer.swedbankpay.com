@@ -3,9 +3,6 @@ title: ReverseLast
 permalink: /:path/reversalastasync/
 description: |
     ReverseLast will reverse the last transaction made if it was approved.
-icon:
-    content: undo
-    outlined: true
 menu_order: 100
 ---
 ### Method Signatures

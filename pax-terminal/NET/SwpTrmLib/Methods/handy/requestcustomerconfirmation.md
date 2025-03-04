@@ -3,9 +3,6 @@ title: Request Customer Confirmation
 permalink: /:path/requestcustomerconfirmation/
 description: |
     Use this method to ask the customer a yes/no question.
-icon:
-    content: support_agent
-    outlined: true
 ---
 ### Method Signatures
 

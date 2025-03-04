@@ -4,9 +4,6 @@ permalink: /:path/
 description: |
     Events are mainly when the terminal sends request to the sale system. See also the callback EventCallback
 menu_order: 30
-icon:
-  content: flash_on
-  outlined: true
 ---
 
 ## Events

@@ -2,9 +2,6 @@
 title: Loyalty The Easy Way
 permalink: /:path/simple-loyalty/
 description: The simplest form of loyalty implementation using CNA from PaymentResponse
-icon:
-  content: card_membership
-  outlined: true
 menu_order: 20
 ---
 

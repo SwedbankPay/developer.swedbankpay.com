@@ -3,9 +3,6 @@ title: Abort
 permalink: /:path/abortasync/
 description: |
     This method will send an AbortRequest for the last issued request to the terminal.
-icon:
-    content: cancel
-    outlined: true
 menu_order: 75
 ---
 
