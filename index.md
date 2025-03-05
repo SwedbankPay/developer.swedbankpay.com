@@ -33,16 +33,16 @@ hide_from_sidebar: true
 {% endcontentfor %}
 
 {% contentfor intro_cards %}
-<div id="slab-digital-payments" class="slab mt-5">
+<div class="slab mt-5">
     <div class="row m-2">
-        <div class="col">
+        <div class="col-xl-6 col-lg-6">
             <h2>Want to try Digital Payments live?</h2>
             <p>Use our Playground to test our payment methods. Customize your solution from scratch or start with one of our ready-made examples.</p>
             <p>See the menu clothed in your colors and with your logo.</p>
             <p>The goal is to give you an introduction to how you can setup the solution and how your customers will experience it.</p>
             <a class="btn btn-secondary mt-5" target="_blank" href="https://playground.swedbankpay.com" type="button">Head to our Playground <i class="at-arrow-right ml-2" aria-hidden="true"></i></a>
         </div>
-        <div class="col d-flex justify-content-center">
+        <div class="col-xl-6 col-lg-6 d-flex justify-content-center">
             <video class="w-75" loop="" autoplay="" muted=""><source _ngcontent-ng-c3691026492="" src="/assets/mp4/Playground_2_Logo_Tall.mp4" type="video/mp4"></video>
         </div>
     </div>

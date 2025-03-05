@@ -15,6 +15,8 @@ tab_list:
 ---
 
 {: .text-right}
-[*Link to older versions*](http://localhost:4000/old-implementations/)
+[*Link to older versions*][old-implementations]
 
 {% include tabs.html tab_list=page.tab_list default_tab_index=2 %}
+
+[old-implementations]: /old-implementations/
