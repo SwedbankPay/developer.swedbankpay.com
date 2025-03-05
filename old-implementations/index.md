@@ -4,7 +4,7 @@ sidebar_icon: folder
 title: Introduction
 description: |
   A collection of our earlier implementation options.
-menu_order: 3
+menu_order: 4
 ---
 
 If you are a **new merchant** getting started with your implementation,
