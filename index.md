@@ -16,8 +16,8 @@ hide_from_sidebar: true
         image_alt_text="The image shows a woman seated in comfortable surroundings in her home using a computer to make an online payment."
         image_src="/assets/img/betala-online.jpg"
         cta_text='Read more'
-        text='Learn about our Digital Payments and how to integrate them.'
-        to="/checkout-v3/"
+        description='Learn about our Digital Payments and how to integrate them.'
+        url="/checkout-v3/"
         %}
     </div>
     <div class="{{ card_col_class }}">
@@ -25,22 +25,22 @@ hide_from_sidebar: true
         image_alt_text="The image shows someone seated in a cafe with a glass of juice, a cup of coffee and a cake on the table in front of them, using a card terminal to pay."
         image_src="/assets/img/betala-med-pax-a920pro.jpg"
         cta_text='Read more'
-        text='Discover our Payment Terminals and their technical specifications.'
-        to='/pax-terminal/'
+        description='Discover our Payment Terminals and their technical specifications.'
+        url='/pax-terminal/'
         %}
     </div>
   </div>
 {% endcontentfor %}
 
-{% contentfor intro_cards %}
+{% contentfor playground %}
   <div class="row slab mt-5 ml-0 mr-0">
     <div class="col-lg-7 pl-2 mb-2">
       <h2>Want to try Digital Payments live?</h2>
       <p>Use the Playground to test our payment methods. Customize your solution from scratch or start with one of our ready-made examples.</p>
       <p>See the menu clothed in your colors and with your logo.</p>
       <p>The goal is to give you an introduction to how you can setup the solution and how your customers will experience it.</p>
-      <div class="mt-5 pt-4">
-        <a class="btn btn-primary mt-5" target="_blank" href="https://playground.swedbankpay.com" type="button">Head to our Playground <i class="at-arrow-right ml-2" aria-hidden="true"></i></a>
+      <div class="mt-5">
+        <a class="btn btn-primary playground-cta" target="_blank" href="https://playground.swedbankpay.com" type="button">Head to our Playground <i class="at-arrow-right ml-2" aria-hidden="true"></i></a>
       </div>
     </div>
     <div class="col-lg-5 pr-0 d-flex justify-content-end">
@@ -62,8 +62,8 @@ hide_from_sidebar: true
           open_in_new_tab=true
           icon_content='flag-icon flag-icon-dk'
           cta_text='Learn more'
-          text='Discover our Danish payment solutions and partners.'
-          to='https://www.swedbankpay.dk/partners'
+          description='Discover our Danish payment solutions and partners.'
+          url='https://www.swedbankpay.dk/partners'
       %}
     </div>
     <div class="{{ card_col_class }}">
@@ -72,8 +72,8 @@ hide_from_sidebar: true
           open_in_new_tab=true
           icon_content='flag-icon flag-icon-no'
           cta_text='Learn more'
-          text='Power up your payments through our Norwegian partnerships.'
-          to='https://www.swedbankpay.no/partners'
+          description='Power up your payments through our Norwegian partnerships.'
+          url='https://www.swedbankpay.no/partners'
       %}
     </div>
     <div class="{{ card_col_class }}">
@@ -82,8 +82,8 @@ hide_from_sidebar: true
           open_in_new_tab=true
           icon_content='flag-icon flag-icon-se'
           cta_text='Learn more'
-          text='Explore partnerships in Sweden for better payment experiences.'
-          to='https://www.swedbankpay.se/partners'
+          description='Explore partnerships in Sweden for better payment experiences.'
+          url='https://www.swedbankpay.se/partners'
       %}
     </div>
   </div>
@@ -100,8 +100,8 @@ hide_from_sidebar: true
           open_in_new_tab=true
           icon_content='flag-icon flag-icon-dk'
           cta_text='Contact us'
-          text='Enhance your payment solutions. Reach out to our Danish sales team to explore our offerings.'
-          to='https://www.swedbankpay.dk/kontakt-os'
+          description='Enhance your payment solutions. Reach out to our Danish sales team to explore our offerings.'
+          url='https://www.swedbankpay.dk/kontakt-os'
       %}
     </div>
     <div class="{{ card_col_class }}">
@@ -110,8 +110,8 @@ hide_from_sidebar: true
           open_in_new_tab=true
           icon_content='flag-icon flag-icon-no'
           cta_text='Contact us'
-          text='Optimize your payment solutions. Get in touch with our Norwegian sales team to discover our services.'
-          to='https://www.swedbankpay.no/kontakt-oss'
+          description='Optimize your payment solutions. Get in touch with our Norwegian sales team to discover our services.'
+          url='https://www.swedbankpay.no/kontakt-oss'
       %}
     </div>
     <div class="{{ card_col_class }}">
@@ -120,8 +120,8 @@ hide_from_sidebar: true
           open_in_new_tab=true
           icon_content='flag-icon flag-icon-se'
           cta_text='Contact us'
-          text='Upgrade your payment solutions. Connect with our Swedish sales team to learn about our offerings.'
-          to='https://www.swedbankpay.se/kontakta-oss'
+          description='Upgrade your payment solutions. Connect with our Swedish sales team to learn about our offerings.'
+          url='https://www.swedbankpay.se/kontakta-oss'
       %}
     </div>
   </div>
