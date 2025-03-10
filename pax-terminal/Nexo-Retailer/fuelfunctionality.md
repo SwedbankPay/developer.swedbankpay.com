@@ -3,10 +3,6 @@ title: Fuel Functionality
 permalink: /:path/fuelfunctionality/
 description: |
     A matter of adding SaleItem elements to the PaymentTransaction element in a PaymentRequest.
-    
-icon:
-  content: local_gas_station
-  outlined: true
 menu_order: 60
 ---
 ### What is Fuel Funtionality

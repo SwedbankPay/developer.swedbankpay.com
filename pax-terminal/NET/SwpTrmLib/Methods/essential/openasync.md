@@ -3,9 +3,6 @@ title: Open
 permalink: /:path/openasync/
 description: |
     This is the first method call that actually communicates with the terminal. It sends a LoginRequest which is needed before any other request.
-icon:
-    content: lock_open
-    outlined: true
 menu_order: 20
 ---
 ### Method Signatures

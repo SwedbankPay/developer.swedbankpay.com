@@ -5,6 +5,21 @@ title: Introduction
 description: |
   **A brief introduction to implementing Digital Payments.**
 menu_order: 1
+card_list:
+- title: One-Time Payments
+  description: |
+    Kick things off with our basic implementation for all payment methods.
+  url:  /checkout-v3/get-started
+- title: Recurring Payments
+  description: <p>Start getting that steady cash flow with our subscription services.</p><span class="badge badge-default">Card</span>
+  url: /checkout-v3/get-started/recurring
+- title: One-Click Payments
+  description: <p>Save your customer's details and make their checkout faster.</p><span class="badge badge-default">Card</span>
+               <span class="badge badge-default">Invoice</span>
+               <span class="badge badge-default">Swish</span>
+               <span class="badge badge-default">Trustly</span>
+               <span class="badge badge-default">Vipps</span>
+  url: /checkout-v3/get-started/one-click
 ---
 
 <section class="panel panel-brand">
@@ -12,7 +27,7 @@ menu_order: 1
  <h3 class="panel-title">Why Swedbank Pay?</h3>
  <p class="panel-sub-title"></p>
  </header>
- <div class="panel-body">
+ <div class="panel-body pb-0">
  <ul>
  <li>Get all your payment needs from one provider</li>
  <li>Manage all digital sales channels through one platform</li>
@@ -39,62 +54,7 @@ this section. We recommend [getting started here][get-started].
 
 ### API Platform Use Cases
 
-<div class="row mt-4">
-    <div class="col-xl-4 col-lg-4 d-flex">
-       <a href="/checkout-v3/get-started/" class="cards cards-primary">
-         <span class="cards-icon">
-            <i class="material-icons-outlined">
-                storefront
-            </i>
-         </span>
-         <span class="cards-content">
-            <span class="h4">One-Time Payments</span>
-            <span>
-               <p>Kick things off with our basic implementation for all payment methods.</p>
-            </span>
-         </span>
-         <i class="material-icons">arrow_forward</i>
-      </a>
-    </div>
-    <div class="col-xl-4 col-lg-4 d-flex">
-       <a href="/checkout-v3/get-started/recurring" class="cards cards-primary">
-         <span class="cards-icon">
-            <i class="material-icons-outlined">
-                storefront
-            </i>
-         </span>
-         <span class="cards-content">
-            <span class="h4">Recurring Payments</span>
-            <span>
-               <p>Start getting that steady cash flow with our subscription services.</p>
-               <span class="badge badge-gray-light">Card</span>
-            </span>
-         </span>
-         <i class="material-icons">arrow_forward</i>
-      </a>
-    </div>
-    <div class="col-xl-4 col-lg-4 d-flex">
-       <a href="/checkout-v3/get-started/one-click" class="cards cards-primary">
-         <span class="cards-icon">
-            <i class="material-icons-outlined">
-                storefront
-            </i>
-         </span>
-         <span class="cards-content">
-            <span class="h4">One-Click Payments</span>
-            <span>
-               <p>Save your customer's details and make their checkout faster.</p>
-               <span class="badge badge-gray-light">Card</span>
-               <span class="badge badge-gray-light">Invoice</span>
-               <span class="badge badge-gray-light">Swish</span>
-               <span class="badge badge-gray-light">Trustly</span>
-               <span class="badge badge-gray-light">Vipps</span>
-            </span>
-         </span>
-         <i class="material-icons">arrow_forward</i>
-      </a>
-    </div>
-</div>
+{% include card-list.html card_list=page.card_list col_class="col-lg-4" %}
 
 ### Availability
 
@@ -111,6 +71,7 @@ can activate them for you. Please follow the link(s) in the table below to read
 more." %}
 
 {:.table .table-plain}
+
 |        | Payment Method | Region                                    |
 | :--------------------------: | :--------------: | :---------------------------------------- |
 | ![Apple Pay][apple-pay-logo]     | [Apple Pay][apple-pay]           |  ![EarthIcon][earth-icon]    |

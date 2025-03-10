@@ -3,10 +3,7 @@ title: Unscheduled Purchase
 permalink: /:path/unscheduled/
 description: |
   Setting up subscriptions and merchant initiated payments.
-menu_order: 2900
-icon:
-  content: report_problem
-  outlined: true
+menu_order: 3000
 ---
 
 {% include payment-order-unscheduled.md %}
