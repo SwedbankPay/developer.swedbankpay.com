@@ -58,10 +58,7 @@ When your customer has initiated a purchase, you need to create a payment order.
 Start by performing a `POST` request towards the `paymentorder` resource with
 payer information and a `completeUrl`.
 
-The `productName` field has been removed in v3.1, and you identify the
-`paymentOrder` version as v3.1 in the header instead.
-
-`POST`, `PATCH`, `GET` and `PUT` requests use this header:
+`POST`, `PATCH`, `GET` and `PUT` requests use this header for v3.1:
 
 `Content-Type: application/json;version=3.1`
 
@@ -69,9 +66,8 @@ The `productName` field has been removed in v3.1, and you identify the
 
 `Accept: application/json;version=3.1`
 
-Valid versions are **3.1**, **3.0** and **2.0**. If you do not add a version,
-the request will default to **2.0**. Using the `productName` and setting it to
-`checkout3` will default to **3.0**.
+The `productName` field has been removed in v3.1, so the only way of specifying
+that you are using v3.1 is through the header.
 
 To accompany the new version, we have also added a
 [v3.1 post-purchase section][post-31], [v3.1 callback][callback-31], a new

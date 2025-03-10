@@ -59,20 +59,19 @@ When your customer has initiated a purchase, you need to create a payment order.
 Start by performing a `POST` request towards the `paymentorder` resource
 with payer information and a `completeUrl`.
 
-We have added `productName` to the payment order request in this integration.
-You can find it in the `paymentorder` field. This is no longer required, but is
-still an option to use v3.0 of Digital Payments. To use `productName`, simply
-put `Checkout3` as the value in that field in the request. You can also specify
-version by adding it in the header instead. If you use this option, you can
-leave out the `productName` field.
-
-`POST`, `PATCH` and `PUT` requests use this header:
+`POST`, `PATCH` and `PUT` requests use this header for v3.0:
 
 `Content-Type: application/json;version=3.0`
 
 `GET` requests use this header:
 
 `Accept: application/json;version=3.0`
+
+We have added `productName` to the payment order request in this integration.
+You can find it in the `paymentorder` field. This is no longer required, but is
+an option to use v3.0 of Digital Payments. To use `productName`, simply put
+`Checkout3` as the value in that field in the request. If you specify version in
+the header, you can leave out the `productName` field.
 
 When `productName` is set to `checkout3`, `digitalProducts` will be set to
 `false` by default.

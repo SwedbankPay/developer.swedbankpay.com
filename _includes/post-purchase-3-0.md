@@ -83,19 +83,9 @@ See examples of the `jsons` in the [problems section][problems].
 {% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 
-{% if documentation_section contains "checkout-v2" %}
-
-{: .h2 }
-
-### Step 5: Capture v3.0
-
-{% else %}
-
 {: .h2 }
 
 ### Capture v3.0
-
-{% endif %}
 
 Captures are only possible when a payment has a successful `Authorization`
 transaction, naturally excluding one-phase payment methods like Swish and
@@ -115,19 +105,9 @@ First off, you must request the order information from the server to get the
 request link. With this, you can request the capture with the amount to capture,
 and get the status back.
 
-{% if documentation_section contains "checkout-v2" %}
-
-To capture the authorized payment, we need to perform
-`create-paymentorder-capture` against the accompanying `href` returned in the
-`operations` list. See the abbreviated request and response below:
-
-{% else %}
-
 To capture the authorized payment, we need to perform `capture` against the
 accompanying `href` returned in the `operations` list. See the abbreviated
 request and response below:
-
-{% endif %}
 
 {: .text-right}
 [Top of page](#payment-order-v30)
@@ -139,7 +119,7 @@ request and response below:
 {% capture request_header %}POST /psp/paymentorders/{{ page.payment_order_id }}/captures HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.0/2.0      // Version optional{% endcapture %}
+Content-Type: application/json;version=3.0    // Version optional, can be set in `productName`{% endcapture %}
 
 {% capture request_content %}{
     "transaction": {
@@ -246,8 +226,8 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 If the capture request succeeds, this should be the response:
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.0/2.0
-api-supported-versions: 3.0/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.0
+api-supported-versions: 3.0{% endcapture %}
 
 {% capture response_content %}{
     "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
@@ -306,25 +286,6 @@ api-supported-versions: 3.0/2.0{% endcapture %}
 
 #### Capture Sequence Diagram v3.0
 
-{% if documentation_section contains "checkout-v2" %}
-
-```mermaid
-sequenceDiagram
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-
-    rect rgba(81,43,43,0.1)
-        activate Merchant
-        note left of Payer: Capture
-        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
-        deactivate Merchant
-        SwedbankPay -->>- Merchant: Capture status
-        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>payment methods that support <br>Authorizations.
-    end
-```
-
-{% else %}
-
 ```mermaid
 sequenceDiagram
     participant Merchant
@@ -339,8 +300,6 @@ sequenceDiagram
         note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>payment methods that support <br>Authorizations.
     end
 ```
-
-{% endif %}
 
 The purchase should now be complete. But what if the purchase is cancelled or
 
@@ -389,7 +348,7 @@ no captures can be performed later.
 {% capture request_header %}POST /psp/paymentorders/{{ page.payment_order_id }}/cancellations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.0/2.0      // Version optional{% endcapture %}
+Content-Type: application/json;version=3.0     // Version optional, can be set in `productName`{% endcapture %}
 
 {% capture request_content %}{
     "transaction": {
@@ -423,8 +382,8 @@ If the cancel request succeeds, the response should be similar to the
 example below:
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.0/2.0
-api-supported-versions: 3.0/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.0
+api-supported-versions: 3.0{% endcapture %}
 
 {% capture response_content %}{
     "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
@@ -536,7 +495,7 @@ If we want to reverse a previously captured amount, we need to perform
 {% capture request_header %}POST /psp/paymentorders/{{ page.payment_order_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.0     // Version optional, can be set in `productName`{% endcapture %}
 
 {% capture request_content %}{
     "transaction": {
@@ -628,8 +587,8 @@ Content-Type: application/json;version=3.0/2.0      // Version optional for 3.0 
 If the reversal request succeeds, the response should be similar to the example below:
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.0/2.0
-api-supported-versions: 3.0/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.0
+api-supported-versions: 3.0{% endcapture %}
 
 {% capture response_content %}{
     "payment": "/psp/creditcard/payments/{{ page.payment_order_id }}",

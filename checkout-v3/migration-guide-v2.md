@@ -4,7 +4,7 @@ permalink: /:path/migration-guide-v2/
 hide_from_sidebar: true
 section: Migration Guides
 description: |
-  The why and how to migrate from v1 to v3.1
+  The why and how to migrate from v2 to v3.1
 menu_order: 5
 ---
 

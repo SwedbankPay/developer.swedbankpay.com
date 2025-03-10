@@ -5,7 +5,6 @@
 
 ### Payment order v3.1
 
-
 <div class="slab mb-5">
   <ul class="toc-list" role="navigation" aria-label="Article content">
     <li>
@@ -84,7 +83,6 @@ See examples of the `jsons` in the [problems section][problems].
 {% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 
-
 {: .h2 }
 
 ### Capture v3.1
@@ -113,7 +111,6 @@ request and response below:
 
 {: .text-right}
 [Top of page](#payment-order-v31)
-
 
 {: .h3 }
 
@@ -318,32 +315,12 @@ api-supported-versions: 3.1{% endcapture %}
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
-
 {: .text-right .mt-3}
 [Top of page](#payment-order-v31)
 
 {: .h3 }
 
 #### Capture Sequence Diagram v3.1
-
-{% if documentation_section contains "checkout-v2" %}
-
-```mermaid
-sequenceDiagram
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-
-    rect rgba(81,43,43,0.1)
-        activate Merchant
-        note left of Payer: Capture
-        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
-        deactivate Merchant
-        SwedbankPay -->>- Merchant: Capture status
-        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Methods that support <br>Authorizations.
-    end
-```
-
-{% else %}
 
 ```mermaid
 sequenceDiagram
@@ -360,8 +337,6 @@ sequenceDiagram
     end
 ```
 
-{% endif %}
-
 <!--lint disable final-definition -->
 
 The purchase should now be complete. But what if the purchase is cancelled or
@@ -370,7 +345,6 @@ the payer wants to return goods? For these instances, we have `cancel` and
 
 {% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 {% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
-
 
 {: .text-right}
 [Top of page](#payment-order-v31)
@@ -382,24 +356,11 @@ the payer wants to return goods? For these instances, we have `cancel` and
 The `cancellations` resource lists the cancellation transactions on a
 specific payment.
 
-{% if documentation_section contains "checkout-v3" %}
-
 To cancel a previously created payment, you must perform the `cancel` operation
 against the accompanying `href` returned in the `operations` list. You can only
 cancel a payment - or part of a payment - which has not been captured yet. There
 must be funds left that are only authorized. If you cancel before any capture
 has been done, no captures can be performed later.
-
-{% else %}
-
-To cancel a previously created payment, you must perform the
-`create-paymentorder-cancel` operation against the accompanying `href` returned
-in the `operations` list. You can only cancel a payment - or part of a payment -
-which has not been captured yet. If you cancel before any capture has been done,
-no captures can be performed later.
-
-
-{% endif %}
 
 {: .text-right}
 [Top of page](#payment-order-v31)
@@ -585,7 +546,6 @@ sequenceDiagram
     deactivate Merchant
 ```
 
-
 {% capture techref_url %}{% include utils/documentation-section-url.md href='/features/technical-reference' %}{% endcapture %}
 {% assign transactions_url = '/transactions' | prepend: techref_url %}
 {% assign operations_url = '/operations' | prepend: techref_url %}
@@ -597,8 +557,6 @@ sequenceDiagram
 {: .h2 }
 
 ### Reversal v3.1
-
-{% if documentation_section contains "checkout-v3" %}
 
 This transaction is used when a `Capture` or `Sale` payment needs to be
 reversed.
@@ -613,15 +571,6 @@ The transaction will now have status `Reversed` instead of `Paid`.
 If we want to reverse a previously captured amount, we need to perform
 `reversal` against the accompanying `href` returned in the
 `operations` list.
-
-{% else %}
-
-
-If we want to reverse a previously captured amount, we need to perform
-`create-paymentorder-reversal` against the accompanying `href` returned in the
-`operations` list.
-
-{% endif %}
 
 {: .text-right}
 [Top of page](#payment-order-v31)
