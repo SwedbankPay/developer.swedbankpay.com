@@ -1,15 +1,34 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 
+{: .h2 }
+
+### Callback v3.1
+
 {% include alert.html type="warning" icon="warning" body="While the callback
 feature is mandatory, we would like to emphasize that it is mainly a fail-safe
 feature. We strongly advice that it is not your primary mean of checking for
 payment updates." %}
 
+<div class="slab mb-5">
+  <ul class="toc-list" role="navigation" aria-label="Article content">
+    <li><a href="#why-is-the-callback-important">Why Is The Callback Important?</a></li>
+    <li><a href="#technical-information">Technical Information</a></li>
+    <li><a href="#callback-ip-addresses">Callback IP Addresses</a></li>
+    <li><a href="#faq--change-of-ip-addresses-for-callbacks">FAQ – Change of IP Addresses for Callbacks</a></li>
+    <li><a href="#callback-example-v31">Callback Example v3.1</a></li>
+    <li><a href="#get-response">GET Response</a></li>
+    <li><a href="#capture-response">Capture Response</a></li>
+    <li><a href="#sequence-diagram">Sequence Diagram</a></li>
+  </ul>
+</div>
+
 When a change or update from the back-end system are made on a payment or
 transaction, Swedbank Pay will perform a callback to inform the payee (merchant)
 about this update.
 
-## Why Is The Callback Important?
+{: .h2 }
+
+### Why Is The Callback Important?
 
 Providing a `callbackUrl` in `POST` requests is **mandatory**. Below we provide
 three example scenarios of why this is important:
@@ -24,7 +43,13 @@ three example scenarios of why this is important:
     merchant website, the `callbackUrl` is what ensures that you receive the
     information about what happened with the payment.
 
-## Technical Information
+{: .text-right}
+
+[Top of page](#callback-v31)
+
+{: .h2 }
+
+### Technical Information
 
 *   When a change or update from the back-end system is made on a payment or
     transaction, Swedbank Pay will perform an asynchronous server-to-server
@@ -64,7 +89,13 @@ Menu v1), it is critical that you do **not** use the `paymentId` or
 `transactionId` when performing a `GET` to retrieve the payment's status. Use
 the `paymentOrderId`.
 
-### Callback IP Addresses
+{: .text-right}
+
+[Top of page](#callback-v31)
+
+{: .h3 }
+
+#### Callback IP Addresses
 
 The callbacks are currently sent from either `51.107.183.58` or `91.132.170.1`
 in both the test and production environment.
@@ -74,6 +105,12 @@ in both the test and production environment.
 and we strongly advise you to whitelist them as soon as possible:
 
 `20.91.170.120–127` (`20.91.170.120/29`)." %}
+
+{: .text-right}
+
+[Top of page](#callback-v31)
+
+{: .h4 }
 
 #### FAQ – Change of IP Addresses for Callbacks
 
@@ -174,27 +211,31 @@ your TOM/TAM or our support team.
 {% endcapture %}
 {% include accordion-table.html content=acc-9 header_text='Who can we contact for assistance?' header_expand_css='font-weight-normal' %}
 
-## Callback Example
+{: .text-right}
 
-{% if api_resource == "paymentorders" %}
+[Top of page](#callback-v31)
+
+{: .h2 }
+
+### Callback Example v3.1
+
+If you have implemented v3.1, the callback will only contain the `paymentOrder`
+node.
+
+This response format will only be triggered if you used `version=3.1` in the
+original `POST` when you created the `paymentOrder`.
 
 {% capture response_content %}{
+    "orderReference": "549213",
     "paymentOrder": {
         "id": "/psp/{{ api_resource }}/{{ page.payment_id }}",
         "instrument": "{{ api_resource }}"
-    },
-    "payment": {
-        "id": "/psp/creditcard/payments/{{ page.payment_id }}",
-        "number": 222222222
-    },
-    "transaction": {
-        "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
-        "number": 333333333
+        "number": 12345678
     }
 }{% endcapture %}
 
 {% include code-example.html
-    title='Payment Order Callback'
+    title='Payment Order Callback v3.1'
     header=response_header
     json= response_content
     %}
@@ -204,49 +245,21 @@ your TOM/TAM or our support team.
 
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
+| {% f orderReference, 0 %}                | `string`     | The order reference found in the merchant's systems.  If included in the request, the orderReference will appear in the callback.                     |
 | {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
 | {% f id %}  | `string`   | {% include fields/id.md resource="paymentorder" %} |
 | {% f instrument %}                | `string`     | The payment method used in the payment.                     |
-| {% f payment, 0 %}           | `object`     | The payment object.                      |
 | {% f number %}                | `string`     | The attempt number which triggered the callback.                     |
-| {% f transaction, 0 %}           | `object`     | The transaction object.                      |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
-{% else %}
+{: .text-right}
 
-{% capture response_content %}{
-    "payment": {
-        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
-        "number": 222222222
-    },
-    "transaction": {
-        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
-        "number": 333333333
-    }
-}{% endcapture %}
+[Top of page](#callback-v31)
 
-{% include code-example.html
-    title='Payment Method Callback'
-    header=response_header
-    json= response_content
-    %}
+{: .h2 }
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-
-| Field                    | Type         | Description                                                                                                                                                                                                               |
-| :----------------------- | :----------- | :------------------- |
-| {% f payment, 0 %}           | `object`     | The payment object.                      |
-| {% f id %}  | `string`   | {% include fields/id.md resource="payments" %} |
-| {% f number %}                | `string`     | The attempt number which triggered the callback.                     |
-| {% f transaction, 0 %}           | `object`     | The transaction object.                      |
-{% endcapture %}
-{% include accordion-table.html content=table %}
-
-{% endif %}
-
-## GET Response
+### GET Response
 
 When performing an HTTP `GET` request towards the URL found in the
 `transaction.id` field of the callback, the response is going to include the
@@ -254,7 +267,13 @@ abbreviated example provided below.
 
 {% include transaction-response.md transaction="authorization" %}
 
-## Sequence Diagram
+{: .text-right}
+
+[Top of page](#callback-v31)
+
+{: .h2 }
+
+### Sequence Diagram
 
 The sequence diagram below shows the HTTP `POST` you will receive from Swedbank
 Pay, and the two `GET` requests that you make to get the updated status.
@@ -275,5 +294,9 @@ sequenceDiagram
     SwedbankPay-->>+Merchant: payment resource
     deactivate SwedbankPay
 ```
+
+{: .text-right}
+
+[Top of page](#callback-v31)
 
 [url-usage]: /checkout-v3/get-started/fundamental-principles#url-usage
