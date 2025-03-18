@@ -73,4 +73,70 @@ systems can orchestrate the installation on individual devices.
 | Off device switching, external POS | No          | No          |
 | Integration method     | URL link to app | Embedded library in Android POS |
 
+## Minimum Device Requirements
+
+There are a handful of device requirements which must be fulfilled for Pay
+SoftPos to work. The device(s):
+
+*   Must have minimum Android 10.0 for consumer devices and minimum Android 8.0
+  for enterprise devices.
+*   Must have an Android Security patch date that does not exceed 12 months.
+*   Must have built-in device hardware NFC (android.hardware.nfc).
+*   Must have a 64 bit ARM v8 processor or greater.
+*   Must have a stable internet connection.
+*   Must be Google Mobile Services certified and enabled.
+*   Must be a single screen device.
+
+## Proven Devices
+
+An overview of tested/proven devices and a non-exhaustive list of unsupported
+devices.
+
+### Consumer Devices
+
+{:.table .table-striped}
+| Manufacturer             | Models  |
+| :----------------------- | :----------- |
+| Google                  | Pixel (3, 4, 5, 6, 6 Pro, 7a)          |
+| Motorola                  | G31, G54         |
+| Nokia                  | 6.2, G20          |
+| OnePlus                  | 7T Pro, 8 Pro, 9 5G, Pro 5G, 10 Pro 5G          |
+| Samsung                  | A15, A21s, A22 (+, 5G), A32 (+, 5G), A33 5G, A34,
+A35, A40, A51, A52 (+ 5G, s5G), A54, A71, S10 (+, e, 5G, Lite),
+S20 (+ 5G, +5G, FE, FE 5G, Ultra 5G), S21 (+, 5G, +5G, FE, FE 5G, Ultra 5G)
+S22 (+, 5G, Ultra), S23, Xcover (+ Pro, Field pro, 4S, 5, 5 Enterprise)        |
+| Sony                  | Xperia 10V         |
+
+### Enterprise Devices
+
+{:.table .table-striped}
+| Manufacturer             | Models  |
+| :----------------------- | :----------- |
+| Bluebird                 | EF501        |
+| Elo                      | M50C        |
+| Honeywell                | CT40        |
+| Imin^                    | SWIFT 2 PRO         |
+| Point Mobile             | PM45, PM67, PM75, PM85         |
+| Sunmi^^                | V2s, V2s plus, L2H, D3 mini, T3 Pro max, V3 MIX |
+| Telpo                  | M1       |
+| Unitech                  | EA630, PA768         |
+| Urovo                  | CT58, DT50         |
+| Zebra                  | TC52, TC57, CC6000, EC55        |
+
+^Available on Imin store as well
+^^Available on Sunmi store as well
+
+### Unsupported Devices (Non-Exhaustive)
+
+Devices not adhering to the full Softpay Mobile Device Policy and PCI/MPoC
+requirements are unsupported.
+
+{:.table .table-striped}
+| Manufacturer             | Models  |
+| :----------------------- | :----------- |
+| Huawei                  | All devices        |
+| Samsung                  | Samsung Galaxy A-series is (with a few exceptions) not supported from A13 and below. Samsung Galaxy S-series is not supported from S9 and below.        |
+| Sunmi                  | V2       |
+| Motorola                  | G9 (Power, Plus)        |
+
 [contact]: mailto:sales.swedbankpay@swedbank.se
