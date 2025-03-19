@@ -35,4 +35,4 @@ body="The payment app sends ECR_ADMIN action with nothing in intent.extras. Just
 %}
 
 {% include iterator.html next_href="/pax-terminal/OnDevice/broadcastreceiver" next_title="Next" %}
-{% include iterator.html next_href="/pax-terminal/OnDevice" next_title="Back" %}
+{% include iterator.html next_href="/pax-terminal/OnDevice" next_title="ECR On Device" %}

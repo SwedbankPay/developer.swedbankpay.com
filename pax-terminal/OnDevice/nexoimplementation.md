@@ -34,7 +34,7 @@ TransactionStatusRequest is used for retreiving a copy of a result for a transac
 
 LogoutRequest is the least important to implement since a reboot of the terminal will cause the same thing.
 
-{% include iterator.html next_href="/pax-terminal/OnDevice" next_title="Back" %}
+{% include iterator.html next_href="/pax-terminal/OnDevice" next_title="ECR On Device" %}
 
 [login]: /pax-terminal/Nexo-Retailer/Quick-guide/first-message
 [payment]: /pax-terminal/Nexo-Retailer/Quick-guide/make-payment

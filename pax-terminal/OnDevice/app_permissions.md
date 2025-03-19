@@ -9,8 +9,8 @@ menu_order: 160
 
 The business app needs to have the permissions
 
-*   **com.swedbankpay.payment.permission.ECR**
-*   **android.permission.SYSTEM_ALERT_WINDOW**
+*   `com.swedbankpay.payment.permission.ECR`
+*   `android.permission.SYSTEM_ALERT_WINDOW`
 
 {% include iterator.html next_href="/pax-terminal/OnDevice/messaging" next_title="Next" %}
-{% include iterator.html next_href="/pax-terminal/OnDevice" next_title="Back" %}
+{% include iterator.html next_href="/pax-terminal/OnDevice" next_title="ECR On Device" %}

@@ -44,4 +44,4 @@ Whenever these are received the business app should place itself on top. For `EC
 ```
 
 {% include iterator.html next_href="/pax-terminal/OnDevice/nexoimplementation" prev_title="Next" %}
-{% include iterator.html next_href="/pax-terminal/OnDevice" next_title="Back" %}
+{% include iterator.html next_href="/pax-terminal/OnDevice" next_title="ECR On Device" %}
