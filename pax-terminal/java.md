@@ -1,5 +1,6 @@
 ---
 title: Java
+section: Java SDK
 permalink: /:path/java/
 description: |
     Use the Java SDK to quickly and easy integrate with the terminal from your ECR.
@@ -303,11 +304,11 @@ errorCondition = "The nature of the error"
 
 There are five cases where the error can occur:
 
-- `Communication error with the terminal` Ex connection timeout
-- `Terminal error response` There was an error in the terminal resulting in a failure response.
-- `Parsing terminal response` There was an error when parsing the response from the terminal.
-- `Creating result object` There was an error when creating the result object.
-- `User error` The user has provided faulty input.
+-   `Communication error with the terminal` Ex connection timeout
+-   `Terminal error response` There was an error in the terminal resulting in a failure response.
+-   `Parsing terminal response` There was an error when parsing the response from the terminal.
+-   `Creating result object` There was an error when creating the result object.
+-   `User error` The user has provided faulty input.
 
 ## Receipts
 

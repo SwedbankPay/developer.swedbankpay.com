@@ -1,8 +1,13 @@
 ---
-title: Message Transport
-permalink: /:path/messagetransportation/
-description: Messages are sent using HTTP/1.1 Post 
-menu_order: 20
+title: Message Transport over LAN or WLAN
+permalink: /:path/lan_or_wlan_transportation/
+hide_from_sidebar: false
+description: |
+    Messages over LAN or WLAN are sent using HTTP/1.1 Post.
+icon:
+    content: lan
+    outlined: true
+menu_order: 22
 ---
 
 All messages are sent using HTTP/1.1 protocol, **Post** and the URL `/EPASSaleToPOI/3.1`.
@@ -13,7 +18,6 @@ Accept: */*
 Content-type: application/xml; charset=utf-8
 Host: 192.168.78.5:11000
 Content-Length: 700
-
 ```
 
 Make sure to only send one request at a time. The exception to that rule is AbortRequest, LoginRequest and TransactionStatusRequest, which may be sent when there is an unanswered request ongoing.
