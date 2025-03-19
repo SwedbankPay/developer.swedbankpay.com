@@ -12,6 +12,8 @@ When the payment app is broadcasting messages to business apps it uses the follo
 *   `com.swedbankpay.payment.intent.ECR_NEXO_MESSAGE`
 *   `com.swedbankpay.payment.intent.ECR_ADMIN`
 
+{% include pax-ondevice-message-transportation.md %}
+
 When a business app is broadcasting messages to the business app it uses the following:
 
 *   `com.swedbankpay.payment.intent.TERMINAL_NEXO_MESSAGE`
