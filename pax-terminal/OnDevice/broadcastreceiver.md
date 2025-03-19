@@ -1,5 +1,5 @@
 ---
-permalink: /:path/broadcastreceiver
+permalink: /:path/broadcastreceiver/
 title: Broadcast Receiver
 description: Broadcast Receiver Needed For ECR On Device App
 menu_order: 170
