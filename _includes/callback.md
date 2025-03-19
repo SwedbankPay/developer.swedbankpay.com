@@ -87,7 +87,7 @@ production environments.
 The current IP addresses are `91.132.170.1` and `51.107.183.58`. The new IP range
 will be `20.91.170.120 – 127`, with the prefix (`20.91.170.120/29`).
 {% endcapture %}
-{% include accordion-table.html content=acc-1 header_expand_text='What is changing?' header_collapse_text='What is changing?' header_expand_css='font-weight-normal' %}
+{% include accordion-table.html content=acc-1 header_text='What is changing?' header_expand_css='font-weight-normal' %}
 {% capture acc-2 %}
 
 *   Update your firewall rules to allow incoming traffic from the new IP
@@ -96,7 +96,7 @@ will be `20.91.170.120 – 127`, with the prefix (`20.91.170.120/29`).
 *   Ensure these changes are made by March 12th, 2025, to avoid potential
 disruptions in the callback functionality.
 {% endcapture %}
-{% include accordion-table.html content=acc-2 header_expand_text='What do you need to do?' header_collapse_text='What do you need to do?' header_expand_css='font-weight-normal' %}
+{% include accordion-table.html content=acc-2 header_text='What do you need to do?' header_expand_css='font-weight-normal' %}
 {% capture acc-3 %}
 *   Date: March 12, 2025
 
@@ -104,7 +104,7 @@ disruptions in the callback functionality.
 
 *   Grace period: See further details below.
 {% endcapture %}
-{% include accordion-table.html content=acc-3 header_expand_text='When will the change take place?' header_collapse_text='When will the change take place?' header_expand_css='font-weight-normal' %}
+{% include accordion-table.html content=acc-3 header_text='When will the change take place?' header_expand_css='font-weight-normal' %}
 {% capture acc-4 %}
 {: .p .pl-3 .pr-3  }
 We need to update and deploy new outbound IP addresses from our Azure Cloud
@@ -117,7 +117,7 @@ This applies to all merchants, regardless of integration method. No technical
 code changes are required, but firewall adjustments must be made in your
 infrastructure, typically handled by your IT or infrastructure providers.
 {% endcapture %}
-{% include accordion-table.html content=acc-4 header_expand_text='Why are we making this change?' header_collapse_text='Why are we making this change?' header_expand_css='font-weight-normal' %}
+{% include accordion-table.html content=acc-4 header_text='Why are we making this change?' header_expand_css='font-weight-normal' %}
 {% capture acc-5 %}
 {: .p .pl-3 .pr-3  }
 By migrating callbacks to the Azure Cloud, we are enhancing our ability to scale
@@ -135,7 +135,7 @@ redirect traffic in case of disruptions.
 *   Better monitoring and proactive issue resolution – We now have more tools to
 detect and address issues in real-time.
 {% endcapture %}
-{% include accordion-table.html content=acc-5 header_expand_text='How will this change affect the stability of callbacks?' header_collapse_text='How will this change affect the stability of callbacks?' header_expand_css='font-weight-normal' %}
+{% include accordion-table.html content=acc-5 header_text='How will this change affect the stability of callbacks?' header_expand_css='font-weight-normal' %}
 {% capture acc-6 %}
 {: .p .pl-3 .pr-3  }
 We understand that some merchants may not complete the update before March 12.
@@ -153,26 +153,26 @@ We will:
 
 *   Actively monitor merchants and partners to ensure a smooth transition.
 {% endcapture %}
-{% include accordion-table.html content=acc-6 header_expand_text='What happens if we don’t make the change in time?' header_collapse_text='What happens if we don’t make the change in time?' header_expand_css='font-weight-normal' %}
+{% include accordion-table.html content=acc-6 header_text='What happens if we don’t make the change in time?' header_expand_css='font-weight-normal' %}
 {% capture acc-7 %}
 {: .p .pl-3 .pr-3  }
 We recommend that merchants allow both the old and new IP addresses during the
 transition period. This ensures stable callback functionality, even if network
 issues arise during the migration.
 {% endcapture %}
-{% include accordion-table.html content=acc-7 header_expand_text='Recommendations during the grace period' header_collapse_text='Recommendations during the grace period' header_expand_css='font-weight-normal' %}
+{% include accordion-table.html content=acc-7 header_text='Recommendations during the grace period' header_expand_css='font-weight-normal' %}
 {% capture acc-8 %}
 {: .p .pl-3 .pr-3  }
 Merchants must implement IP blocking (IP allowlisting). FQDN (domain name
 blocking) is not supported in this case, as we use fixed IP addresses.
 {% endcapture %}
-{% include accordion-table.html content=acc-8 header_expand_text='Do we need to implement IP blocking or FQDN blocking in our firewall?' header_collapse_text='Do we need to implement IP blocking or FQDN blocking in our firewall?' header_expand_css='font-weight-normal' %}
+{% include accordion-table.html content=acc-8 header_text='Do we need to implement IP blocking or FQDN blocking in our firewall?' header_expand_css='font-weight-normal' %}
 {% capture acc-9 %}
 {: .p .pl-3 .pr-3  }
 If you have any questions or need support during implementation, please contact
 your TOM/TAM or our support team.
 {% endcapture %}
-{% include accordion-table.html content=acc-9 header_expand_text='Who can we contact for assistance?' header_collapse_text='Who can we contact for assistance?' header_expand_css='font-weight-normal' %}
+{% include accordion-table.html content=acc-9 header_text='Who can we contact for assistance?' header_expand_css='font-weight-normal' %}
 
 ## Callback Example
 
@@ -199,38 +199,17 @@ your TOM/TAM or our support team.
     json= response_content
     %}
 
-## Callback Example v3.1
-
-If you have implemented v3.1, the callback will only contain the `paymentOrder`
-node.
-
-This response format will only be triggered if you used `version=3.1` in the
-original `POST` when you created the `paymentOrder`.
-
-{% capture response_content %}{
-    "orderReference": "549213",
-    "paymentOrder": {
-        "id": "/psp/{{ api_resource }}/{{ page.payment_id }}",
-        "instrument": "{{ api_resource }}"
-        "number": 12345678
-    }
-}{% endcapture %}
-
-{% include code-example.html
-    title='Payment Order Callback v3.1'
-    header=response_header
-    json= response_content
-    %}
-
 {% capture table %}
 {:.table .table-striped .mb-5}
+
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
-| {% f orderReference, 0 %}                | `string`     | The order reference found in the merchant's systems.  If included in the request, the orderReference will appear in the callback.                     |
 | {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
 | {% f id %}  | `string`   | {% include fields/id.md resource="paymentorder" %} |
 | {% f instrument %}                | `string`     | The payment method used in the payment.                     |
+| {% f payment, 0 %}           | `object`     | The payment object.                      |
 | {% f number %}                | `string`     | The attempt number which triggered the callback.                     |
+| {% f transaction, 0 %}           | `object`     | The transaction object.                      |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
@@ -252,6 +231,18 @@ original `POST` when you created the `paymentOrder`.
     header=response_header
     json= response_content
     %}
+
+{% capture table %}
+{:.table .table-striped .mb-5}
+
+| Field                    | Type         | Description                                                                                                                                                                                                               |
+| :----------------------- | :----------- | :------------------- |
+| {% f payment, 0 %}           | `object`     | The payment object.                      |
+| {% f id %}  | `string`   | {% include fields/id.md resource="payments" %} |
+| {% f number %}                | `string`     | The attempt number which triggered the callback.                     |
+| {% f transaction, 0 %}           | `object`     | The transaction object.                      |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 {% endif %}
 

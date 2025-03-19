@@ -4,8 +4,6 @@ permalink: /:path/delete-token/
 description: How to delete tokens.
 menu_order: 1700
 icon:
-  content: assignment
-  outlined: true
 ---
 
 {% include delete-payment-order-token.md token_field_name="recurrenceToken" %}

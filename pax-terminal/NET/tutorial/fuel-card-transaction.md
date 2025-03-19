@@ -3,9 +3,6 @@ title: Fuel Functionality
 description: |
   Fuel functionality is about handling cards that has various restrictions. 
 permalink: /:path/fuel-card-functionality/
-icon:
-    content: local_gas_station
-    outlined: true
 menu_order: 100
 ---
 To use Swedbank Pay PAX terminal for handling cards with certain product restrictions, such as fuel cards, only affects the implementation regarding the call to [`Payment`][paymentasync] and handling the response.

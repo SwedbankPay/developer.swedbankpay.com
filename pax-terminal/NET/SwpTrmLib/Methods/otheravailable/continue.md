@@ -3,9 +3,6 @@ title: Continue
 permalink: /:path/continue/
 description: |
     The Continue method is only relevant if card has been read before amount and lets the terminal proceed with PIN dialog.
-icon:
-    content: arrow_forward
-    outlined: true
 menu_order: 50
 ---
 ### Method Signature

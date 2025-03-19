@@ -3,9 +3,6 @@ title: Get Payment Instrument
 permalink: /:path/getpaymentinstrumentasync/
 description: |
     Use this to read a card before the amount is known. This way it is easy to make a loyalty solution and to deduct the amount in case of a loyalty member. It may also speed ut the process in case contactless is used and PIN not required.
-icon:
-    content: credit_score
-    outlined: true
 menu_order: 40
 ---
 ### Method Signatures

@@ -3,9 +3,6 @@ title: Use A920pro printer
 permalink: /:path/use-a920-printer/
 description: |
     Possibility send a PrintRequest with information to be printed on the integrated A920pro terminal printer
-icon:
-  content: print
-  outlined: true
 menu_order: 50
 ---
 When using an A920pro as an integrated payment terminal it is possible to use the printer by sending a `PrintRequest` to the terminal. Typically this would be to print the sale receipt on the A920pro printer.
@@ -31,6 +28,7 @@ Note left of A920pro: Containing several OutputTexts<br/>with data to print.
 The PrintRequest message may holds attributes for some formatting. The attributes are optinal and if no attributes are set the default settings will be used.
 
 {:table .table.striped}
+
 | Name | Lev | Attribute | Description |
 |:---|:--:|:--|:--|
 | PrintRequest | 1 | | |

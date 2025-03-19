@@ -3,9 +3,6 @@ title: ISwpTrmCallbackInterface
 permalink: /:path/
 description: Two callbacks are a must to implement in order to pass tests for a signature verified transaction.
 menu_order: 20
-icon:
-  content: reply
-  outlined: true
 ---
 
 The callbacks are mostly used if running as a server or using the synchronous methods. There are however two callbacks that always need to be implemented and are used when the customer need to sign the receipt. Those two are `ConfirmationHandler` and `EventCallback` for the `PrintRequestEventCallback`.

@@ -5,9 +5,6 @@ description: |
   published on this page.
 permalink: /:path/release-notes/
 menu_order: 1
-icon:
-    content: feed
-    outlined: true
 release_notes: true
 ---
 ## 21 March 2024

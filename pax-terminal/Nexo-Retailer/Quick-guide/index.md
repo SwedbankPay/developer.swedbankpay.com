@@ -2,9 +2,6 @@
 title: Quick Guide
 description: Start here. Fast track to go through the essentials for making a payment
 permalink: /:path/
-icon:
-    content: play_circle
-    outlined: true
 menu_order: 10
 ---
 ## Simplest Form of Integration

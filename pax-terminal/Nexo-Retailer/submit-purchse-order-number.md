@@ -4,9 +4,6 @@ description: |
  A Purchase Order Number may be included in the PaymentRequest and will be forwarded to the aquirer host.
 permalink: /:path/submit-purchse-order-number/
 menu_order: 65
-icon:
-    content: bookmark_add
-    outlined: true
 ---
 There is a possibility to forward information to the host by using the `SaleToAquirerData` of `PaymentRequest` - `SaleData`. The data must be a JSON object that is Base64 encoded.
 

@@ -3,9 +3,6 @@ title: Address of Terminal Sent To POS
 permalink: /:path/auto-configure-ecr-2-terminal/
 description: |
     Easier configuration of POS by picking up the terminal address from the configuration message sent from the terminal when pressing **Save** in terminal's admin menu.
-icon:
-    content: settings_suggest
-    outlined: true
 menu_order: 15
 ---
 When implementing the default mode where both the POS and the terminal are running as severs, there is a way to simplify the configuration. Since the POS system needs to know the address of the terminal and the terminal needs to know the address of the POS, it is possible to just add the address to POS in the terminal. When exiting the terminal's admin menu by pressing Save button, a configuration message is sent to the just entered POS address and port.
