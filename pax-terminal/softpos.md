@@ -92,7 +92,7 @@ SoftPos to work. The device(s):
 An overview of tested/proven devices and a non-exhaustive list of unsupported
 devices.
 
-### Consumer Devices
+#### Consumer Devices
 
 {:.table .table-striped}
 | Manufacturer             | Models  |
@@ -101,13 +101,10 @@ devices.
 | Motorola                  | G31, G54         |
 | Nokia                  | 6.2, G20          |
 | OnePlus                  | 7T Pro, 8 Pro, 9 5G, Pro 5G, 10 Pro 5G          |
-| Samsung                  | A15, A21s, A22 (+, 5G), A32 (+, 5G), A33 5G, A34,
-A35, A40, A51, A52 (+ 5G, s5G), A54, A71, S10 (+, e, 5G, Lite),
-S20 (+ 5G, +5G, FE, FE 5G, Ultra 5G), S21 (+, 5G, +5G, FE, FE 5G, Ultra 5G)
-S22 (+, 5G, Ultra), S23, Xcover (+ Pro, Field pro, 4S, 5, 5 Enterprise)        |
+| Samsung                  | A15, A21s, A22 (+, 5G), A32 (+, 5G), A33 5G, A34, A35, A40, A51, A52 (+ 5G, s5G), A54, A71, S10 (+, e, 5G, Lite), S20 (+ 5G, +5G, FE, FE 5G, Ultra 5G), S21 (+, 5G, +5G, FE, FE 5G, Ultra 5G) S22 (+, 5G, Ultra), S23, Xcover (+ Pro, Field pro, 4S, 5, 5 Enterprise)        |
 | Sony                  | Xperia 10V         |
 
-### Enterprise Devices
+#### Enterprise Devices
 
 {:.table .table-striped}
 | Manufacturer             | Models  |
@@ -115,18 +112,17 @@ S22 (+, 5G, Ultra), S23, Xcover (+ Pro, Field pro, 4S, 5, 5 Enterprise)        |
 | Bluebird                 | EF501        |
 | Elo                      | M50C        |
 | Honeywell                | CT40        |
-| Imin^                    | SWIFT 2 PRO         |
+| Imin*                    | SWIFT 2 PRO         |
 | Point Mobile             | PM45, PM67, PM75, PM85         |
-| Sunmi^^                | V2s, V2s plus, L2H, D3 mini, T3 Pro max, V3 MIX |
+| Sunmi*                | V2s, V2s plus, L2H, D3 mini, T3 Pro max, V3 MIX |
 | Telpo                  | M1       |
 | Unitech                  | EA630, PA768         |
 | Urovo                  | CT58, DT50         |
 | Zebra                  | TC52, TC57, CC6000, EC55        |
 
-^Available on Imin store as well
-^^Available on Sunmi store as well
+*Also available in Imin and/or Sumni stores respectively
 
-### Unsupported Devices (Non-Exhaustive)
+#### Unsupported Devices (Non-Exhaustive)
 
 Devices not adhering to the full Softpay Mobile Device Policy and PCI/MPoC
 requirements are unsupported.

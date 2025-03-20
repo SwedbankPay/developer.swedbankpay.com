@@ -211,7 +211,7 @@ your TOM/TAM or our support team.
 {% endcapture %}
 {% include accordion-table.html content=acc-9 header_text='Who can we contact for assistance?' header_expand_css='font-weight-normal' %}
 
-{: .text-right}
+{: .text-right .mt-3}
 
 [Top of page](#callback-v31)
 
@@ -253,7 +253,7 @@ original `POST` when you created the `paymentOrder`.
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
-{: .text-right}
+{: .text-right .mt-3}
 
 [Top of page](#callback-v31)
 
@@ -267,7 +267,7 @@ abbreviated example provided below.
 
 {% include transaction-response.md transaction="authorization" %}
 
-{: .text-right}
+{: .text-right .mt-3}
 
 [Top of page](#callback-v31)
 

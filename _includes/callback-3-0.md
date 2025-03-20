@@ -43,6 +43,8 @@ three example scenarios of why this is important:
     merchant website, the `callbackUrl` is what ensures that you receive the
     information about what happened with the payment.
 
+{: .text-right}
+
 [Top of page](#callback-v30)
 
 {: .h2 }
@@ -87,6 +89,8 @@ Menu v1), it is critical that you do **not** use the `paymentId` or
 `transactionId` when performing a `GET` to retrieve the payment's status. Use
 the `paymentOrderId`.
 
+{: .text-right}
+
 [Top of page](#callback-v30)
 
 {: .h3 }
@@ -101,6 +105,8 @@ in both the test and production environment.
 and we strongly advise you to whitelist them as soon as possible:
 
 `20.91.170.120–127` (`20.91.170.120/29`)." %}
+
+{: .text-right}
 
 [Top of page](#callback-v30)
 
@@ -205,6 +211,8 @@ your TOM/TAM or our support team.
 {% endcapture %}
 {% include accordion-table.html content=acc-9 header_text='Who can we contact for assistance?' header_expand_css='font-weight-normal' %}
 
+{: .text-right .mt-3}
+
 [Top of page](#callback-v30)
 
 {: .h2 }
@@ -246,6 +254,8 @@ your TOM/TAM or our support team.
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
+{: .text-right .mt-3}
+
 [Top of page](#callback-v30)
 
 {: .h2 }
@@ -257,6 +267,8 @@ When performing an HTTP `GET` request towards the URL found in the
 abbreviated example provided below.
 
 {% include transaction-response.md transaction="authorization" %}
+
+{: .text-right .mt-3}
 
 [Top of page](#callback-v30)
 
@@ -283,6 +295,8 @@ sequenceDiagram
     SwedbankPay-->>+Merchant: payment resource
     deactivate SwedbankPay
 ```
+
+{: .text-right}
 
 [Top of page](#callback-v30)
 
