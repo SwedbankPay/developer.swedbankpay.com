@@ -6,6 +6,7 @@ title: Digital Payments
 description: |
   What's new in the documentation?
 menu_order: 3
+release_notes: true
 ---
 
 ## 19 February 2025
