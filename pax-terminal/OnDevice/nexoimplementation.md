@@ -7,7 +7,7 @@ menu_order: 180
 
 ## Implementing nexo When On Device
 
-Implementing nexo for On Device is probably the simplest implementation since it is the `client only` mode and just a few messages. Refer to the documentation on this site for [`nexo Retailer`][nexoretailer] but ignore the HTTP part since the nexo messages are passed in intents.
+Implementing nexo for On Device is probably the simplest implementation when using the `client only` mode and is just a few messages. Refer to the documentation on this site for [`nexo Retailer`][nexoretailer] but ignore the HTTP part since the nexo messages are passed in intents.
 
 ### [LoginRequest][login]
 
@@ -20,7 +20,7 @@ The sad part is that according to branding regulations less secure, purchases th
 
 ### [ReversalRequest][reversal]
 
-ReversalRequest can only be made on the very last transaction if it was successful. There is a big difference in reversals versus refunds, where reversal will clear the booked money latest the next day while refund may take business days before the money is back on the customer's account. Reversal is a must for the cvm signature test case in if the cardholder is unable to identify himself or the signature is rejected.
+ReversalRequest can only be made on the very last transaction if it was successful. There is a big difference in reversals versus refunds, where reversal will clear the booked money latest the next day while refund may take business days before the money is back on the customer's account. Reversal is a must for the cvm signature test case if the cardholder is unable to identify himself or the signature is rejected.
 
 ### [PrintRequest][print]
 

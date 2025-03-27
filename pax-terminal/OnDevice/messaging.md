@@ -7,6 +7,10 @@ menu_order: 165
 
 ## Intent Actions Used
 
+Messages sent to and from the Swedbank Pay Payment App ar sent using broadcast intents.
+
+## Payment App Sending to Business App
+
 When the payment app is broadcasting messages to business apps it uses the following two actions:
 
 *   `com.swedbankpay.payment.intent.ECR_NEXO_MESSAGE`
@@ -14,7 +18,9 @@ When the payment app is broadcasting messages to business apps it uses the follo
 
 {% include pax-ondevice-message-transportation.md %}
 
-When a business app is broadcasting messages to the business app it uses the following:
+## Business App Sending to Payment App
+
+When a business app is broadcasting messages to the payment app it uses the following:
 
 *   `com.swedbankpay.payment.intent.TERMINAL_NEXO_MESSAGE`
 *   `com.swedbankpay.payment.intent.TERMINAL_ADMIN`
