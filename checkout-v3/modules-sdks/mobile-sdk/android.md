@@ -33,8 +33,8 @@ the `build.gradle` file:
 
 ```groovy
 dependencies {
-    implementation 'com.swedbankpay.mobilesdk:mobilesdk:{{ page.mobile_sdk_android_version }}'
-    implementation 'com.swedbankpay.mobilesdk:mobilesdk-merchantbackend:{{ page.mobile_sdk_android_version }}'
+    implementation 'com.swedbankpay.mobilesdk:mobilesdk:{{ page.mobile_sdk_android_version }}'
+    implementation 'com.swedbankpay.mobilesdk:mobilesdk-merchantbackend:{{ page.mobile_sdk_android_version }}'
 }
 ```
 
@@ -42,8 +42,8 @@ Or in your `gradle.kts` file:
 
 ```kotlin
 dependencies {
-    implementation("com.swedbankpay.mobilesdk:mobilesdk:{{ page.mobile_sdk_android_version }}")
-    implementation("com.swedbankpay.mobilesdk:mobilesdk-merchantbackend:{{ page.mobile_sdk_android_version }}")
+    implementation("com.swedbankpay.mobilesdk:mobilesdk:{{ page.mobile_sdk_android_version }}")
+    implementation("com.swedbankpay.mobilesdk:mobilesdk-merchantbackend:{{ page.mobile_sdk_android_version }}")
 }
 ```
 
@@ -452,7 +452,6 @@ the payment menu.
 [dokka-payfrag-argbuilder]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/-arguments-builder/index.md
 [dokka-payfrag-argbuilder-consumer]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/-arguments-builder/consumer.md
 [dokka-payfrag-argbuilder-paymentorder]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/-arguments-builder/payment-order.md
-[dokka-payfrag-argbuilder-usebrowser]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/-arguments-builder/use-browser.md
 [dokka-payfrag-defconf]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/-companion/default-configuration.md
 [dokka-payfrag-getconf]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/get-configuration.md
 [dokka-config]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-configuration/index.md
@@ -484,5 +483,4 @@ the payment menu.
 [dokka-problem-server-swedbankpay]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/-server/-swedbank-pay/index.md
 [dokka-swedbankpayproblem]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-swedbank-pay-problem/index.md
 [paymenturl]: /checkout-v3/features/technical-reference/payment-url
-[android-intent-scheme]: https://developer.chrome.com/docs/android/intents
 [gradle-manifest-placeholders]: https://developer.android.com/build/manage-manifests#inject_build_variables_into_the_manifest
