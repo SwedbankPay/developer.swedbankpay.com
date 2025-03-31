@@ -4,6 +4,7 @@ permalink: /:path/payment-terminals/
 description: |
   The latest updates about our Payment Terminals.
 menu_order: 3
+release_notes: true
 tab_list:
 - title: For this site
   content_src: instorepayment-releasenotes.md
