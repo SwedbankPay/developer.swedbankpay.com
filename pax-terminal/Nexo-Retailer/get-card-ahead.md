@@ -9,7 +9,7 @@ The possibility to read one or more cards before the payment is actually made, m
 
 {% include alert.html type="warning" icon="warning" header="Heads up!" body="To use this feature the POS side needs to implement a server. Print request might be generated when aborting."%}
 
-{:.code-vie-header}
+{:.code-view-header}
 **Easy flow reading card before payment request**
 
 ```mermaid

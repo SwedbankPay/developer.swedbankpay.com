@@ -6,7 +6,7 @@ description: |
     Use the nexo Retailer integration if you are unable to use .NET or Java SDK. This interface requires a greater effort for both users and Swedbank Pay.
 menu_order: 2000
 ---
-The interface is based on nexo Retailer version 3.1 and uses XML message formats over HTTP/TCP.
+The PAX terminals uses protocol nexo Retailer version 3.1 for all variants. The transaport alternatives are HTTP/TCP over LAN or WLAN or broadcast Intents if internally on the device.
 For reference it may be a good idea to download the nexo specifications from `www.nexo-standards.org`, but the essentials will be described here.
 Keep in mind that nexo Retailer is a large protocol standard and we do not currently support every aspect of it.
 
