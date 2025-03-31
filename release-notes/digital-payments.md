@@ -7,6 +7,19 @@ menu_order: 2
 release_notes: true
 ---
 
+## 01 April 2025
+
+### Version 5.3.6
+
+Our release notes are on the move! We are taking steps towards a
+[release notes hub][rn-hub] for all sections, available straight from the main
+menu.
+
+The biggest visual change this time around is a theme facelift with new cards.
+We have also and introduced tabs in sections where there are differences between
+versions - [payment requests][new-pay-req], [post-purchase][new-post-pur] and
+[callback][new-callback].
+
 ## 19 February 2025
 
 ### Version 5.3.5
@@ -1324,3 +1337,7 @@ more convenient for both the integration and the payer.
 [availability]: /checkout-v3/#availability
 [callback-faq]: /checkout-v3/features/payment-operations/callback/#faq--change-of-ip-addresses-for-callbacks
 [softpos]: /pax-terminal/softpos/
+[new-pay-req]: /checkout-v3/get-started/payment-request/
+[new-post-pur]: /checkout-v3/get-started/post-purchase/
+[new-callback]: /checkout-v3/features/payment-operations/callback/
+[rn-hub]: /release-notes/

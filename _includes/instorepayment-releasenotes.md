@@ -1,13 +1,24 @@
----
-title: Release Notes
-permalink: /:path/release-notes/
-description: |
-  The latest updates about PAX-terminal integration and documentation will be
-  published on this page.
-menu_order: 100
-release_notes: true
-hide_from_sidebar: true
----
+
+## 1 April 2025
+
+## Version 5.3.6
+
+*   Added information about [ECR On Device][ecrondevice].
+*   Added release notes for Swedbank Pay Payment App on terminal.
+
+## 19 February 2025
+
+### Version 5.3.5
+
+*   Added information about [Pay Softpos][paysoftpos].
+
+## 21 March 2024
+
+### Version 5.0.0
+
+*   Updated command for avoiding privilege elevation.
+*   Use case for easier configuration of terminal and POS system.
+*   Update of [TransactionSetup][transactionsetup] and property [AcquirerData][acquirerdata].
 
 ## 26 February 2024
 
@@ -45,3 +56,7 @@ hide_from_sidebar: true
 [keyinpaymentinstrument]: /pax-terminal/Nexo-Retailer/keyin-paymentinstrument
 [autoconfig]: /pax-terminal/Nexo-Retailer/auto-configure-ecr-2-terminal
 [autoconfignet]: /pax-terminal/NET/tutorial/autoconfigurepos
+[transactionsetup]: /pax-terminal/NET/includes/transactionsetup
+[acquirerdata]: /pax-terminal/NET/includes/acquirerdata
+[ecrondevice]: /pax-terminal/OnDevice
+[paysoftpos]: /pax-terminal/softpos

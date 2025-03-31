@@ -1,0 +1,22 @@
+---
+title: Pay SoftPos
+permalink: /:path/pay-softpos/
+description: |
+  The latest updates about Pay SoftPos.
+menu_order: 4
+release_notes: true
+---
+
+## 01 April 2025
+
+### Version 5.3.6
+
+Our release notes are on the move! We are taking the steps towards a
+[release notes hub][rn-hub] for all sections, available straight from the main
+menu.
+
+SoftPos has added [minimum device requirements][mdr], a list of proven/tested
+devices and the handful of unsupported ones.
+
+[rn-hub]: /release-notes/
+[mdr]: /pax-terminal/softpos/#minimum-device-requirements

@@ -1,5 +1,5 @@
 ---
-section: NET
+section: NET SDK
 title: .Net SDK
 permalink: /:path/
 description: |

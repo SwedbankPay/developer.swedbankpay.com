@@ -29,7 +29,7 @@ This callback **must** be implemented and occurs when a transaction receipt need
   public void ConfirmationHandler(string text, IConfirmationResult callback)
   {
     bool response = ShowMessageAndGetResponseFromOperator(text);
-    callback->Confirmation(response);
+    callback.Confirmation(response);
   }
 ```
 

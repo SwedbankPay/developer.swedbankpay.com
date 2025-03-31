@@ -6,5 +6,6 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.markdownlint": "explicit"
   },
-  "git.autofetch": true
+  "git.autofetch": true,
+  "editor.minimap.maxColumn": 80
 }
