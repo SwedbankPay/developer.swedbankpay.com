@@ -39,11 +39,11 @@ SDK, and `SwedbankPaySDKMerchantBackend` for the Merchant Backend utilities.
 Add the relevant dependencies in your `Podfile`:
 
 ```ruby
-pod 'SwedbankPaySDK', '~> {{ page.mobile_sdk_ios_version }}'
+pod 'SwedbankPaySDK', '~> {{ page.mobile_sdk_ios_version }}'
 ```
 
 ```ruby
-pod 'SwedbankPaySDKMerchantBackend', '~> {{ page.mobile_sdk_ios_version }}'
+pod 'SwedbankPaySDKMerchantBackend', '~> {{ page.mobile_sdk_ios_version }}'
 ```
 
 ## Custom URL Scheme and Associated Domain

@@ -83,7 +83,7 @@ Integrate the SDK in your application by simply adding the dependency to the
 
 ```groovy
 dependencies {
-    implementation 'com.swedbankpay.mobilesdk:mobilesdk:{{ page.mobile_sdk_android_version }}'
+    implementation 'com.swedbankpay.mobilesdk:mobilesdk:{{ page.mobile_sdk_android_version }}'
 }
 ```
 
@@ -91,7 +91,7 @@ Or in your `gradle.kts` file:
 
 ```kotlin
 dependencies {
-    implementation("com.swedbankpay.mobilesdk:mobilesdk:{{ page.mobile_sdk_android_version }}")
+    implementation("com.swedbankpay.mobilesdk:mobilesdk:{{ page.mobile_sdk_android_version }}")
 }
 ```
 
@@ -287,7 +287,7 @@ Add the `SwedbankPaySDK` library, there is no need to add the
 Add the dependency in your `Podfile`:
 
 ```ruby
-pod 'SwedbankPaySDK', '~> {{ page.mobile_sdk_ios_version }}'
+pod 'SwedbankPaySDK', '~> {{ page.mobile_sdk_ios_version }}'
 ```
 
 ## iOS Setup
