@@ -1262,7 +1262,7 @@ more convenient for both the integration and the payer.
 [pax-net-sdk]: https://developer.stage.swedbankpay.com/pax-terminal/NET/
 [pax-terminal]: /pax-terminal/
 [pmv2]: /old-implementations/payment-menu-v2/ui-migration/
-[pp-3-1]: /checkout-v3/get-started/post-purchase-3-1
+[pp-3-1]: /checkout-v3/get-started/post-purchase
 [prices]: /old-implementations/checkout-v2/features/technical-reference/prices
 [update-order-checkout]: /old-implementations/checkout-v2/features/core/update
 [recur]: /checkout-v3/features/optional/recur

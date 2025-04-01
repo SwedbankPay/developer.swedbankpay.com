@@ -132,6 +132,9 @@ important URLs, but may not be exhaustive. Merchants need to stay up to date in
 case of URL changes, or if you need to whitelist URLs not listed here." %}
 
 {:.table .table-striped}
+
+
+
 | URL    | Description             |
 | :------ | :--------------- |
 | https://*.cdn-apple.com | URL needed for Apple Pay.     |
@@ -250,9 +253,7 @@ Merchant -->>- Payer: Show Purchase complete
 {% include iterator.html prev_href="/checkout-v3/get-started/display-payment-ui/"
                          prev_title="Display Payment UI"
                          next_href="/checkout-v3/get-started/post-purchase"
-                         next_title="Post-Purchase v3.0" %}
-{% include iterator.html next_href="/checkout-v3/get-started/post-purchase-3-1"
-                         next_title="Post-Purchase v3.1" %}
+                         next_title="Post-Purchase" %}
 
 [csp]: https://www.w3.org/TR/CSP2/
 [seamless-view-events]: /checkout-v3/features/technical-reference/seamless-view-events

@@ -3,9 +3,6 @@ title: Delete Token
 permalink: /:path/delete-token/
 description: How to delete tokens.
 menu_order: 1900
-icon:
-  content: delete_sweep
-  outlined: true
 ---
 
 ## Delete Unscheduled, Recurrence Or Payment Tokens

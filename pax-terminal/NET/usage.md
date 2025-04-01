@@ -2,9 +2,6 @@
 title: Basic Information
 description: Things to know before you start
 permalink: /:path/usage/
-icon:
-    content: info
-    outlined: true
 menu_order: 10
 ---
 ## Usage

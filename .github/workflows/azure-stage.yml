@@ -1,0 +1,34 @@
+name: Deploy Developer Branch to Azure Stage
+
+on:
+  push:
+    branches: ['develop']
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: jekyll build
+        run: |
+          docker compose run \
+            -e GITHUB_BRANCH=develop \
+            -e GITHUB_REPOSITORY_URL=https://github.com/SwedbankPay/developer.swedbankpay.com \
+            portal build \
+            --env=production \
+            --site-url=https://developer.stage.swedbankpay.com
+
+      - name: azure login
+        uses: azure/login@v2.2.0
+        with:
+          creds: '{"clientId":"${{ secrets.SUBSCRIPTION_CLIENT_ID_STAGE }}","clientSecret":"${{ secrets.SUBSCRIPTION_CLIENT_SECRET_STAGE }}","subscriptionId":"${{ secrets.SUBSCRIPTION_ID_STAGE }}","tenantId":"${{ secrets.TENANT_ID }}"}'
+
+      - name: azure deploy
+        run: |
+          az storage blob upload-batch \
+            --source "_site" \
+            --destination "\$web" \
+            --account-name stagedeveloperecomsa1 \
+            --overwrite \
+            --validate-content

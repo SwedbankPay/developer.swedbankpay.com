@@ -3,9 +3,6 @@ title: Request Customer DigitString
 permalink: /:path/requestcustomerdigitstring/
 description: |
     Use this method to ask the customer to enter a string of digits
-icon:
-    content: support_agent
-    outlined: true
 ---
 ### Method Signatures
 

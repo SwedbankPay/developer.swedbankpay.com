@@ -62,7 +62,7 @@ The following sequence diagram shows how a purchase that is apporoved with a car
 sequenceDiagram
 POS->>+Terminal: Http POST PaymentRequest
 Terminal->>-POS: Http Response 200 PaymentResponse
-Note over Terminal: Merchant receipt data<br>JSON SignatureBlock is true
+Note over Terminal: JSON: Merchant receipt data<br>Mandatory.Payment.SignatureBlock<br>is true
     Note over POS: Print merchant receipt
     Note over POS: Ask customer to sign<br>verify ID of customer
 alt Approve

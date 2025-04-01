@@ -3,9 +3,6 @@ title: Payment
 permalink: /:path/paymentasync/
 description: |
   The Payment method is called to make a purchase transaction when the amount is known.
-icon:
-    content: credit_card
-    outlined: true
 menu_order: 60
 ---
 ### Method Signatures

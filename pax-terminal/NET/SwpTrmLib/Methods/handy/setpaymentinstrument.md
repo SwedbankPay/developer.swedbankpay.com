@@ -3,9 +3,6 @@ title: Set Payment Instrument
 permalink: /:path/setpaymentinstrument/
 description: |
     SetPaymentInstrument starts a payment for supplied paymentInstrument.
-icon:
-    content: add_card
-    outlined: true
 ---
 ### Method Signature
 

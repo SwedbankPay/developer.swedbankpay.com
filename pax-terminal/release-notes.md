@@ -6,6 +6,7 @@ description: |
   published on this page.
 menu_order: 100
 release_notes: true
+hide_from_sidebar: true
 ---
 
 ## 26 February 2024

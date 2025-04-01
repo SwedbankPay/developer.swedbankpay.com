@@ -21,6 +21,7 @@ AbortRequest may be sent for any ongoing request.
 ```
 
 {:.table .table-striped}
+
 | Name | Attributes | Description |
 | :------------- | :-------------- |:--------------- |
 | MessageReference | MessageCategory | Category of the request being aborted. |

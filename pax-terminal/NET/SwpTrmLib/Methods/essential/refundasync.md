@@ -3,9 +3,6 @@ title: Refund
 permalink: /:path/refundasync/
 description: |
     The Refund method sends a PaymentRequest for refund and should be called when the amount is known.
-icon:
-    content: credit_card
-    outlined: true
 menu_order: 70
 ---
 ### Method Signatures
