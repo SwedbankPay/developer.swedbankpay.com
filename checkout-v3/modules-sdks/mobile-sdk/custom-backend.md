@@ -723,7 +723,7 @@ struct MyConfiguration : SwedbankPaySDKConfigurationWithCallbackScheme {
                          next_title="Next: Android" %}
 
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
-[create-payment-order]: /checkout-v3/get-started/payment-request-3-1/#create-payment-order
+[create-payment-order]: /checkout-v3/get-started/payment-request/#create-payment-order-v31
 [payment-url]: /checkout-v3/features/technical-reference/payment-url
 [ios-aasa]: https://developer.apple.com/documentation/safariservices/supporting_associated_domains_in_your_app#3001215
 [android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents

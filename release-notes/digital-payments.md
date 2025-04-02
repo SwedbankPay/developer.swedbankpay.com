@@ -1158,7 +1158,7 @@ to be performed again. With paymentUrl in place, the retry process becomes much
 more convenient for both the integration and the payer.
 
 [1cuc]: /checkout-v3/get-started/one-click
-[3-1]: /checkout-v3/get-started/payment-request-3-1
+[3-1]: /checkout-v3/get-started/payment-request/#payment-order-v31
 [3ds2-test]: /checkout-v3/test-data#3-d-secure-cards
 [afd-payments]: /checkout-v3/features/optional/afd
 [abort-payattempt]: /checkout-v3/features/payment-operations/abort/#abort-payment-attempt
@@ -1250,7 +1250,6 @@ more convenient for both the integration and the payer.
 [mobilepay-seamless-view]: /old-implementations/payment-instruments-v1/mobile-pay/seamless-view
 [mobilepay-capture]: /old-implementations/payment-instruments-v1/mobile-pay/capture
 [modules-sdks]: /checkout-v3/modules-sdks
-[mp-guide]: /old-implementations/payment-instruments-v1/mobile-pay/ui-migration/
 [moto-payment-card]: /old-implementations/payment-instruments-v1/card/features/optional/moto
 [nat-pay]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/
 [nwt]: /checkout-v3/features/customize-payments/network-tokenization
@@ -1274,7 +1273,7 @@ more convenient for both the integration and the payer.
 [pax-net-sdk]: https://developer.stage.swedbankpay.com/pax-terminal/NET/
 [pax-terminal]: /pax-terminal/
 [pmv2]: /old-implementations/payment-menu-v2/ui-migration/
-[pp-3-1]: /checkout-v3/get-started/post-purchase-3-1
+[pp-3-1]: /checkout-v3/get-started/post-purchase/
 [prices]: /old-implementations/checkout-v2/features/technical-reference/prices
 [update-order-checkout]: /old-implementations/checkout-v2/features/core/update
 [recur]: /checkout-v3/features/optional/recur
@@ -1328,7 +1327,6 @@ more convenient for both the integration and the payer.
 [unscheduled-mit]: /checkout-v3/features/optional/unscheduled
 [v3-setup]: /checkout-v3/get-started/setup
 [validate-status]: /checkout-v3/get-started/validate-status
-[vipps-guide]: /old-implementations/payment-instruments-v1/vipps/ui-migration/
 [vipps-payment-resource]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-resource
 [vipps-payment-url]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-url
 [vipps]: /old-implementations/payment-instruments-v1/vipps

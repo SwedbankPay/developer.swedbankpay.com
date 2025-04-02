@@ -256,4 +256,4 @@ the payment in the redirect integration. See the [`Aborted` response][aborted].
 [cancelled]: /checkout-v3/features/technical-reference/resource-sub-models/#cancelled
 [failed]: /checkout-v3/features/technical-reference/resource-sub-models/#failed
 [paid-resource-model]: /checkout-v3/features/technical-reference/resource-sub-models/#paid
-[pp-capture]: /checkout-v3/get-started/post-purchase/#capture
+[pp-capture]: /checkout-v3/get-started/post-purchase/#capture-v31

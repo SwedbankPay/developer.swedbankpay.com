@@ -49,4 +49,4 @@ their card details if it has expired and a new card is generated.
 [one-click]: /checkout-v3/features/optional/one-click-payments/
 [recurring]: /checkout-v3/features/optional/unscheduled/
 [nt]: /checkout-v3/features/customize-payments/network-tokenization/
-[otp]: /checkout-v3/get-started/payment-request-3-1/
+[otp]: /checkout-v3/get-started/payment-request/

@@ -570,6 +570,6 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 [paid-resource-model]: {{ features_url }}/technical-reference/resource-sub-models#paid
 [old-payment-order-cancel]: /old-implementations/checkout-v2/after-payment#cancel
 [old-payment-order-capture]: /old-implementations/checkout-v2/capture
-[payment-order-cancel]: /checkout-v3/get-started/post-purchase#cancel
-[payment-order-capture]: /checkout-v3/get-started/post-purchase#capture
+[payment-order-cancel]: /checkout-v3/get-started/post-purchase/#cancel-v31
+[payment-order-capture]: /checkout-v3/get-started/post-purchase/#capture-v31
 [verify]: {{ features_url }}/optional/verify
