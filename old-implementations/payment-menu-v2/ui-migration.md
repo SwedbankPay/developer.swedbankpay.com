@@ -37,7 +37,7 @@ in [Danish][da]{:target="_blank"}, [Finnish][fi]{:target="_blank"},
 If you currently have a Seamless View integration and don't want the impending
 responsibilities, switcing to Redirect is a very manageable task. While you can
 make the change and keep on using Payment Menu v2, we **strongly recommend**
-switching to the newest version of [Digital Payments][dp] when you are already
+switching to the newest version of [Online Payments][dp] when you are already
 making changes to your integration. We have written a [migration guide][mp] to
 help you.
 

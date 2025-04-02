@@ -75,7 +75,7 @@ paymentOrder.payer = PaymentOrderPayer(
 )
 ```
 
-## Token Retrieval Digital Payments
+## Token Retrieval Online Payments
 
 Retrieve the token by expanding the `paid` property of a previous successful
 payment. You do this with a GET request where you add `?$expand=paid` after the
