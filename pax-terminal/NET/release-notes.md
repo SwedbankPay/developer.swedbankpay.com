@@ -5,7 +5,7 @@ description: |
   published on this page.
 permalink: /:path/release-notes/
 menu_order: 1
-release_notes: true
+has_release_notes: true
 hide_from_sidebar: true
 ---
 
