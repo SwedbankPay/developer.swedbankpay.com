@@ -4,10 +4,10 @@ permalink: /:path/digital-payments/
 description: |
   The latest updates about our Digital Payments.
 menu_order: 2
-release_notes: true
+has_release_notes: true
 ---
 
-## 01 April 2025
+## 1 April 2025
 
 ### Version 5.3.6
 
@@ -64,7 +64,7 @@ we offer.
 
 As usual, a handful of bug fixes and feedback requests have been remedied too!
 
-## 09 December 2024
+## 9 December 2024
 
 ### Version 5.3.3
 
@@ -179,7 +179,7 @@ renamed to payment methods. Still all there, just a familiar name.
 
 From all of us, to all of you: Have a great summer!
 
-## 08 May 2024
+## 8 May 2024
 
 ### Version 5.2.0
 
@@ -767,7 +767,7 @@ Other changes:
 *   Corrected the documentation by removing `generatePaymentToken` and
     `paymentToken` from [Checkout][checkout].
 
-## 07 July 2020
+## 7 July 2020
 
 ### Version 1.12.0
 
@@ -894,14 +894,14 @@ Other changes:
 
 This change contains build updates for the page. :octocat:
 
-## 04 March 2020
+## 4 March 2020
 
 ### Version 1.7.6
 
 *   Several links has been corrected. The chance of 404 is now much lower.
 *   Other small text changes and clarifications.
 
-## 03 March 2020
+## 3 March 2020
 
 ### Version 1.7.5
 

@@ -5,7 +5,7 @@
 PAX-4007 Make sure the KSN used for the Online-PIN block is incremented when
 needed.
 
-## 04 March 2025
+## 4 March 2025
 
 ### Pax Release 1.3.0.7
 
@@ -66,7 +66,7 @@ items.
 
 PAX-3918 Fixed an issue with using ECR on device with Intent on Android 10.
 
-## 04 February 2025
+## 4 February 2025
 
 ### Pax Release 1.3.0.6
 
@@ -130,7 +130,7 @@ on the disk.
 PAX-3833 Payment app will start business applications when boot has completed,
 instead of as part of its initialisation process.
 
-## 03 December 2024
+## 3 December 2024
 
 ### Pax Release 1.3.0.5
 
