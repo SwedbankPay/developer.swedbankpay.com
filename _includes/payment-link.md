@@ -101,7 +101,7 @@ general sequence diagrams for more information about one-phase (e.g.
 ## Authorization
 
 When using two-phase payment methods you reserve the amount with an
-authorization, and you will have to specify that the _intent_ of the _purchase_
+authorization, and you will have to specify that the *intent* of the *purchase*
 is `Authorize`. The amount will be reserved but not charged. You have to make a
 `Capture` or `Cancel` request later (i.e. when you are ready to ship the
 purchased products).
@@ -116,7 +116,7 @@ smaller amount than the authorized amount. You can do more captures on the
 same payment up to the total authorization amount later.
 
 If you want the credit card to be charged right away, you will have to specify
-that the _intent_ of the purchase is `AutoCapture`. The card will be charged and
+that the *intent* of the purchase is `AutoCapture`. The card will be charged and
 you don't need to do any more financial operations to this purchase.
 
 ## Cancel
@@ -230,7 +230,7 @@ sequenceDiagram
 [card]: /old-implementations/payment-instruments-v1/card
 [checkout-v2]: /old-implementations/checkout-v2/
 [checkout-v3]: /checkout-v3/get-started/payment-request/
-[checkout-v31]: /checkout-v3/get-started/payment-request-3-1/
+[checkout-v31]: /checkout-v3/get-started/payment-request/#payment-order-v31
 [mobilepay]: /old-implementations/payment-instruments-v1/mobile-pay
 [payment-menu]: /old-implementations/payment-menu-v2
 [purchase-flow]: /old-implementations/payment-instruments-v1/card/features/core/purchase
