@@ -20,7 +20,7 @@ jobs:
             --site-url=https://developer-pos.stage.swedbankpay.com
 
       - name: azure login
-        uses: azure/login@v2.2.0
+        uses: azure/login@v2.3.0
         with:
           creds: '{"clientId":"${{ secrets.SUBSCRIPTION_CLIENT_ID_STAGE }}","clientSecret":"${{ secrets.SUBSCRIPTION_CLIENT_SECRET_STAGE }}","subscriptionId":"${{ secrets.SUBSCRIPTION_ID_STAGE }}","tenantId":"${{ secrets.TENANT_ID }}"}'
 
