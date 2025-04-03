@@ -84,7 +84,7 @@
     "remark-preset-lint-consistent": "^6.0.1",
     "remark-preset-lint-markdown-style-guide": "^6.0.1",
     "remark-preset-lint-recommended": "^7.0.1",
-    "remark-retext": "^6.0.0",
+    "remark-retext": "^6.0.1",
     "remark-squeeze-paragraphs": "^6.0.0",
     "remark-textr": "^6.1.0",
     "retext-english": "^5.0.0",
