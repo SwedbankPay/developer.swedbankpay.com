@@ -1,5 +1,5 @@
 
-## 01 April 2025
+## 1 April 2025
 
 ### .Net SDK 1.3.24170
 
@@ -41,7 +41,7 @@
 *   Possibility for Net Framework 4.0. Now supports Netstandard2.0, net
     framework 4.5 and 4.0.
 
-## 05 February 2024
+## 5 February 2024
 
 ### .Net SDK 1.3.24047
 
@@ -99,7 +99,7 @@
     used with fuel functionality.
 *   ReceiptBlob and ReceiptBlobNoHeader has been shortened and compressed.
 
-## 07 November 2023
+## 7 November 2023
 
 ### .Net SDK Version 1.2
 

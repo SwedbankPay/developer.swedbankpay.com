@@ -1,7 +1,7 @@
 
 ## 1 April 2025
 
-## Version 5.3.6
+### Version 5.3.6
 
 *   Added information about [ECR On Device][ecrondevice].
 *   Added release notes for Swedbank Pay Payment App on terminal.
