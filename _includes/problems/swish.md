@@ -264,7 +264,7 @@ Content-Type: application/json{% endcapture %}
 
 Caused By:
 
-*   During a create a sale call to e-com, Swish responded with 504 (Gateway Timeout).
+*   During a create a sale call to e-commerce, Swish responded with 504 (Gateway Timeout).
 
 {% capture response_header %}HTTP/1.1 504 Gateway Timeout
 Content-Type: application/json{% endcapture %}

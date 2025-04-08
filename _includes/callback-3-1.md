@@ -116,9 +116,9 @@ and we strongly advise you to whitelist them as soon as possible:
 
 {% capture acc-1 %}
 {: .p .pl-3 .pr-3  }
-We will be updating the IP addresses from which callbacks for eCommerce payments
-are sent. This change will affect the external integration for both test and
-production environments.
+We will be updating the IP addresses from which callbacks for e-commerce
+payments are sent. This change will affect the external integration for both
+test and production environments.
 
 {: .p .pl-3 .pr-3  }
 The current IP addresses are `91.132.170.1` and `51.107.183.58`. The new IP range
