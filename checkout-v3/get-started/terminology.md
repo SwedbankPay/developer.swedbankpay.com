@@ -9,7 +9,7 @@ menu_order: 12
 |  | **3-D Secure 2.0 (3DS2)** | The new authentication protocol for online card payments. The protocol is XML-based and designed to be an additional security layer for online credit and debit card transactions. |
 |  | **3.x**       | The umbrella term for all Online Payments versions 3.0 and newer. If (v)3.x is used instead of a specific version (like v3.1), the feature, section or code example is applicable for all versions. |
 |  **A**  |
-|  | **Access Token**                | The OAauth 2 Access token needed to access Swedbank Pay eCom APIs. Tokens are generated in the Merchant Portal. Learn how to get started in the Merchant Portal Manual. Note that it must follow the regex pattern `[\w-]*`. |
+|  | **Access Token**                | The OAauth 2 Access token needed to access Swedbank Pay e-commerce API. Tokens are generated in the Merchant Portal. Learn how to get started in the Merchant Portal Manual. Note that it must follow the regex pattern `[\w-]*`. |
 |  | **Account Receivable Consumer** | The [`AccountReceivableConsumer`][invoice-url] API is the fundament for Swedbank Pay [Invoice Payments][invoice-url] service. It is a service where Swedbank Pay helps produce and distribute invoices to payers. |
 |  | **Authorization**               | The first part of a [two-phase][fundamentals] transaction where a certain amount is blocked on the payer's account. The authorized amount is unavailable for the payer, ensuring that the merchant receives the money during the subsequent capture phase. |
 |  **C**  |
@@ -58,7 +58,7 @@ menu_order: 12
 |  | **Verify**                      | The payment operation that initiates a [verification][verify-url] payment process. It is a payment that lets you post verifications to confirm the validity of card information, without reserving or charging any amount. This option is used to generate a payment- or recurrence token, that can be used in a recurring payments scenarios or for one-clickpayments, without charging the card in the process. |
 
 [callback-url]:/checkout-v3/features/payment-operations/callback/
-[cancel-url]: /checkout-v3/get-started/post-purchase/#cancel
+[cancel-url]: /checkout-v3/get-started/post-purchase/#cancel-v31
 [checkout-url]: /old-implementations/checkout-v2/
 [common-headers]: /checkout-v3/get-started/fundamental-principles#headers
 [fundamentals]: /old-implementations/payment-instruments-v1/#the-fundamentals

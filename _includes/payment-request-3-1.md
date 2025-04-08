@@ -369,7 +369,7 @@ Read more about possible additions to the request in our
 [frictionless]: /checkout-v3/features/customize-payments/frictionless-payments
 [history]: /checkout-v3/features/technical-reference/resource-sub-models#history
 [order-items]: /checkout-v3/features/optional/order-items
-[post-31]: /checkout-v3/get-started/post-purchase
+[post-31]: /checkout-v3/get-started/post-purchase/
 [trustly]: /checkout-v3/trustly-presentation
 [swish]: /checkout-v3/swish-presentation
 [apple-pay]: /checkout-v3/apple-pay-presentation

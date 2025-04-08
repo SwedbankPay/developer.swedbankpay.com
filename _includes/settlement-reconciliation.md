@@ -36,13 +36,13 @@ Swedbank Pay handles the settlement process on your behalf, (_called
 {% if documentation_section contains "checkout-v3" %}
 
 When choosing [Swedbank Pay Checkout][checkout-v3] we will always handle the
-settlement process for you, gathering all your eCommerce payments in one place.
+settlement process for you, gathering all your e-commerce payments in one place.
 Straighforward and time efficient.
 
 {% else %}
 
 When choosing [Swedbank Pay Checkout][checkout-v2] we will always handle the
-settlement process for you, gathering all your eCommerce payments in one place.
+settlement process for you, gathering all your e-commerce payments in one place.
 Straighforward and time efficient.
 
 {% endif %}

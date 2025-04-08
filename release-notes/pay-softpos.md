@@ -4,10 +4,10 @@ permalink: /:path/pay-softpos/
 description: |
   The latest updates about Pay SoftPos.
 menu_order: 4
-release_notes: true
+has_release_notes: true
 ---
 
-## 01 April 2025
+## 1 April 2025
 
 ### Version 5.3.6
 
@@ -18,5 +18,13 @@ menu.
 SoftPos has added [minimum device requirements][mdr], a list of proven/tested
 devices and the handful of unsupported ones.
 
+## 19 February 2025
+
+### Version 5.3.5
+
+[Pay SoftPos][softpos] is going live this week, and that calls for a proper
+introduction. Head over to the brand new section to read about it!
+
 [rn-hub]: /release-notes/
 [mdr]: /pax-terminal/softpos/#minimum-device-requirements
+[softpos]: /pax-terminal/softpos/

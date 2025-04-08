@@ -5,7 +5,7 @@ description: |
   The latest updates about PAX-terminal integration and documentation will be
   published on this page.
 menu_order: 100
-release_notes: true
+has_release_notes: true
 hide_from_sidebar: true
 ---
 

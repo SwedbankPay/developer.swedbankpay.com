@@ -38,4 +38,4 @@ details [here][trustly-remove-payment-token].
 <!--lint disable final-definition -->
 
 [trustly-remove-payment-token]: /checkout-v3/features/optional/delete-token
-[trustly-paymentorder-create]: /checkout-v3/get-started/payment-request-3-1/#create-payment-order
+[trustly-paymentorder-create]: /checkout-v3/get-started/payment-request/#payment-order-v31

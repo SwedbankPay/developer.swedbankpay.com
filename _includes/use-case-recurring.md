@@ -199,7 +199,7 @@ compiled relevant documentation below.
 
 *   Post-purchase: [Capture][capture], [Cancel][cancel], [Reversal][reversal].
 
-[basic-request]: /checkout-v3/get-started/payment-request-3-1/#create-payment-order
+[basic-request]: /checkout-v3/get-started/payment-request/#create-payment-order-v31
 [callback]: /checkout-v3/features/payment-operations/callback
 [cancel]: /checkout-v3/features/payment-operations/cancel
 [capture]: /checkout-v3/features/payment-operations/payment-order-capture

@@ -87,6 +87,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
+
 | Field           | Type     | Description                                                                  |
 | :-------------- | :------- | :--------------------------------------------------------------------------- |
 | `consumers`     | `string` | URL of the "consumers" endpoint. Resolved against the root endpoint URL.     |
@@ -128,6 +129,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
+
 |     Required     | Field                                     | Type     | Description                                                                                                                            |
 | :--------------: | :---------------------------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `operation`                               | `string` | `initiate-consumer-session`, the operation to perform.                                                                                 |
@@ -183,6 +185,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
+
 | Field                 | Type     | Description                                                                                                                                       |
 | :-------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `token`               | `string` | A session token used to initiate Checkout UI.                                                                                                     |
@@ -232,6 +235,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
+
 |     Required     | Field          | Type     | Description                 |
 | :--------------: | :------------- | :------- | :-------------------------- |
 | {% icon check %} | {% f paymentOrder, 0 %} | `object` | The payment order to create |
@@ -343,6 +347,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
+
 |     Required     | Field                | Type     | Description                               |
 | :--------------: | :------------------- | :------- | :---------------------------------------- |
 | {% icon check %} | {% f paymentOrder, 0 %}       | `object` | The changes to make to the payment order  |
@@ -475,6 +480,7 @@ Host: example.com
 ```
 
 {:.table .table-striped}
+
 |     Required     | Field     | Type     | Description                                                |
 | :--------------: | :-------- | :------- | :--------------------------------------------------------- |
 | {% icon check %} | `package` | `string` | The package name of the Android application to redirect to |
@@ -619,6 +625,7 @@ Host: example.com
 ```
 
 {:.table .table-striped}
+
 |     Required     | Field      | Type      | Description                                                         |
 | :--------------: | :--------- | :-------- | :------------------------------------------------------------------ |
 | {% icon check %} | `scheme`   | `string`  | The custom scheme for handling Swedbank Pay payment urls in the app |
@@ -650,6 +657,7 @@ Host: ecom.stage.payex.com
 ```
 
 {:.table .table-striped}
+
 |     Required     | Field      | Type     | Description                                            |
 | :--------------: | :--------- | :------- | :----------------------------------------------------- |
 | {% icon check %} | `target`   | `string` | The link to open when the button on the page is tapped |
@@ -676,7 +684,7 @@ Content-Type: text/html
     <div class="trampoline-container" onclick="redirect()">
     <img alt="Swedbank Pay Logo" src="/externalresourcehost/content/images/swedbank-pay-logo-vertical.png" />
     <span class="trampoline-text">
-            <a>Back to Your Ecom App</a>
+            <a>Back to Your E-Commerce App</a>
     </span>
 </div>
 
@@ -791,6 +799,7 @@ All these Merchant Backend problem types will have a URL in the format
 `https://api.payex.com/psp/errordetail/mobilesdk/<error-type>`.
 
 {:.table .table-striped}
+
 | Type             | Status | Description                                                                     |
 | :--------------- | :----: | :------------------------------------------------------------------------------ |
 | `gatewaytimeout` | `504`  | The Swedbank Pay API did not respond in time.                                   |
@@ -807,7 +816,7 @@ Your implementation is encouraged to define its own problem types for any domain
 [swagger-editor]: https://editor.swagger.io/?url=https://raw.githubusercontent.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/main/documentation/swedbankpaysdk_openapi.yaml
 [payment-url]: /checkout-v3/features/technical-reference/payment-url
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
-[create-payment-order]: /checkout-v3/get-started/payment-request-3-1/#create-payment-order
+[create-payment-order]: /checkout-v3/get-started/payment-request/#create-payment-order-v31
 [android-intent-scheme]: https://developer.chrome.com/docs/android/intents
 [ios-custom-scheme]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app
 [ios-universal-links]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content

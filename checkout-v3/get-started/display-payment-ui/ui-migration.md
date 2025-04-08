@@ -136,6 +136,7 @@ important URLs, but may not be exhaustive. Merchants need to stay up to date in
 case of URL changes, or if you need to whitelist URLs not listed here." %}
 
 {:.table .table-striped}
+
 | URL    | Description             |
 | :------ | :--------------- |
 | https://*.cdn-apple.com | URL needed for Apple Pay.     |
@@ -149,8 +150,8 @@ case of URL changes, or if you need to whitelist URLs not listed here." %}
 
 [custom-logo]: /checkout-v3/features/customize-ui/custom-logo/
 [csp]: https://www.w3.org/TR/CSP2/
-[post-response]: /checkout-v3/get-started/payment-request-3-1/#payment-order-response
-[post-request]: /checkout-v3/get-started/payment-request-3-1/#payment-order-request
+[post-response]: /checkout-v3/get-started/payment-request/#payment-order-response-v31
+[post-request]: /checkout-v3/get-started/payment-request/#payment-order-request-v31
 [pci]: /assets/documents/PCI-DSS-v4-0-1-SAQ-A.pdf
 [seamless-view]: /checkout-v3/get-started/display-payment-ui/seamless-view
 [redirect]: /checkout-v3/get-started/display-payment-ui/redirect

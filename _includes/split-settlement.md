@@ -103,7 +103,7 @@ having separate setups has a lot of pros:
     minimizes the work for your accounting department, as you won't have to
     invoice your sub-merchants.
 *   The subsite split is available for all payment methods we offer on
-    our eCom platform.
+    our e-commerce platform.
 
 ## Split Settlement Admin Functions
 

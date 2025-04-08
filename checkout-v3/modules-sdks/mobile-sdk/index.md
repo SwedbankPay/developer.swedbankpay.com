@@ -61,4 +61,4 @@ the scope of the SDK.
 [checkout-enterprise]: /old-implementations/enterprise
 [checkout-payments-only]: /checkout-v3
 [https]: /checkout-v3/get-started/fundamental-principles#connection-and-protocol
-[post-purchase-capture]: /checkout-v3/get-started/post-purchase#capture
+[post-purchase-capture]: /checkout-v3/get-started/post-purchase/#capture-v31

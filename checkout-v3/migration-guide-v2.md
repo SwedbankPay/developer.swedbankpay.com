@@ -143,6 +143,7 @@ provided below.
 ### Endpoints
 
 {:.table .table-striped}
+
 | Name    | Description             |
 | :------ | :--------------- |
 | Urls     | This will provide a report indicating the URLs you have supplied for this `paymentOrder`.      |
@@ -226,6 +227,7 @@ directly affect your responsibilities as an integrator and can be disregarded.
     %}
 
 {:.table .table-striped}
+
 | Field    | Description & Value           |
 | :------ | :--------------- |
 | "implementation"    | `PaymentsOnly` will be the default returned value.          |
@@ -238,6 +240,7 @@ directly affect your responsibilities as an integrator and can be disregarded.
 Further reading available in the [Events section][sv-events].
 
 {:.table .table-striped}
+
 | Event    | Description     |
 | :------ | :--------------- |
 | `onCheckoutLoaded`    | This event will trigger the first time the Checkout is loaded. Subscribe to this event if you need total control over the height of Swedbank Pay’s payment frame. This is the initial height of the frame when loaded.     |
@@ -616,7 +619,7 @@ relevant documentation below.
 
 [Seamless view events (Embedded menu)][sv-events]
 
-[3-1]: https://developer.swedbankpay.com/checkout-v3/get-started/payment-request-3-1
+[3-1]: https://developer.swedbankpay.com/checkout-v3/get-started/payment-request/#payment-order-v31
 [callback]: https://developer.swedbankpay.com/checkout-v3/features/payment-operations/callback
 [papm]: https://developer.swedbankpay.com/checkout-v3/features/optional/payer-aware-payment-menu
 [post-purchase]: https://developer.swedbankpay.com/checkout-v3/get-started/post-purchase
