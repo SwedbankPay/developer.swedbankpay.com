@@ -97,6 +97,11 @@ To see how your reports will look, you can check out our sample reports.
 No need to worry about these steps just yet. We will walk you through everything
 when we get there.
 
+{% include iterator.html next_href="setup"
+                         next_title="Test Account Setup" %}
+{% include iterator.html next_href="payment-request"
+                         next_title="Create Payment Request" %}
+
 [basic-implementation]: /assets/img/checkout/devp-get-started.png
 [delete-token]: /checkout-v3/features/optional/delete-token/
 [e-mail]: mailto:support.psp@swedbankpay.se
