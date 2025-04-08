@@ -67,7 +67,7 @@ future.
 ### Token Problems
 
 We will be making a change in the error messages that are given in response in
-the eCommerce API if the requested `Payment`/`One-Click`/`Recur`/`Unscheduled`
+the e-commerce API if the requested `Payment`/`One-Click`/`Recur`/`Unscheduled`
 token does not exist or is deleted.
 
 The following new `errorType` will be introduced (only for Payment Order):
@@ -246,7 +246,7 @@ previously failed transaction using either a `recurrence`- or `unscheduledToken`
 that can be done using card based payment methods. This limitation has up
 until now been handled by Swedbank Pay Acquiring, but will now be handled
 earlier in the transaction process - enabling us to provide better and clearer
-response messages through the eCommerce-api.
+response messages through the e-commerce API.
 
 To test these response messages, we have added new magic amounts in the
 [test data section][test-data]. The new amounts are for `DAILYLIMITEXCEEDED`,
@@ -773,7 +773,7 @@ Content-Type: application/json{% endcapture %}
 
 Caused By:
 
-*   During a create a sale call to e-com, Swish responded with 504 (Gateway Timeout).
+*   During a create a sale call to e-commerce, Swish responded with 504 (Gateway Timeout).
 
 {% capture response_header %}HTTP/1.1 504 Gateway Timeout
 Content-Type: application/json{% endcapture %}

@@ -282,13 +282,18 @@ amount is multiplied by 100.
 |   SEK 50.00 |      `5000` |
 |     € 10.00 |      `1000` |
 
-## Migration of eCom to Microsoft Azure - FAQ
+## Migration of E-Commerce to Microsoft Azure - FAQ
+
+We have gathered answers to the most common questions regarding the migration of
+our e-commerce platform and associated services to Microsoft Azure. The goal is
+to ensure that this transition takes place as smoothly as possible – without
+requiring any action from you as an integrated partner.
 
 {% capture acc-1 %}
 {: .p .pl-3 .pr-3  }
 We are upgrading our data centers to enhance performance, stability and
 security, while enabling innovation for our customers and partners. As part of
-this, our eCom platform and its services are migrating to Microsoft Azure.
+this, our e-commerce platform and its services are migrating to Microsoft Azure.
 {% endcapture %}
 {% include accordion-table.html content=acc-1 header_text='Why is this change being made?' header_expand_css='font-weight-normal' %}
 {% capture acc-2 %}
@@ -302,7 +307,7 @@ security and privacy.
 {% include accordion-table.html content=acc-2 header_text='Why did we choose Microsoft Azure?' header_expand_css='font-weight-normal' %}
 {% capture acc-3 %}
 {: .p .pl-3 .pr-3  }
-The migration means that our eCom platform and its services will run on
+The migration means that our e-commerce platform and its services will run on
 Microsoft’s cloud platform, Microsoft Azure. This is a technical improvement
 taking place in the background, which will result in enhanced performance for
 you.
@@ -397,12 +402,12 @@ always here to assist if needed.
 {% include accordion-table.html content=acc-12 header_text='What happens if an issue occurs during the migration to Microsoft Azure?' header_expand_css='font-weight-normal' %}
 {% capture acc-13 %}
 {: .p .pl-3 .pr-3  }
-Yes, you will have the opportunity to test our eCom platform in a Microsoft
-Azure-based test environment before the migration. We will contact you with more
-details on how and when you can perform the tests, including any necessary
-adjustments for your specific solution.
+Yes, you will have the opportunity to test our e-commerce platform in a
+Microsoft Azure-based test environment before the migration. We will contact you
+with more details on how and when you can perform the tests, including any
+necessary adjustments for your specific solution.
 {% endcapture %}
-{% include accordion-table.html content=acc-13 header_text='Can you test our eCom platform in the Microsoft Azure environment?' header_expand_css='font-weight-normal' %}
+{% include accordion-table.html content=acc-13 header_text='Can you test our e-commerce platform in the Microsoft Azure environment?' header_expand_css='font-weight-normal' %}
 {% capture acc-14 %}
 {: .p .pl-3 .pr-3  }
 We will provide an exact date later, but our goal is to carry out the migration
@@ -413,7 +418,7 @@ well in advance before it affects you.
 {% capture acc-15 %}
 {: .p .pl-3 .pr-3  }
 We are here to answer your questions. Where you should direct your inquiries
-depends on how you are connected to our eCom platform:
+depends on how you are connected to our e-commerce platform:
 
 *   **Are you a partner or technical provider?**
 Reach out your usual contact person at Swedbank Pay.
@@ -423,7 +428,7 @@ For technical questions:
 **Phone:** +46 8 411 10 80
 **Email:** support.psp@swedbankpay.se
 
-*   **Are you connected to our eCom platform via a partner or technical provider?**
+*   **Are you connected to our e-commerce platform via a partner or technical provider?**
 Reach out to your contact person at the partner or provider first.
 
 {: .p .pl-3 .pr-3  }
@@ -431,7 +436,7 @@ For technical questions:
 **Phone:** +46 8 411 10 80
 **Email:** support.psp@swedbankpay.se
 
-*   **Are you integrated directly with our eCom platform at Swedbank Pay?**
+*   **Are you integrated directly with our e-commerce platform at Swedbank Pay?**
 Reach out to your contact person at Swedbank Pay, Key Account Manager (KAM) or
 Technical Account Manager (TAM).
 

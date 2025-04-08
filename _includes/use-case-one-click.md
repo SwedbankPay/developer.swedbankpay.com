@@ -5,7 +5,7 @@ Looking to get started with One-Click or "Payer Aware Menu" to reduce
 friction? These are the supported payment methods:
 
 *   Cards: Masked PAN, Expiration Date and CVC
-*   Swish: MSIDSN – Only for eCom-flow
+*   Swish: MSIDSN – Only for e-commerce flow
 *   Vipps: MSIDSN
 *   Invoice: Email and MSIDSN
 *   Trustly: Preferred bank account

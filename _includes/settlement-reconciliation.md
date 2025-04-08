@@ -36,13 +36,13 @@ Swedbank Pay handles the settlement process on your behalf, (_called
 {% if documentation_section contains "checkout-v3" %}
 
 When choosing [Swedbank Pay Checkout][checkout-v3] we will always handle the
-settlement process for you, gathering all your eCommerce payments in one place.
+settlement process for you, gathering all your e-commerce payments in one place.
 Straighforward and time efficient.
 
 {% else %}
 
 When choosing [Swedbank Pay Checkout][checkout-v2] we will always handle the
-settlement process for you, gathering all your eCommerce payments in one place.
+settlement process for you, gathering all your e-commerce payments in one place.
 Straighforward and time efficient.
 
 {% endif %}
@@ -143,7 +143,7 @@ As with the Balance Report there are two versions of the Transaction List, and
 | `Reference`                     | `Decimal`  | The transaction reference from processor.                                                                                                                 |
 | `Swedbank Pay Account Number`   | `Decimal`  | The Account number given, shown in the Merchant Portal.                                                                                                    |
 | `Referenced Transaction Number` | `Decimal`  | Transaction number for the Authoriation transaction for a two-stage transaction or the number of the debit transaction if it is a credit transaction.     |
-| `Sales Channel`                 | `string`   | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via eCommerce APIs).                                                  |
+| `Sales Channel`                 | `string`   | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via e-commerce APIs).                                                  |
 | `Brand`                         | `string`   | No longer populated when using Digital Payments integrations.                                                                                    |
 | `Point Of Sale`                 | `string`   | If eligible, POS information as sent by merchant to Swedbank Pay.                                                                                         |
 
@@ -188,7 +188,7 @@ As with the Balance Report there are two versions of the Transaction List, and
 | `CreditCardBatchNo`             | `Decimal`  | The reference number from the credit card processor.                                                                                                      |
 | `Description`                   | `string`   | A textual description of the transaction, as sent by merchant to Swedbank Pay.                                                                            |
 | `ProductCategory`               | `string`   | A product number, as sent by merchant to Swedbank Pay.                                                                                                    |
-| `Sales Channel`                 | `string`   | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via eCommerce APIs).                                                  |
+| `Sales Channel`                 | `string`   | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via e-commerce APIs).                                                  |
 | `Brand`                         | `string`   | No longer populated when using Digital Payments integrations.                |
 | `Point Of Sale`                 | `string`   | If eligible, POS information as sent by merchant to Swedbank Pay.                                                                                         |
 

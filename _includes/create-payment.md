@@ -3,8 +3,8 @@
 
 ## Create Payment
 
-Within the {{ documentation_section }} part of the eCommerce API, you can create
-the following kind of payments:
+Within the {{ documentation_section }} part of the e-commerce API, you can
+create the following kind of payments:
 
 {% if documentation_section == 'card' %}
 
