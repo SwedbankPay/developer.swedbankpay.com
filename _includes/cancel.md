@@ -42,7 +42,7 @@ Content-Type: application/json{% endcapture %}
 | :--------------- | :----------------------- | :----------- | :------------------------------------------------------------------------------------ |
 | {% icon check %}︎ | `transaction`            | `string`     | The transaction object contains information about this cancellation.                  |
 | {% icon check %}︎ | {% f description %}    | `string`     | A textual description of the reason for the cancellation.                             |
-| {% icon check %}︎ | {% f payeeReference %} | `string` | {% include fields/payee-reference.md documentation_section=include.documentation_section %} |
+| {% icon check %}︎ | {% f payeeReference %} | `string(30)` | {% include fields/payee-reference.md documentation_section=include.documentation_section %} |
 
 ## Cancel Response
 

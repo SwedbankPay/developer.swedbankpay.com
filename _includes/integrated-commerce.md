@@ -86,7 +86,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 | {% f id %}                | `string`  | {% include fields/id.md resource="paymentorder" %}                 |
 | {% f instrument %}        | `string`  | Payment method used in the cancelled payment.                  |
 | {% f number, 2 %}         | `integer` | {% include fields/number.md %}                                     |
-| {% f payeeReference, 2 %} | `string`  | {% include fields/payee-reference.md %}                            |
+| {% f payeeReference, 2 %} | `string(30)`  | {% include fields/payee-reference.md %}                            |
 | {% f amount %}            | `integer` | {% include fields/amount.md %}                                     |
 | {% f referenceCode, 2 %}  | `string`  | A 16 digit reference code which can be used for tracking payments. |
 | {% f details %}           | `integer` | Details connected to the payment.                                  |

@@ -94,7 +94,7 @@ Content-Type: application/json{% endcapture %}
 |                  | {% f termsOfServiceUrl, 2 %} | `string`     | {% include fields/terms-of-service-url.md %}                                                                                                                                                                                                      |
 | {% icon check %}︎ | {% f payeeInfo %}          | `object`     | {% include fields/payee-info.md %}                                                                                                                                                                                                        |
 | {% icon check %}︎ | {% f payeeId, 2 %}           | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                     |
-| {% icon check %}︎ | {% f payeeReference, 2 %}    | `string` | {% include fields/payee-reference.md %}                                                                                                                                                                          |
+| {% icon check %}︎ | {% f payeeReference, 2 %}    | `string(30)` | {% include fields/payee-reference.md %}                                                                                                                                                                          |
 |                  | {% f payeeName, 2 %}         | `string`     | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                   |
 |                  | {% f productCategory, 2 %}   | `string(50)`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                            |
 |                  | {% f orderReference, 2 %}    | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
@@ -334,7 +334,7 @@ Content-Type: application/json{% endcapture %}
 | {% icon check %} | {% f amount %}         | `integer`    | {% include fields/amount.md currency="NOK" %}                         |
 | {% icon check %} | {% f vatAmount %}      | `integer`    | {% include fields/vat-amount.md currency="NOK" %}                      |
 | {% icon check %} | {% f description %}    | `string`     | A textual description of the capture                                             |
-| {% icon check %} | {% f payeeReference %} | `string` | {% include fields/payee-reference.md %} |
+| {% icon check %} | {% f payeeReference %} | `string(30)` | {% include fields/payee-reference.md %} |
 
 ## Reversal Response
 
