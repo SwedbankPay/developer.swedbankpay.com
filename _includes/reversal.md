@@ -52,7 +52,7 @@ Content-Type: application/json{% endcapture %}
 | {% icon check %} | {% f amount %}         | `integer`     | {% include fields/amount.md %}                                                |
 | {% icon check %} | {% f vatAmount %}      | `integer`     | {% include fields/vat-amount.md %}                                             |
 | {% icon check %} | {% f description %}    | `string`      | A textual description of the `reversal`.                                                 |
-| {% icon check %} | {% f payeeReference %} | `string` | {% include fields/payee-reference.md documentation_section=include.documentation_section %}          |
+| {% icon check %} | {% f payeeReference %} | `string(30)` | {% include fields/payee-reference.md documentation_section=include.documentation_section %}          |
 {% endcapture %}
 {% include accordion-table.html content = request_table
 %}
@@ -111,7 +111,7 @@ Content-Type: application/json{% endcapture %}
 | {% f amount, 2 %}         | `integer` | {% include fields/amount.md %}                                                                                                                                                                    |
 | {% f vatAmount, 2 %}      | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
 | {% f description, 2 %}    | `string`  | {% include fields/description.md documentation_section=include.documentation_section %}                                                                                                                                  |
-| {% f payeeReference, 2 %} | `string`  | {% include fields/payee-reference.md documentation_section=include.documentation_section %}                                                                                                                              |
+| {% f payeeReference, 2 %} | `string(30)`  | {% include fields/payee-reference.md documentation_section=include.documentation_section %}                                                                                                                              |
 | {% f failedReason, 2 %}   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | {% f isOperational, 2 %}  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
 | {% f operations, 2 %}     | `array`   | {% include fields/operations.md resource="transaction" %}                                                                                                  |

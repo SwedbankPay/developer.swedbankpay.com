@@ -273,7 +273,7 @@ api-supported-versions: 3.0{% endcapture %}
 | {% f amount, 2 %}           | `integer`    | {% include fields/amount.md %}                                                                                                                                                                         |
 | {% f vatAmount, 2 %}        | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                      |
 | {% f description, 2 %}      | `string`     | {% include fields/description.md %}                                                                                                                                   |
-| {% f payeeReference, 2 %}   | `string`     | {% include fields/payee-reference.md describe_receipt=true %}                                                                                              |
+| {% f payeeReference, 2 %}   | `string(30)`     | {% include fields/payee-reference.md describe_receipt=true %}                                                                                              |
 
 | {% f receiptReference, 2 %} | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation.  It is used to supplement `payeeReference` as an additional receipt number. |
 {% endcapture %}
@@ -369,7 +369,7 @@ Content-Type: application/json;version=3.0     // Version optional, can be set i
 | :--------------: | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------- |
 | {% icon check %} | `transaction`            | `object`     | The transaction object.                                                                        |
 | {% icon check %} | {% f description %}    | `string`     | A textual description of why the transaction is cancelled.                                     |
-| {% icon check %} | {% f payeeReference %} | `string` | {% include fields/payee-reference.md %} |
+| {% icon check %} | {% f payeeReference %} | `string(30)` | {% include fields/payee-reference.md %} |
 
 {: .text-right .mt-3}
 [Top of page](#payment-order-v30)
@@ -430,7 +430,7 @@ api-supported-versions: 3.0{% endcapture %}
 | {% f vatAmount, 2 %}      | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
 
 | {% f description, 2 %}    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
-| {% f payeeReference, 2 %} | `string`  | {% include fields/payee-reference.md describe_receipt=true %}                                                                                         |
+| {% f payeeReference, 2 %} | `string(30)`  | {% include fields/payee-reference.md describe_receipt=true %}                                                                                         |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
@@ -637,7 +637,7 @@ api-supported-versions: 3.0{% endcapture %}
 | {% f amount, 2 %}                 | `integer`    | {% include fields/amount.md %}                                                    |
 | {% f vatAmount, 2 %}              | `integer`    | {% include fields/vat-amount.md %}                                                |
 | {% f description, 2 %}            | `string`     | A human readable description of maximum 40 characters of the transaction.         |
-| {% f payeeReference, 2 %}         | `string`     | {% include fields/payee-reference.md describe_receipt=true %}                     |
+| {% f payeeReference, 2 %}         | `string(30)`     | {% include fields/payee-reference.md describe_receipt=true %}                     |
 | {% f receiptReference %}          | `string(30)` | {% include fields/receipt-reference.md %}                                         |
 | {% f isOperational, 2 %}          | `boolean`    | `true`  if the transaction is operational; otherwise  `false` .                   |
 | {% f reconciliationNumber, 2 %}   | `string`     | The number of the reconciliation batch file where the transaction can be found.   |

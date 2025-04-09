@@ -215,7 +215,7 @@ Content-Type: application/json
 | {% icon check %}︎ | {% f amount %}         | `integer`    | {% include fields/amount.md %}                                        |
 | {% icon check %}︎ | {% f vatAmount %}      | `integer`    | {% include fields/vat-amount.md %}                                     |
 | {% icon check %}︎ | {% f description %}    | `string`     | A textual description of this reversal.                                            |
-| {% icon check %}︎ | {% f payeeReference %} | `string` | {% include fields/payee-reference.md %} |
+| {% icon check %}︎ | {% f payeeReference %} | `string(30)` | {% include fields/payee-reference.md %} |
 
 ## Reversal Response
 

@@ -43,7 +43,7 @@ Content-Type: application/json{% endcapture %}
 | {% icon check %} | {% f amount %}         | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
 | {% icon check %} | {% f vatAmount %}      | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
 | {% icon check %} | {% f description %}    | `string`      | A textual description of the capture transaction.                                                             |
-| {% icon check %} | {% f payeeReference %} | `string` | {% include fields/payee-reference.md %}                               |
+| {% icon check %} | {% f payeeReference %} | `string(30)` | {% include fields/payee-reference.md %}                               |
 
 ## Capture Response
 
