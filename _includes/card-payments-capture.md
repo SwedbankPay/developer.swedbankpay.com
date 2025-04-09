@@ -39,7 +39,7 @@ Content-Type: application/json{% endcapture %}
 | {% icon check %} | {% f amount %}         | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
 | {% icon check %} | {% f vatAmount %}      | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
 | {% icon check %} | {% f description %}    | `string`      | A textual description of the capture transaction.                                                             |
-| {% icon check %} | {% f payeeReference %} | `string` | {% include fields/payee-reference.md %}                               |
+| {% icon check %} | {% f payeeReference %} | `string(30)` | {% include fields/payee-reference.md %}                               |
 
 ## Capture Response
 
@@ -90,7 +90,7 @@ Content-Type: application/json{% endcapture %}
 | {% f amount, 2 %}         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.                                                                                         |
 | {% f vatAmount, 2 %}      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
 | {% f description, 2 %}    | `string`  | A human readable description of maximum 40 characters of the transaction                                                                                                                                     |
-| {% f payeeReference, 2 %} | `string`  | {% include fields/payee-reference.md %}                                                                                                                              |
+| {% f payeeReference, 2 %} | `string(30)`  | {% include fields/payee-reference.md %}                                                                                                                              |
 | {% f failedReason, 2 %}   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | {% f isOperational, 2 %}  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
 | {% f operations, 2 %}     | `array`   | {% include fields/operations.md %}                                                                                                  |
