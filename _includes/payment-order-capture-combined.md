@@ -177,7 +177,7 @@ api-supported-versions: 3.0/2.0{% endcapture %}
 | {% f amount, 2 %}           | `integer`    | {% include fields/amount.md %}                                                                                                                                                                         |
 | {% f vatAmount, 2 %}        | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                      |
 | {% f description, 2 %}      | `string`     | {% include fields/description.md %}                                                                                                                                   |
-| {% f payeeReference, 2 %}   | `string`     | {% include fields/payee-reference.md describe_receipt=true %}                                                                                              |
+| {% f payeeReference, 2 %}   | `string(30)`     | {% include fields/payee-reference.md describe_receipt=true %}                                                                                              |
 | {% f receiptReference, 2 %} | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation.  It is used to supplement `payeeReference` as an additional receipt number. |
 {% endcapture %}
 {% include accordion-table.html content=table %}

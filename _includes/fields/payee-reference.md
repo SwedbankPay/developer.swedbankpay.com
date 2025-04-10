@@ -18,8 +18,8 @@
     ensure an exactly-once delivery of a transactional operation. Length and
     content validation depends on whether the `transaction.number` or the
     `payeeReference` is sent to the acquirer. **If Swedbank Pay handles the**
-    **settlement**, the `transaction.number` is sent and the `payeeReference`
-    must be in the format of `A-Za-z0-9` and
+    **settlement**, the `transaction.number` is sent to the acquirer and the
+    `payeeReference` must be in the format of `A-Za-z0-9` and
     `string({{ payee_reference_max_length }})`. **If you handle the settlement**,
     Swedbank Pay will send the `payeeReference` and it will be limited to the
     format of `string(12)`. All characters **must be digits**.

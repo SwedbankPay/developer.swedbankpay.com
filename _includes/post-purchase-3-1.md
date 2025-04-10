@@ -394,7 +394,7 @@ Content-Type: application/json;version=3.1{% endcapture %}
 | {% icon check %} | `transaction`            | `object`     | The transaction object.                                                                        |
 
 | {% icon check %} | {% f description %}    | `string`     | A textual description of why the transaction is cancelled.                                     |
-| {% icon check %} | {% f payeeReference %} | `string` | {% include fields/payee-reference.md %} |
+| {% icon check %} | {% f payeeReference %} | `string(30)` | {% include fields/payee-reference.md %} |
 
 {: .text-right}
 [Top of page](#payment-order-v31)
