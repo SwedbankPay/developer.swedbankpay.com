@@ -175,13 +175,11 @@ detect and address issues in real-time.
 {% include accordion-table.html content=acc-5 header_text='How will this change affect the stability of callbacks?' header_expand_css='font-weight-normal' %}
 {% capture acc-6 %}
 {: .p .pl-3 .pr-3  }
-We understand that some merchants may not complete the update before March 12.
-Therefore, we will continue to run callbacks from the current solution during a
-grace period.
-
-{: .p .pl-3 .pr-3  }
-However, it is important to migrate as soon as possible, as we will gradually
-phase out the old solution to reduce system maintenance and complexity.
+We will continue to run callbacks from the current solution during a grace
+period. Regardless, we highly recommend whitelisting the new IP adresses as soon
+as possible, as we will gradually phase out the old solution to reduce system
+maintenance and complexity. The whitelisting **must** be completed by
+**September 15th**.
 
 {: .p .pl-3 .pr-3  }
 We will:
