@@ -539,7 +539,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 | | {% f callbackUrl, 2 %}         | `string`     | {% include fields/callback-url.md %} For recurring transactions, the callback will only be sent for Trustly transactions, not card.                    |
 | {% icon check %} | {% f payeeInfo %}            | `object`     | {% include fields/payee-info.md %}                                               |
 | {% icon check %} | {% f payeeId, 2 %}             | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.          |
-| {% icon check %} | {% f payeeReference %}       | `string` | {% include fields/payee-reference.md describe_receipt=true %}                   |
+| {% icon check %} | {% f payeeReference %}       | `string(30)` | {% include fields/payee-reference.md describe_receipt=true %}                   |
 |                  | {% f receiptReference %}     | `string(30)` | {% include fields/receipt-reference.md %}                                              |
 | {% icon check %} | {% f payeeName, 2 %}           | `string`     | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                       |
 | {% icon check %} | {% f productCategory, 2 %}     | `string(50)`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                        |
