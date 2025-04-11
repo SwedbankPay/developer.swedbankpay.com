@@ -16,7 +16,7 @@ Among the operations in the POST `paymentOrders` response, you will find the
     "operations": [
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/payment/core/js/px.payment.client.js?token=dd728a47e3ec7be442c98eafcfd9b0207377ce04c793407eb36d07faa69a32df&culture=sv-SE&_tc_tid=30f2168171e142d38bcd4af2c3721959",
+            "href": "https://ecom.externalintegration.payex.com/checkout/client/1c168a5f971f0cacd00124d1b9ee13e5ecf6e3e74e59cb510035973b38c2c3b3?culture=sv-SE&_tc_tid=123a825592f2002942e5f13eee012b11",
             "rel": "view-checkout",
             "contentType": "application/javascript"
         },
@@ -45,33 +45,29 @@ this example.
 **JavaScript**
 
 ```js
-var request = new XMLHttpRequest();
-request.addEventListener('load', function () {
-    response = JSON.parse(this.responseText);
-    var script = document.createElement('script');
-    var operation = response.operations.find(function (o) {
-        return o.rel === 'view-checkout';
-    });
-    script.setAttribute('src', operation.href);
-    script.onload = function () {
-        // When the 'view-checkout' script is loaded, we can initialize the
-        // Payment Menu inside 'checkout-container'.
-        payex.hostedView.checkout({
-            container: {
-                checkout: "checkout-container"
-            },
-            culture: 'nb-No',
-        }).open();
-    };
-    // Append the Checkout script to the <head>
-    var head = document.getElementsByTagName('head')[0];
-    head.appendChild(script);
-});
-// Like before, you should replace the address here with
-// your own endpoint.
-request.open('GET', '<Your-Backend-Endpoint-Here>', true);
-request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-request.send();
+// For this example, we'll be simply adding in the view-checkout link right in
+// the script. In your own solution, it's recommended that your backend
+// generates the payment and passes the operation to your frontend.
+const url = new URL("https://ecom.externalintegration.payex.com/checkout/client/1c168a5f971f0cacd00124d1b9ee13e5ecf6e3e74e59cb510035973b38c2c3b3?culture=sv-SE&_tc_tid=123a825592f2002942e5f13eee012b11");
+
+const script = document.createElement("script");
+script.src = url.href;
+script.type = "text/javascript";
+script.id = "payex-checkout-script";
+script.onload = function() {
+    payex.hostedView.checkout({
+        // The container is the ID of the HTML element you want to place
+        // our solution inside of.
+        container: {
+            checkout: "payex-checkout"
+        },
+        culture: "sv-SE",
+        // This is where you can add your own seamless events.
+        // See the section "Events" down below for more information.
+        onError: Function = (data) => console.log("onError", data)
+    }).open();
+}
+document.body.insertAdjacentElement("afterbegin", script);
 ```
 
 {:.code-view-header}
@@ -84,7 +80,7 @@ request.send();
           <title>Swedbank Pay Checkout is Awesome!</title>
       </head>
       <body>
-          <div id="checkout-container"></div>
+          <div id="payex-checkout"></div>
           <!-- Here you can specify your own javascript file -->
           <script src="<Your-JavaScript-File-Here>"></script>
       </body>
