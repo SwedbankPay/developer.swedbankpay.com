@@ -191,23 +191,39 @@ We will:
 {% include accordion-table.html content=acc-6 header_text='What happens if we don’t make the change in time?' header_expand_css='font-weight-normal' %}
 {% capture acc-7 %}
 {: .p .pl-3 .pr-3  }
+IP whitelisting means allowing traffic from specific IP addresses through your
+firewall or other security settings. In this case, it means that you need to
+allow our new IP addresses so that you can receive technical messages
+(callbacks) from us.
+{% endcapture %}
+{% include accordion-table.html content=acc-7 header_text='What does IP whitelisting mean?' header_expand_css='font-weight-normal' %}
+{% capture acc-8 %}
+{: .p .pl-3 .pr-3  }
+If you're not managing your technical settings yourself, we recommend reaching
+out to your technical provider or the partner responsible for operating your
+solution or infrastructure. They can help ensure the IP whitelisting is set up
+correctly so everything works as expected.
+{% endcapture %}
+{% include accordion-table.html content=acc-8 header_text='What should I do if I don’t know how to whitelist IP addresses?' header_expand_css='font-weight-normal' %}
+{% capture acc-9 %}
+{: .p .pl-3 .pr-3  }
 We recommend that merchants allow both the old and new IP addresses during the
 transition period. This ensures stable callback functionality, even if network
 issues arise during the migration.
 {% endcapture %}
-{% include accordion-table.html content=acc-7 header_text='Recommendations during the grace period' header_expand_css='font-weight-normal' %}
-{% capture acc-8 %}
+{% include accordion-table.html content=acc-9 header_text='Recommendations during the grace period' header_expand_css='font-weight-normal' %}
+{% capture acc-10 %}
 {: .p .pl-3 .pr-3  }
-Merchants must implement IP blocking (IP allowlisting). FQDN (domain name
+Merchants must implement IP blocking (IP whitelisting). FQDN (domain name
 blocking) is not supported in this case, as we use fixed IP addresses.
 {% endcapture %}
-{% include accordion-table.html content=acc-8 header_text='Do we need to implement IP blocking or FQDN blocking in our firewall?' header_expand_css='font-weight-normal' %}
-{% capture acc-9 %}
+{% include accordion-table.html content=acc-10 header_text='Do we need to implement IP blocking or FQDN blocking in our firewall?' header_expand_css='font-weight-normal' %}
+{% capture acc-11 %}
 {: .p .pl-3 .pr-3  }
 If you have any questions or need support during implementation, please contact
 your TOM/TAM or our support team.
 {% endcapture %}
-{% include accordion-table.html content=acc-9 header_text='Who can we contact for assistance?' header_expand_css='font-weight-normal' %}
+{% include accordion-table.html content=acc-11 header_text='Who can we contact for assistance?' header_expand_css='font-weight-normal' %}
 
 {: .text-right .mt-3}
 
