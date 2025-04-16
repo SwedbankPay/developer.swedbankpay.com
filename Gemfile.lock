@@ -27,7 +27,9 @@ GEM
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
-    ffi (1.17.1)
+    ffi (1.17.2-x64-mingw32)
+    ffi (1.17.2-x86_64-darwin)
+    ffi (1.17.2-x86_64-linux-gnu)
     forwardable-extended (2.6.0)
     gemoji (4.0.1)
     google-protobuf (3.25.6-x64-mingw32)
@@ -196,7 +198,7 @@ PLATFORMS
 
 DEPENDENCIES
   faraday (~> 2.8.1)
-  ffi (= 1.17.1)
+  ffi (= 1.17.2)
   html-proofer (>= 4)
   html-proofer-unrendered-markdown (>= 0.2)
   jekyll (~> 4.3)
