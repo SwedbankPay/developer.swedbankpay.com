@@ -7,6 +7,18 @@ menu_order: 2
 has_release_notes: true
 ---
 
+## 22 April 2025
+
+### Version 5.3.7
+
+A success always warrants a repeat, so a new FAQ section is going live today!
+This time we are addressing everything you need to know about
+[E-Coms migration to Microsoft Azure][azure-faq].
+
+We have also made some small additions to the
+[Callback FAQ section][callback-faq]. Mainly clarifications about the grace
+period and whitelisting.
+
 ## 1 April 2025
 
 ### Version 5.3.6
@@ -1167,6 +1179,7 @@ more convenient for both the integration and the payer.
 [apple-pay]: /checkout-v3/apple-pay-presentation
 [astopb]: /checkout-v3/features/customize-ui/action-specific-text-on-payment-button
 [authorization-timeouts]: /old-implementations/checkout-v2/capture
+[azure-faq]: /checkout-v3/get-started/fundamental-principles/#migration-of-e-commerce-to-microsoft-azure---faq
 [bare-min]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/
 [btb]: /checkout-v3/features/balancing-the-books/
 [callback]: /checkout-v3/features/payment-operations/callback
