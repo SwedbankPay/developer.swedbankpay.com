@@ -245,6 +245,7 @@
 <li class="nav-leaf"><a href="/checkout-v3/get-started/fundamental-principles/#uniform-responses">Uniform Responses</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/get-started/fundamental-principles/#expansion">Expansion</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/get-started/fundamental-principles/#data-types">Data Types</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/get-started/fundamental-principles/#migration-of-e-commerce-to-microsoft-azure---faq">Migration of E-Commerce to Microsoft Azure - FAQ</a></li>
           
       </ul>
         </li>
@@ -5846,7 +5847,7 @@ future.</p>
       </h3>
 
 <p>We will be making a change in the error messages that are given in response in
-the eCommerce API if the requested <code class="language-html highlighter-rouge">Payment</code>/<code class="language-html highlighter-rouge">One-Click</code>/<code class="language-html highlighter-rouge">Recur</code>/<code class="language-html highlighter-rouge">Unscheduled</code>
+the e-commerce API if the requested <code class="language-html highlighter-rouge">Payment</code>/<code class="language-html highlighter-rouge">One-Click</code>/<code class="language-html highlighter-rouge">Recur</code>/<code class="language-html highlighter-rouge">Unscheduled</code>
 token does not exist or is deleted.</p>
 
 <p>The following new <code class="language-html highlighter-rouge">errorType</code> will be introduced (only for Payment Order):
@@ -6331,7 +6332,7 @@ previously failed transaction using either a <code class="language-html highligh
 that can be done using card based payment methods. This limitation has up
 until now been handled by Swedbank Pay Acquiring, but will now be handled
 earlier in the transaction process - enabling us to provide better and clearer
-response messages through the eCommerce-api.</p>
+response messages through the e-commerce API.</p>
 
 <p>To test these response messages, we have added new magic amounts in the
 <a href="/checkout-v3/test-data/#magic-amounts-error-testing-using-amounts">test data section</a>. The new amounts are for <code class="language-html highlighter-rouge">DAILYLIMITEXCEEDED</code>,
@@ -7671,7 +7672,7 @@ following URL structure:</p>
 <p>Caused By:</p>
 
 <ul>
-  <li>During a create a sale call to e-com, Swish responded with 504 (Gateway Timeout).</li>
+  <li>During a create a sale call to e-commerce, Swish responded with 504 (Gateway Timeout).</li>
 </ul>
 
 <p class="code-view-header">

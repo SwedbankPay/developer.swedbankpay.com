@@ -245,6 +245,7 @@
 <li class="nav-leaf"><a href="/checkout-v3/get-started/fundamental-principles/#uniform-responses">Uniform Responses</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/get-started/fundamental-principles/#expansion">Expansion</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/get-started/fundamental-principles/#data-types">Data Types</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/get-started/fundamental-principles/#migration-of-e-commerce-to-microsoft-azure---faq">Migration of E-Commerce to Microsoft Azure - FAQ</a></li>
           
       </ul>
         </li>
@@ -5852,9 +5853,9 @@ and we strongly advise you to whitelist them as soon as possible:
     </button>
     <div class="accordion-body" id="accordion-1">
         
-<p class="p pl-3 pr-3">We will be updating the IP addresses from which callbacks for eCommerce payments
-are sent. This change will affect the external integration for both test and
-production environments.</p>
+<p class="p pl-3 pr-3">We will be updating the IP addresses from which callbacks for e-commerce
+payments are sent. This change will affect the external integration for both
+test and production environments.</p>
 
 <p class="p pl-3 pr-3">The current IP addresses are <code class="language-html highlighter-rouge">91.132.170.1</code> and <code class="language-html highlighter-rouge">51.107.183.58</code>. The new IP range
 will be <code class="language-html highlighter-rouge">20.91.170.120 – 127</code>, with the prefix (<code class="language-html highlighter-rouge">20.91.170.120/29</code>).</p>
@@ -5961,12 +5962,11 @@ detect and address issues in real-time.</p>
     </button>
     <div class="accordion-body" id="accordion-1">
         
-<p class="p pl-3 pr-3">We understand that some merchants may not complete the update before March 12.
-Therefore, we will continue to run callbacks from the current solution during a
-grace period.</p>
-
-<p class="p pl-3 pr-3">However, it is important to migrate as soon as possible, as we will gradually
-phase out the old solution to reduce system maintenance and complexity.</p>
+<p class="p pl-3 pr-3">We will continue to run callbacks from the current solution during a grace
+period. Regardless, we highly recommend whitelisting the new IP adresses as soon
+as possible, as we will gradually phase out the old solution to reduce system
+maintenance and complexity. The whitelisting <strong>must</strong> be completed by
+<strong>September 15th</strong>.</p>
 
 <p class="p pl-3 pr-3">We will:</p>
 
@@ -5978,6 +5978,36 @@ phase out the old solution to reduce system maintenance and complexity.</p>
     <p>Actively monitor merchants and partners to ensure a smooth transition.</p>
   </li>
 </ul>
+
+    </div>
+</div>
+
+<div class="accordion">
+    <button type="button" class="accordion-header" aria-expanded="false" aria-controls="accordion-1">
+        <span class="mr-3 show font-weight-normal">What does IP whitelisting mean?</span>
+        <span class="mr-3 hide ">What does IP whitelisting mean?</span>
+    </button>
+    <div class="accordion-body" id="accordion-1">
+        
+<p class="p pl-3 pr-3">IP whitelisting means allowing traffic from specific IP addresses through your
+firewall or other security settings. In this case, it means that you need to
+allow our new IP addresses so that you can receive technical messages
+(callbacks) from us.</p>
+
+    </div>
+</div>
+
+<div class="accordion">
+    <button type="button" class="accordion-header" aria-expanded="false" aria-controls="accordion-1">
+        <span class="mr-3 show font-weight-normal">What should I do if I don’t know how to whitelist IP addresses?</span>
+        <span class="mr-3 hide ">What should I do if I don’t know how to whitelist IP addresses?</span>
+    </button>
+    <div class="accordion-body" id="accordion-1">
+        
+<p class="p pl-3 pr-3">If you’re not managing your technical settings yourself, we recommend reaching
+out to your technical provider or the partner responsible for operating your
+solution or infrastructure. They can help ensure the IP whitelisting is set up
+correctly so everything works as expected.</p>
 
     </div>
 </div>
@@ -6003,7 +6033,7 @@ issues arise during the migration.</p>
     </button>
     <div class="accordion-body" id="accordion-1">
         
-<p class="p pl-3 pr-3">Merchants must implement IP blocking (IP allowlisting). FQDN (domain name
+<p class="p pl-3 pr-3">Merchants must implement IP blocking (IP whitelisting). FQDN (domain name
 blocking) is not supported in this case, as we use fixed IP addresses.</p>
 
     </div>
@@ -6618,9 +6648,9 @@ and we strongly advise you to whitelist them as soon as possible:
     </button>
     <div class="accordion-body" id="accordion-1">
         
-<p class="p pl-3 pr-3">We will be updating the IP addresses from which callbacks for eCommerce payments
-are sent. This change will affect the external integration for both test and
-production environments.</p>
+<p class="p pl-3 pr-3">We will be updating the IP addresses from which callbacks for e-commerce
+payments are sent. This change will affect the external integration for both
+test and production environments.</p>
 
 <p class="p pl-3 pr-3">The current IP addresses are <code class="language-html highlighter-rouge">91.132.170.1</code> and <code class="language-html highlighter-rouge">51.107.183.58</code>. The new IP range
 will be <code class="language-html highlighter-rouge">20.91.170.120 – 127</code>, with the prefix (<code class="language-html highlighter-rouge">20.91.170.120/29</code>).</p>
@@ -6727,12 +6757,11 @@ detect and address issues in real-time.</p>
     </button>
     <div class="accordion-body" id="accordion-1">
         
-<p class="p pl-3 pr-3">We understand that some merchants may not complete the update before March 12.
-Therefore, we will continue to run callbacks from the current solution during a
-grace period.</p>
-
-<p class="p pl-3 pr-3">However, it is important to migrate as soon as possible, as we will gradually
-phase out the old solution to reduce system maintenance and complexity.</p>
+<p class="p pl-3 pr-3">We will continue to run callbacks from the current solution during a grace
+period. Regardless, we highly recommend whitelisting the new IP adresses as soon
+as possible, as we will gradually phase out the old solution to reduce system
+maintenance and complexity. The whitelisting <strong>must</strong> be completed by
+<strong>September 15th</strong>.</p>
 
 <p class="p pl-3 pr-3">We will:</p>
 
@@ -6744,6 +6773,36 @@ phase out the old solution to reduce system maintenance and complexity.</p>
     <p>Actively monitor merchants and partners to ensure a smooth transition.</p>
   </li>
 </ul>
+
+    </div>
+</div>
+
+<div class="accordion">
+    <button type="button" class="accordion-header" aria-expanded="false" aria-controls="accordion-1">
+        <span class="mr-3 show font-weight-normal">What does IP whitelisting mean?</span>
+        <span class="mr-3 hide ">What does IP whitelisting mean?</span>
+    </button>
+    <div class="accordion-body" id="accordion-1">
+        
+<p class="p pl-3 pr-3">IP whitelisting means allowing traffic from specific IP addresses through your
+firewall or other security settings. In this case, it means that you need to
+allow our new IP addresses so that you can receive technical messages
+(callbacks) from us.</p>
+
+    </div>
+</div>
+
+<div class="accordion">
+    <button type="button" class="accordion-header" aria-expanded="false" aria-controls="accordion-1">
+        <span class="mr-3 show font-weight-normal">What should I do if I don’t know how to whitelist IP addresses?</span>
+        <span class="mr-3 hide ">What should I do if I don’t know how to whitelist IP addresses?</span>
+    </button>
+    <div class="accordion-body" id="accordion-1">
+        
+<p class="p pl-3 pr-3">If you’re not managing your technical settings yourself, we recommend reaching
+out to your technical provider or the partner responsible for operating your
+solution or infrastructure. They can help ensure the IP whitelisting is set up
+correctly so everything works as expected.</p>
 
     </div>
 </div>
@@ -6769,7 +6828,7 @@ issues arise during the migration.</p>
     </button>
     <div class="accordion-body" id="accordion-1">
         
-<p class="p pl-3 pr-3">Merchants must implement IP blocking (IP allowlisting). FQDN (domain name
+<p class="p pl-3 pr-3">Merchants must implement IP blocking (IP whitelisting). FQDN (domain name
 blocking) is not supported in this case, as we use fixed IP addresses.</p>
 
     </div>

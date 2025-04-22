@@ -245,6 +245,7 @@
 <li class="nav-leaf"><a href="/checkout-v3/get-started/fundamental-principles/#uniform-responses">Uniform Responses</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/get-started/fundamental-principles/#expansion">Expansion</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/get-started/fundamental-principles/#data-types">Data Types</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/get-started/fundamental-principles/#migration-of-e-commerce-to-microsoft-azure---faq">Migration of E-Commerce to Microsoft Azure - FAQ</a></li>
           
       </ul>
         </li>
@@ -5716,8 +5717,7 @@ needed.</p>
 steps below to get started.</p>
 
 <ol>
-  <li>Download the <a href="https://ecom.payex.com/.well-known/apple-developer-merchantid-domain-association" target="_blank">domain file</a>
-   (right click and “Save as”).
+  <li>Download the <a href="https://ecom.payex.com/.well-known/apple-developer-merchantid-domain-association" target="_blank">domain file</a>.
     <ul>
       <li>Make sure you do not change, edit or manipulate the file in any way,
 shape or form.</li>
@@ -5743,9 +5743,24 @@ should see a series of letters and numbers.
       <li>You can compare it to our own verification file, found on
 <a href="https://ecom.payex.com/.well-known/apple-developer-merchantid-domain-association" target="_blank">this site</a>.</li>
       <li>If done correctly, they should look identical.</li>
+      <li>The verification file is a hex string that contains a <strong>JSON</strong>. If
+the file is modified or the file is saved in a different format, this may
+cause the validation to fail.</li>
     </ul>
   </li>
+  <li>Once the previous steps have been completed, get in touch with us to
+activate Apple Pay. If you have further questions about how to upload the
+file and make it available, contact your domain administrator or provider
+for further instructions and assistance.</li>
 </ol>
+    
+      <h3 id="ios-sdk">
+        
+        
+          iOS SDK <a href="#ios-sdk" class="header-anchor"></a>
+        
+        
+      </h3>
 
 <p>If you’re using our <strong>iOS SDK</strong>, make sure that the <code class="language-html highlighter-rouge">webViewBaseURL</code> is set to
 the same domain as where you host the file. If you’re presenting Seamless View
@@ -5757,13 +5772,6 @@ may not function. You also need to make sure that Apple Pay scripts are allowed
 to be loaded and executed in the web view (relevant if you’re implementing
 <code class="language-html highlighter-rouge">WKNavigationDelegate</code> and your own
 <code class="language-html highlighter-rouge">webView(_:decidePolicyFor:decisionHandler:)</code> implementation).</p>
-
-<p>Once the previous steps have been completed, get in touch with us to activate
-Apple Pay. The verification file is a hex string that contains a <strong>JSON</strong>. If
-the file is modified or the file is saved in a different format, this may cause
-the validation to fail. If you have further questions about how to upload the
-file and make it available, contact your domain administrator or provider for
-further instructions and assistance.</p>
     
       <h2 id="apple-pay-terms-and-conditions">
         
