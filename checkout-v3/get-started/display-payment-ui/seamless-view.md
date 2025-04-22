@@ -132,84 +132,58 @@ Note that in this diagram, the Payer refers to the merchant front-end
 
 ```mermaid
 sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-    participant 3rdParty
+participant Payer
+participant Merchant
+participant SwedbankPay as Swedbank Pay
+participant 3rdParty
 
-        rect rgba(238, 112, 35, 0.05)
-            activate Payer
-            Payer ->>+ Merchant: Initiate Purchase
-            deactivate Payer
-            Merchant ->>+ SwedbankPay: POST /psp/paymentorders (hostUrls, paymentUrl, payer information)
-            deactivate Merchant
-            SwedbankPay -->>+ Merchant: rel:view-checkout
-            deactivate SwedbankPay
-                        Merchant -->>- Payer: Display SwedbankPay Payment Menu on Merchant Page
+rect rgba(238, 112, 35, 0.05)
     activate Payer
+    Payer ->>+ Merchant: Initiate Purchase
+    Merchant ->>+ SwedbankPay: POST /psp/paymentorders (hostUrls, paymentUrl, payer information)
+    SwedbankPay -->>- Merchant: rel:view-checkout
+    Merchant -->>- Payer: Display SwedbankPay Checkout on Merchant Page
     Payer ->> Payer: Initiate Purchase step
-    deactivate Payer
+    Payer ->>+ SwedbankPay: Do purchase logic
     activate SwedbankPay
-        SwedbankPay ->>+ Payer: Do purchase logic
-    Payer ->> SwedbankPay: Do purchase logic
-    deactivate Payer
+
+    opt Payer performs purchase out of iFrame
+        SwedbankPay ->>- Payer: Redirect to 3rd party required
+        Payer ->>+ 3rdParty: Redirecting to 3rd party URL
+        3rdParty -->>- Payer: Redirect back to paymentUrl (merchant)
+        Payer ->> Payer: Initiate Checkout Seamless View (open iframe)
+        Payer ->>+ SwedbankPay: Check purchase status
+    end
+
+    SwedbankPay -->>- Payer: Purchase status
     deactivate SwedbankPay
 
-                opt Payer performs purchase out of iFrame
-                    activate Payer
-                    Payer ->> Payer: Redirect to 3rd party
-                    Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
-                    deactivate Payer
-                    3rdParty -->>+ Payer: Redirect back to paymentUrl (merchant)
-                    deactivate 3rdParty
-                    Payer ->> Payer: Initiate Payment Menu Seamless View (open iframe)
-                    Payer ->>+ SwedbankPay: Show Payment UI page in iframe
-                    deactivate Payer
-                end
+    alt If the purchase is completed
+        Payer ->>+ SwedbankPay: GET <paymentorder.id>
+        SwedbankPay ->>- Payer: Status: Paid
+        Payer ->> Payer: Show Purchase complete
+        Payer ->> Payer: Event: onPaid ①
+        note right of Payer: Unless you override OnPaid, this will<br/>cause a redirect to the CompleteUrl
+    else If the purchase attampt has failed
+        Payer ->>+ SwedbankPay: GET {paymentorder.id}
+        SwedbankPay -->>- Payer: Status: Failed
+        Payer -->> Payer: Display error message in the Payment UI
+        Payer ->> Payer: Event: onPaymentAttemptFailed ①
+    end
 
-                activate SwedbankPay
-                SwedbankPay -->> Payer: Purchase status
-                deactivate SwedbankPay
+    opt PaymentOrder Callback (if callbackUrls is set) ②
+        SwedbankPay ->> Merchant: POST Purchase Callback
+    end
 
-            alt If purchase is completed
-            activate Payer
-            Payer ->> Payer: Event: onPaid ①
-            Payer ->>+ Merchant: Check purchase status
-            deactivate Payer
-            Merchant ->>+ SwedbankPay: GET <paymentorder.id>
-            deactivate Merchant
-            SwedbankPay ->>+ Merchant: Status: Paid
-            deactivate SwedbankPay
-            end
+    deactivate Payer
+end
 
-            activate Merchant
-Merchant -->>- Payer: Show Purchase complete
-            end
-
-                alt If purchase is failed
-                Merchant ->>+ SwedbankPay: GET {paymentorder.id}
-                deactivate Merchant
-                SwedbankPay -->>+ Merchant: Status: Failed
-                deactivate SwedbankPay
-                activate Merchant
-                Merchant -->>- Payer: Display SwedbankPay Payment Menu on merchant page
-                end
-
-                opt PaymentOrder Callback (if callbackUrls is set) ②
-                activate SwedbankPay
-                SwedbankPay ->> Merchant: POST Purchase Callback
-                deactivate SwedbankPay
-         end
-
-
-    rect rgba(81,43,43,0.1)
-        activate Merchant
-        note left of Payer: Capture
-        Merchant ->>+ SwedbankPay: rel:capture
-        deactivate Merchant
-        SwedbankPay -->>- Merchant: Capture status
-        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>payment methods that support <br>Authorizations.
-        end
+rect rgba(81,43,43,0.1)
+    note right of Payer: Capture
+    Merchant ->>+ SwedbankPay: rel:capture
+    SwedbankPay -->>- Merchant: Capture status
+    note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>payment methods that support <br>Authorizations.
+end
 ```
 
 *   ① See [seamless view events][payments-seamless-view-events] for further information.
