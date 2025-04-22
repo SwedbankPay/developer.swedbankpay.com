@@ -215,6 +215,12 @@ Merchant -->>- Payer: Show Purchase complete
 *   ① See [seamless view events][payments-seamless-view-events] for further information.
 *   ② Read more about [callback][payments-callback] handling in the technical reference.
 
+## Next Steps
+
+Once the payer has finished the payment, you're now ready to capture the funds.
+Follow the link below for more details on how to perform the capture and for
+more details on the other options you have, following a purchase.
+
 {% include iterator.html prev_href="/checkout-v3/get-started/display-payment-ui/"
                          prev_title="Display Payment UI"
                          next_href="/checkout-v3/get-started/post-purchase"
