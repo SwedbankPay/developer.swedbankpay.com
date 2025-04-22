@@ -116,9 +116,9 @@ and we strongly advise you to whitelist them as soon as possible:
 
 {% capture acc-1 %}
 {: .p .pl-3 .pr-3  }
-We will be updating the IP addresses from which callbacks for eCommerce payments
-are sent. This change will affect the external integration for both test and
-production environments.
+We will be updating the IP addresses from which callbacks for e-commerce
+payments are sent. This change will affect the external integration for both
+test and production environments.
 
 {: .p .pl-3 .pr-3  }
 The current IP addresses are `91.132.170.1` and `51.107.183.58`. The new IP range
@@ -175,13 +175,11 @@ detect and address issues in real-time.
 {% include accordion-table.html content=acc-5 header_text='How will this change affect the stability of callbacks?' header_expand_css='font-weight-normal' %}
 {% capture acc-6 %}
 {: .p .pl-3 .pr-3  }
-We understand that some merchants may not complete the update before March 12.
-Therefore, we will continue to run callbacks from the current solution during a
-grace period.
-
-{: .p .pl-3 .pr-3  }
-However, it is important to migrate as soon as possible, as we will gradually
-phase out the old solution to reduce system maintenance and complexity.
+We will continue to run callbacks from the current solution during a grace
+period. Regardless, we highly recommend whitelisting the new IP adresses as soon
+as possible, as we will gradually phase out the old solution to reduce system
+maintenance and complexity. The whitelisting **must** be completed by
+**September 15th**.
 
 {: .p .pl-3 .pr-3  }
 We will:
@@ -193,23 +191,39 @@ We will:
 {% include accordion-table.html content=acc-6 header_text='What happens if we don’t make the change in time?' header_expand_css='font-weight-normal' %}
 {% capture acc-7 %}
 {: .p .pl-3 .pr-3  }
+IP whitelisting means allowing traffic from specific IP addresses through your
+firewall or other security settings. In this case, it means that you need to
+allow our new IP addresses so that you can receive technical messages
+(callbacks) from us.
+{% endcapture %}
+{% include accordion-table.html content=acc-7 header_text='What does IP whitelisting mean?' header_expand_css='font-weight-normal' %}
+{% capture acc-8 %}
+{: .p .pl-3 .pr-3  }
+If you're not managing your technical settings yourself, we recommend reaching
+out to your technical provider or the partner responsible for operating your
+solution or infrastructure. They can help ensure the IP whitelisting is set up
+correctly so everything works as expected.
+{% endcapture %}
+{% include accordion-table.html content=acc-8 header_text='What should I do if I don’t know how to whitelist IP addresses?' header_expand_css='font-weight-normal' %}
+{% capture acc-9 %}
+{: .p .pl-3 .pr-3  }
 We recommend that merchants allow both the old and new IP addresses during the
 transition period. This ensures stable callback functionality, even if network
 issues arise during the migration.
 {% endcapture %}
-{% include accordion-table.html content=acc-7 header_text='Recommendations during the grace period' header_expand_css='font-weight-normal' %}
-{% capture acc-8 %}
+{% include accordion-table.html content=acc-9 header_text='Recommendations during the grace period' header_expand_css='font-weight-normal' %}
+{% capture acc-10 %}
 {: .p .pl-3 .pr-3  }
-Merchants must implement IP blocking (IP allowlisting). FQDN (domain name
+Merchants must implement IP blocking (IP whitelisting). FQDN (domain name
 blocking) is not supported in this case, as we use fixed IP addresses.
 {% endcapture %}
-{% include accordion-table.html content=acc-8 header_text='Do we need to implement IP blocking or FQDN blocking in our firewall?' header_expand_css='font-weight-normal' %}
-{% capture acc-9 %}
+{% include accordion-table.html content=acc-10 header_text='Do we need to implement IP blocking or FQDN blocking in our firewall?' header_expand_css='font-weight-normal' %}
+{% capture acc-11 %}
 {: .p .pl-3 .pr-3  }
 If you have any questions or need support during implementation, please contact
 your TOM/TAM or our support team.
 {% endcapture %}
-{% include accordion-table.html content=acc-9 header_text='Who can we contact for assistance?' header_expand_css='font-weight-normal' %}
+{% include accordion-table.html content=acc-11 header_text='Who can we contact for assistance?' header_expand_css='font-weight-normal' %}
 
 {: .text-right .mt-3}
 

@@ -561,7 +561,7 @@ Content-Type: text/html
     <div class="trampoline-container" onclick="redirect()">
     <img alt="Swedbank Pay Logo" src="/externalresourcehost/content/images/swedbank-pay-logo-vertical.png" />
     <span class="trampoline-text">
-            <a>Back to Your Ecom App</a>
+            <a>Back to Your E-Commerce App</a>
     </span>
 </div>
 

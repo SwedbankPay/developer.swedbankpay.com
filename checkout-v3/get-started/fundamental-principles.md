@@ -282,6 +282,171 @@ amount is multiplied by 100.
 |   SEK 50.00 |      `5000` |
 |     € 10.00 |      `1000` |
 
+## Migration of E-Commerce to Microsoft Azure - FAQ
+
+We have gathered answers to the most common questions regarding the migration of
+our e-commerce platform and associated services to Microsoft Azure. The goal is
+to ensure that this transition takes place as smoothly as possible – without
+requiring any action from you as an integrated partner.
+
+{% capture acc-1 %}
+{: .p .pl-3 .pr-3  }
+We are upgrading our data centers to enhance performance, stability and
+security, while enabling innovation for our customers and partners. As part of
+this, our e-commerce platform and its services are migrating to Microsoft Azure.
+{% endcapture %}
+{% include accordion-table.html content=acc-1 header_text='Why is this change being made?' header_expand_css='font-weight-normal' %}
+{% capture acc-2 %}
+{: .p .pl-3 .pr-3  }
+Data protection, privacy, IT security, and information security have always been
+of utmost importance to us at Swedbank Pay. After careful consideration, we have
+chosen Microsoft Azure as a secure cloud platform for data storage and services.
+Azure offers a trusted and reliable solution which meets our high standards for
+security and privacy.
+{% endcapture %}
+{% include accordion-table.html content=acc-2 header_text='Why did you choose Microsoft Azure?' header_expand_css='font-weight-normal' %}
+{% capture acc-3 %}
+{: .p .pl-3 .pr-3  }
+We will provide an exact date later, but our goal is to carry out the migration
+gradually, starting in mid-August 2025. You will receive separate information
+well in advance before it affects you.
+{% endcapture %}
+{% include accordion-table.html content=acc-3 header_text='When will the migration take place?' header_expand_css='font-weight-normal' %}
+{% capture acc-4 %}
+{: .p .pl-3 .pr-3  }
+This migration means that the e-commerce platform and its services will run on
+Microsoft’s cloud platform, Microsoft Azure. It is a technical improvement
+taking place in the background, which will result in enhanced performance for
+you.
+{% endcapture %}
+{% include accordion-table.html content=acc-4 header_text='What does the migration to Microsoft Azure mean for me?' header_expand_css='font-weight-normal' %}
+{% capture acc-5 %}
+{: .p .pl-3 .pr-3  }
+No, there is nothing you need to do. The migration will run its course without
+impacting your systems or integrations.
+{% endcapture %}
+{% include accordion-table.html content=acc-5 header_text='Do I need to take any action before, during or after the migration?' header_expand_css='font-weight-normal' %}
+{% capture acc-6 %}
+{: .p .pl-3 .pr-3  }
+No, the transition to Microsoft Azure is planned, and will be carried out,
+without any interruptions to operations. Services will continue to function as
+usual throughout the process.
+{% endcapture %}
+{% include accordion-table.html content=acc-6 header_text='Will there be any service disruptions?' header_expand_css='font-weight-normal' %}
+{% capture acc-7 %}
+{: .p .pl-3 .pr-3  }
+No, all APIs and integrations will remain unchanged. You will continue to use
+the same technical interfaces as before.
+{% endcapture %}
+{% include accordion-table.html content=acc-7 header_text='Will any APIs, endpoints or integrations change?' header_expand_css='font-weight-normal' %}
+{% capture acc-8 %}
+{: .p .pl-3 .pr-3  }
+Your customers will not be impacted. Payment flows and services will continue to
+function as usual, without interruptions or changes.
+{% endcapture %}
+{% include accordion-table.html content=acc-8 header_text='How will my customers be affected by the migration?' header_expand_css='font-weight-normal' %}
+{% capture acc-9 %}
+{: .p .pl-3 .pr-3  }
+No, the migration is free of charge and will not result in any additional costs
+for you.
+{% endcapture %}
+{% include accordion-table.html content=acc-9 header_text='Will there be any additional costs for me?' header_expand_css='font-weight-normal' %}
+{% capture acc-10 %}
+{: .p .pl-3 .pr-3  }
+All data will be stored within the EU/EEA, in compliance with GDPR (General Data
+Protection Regulation). We have chosen to store all data in two primary data
+centers in Sweden – one in Gävle and one in Sandviken. The selected backup
+center is also in Sweden, in Staffanstorp.
+{% endcapture %}
+{% include accordion-table.html content=acc-10 header_text='Where will my data be stored after the migration to Microsoft Azure?' header_expand_css='font-weight-normal' %}
+{% capture acc-11 %}
+{: .p .pl-3 .pr-3  }
+Swedbank Pay uploads personal data to Microsoft’s cloud service, Azure.
+Microsoft will then act as a data processor for Swedbank Pay (or a subprocessor
+if Swedbank Pay is acting as a data processor for you). This applies even in the
+case of automated data processing.
+
+{: .p .pl-3 .pr-3  }
+According to Microsoft’s standard DPA, data may be transferred to the USA. On
+July 10, 2023, the EU Commission determined that this is compliant with GDPR,
+meaning no additional safeguards are required as long as the transfer adheres to
+relevant GDPR provisions.
+
+{: .p .pl-3 .pr-3  }
+Microsoft offers 24/7 support, which means that support personnel may be located
+globally. The support is focused on the cloud application and generally does not
+have access to stored data. To access stored data, our approval is required (see
+question 11 below regarding security measures).
+{% endcapture %}
+{% include accordion-table.html content=acc-11 header_text='How is the data handled by Microsoft?' header_expand_css='font-weight-normal' %}
+{% capture acc-12 %}
+{: .p .pl-3 .pr-3  }
+At Swedbank Pay, we use cryptographic techniques to ensure the integrity and
+confidentiality of the information, both during transmission and at rest. All
+data is encrypted in transit and at rest.
+
+{: .p .pl-3 .pr-3  }
+We have opted for the EU Data Boundary add-on for Microsoft services and control
+Microsoft’s support access through lockbox functionality, where each access must
+be approved by us and meet our requirements for the geographic location of
+support staff (EU or a country with an adequacy decision).
+
+*   Learn more about the [EU Data Boundary add-on.](https://learn.microsoft.com/en-us/privacy/eudb/eu-data-boundary-learn)
+
+*   Learn more about [Lockbox.](https://learn.microsoft.com/sv-se/azure/security/fundamentals/customer-lockbox-overview)
+{% endcapture %}
+{% include accordion-table.html content=acc-12 header_text='What security measures are in place for storage and transfer?' header_expand_css='font-weight-normal' %}
+{% capture acc-13 %}
+{: .p .pl-3 .pr-3  }
+We have designed our migration process with a strong focus on security and
+stability. Each step undergoes thorough testing and checks to ensure everything
+works correctly. In the event of an issue during the migration, we have
+procedures in place to quickly identify, address and, if necessary, roll back
+changes. All steps are monitored, and technical support is available throughout
+the process. Our goal is to ensure you are not negatively impacted, and we are
+always here to assist if needed.
+{% endcapture %}
+{% include accordion-table.html content=acc-13 header_text='What happens if an issue occurs during the migration to Microsoft Azure?' header_expand_css='font-weight-normal' %}
+{% capture acc-14 %}
+{: .p .pl-3 .pr-3  }
+Yes, you will have the opportunity to test our e-commerce platform in a
+Microsoft Azure-based test environment before the migration. We will contact you
+with more details on how and when you can perform the tests, including any
+necessary adjustments for your specific solution.
+{% endcapture %}
+{% include accordion-table.html content=acc-14 header_text='Can I test our e-commerce platform in the Microsoft Azure environment?' header_expand_css='font-weight-normal' %}
+{% capture acc-15 %}
+{: .p .pl-3 .pr-3  }
+We are here to answer your questions. Where you should direct your inquiries
+depends on how you are connected to our e-commerce platform:
+
+*   **Are you a partner or technical provider?**
+Reach out your usual contact person at Swedbank Pay.
+
+{: .p .pl-3 .pr-3  }
+For technical questions:
+**Phone:** +46 8 411 10 80
+**Email:** support.psp@swedbankpay.se
+
+*   **Are you connected to our e-commerce platform via a partner or technical provider?**
+Reach out to your contact person at the partner or provider first.
+
+{: .p .pl-3 .pr-3  }
+For technical questions:
+**Phone:** +46 8 411 10 80
+**Email:** support.psp@swedbankpay.se
+
+*   **Are you integrated directly with our e-commerce platform at Swedbank Pay?**
+Reach out to your contact person at Swedbank Pay, Key Account Manager (KAM) or
+Technical Account Manager (TAM).
+
+{: .p .pl-3 .pr-3  }
+For technical questions:
+**Phone:** +46 8 411 10 80
+**Email:** support.psp@swedbankpay.se
+{% endcapture %}
+{% include accordion-table.html content=acc-15 header_text='Where do I turn if have further questions or need support?' header_expand_css='font-weight-normal' %}
+
 [admin]: https://merchantportal.externalintegration.swedbankpay.com
 [content-type]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type
 [iso-3166]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2

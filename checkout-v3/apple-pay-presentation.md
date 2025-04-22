@@ -39,8 +39,7 @@ needed.
 If you’re using a Seamless View integration, you need to complete the
 steps below to get started.
 
-1.  Download the [domain file][payex-domain-file]{:target="_blank"}
-   (right click and "Save as").
+1.  Download the [domain file][payex-domain-file]{:target="_blank"}.
     -   Make sure you do not change, edit or manipulate the file in any way,
     shape or form.
     -   The file should have **NO EXTENSION**, meaning there should not be any
@@ -60,6 +59,16 @@ steps below to get started.
     -   You can compare it to our own verification file, found on
     [this site][swp-file-site]{:target="_blank"}.
     -   If done correctly, they should look identical.
+    -   The verification file is a hex string that contains a **JSON**. If
+    the file is modified or the file is saved in a different format, this may
+    cause the validation to fail.
+
+4.  Once the previous steps have been completed, get in touch with us to
+    activate Apple Pay. If you have further questions about how to upload the
+    file and make it available, contact your domain administrator or provider
+    for further instructions and assistance.
+
+### iOS SDK
 
 If you're using our **iOS SDK**, make sure that the `webViewBaseURL` is set to
 the same domain as where you host the file. If you're presenting Seamless View
@@ -71,13 +80,6 @@ may not function. You also need to make sure that Apple Pay scripts are allowed
 to be loaded and executed in the web view (relevant if you're implementing
 `WKNavigationDelegate` and your own
 `webView(_:decidePolicyFor:decisionHandler:)` implementation).
-
-Once the previous steps have been completed, get in touch with us to activate
-Apple Pay. The verification file is a hex string that contains a **JSON**. If
-the file is modified or the file is saved in a different format, this may cause
-the validation to fail. If you have further questions about how to upload the
-file and make it available, contact your domain administrator or provider for
-further instructions and assistance.
 
 ## Apple Pay Terms And Conditions
 
