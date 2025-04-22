@@ -64,7 +64,8 @@ script.onload = function() {
         culture: "sv-SE",
         // This is where you can add your own seamless events.
         // See the section "Events" down below for more information.
-        onError: Function = (data) => console.log("onError", data)
+        onError: Function = (data) => console.error("onError", data),
+        onEventNotification: Function = (data) => console.log("onEventNotification", data)
     }).open();
 }
 document.body.insertAdjacentElement("afterbegin", script);
