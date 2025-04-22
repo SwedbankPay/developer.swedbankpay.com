@@ -76,16 +76,16 @@ document.body.insertAdjacentElement("afterbegin", script);
 
 ```html
 <!DOCTYPE html>
-  <html>
-      <head>
-          <title>Swedbank Pay Checkout is Awesome!</title>
-      </head>
-      <body>
-          <div id="payex-checkout"></div>
-          <!-- Here you can specify your own javascript file -->
-          <script src="<Your-JavaScript-File-Here>"></script>
-      </body>
-  </html>
+<html>
+    <head>
+        <title>Swedbank Pay Checkout is Awesome!</title>
+    </head>
+    <body>
+        <div id="payex-checkout"></div>
+        <!-- Here you can specify your own javascript file -->
+        <script src="<Your-JavaScript-File-Here>"></script>
+    </body>
+</html>
 ```
 
 ## How Seamless View Looks
