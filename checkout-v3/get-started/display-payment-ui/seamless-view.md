@@ -161,13 +161,13 @@ rect rgba(238, 112, 35, 0.05)
 
     alt If the purchase is completed
         Payer ->>+ SwedbankPay: GET <paymentorder.id>
-        SwedbankPay ->>- Payer: Status: Paid
+        SwedbankPay ->>- Payer: Status: Paid/Failed
         Payer ->> Payer: Show Purchase complete
         Payer ->> Payer: Event: onPaid ①
         note right of Payer: Unless you override OnPaid, this will<br/>cause a redirect to the CompleteUrl
     else If the purchase attampt has failed
         Payer ->>+ SwedbankPay: GET {paymentorder.id}
-        SwedbankPay -->>- Payer: Status: Failed
+        SwedbankPay -->>- Payer: Payment Status: Failed
         Payer -->> Payer: Display error message in the Payment UI
         Payer ->> Payer: Event: onPaymentAttemptFailed ①
     end
