@@ -12,7 +12,7 @@ Among the operations in the POST `paymentOrders` response, you will find the
 `view-checkout`. This is the one you need to display the purchase module.
 
 {% capture response_content %}{
-    "paymentOrder": {
+    "paymentOrder": {},
     "operations": [
         {
             "method": "GET",
@@ -31,15 +31,15 @@ Among the operations in the POST `paymentOrders` response, you will find the
 
 ## Load The Seamless View
 
-Embed the `href` in a `<script>` element. That script will then load the
-Seamless View.
+To display the UI, we need to take the `href` from the `POST` request and add
+it to a `script` element on the webpage. Once the script has loaded in, we can
+then use the `payex.hostedView.checkout().open()` function on the clientscript
+to show the menu.
 
-To load the Checkout from the JavaScript URL obtained in the backend API
-response, it needs to be set as a script element’s `src` attribute. You can
-cause a page reload and do this with static HTML, or you can avoid the page
-refresh by invoking the POST to create the payment order through Ajax, and then
-create the script element with JavaScript. The HTML code will be unchanged in
-this example.
+There are a few parameters we can set to further customize the menu itself,
+which are shown in the example below. This includes the place we want to
+open up the menu (container), the language we want the menu to
+display (culture), and any events we want to override.
 
 {:.code-view-header}
 **JavaScript**
@@ -89,32 +89,40 @@ document.body.insertAdjacentElement("afterbegin", script);
 
 ## How Seamless View Looks
 
-The payment UI should appear in the iframe on your page, so the payer can
-select their preferred payment method and pay.
+After opening up the client script, the menu itself will load inside of an
+iframe in the container you provided us earlier. From here, the payer can select
+their preferred payment method and pay.
 
 {:.text-center}
 ![screenshot of the enterprise implementation seamless view payment menu][seamless-enterprise-menu]
 
-Once the payer has completed the purchase, you can perform a GET towards the
-`paymentOrders` resource to see the purchase state.
+Once the payer completes their purchase, you can then perform a GET towards the
+`paymentOrders` resource to check the purchase state.
 
 ## Monitoring The Script URL
 
 You must confirm that your site is not susceptible to attacks from scripts that
 could affect the merchant’s e-commerce system(s).
 
-### Events
+## Events
 
-When integrating Seamless View we strongly recommend that you implement the
-`onPaid` event, which will give you the best setup. Even with this implemented,
-you need to check the payment status towards our APIs, as the payer can make
-changes in the browser at any time.
+When you integrate using the Seamless View implementation, you can override one
+or more of our Seamless View events. This ranges from changing what happens
+when the payer completes or cancels their payment, to when we resize the
+payment menu itself. While optional, this gives you more flexibility and
+control over the payment flow, during and after the payer completes and/or
+cancels their payment attempt.
 
-You can read more about the different
-[Seamless View Events][seamless-view-events] available in the feature section.
+Events like `onPaid` allows you avoid redirecting to the `completeUrl` once
+the payer completes or cancels the payment. This allows you to check the
+payment, or just close the payment window and display a receipt on the same
+page. Other events like `onPaymentAttemptFailed` can allow you to keep tabs on
+the amount of failed attempts, for example if you want to show a warning or
+a message if the payer is unable to complete a payment after several tries.
 
-You are now ready to capture the funds. Follow the link below to read more about
-capture and the other options you have after the purchase.
+For the full list over the different events you can override, check out the
+[Seamless View Events][seamless-view-events] page, also available in the
+feature section.
 
 ## Seamless View Sequence Diagram
 
