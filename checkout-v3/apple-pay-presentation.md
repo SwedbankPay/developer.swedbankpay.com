@@ -7,6 +7,40 @@ description: |
   payment method?
 menu_order: 700
 ---
+<script>
+  async function downloadDomainFile() {
+    const pageUrl = 'https://ecom.payex.com/.well-known/apple-developer-merchantid-domain-association';
+    const fileName = 'apple-developer-merchantid-domain-association';
+
+    try {
+      // Fetch the webpage content
+      const response = await fetch(pageUrl);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch webpage: ${response.statusText}`);
+      }
+      const text = await response.text();
+
+      // Create a blob with the webpage content
+      const blob = new Blob([text], { type: 'text/html' });
+
+      // Create a temporary link element
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = fileName;
+
+      // Trigger the download
+      document.body.appendChild(link);
+      link.click();
+
+      // Clean up
+      document.body.removeChild(link);
+      URL.revokeObjectURL(link.href);
+    } catch (error) {
+      console.error('Error saving the webpage:', error);
+      alert('Failed to save the webpage. Please try again later.');
+    }
+  }
+</script>
 
 <section class="panel panel-brand">
  <header>
@@ -44,6 +78,9 @@ steps below to get started.
     shape or form.
     -   The file should have **NO EXTENSION**, meaning there should not be any
     ".txt", ".doc", ".mp4" or any other extension to the file.
+    <button onclick="downloadDomainFile()" class="btn btn-primary">
+        Download Domain File
+    </button>
 
 2.  Upload the file to the following web path:
     `https://[DOMAIN-NAME]/.well-known/apple-developer-merchantid-domain-association`
