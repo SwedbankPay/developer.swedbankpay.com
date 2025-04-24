@@ -69,7 +69,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             }
             "firstName": "Leia",
             "lastName": "Ahlström",
-            "email": "leia@payex.com",
+            "email": "leia@swedbankpay.com",
             "msisdn": "+46787654321",
             "payerReference": "AB1234",
             "shippingAddress": {
@@ -107,7 +107,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             "digitalProducts": false,
             "firstName": "Leia",
             "lastName": "Ahlström",
-            "email": "leia@payex.com",
+            "email": "leia@swedbankpay.com",
             "msisdn": "+46787654321",
             "payerReference": "AB1234",
             "shippingAddress": {
@@ -177,7 +177,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             }
         ],
         "riskIndicator": {
-            "deliveryEmailAddress": "olivia.nyhuus@payex.com",
+            "deliveryEmailAddress": "olivia.nyhuus@swedbankpay.com",
             "deliveryTimeFrameIndicator": "01",
             "preOrderDate": "19801231",
             "preOrderPurchaseIndicator": "01",

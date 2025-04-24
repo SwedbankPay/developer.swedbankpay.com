@@ -29,13 +29,13 @@ the better.
     "cardholder": {
         "firstName": "Olivia",
         "lastName": "Nyhuus",
-        "email": "olivia.nyhuus@payex.com",
+        "email": "olivia.nyhuus@swedbankpay.com",
         "msisdn": "+4798765432",
         "homePhoneNumber": "+4787654321",
         "workPhoneNumber": "+4776543210",
         "shippingAddress": {
             "addressee": "Olivia Nyhuus",
-            "email": "olivia.nyhuus@payex.com",
+            "email": "olivia.nyhuus@swedbankpay.com",
             "msisdn": "+4798765432",
             "streetAddress": "Saltnestoppen 43",
             "coAddress": "",
@@ -75,7 +75,7 @@ the better.
 
 {% capture request_content %}{
     "payer": {
-        "email": "olivia.nyhuus@payex.com",
+        "email": "olivia.nyhuus@swedbankpay.com",
         "msisdn": "+4798765432",
         "firstName": "Olivia",
         "lastName": "Nyhuus",
@@ -188,7 +188,7 @@ the better.
 
 {% capture request_content %}{
     "riskIndicator": {
-        "deliveryEmailAddress": "olivia.nyhuus@payex.com",
+        "deliveryEmailAddress": "olivia.nyhuus@swedbankpay.com",
         "deliveryTimeFrameIndicator": "01",
         "preOrderDate": "19801231",
         "preOrderPurchaseIndicator": "01",

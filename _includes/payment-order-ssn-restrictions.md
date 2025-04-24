@@ -58,7 +58,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             "restrictedToSocialSecurityNumber": true,
             "firstName": "Leia",
             "lastName": "Ahlström",
-            "email": "leia@payex.com",
+            "email": "leia@swedbankpay.com",
             "msisdn": "+46787654321",
             "payerReference": "AB1234"
         }

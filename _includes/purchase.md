@@ -82,14 +82,14 @@ Content-Type: application/json{% endcapture %}
         "cardholder": {
             "firstName": "Olivia",
             "lastName": "Nyhuus",
-            "email": "olivia.nyhuus@payex.com",
+            "email": "olivia.nyhuus@swedbankpay.com",
             "msisdn": "+4798765432",
             "homePhoneNumber": "+4787654321",
             "workPhoneNumber": "+4776543210",
             "shippingAddress": {
                 "firstName": "Olivia",
                 "lastName": "Nyhuus",
-                "email": "olivia.nyhuus@payex.com",
+                "email": "olivia.nyhuus@swedbankpay.com",
                 "msisdn": "+4798765432",
                 "streetAddress": "Saltnestoppen 43",
                 "coAddress": "",
@@ -100,7 +100,7 @@ Content-Type: application/json{% endcapture %}
             "billingAddress": {
                 "firstName": "Olivia",
                 "lastName": "Nyhuus",
-                "email": "olivia.nyhuus@payex.com",
+                "email": "olivia.nyhuus@swedbankpay.com",
                 "msisdn": "+4798765432",
                 "streetAddress": "Saltnestoppen 43",
                 "coAddress": "",
@@ -119,7 +119,7 @@ Content-Type: application/json{% endcapture %}
             }{% endif %}
         },
         "riskIndicator": {
-            "deliveryEmailAddress": "olivia.nyhuus@payex.com",
+            "deliveryEmailAddress": "olivia.nyhuus@swedbankpay.com",
             "deliveryTimeFrameIndicator": "01",
             "preOrderDate": "19801231",
             "preOrderPurchaseIndicator": "01",

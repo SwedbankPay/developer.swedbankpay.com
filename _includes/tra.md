@@ -50,7 +50,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
                 "countryCode": "SE"
             "requireConsumerInfo": false,
             "digitalProducts": false,
-            "email": "olivia.nyhuus@payex.com",
+            "email": "olivia.nyhuus@swedbankpay.com",
             "msisdn": "+4798765432",
             "authentication" : {
                 "type" : "Digital",
@@ -61,7 +61,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             "shippingAddress": {
                 "firstName": "Olivia",
                 "lastName": "Nyhuus",
-                "email": "olivia.nyhuus@payex.com",
+                "email": "olivia.nyhuus@swedbankpay.com",
                 "msisdn": "+4798765432",
                 "streetAddress": "Saltnestoppen 43",
                 "coAddress": "",
@@ -72,7 +72,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
               "billingAddress": {
                 "firstName": "Olivia",
                 "lastName": "Nyhuus",
-                "email": "olivia.nyhuus@payex.com",
+                "email": "olivia.nyhuus@swedbankpay.com",
                 "msisdn": "+4798765432",
                 "streetAddress": "Saltnestoppen 43",
                 "coAddress": "",
@@ -126,7 +126,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             }
         ],
         "riskIndicator": {
-            "deliveryEmailAddress": "olivia.nyhuus@payex.com",
+            "deliveryEmailAddress": "olivia.nyhuus@swedbankpay.com",
             "deliveryTimeFrameindicator": "01",
             "preOrderDate": "20210220",
             "preOrderPurchaseIndicator": "01",
