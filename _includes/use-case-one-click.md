@@ -94,7 +94,7 @@ The examples are abbreviated where needed.
    "payer": {
    "firstName": "Leia",
    "lastName": "Ahlström",
-   "email": "leia@payex.com",
+   "email": "leia@swedbankpay.com",
    "msisdn": "+46787654321",
    "payerReference": "AB1234"
    }
@@ -123,7 +123,7 @@ cards. <<Insert Image PAM1>>
    "payer": {
    "firstName": "Leia",
    "lastName": "Ahlström",
-   "email": "leia@payex.com",
+   "email": "leia@swedbankpay.com",
    "msisdn": "+46787654321",
    "payerReference": "AB1234"
    }

@@ -40,7 +40,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
         },
         "payer": {  {% if documentation_section contains "checkout" %}
             "consumerProfileRef": "{{ page.payment_token }}"{% else %}
-            "email": "olivia.nyhuus@payex.com",
+            "email": "olivia.nyhuus@swedbankpay.com",
             "msisdn": "+4798765432",
             "workPhoneNumber" : "+4787654321",
             "homePhoneNumber" : "+4776543210"{% endif %}
@@ -65,7 +65,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             }
         ],
         "riskIndicator": {
-            "deliveryEmailAddress": "olivia.nyhuus@payex.com",
+            "deliveryEmailAddress": "olivia.nyhuus@swedbankpay.com",
             "deliveryTimeFrameIndicator": "01",
             "preOrderDate": "19801231",
             "preOrderPurchaseIndicator": "01",

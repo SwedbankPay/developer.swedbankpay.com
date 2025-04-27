@@ -148,7 +148,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             "socialSecurityNumber": "199710202392",
             "countryCode": "SE"
             },
-     "email": "test@payex.com",
+     "email": "test@swedbankpay.com",
      "msisdn": "+46709876543",
      "address": {
        "streetAddress": "Main Street 1",
