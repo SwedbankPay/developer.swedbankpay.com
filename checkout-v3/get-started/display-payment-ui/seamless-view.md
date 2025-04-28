@@ -100,11 +100,6 @@ their preferred payment method and pay.
 Once the payer completes their purchase, you can then perform a GET towards the
 `paymentOrders` resource to check the purchase state.
 
-## Monitoring The Script URL
-
-You must confirm that your site is not susceptible to attacks from scripts that
-could affect the merchant’s e-commerce system(s).
-
 ## Events
 
 When you integrate using the Seamless View implementation, you can override one
@@ -124,6 +119,11 @@ a message if the payer is unable to complete a payment after several tries.
 For the full list over the different events you can override, check out the
 [Seamless View Events][seamless-view-events] page, also available in the
 feature section.
+
+## Monitoring The Script URL
+
+You must confirm that your site is not susceptible to attacks from scripts that
+could affect the merchant’s e-commerce system(s).
 
 ## Seamless View Sequence Diagram
 
@@ -192,9 +192,8 @@ end
 
 ## Next Steps
 
-Once the payer has finished the payment, you're now ready to capture the funds.
-Follow the link below for more details on how to perform the capture and for
-more details on the other options you have, following a purchase.
+You are now ready to capture the funds. Follow the link below to read more about
+capture and the other options you have after the purchase.
 
 {% include iterator.html prev_href="/checkout-v3/get-started/display-payment-ui/"
                          prev_title="Display Payment UI"
