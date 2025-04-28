@@ -12,11 +12,11 @@ Among the operations in the POST `paymentOrders` response, you will find the
 `view-checkout`. This is the one you need to display the purchase module.
 
 {% capture response_content %}{
-    "paymentOrder": {
+    "paymentOrder": {},
     "operations": [
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/payment/core/js/px.payment.client.js?token=dd728a47e3ec7be442c98eafcfd9b0207377ce04c793407eb36d07faa69a32df&culture=sv-SE&_tc_tid=30f2168171e142d38bcd4af2c3721959",
+            "href": "https://ecom.externalintegration.payex.com/checkout/client/1c168a5f971f0cacd00124d1b9ee13e5ecf6e3e74e59cb510035973b38c2c3b3?culture=sv-SE&_tc_tid=123a825592f2002942e5f13eee012b11",
             "rel": "view-checkout",
             "contentType": "application/javascript"
         },
@@ -31,47 +31,44 @@ Among the operations in the POST `paymentOrders` response, you will find the
 
 ## Load The Seamless View
 
-Embed the `href` in a `<script>` element. That script will then load the
-Seamless View.
+To display the UI, we need to take the `href` from the `POST` request and add
+it to a `script` element on the webpage. Once the script has loaded in, we can
+then use the `payex.hostedView.checkout().open()` function on the clientscript
+to show the menu.
 
-To load the Checkout from the JavaScript URL obtained in the backend API
-response, it needs to be set as a script element’s `src` attribute. You can
-cause a page reload and do this with static HTML, or you can avoid the page
-refresh by invoking the POST to create the payment order through Ajax, and then
-create the script element with JavaScript. The HTML code will be unchanged in
-this example.
+There are a few parameters we can set to further customize the menu itself,
+which are shown in the example below. This includes the place we want to
+open up the menu (container), the language we want the menu to
+display (culture), and any events we want to override.
 
 {:.code-view-header}
 **JavaScript**
 
 ```js
-var request = new XMLHttpRequest();
-request.addEventListener('load', function () {
-    response = JSON.parse(this.responseText);
-    var script = document.createElement('script');
-    var operation = response.operations.find(function (o) {
-        return o.rel === 'view-checkout';
-    });
-    script.setAttribute('src', operation.href);
-    script.onload = function () {
-        // When the 'view-checkout' script is loaded, we can initialize the
-        // Payment Menu inside 'checkout-container'.
-        payex.hostedView.checkout({
-            container: {
-                checkout: "checkout-container"
-            },
-            culture: 'nb-No',
-        }).open();
-    };
-    // Append the Checkout script to the <head>
-    var head = document.getElementsByTagName('head')[0];
-    head.appendChild(script);
-});
-// Like before, you should replace the address here with
-// your own endpoint.
-request.open('GET', '<Your-Backend-Endpoint-Here>', true);
-request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-request.send();
+// For this example, we'll be simply adding in the view-checkout link right in
+// the script. In your own solution, it's recommended that your backend
+// generates the payment and passes the operation to your frontend.
+const url = new URL("https://ecom.externalintegration.payex.com/checkout/client/1c168a5f971f0cacd00124d1b9ee13e5ecf6e3e74e59cb510035973b38c2c3b3?culture=sv-SE&_tc_tid=123a825592f2002942e5f13eee012b11");
+
+const script = document.createElement("script");
+script.src = url.href;
+script.type = "text/javascript";
+script.id = "payex-checkout-script";
+script.onload = function() {
+    payex.hostedView.checkout({
+        // The container is the ID of the HTML element you want to place
+        // our solution inside of.
+        container: {
+            checkout: "payex-checkout"
+        },
+        culture: "sv-SE",
+        // This is where you can add your own seamless events.
+        // See the section "Events" down below for more information.
+        onError: Function = (data) => console.error("onError", data),
+        onEventNotification: Function = (data) => console.log("onEventNotification", data)
+    }).open();
+}
+document.body.insertAdjacentElement("afterbegin", script);
 ```
 
 {:.code-view-header}
@@ -79,46 +76,54 @@ request.send();
 
 ```html
 <!DOCTYPE html>
-  <html>
-      <head>
-          <title>Swedbank Pay Checkout is Awesome!</title>
-      </head>
-      <body>
-          <div id="checkout-container"></div>
-          <!-- Here you can specify your own javascript file -->
-          <script src="<Your-JavaScript-File-Here>"></script>
-      </body>
-  </html>
+<html>
+    <head>
+        <title>Swedbank Pay Checkout is Awesome!</title>
+    </head>
+    <body>
+        <div id="payex-checkout"></div>
+        <!-- Here you can specify your own javascript file -->
+        <script src="<Your-JavaScript-File-Here>"></script>
+    </body>
+</html>
 ```
 
 ## How Seamless View Looks
 
-The payment UI should appear in the iframe on your page, so the payer can
-select their preferred payment method and pay.
+After opening up the client script, the menu itself will load inside of an
+iframe in the container you provided us earlier. From here, the payer can select
+their preferred payment method and pay.
 
 {:.text-center}
 ![screenshot of the enterprise implementation seamless view payment menu][seamless-enterprise-menu]
 
-Once the payer has completed the purchase, you can perform a GET towards the
-`paymentOrders` resource to see the purchase state.
+Once the payer completes their purchase, you can then perform a GET towards the
+`paymentOrders` resource to check the purchase state.
+
+## Events
+
+When you integrate using the Seamless View implementation, you can override one
+or more of our Seamless View events. This ranges from changing what happens
+when the payer completes or cancels their payment, to when we resize the
+payment menu itself. While optional, this gives you more flexibility and
+control over the payment flow, during and after the payer completes and/or
+cancels their payment attempt.
+
+Events like `onPaid` allows you avoid redirecting to the `completeUrl` once
+the payer completes or cancels the payment. This allows you to check the
+payment, or just close the payment window and display a receipt on the same
+page. Other events like `onPaymentAttemptFailed` can allow you to keep tabs on
+the amount of failed attempts, for example if you want to show a warning or
+a message if the payer is unable to complete a payment after several tries.
+
+For the full list over the different events you can override, check out the
+[Seamless View Events][seamless-view-events] page, also available in the
+feature section.
 
 ## Monitoring The Script URL
 
 You must confirm that your site is not susceptible to attacks from scripts that
 could affect the merchant’s e-commerce system(s).
-
-### Events
-
-When integrating Seamless View we strongly recommend that you implement the
-`onPaid` event, which will give you the best setup. Even with this implemented,
-you need to check the payment status towards our APIs, as the payer can make
-changes in the browser at any time.
-
-You can read more about the different
-[Seamless View Events][seamless-view-events] available in the feature section.
-
-You are now ready to capture the funds. Follow the link below to read more about
-capture and the other options you have after the purchase.
 
 ## Seamless View Sequence Diagram
 
@@ -128,88 +133,67 @@ Note that in this diagram, the Payer refers to the merchant front-end
 
 ```mermaid
 sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-    participant 3rdParty
+participant Payer
+participant Merchant
+participant SwedbankPay as Swedbank Pay
+participant 3rdParty
 
-        rect rgba(238, 112, 35, 0.05)
-            activate Payer
-            Payer ->>+ Merchant: Initiate Purchase
-            deactivate Payer
-            Merchant ->>+ SwedbankPay: POST /psp/paymentorders (hostUrls, paymentUrl, payer information)
-            deactivate Merchant
-            SwedbankPay -->>+ Merchant: rel:view-checkout
-            deactivate SwedbankPay
-                        Merchant -->>- Payer: Display SwedbankPay Payment Menu on Merchant Page
+rect rgba(238, 112, 35, 0.05)
     activate Payer
+    Payer ->>+ Merchant: Initiate Purchase
+    Merchant ->>+ SwedbankPay: POST /psp/paymentorders (hostUrls, paymentUrl, payer information)
+    SwedbankPay -->>- Merchant: rel:view-checkout
+    Merchant -->>- Payer: Display SwedbankPay Checkout on Merchant Page
     Payer ->> Payer: Initiate Purchase step
-    deactivate Payer
+    Payer ->>+ SwedbankPay: Do purchase logic
     activate SwedbankPay
-        SwedbankPay ->>+ Payer: Do purchase logic
-    Payer ->> SwedbankPay: Do purchase logic
-    deactivate Payer
+
+    opt Payer performs purchase out of iFrame
+        SwedbankPay ->>- Payer: Redirect to 3rd party required
+        Payer ->>+ 3rdParty: Redirecting to 3rd party URL
+        3rdParty -->>- Payer: Redirect back to paymentUrl (merchant)
+        Payer ->> Payer: Initiate Checkout Seamless View (open iframe)
+        Payer ->>+ SwedbankPay: Check purchase status
+    end
+
+    SwedbankPay -->>- Payer: Purchase status
     deactivate SwedbankPay
 
-                opt Payer performs purchase out of iFrame
-                    activate Payer
-                    Payer ->> Payer: Redirect to 3rd party
-                    Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
-                    deactivate Payer
-                    3rdParty -->>+ Payer: Redirect back to paymentUrl (merchant)
-                    deactivate 3rdParty
-                    Payer ->> Payer: Initiate Payment Menu Seamless View (open iframe)
-                    Payer ->>+ SwedbankPay: Show Payment UI page in iframe
-                    deactivate Payer
-                end
+    alt If the purchase is completed
+        Payer ->>+ SwedbankPay: GET <paymentorder.id>
+        SwedbankPay ->>- Payer: Status: Paid/Failed
+        Payer ->> Payer: Show Purchase complete
+        Payer ->> Payer: Event: onPaid ①
+        note right of Payer: Unless you override OnPaid, this will<br/>cause a redirect to the CompleteUrl
+    else If the purchase attampt has failed
+        Payer ->>+ SwedbankPay: GET {paymentorder.id}
+        SwedbankPay -->>- Payer: Payment Status: Failed
+        Payer -->> Payer: Display error message in the Payment UI
+        Payer ->> Payer: Event: onPaymentAttemptFailed ①
+    end
 
-                activate SwedbankPay
-                SwedbankPay -->> Payer: Purchase status
-                deactivate SwedbankPay
+    opt PaymentOrder Callback (if callbackUrls is set) ②
+        SwedbankPay ->> Merchant: POST Purchase Callback
+    end
 
-            alt If purchase is completed
-            activate Payer
-            Payer ->> Payer: Event: onPaid ①
-            Payer ->>+ Merchant: Check purchase status
-            deactivate Payer
-            Merchant ->>+ SwedbankPay: GET <paymentorder.id>
-            deactivate Merchant
-            SwedbankPay ->>+ Merchant: Status: Paid
-            deactivate SwedbankPay
-            end
+    deactivate Payer
+end
 
-            activate Merchant
-Merchant -->>- Payer: Show Purchase complete
-            end
-
-                alt If purchase is failed
-                Merchant ->>+ SwedbankPay: GET {paymentorder.id}
-                deactivate Merchant
-                SwedbankPay -->>+ Merchant: Status: Failed
-                deactivate SwedbankPay
-                activate Merchant
-                Merchant -->>- Payer: Display SwedbankPay Payment Menu on merchant page
-                end
-
-                opt PaymentOrder Callback (if callbackUrls is set) ②
-                activate SwedbankPay
-                SwedbankPay ->> Merchant: POST Purchase Callback
-                deactivate SwedbankPay
-         end
-
-
-    rect rgba(81,43,43,0.1)
-        activate Merchant
-        note left of Payer: Capture
-        Merchant ->>+ SwedbankPay: rel:capture
-        deactivate Merchant
-        SwedbankPay -->>- Merchant: Capture status
-        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>payment methods that support <br>Authorizations.
-        end
+rect rgba(81,43,43,0.1)
+    note right of Payer: Capture
+    Merchant ->>+ SwedbankPay: rel:capture
+    SwedbankPay -->>- Merchant: Capture status
+    note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>payment methods that support <br>Authorizations.
+end
 ```
 
 *   ① See [seamless view events][payments-seamless-view-events] for further information.
 *   ② Read more about [callback][payments-callback] handling in the technical reference.
+
+## Next Steps
+
+You are now ready to capture the funds. Follow the link below to read more about
+capture and the other options you have after the purchase.
 
 {% include iterator.html prev_href="/checkout-v3/get-started/display-payment-ui/"
                          prev_title="Display Payment UI"

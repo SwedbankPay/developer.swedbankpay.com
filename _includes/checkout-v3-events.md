@@ -12,28 +12,28 @@ During operation in the {{ product }}, several events can occur. They are
 described below.
 
 {% include alert.html type="warning" icon="info" header="Event Overrides"
-body="Adding an event handler to one of the following events **overrides** the
-default event handler, meaning your custom event handler will have to do what
-the default event handler did. If you don’t, the behavior of the event is going
-to be undefined. Just adding an event handler for logging purposes is therefore
-not possible, the event handler will have to perform some functionality similar
-to the event handler you are overriding." %}
+body="When you add an event handler to any of these events, you are
+**overriding** the original event. This means you can't simply add an event
+for logging purposes. You have to either add back the original behavior, or
+replace it with your own custom logic. If you do not do this, you may risk
+undefined behavior or, at worst, a broken payment flow." %}
 
 ## `onAborted`
 
 {% include events/on-aborted.md %}
 
-As the Seamless View payment menu doesn't have a cancel button (present in the
-Redirect integration), you need to provide this button for the payer at your
-end.
+This event mirrors `onPaymentCanceled` from Checkout v2.
 
-When the payer presses the cancel button, we recommend sending an API request
-aborting the payment so it can't be completed at a later time. When we receive
-the request, an abort event will be raised the next time the UI fetches
-information from the server. Because of that, you should also refresh after
-aborting, as this will trigger the event.
+This event can be overridden if you want to handle the payer aborting their
+payment attempt in the Swedbank Pay payment frame. Do note that only the
+Redirect integration provides a cancel button. Using a Seamless integration,
+you will have to provide your own button, link or method to allow the payer
+to cancel the payment from your site.
 
-It will be raised with the following event argument object:
+If you do not override the event, the payer will be redirected to the
+`cancelUrl` in the same tab if possible.
+
+This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnAborted",
@@ -48,6 +48,7 @@ It will be raised with the following event argument object:
     %}
 
 {:.table .table-striped}
+
 | Field         | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------  |
 | `event`       | `string` | The name of the event raised.                                            |
@@ -58,11 +59,13 @@ It will be raised with the following event argument object:
 
 {% include events/on-checkout-loaded.md %}
 
-Subscribe to this event if you need total control over the height of Swedbank
-Pay's payment frame. This is the initial height of the frame when loaded.
+This event can be overridden if you need the total height over the Swedbank Pay's
+payment frame. This will be the initial height of the frame after loading.
 
-If no callback method is set, no handling action will be done. It will be raised
-with the following event argument object:
+If you do not override the event, no action will be done. This event is only
+provided for informational purposes.
+
+This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnCheckoutLoaded",
@@ -77,6 +80,7 @@ with the following event argument object:
     %}
 
 {:.table .table-striped}
+
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                                  |
 | `event`      | `string` | The name of the event raised.                                            |
@@ -87,13 +91,16 @@ with the following event argument object:
 
 {% include events/on-checkout-resized.md %}
 
-Subscribe to this event if you need total control over the height of Swedbank
-Pay's payment frame. The payment methods require individual heights when
-rendering their content. This event triggers each time the iframe needs resizing
-during a payment.
+This event mirrors `onApplicationConfigured` from Checkout v2.
 
-If no callback method is set, no handling action will be done. It
-will be raised with the following event argument object:
+This event can be overridden if you need to know when the height of the Swedbank
+Pay's payment frame. This will be the new height after a resizing is performed.
+This event is triggered every time a resizing is needed.
+
+If you do not override the event, no action will be done. This event is only
+provided for informational purposes.
+
+This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnCheckoutResized",
@@ -108,6 +115,7 @@ will be raised with the following event argument object:
     %}
 
 {:.table .table-striped}
+
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`      | `string` | The name of the event raised.                                         |
@@ -118,11 +126,13 @@ will be raised with the following event argument object:
 
 {% include events/on-error.md %}
 
-Subscribe to this event if you want some action to occur on your site when an
-error happens during the payment.
+This event can be overridden if you want the details if an error occurs during
+the payment flow. This will be provided in a human readable format.
 
-If no callback method is set, no handling action will be done. It
-will be raised with the following event argument object:
+If you do not override the event, no action will be done. This event is only
+provided for informational purposes.
+
+This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnError",
@@ -137,6 +147,7 @@ will be raised with the following event argument object:
     %}
 
 {:.table .table-striped}
+
 | Field       | Type     | Description                                                            |
 | :---------- | :------- | :-------------------------------------------------------------         |
 | `event`     | `string` | The name of the event raised.                                            |
@@ -147,17 +158,22 @@ will be raised with the following event argument object:
 
 {% include events/on-event-notification.md %}
 
-Subscribe to this event in order to log actions that are happening in the
-payment flow at Swedbank Pay.
+This event can be overridden if you want a better overview of the payment flow.
+Whenever one of the events in the example below is triggered, a message with
+the name of the event is provided.
 
-`onEventNotification` is raised with the following event argument object:
+If you do not override the event, no action will be done. This event is only
+provided for informational purposes.
+
+This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnEventNotification",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
-    "sourceEvent": "OnCheckoutLoaded | OnCheckoutResized | OnError |
-     OnPayerIdentified | OnInstrumentSelected | OnPaid | OnAborted |
-     OnOutOfViewRedirect | OnTermsOfServiceRequested | OnOutOfViewOpen"
+    "sourceEvent": "OnPaid | OnFailed | OnAborted | OnPaymentAttemptAborted |
+     OnOutOfViewReidrect | OnTermsOfServiceRequested | OnCheckoutResized |
+     OnCheckoutLoaded | OnConsumerGuestSelected | OnInstrumentSelected |
+     OnError | OnPaymentAttemptStarted | OnPaymentAttemptFailed"
 }{% endcapture %}
 
 {% include code-example.html
@@ -167,6 +183,7 @@ payment flow at Swedbank Pay.
     %}
 
 {:.table .table-striped}
+
 | Field         | Type     | Description                                                |
 | :--------     | :------- | :--------------------------------------------------------- |
 | `event`     | `string` | The name of the event raised.                                            |
@@ -177,11 +194,15 @@ payment flow at Swedbank Pay.
 
 {% include events/on-instrument-selected.md %}
 
-Subscribe to this event if actions, e.g. showing an information text, are
-required on your side if the payer changes payment method.
+This event mirrors `onPaymentMenuInstrumentSelected` from Checkout v2.
 
-If no callback method is set, no handling action will be done. It
-will be raised with the following event argument object:
+This event can be overridden if you want to know when the payer selects a
+payment method in the Swedbank Pay payment frame.
+
+If you do not override the event, no action will be done. This event is only
+provided for informational purposes.
+
+This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnInstrumentSelected",
@@ -196,6 +217,7 @@ will be raised with the following event argument object:
     %}
 
 {:.table .table-striped}
+
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`     | `string` | The name of the event raised.                                                    |
@@ -206,15 +228,15 @@ will be raised with the following event argument object:
 
 {% include events/on-out-of-view-open.md %}
 
-The event cannot be opened as a modal since the payer needs to see that this is
-a link on Swedbank Pay's domain.
+This event can be overridden if you want to handle openeing a redirect intended
+to be opened up in a new window or tab. This is ideal if you want to handle
+this type of redirects yourself, such as opening up the link inside of a
+modal.
 
-Subscribe to this event if you do not want the default handling of these links.
-But e.g. want to redirect the payer to a new page, and not just another tab
-within the same browser.
+If you do not override the event, we will attempt to open up the link in a new
+tab or window, if possible.
 
-If no callback method is set, the url will be opened in a
-new tab. It will be raised with the following event argument object:
+This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnOutOfViewOpen",
@@ -229,6 +251,7 @@ new tab. It will be raised with the following event argument object:
     %}
 
 {:.table .table-striped}
+
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`      | `string` | The name of the event raised.                                            |
@@ -239,11 +262,17 @@ new tab. It will be raised with the following event argument object:
 
 {% include events/on-out-of-view-redirect.md %}
 
-Subscribe to this event if it's not possible to redirect the payer directly from
-within Swedbank Pay's payment frame.
+This event mirrors `onExternalRedirect` from Checkout v2.
 
-If no callback method is set, you will be redirected to the relevant url. It
-will be raised with the following event argument object:
+This event can be overridden if you want to handle redirects to another page
+yourself. This is ideal if you want to show any alerts or warnings before
+passing the payer to the next page or if you want to show a status on your page
+before redirecting.
+
+If you do not override the event, the redirect will happen in the same tab if
+possible.
+
+This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnOutOfViewRedirect",
@@ -258,6 +287,7 @@ will be raised with the following event argument object:
     %}
 
 {:.table .table-striped}
+
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                                  |
 | `event`      | `string` | The name of the event raised.                                            |
@@ -268,12 +298,19 @@ will be raised with the following event argument object:
 
 {% include events/on-paid.md %}
 
-Subscribe to this event if actions are needed on your side other than the
-default handling of redirecting the payer to your `completeUrl`. Call `GET` on
-the `paymentOrder` to receive the actual payment status, and take appropriate
-actions according to it.
+This event mirrors `onPaymentCompleted` from Checkout v2.
 
-It will be raised with the following event argument object:
+This event can be overridden if you want to handle redirects on completed
+payments yourself, for example if you want to close the payment window to
+display a receipt for the payment or want to handle closing the page first
+before sending the payer to the `paymentComplete` url. If you do this, we
+highly recommend you perform a `GET` on the payment to check the actual
+payment status and act accordingly.
+
+If you do not override the event, the redirect will happen in the same tab if
+possible.
+
+This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnPaid",
@@ -288,6 +325,7 @@ It will be raised with the following event argument object:
     %}
 
 {:.table .table-striped}
+
 | Field         | Type     | Description                                                         |
 | :------------ | :------- | :-------------------------------------------------------------      |
 | `event`       | `string` | The name of the event raised.                                            |
@@ -296,9 +334,17 @@ It will be raised with the following event argument object:
 
 ## `onPaymentAttemptAborted`
 
-This event mirrors `onPaymentAborted` from Checkout v2. Subscribe to it if you
-want to know when a user cancels their payment. The `onPaymentAttemptAborted`
-event is raised with the following event argument object:
+This event mirrors `onPaymentAborted` from Checkout v2.
+
+This event can be overridden if you want a notification when the payer cancels
+a payment attempt. This does not mean that the payer can't attempt another
+payment, or switch to another payment method, just that they canceled one of
+their attempts.
+
+If you do not override the event, no action will be done. This event is only
+provided for informational purposes.
+
+This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnPaymentAttemptAborted",
@@ -313,6 +359,7 @@ event is raised with the following event argument object:
     %}
 
 {:.table .table-striped}
+
 | Field         | Type     | Description                                                    |
 | :------------ | :------- | :------------------------------------------------------------- |
 | `event`       | `string` | The name of the event raised.                                            |
@@ -321,13 +368,16 @@ event is raised with the following event argument object:
 
 ## `onPaymentAttemptFailed`
 
-This event mirrors `onPaymentTransactionFailed` from Checkout v2. Subscribe to
-it if you want to know when a payment attempt fails, and further attempts can be
-made for the payment.
+This event mirrors `onPaymentTransactionFailed` from Checkout v2.
 
-An error message will appear in the payment UI, and the payer will be able to
-try again or choose another payment method. The `onPaymentAttemptFailed`
-event is raised with the following event argument object:
+This event can be overridden if you want a notification when a payment attempt
+has failed. An error message will also appear in the payment UI, where the payer
+can either try again or choose another payment method.
+
+If you do not override the event, no action will be done. This event is only
+provided for informational purposes.
+
+This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnPaymentAttemptFailed",
@@ -342,6 +392,7 @@ event is raised with the following event argument object:
     %}
 
 {:.table .table-striped}
+
 | Field     | Type     | Description                                         |
 | :-------- | :------- | :-------------------------------------------------- |
 | `event`       | `string` | The name of the event raised.                                            |
@@ -350,12 +401,15 @@ event is raised with the following event argument object:
 
 ## `onPaymentAttemptStarted`
 
-This event mirrors `onPaymentCreated` from Checkout v2. Subscribe to it if you
-want to know when a payer has selected their payment method and actively
-attempts to perform a payment.
+This event mirrors `onPaymentCreated` from Checkout v2.
 
-The `onPaymentAttemptStarted` event is raised with the following event argument
-object:
+This event can be overridden if you want a notification when a payment attempt
+is started. It contains the name of the payment method started.
+
+If you do not override the event, no action will be done. This event is only
+provided for informational purposes.
+
+This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnPaymentAttemptStarted",
@@ -370,6 +424,7 @@ object:
     %}
 
 {:.table .table-striped}
+
 | Field        | Type     | Description                                                                                     |
 | :----------- | :------- | :---------------------------------------------------------------------------------------------- |
 | `event`       | `string` | The name of the event raised.                                                                  |
@@ -380,18 +435,21 @@ object:
 
 {% include events/on-terms-of-service-requested.md %}
 
-Subscribe to this event if you don't want the default handling of the
-`termsOfServiceUrl`. Swedbank Pay will open the `termsOfServiceUrl`
-in a new tab within the same browser by default.
+This event mirrors `onPaymentToS` from Checkout v2.
 
-If no callback method is set, terms and conditions will be displayed in an
-overlay or a new tab. It will be raised with the following event argument
-object:
+This event can be ovrriden if you want to handle opening the `termsOfServiceUrl`
+on your own. This could be if you want to open it inside of a modal, inside of
+an iFrame on your own page or otherwise.
+
+If you do not override the event, we will attempt to open up the
+`termsOfServiceUrl` inside of a new tab in the same browser, if possible.
+
+This is the object that is provided if you override the event:
 
 {% capture response_content %}{
-"event": "OnTermsOfServiceRequested",
-"paymentOrder": { "id": "/psp/paymentorders/<paymentorderId>"},
-"termsOfServiceUrl": "https://example.org/terms.html"
+    "event": "OnTermsOfServiceRequested",
+    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}"},
+    "termsOfServiceUrl": "https://example.org/terms.html"
 }{% endcapture %}
 
 {% include code-example.html
@@ -401,6 +459,7 @@ object:
     %}
 
 {:.table .table-striped}
+
 | Field                | Type     | Description                                         |
 | :--------            | :------- | :---------------------------------------------------|
 | `event`              | `string` | The name of the event raised.                                  |
