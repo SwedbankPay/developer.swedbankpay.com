@@ -24,7 +24,7 @@ undefined behavior or, at worst, a broken payment flow." %}
 
 This event mirrors `onPaymentCanceled` from Checkout v2.
 
-This event can be overriden if you want to handle the payer aborting their
+This event can be overridden if you want to handle the payer aborting their
 payment attempt in the Swedbank Pay payment frame. Do note that only the
 Redirect integration provides a cancel button. Using a Seamless integration,
 you will have to provide your own button, link or method to allow the payer
@@ -59,7 +59,7 @@ This is the object that is provided if you override the event:
 
 {% include events/on-checkout-loaded.md %}
 
-This event can be overriden if you need the total height over the Swedbank Pay's
+This event can be overridden if you need the total height over the Swedbank Pay's
 payment frame. This will be the initial height of the frame after loading.
 
 If you do not override the event, no action will be done. This event is only
@@ -93,7 +93,7 @@ This is the object that is provided if you override the event:
 
 This event mirrors `onApplicationConfigured` from Checkout v2.
 
-This event can be overriden if you need to know when the height of the Swedbank
+This event can be overridden if you need to know when the height of the Swedbank
 Pay's payment frame. This will be the new height after a resizing is performed.
 This event is triggered every time a resizing is needed.
 
@@ -126,7 +126,7 @@ This is the object that is provided if you override the event:
 
 {% include events/on-error.md %}
 
-This event can be overriden if you want the details if an error occurs during
+This event can be overridden if you want the details if an error occurs during
 the payment flow. This will be provided in a human readable format.
 
 If you do not override the event, no action will be done. This event is only
@@ -158,7 +158,7 @@ This is the object that is provided if you override the event:
 
 {% include events/on-event-notification.md %}
 
-This event can be overriden if you want a better overview of the payment flow.
+This event can be overridden if you want a better overview of the payment flow.
 Whenever one of the events in the example below is triggered, a message with
 the name of the event is provided.
 
@@ -196,7 +196,7 @@ This is the object that is provided if you override the event:
 
 This event mirrors `onPaymentMenuInstrumentSelected` from Checkout v2.
 
-This event can be overriden if you want to know when the payer selects a
+This event can be overridden if you want to know when the payer selects a
 payment method in the Swedbank Pay payment frame.
 
 If you do not override the event, no action will be done. This event is only
@@ -228,7 +228,7 @@ This is the object that is provided if you override the event:
 
 {% include events/on-out-of-view-open.md %}
 
-This event can be overriden if you want to handle openeing a redirect intended
+This event can be overridden if you want to handle openeing a redirect intended
 to be opened up in a new window or tab. This is ideal if you want to handle
 this type of redirects yourself, such as opening up the link inside of a
 modal.
@@ -264,7 +264,7 @@ This is the object that is provided if you override the event:
 
 This event mirrors `onExternalRedirect` from Checkout v2.
 
-This event can be overriden if you want to handle redirects to another page
+This event can be overridden if you want to handle redirects to another page
 yourself. This is ideal if you want to show any alerts or warnings before
 passing the payer to the next page or if you want to show a status on your page
 before redirecting.
@@ -300,7 +300,7 @@ This is the object that is provided if you override the event:
 
 This event mirrors `onPaymentCompleted` from Checkout v2.
 
-This event can be overriden if you want to handle redirects on completed
+This event can be overridden if you want to handle redirects on completed
 payments yourself, for example if you want to close the payment window to
 display a receipt for the payment or want to handle closing the page first
 before sending the payer to the `paymentComplete` url. If you do this, we
@@ -336,7 +336,7 @@ This is the object that is provided if you override the event:
 
 This event mirrors `onPaymentAborted` from Checkout v2.
 
-This event can be overriden if you want a notification when the payer cancels
+This event can be overridden if you want a notification when the payer cancels
 a payment attempt. This does not mean that the payer can't attempt another
 payment, or switch to another payment method, just that they canceled one of
 their attempts.
@@ -370,7 +370,7 @@ This is the object that is provided if you override the event:
 
 This event mirrors `onPaymentTransactionFailed` from Checkout v2.
 
-This event can be overriden if you want a notification when a payment attempt
+This event can be overridden if you want a notification when a payment attempt
 has failed. An error message will also appear in the payment UI, where the payer
 can either try again or choose another payment method.
 
@@ -403,7 +403,7 @@ This is the object that is provided if you override the event:
 
 This event mirrors `onPaymentCreated` from Checkout v2.
 
-This event can be overriden if you want a notification when a payment attempt
+This event can be overridden if you want a notification when a payment attempt
 is started. It contains the name of the payment method started.
 
 If you do not override the event, no action will be done. This event is only
