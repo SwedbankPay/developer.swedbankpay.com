@@ -40,7 +40,7 @@ Content-Type: application/json{% endcapture %}
         "socialSecurityNumber": "socialSecurityNumber",
         "customerNumber": "123456",
         "name": "Olivia Nyhuus",
-        "email": "olivia.nyhuus@payex.com",
+        "email": "olivia.nyhuus@swedbankpay.com",
         "msisdn": "+4798765432",
         "ip": "127.0.0.1"
     },

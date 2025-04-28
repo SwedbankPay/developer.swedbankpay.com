@@ -5,14 +5,14 @@ hide_from_sidebar: true
 description: |
   In order to send sensitive credit card data to Swedbank Pay, you need to use
   our *Public Migration Key* to encrypt the data in transmission.
-  Contact our support at support.ecom@payex.com
+  Contact our support at support.psp@swedbankpay.se
   for more information regarding this procedure.
 menu_order: 8
 ---
 
 *   **Key size**: 4096 bits
 *   **RealName**: `SwedbankPay`
-*   **UserID**: `SwedbankPay <support.ecom@payex.com>`
+*   **UserID**: `SwedbankPay <support.ecom@swedbankpay.se>`
 *   **Fingerprint**: `49BE 1843 4104 3DC6 DB36 9F77 67F0 0E68 7F80 104A`
 *   **Key ID**: `67F0 0E68 7F80 104A`
 

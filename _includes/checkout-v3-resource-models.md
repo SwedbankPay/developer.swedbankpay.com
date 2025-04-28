@@ -1194,7 +1194,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/payers",
     "reference": "reference to payer"
     "name": "Azra Oliveira",
-    "email": "azra@payex.com",
+    "email": "azra@swedbankpay.com",
     "msisdn": "+46722345678",  {% unless documentation_section contains "checkout-v3/payments-only" %}
     "gender": "male",
     "birthYear": "1980", {% endunless %}

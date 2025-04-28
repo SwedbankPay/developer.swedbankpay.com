@@ -49,7 +49,7 @@ Content-Type: application/json
             },
             "firstName": "Leia",
             "lastName": "Ahlström",
-            "email": "leia@payex.com",
+            "email": "leia@swedbankpay.com",
             "msisdn": "+46787654321",
             "payerReference": "AB1234",
             "shippingAddress": {
@@ -103,7 +103,7 @@ Content-Type: application/json
             }
         ],
         "riskIndicator": {
-            "deliveryEmailAddress": "olivia.nyhuus@payex.com",
+            "deliveryEmailAddress": "olivia.nyhuus@swedbankpay.com",
             "deliveryTimeFrameIndicator": "01",
             "preOrderDate": "19801231",
             "preOrderPurchaseIndicator": "01",
