@@ -12,11 +12,11 @@ Among the operations in the POST `paymentOrder`s response, you will find
 `redirect-checkout`. This is the one you need to display the payment UI.
 
 {% capture response_content %}{
-    "paymentOrder": {}
+    "paymentOrder": {
     "operations": [
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/checkout/6445a0d8d9a7f80a37f4e46fc600a0534a832e4b6ec0dbb6768dd362d9401a8b?_tc_tid=30f2168171e142d38bcd4af2c3721959",
+            "href": "https://ecom.externalintegration.payex.com/payment/menu/b934d6f84a89a01852eea01190c2bbcc937ba29228ca7502df8592975ee3bb0d?_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "redirect-checkout",
             "contentType": "text/html"
         },
@@ -31,20 +31,17 @@ Among the operations in the POST `paymentOrder`s response, you will find
 
 ## How Redirect Looks
 
-{% include alert.html type="informative" icon="info" body="
-We strongly advice against displaying the redirect page inside of an iFrame.
-If you need to be able to show the checkout page on your site, rather than
-redirecting to our page, we recommend you implement the Seamless View
-solution instead." %}
-
-With the link, you only need to redirect the payer to the site to give them the
-option to select their preferred payment method to pay with.
+The redirect link opens the payment menu in a new page where the payer can
+select their preferred payment method and pay.
 
 {:.text-center}
 ![screenshot of the merchant managed implementation redirect payment menu][redirect-payments-only-menu]
 
 Once the payer has completed the purchase, you can perform a `GET` towards the
 `paymentOrders` resource to see the purchase state.
+
+You are now ready to capture the funds. Follow the link below to read more about
+capture and the other options you have after the purchase.
 
 ## Redirect Sequence Diagram
 
@@ -54,60 +51,77 @@ Note that in this diagram, the Payer refers to the merchant front-end
 
 ```mermaid
 sequenceDiagram
-participant Payer
-participant Merchant
-participant SwedbankPay as Swedbank Pay
-participant 3rdParty
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+    participant 3rdParty
 
-rect rgba(238, 112, 35, 0.05)
-    activate Payer
-    Payer ->>+ Merchant: Initiate Purchase
-    Merchant ->>+ SwedbankPay: POST /psp/paymentorders (completeUrl, payer information)
-    SwedbankPay -->>- Merchant: rel:redirect-checkout
-    Merchant -->>- Payer: Redirect payer to SwedbankPay purchase page.
-    Payer ->> Payer: Initiate Purchase step
-    Payer ->>+ SwedbankPay: Do purchase logic
+        rect rgba(238, 112, 35, 0.05)
+            activate Payer
+            Payer ->>+ Merchant: Initiate Purchase
+            deactivate Payer
+            Merchant ->>+ SwedbankPay: POST /psp/paymentorders (completeUrl, payer information)
+            deactivate Merchant
+            SwedbankPay -->>+ Merchant: rel:redirect-checkout
+            deactivate SwedbankPay
+            Merchant -->>- Payer: Redirect payer to SwedbankPay purchase page.
     activate SwedbankPay
+    activate Payer
+    Payer ->> Payer: Initiate Purchase step
 
-    opt Payer perform purchase out of iFrame
-        SwedbankPay ->>- Payer: Redirect to 3rd party required
-        Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
-        3rdParty -->>- Payer: Redirect back to SwedbankPay
-        Payer ->> Payer: Initiate Payment Menu
-        Payer ->>+ SwedbankPay: Show Purchase UI page in iframe
-    end
-
-    SwedbankPay -->>- Payer: Purchase status
-
-    alt If Purchase is completed
-        Payer ->> Payer: Redirect back to CompleteUrl
-        Payer ->>+ Merchant: Check Purchase status
-        Merchant ->>+ SwedbankPay: GET <paymentorder.id>
-        SwedbankPay ->>- Merchant: Status: Paid
-    end
-
-    Merchant -->>- Payer: Show Purchase complete
     deactivate Payer
+    SwedbankPay ->>+ Payer: Do purchase logic
+    Payer ->> SwedbankPay: Do purchase logic
+    deactivate Payer
+    deactivate SwedbankPay
 
-    opt PaymentOrder Callback (if callbackUrls is set) ①
-        SwedbankPay ->> Merchant: POST Purchase Callback
-    end
-end
+                    opt Payer perform purchase out of iFrame
+                    activate Payer
+                    Payer ->> Payer: Redirect to 3rd party
+                    Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
+                    deactivate Payer
+                    3rdParty -->>+ Payer: Redirect back to SwedbankPay
+                    deactivate 3rdParty
+                    Payer ->> Payer: Initiate Payment Menu
+                    Payer ->>+ SwedbankPay: Show Purchase UI page in iframe
+                    deactivate Payer
+                end
 
-rect rgba(81,43,43,0.1)
-    note right of Payer: Capture
-    Merchant ->>+ SwedbankPay: rel:capture
-    SwedbankPay -->>- Merchant: Capture status
-    note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Methods that support <br>Authorizations.
-end
+                activate SwedbankPay
+                SwedbankPay -->> Payer: Purchase status
+                deactivate SwedbankPay
+
+            alt If Purchase is completed
+            activate Payer
+            Payer ->> Payer: Redirect back to CompleteUrl
+            Payer ->>+ Merchant: Check Purchase status
+            deactivate Payer
+            Merchant ->>+ SwedbankPay: GET <paymentorder.id>
+            deactivate Merchant
+            SwedbankPay ->>+ Merchant: Status: Paid
+            deactivate SwedbankPay
+            end
+
+activate Merchant
+Merchant -->>- Payer: Show Purchase complete
+         opt PaymentOrder Callback (if callbackUrls is set) ①
+                activate SwedbankPay
+                SwedbankPay ->> Merchant: POST Purchase Callback
+                deactivate SwedbankPay
+         end
+         end
+
+    rect rgba(81,43,43,0.1)
+        activate Merchant
+        note left of Payer: Capture
+        Merchant ->>+ SwedbankPay: rel:capture
+        deactivate Merchant
+        SwedbankPay -->>- Merchant: Capture status
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Methods that support <br>Authorizations.
+        end
 ```
 
 *   ① Read more about [callback][payments-callback] handling in the technical reference.
-
-## Next Steps
-
-You are now ready to capture the funds. Follow the link below to read more about
-capture and the other options you have after the purchase.
 
 {% include iterator.html prev_href="/checkout-v3/get-started/display-payment-ui/"
                          prev_title="Display Payment UI"
