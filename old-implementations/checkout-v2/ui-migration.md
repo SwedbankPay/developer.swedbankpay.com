@@ -37,7 +37,7 @@ in [Danish][da]{:target="_blank"}, [Finnish][fi]{:target="_blank"},
 If you currently have a Seamless View integration and don't want the impending
 responsibilities, switcing to Redirect is normally possible, but the Checkin
 module used in Checkout v2 is only available using Seamless View. We
-**strongly recommend** switching to the newest version of [Digital Payments][dp]
+**strongly recommend** switching to the newest version of [Online Payments][dp]
 and choose the Redirect UI option. We have written a [migration guide][mp] to
 help you.
 
