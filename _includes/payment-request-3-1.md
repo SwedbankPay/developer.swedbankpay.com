@@ -93,9 +93,38 @@ Swish or Vipps apps, `abort` is unavailable.
 To avoid unnecessary calls, we recommend doing a `GET` on your `paymentOrder` to
 check if `abort` is an available operation before performing it.
 
-{% include alert-risk-indicator.md %}
+### GDPR
 
-{% include alert-gdpr-disclaimer.md %}
+When adding information to the `Payer` object for the purpose of pre-filling or
+storing any data connected to the payer, you must first obtain their **explicit**
+**consent**. In general, this consent can be collected when the payer provides
+their delivery information, such as during the checkout or registration process.
+
+Examples of such fields include:
+
+*   `firstName`
+*   `lastName`
+*   `email`
+*   `MSISDN`
+
+If you are linking payer information to a profile (`payerReference`) or using
+stored credentials for express checkouts, **do not use sensitive identifiers** —
+such as email addresses, phone numbers, or social security numbers—in fields
+like `payerReference`. These fields are **not intended to hold personal data**,
+and therefore **do not offer the same level of protection or processing**
+**safeguards** as fields explicitly designed for sensitive information under
+GDPR.
+
+If the use of sensitive data is absolutely necessary, it must be **hashed**
+before being sent in any request to Swedbank Pay. The hash must be meaningful
+only to you, the merchant or integrator, and **does not need to be reversible by**
+**Swedbank Pay**. This means you are solely responsible for generating the hash
+and, if needed, securely mapping it back to the original data on your side. The
+responsibility for ensuring the **lawful processing, protection, and handling**
+**of personal data** — both during and after the transaction — **rests entirely**
+**with you**.
+
+{% include alert-risk-indicator.md %}
 
 {% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
