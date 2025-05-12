@@ -22,7 +22,7 @@ with payer information and a `completeUrl`.
 
 We have added `productName` to the payment order request in this integration.
 You can find it in the `paymentorder` field. This is required if you want to use
-Digital Payments. If it isn´t included in your request, you won't get the
+Online Payments. If it isn´t included in your request, you won't get the
 correct operations in the response.
 
 When `productName` is set to `checkout3`, `digitalProducts` will be set to
