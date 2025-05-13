@@ -1,5 +1,11 @@
 
-## 1 April 2025
+## 30 April 2025
+
+### .Net SDK 1.3.25120.1
+
+*   New boolean flag in SaleApplInfo ForceAcquisitionReference, that when set to true always requires a cardAquisition before PaymentRequest.
+
+## 1 April 2024
 
 ### .Net SDK 1.3.24170
 

@@ -1,3 +1,40 @@
+
+## 14 April 2025
+
+### Pax Release 1.3.0.8
+
+PAX-4042 Improved application update implementation
+
+PAX-4032 Application now handles Apm problem event correctly
+
+PAX-4015 Added more possible APK installation failure reasons
+
+PAX-4011 Solved an issue where amounts from previous transaction was visible on tip screen.
+
+PAX-4004 When running ECR on Device mode the footer menu will now be available on please wait screen.
+
+PAX-4002 Fixed issues with multiple software downloads
+
+PAX-4001 Remove POI-ID field from ECR Settings on the A920Pro. Never meant to be used.
+
+PAX-3993 Update Installer - Allowing it to retry launching the Payment Application.
+Also: Provide some debug info on bottom of display, if something fails prematurely in the Installer, in order to provide information to us on what/where stuff actually fails, so that we can try to fix that later.
+Note: The Installer provided in 1.3.0.8 will not be used before upgrading or downgrading from this specific version. Meaning: It does not come into play when performing an upgrade from 1.3.0.x to 1.3.0.8.
+
+PAX-3975 The ready screen now informs if external ECR app is not installed in ECR mode (embedded).
+
+PAX-3973 Terminal now support selectable ecr profile
+
+PAX-3852 Some mastercards that would be declined will now correctly fallback to chip instead.
+
+PAX-3838 A default APN will now be automatically created on terminals with a 'Swedbank Pay' flavored SIM-card
+installed.
+Requires:
+
+*   Mobile Network Enabled
+*   No APN previously configured
+*   ICCID of SIM-Card recognized
+
 ## 11 March 2025
 
 ### Pax Release 1.3.0.7.1
