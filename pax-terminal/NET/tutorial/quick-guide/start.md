@@ -57,6 +57,7 @@ namespace SwpTrmLib
         public string ApplicationName { get; set; }
         public string SoftwareVersion { get; set; }
         public string POIID { get; set; }
+        public bool ForceAcquisitionReference { get; set; }
         // Summary:
         //     Default SaleCapabilities will result in a listener being started on a configured port.
         //     To use Client Only Mode use only the value SaleCapabilitiesEnum.PrinterReceipt.
@@ -65,6 +66,16 @@ namespace SwpTrmLib
     }
 }
 ```
+
+{:.table .table-striped}
+
+| Name | String | Description |
+| :------------- |:--------------- |:--------------|
+| ProviderIdentification | String | Name of the integrator. |
+| ApplicationName| String | Name of the application |
+| SoftwareVersion | String | Version of the application |
+| POIID | String | Identifies the POI for retrieving correct parameters and software |
+| ForceAcquisitionReference | boolean | If True, the terminal requires a CardAcquisitionRequest ahead of any PaymentRequest |
 
 {% include iterator.html next_href="/pax-terminal/NET/tutorial/quick-guide/open" next_title="Next" %}
 {% include iterator.html prev_href="/pax-terminal/NET/tutorial/quick-guide/" prev_title="Back" %}
