@@ -69,13 +69,13 @@ namespace SwpTrmLib
 
 {:.table .table-striped}
 
-| Name | String | Description |
+| Name | Type | Description |
 | :------------- |:--------------- |:--------------|
-| ProviderIdentification | String | Name of the integrator. |
-| ApplicationName| String | Name of the application |
-| SoftwareVersion | String | Version of the application |
-| POIID | String | Identifies the POI for retrieving correct parameters and software |
-| ForceAcquisitionReference | boolean | If True, the terminal requires a CardAcquisitionRequest ahead of any PaymentRequest |
+| ProviderIdentification | string | Name of the integrator. |
+| ApplicationName| string | Name of the application |
+| SoftwareVersion | string | Version of the application |
+| POIID | string | Identifies the POI for retrieving correct parameters and software |
+| ForceAcquisitionReference | bool | If `true`, the terminal requires a CardAcquisitionRequest ahead of any PaymentRequest |
 
 {% include iterator.html next_href="/pax-terminal/NET/tutorial/quick-guide/open" next_title="Next" %}
 {% include iterator.html prev_href="/pax-terminal/NET/tutorial/quick-guide/" prev_title="Back" %}
