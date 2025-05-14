@@ -1,4 +1,11 @@
 
+## 14 May 2025
+
+### Version 5.3.8
+
+*	Info about Net SDK availability on nuget.org.
+*	Info about ForceAcquisitionReference in SaleApplInfo for Net SDK.
+
 ## 1 April 2025
 
 ### Documentation v5.3.6
