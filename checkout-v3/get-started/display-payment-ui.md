@@ -3,7 +3,13 @@ title: Display Payment UI
 hide_from_sidebar: false
 description: |
   How to display the checkout payment UI.
-menu_order: 6
+menu_order: 5
+tab_list:
+- title: Redirect
+  content_src: redirect-payment-ui.md
+  mark_with_star: true
+- title: Seamless View
+  content_src: seamless-view-payment-ui.md
 ---
 
 ## Display Payment UI
@@ -26,7 +32,4 @@ by Swedbank Pay.
 
 Read about how you integrate them in the corresponding sections.
 
-{% include iterator.html next_href="redirect"
-                         next_title="Redirect" %}
-{% include iterator.html next_href="seamless-view"
-                         next_title="Seamless View" %}
+{% include tabs.html tab_list=page.tab_list default_tab_index=1 %}

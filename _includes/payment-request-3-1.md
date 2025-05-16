@@ -32,9 +32,10 @@
   </ul>
 </div>
 
-The integration consists of three main steps. **Creating** the payment order,
-**displaying** the payment menu, and **capturing** the funds. In addition, there
-are other post-purchase options you need. We get to them later on.
+The integration consists of four main steps. **Creating** the payment order,
+**displaying** the payment menu, **validating** the status and **capturing** the
+funds. In addition, there are other post-purchase options you need. We get to
+them later on.
 
 {: .h3 }
 
@@ -386,9 +387,9 @@ Read more about possible additions to the request in our
 {: .text-right}
 [Top of page](#payment-order-v31)
 
-{% include iterator.html prev_href="/checkout-v3/"
-                         prev_title="Back to Introduction"
-                         next_href="/checkout-v3/get-started/display-payment-ui/"
+{% include iterator.html prev_href="/checkout-v3/get-started"
+                         prev_title="Back To Get Started"
+                         next_href="/checkout-v3/get-started/display-payment-ui"
                          next_title="Display Payment UI" %}
 
 [abort-feature]: /checkout-v3/features/payment-operations/abort
