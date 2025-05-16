@@ -1,12 +1,14 @@
 ---
 title: Redirect
-permalink: /:path/redirect/
+permalink: /:path/redirect-payment-ui/
 description: |
-  How to display the Seamless View UI in your webshop.
+  How to display the Redirect UI in your webshop.
 menu_order: 5
 ---
 
-## Display Redirect
+{: .h2 }
+
+### Display Redirect
 
 Among the operations in the POST `paymentOrder`s response, you will find
 `redirect-checkout`. This is the one you need to display the payment UI.
@@ -29,7 +31,9 @@ Among the operations in the POST `paymentOrder`s response, you will find
     json= response_content
     %}
 
-## How Redirect Looks
+{: .h2 }
+
+### How Redirect Looks
 
 {% include alert.html type="informative" icon="info" body="
 We strongly advice against displaying the redirect page inside of an iFrame.
@@ -46,7 +50,11 @@ option to select their preferred payment method to pay with.
 Once the payer has completed the purchase, you can perform a `GET` towards the
 `paymentOrders` resource to see the purchase state.
 
-## Redirect Sequence Diagram
+[Top of page](#display-redirect)
+
+{: .h2 }
+
+### Redirect Sequence Diagram
 
 {% include alert.html type="informative" icon="info" body="
 Note that in this diagram, the Payer refers to the merchant front-end
@@ -104,15 +112,19 @@ end
 
 *   ① Read more about [callback][payments-callback] handling in the technical reference.
 
-## Next Steps
+{: .h2 }
+
+### Next Steps
 
 You are now ready to capture the funds. Follow the link below to read more about
 capture and the other options you have after the purchase.
 
-{% include iterator.html prev_href="/checkout-v3/get-started/display-payment-ui/"
-                         prev_title="Display Payment UI"
-                         next_href="/checkout-v3/get-started/post-purchase"
-                         next_title="Post-Purchase" %}
+[Top of page](#display-redirect)
+
+{% include iterator.html prev_href="/checkout-v3/get-started/payment-request"
+                         prev_title="Back To Payment Request"
+                         next_href="/checkout-v3/get-started/validate-status"
+                         next_title="Validate Status" %}
 
 [redirect-payments-only-menu]: /assets/img/redirect-wcag.png
 [payments-callback]: /checkout-v3/features/payment-operations/callback

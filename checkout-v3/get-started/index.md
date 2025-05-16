@@ -100,7 +100,7 @@ when we get there.
 {% include iterator.html next_href="setup"
                          next_title="Test Account Setup" %}
 {% include iterator.html next_href="payment-request"
-                         next_title="Create Payment Request" %}
+                         next_title="Start Integrating" %}
 
 [basic-implementation]: /assets/img/checkout/devp-get-started.png
 [delete-token]: /checkout-v3/features/optional/delete-token/
