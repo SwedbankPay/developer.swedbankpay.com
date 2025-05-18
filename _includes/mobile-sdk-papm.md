@@ -18,7 +18,7 @@ information (if desired).
 var paymentOrder = ...
 payment.payer = .init(
     consumerProfileRef: nil,
-    email: "leia.ahlstrom@payex.com",
+    email: "leia.ahlstrom@swedbankpay.com",
     msisdn: "+46739000001",
     payerReference: unique-identifier
 )
@@ -33,7 +33,7 @@ payment.payer = .init(
 val paymentOrder = PaymentOrder(
     ...
     payer = PaymentOrderPayer(
-        email = "leia.ahlstrom@payex.com",
+        email = "leia.ahlstrom@swedbankpay.com",
         msisdn = "+46739000001",
         payerReference = unique-identifier
     ),

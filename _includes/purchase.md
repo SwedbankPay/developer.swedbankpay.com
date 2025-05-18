@@ -82,14 +82,14 @@ Content-Type: application/json{% endcapture %}
         "cardholder": {
             "firstName": "Olivia",
             "lastName": "Nyhuus",
-            "email": "olivia.nyhuus@payex.com",
+            "email": "olivia.nyhuus@swedbankpay.com",
             "msisdn": "+4798765432",
             "homePhoneNumber": "+4787654321",
             "workPhoneNumber": "+4776543210",
             "shippingAddress": {
                 "firstName": "Olivia",
                 "lastName": "Nyhuus",
-                "email": "olivia.nyhuus@payex.com",
+                "email": "olivia.nyhuus@swedbankpay.com",
                 "msisdn": "+4798765432",
                 "streetAddress": "Saltnestoppen 43",
                 "coAddress": "",
@@ -100,7 +100,7 @@ Content-Type: application/json{% endcapture %}
             "billingAddress": {
                 "firstName": "Olivia",
                 "lastName": "Nyhuus",
-                "email": "olivia.nyhuus@payex.com",
+                "email": "olivia.nyhuus@swedbankpay.com",
                 "msisdn": "+4798765432",
                 "streetAddress": "Saltnestoppen 43",
                 "coAddress": "",
@@ -119,7 +119,7 @@ Content-Type: application/json{% endcapture %}
             }{% endif %}
         },
         "riskIndicator": {
-            "deliveryEmailAddress": "olivia.nyhuus@payex.com",
+            "deliveryEmailAddress": "olivia.nyhuus@swedbankpay.com",
             "deliveryTimeFrameIndicator": "01",
             "preOrderDate": "19801231",
             "preOrderPurchaseIndicator": "01",
@@ -185,7 +185,7 @@ Content-Type: application/json{% endcapture %}
 |                  | {% f termsOfServiceUrl, 2 %}      | `string`      | {% include fields/terms-of-service-url.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | {% icon check %} | {% f payeeInfo %}               | `object`      | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | {% icon check %} | {% f payeeId, 2 %}                | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| {% icon check %} | {% f payeeReference, 2 %}         | `string` | {% include fields/payee-reference.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| {% icon check %} | {% f payeeReference, 2 %}         | `string(30)` | {% include fields/payee-reference.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 |                  | {% f payeeName, 2 %}              | `string`      | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |                  | {% f productCategory, 2 %}        | `string(50)`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                                                                                                                                                                                                                                                            |
 |                  | {% f orderReference, 2 %}         | `string(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |

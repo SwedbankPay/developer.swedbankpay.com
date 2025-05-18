@@ -32,9 +32,10 @@
   </ul>
 </div>
 
-The integration consists of three main steps. **Creating** the payment order,
-**displaying** the payment menu, and **capturing** the funds. In addition, there
-are other post-purchase options you need. We get to them later on.
+The integration consists of four main steps. **Creating** the payment order,
+**displaying** the payment menu, **validating** the status and **capturing** the
+funds. In addition, there are other post-purchase options you need. We get to
+them later on.
 
 {: .h3 }
 
@@ -92,9 +93,38 @@ You can only use `abort` if the payer **has not** completed an `authorize` or a
 `sale`. If the payer is performing an action at a 3rd party, like the MobilePay,
 Swish or Vipps apps, `abort` is unavailable.
 
-{% include alert-risk-indicator.md %}
+### GDPR
 
-{% include alert-gdpr-disclaimer.md %}
+When adding information to the `Payer` object for the purpose of pre-filling or
+storing any data connected to the payer, you must first obtain their **explicit**
+**consent**. In general, this consent can be collected when the payer provides
+their delivery information, such as during the checkout or registration process.
+
+Examples of such fields include:
+
+*   `firstName`
+*   `lastName`
+*   `email`
+*   `MSISDN`
+
+If you are linking payer information to a profile (`payerReference`) or using
+stored credentials for express checkouts, **do not use sensitive identifiers** —
+such as email addresses, phone numbers, or social security numbers—in fields
+like `payerReference`. These fields are **not intended to hold personal data**,
+and therefore **do not offer the same level of protection or processing**
+**safeguards** as fields explicitly designed for sensitive information under
+GDPR.
+
+If the use of sensitive data is absolutely necessary, it must be **hashed**
+before being sent in any request to Swedbank Pay. The hash must be meaningful
+only to you, the merchant or integrator, and **does not need to be reversible by**
+**Swedbank Pay**. This means you are solely responsible for generating the hash
+and, if needed, securely mapping it back to the original data on your side. The
+responsibility for ensuring the **lawful processing, protection, and handling**
+**of personal data** — both during and after the transaction — **rests entirely**
+**with you**.
+
+{% include alert-risk-indicator.md %}
 
 {% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
@@ -185,7 +215,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
 | {% icon check %} | {% f vatAmount, 2 %}          | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                          |
 | {% icon check %} | {% f payeeInfo %}                | `object`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f payeeId, 2 %}                 | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                                                                                                            |
-| {% icon check %} | {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                                                                                                 |
+| {% icon check %} | {% f payeeReference, 2 %}          | `string(30)` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                                                                                                 |
 |                  | {% f payeeName, 2 %}               | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                                                                                                                 |
 |                  | {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
 {% endcapture %}
@@ -355,9 +385,9 @@ Read more about possible additions to the request in our
 {: .text-right}
 [Top of page](#payment-order-v30)
 
-{% include iterator.html prev_href="/checkout-v3/"
-                         prev_title="Back to Introduction"
-                         next_href="/checkout-v3/get-started/display-payment-ui/"
+{% include iterator.html prev_href="/checkout-v3/get-started"
+                         prev_title="Back To Get Started"
+                         next_href="/checkout-v3/get-started/display-payment-ui"
                          next_title="Display Payment UI" %}
 
 [abort-feature]: /checkout-v3/features/payment-operations/abort

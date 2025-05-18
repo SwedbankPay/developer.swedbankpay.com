@@ -51,7 +51,7 @@ Content-Type: application/json{% endcapture %}
 | :--------------- | :----------------------- | :----------- | :------------------------------------------------------------------------------------ |
 | {% icon check %}︎ | `transaction`            | `string`     | The transaction object contains information about this cancellation.                  |
 | {% icon check %}︎ | {% f description %}    | `string`     | A textual description of the reason for the cancellation.                             |
-| {% icon check %}︎ | {% f payeeReference %} | `string(50)` | {% include fields/payee-reference.md %} |
+| {% icon check %}︎ | {% f payeeReference %} | `string(30)` | {% include fields/payee-reference.md %} |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
@@ -116,7 +116,7 @@ Content-Type: application/json{% endcapture %}
 | {% icon check %}︎ | {% f amount %}         | `integer`    | {% include fields/amount.md %}                                             |
 | {% icon check %}︎ | {% f vatAmount %}      | `integer`    | {% include fields/vat-amount.md %}                                          |
 | {% icon check %}︎ | {% f description %}    | `string`     | A textual description of the capture                                                  |
-| {% icon check %}︎ | {% f payeeReference %} | `string` | {% include fields/payee-reference.md %} |
+| {% icon check %}︎ | {% f payeeReference %} | `string(30)` | {% include fields/payee-reference.md %} |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 

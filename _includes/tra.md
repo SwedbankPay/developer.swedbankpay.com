@@ -50,7 +50,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
                 "countryCode": "SE"
             "requireConsumerInfo": false,
             "digitalProducts": false,
-            "email": "olivia.nyhuus@payex.com",
+            "email": "olivia.nyhuus@swedbankpay.com",
             "msisdn": "+4798765432",
             "authentication" : {
                 "type" : "Digital",
@@ -61,7 +61,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             "shippingAddress": {
                 "firstName": "Olivia",
                 "lastName": "Nyhuus",
-                "email": "olivia.nyhuus@payex.com",
+                "email": "olivia.nyhuus@swedbankpay.com",
                 "msisdn": "+4798765432",
                 "streetAddress": "Saltnestoppen 43",
                 "coAddress": "",
@@ -72,7 +72,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
               "billingAddress": {
                 "firstName": "Olivia",
                 "lastName": "Nyhuus",
-                "email": "olivia.nyhuus@payex.com",
+                "email": "olivia.nyhuus@swedbankpay.com",
                 "msisdn": "+4798765432",
                 "streetAddress": "Saltnestoppen 43",
                 "coAddress": "",
@@ -126,7 +126,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             }
         ],
         "riskIndicator": {
-            "deliveryEmailAddress": "olivia.nyhuus@payex.com",
+            "deliveryEmailAddress": "olivia.nyhuus@swedbankpay.com",
             "deliveryTimeFrameindicator": "01",
             "preOrderDate": "20210220",
             "preOrderPurchaseIndicator": "01",
@@ -186,7 +186,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 | {% icon check %} | {% f logoUrl, 2 %}                 | `string`     | {% include fields/logo-url.md %}                                                                                                                                                                                                                                                               |{% endif %}
 | {% icon check %} | {% f payeeInfo %}                | `object`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f payeeId, 2 %}                 | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                                                                                                            |
-| {% icon check %} | {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                                                                                                 |
+| {% icon check %} | {% f payeeReference, 2 %}          | `string(30)` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                                                                                                 |
 |                  | {% f payeeName, 2 %}               | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                                                                                                                 |
 |                  | {% f productCategory, 2 %}         | `string(50)`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
 |                  | {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |

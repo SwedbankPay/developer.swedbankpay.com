@@ -178,7 +178,7 @@ Content-Type: application/json;version=3.0    // Version optional, can be set in
 | {% icon check %} | {% f description %}          | `string`     | The description of the capture transaction.                                                                                                                                                                                                                                           |
 | {% icon check %} | {% f amount %}               | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f vatAmount %}            | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                          |
-| {% icon check %} | {% f payeeReference %}       | `string` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                                  |
+| {% icon check %} | {% f payeeReference %}       | `string(30)` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                                  |
 |                  | {% f receiptReference %}     | `string(30)` | {% include fields/receipt-reference.md %}                                                                                                                                                               |
 | {% icon check %} | {% f orderItems %}           | `array`      | {% include fields/order-items.md %}                                                                                                                                                                                                                                         |
 | {% icon check %} | {% f reference, 2 %}           | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                           |
@@ -273,7 +273,7 @@ api-supported-versions: 3.0{% endcapture %}
 | {% f amount, 2 %}           | `integer`    | {% include fields/amount.md %}                                                                                                                                                                         |
 | {% f vatAmount, 2 %}        | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                      |
 | {% f description, 2 %}      | `string`     | {% include fields/description.md %}                                                                                                                                   |
-| {% f payeeReference, 2 %}   | `string`     | {% include fields/payee-reference.md describe_receipt=true %}                                                                                              |
+| {% f payeeReference, 2 %}   | `string(30)`     | {% include fields/payee-reference.md describe_receipt=true %}                                                                                              |
 
 | {% f receiptReference, 2 %} | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation.  It is used to supplement `payeeReference` as an additional receipt number. |
 {% endcapture %}
@@ -369,7 +369,7 @@ Content-Type: application/json;version=3.0     // Version optional, can be set i
 | :--------------: | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------- |
 | {% icon check %} | `transaction`            | `object`     | The transaction object.                                                                        |
 | {% icon check %} | {% f description %}    | `string`     | A textual description of why the transaction is cancelled.                                     |
-| {% icon check %} | {% f payeeReference %} | `string` | {% include fields/payee-reference.md %} |
+| {% icon check %} | {% f payeeReference %} | `string(30)` | {% include fields/payee-reference.md %} |
 
 {: .text-right .mt-3}
 [Top of page](#payment-order-v30)
@@ -430,7 +430,7 @@ api-supported-versions: 3.0{% endcapture %}
 | {% f vatAmount, 2 %}      | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
 
 | {% f description, 2 %}    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
-| {% f payeeReference, 2 %} | `string`  | {% include fields/payee-reference.md describe_receipt=true %}                                                                                         |
+| {% f payeeReference, 2 %} | `string(30)`  | {% include fields/payee-reference.md describe_receipt=true %}                                                                                         |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
@@ -554,7 +554,7 @@ Content-Type: application/json;version=3.0     // Version optional, can be set i
 | {% icon check %} | {% f amount %}               | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f vatAmount %}            | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                          |
 
-| {% icon check %} | {% f payeeReference %}       | `string` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                                  |
+| {% icon check %} | {% f payeeReference %}       | `string(30)` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                                  |
 |                  | {% f receiptReference %}     | `string(30)` | {% include fields/receipt-reference.md %}                                                                                                                                                               |
 | {% icon check %} | {% f description %}          | `string`     | Textual description of why the transaction is reversed.                                                                                                                                                                                                                               |
 | {% icon check %} | {% f orderItems %}           | `array`      | {% include fields/order-items.md %}                                                                                                                                                                                                                                         |
@@ -637,7 +637,7 @@ api-supported-versions: 3.0{% endcapture %}
 | {% f amount, 2 %}                 | `integer`    | {% include fields/amount.md %}                                                    |
 | {% f vatAmount, 2 %}              | `integer`    | {% include fields/vat-amount.md %}                                                |
 | {% f description, 2 %}            | `string`     | A human readable description of maximum 40 characters of the transaction.         |
-| {% f payeeReference, 2 %}         | `string`     | {% include fields/payee-reference.md describe_receipt=true %}                     |
+| {% f payeeReference, 2 %}         | `string(30)`     | {% include fields/payee-reference.md describe_receipt=true %}                     |
 | {% f receiptReference %}          | `string(30)` | {% include fields/receipt-reference.md %}                                         |
 | {% f isOperational, 2 %}          | `boolean`    | `true`  if the transaction is operational; otherwise  `false` .                   |
 | {% f reconciliationNumber, 2 %}   | `string`     | The number of the reconciliation batch file where the transaction can be found.   |
@@ -645,10 +645,23 @@ api-supported-versions: 3.0{% endcapture %}
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
+### Done With The Basics
+
+You have reached the final step of the basic payment implementation and should
+be able to validate that everything works as intended, or maybe it's time for
+[acceptance tests][acceptance-test]?
+
+There are other features and capabilities you can add to tailor the payment
+requests even more to your business needs. Go have a look in our **Features**
+section (button below) to see what else we can offer.
+
 {: .text-right .mt-3}
 [Top of page](#payment-order-v30)
 
-{% include iterator.html next_href="/checkout-v3/features/"
-                         next_title="Add To Your Payment Request" %}
+{% include iterator.html prev_href="/checkout-v3/get-started/validate-status"
+                         prev_title="Back To Validate Status"
+                         next_href="/checkout-v3/features/"
+                         next_title="Further Request Additions" %}
 
 [problems]: /checkout-v3/features/technical-reference/problems
+[acceptance-test]: /checkout-v3/get-started/#get-ready-to-go-live

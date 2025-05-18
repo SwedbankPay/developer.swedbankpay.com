@@ -146,7 +146,7 @@ Content-Type: application/json;version=3.1{% endcapture %}
 | {% icon check %} | {% f description %}          | `string`     | The description of the capture transaction.                                                                                                                                                                                                                                           |
 | {% icon check %} | {% f amount %}               | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f vatAmount %}            | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                          |
-| {% icon check %} | {% f payeeReference %}       | `string` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                                  |
+| {% icon check %} | {% f payeeReference %}       | `string(30)` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                                  |
 |                  | {% f receiptReference %}     | `string(30)` | {% include fields/receipt-reference.md %}                                                                                                                                                               |
 | {% icon check %} | {% f orderItems %}           | `array`      | {% include fields/order-items.md %}                                                                                                                                                                                                                                         |
 | {% icon check %} | {% f reference, 2 %}           | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                           |
@@ -394,7 +394,7 @@ Content-Type: application/json;version=3.1{% endcapture %}
 | {% icon check %} | `transaction`            | `object`     | The transaction object.                                                                        |
 
 | {% icon check %} | {% f description %}    | `string`     | A textual description of why the transaction is cancelled.                                     |
-| {% icon check %} | {% f payeeReference %} | `string` | {% include fields/payee-reference.md %} |
+| {% icon check %} | {% f payeeReference %} | `string(30)` | {% include fields/payee-reference.md %} |
 
 {: .text-right}
 [Top of page](#payment-order-v31)
@@ -607,7 +607,7 @@ Content-Type: application/json;version=3.1{% endcapture %}
 | {% icon check %} | `transaction`                  | `object`     | The transaction object.                                                                                                                                                                                                                                                               |
 | {% icon check %} | {% f amount %}               | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f vatAmount %}            | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                          |
-| {% icon check %} | {% f payeeReference %}       | `string` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                                  |
+| {% icon check %} | {% f payeeReference %}       | `string(30)` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                                  |
 |                  | {% f receiptReference %}     | `string(30)` | {% include fields/receipt-reference.md %}                                                                                                                                                               |
 | {% icon check %} | {% f description %}          | `string`     | Textual description of why the transaction is reversed.                                                                                                                                                                                                                               |
 | {% icon check %} | {% f orderItems %}           | `array`      | {% include fields/order-items.md %}                                                                                                                                                                                                                                         |
@@ -755,10 +755,23 @@ api-supported-versions: 3.1{% endcapture %}
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
+### Done With The Basics
+
+You have reached the final step of the basic payment implementation and should
+be able to validate that everything works as intended, or maybe it's time for
+[acceptance tests][acceptance-test]?
+
+There are other features and capabilities you can add to tailor the payment
+requests even more to your business needs. Go have a look in our **Features**
+section (button below) to see what else we can offer.
+
 {: .text-right .mt-3}
 [Top of page](#payment-order-v31)
 
-{% include iterator.html next_href="/checkout-v3/features/"
-                         next_title="Add To Your Payment Request" %}
+{% include iterator.html prev_href="/checkout-v3/get-started/validate-status"
+                         prev_title="Back To Validate Status"
+                         next_href="/checkout-v3/features/"
+                         next_title="Further Request Additions" %}
 
 [problems]: /checkout-v3/features/technical-reference/problems
+[acceptance-test]: /checkout-v3/get-started/#get-ready-to-go-live

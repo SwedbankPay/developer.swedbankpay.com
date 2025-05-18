@@ -39,7 +39,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 | :--------------: | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------- |
 | {% icon check %} | `transaction`            | `object`     | The transaction object.                                                                        |
 | {% icon check %} | {% f description %}    | `string`     | A textual description of why the transaction is cancelled.                                     |
-| {% icon check %} | {% f payeeReference %} | `string` | {% include fields/payee-reference.md %} |
+| {% icon check %} | {% f payeeReference %} | `string(30)` | {% include fields/payee-reference.md %} |
 
 ## Cancel Response
 
@@ -92,7 +92,7 @@ api-supported-versions: 3.0/2.0{% endcapture %}
 | {% f amount, 2 %}         | `integer` | {% include fields/amount.md %}                                                                                                                                                                    |
 | {% f vatAmount, 2 %}      | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
 | {% f description, 2 %}    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
-| {% f payeeReference, 2 %} | `string`  | {% include fields/payee-reference.md describe_receipt=true %}                                                                                         |
+| {% f payeeReference, 2 %} | `string(30)`  | {% include fields/payee-reference.md describe_receipt=true %}                                                                                         |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 

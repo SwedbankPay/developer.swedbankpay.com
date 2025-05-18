@@ -107,7 +107,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 | {% f cancelReason %}             | `string`     | Why the payment was cancelled. |
 | {% f instrument %}             | `string`     | The payment method used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | {% f number, 2 %}         | `integer`  | {% include fields/number.md %} |
-| {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md %} |
+| {% f payeeReference, 2 %}          | `string(30)` | {% include fields/payee-reference.md %} |
 | {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
 | {% f transactionType, 2 %}          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a capture on this payment order. Swedbank Pay recommends using the different operations to figure out if a capture is needed. |
 | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                            |
@@ -460,7 +460,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 | {% f amount, 2 %}                   | `integer`    | {% include fields/amount.md %}                                            |
 | {% f vatAmount, 2 %}                | `integer`    | {% include fields/vat-amount.md %}                                          |
 | {% f description %}              | `string`     | The description of the payment order.                                                                                                                                                         |
-| {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md %} |
+| {% f payeeReference, 2 %}          | `string(30)` | {% include fields/payee-reference.md %} |
 | {% f receiptReference %}     | `string(30)` | {% include fields/receipt-reference.md %}                                                                                                                                                               |
 | {% f orderItems %}           | `array`      | {% include fields/order-items.md %}                                                                                                                                                                                                                                         |
 {% endcapture %}
@@ -1150,7 +1150,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | {% f instrument %}             | `string`     | The payment method used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | {% f number, 2 %}         | `integer` | {% include fields/number.md resource="paymentorder" %} |
-| {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md %} |
+| {% f payeeReference, 2 %}          | `string(30)` | {% include fields/payee-reference.md %} |
 | {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
 | {% f transactionType, 2 %}          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a `capture` on this payment order. Swedbank Pay recommends using the different `operations` to figure out if a `capture` is needed. |
 | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                            |
@@ -1194,7 +1194,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/payers",
     "reference": "reference to payer"
     "name": "Azra Oliveira",
-    "email": "azra@payex.com",
+    "email": "azra@swedbankpay.com",
     "msisdn": "+46722345678",  {% unless documentation_section contains "checkout-v3/payments-only" %}
     "gender": "male",
     "birthYear": "1980", {% endunless %}
@@ -1726,7 +1726,7 @@ api-supported-versions: 3.x{% endcapture %}
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | {% f instrument %}             | `string`     | The payment method used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | {% f number, 2 %}         | `integer` | {% include fields/number.md resource="paymentorder" %} |
-| {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md %} |
+| {% f payeeReference, 2 %}          | `string(30)` | {% include fields/payee-reference.md %} |
 | {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
 | {% f transactionType, 2 %}          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a `capture` on this payment order. Swedbank Pay recommends using the different `operations` to figure out if a `capture` is needed. |
 | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                            |
