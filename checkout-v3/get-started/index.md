@@ -8,22 +8,22 @@ permalink: /:path/
 menu_order: 2
 ---
 
-Get Started is a guide for the native API implementation of Digital Payments.
+Get Started is a guide for the native API implementation of Online Payments.
 [Modules and SDKs have their own section][modules-sdks].
 
 ## Foundation
 
-To start integrating Swedbank Pay Digital Payments, you need the following:
+To start integrating Swedbank Pay Online Payments, you need the following:
 
 *   [HTTPS][https] enabled web server.
 *   Agreement that includes Swedbank Pay Checkout.
 *   Obtained credentials (Merchant Access Token) from Swedbank Pay through
     the Merchant Portal.
 
-There are two versions of Digital Payments available in production at the
+There are two versions of Online Payments available in production at the
 moment: v3.0 and v3.1. Collectively we refer to them as **v3.x**. If we use v3.x
 instead of a specific version number, this means that the text paragraph,
-feature section or code example applies to all Digital Payments versions. Unless
+feature section or code example applies to all Online Payments versions. Unless
 stated otherwise by the presence of a separate v3.1 section, there are no
 differences between the two alternatives.
 

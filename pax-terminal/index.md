@@ -1,5 +1,5 @@
 ---
-section: Payment Terminals
+section: In-Store Payments
 sidebar_icon: point_of_sale
 title: Introduction
 permalink: /:path/
