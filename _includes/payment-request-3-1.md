@@ -33,9 +33,9 @@
 </div>
 
 The integration consists of four main steps. **Creating** the payment order,
-**displaying** the payment menu, **validating** the status and **capturing** the
-funds. In addition, there are other post-purchase options you need. We get to
-them later on.
+**displaying** the payment menu, **validating** the payment's status and
+**capturing** the funds. In addition, there are other post-purchase options you
+need. We get to them later on.
 
 {: .h3 }
 

@@ -762,8 +762,8 @@ be able to validate that everything works as intended, or maybe it's time for
 [acceptance tests][acceptance-test]?
 
 There are other features and capabilities you can add to tailor the payment
-requests even more to your business needs. Go have a look in our **Features**
-section (button below) to see what else we can offer.
+requests in order to meet your business needs. Go have a look in our
+**Features** section (button below) to see what else we can offer.
 
 {: .text-right .mt-3}
 [Top of page](#payment-order-v31)
@@ -771,7 +771,7 @@ section (button below) to see what else we can offer.
 {% include iterator.html prev_href="/checkout-v3/get-started/validate-status"
                          prev_title="Back To Validate Status"
                          next_href="/checkout-v3/features/"
-                         next_title="Further Request Additions" %}
+                         next_title="Additional Request Options" %}
 
 [problems]: /checkout-v3/features/technical-reference/problems
 [acceptance-test]: /checkout-v3/get-started/#get-ready-to-go-live
