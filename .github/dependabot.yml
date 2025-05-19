@@ -10,6 +10,7 @@ updates:
   versioning-strategy: lockfile-only
   ignore:
     - dependency-name: swedbank-pay-design-guide-jekyll-theme
+    - dependency-name: ffi
 
 - package-ecosystem: npm
   directory: "/"

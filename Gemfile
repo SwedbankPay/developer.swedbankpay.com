@@ -20,7 +20,7 @@ end
 group :test do
   gem 'html-proofer', '>= 4'
   gem 'html-proofer-unrendered-markdown', '>= 0.2'
-  gem 'ffi', '1.17.2'
+  gem 'ffi', '1.17.1'
   gem 'rake', '>= 13'
   gem 'rspec', '>= 3'
   gem 'rubocop', '>= 1'
