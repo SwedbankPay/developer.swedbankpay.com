@@ -11,7 +11,9 @@ tab_list:
   content_src: seamless-view-payment-ui.md
 ---
 
-## Display Payment UI
+{: .h2 }
+
+### Display Payment UI
 
 There are a couple of decisions to be made when presenting your payment UI. You
 have the choice between a payment menu with all payment methods you want to
