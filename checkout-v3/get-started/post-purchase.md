@@ -5,7 +5,7 @@ description: |
   When the payer has **completed** the purchase, you need to implement the
   relevant **post-purchase operations** in your order system. These operations,
   and how they are executed, are described below.
-menu_order: 7
+menu_order: 8
 tab_list:
 - title: Payment order v3.1
   content_src: post-purchase-3-1.md

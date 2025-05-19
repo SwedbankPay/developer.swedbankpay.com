@@ -8,13 +8,13 @@ menu_order: 4
 ---
 
 If you are a **new merchant** getting started with your implementation,
-[Online Payments][payments-only] is everything you need. The implementations in
+[Digital Payments][payments-only] is everything you need. The implementations in
 this section are available so merchants already using them can access
 documentation, but no new development or updates will be done here.
 
 If you are an existing merchant already using the Checkout v2, Payment Menu v2
 or Payment Methods v1, we recommend switching to
-[Online Payments][payments-only] for an even better payment experience. For
+[Digital Payments][payments-only] for an even better payment experience. For
 Checkout v2 and Payment Menu v2, we have a migration guide available for you.
 For payment method integrations, the [Get Started section][get-started] is the
 place to go.

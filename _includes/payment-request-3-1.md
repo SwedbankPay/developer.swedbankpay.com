@@ -32,10 +32,9 @@
   </ul>
 </div>
 
-The integration consists of four main steps. **Creating** the payment order,
-**displaying** the payment menu, **validating** the payment's status and
-**capturing** the funds. In addition, there are other post-purchase options you
-need. We get to them later on.
+The integration consists of three main steps. **Creating** the payment order,
+**displaying** the payment menu, and **capturing** the funds. In addition, there
+are other post-purchase options you need. We get to them later on.
 
 {: .h3 }
 
@@ -94,38 +93,9 @@ Swish or Vipps apps, `abort` is unavailable.
 To avoid unnecessary calls, we recommend doing a `GET` on your `paymentOrder` to
 check if `abort` is an available operation before performing it.
 
-### GDPR
-
-When adding information to the `Payer` object for the purpose of pre-filling or
-storing any data connected to the payer, you must first obtain their **explicit**
-**consent**. In general, this consent can be collected when the payer provides
-their delivery information, such as during the checkout or registration process.
-
-Examples of such fields include:
-
-*   `firstName`
-*   `lastName`
-*   `email`
-*   `MSISDN`
-
-If you are linking payer information to a profile (`payerReference`) or using
-stored credentials for express checkouts, **do not use sensitive identifiers** —
-such as email addresses, phone numbers, or social security numbers—in fields
-like `payerReference`. These fields are **not intended to hold personal data**,
-and therefore **do not offer the same level of protection or processing**
-**safeguards** as fields explicitly designed for sensitive information under
-GDPR.
-
-If the use of sensitive data is absolutely necessary, it must be **hashed**
-before being sent in any request to Swedbank Pay. The hash must be meaningful
-only to you, the merchant or integrator, and **does not need to be reversible by**
-**Swedbank Pay**. This means you are solely responsible for generating the hash
-and, if needed, securely mapping it back to the original data on your side. The
-responsibility for ensuring the **lawful processing, protection, and handling**
-**of personal data** — both during and after the transaction — **rests entirely**
-**with you**.
-
 {% include alert-risk-indicator.md %}
+
+{% include alert-gdpr-disclaimer.md %}
 
 {% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
@@ -345,8 +315,8 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 | {% f initiatingSystemUserAgent %}      | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
 | {% f language %}       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
 | {% f availableInstruments %}       | `string`     | A list of payment methods available for this payment.                                                                                                                                                   |
-| {% f implementation %}       | `string`     | The merchant's Online Payments implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
-| {% f integration %}       | `string`     | The merchant's Online Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.                           |
+| {% f implementation %}       | `string`     | The merchant's Digital Payments implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
+| {% f integration %}       | `string`     | The merchant's Digital Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.                           |
 | {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with Instrument Mode (only one payment method available).                                                                                    |
 | {% f guestMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a `payerReference` in the original `paymentOrder` request.                                                                                                                                                |
 | {% f orderItems %}     | `id`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            |
@@ -387,9 +357,9 @@ Read more about possible additions to the request in our
 {: .text-right}
 [Top of page](#payment-order-v31)
 
-{% include iterator.html prev_href="/checkout-v3/get-started"
-                         prev_title="Back To Get Started"
-                         next_href="/checkout-v3/get-started/display-payment-ui"
+{% include iterator.html prev_href="/checkout-v3/"
+                         prev_title="Back to Introduction"
+                         next_href="/checkout-v3/get-started/display-payment-ui/"
                          next_title="Display Payment UI" %}
 
 [abort-feature]: /checkout-v3/features/payment-operations/abort

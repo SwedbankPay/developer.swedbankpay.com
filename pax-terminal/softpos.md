@@ -48,8 +48,7 @@ This will require the AppSwitch SDK, which needs to be embedded in the Point of
 Sales (POS) app.
 
 The features available are shown in the table below, and you can access the full
-set of APIs by contacting a [Norwegian][contact-no] or [Swedish][contact-se]
-sales representative respectively.
+set of APIs by [contacting a sales representative][contact].
 
 For both standalone and integrated scenarios, it is only the Pay SoftPos app
 that is within the PCI-DSS certification scope. This makes it simpler for
@@ -136,5 +135,4 @@ requirements are unsupported.
 | Sunmi                  | V2       |
 | Motorola                  | G9 (Power, Plus)        |
 
-[contact-se]: mailto:sales@swedbankpay.se
-[contact-no]: mailto:salg@swedbankpay.no
+[contact]: mailto:sales.swedbankpay@swedbank.se

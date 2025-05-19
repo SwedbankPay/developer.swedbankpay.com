@@ -32,7 +32,7 @@ in [Danish][da]{:target="_blank"}, [Finnish][fi]{:target="_blank"},
 If you currently have a Seamless View integration and don't want the impending
 responsibilities, switcing to Redirect is a very manageable task. While you can
 make the change and keep on using your payment method integration(s), we
-**strongly recommend** switching to [Online Payments][dp] when you are already
+**strongly recommend** switching to [Digital Payments][dp] when you are already
 making changes to your integration.
 
 If you choose to continue using payment method integrations, here's what you
@@ -126,4 +126,3 @@ could affect the merchant’s e-commerce system(s).
 [fi]: https://www.swedbankpay.fi/riskit-ja-turvallisuus/nain-pci-vaikuttaa-sinuun
 [no]: https://www.swedbankpay.no/risiko-og-sikkerhet/pci-slik-pavirkes-du
 [se]: https://www.swedbankpay.se/risk-och-sakerhet/pci-sa-paverkas-du
-[pci]: /assets/documents/PCI-DSS-v4-0-1-SAQ-A.pdf

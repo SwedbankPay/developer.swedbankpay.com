@@ -1,5 +1,5 @@
 {%- capture field -%}
-Indicates a Online Payments compliant client. Required to enable Digital
+Indicates a Digital Payments compliant client. Required to enable Digital
 Payments functionality and operations.
 {%- endcapture -%}
 {{- field | strip_newlines -}}

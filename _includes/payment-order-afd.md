@@ -69,7 +69,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     json= request_content
     %}
 
-Request fields not covered in the common Online Payments [`Initialized`]({{
+Request fields not covered in the common Digital Payments [`Initialized`]({{
 features_url }}/technical-reference/status-models#initialized) redirect or
 seamless view table:
 

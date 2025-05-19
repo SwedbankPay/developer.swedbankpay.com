@@ -1,5 +1,5 @@
 {%- capture text -%}
-The Online Payments implementation type.
+The Digital Payments implementation type.
 Omit if the integration is for _Payments Only_.
 {%- endcapture -%}
 {%- comment -%}

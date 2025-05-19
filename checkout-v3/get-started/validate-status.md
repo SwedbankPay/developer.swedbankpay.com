@@ -4,7 +4,7 @@ permalink: /:path/validate-status/
 hide_from_sidebar: false
 description: |
   How to validate the status of a payment
-menu_order: 6
+menu_order: 7
 ---
 
 After the payer has completed their payment and returned to the `CompleteUrl`,
@@ -251,16 +251,6 @@ See the [`Cancelled` response][cancelled].
 
 Returned when the merchant has aborted the payment, or if the payer cancelled
 the payment in the redirect integration. See the [`Aborted` response][aborted].
-
-### Next Steps
-
-You are now ready to capture the funds. Follow the link below to read more about
-capture and the other options you have after the purchase.
-
-{% include iterator.html prev_href="/checkout-v3/get-started"
-                         prev_title="Back to Display Payment UI"
-                         next_href="/checkout-v3/get-started/post-purchase"
-                         next_title="Post-Purchase" %}
 
 [aborted]: /checkout-v3/features/technical-reference/resource-sub-models/#failed
 [cancelled]: /checkout-v3/features/technical-reference/resource-sub-models/#cancelled
