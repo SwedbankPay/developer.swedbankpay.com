@@ -116,8 +116,8 @@ end
 
 ### Next Steps
 
-You are now ready to capture the funds. Follow the link below to read more about
-capture and the other options you have after the purchase.
+You are now ready to validate the payment's status. Follow the link below to
+read more about how this is done.
 
 [Top of page](#display-redirect)
 

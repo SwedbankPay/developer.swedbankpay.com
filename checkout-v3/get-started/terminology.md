@@ -1,7 +1,7 @@
 ---
 title: Terminology
 permalink: /:path/terminology/
-menu_order: 12
+menu_order: 10
 ---
 
 {:.table .table-striped}
