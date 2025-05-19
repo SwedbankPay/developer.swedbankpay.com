@@ -2,12 +2,11 @@
 title: Display Payment UI
 hide_from_sidebar: false
 description: |
-  How to display the checkout payment UI.
+  How to display the payment UI.
 menu_order: 5
 tab_list:
 - title: Redirect
   content_src: redirect-payment-ui.md
-  mark_with_star: true
 - title: Seamless View
   content_src: seamless-view-payment-ui.md
 ---
