@@ -37,7 +37,7 @@ in [Danish][da]{:target="_blank"}, [Finnish][fi]{:target="_blank"},
 If you currently have a Seamless View integration and don't want the impending
 responsibilities, switcing to Redirect is normally possible, but the Checkin
 module used in Checkout v2 is only available using Seamless View. We
-**strongly recommend** switching to the newest version of [Digital Payments][dp]
+**strongly recommend** switching to the newest version of [Online Payments][dp]
 and choose the Redirect UI option. We have written a [migration guide][mp] to
 help you.
 
@@ -53,3 +53,4 @@ could affect the merchant’s e-commerce system(s).
 [fi]: https://www.swedbankpay.fi/riskit-ja-turvallisuus/nain-pci-vaikuttaa-sinuun
 [no]: https://www.swedbankpay.no/risiko-og-sikkerhet/pci-slik-pavirkes-du
 [se]: https://www.swedbankpay.se/risk-och-sakerhet/pci-sa-paverkas-du
+[pci]: /assets/documents/PCI-DSS-v4-0-1-SAQ-A.pdf

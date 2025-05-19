@@ -1,5 +1,5 @@
 ---
-title: From Payment Methods v1 to Digital Payments v3.1
+title: From Payment Methods v1 to Online Payments v3.1
 section: Migration Guides
 permalink: /:path/migration-guide-v1/
 hide_from_sidebar: true
@@ -11,7 +11,7 @@ menu_order: 10
 ## Why
 
 The first reason for migrating is the access to new development. All fresh
-features and capabilities are exclusively released to Digital Payments, and will
+features and capabilities are exclusively released to Online Payments, and will
 not be available when using payment methods v1.
 
 Likewise, new payment method additions like Google Pay, Apple Pay and Click to
@@ -23,13 +23,13 @@ each individual method's unique API, when new functionality, changes in behavior
 or new instruments are introduced, they both come with their own separate need
 for maintaining the existing integration.
 
-By switching to Digital Payments v3.1, you will eliminate the need for
+By switching to Online Payments v3.1, you will eliminate the need for
 maintenance on multiple integrations due to the design of v3.1 and its one-size
 fits all structure.
 
 ## How
 
-Migrating from individual payment methods to Digital Payments v3 does require a
+Migrating from individual payment methods to Online Payments v3 does require a
 full new integration. The good news is that even if you are working with a new
 (paymentOrder) resource, the integration is very similar to what you are used
 to with payment method integrations.

@@ -1,8 +1,8 @@
 ---
-title: Digital Payments
+title: Online Payments
 permalink: /:path/digital-payments/
 description: |
-  The latest updates about our Digital Payments.
+  The latest updates about our Online Payments.
 menu_order: 2
 has_release_notes: true
 ---
@@ -58,7 +58,7 @@ supported status!
 As the number of migration guides is going up, we have gathered them on a
 [start page][mig-guide] for accessability. In addition to the already existing
 “v2 to v3.1” and “Seamless View to Redirect” guides, a guide for going from
-Payment Methods v1 to Digital Payments v3.1 is now available.
+Payment Methods v1 to Online Payments v3.1 is now available.
 
 [New IP addresses for callbacks][callback-ip] have been added in the callback
 section. They will be going live March 12th, so make sure you whitelist them as
@@ -101,7 +101,7 @@ A new operation called `abort-paymentattempt` has been added to 3.x versions. As
 the name implies, it is meant for instances where the merchant wants to abort
 the payment _attempt_, and not the payment _order_ as a whole. Read more about
 it in the [Abort section][abort-payattempt] of the payment options category in
-Digital Payments' Features.
+Online Payments' Features.
 
 ## 24 October 2024
 
@@ -273,7 +273,7 @@ Are you looking to get started with recurring payments, but not really sure
 where to start? We have compiled everything you need in a [use case][ruc], and
 walk you through it all.
 
-Or are you maybe looking to upgrade to our newest Digital Payments version? See
+Or are you maybe looking to upgrade to our newest Online Payments version? See
 how easy it is in our [migration guide][mig-guide].
 
 A new `errorType` goes live any day now, so a preview in the developer portal
@@ -316,7 +316,7 @@ Today, we go live with Payment Order v3.1, which has some changes in the
 [callback][callback-3-1]. We have also added a new resource model called
 [`failedPostPurchaseAttempts`][fppa]. Go check it out!
 
-There is a new section regarding [Trustly in Digital Payments][trustly-pres],
+There is a new section regarding [Trustly in Online Payments][trustly-pres],
 with important information regarding overlay and Trustly Express.
 
 There is also a new Vipps field for fees in the [`failedAttempts`][fa] resource
@@ -327,8 +327,8 @@ model.
 ### Version 4.5.0
 
 If you are reading these notes, you have probably noticed some changes already!
-As the **Payment Terminals** section is growing bigger, we have moved most of
-the **Digital Payments** related content away from the front page. The release
+As the **In-Store Payments** section is growing bigger, we have moved most of
+the **Online Payments** related content away from the front page. The release
 notes can now be found where you are reading this, and the resources at the
 bottom of the front page will follow suit shortly.
 
@@ -353,7 +353,7 @@ addition is a section on [Network Tokenization][nwt], which is a fantastic way
 of processing cards. Get to know it, and put it to use!
 
 We have also adjusted our search results somewhat. Now we only display results
-from the sections Digital Payments and Payment Terminals. We hope it gives you
+from the sections Online Payments and In-Store Payments. We hope it gives you
 an easier time finding the right result in the correct section.
 
 Big things are coming up around the bend. Stay tuned!
@@ -374,7 +374,7 @@ Have a great summer!
 
 A small batch of changes which barely missed the last deadline. We've done a few
 correction and some major changes, most notably the renaming of **Checkout v3**
-to **Digital Payments** and **Pax Terminal** to **Payment Terminal**. The
+to **Online Payments** and **Pax Terminal** to **In-Store Payments**. The
 changes are in name only, the structure stays the same.
 
 We have also added information regarding the
@@ -394,7 +394,7 @@ Introduction (but you can still read the main points under
 Modules & SDK][modules-sdks] section, it has found a new home under Digital
 Payments.
 
-Speaking of [Digital Payments][checkout-v3], we've cleaned that up as well, and
+Speaking of [Online Payments][checkout-v3], we've cleaned that up as well, and
 hope it will make things easier for you. The
 [payment request example][payment-request] now contains what you need to create
 a payment order. Adding more to it is up to you and the [features][features]
@@ -435,7 +435,7 @@ also been added, in addition to the usual bugs and small fixes.
 ### Version 4.1.0
 
 A lot of changes are happening these days. We've made the decision to focus the
-Digital Payments offering, so our Starter and Business implementations are no more.
+Online Payments offering, so our Starter and Business implementations are no more.
 This means that we can do what we do best: giving you a payment experience
 packed with options. The [Payments Only][checkout-v3-payments-only]
 implementation is still here, and for those of you with a Strong Consumer
@@ -467,7 +467,7 @@ tasks and bug fixes.
 ### Version 3.1.8
 
 Bigger things are coming up around the bend, so we are stopping by with some
-smaller fixes and a [Digital Payments matrix][checkout-v3-matrix] giving you a
+smaller fixes and a [Online Payments matrix][checkout-v3-matrix] giving you a
 better overview over which payment methods v3 has to offer, and the
 countries they are available.
 
@@ -478,14 +478,14 @@ We'll be back soon!
 ### Version 3.1.7
 
 We kick off the new year with a new field in our payment order request. Your
-Digital Payments implementation of choice is now added in the request.
+Online Payments implementation of choice is now added in the request.
 Version 2 of the balance report and transaction list is our second newcomer this
 release. Head over to [Settlement & Reconciliation][settlement-balance-report]
 to learn more.
 
 We have added a [paid status model][status-model-paid-v2] to Checkout v2 and
 Payment Menu v2, and the [update payment order section][payment-order-update] is
-added to Digital Payments.
+added to Online Payments.
 
 ## 15 December 2022
 
@@ -518,7 +518,7 @@ bug fixes.
 
 ### Version 3.1.3
 
-Another small one. We've added Digital Payments `paid` responses for all
+Another small one. We've added Online Payments `paid` responses for all
 methods in both [status][status-models] and
 [resource-models][resource-models], finished up the headers which was missing,
 added MobilePay to [Request Delivery Information][request-delivery-information]
@@ -531,7 +531,7 @@ and done away with some more bugs and typos.
 We have been picking up steam since our summer break, hitting full throttle as
 September arrived. A smaller release this time around, but there are some
 important additions nonetheless. We have added a
-[siteID][checkout-v3-payments-only-redirect-request] field to Digital Payments
+[siteID][checkout-v3-payments-only-redirect-request] field to Online Payments
 implementations, re-worked nearly all
 [headers][checkout-v3-payments-only-seamless] across the portal to make
 navigation easier, added a section on
@@ -553,10 +553,10 @@ summer!
 
 Summer has finally arrived, and we have quite a treat waiting in our final
 release before the vacation pulse kicks in. Without further ado: We now proudly
-offer **Apple Pay**! It is available in all our Digital Payments implementations
+offer **Apple Pay**! It is available in all our Online Payments implementations
 and integrations. There are a couple of other new additions as well:
 
-*   Our [SDKs][sdk-modules] have been updated to support Digital Payments
+*   Our [SDKs][sdk-modules] have been updated to support Online Payments
 *   You can now [request delivery information][request-delivery-information] for
   selected payment methods
 *   An eligibility check [eligibility check][eligibility-check] for wallets has
@@ -582,7 +582,7 @@ and integrations. There are a couple of other new additions as well:
 *   Clarified [`OnAborted` Seamless View event][seamless-view-events-onaborted]
 *   Elaborated user agent fields in requests.
 *   Added links to resource models in
-    [Digital Payments response tables][checkout-create-starter-paymentorder]
+    [Online Payments response tables][checkout-create-starter-paymentorder]
 
 ## 24 February 2022
 
@@ -590,7 +590,7 @@ and integrations. There are a couple of other new additions as well:
 
 *   Added descriptive card icons
 *   Added [Payer Aware Payment Menu][payer-aware-payment-menu]
-*   Added new screenshots for Digital Payments implementations
+*   Added new screenshots for Online Payments implementations
 *   Rewrote instrument mode section
 *   Reorganized features in the sidebar
 *   Fixed internal links
@@ -1214,7 +1214,7 @@ more convenient for both the integration and the payer.
 [checkout-v3-payments-only]: /checkout-v3
 [checkout-v3]: /checkout-v3
 [checkout-v3-payments-only-redirect-request]: /checkout-v3/get-started/payment-request
-[checkout-v3-payments-only-seamless]: /checkout-v3/get-started/display-payment-ui/seamless-view
+[checkout-v3-payments-only-seamless]: /checkout-v3/get-started/display-payment-ui#seamless-view-payment-ui
 [click-to-pay]: /checkout-v3/click-to-pay-presentation
 [consent-box]: /checkout-v3/features/optional/one-click-payments/#disable-store-details-and-toggle-consent-checkbox
 [contact-us]: /#front-page-contact-partners
@@ -1231,7 +1231,7 @@ more convenient for both the integration and the payer.
 [delete-payment-tokens]: /checkout-v3/features/optional/delete-token#delete-paymenttoken-request
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [design-guide]: https://design.swedbankpay.com/
-[display-ui]: /checkout-v3/get-started/display-payment-ui/
+[display-ui]: /checkout-v3/get-started/display-payment-ui
 [dom-ver]: /checkout-v3/apple-pay-presentation#domain-verification
 [eligibility-check]: /checkout-v3/features/customize-ui/instrument-mode#eligibility-check
 [error-invoice]: /checkout-v3/features/technical-reference/problems/#invoice-problems
@@ -1297,7 +1297,7 @@ more convenient for both the integration and the payer.
 [resource-models]: /checkout-v3/features/technical-reference/resource-sub-models
 [request-delivery-information]: /checkout-v3/features/optional/request-delivery-info
 [ruc]: /checkout-v3/get-started/recurring
-[seamless-view-script]: /checkout-v3/get-started/display-payment-ui/seamless-view/#monitoring-the-script-url
+[seamless-view-script]: /checkout-v3/get-started/display-payment-ui#seamless-view/#monitoring-the-script-url
 [settlement-balance-report]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation#balance-report
 [settlement-reconcilitation]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation
 [sdk-guidelines]: /checkout-v3/modules-sdks/development-guidelines
@@ -1330,7 +1330,7 @@ more convenient for both the integration and the payer.
 [token-problems]: /checkout-v3/features/technical-reference/problems/#token-problems
 [tos-url]: /checkout-v3/features/customize-ui/tos
 [trustly-pres]: /checkout-v3/trustly-presentation
-[trans-guide]: /checkout-v3/get-started/display-payment-ui/ui-migration/
+[trans-guide]: /checkout-v3/get-started/display-payment-ui#seamless-view-payment-ui/#change-from-seamless-view-to-redirect-ui
 [trans-guide-script]: /checkout-v3/get-started/display-payment-ui/ui-migration/#monitoring-the-script-url
 [transaction-on-file]: /old-implementations/payment-instruments-v1/card/features/optional/transaction-on-file
 [tra-exemption]: /old-implementations/checkout-v2/features/optional/tra

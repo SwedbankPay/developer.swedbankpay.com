@@ -3,7 +3,7 @@
 
 ## Introduction
 
-Payment Link is available for Digital Payments, Checkout v2, Payment Menu v1 and
+Payment Link is available for Online Payments, Checkout v2, Payment Menu v1 and
 the payment methods listed below, using the redirect platform and Swedbank
 Pay hosted payment page.
 

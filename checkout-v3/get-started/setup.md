@@ -82,7 +82,7 @@ the key.
 {% include alert.html type="warning" icon="warning" body="Please note that the
 production and staging environment need separate tokens. " %}
 
-{% include iterator.html prev_href="/checkout-v3/"
-                         prev_title="Back to Introduction"
+{% include iterator.html prev_href="/checkout-v3/get-started"
+                         prev_title="Back to Get Started"
                          next_href="/checkout-v3/get-started/payment-request"
                          next_title="Start Integrating" %}

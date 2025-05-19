@@ -32,9 +32,10 @@
   </ul>
 </div>
 
-The integration consists of three main steps. **Creating** the payment order,
-**displaying** the payment menu, and **capturing** the funds. In addition, there
-are other post-purchase options you need. We get to them later on.
+The integration consists of four main steps. **Creating** the payment order,
+**displaying** the payment menu, **validating** the payment's status and
+**capturing** the funds. In addition, there are other post-purchase options you
+need. We get to them later on.
 
 {: .h3 }
 
@@ -69,7 +70,7 @@ with payer information and a `completeUrl`.
 
 We have added `productName` to the payment order request in this integration.
 You can find it in the `paymentorder` field. This is no longer required, but is
-an option to use v3.0 of Digital Payments. To use `productName`, simply put
+an option to use v3.0 of Online Payments. To use `productName`, simply put
 `Checkout3` as the value in that field in the request. If you specify version in
 the header, you can leave out the `productName` field.
 
@@ -92,9 +93,38 @@ You can only use `abort` if the payer **has not** completed an `authorize` or a
 `sale`. If the payer is performing an action at a 3rd party, like the MobilePay,
 Swish or Vipps apps, `abort` is unavailable.
 
-{% include alert-risk-indicator.md %}
+### GDPR
 
-{% include alert-gdpr-disclaimer.md %}
+When adding information to the `Payer` object for the purpose of pre-filling or
+storing any data connected to the payer, you must first obtain their **explicit**
+**consent**. In general, this consent can be collected when the payer provides
+their delivery information, such as during the checkout or registration process.
+
+Examples of such fields include:
+
+*   `firstName`
+*   `lastName`
+*   `email`
+*   `MSISDN`
+
+If you are linking payer information to a profile (`payerReference`) or using
+stored credentials for express checkouts, **do not use sensitive identifiers** —
+such as email addresses, phone numbers, or social security numbers—in fields
+like `payerReference`. These fields are **not intended to hold personal data**,
+and therefore **do not offer the same level of protection or processing**
+**safeguards** as fields explicitly designed for sensitive information under
+GDPR.
+
+If the use of sensitive data is absolutely necessary, it must be **hashed**
+before being sent in any request to Swedbank Pay. The hash must be meaningful
+only to you, the merchant or integrator, and **does not need to be reversible by**
+**Swedbank Pay**. This means you are solely responsible for generating the hash
+and, if needed, securely mapping it back to the original data on your side. The
+responsibility for ensuring the **lawful processing, protection, and handling**
+**of personal data** — both during and after the transaction — **rests entirely**
+**with you**.
+
+{% include alert-risk-indicator.md %}
 
 {% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
@@ -158,7 +188,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
 | {% icon check %} | {% f description %}              | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                    |
 | {% icon check %} | {% f userAgent %}                | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f language %}                 | `string`     | {% include fields/language.md %}                                                                                                                                                                                                                                                                               |
-| {% icon check %} | {% f productName %}              | `string`     | Used to tag the payment as Digital Payments v3.0. Mandatory for Digital Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
+| {% icon check %} | {% f productName %}              | `string`     | Used to tag the payment as Online Payments v3.0. Mandatory for Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
 |                  | {% f implementation %}           | `string`     | Indicates which implementation to use.                                                                                                                                                                                                                                                                         |
 | {% icon check %} | {% f urls %}                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | {% f hostUrls, 2 %}                | `array`      | The array of valid host URLs.                                                                                                                                                                                                                                    |
@@ -317,8 +347,8 @@ api-supported-versions: 3.0{% endcapture %}
 | {% f initiatingSystemUserAgent %}      | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
 | {% f language %}       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
 | {% f availableInstruments %}       | `string`     | A list of methods available for this payment.                                                                                                                                                   |
-| {% f implementation %}       | `string`     | The merchant's Digital Payments implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
-| {% f integration %}       | `string`     | The merchant's Digital Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.                           |
+| {% f implementation %}       | `string`     | The merchant's Online Payments implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
+| {% f integration %}       | `string`     | The merchant's Online Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.                           |
 | {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with Instrument Mode (only one payment method available).                                                                                    |
 | {% f guestMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a `payerReference` in the original `paymentOrder` request.                                                                                                                                                |
 | {% f payer %}         | `id`     | The URL to the [`payer` resource]({{ features_url }}/technical-reference/resource-sub-models#payer) where information about the payer can be retrieved.                                                                                                                  |
@@ -355,9 +385,9 @@ Read more about possible additions to the request in our
 {: .text-right}
 [Top of page](#payment-order-v30)
 
-{% include iterator.html prev_href="/checkout-v3/"
-                         prev_title="Back to Introduction"
-                         next_href="/checkout-v3/get-started/display-payment-ui/"
+{% include iterator.html prev_href="/checkout-v3/get-started"
+                         prev_title="Back To Get Started"
+                         next_href="/checkout-v3/get-started/display-payment-ui"
                          next_title="Display Payment UI" %}
 
 [abort-feature]: /checkout-v3/features/payment-operations/abort

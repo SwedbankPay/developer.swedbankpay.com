@@ -143,8 +143,8 @@ As with the Balance Report there are two versions of the Transaction List, and
 | `Reference`                     | `Decimal`  | The transaction reference from processor.                                                                                                                 |
 | `Swedbank Pay Account Number`   | `Decimal`  | The Account number given, shown in the Merchant Portal.                                                                                                    |
 | `Referenced Transaction Number` | `Decimal`  | Transaction number for the Authoriation transaction for a two-stage transaction or the number of the debit transaction if it is a credit transaction.     |
-| `Sales Channel`                 | `string`   | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via e-commerce APIs).                                                  |
-| `Brand`                         | `string`   | No longer populated when using Digital Payments integrations.                                                                                    |
+| `Sales Channel`                 | `string`   | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via eCommerce APIs).                                                  |
+| `Brand`                         | `string`   | No longer populated when using Online Payments integrations.                                                                                    |
 | `Point Of Sale`                 | `string`   | If eligible, POS information as sent by merchant to Swedbank Pay.                                                                                         |
 
 ## V2 Header Fields
@@ -188,8 +188,8 @@ As with the Balance Report there are two versions of the Transaction List, and
 | `CreditCardBatchNo`             | `Decimal`  | The reference number from the credit card processor.                                                                                                      |
 | `Description`                   | `string`   | A textual description of the transaction, as sent by merchant to Swedbank Pay.                                                                            |
 | `ProductCategory`               | `string`   | A product number, as sent by merchant to Swedbank Pay.                                                                                                    |
-| `Sales Channel`                 | `string`   | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via e-commerce APIs).                                                  |
-| `Brand`                         | `string`   | No longer populated when using Digital Payments integrations.                |
+| `Sales Channel`                 | `string`   | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via eCommerce APIs).                                                  |
+| `Brand`                         | `string`   | No longer populated when using Online Payments integrations.                |
 | `Point Of Sale`                 | `string`   | If eligible, POS information as sent by merchant to Swedbank Pay.                                                                                         |
 
 ## Reconciliation
