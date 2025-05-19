@@ -1,11 +1,3 @@
----
-title: Redirect
-permalink: /:path/redirect-payment-ui/
-description: |
-  How to display the Redirect UI in your webshop.
-menu_order: 5
----
-
 {: .h2 }
 
 ### Display Redirect

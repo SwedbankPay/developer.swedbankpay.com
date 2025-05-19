@@ -1,11 +1,3 @@
----
-title: Seamless View
-permalink: /:path/seamless-view-payment-ui/
-description: |
-  How to display the Seamless View UI in your webshop.
-menu_order: 6
----
-
 {: .h2 }
 
 ### Display Seamless View
