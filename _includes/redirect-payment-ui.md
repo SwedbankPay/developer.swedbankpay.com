@@ -1,8 +1,29 @@
-{: .h2 }
+
+{: .h2 .pt-3}
 
 ### Display Redirect
 
-Among the operations in the POST `paymentOrder`s response, you will find
+<div class="slab mb-5">
+  <ul class="toc-list" role="navigation" aria-label="Article content">
+    <li>
+      <a href="#how-redirect-looks">
+        How Redirect Looks
+      </a>
+    </li>
+    <li>
+      <a href="#redirect-sequence-diagram">
+        Redirect Sequence Diagram  
+      </a>
+    </li>
+    <li>
+      <a href="#redirect---next-steps">
+        Redirect - Next Steps  
+      </a>
+    </li>
+  </ul>
+</div>
+
+Among the operations in the POST `paymentOrder` response, you will find
 `redirect-checkout`. This is the one you need to display the payment UI.
 
 {% capture response_content %}{
@@ -42,6 +63,7 @@ option to select their preferred payment method to pay with.
 Once the payer has completed the purchase, you can perform a `GET` towards the
 `paymentOrders` resource to see the purchase state.
 
+{: .text-right}
 [Top of page](#display-redirect)
 
 {: .h2 }
@@ -104,13 +126,17 @@ end
 
 *   ① Read more about [callback][payments-callback] handling in the technical reference.
 
+{: .text-right}
+[Top of page](#display-redirect)
+
 {: .h2 }
 
-### Next Steps
+### Redirect - Next Steps
 
 You are now ready to validate the payment's status. Follow the link below to
 read more about how this is done.
 
+{: .text-right}
 [Top of page](#display-redirect)
 
 {% include iterator.html prev_href="/checkout-v3/get-started/payment-request"

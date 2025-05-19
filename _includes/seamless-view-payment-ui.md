@@ -1,8 +1,66 @@
-{: .h2 }
+
+{: .h2 .pt-3 }
 
 ### Display Seamless View
 
-Among the operations in the POST `paymentOrders` response, you will find the
+<div class="slab mb-5">
+  <ul class="toc-list" role="navigation" aria-label="Article content">
+    <li>
+      <a href="#load-the-seamless-view">
+       Load the Seamless View 
+      </a>
+    </li>
+    <li>
+      <a href="#how-seamless-view-looks">
+        How Seamless View Looks 
+      </a>
+    </li>
+    <li>
+      <a href="#seamless-view-events">
+        Seamless View Events 
+      </a>
+    </li>
+    <li>
+      <a href="#seamless-view-sequence-diagram">
+        Seamless View Sequence Diagram  
+      </a>
+    </li>
+    <li>
+      <a href="#change-from-seamless-view-to-redirect-ui">
+        Change From Seamless View To Redirect UI   
+      </a>
+      <ul role="list">
+        <li>
+          <a href="#use-redirect-operation">
+          Use Redirect Operation 
+          </a>
+        </li>
+        <li>
+          <a href="#remove-seamless-view-code">
+          Remove Seamless View Code 
+          </a>
+        </li>
+        <li>
+          <a href="#change-urls">
+          Change URLs  
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#monitoring-the-script-url">
+        Monitoring The Script URL 
+      </a>
+    </li>
+    <li>
+      <a href="#seamless-view---next-steps">
+        Seamless View - Next Steps  
+      </a>
+    </li>
+  </ul>
+</div>
+
+Among the operations in the POST `paymentOrder` response, you will find the
 `view-checkout`. This is the one you need to display the purchase module.
 
 {% capture response_content %}{
@@ -25,7 +83,7 @@ Among the operations in the POST `paymentOrders` response, you will find the
 
 {: .h2 }
 
-### Load The Seamless View
+### Load the Seamless View
 
 To display the UI, we need to take the `href` from the `POST` request and add
 it to a `script` element on the webpage. Once the script has loaded in, we can
@@ -84,6 +142,7 @@ document.body.insertAdjacentElement("afterbegin", script);
 </html>
 ```
 
+{: .text-right}
 [Top of page](#display-seamless-view)
 
 {: .h2 }
@@ -100,11 +159,12 @@ their preferred payment method and pay.
 Once the payer completes their purchase, you can then perform a GET towards the
 `paymentOrders` resource to check the purchase state.
 
+{: .text-right}
 [Top of page](#display-seamless-view)
 
 {: .h2 }
 
-### Events
+### Seamless View Events
 
 When you integrate using the Seamless View implementation, you can override one
 or more of our Seamless View events. This ranges from changing what happens
@@ -124,6 +184,7 @@ For the full list over the different events you can override, check out the
 [Seamless View Events][seamless-view-events] page, also available in the
 feature section.
 
+{: .text-right}
 [Top of page](#display-seamless-view)
 
 {: .h2 }
@@ -193,6 +254,7 @@ end
 *   ① See [seamless view events][payments-seamless-view-events] for further information.
 *   ② Read more about [callback][payments-callback] handling in the technical reference.
 
+{: .text-right}
 [Top of page](#display-seamless-view)
 
 {: .h2 }
@@ -231,6 +293,9 @@ If you currently have a Seamless View integration and don't want the new
 responsibilities, switcing to Redirect is a very manageable task. Here's what
 you need to do:
 
+{: .text-right}
+[Top of page](#display-seamless-view)
+
 #### Use Redirect Operation
 
 In the operations node of the [payment response][post-response], right next to
@@ -258,10 +323,16 @@ with the payment process.
     json= response_content
     %}
 
+{: .text-right}
+[Top of page](#display-seamless-view)
+
 #### Remove Seamless View Code
 
 You can remove all code related to the `<script>` element used to load the
 Seamless View.
+
+{: .text-right}
+[Top of page](#display-seamless-view)
 
 #### Change URLs
 
@@ -305,6 +376,9 @@ included regardless of your UI choice.
     json= request_content
     %}
 
+{: .text-right}
+[Top of page](#display-seamless-view)
+
 {: .h2 }
 
 ### Monitoring The Script URL
@@ -312,13 +386,18 @@ included regardless of your UI choice.
 You must confirm that your site is not susceptible to attacks from scripts that
 could affect the merchant’s e-commerce system(s).
 
+{: .text-right}
+[Top of page](#display-seamless-view)
+
+
 {: .h2 }
 
-### Next Steps
+### Seamless View - Next Steps
 
 You are now ready to validate the payment's status. Follow the link below to
 read more about how this is done.
 
+{: .text-right}
 [Top of page](#display-seamless-view)
 
 {% include iterator.html prev_href="/checkout-v3/get-started/payment-request"
