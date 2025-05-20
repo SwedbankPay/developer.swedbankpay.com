@@ -126,3 +126,4 @@ could affect the merchant’s e-commerce system(s).
 [fi]: https://www.swedbankpay.fi/riskit-ja-turvallisuus/nain-pci-vaikuttaa-sinuun
 [no]: https://www.swedbankpay.no/risiko-og-sikkerhet/pci-slik-pavirkes-du
 [se]: https://www.swedbankpay.se/risk-och-sakerhet/pci-sa-paverkas-du
+[pci]: /assets/documents/PCI-DSS-v4-0-1-SAQ-A.pdf
