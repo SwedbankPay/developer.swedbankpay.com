@@ -3,7 +3,7 @@ section: Mobile SDK
 title: Introduction
 description: |
   **Swedbank Pay Mobile SDK** provides an easy way of integrating Swedbank Pay
-  Online Payments to your Android and iOS applications.
+  Digital Payments to your Android and iOS applications.
   The Mobile SDK consists an Android and an iOS library.
 permalink: /:path/
 menu_order: 600
@@ -32,22 +32,22 @@ benefit from the
 
 To start integrating the Swedbank Pay Mobile SDK, you need the following:
 
-*   An agreement that includes [Swedbank Pay Online Payments][checkout],
+*   An agreement that includes [Swedbank Pay Digital Payments][checkout],
     specifically [Enterprise][checkout-enterprise] or
     [Payments Only][checkout-payments-only].
 *   Obtained credentials (merchant Access Token) from Swedbank Pay through
-    the Merchant Portal. Please observe that the Swedbank Pay Online Payments
+    the Merchant Portal. Please observe that the Swedbank Pay Digital Payments
     implementations currently available encompasses the **`paymentmenu`** scope.
 
 ## Introduction
 
-As the Mobile SDK is built on top of [Online Payments][checkout]. It is a good
+As the Mobile SDK is built on top of [Digital Payments][checkout]. It is a good
 idea to familiarize yourself with it first, as the rest of this document will
 assume some familiarity with Checkout concepts. Note, however, that you need not
-build a working Online Payments example with web technologies to use the Mobile
+build a working Digital Payments example with web technologies to use the Mobile
 SDK.
 
-The Mobile SDK currently provides a mobile component to show Online Payments
+The Mobile SDK currently provides a mobile component to show Digital Payments
 [Enterprise][checkout-enterprise] or [Payments Only][checkout-payments-only] in
 a mobile application. The [Post-Purchase][post-purchase-capture] part is the
 same as when using Checkout on a web page, and is thus intentionally left out of

@@ -1,4 +1,4 @@
-Swedbank Pay's Online Payments API is built in a way that depends on that you,
+Swedbank Pay's Digital Payments API is built in a way that depends on that you,
 as a merchant, is able to store the `paymentOrderId`. The `paymentOrderId` is a
 URL which points to the specific instance of a payment order resource, but in
 some cases it will be hard to use it as a payment reference.

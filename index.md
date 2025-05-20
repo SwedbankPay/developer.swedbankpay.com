@@ -12,20 +12,20 @@ hide_from_sidebar: true
 {% contentfor intro_cards %}
   <div class="row">
     <div class="{{ card_col_class }}">
-        {% include card.html title='Online Payments'
+        {% include card.html title='Digital Payments'
         image_alt_text="The image shows a woman seated in comfortable surroundings in her home using a computer to make an online payment."
         image_src="/assets/img/betala-online.jpg"
         cta_text='Read more'
-        description='Learn about our Online Payments and how to integrate them.'
+        description='Learn about our Digital Payments and how to integrate them.'
         url="/checkout-v3/"
         %}
     </div>
     <div class="{{ card_col_class }}">
-        {% include card.html title='In-Store Payments'
+        {% include card.html title='Payment Terminals'
         image_alt_text="The image shows someone seated in a cafe with a glass of juice, a cup of coffee and a cake on the table in front of them, using a card terminal to pay."
         image_src="/assets/img/betala-med-pax-a920pro.jpg"
         cta_text='Read more'
-        description='Discover our In-Store Payments and their technical specifications.'
+        description='Discover our Payment Terminals and their technical specifications.'
         url='/pax-terminal/'
         %}
     </div>
@@ -35,7 +35,7 @@ hide_from_sidebar: true
 {% contentfor playground %}
   <div class="row slab mt-5 ml-0 mr-0">
     <div class="col-lg-7 pl-2 mb-2">
-      <h2>Want to try Online Payments live?</h2>
+      <h2>Want to try Digital Payments live?</h2>
       <p>Use the Playground to test our payment methods. Customize your solution from scratch or start with one of our ready-made examples.</p>
       <p>See the menu clothed in your colors and with your logo.</p>
       <p>The goal is to give you an introduction to how you can setup the solution and how your customers will experience it.</p>

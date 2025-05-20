@@ -1,5 +1,5 @@
 ---
-title: From Checkout v2 to Online Payments v3.1
+title: From Checkout v2 to Digital Payments v3.1
 permalink: /:path/migration-guide-v2/
 hide_from_sidebar: true
 section: Migration Guides
@@ -65,7 +65,7 @@ in the `amount` parameter.
 
 ## Response Fields Changes
 
-In Online Payments v3.1, response fields have been restructured.
+In Digital Payments v3.1, response fields have been restructured.
 
 Fields removed since v2 include: `currentPayment`,`instrument`, `payments` and
 `state`.

@@ -127,6 +127,8 @@ responsibility for ensuring the **lawful processing, protection, and handling**
 
 {% include alert-risk-indicator.md %}
 
+{% include alert-gdpr-disclaimer.md %}
+
 {% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 {% assign features_url = documentation_section | prepend: '/' | append: '/features' %}

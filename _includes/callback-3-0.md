@@ -84,7 +84,7 @@ etc., you need to perform a `GET` request on the received URL and inspect the
 response. The transaction type or any other information can not and should not
 be inferred from the URL. See [URL usage][url-usage] for more information.
 
-For `paymentOrder` implementations (Online Payments, Checkout v2 and Payment
+For `paymentOrder` implementations (Digital Payments, Checkout v2 and Payment
 Menu v1), it is critical that you do **not** use the `paymentId` or
 `transactionId` when performing a `GET` to retrieve the payment's status. Use
 the `paymentOrderId`.
