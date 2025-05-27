@@ -1297,7 +1297,7 @@ more convenient for both the integration and the payer.
 [resource-models]: /checkout-v3/features/technical-reference/resource-sub-models
 [request-delivery-information]: /checkout-v3/features/optional/request-delivery-info
 [ruc]: /checkout-v3/get-started/recurring
-[seamless-view-script]: /get-started/display-payment-ui#monitoring-the-script-url
+[seamless-view-script]: /checkout-v3/get-started/display-payment-ui#monitoring-the-script-url
 [settlement-balance-report]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation#balance-report
 [settlement-reconcilitation]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation
 [sdk-guidelines]: /checkout-v3/modules-sdks/development-guidelines
@@ -1331,7 +1331,7 @@ more convenient for both the integration and the payer.
 [tos-url]: /checkout-v3/features/customize-ui/tos
 [trustly-pres]: /checkout-v3/trustly-presentation
 [trans-guide]: /checkout-v3/get-started/display-payment-ui#change-from-seamless-view-to-redirect-ui
-[trans-guide-script]: /get-started/display-payment-ui#monitoring-the-script-url
+[trans-guide-script]: /checkout-v3/get-started/display-payment-ui#monitoring-the-script-url
 [transaction-on-file]: /old-implementations/payment-instruments-v1/card/features/optional/transaction-on-file
 [tra-exemption]: /old-implementations/checkout-v2/features/optional/tra
 [trustly-payments]: /old-implementations/payment-instruments-v1/trustly
