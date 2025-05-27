@@ -7,7 +7,7 @@ menu_order: 10
 {:.table .table-striped}
 | **0-9** |
 |  | **3-D Secure 2.0 (3DS2)** | The new authentication protocol for online card payments. The protocol is XML-based and designed to be an additional security layer for online credit and debit card transactions. |
-|  | **3.x**       | The umbrella term for all Digital Payments versions 3.0 and newer. If (v)3.x is used instead of a specific version (like v3.1), the feature, section or code example is applicable for all versions. |
+|  | **3.x**       | The umbrella term for all Online Payments versions 3.0 and newer. If (v)3.x is used instead of a specific version (like v3.1), the feature, section or code example is applicable for all versions. |
 |  **A**  |
 |  | **Access Token**                | The OAauth 2 Access token needed to access Swedbank Pay e-commerce API. Tokens are generated in the Merchant Portal. Learn how to get started in the Merchant Portal Manual. Note that it must follow the regex pattern `[\w-]*`. |
 |  | **Account Receivable Consumer** | The [`AccountReceivableConsumer`][invoice-url] API is the fundament for Swedbank Pay [Invoice Payments][invoice-url] service. It is a service where Swedbank Pay helps produce and distribute invoices to payers. |

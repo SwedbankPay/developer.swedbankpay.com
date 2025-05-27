@@ -257,7 +257,7 @@ the payment in the redirect integration. See the [`Aborted` response][aborted].
 You are now ready to capture the funds. Follow the link below to read more about
 capture and the other options you have after the purchase.
 
-{% include iterator.html prev_href="/checkout-v3/get-started"
+{% include iterator.html prev_href="/checkout-v3/get-started/display-payment-ui"
                          prev_title="Back to Display Payment UI"
                          next_href="/checkout-v3/get-started/post-purchase"
                          next_title="Post-Purchase" %}
