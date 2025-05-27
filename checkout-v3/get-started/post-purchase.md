@@ -5,12 +5,12 @@ description: |
   When the payer has **completed** the purchase, you need to implement the
   relevant **post-purchase operations** in your order system. These operations,
   and how they are executed, are described below.
-menu_order: 8
+menu_order: 7
 tab_list:
-- title: Payment order v3.1
+- title: Post-Purchase v3.1
   content_src: post-purchase-3-1.md
   mark_with_star: true
-- title: Payment order v3.0
+- title: Post-Purchase v3.0
   content_src: post-purchase-3-0.md
 ---
 

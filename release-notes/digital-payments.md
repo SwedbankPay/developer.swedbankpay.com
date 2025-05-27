@@ -1,15 +1,15 @@
 ---
-title: Digital Payments
+title: Online Payments
 permalink: /:path/digital-payments/
 description: |
-  The latest updates about our Digital Payments.
+  The latest updates about our Online Payments.
 menu_order: 2
 has_release_notes: true
 ---
 
 ## 22 April 2025
 
-### Version 5.3.7
+### Portal Documentation Version 5.3.7
 
 A success always warrants a repeat, so a new FAQ section is going live today!
 This time we are addressing everything you need to know about
@@ -21,7 +21,7 @@ period and whitelisting.
 
 ## 1 April 2025
 
-### Version 5.3.6
+### Portal Documentation Version 5.3.6
 
 Our release notes are on the move! We are taking steps towards a
 [release notes hub][rn-hub] for all sections, available straight from the main
@@ -34,7 +34,7 @@ versions - [payment requests][new-pay-req], [post-purchase][new-post-pur] and
 
 ## 19 February 2025
 
-### Version 5.3.5
+### Portal Documentation Version 5.3.5
 
 A short and sweet one this time, with two important additions.
 
@@ -48,7 +48,7 @@ introduction. Head over to the brand new section to read about it!
 
 ## 6 February 2025
 
-### Version 5.3.4
+### Portal Documentation Version 5.3.4
 
 A handful of small, but significant changes in the first update of 2025.
 
@@ -58,7 +58,7 @@ supported status!
 As the number of migration guides is going up, we have gathered them on a
 [start page][mig-guide] for accessability. In addition to the already existing
 “v2 to v3.1” and “Seamless View to Redirect” guides, a guide for going from
-Payment Methods v1 to Digital Payments v3.1 is now available.
+Payment Methods v1 to Online Payments v3.1 is now available.
 
 [New IP addresses for callbacks][callback-ip] have been added in the callback
 section. They will be going live March 12th, so make sure you whitelist them as
@@ -78,7 +78,7 @@ As usual, a handful of bug fixes and feedback requests have been remedied too!
 
 ## 9 December 2024
 
-### Version 5.3.3
+### Portal Documentation Version 5.3.3
 
 From all of us, to all of you, the last release of the year!
 
@@ -101,11 +101,11 @@ A new operation called `abort-paymentattempt` has been added to 3.x versions. As
 the name implies, it is meant for instances where the merchant wants to abort
 the payment _attempt_, and not the payment _order_ as a whole. Read more about
 it in the [Abort section][abort-payattempt] of the payment options category in
-Digital Payments' Features.
+Online Payments' Features.
 
 ## 24 October 2024
 
-### Version 5.3.2
+### Portal Documentation Version 5.3.2
 
 Stricter PCI-CSS requirements are coming in the spring of 2025, and they could
 affect merchants using our Seamless View integration. We have addressed these
@@ -134,7 +134,7 @@ Suspension Warning also has a small change in the type field.
 
 ## 29 August 2024
 
-### Version 5.3.1
+### Portal Documentation Version 5.3.1
 
 We are closing of August with a mellow, small release after being gone for
 summer, before gearing up for fall.
@@ -162,7 +162,7 @@ limit of 35 failed attempts in 30 days.
 
 ## 18 June 2024
 
-### Version 5.3.0
+### Portal Documentation Version 5.3.0
 
 Our last release before the summer break is here, and we have quite the list of
 changes for you.
@@ -193,7 +193,7 @@ From all of us, to all of you: Have a great summer!
 
 ## 8 May 2024
 
-### Version 5.2.0
+### Portal Documentation Version 5.2.0
 
 The keen eye might spot the new term v3.x in Get Started and some of our code
 examples. We are using it as an umbrella term whenever we talk about all
@@ -212,7 +212,7 @@ Until next time!
 
 ## 18 March 2024
 
-### Version 5.1.0
+### Portal Documentation Version 5.1.0
 
 Re-working of the Modules & SDKs section is the star of this release. Intrigued?
 [Start off with the bare minimum implementation][bare-min]!
@@ -223,7 +223,7 @@ about the [final steps before you go live][go-live]!
 
 ## 21 March 2024
 
-### Version 5.0.0
+### Portal Documentation Version 5.0.0
 
 We strive to make the implementation process as easy as possible, and in that
 regard, a [Get Started section][get-started] has been introduced. This now
@@ -242,7 +242,7 @@ readability.
 
 ## 26 February 2024
 
-### Version 4.8.0
+### Portal Documentation Version 4.8.0
 
 A handful of changes in the pipeline this time around, with the biggest being
 the introduction of better error codes for excessive re-attempts. Read all about
@@ -264,7 +264,7 @@ Big changes are coming up next time. Stay tuned!
 
 ## 6 February 2024
 
-### Version 4.7.0
+### Portal Documentation Version 4.7.0
 
 We spent some time building up steam after new years, but we have lots of treats
 lined up.
@@ -273,7 +273,7 @@ Are you looking to get started with recurring payments, but not really sure
 where to start? We have compiled everything you need in a [use case][ruc], and
 walk you through it all.
 
-Or are you maybe looking to upgrade to our newest Digital Payments version? See
+Or are you maybe looking to upgrade to our newest Online Payments version? See
 how easy it is in our [migration guide][mig-guide].
 
 A new `errorType` goes live any day now, so a preview in the developer portal
@@ -295,7 +295,7 @@ Until next time!
 
 ## 19 December 2023
 
-### Version 4.6.1
+### Portal Documentation Version 4.6.1
 
 The last release of 2023 is finding its way down the chimney, and is mainly
 consisting of maintenance and small fixes.
@@ -309,14 +309,14 @@ From all of us, to all of you: Merry Christmas!
 
 ## 7 November 2023
 
-### Version 4.6.0
+### Portal Documentation Version 4.6.0
 
 Today, we go live with Payment Order v3.1, which has some changes in the
 [request][3-1], the [post-purchase operations][pp-3-1] and the
 [callback][callback-3-1]. We have also added a new resource model called
 [`failedPostPurchaseAttempts`][fppa]. Go check it out!
 
-There is a new section regarding [Trustly in Digital Payments][trustly-pres],
+There is a new section regarding [Trustly in Online Payments][trustly-pres],
 with important information regarding overlay and Trustly Express.
 
 There is also a new Vipps field for fees in the [`failedAttempts`][fa] resource
@@ -324,11 +324,11 @@ model.
 
 ## 28 September 2023
 
-### Version 4.5.0
+### Portal Documentation Version 4.5.0
 
 If you are reading these notes, you have probably noticed some changes already!
-As the **Payment Terminals** section is growing bigger, we have moved most of
-the **Digital Payments** related content away from the front page. The release
+As the **In-Store Payments** section is growing bigger, we have moved most of
+the **Online Payments** related content away from the front page. The release
 notes can now be found where you are reading this, and the resources at the
 bottom of the front page will follow suit shortly.
 
@@ -345,7 +345,7 @@ because we have renamed it [Integrated Commerce][int-com].
 
 ## 31 August 2023
 
-### Version 4.4.0
+### Portal Documentation Version 4.4.0
 
 The wheels are picking up traction going into the autumn. Our first release
 after getting back is mostly maintenance and small fixes, but an important new
@@ -353,14 +353,14 @@ addition is a section on [Network Tokenization][nwt], which is a fantastic way
 of processing cards. Get to know it, and put it to use!
 
 We have also adjusted our search results somewhat. Now we only display results
-from the sections Digital Payments and Payment Terminals. We hope it gives you
+from the sections Online Payments and In-Store Payments. We hope it gives you
 an easier time finding the right result in the correct section.
 
 Big things are coming up around the bend. Stay tuned!
 
 ## 6 July 2023
 
-### Version 4.3.3
+### Portal Documentation Version 4.3.3
 
 We had time for one more before we clock out for summer, so we added
 [a PATCH example to our payout feature section][payout-patch]. Go check it out
@@ -370,11 +370,11 @@ Have a great summer!
 
 ## 26 June 2023
 
-### Version 4.3.2
+### Portal Documentation Version 4.3.2
 
 A small batch of changes which barely missed the last deadline. We've done a few
 correction and some major changes, most notably the renaming of **Checkout v3**
-to **Digital Payments** and **Pax Terminal** to **Payment Terminal**. The
+to **Online Payments** and **Pax Terminal** to **In-Store Payments**. The
 changes are in name only, the structure stays the same.
 
 We have also added information regarding the
@@ -385,7 +385,7 @@ integrations have been removed. You have to go through
 
 ## 19 June 2023
 
-### Version 4.3.0
+### Portal Documentation Version 4.3.0
 
 You spoke, we listened! We have worked a lot on making the portal easier to
 navigate. The main menu has been slimmed down, where we have removed the
@@ -394,7 +394,7 @@ Introduction (but you can still read the main points under
 Modules & SDK][modules-sdks] section, it has found a new home under Digital
 Payments.
 
-Speaking of [Digital Payments][checkout-v3], we've cleaned that up as well, and
+Speaking of [Online Payments][checkout-v3], we've cleaned that up as well, and
 hope it will make things easier for you. The
 [payment request example][payment-request] now contains what you need to create
 a payment order. Adding more to it is up to you and the [features][features]
@@ -422,7 +422,7 @@ Plus the usual handful of bug fixes and smaller changes.
 
 ## 24 April 2023
 
-### Version 4.2.0
+### Portal Documentation Version 4.2.0
 
 The keen observer might spot some changes in our menu. The Checkout v2, Payment
 Menu and Payment Methods have been moved to
@@ -432,10 +432,10 @@ also been added, in addition to the usual bugs and small fixes.
 
 ## 10 March 2023
 
-### Version 4.1.0
+### Portal Documentation Version 4.1.0
 
 A lot of changes are happening these days. We've made the decision to focus the
-Digital Payments offering, so our Starter and Business implementations are no more.
+Online Payments offering, so our Starter and Business implementations are no more.
 This means that we can do what we do best: giving you a payment experience
 packed with options. The [Payments Only][checkout-v3-payments-only]
 implementation is still here, and for those of you with a Strong Consumer
@@ -444,7 +444,7 @@ Authentication who want access to our safely stored card data,
 
 ## 3 March 2023
 
-### Version 4.0.0
+### Portal Documentation Version 4.0.0
 
 We promised you something big, and here it is. [Click to Pay][click-to-pay] and
 [Google Pay&trade;][google-pay] have been added to our arsenal of payment
@@ -464,10 +464,10 @@ tasks and bug fixes.
 
 ## 31 January 2023
 
-### Version 3.1.8
+### Portal Documentation Version 3.1.8
 
 Bigger things are coming up around the bend, so we are stopping by with some
-smaller fixes and a [Digital Payments matrix][checkout-v3-matrix] giving you a
+smaller fixes and a [Online Payments matrix][checkout-v3-matrix] giving you a
 better overview over which payment methods v3 has to offer, and the
 countries they are available.
 
@@ -475,21 +475,21 @@ We'll be back soon!
 
 ## 17 January 2023
 
-### Version 3.1.7
+### Portal Documentation Version 3.1.7
 
 We kick off the new year with a new field in our payment order request. Your
-Digital Payments implementation of choice is now added in the request.
+Online Payments implementation of choice is now added in the request.
 Version 2 of the balance report and transaction list is our second newcomer this
 release. Head over to [Settlement & Reconciliation][settlement-balance-report]
 to learn more.
 
 We have added a [paid status model][status-model-paid-v2] to Checkout v2 and
 Payment Menu v2, and the [update payment order section][payment-order-update] is
-added to Digital Payments.
+added to Online Payments.
 
 ## 15 December 2022
 
-### Version 3.1.6
+### Portal Documentation Version 3.1.6
 
 Our last update in 2022 mainly consists of clean-ups and fixes, but the most
 important changes are `bin` and `msidn` fields added (where they are relevant)
@@ -501,7 +501,7 @@ Happy holidays, everyone! We look forward to seeing you in 2023!
 
 ## 29 November 2022
 
-### Version 3.1.5
+### Portal Documentation Version 3.1.5
 
 Our penultimate release of the year has a few things up its sleeve. The most
 exciting being the new capabilities
@@ -516,9 +516,9 @@ bug fixes.
 
 ## 20 September 2022
 
-### Version 3.1.3
+### Portal Documentation Version 3.1.3
 
-Another small one. We've added Digital Payments `paid` responses for all
+Another small one. We've added Online Payments `paid` responses for all
 methods in both [status][status-models] and
 [resource-models][resource-models], finished up the headers which was missing,
 added MobilePay to [Request Delivery Information][request-delivery-information]
@@ -526,12 +526,12 @@ and done away with some more bugs and typos.
 
 ## 2 September 2022
 
-### Version 3.1.2
+### Portal Documentation Version 3.1.2
 
 We have been picking up steam since our summer break, hitting full throttle as
 September arrived. A smaller release this time around, but there are some
 important additions nonetheless. We have added a
-[siteID][checkout-v3-payments-only-redirect-request] field to Digital Payments
+[siteID][checkout-v3-payments-only-redirect-request] field to Online Payments
 implementations, re-worked nearly all
 [headers][checkout-v3-payments-only-seamless] across the portal to make
 navigation easier, added a section on
@@ -540,7 +540,7 @@ assorted bug fixes and typos.
 
 ## 1 July 2022
 
-### Version 3.1.1
+### Portal Documentation Version 3.1.1
 
 A release filled with leftovers before we clock out for summer. Mostly small
 fixes in code examples and tables, but the most important additions are the new
@@ -549,14 +549,14 @@ summer!
 
 ## 22 June 2022
 
-### Version 3.1.0
+### Portal Documentation Version 3.1.0
 
 Summer has finally arrived, and we have quite a treat waiting in our final
 release before the vacation pulse kicks in. Without further ado: We now proudly
-offer **Apple Pay**! It is available in all our Digital Payments implementations
+offer **Apple Pay**! It is available in all our Online Payments implementations
 and integrations. There are a couple of other new additions as well:
 
-*   Our [SDKs][sdk-modules] have been updated to support Digital Payments
+*   Our [SDKs][sdk-modules] have been updated to support Online Payments
 *   You can now [request delivery information][request-delivery-information] for
   selected payment methods
 *   An eligibility check [eligibility check][eligibility-check] for wallets has
@@ -565,7 +565,7 @@ and integrations. There are a couple of other new additions as well:
 
 ## 4 April 2022
 
-### Version 3.0.3
+### Portal Documentation Version 3.0.3
 
 *   Added a new [card error code][card-error-codes] and restructured the tables.
 *   Fleshed out the [Unscheduled Purchase][unscheduled-mit] section.
@@ -575,29 +575,29 @@ and integrations. There are a couple of other new additions as well:
 
 ## 16 March 2022
 
-### Version 3.0.2
+### Portal Documentation Version 3.0.2
 
 *   Typos and minor bug fixes in code examples and tables.
 *   Re-wrote [Payer Aware Payment Menu][payer-aware-payment-menu]
 *   Clarified [`OnAborted` Seamless View event][seamless-view-events-onaborted]
 *   Elaborated user agent fields in requests.
 *   Added links to resource models in
-    [Digital Payments response tables][checkout-create-starter-paymentorder]
+    [Online Payments response tables][checkout-create-starter-paymentorder]
 
 ## 24 February 2022
 
-### Version 3.0.1
+### Portal Documentation Version 3.0.1
 
 *   Added descriptive card icons
 *   Added [Payer Aware Payment Menu][payer-aware-payment-menu]
-*   Added new screenshots for Digital Payments implementations
+*   Added new screenshots for Online Payments implementations
 *   Rewrote instrument mode section
 *   Reorganized features in the sidebar
 *   Fixed internal links
 
 ## 18 February 2022
 
-### Version 3.0.0
+### Portal Documentation Version 3.0.0
 
 It's been a minute, but the day is finally here. We can proudly present Checkout
 version 3.0! The same range of payment methods, checkin options and features
@@ -623,7 +623,7 @@ new?
 
 ## 15 October 2021
 
-### Version 2.2.3
+### Portal Documentation Version 2.2.3
 
 *   Updated [Android SDK documentation][android-sdk-documentation]
 *   Added info about [consumerProfileRef expiration][checkin]
@@ -635,7 +635,7 @@ new?
 
 ## 3 August 2021
 
-### Version 2.2.2
+### Portal Documentation Version 2.2.2
 
 *   Added payment link for [Payment Menu v2][payment-menu-payment-link]
 *   Renamed [Merchant Authenticated Consumer][mac-checkout] section (previously Delegated Strong Authenticated Consumer)
@@ -644,7 +644,7 @@ new?
 
 ## 19 May 2021
 
-### Version 2.2.1
+### Portal Documentation Version 2.2.1
 
 *   Added payment link option for [Trustly][trustly-payment-link]
 *   Added information about invoice capture in [Checkout v2][checkout-invoice-capture] and [Payment Menu][payment-menu-invoice-capture]
@@ -654,7 +654,7 @@ new?
 
 ## 30 April 2021
 
-### Version 2.2.0
+### Portal Documentation Version 2.2.0
 
 *   Restructured Features sections for all implementations into [core features][core-features], [optional features][optional-features] and [technical reference][technical-reference]
 *   Renamed Checkout to [Checkout v2][Checkout-v2]
@@ -663,14 +663,14 @@ new?
 
 ## 28 January 2021
 
-### Version 2.1.2
+### Portal Documentation Version 2.1.2
 
 *   Updated Theme version to 1.9.9
 *   Updated Design Guide Version to 5.0.1
 
 ## 26 January 2021
 
-### Version 2.1.0
+### Portal Documentation Version 2.1.0
 
 *   Updated theme with visual fixes
 *   Search icon is now clickable
@@ -685,7 +685,7 @@ new?
 
 ## 1 December 2020
 
-### Version 2.0.2
+### Portal Documentation Version 2.0.2
 
 *   Various bug fixes
 *   Various corrections and typo fixes
@@ -695,7 +695,7 @@ new?
 
 ## 12 November 2020
 
-### Version 2.0.1
+### Portal Documentation Version 2.0.1
 
 *   Added section for [MobilePay Seamless View][mobilepay-seamless-view]
 *   Split [MobilePay Capture][mobilepay-capture] to a separate page
@@ -703,7 +703,7 @@ new?
 
 ## 11 November 2020
 
-### Version 2.0.0
+### Portal Documentation Version 2.0.0
 
 Launched new developer portal theme:
 
@@ -730,7 +730,7 @@ Other changes:
 
 ## 4 September 2020
 
-### Version 1.13.3
+### Portal Documentation Version 1.13.3
 
 *   Added documentation on deprecated operations in [Checkout][checkout-payment-order-purchase].
 *   Updated `instrument` description in [Checkout][checkout].
@@ -742,7 +742,7 @@ Other changes:
 
 ## 28 August 2020
 
-### Version 1.13.2
+### Portal Documentation Version 1.13.2
 
 *   Added description on `metadata` for all payment methods.
 *   Updated files in [Settlement & Reconciliation][settlement-reconcilitation].
@@ -756,7 +756,7 @@ Other changes:
 
 ## 21 August 2020
 
-### Version 1.13.1
+### Portal Documentation Version 1.13.1
 
 *   Removed documentation for [Trustly Payments][trustly-payments] Seamless View.
 *   Updated `reOrderPurchaseIndicator` description.
@@ -766,7 +766,7 @@ Other changes:
 
 ## 17 July 2020
 
-### Version 1.13.0
+### Portal Documentation Version 1.13.0
 
 *   Added documentation on Mobile SDK in [Modules & SDKs][modules-sdks] section.
 *   Added tables for mapping API fields to settlement files in
@@ -774,14 +774,14 @@ Other changes:
 
 ## 10 July 2020
 
-### Version 1.12.1
+### Portal Documentation Version 1.12.1
 
 *   Corrected the documentation by removing `generatePaymentToken` and
     `paymentToken` from [Checkout][checkout].
 
 ## 7 July 2020
 
-### Version 1.12.0
+### Portal Documentation Version 1.12.0
 
 *   Added information on 3-D Secure 2 for [Checkout][checkout-3ds2] and
     [Card Payments][card-3ds2].
@@ -801,7 +801,7 @@ Other changes:
 
 ## 4 June 2020
 
-### Version 1.11.1
+### Portal Documentation Version 1.11.1
 
 *   Added additional information on the settlement files in [Settlement &
     Reconciliation][settlement-reconcilitation] for all Payments.
@@ -811,7 +811,7 @@ Other changes:
 
 ## 29 May 2020
 
-### Version 1.11.0
+### Portal Documentation Version 1.11.0
 
 *   Added a new [Trustly Payments][trustly-payments] section.
 *   Added information about [Storing URLs][storing-uri] in the [Technical
@@ -819,14 +819,14 @@ Other changes:
 
 ## 22 May 2020
 
-### Version 1.10.1
+### VPortal Documentation ersion 1.10.1
 
 *   Updated [Swish Redirect][swish-redirect] requests.
 *   Added `orderReference` information in Payment Order Callback in [Checkout Other features][checkout-callback].
 
 ## 14 May 2020
 
-### Version 1.10.0
+### Portal Documentation Version 1.10.0
 
 *   Added a new gift card section with descriptions of our Gift Cards API.
 *   Added a new section [Co-badge Card Choice for Dankort][co-badge-card] in
@@ -834,11 +834,11 @@ Other changes:
 
 ## 7 May 2020
 
-### Version 1.9.2
+### Portal Documentation Version 1.9.2
 
 *   Corrected table in [payments page][payments].
 
-### Version 1.9.1
+### Portal Documentation Version 1.9.1
 
 *   Corrected sequence diagrams in [Swish Payments][swish] and
     [Vipps Payments][vipps].
@@ -849,7 +849,7 @@ Other changes:
 
 ## 22 April 2020
 
-### Version 1.9.0
+### Portal Documentation Version 1.9.0
 
 *   Added a new section [SDKs and Modules][sdk-modules] in Resources.
 *   Corrected problem `type` URLs for [Card Payments][card], [Checkout][checkout]
@@ -860,7 +860,7 @@ Other changes:
 
 ## 15 April 2020
 
-### Version 1.8.3
+### Portal Documentation Version 1.8.3
 
 *   Bug fixes to Mermaid diagram and alert styling, plus improvements to code
     block styling after the update to [Swedbank Pay Design Guide][design-guide]
@@ -868,7 +868,7 @@ Other changes:
 *   Added examples with screenshots of the effects of [Delegated Strong Customer
     Authentication][mac-checkout].
 
-### Version 1.8.2
+### Portal Documentation Version 1.8.2
 
 *   Added a more thorough description on `paymentUrl` and `completeUrl` in all
     relevant payments.
@@ -880,7 +880,7 @@ Other changes:
 
 ## 31 March 2020
 
-### Version 1.8.1
+### Portal Documentation Version 1.8.1
 
 *   Documented allowed characters in `orderItem.class`.
 *   Added `receiptReference` in [Invoice Payments][invoice] and
@@ -895,27 +895,27 @@ Other changes:
 
 ## 18 March 2020
 
-### Version 1.8.0
+### Portal Documentation Version 1.8.0
 
 *   Updated [Invoice Payments Direct][invoice-direct] where
     `approvedLegalAddress` should now be use for all countries.
 *   Small text changes and clarifications.
 *   Restructured [Invoice Payments][invoice] and [Card Payments][card].
 
-### Version 1.7.7
+### Portal Documentation Version 1.7.7
 
 This change contains build updates for the page. :octocat:
 
 ## 4 March 2020
 
-### Version 1.7.6
+### Portal Documentation Version 1.7.6
 
 *   Several links has been corrected. The chance of 404 is now much lower.
 *   Other small text changes and clarifications.
 
 ## 3 March 2020
 
-### Version 1.7.5
+### Portal Documentation Version 1.7.5
 
 *   New page! Technical reference into has been moved from the front page
     to [technical information][home-technical-information].
@@ -924,14 +924,14 @@ This change contains build updates for the page. :octocat:
 *   Swish error code reference got a face lift, check it out
     [here][swish-api-errors] :candy:.
 
-### Version 1.7.4
+### Portal Documentation Version 1.7.4
 
 *   Described the M-Commerce flow for [Swish Direct][swish-direct-mcom].
 *   Alphabetize the terms in [Terminology][terminology].
 
 ## 27 February 2020
 
-### Version 1.7.3
+### Portal Documentation Version 1.7.3
 
 *   Expanded information about the field `restrictedToInstruments`.
 *   Added information about the field `receiptReference`.
@@ -943,7 +943,7 @@ This change contains build updates for the page. :octocat:
 
 ## 7 February 2020
 
-### Version 1.7.2
+### Portal Documentation Version 1.7.2
 
 *   Removed several duplicate headers in features pages.
 *   Added unscheduled purchase information in
@@ -953,11 +953,11 @@ This change contains build updates for the page. :octocat:
 
 ## 6 February 2020
 
-### Version 1.7.1
+### Portal Documentation Version 1.7.1
 
 All sections have been released. :trophy:
 
-### Version 1.7.0
+### Portal Documentation Version 1.7.0
 
 *   README is updated with info about includes.
 *   Added  several includes.
@@ -976,19 +976,19 @@ All sections have been released. :trophy:
 
 ## 29 January 2020
 
-### Version 1.6.3
+### Portal Documentation Version 1.6.3
 
 *   `restrictedToInstruments` added back to [Payment Order purchase
     requests][checkout-payment-order-purchase].
 *   `Direct Debit` section and mentions in various includes removed.
 *   Various improvements and fixes.
 
-### Version 1.6.2
+### Portal Documentation Version 1.6.2
 
 *   The [Payments][payments] and [Card Payments][card] sections are reviewed and
     released.
 
-### Version 1.6.1
+### Portal Documentation Version 1.6.1
 
 *   `email`, `msisdn`, `workPhoneNumber` and `homePhoneNumber` added to the
     `payer` object in [Payment Order requests][payment-orders].
@@ -997,7 +997,7 @@ All sections have been released. :trophy:
 
 ## 27 January 2020
 
-### Version 1.6.0
+### Portal Documentation Version 1.6.0
 
 *   The [Swish Payments][swish] and [Vipps Payments][vipps] have received a few
     updates and are now ready for another round of review.
@@ -1010,7 +1010,7 @@ All sections have been released. :trophy:
 
 ## 16 January 2020
 
-### Version 1.5
+### Portal Documentation Version 1.5
 
 *   The review of [Invoice Payments][invoice] is complete and as such the section
     is now released and ready for use.
@@ -1021,7 +1021,7 @@ All sections have been released. :trophy:
 
 ## 9 January 2020
 
-### Version 1.4
+### Portal Documentation Version 1.4
 
 *   Updated [Swish Redirect][swish-direct] and [Swish Direct][swish-direct]
     sections in preparations for review and the transition from PayEx Developer

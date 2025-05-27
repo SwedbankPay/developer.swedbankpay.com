@@ -1,9 +1,9 @@
 ---
-section: Digital Payments
+section: Online Payments
 sidebar_icon: shopping_cart
 title: Introduction
 description: |
-  **A brief introduction to implementing Digital Payments.**
+  **A brief introduction to implementing Online Payments.**
 menu_order: 1
 card_list:
 - title: One-Time Payments
@@ -40,7 +40,7 @@ card_list:
  </div>
 </section>
 
-There are three ways of implementing our digital payments, depending on what
+There are three ways of implementing our Online Payment, depending on what
 suits you best. The **native implementation**, which goes directly towards our
 APIs, **modules** (WooCommerce) or **SDKs** (*.NET* or *PHP* for web, *iOS* and
 *Android* for mobile apps).

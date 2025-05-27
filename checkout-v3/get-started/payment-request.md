@@ -6,10 +6,10 @@ description: |
   How to create payments when using our Checkout.
 menu_order: 4
 tab_list:
-- title: Payment order v3.1
+- title: Payment Order v3.1
   content_src: payment-request-3-1.md
   mark_with_star: true
-- title: Payment order v3.0
+- title: Payment Order v3.0
   content_src: payment-request-3-0.md
 ---
 
