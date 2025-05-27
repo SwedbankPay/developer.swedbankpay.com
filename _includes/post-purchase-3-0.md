@@ -659,8 +659,8 @@ requests in order to meet your business needs. Go have a look in our
 [Top of page](#payment-order-v30)
 
 {% include iterator.html prev_href="/checkout-v3/get-started/validate-status"
-                         prev_title="Back to Validate Status"
-{% include iterator.html next_href="/checkout-v3/features/"
+                         prev_title="Back To Validate Status"
+                         next_href="/checkout-v3/features/"
                          next_title="Additional Request Options" %}
 
 [problems]: /checkout-v3/features/technical-reference/problems
