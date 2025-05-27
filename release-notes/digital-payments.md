@@ -1214,7 +1214,7 @@ more convenient for both the integration and the payer.
 [checkout-v3-payments-only]: /checkout-v3
 [checkout-v3]: /checkout-v3
 [checkout-v3-payments-only-redirect-request]: /checkout-v3/get-started/payment-request
-[checkout-v3-payments-only-seamless]: /checkout-v3/get-started/display-payment-ui/seamless-view
+[checkout-v3-payments-only-seamless]: /checkout-v3/get-started/display-payment-ui
 [click-to-pay]: /checkout-v3/click-to-pay-presentation
 [consent-box]: /checkout-v3/features/optional/one-click-payments/#disable-store-details-and-toggle-consent-checkbox
 [contact-us]: /#front-page-contact-partners
@@ -1231,7 +1231,7 @@ more convenient for both the integration and the payer.
 [delete-payment-tokens]: /checkout-v3/features/optional/delete-token#delete-paymenttoken-request
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [design-guide]: https://design.swedbankpay.com/
-[display-ui]: /checkout-v3/get-started/display-payment-ui/
+[display-ui]: /checkout-v3/get-started/display-payment-ui
 [dom-ver]: /checkout-v3/apple-pay-presentation#domain-verification
 [eligibility-check]: /checkout-v3/features/customize-ui/instrument-mode#eligibility-check
 [error-invoice]: /checkout-v3/features/technical-reference/problems/#invoice-problems
@@ -1297,7 +1297,7 @@ more convenient for both the integration and the payer.
 [resource-models]: /checkout-v3/features/technical-reference/resource-sub-models
 [request-delivery-information]: /checkout-v3/features/optional/request-delivery-info
 [ruc]: /checkout-v3/get-started/recurring
-[seamless-view-script]: /checkout-v3/get-started/display-payment-ui/seamless-view/#monitoring-the-script-url
+[seamless-view-script]: /get-started/display-payment-ui#monitoring-the-script-url
 [settlement-balance-report]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation#balance-report
 [settlement-reconcilitation]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation
 [sdk-guidelines]: /checkout-v3/modules-sdks/development-guidelines
@@ -1330,8 +1330,8 @@ more convenient for both the integration and the payer.
 [token-problems]: /checkout-v3/features/technical-reference/problems/#token-problems
 [tos-url]: /checkout-v3/features/customize-ui/tos
 [trustly-pres]: /checkout-v3/trustly-presentation
-[trans-guide]: /checkout-v3/get-started/display-payment-ui/ui-migration/
-[trans-guide-script]: /checkout-v3/get-started/display-payment-ui/ui-migration/#monitoring-the-script-url
+[trans-guide]: /checkout-v3/get-started/display-payment-ui#change-from-seamless-view-to-redirect-ui
+[trans-guide-script]: /get-started/display-payment-ui#monitoring-the-script-url
 [transaction-on-file]: /old-implementations/payment-instruments-v1/card/features/optional/transaction-on-file
 [tra-exemption]: /old-implementations/checkout-v2/features/optional/tra
 [trustly-payments]: /old-implementations/payment-instruments-v1/trustly
