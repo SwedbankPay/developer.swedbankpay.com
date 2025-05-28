@@ -1,5 +1,6 @@
 ---
 title: Display Payment UI
+permalink: /:path/display-ui/
 hide_from_sidebar: false
 description: |
   How to display the payment UI.
