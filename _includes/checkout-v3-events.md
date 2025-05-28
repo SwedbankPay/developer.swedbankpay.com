@@ -191,7 +191,7 @@ This is the object that is provided if you override the event:
 
 {% include events/on-instrument-selected.md %}
 
-his event mirrors `onPaymentMenuInstrumentSelected` from Checkout v2.
+This event mirrors `onPaymentMenuInstrumentSelected` from Checkout v2.
 
 This event can be overridden if you want to know when the payer selects a
 payment method in the Swedbank Pay payment frame.

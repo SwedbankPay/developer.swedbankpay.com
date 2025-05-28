@@ -341,8 +341,8 @@ credit card payment:
     decided by the issuing bank. Normally this will be done using BankID or
     Mobile BankID.
 
-[seamless-view]: /checkout-v3/get-started/display-payment-ui
+[seamless-view]: /checkout-v3/get-started/display-ui
 [one-click-payments]: /checkout-v3/features/optional/one-click-payments
 [unscheduled-mit]: /checkout-v3/features/optional/unscheduled
-[redirect]: /checkout-v3/get-started/display-payment-ui
+[redirect]: /checkout-v3/get-started/display-ui
 [po-verify]: /assets/img/po-verify.jpg
