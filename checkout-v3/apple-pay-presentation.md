@@ -62,7 +62,8 @@ menu_order: 700
  </div>
 </section>
 
-## Domain Verification 
+## Domain Verification
+
 <div class="alert alert-informative">
     <i class="swepay-icon-info-circle-filled" aria-hidden="true"></i>
     <p>Seamless View integration only</p>
@@ -84,7 +85,7 @@ You need a copy of our domain file.
 </button>
 {% endcapture %}
 {% include accordion-table.html content=downloadDomainFile header_text='1. Download our domain file' header_expand_css='font-weight-normal' %}
-   
+
 {% capture uploadDomainFile %}
 {: .p .pl-3 .pr-3  }
 Upload the file to the following web path: `https://[DOMAIN-NAME]/.well-known/apple-developer-merchantid-domain-association`
@@ -97,26 +98,26 @@ Upload the file to the following web path: `https://[DOMAIN-NAME]/.well-known/ap
 If you have any questions about how to upload the file to your domain and make it available, contact your domain administrator or provider for further instructions and assistance.
 {% endcapture %}
 {% include accordion-table.html content=uploadDomainFile header_text='2. Upload the file to your domain' header_expand_css='font-weight-normal' %}
-   
+
 {% capture verifyDomainFile %}
 {: .p .pl-3 .pr-3  }
 Verify that the file has been uploaded correctly by opening the site. You should see a series of letters and numbers.
 
-*   You can compare it to our own verification file, found on <a target="_blank" href="https://ecom.payex.com/.well-known/apple-developer-merchantid-domain-association">this site</a>.  
+*   You can compare it to our own verification file, found on <a target="_blank" href="https://ecom.payex.com/.well-known/apple-developer-merchantid-domain-association">this site</a>.
 *   If done correctly, they should look identical.
 *   The verification file is a hex string that contains a **JSON**. If the file is modified or the file is saved in a different format, this may cause the validation to fail.
 {% endcapture %}
 {% include accordion-table.html content=verifyDomainFile header_text='3. Verify the upload' header_expand_css='font-weight-normal' %}
-   
+
 {% capture contactUs %}
 {: .p .pl-3 .pr-3  }
 Once the previous steps have been completed you have to notify us that everything is ready and you are good to go. The easiest way? Simply reply to the email you received from us regarding domain verification! But you can of course also reach out to your technical contact.
 {% endcapture %}
 {% include accordion-table.html content=contactUs header_text='4. Contact us for activation' header_expand_css='font-weight-normal' %}
-  
+
 {% capture iosSdk %}
 {: .p .pl-3 .pr-3  }
-If you're using our **iOS SDK**, make sure that the `webViewBaseURL` is set to the same domain as where you host the file. 
+If you're using our **iOS SDK**, make sure that the `webViewBaseURL` is set to the same domain as where you host the file.
 
 {: .p .pl-3 .pr-3  }
 If you're presenting Seamless View payments in a custom **plain web view** implementation in your iOS application, you need to make sure that the provided `baseURL` in the call to `loadHTMLString(_:baseURL:)` is set to the same domain as where you host the file. If not, it may fail to validate, making it so payments with Apple Pay may not function.
@@ -149,20 +150,6 @@ download) in English, and e-mail it to **agreement@swedbankpay.com** together
 with **Name**, **Organizational** and **Customer number**. Your acceptance is
 needed before we can activate Apple Pay for you.
 
-## Accepting Donations
-
-Apple Pay provides nonprofit organizations a simple and secure way to accept
-donations. To register your nonprofit organization for Apple Pay, please visit
-[Benevity][benevity-donation-setup]{:target="_blank"}.
-
-You’ll be asked to provide basic information about your organization. Note that
-the **Apple Developer Team ID** is an **optional** field, so this is not needed.
-
-When you get your approval from Benevity, you need to share it with Swedbank Pay
-before we can activate Apple Pay for you. You can e-mail it to
-**agreement@swedbankpay.com** together with **Name**, **Organizational** and
-**Customer number**.
-
 {% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Introduction" %}
 
@@ -170,4 +157,3 @@ before we can activate Apple Pay for you. You can e-mail it to
 [apple-pay-tc-sign-sweden]: https://signup.swedbankpay.com/se/applepay
 [apple-pay-tc-sign-norway]: https://signup.swedbankpay.com/no/applepay
 [apple-pay-verification-file]: /assets/documents/apple-ecom
-[benevity-donation-setup]: https://www.benevity.com
