@@ -95,7 +95,7 @@ Upload the file to the following web path: `https://[DOMAIN-NAME]/.well-known/ap
 *   If you want to activate Apple Pay on multiple domains, for example `https://ecom.payex.com` and `https://developer.swedbankpay.com`, you need to upload the file to all of the unique domains.
 
 {: .p .pl-3 .pr-3  }
-If you have any questions about how to upload the file to your domain and make it available, contact your domain administrator or provider for further instructions and assistance.
+For questions about uploading the file and making it available, please contact your domain administrator or provider for further instructions and assistance.
 {% endcapture %}
 {% include accordion-table.html content=uploadDomainFile header_text='2. Upload the file to your domain' header_expand_css='font-weight-normal' %}
 
@@ -111,7 +111,7 @@ Verify that the file has been uploaded correctly by opening the site. You should
 
 {% capture contactUs %}
 {: .p .pl-3 .pr-3  }
-Once the previous steps have been completed you have to notify us that everything is ready and you are good to go. The easiest way? Simply reply to the email you received from us regarding domain verification! But you can of course also reach out to your technical contact.
+Once you have completed the steps above, please notify your integration contact to activate Apple Pay, and specify the domain on which you performed the configuration. If you don’t have a contact person, reach out to our [support team][support].
 {% endcapture %}
 {% include accordion-table.html content=contactUs header_text='4. Contact us for activation' header_expand_css='font-weight-normal' %}
 
@@ -157,3 +157,4 @@ needed before we can activate Apple Pay for you.
 [apple-pay-tc-sign-sweden]: https://signup.swedbankpay.com/se/applepay
 [apple-pay-tc-sign-norway]: https://signup.swedbankpay.com/no/applepay
 [apple-pay-verification-file]: /assets/documents/apple-ecom
+[support]: mailto:support.psp@swedbankpay.se
