@@ -471,7 +471,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
         "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
         {% endif %}
         "urls": {
-            "callbackUrl": "https://example.com/payment-callback"
+            "callbackUrl": "https://example.com/payment-callback" // Callbacks will only be sent for Trustly
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}"
