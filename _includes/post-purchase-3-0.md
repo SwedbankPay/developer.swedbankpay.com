@@ -1,21 +1,3 @@
----
-card_list:
-- title: Apple Pay
-  description: |
-    How to activate Apple Pay webflow or in-app
-  url:  /checkout-v3/apple-pay-presentation
-- title: Click to Pay
-  description: Additional signup needed for Click to Pay
-  url: /checkout-v3/click-to-pay-presentation
-- title: Google Pay&trade;
-  description: Additional signup needed for Google Pay&trade;
-  url: /checkout-v3/google-pay-presentation
-- title: Trustly
-  description: Enable Trustly Express
-  url: /checkout-v3/trustly-presentation
----
-
-
 {% include alert.html type="informative" icon="info" body="If you hesitate which version to use, we recommend the version marked with *." %}
 
 {: .h2 }
@@ -676,7 +658,7 @@ There are other features and capabilities you can add to tailor the payment
 requests in order to meet your business needs. See what else we can offer by
 clicking **Additional Request Options**.
 
-{% include card-list.html card_list=page.card_list col_class="col-lg-3" %}
+{% include card-list.html card_list=page.card_list col_class="col-lg-5" %}
 
 {: .text-right .mt-3}
 [Top of page](#payment-order-v30)
