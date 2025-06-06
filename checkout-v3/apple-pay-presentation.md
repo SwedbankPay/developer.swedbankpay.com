@@ -69,8 +69,9 @@ menu_order: 700
     <p>Seamless View integration only</p>
 </div>
 
-To ensure that we can enable Apple Pay for you when using a Seamless View integration, there are a few steps you may
-need to complete.
+To ensure that we can enable Apple Pay for you when using a
+[Seamless View integration][display-ui]{:target="_blank"}, there are a few steps
+you may need to complete.
 
 {% capture downloadDomainFile %}
 {: .p .pl-3 .pr-3  }
@@ -111,7 +112,8 @@ Verify that the file has been uploaded correctly by opening the site. You should
 
 {% capture contactUs %}
 {: .p .pl-3 .pr-3  }
-Once you have completed the steps above, please notify your integration contact to activate Apple Pay, and specify the domain on which you performed the configuration. If you don’t have a contact person, reach out to our [support team][support].
+Once you have completed the steps above, please notify your integration contact to activate Apple Pay, and specify the domain on which you performed the configuration. If you don’t have a contact person, reach out to our
+[support team](mailto:support.psp@swedbankpay.se).
 {% endcapture %}
 {% include accordion-table.html content=contactUs header_text='4. Contact us for activation' header_expand_css='font-weight-normal' %}
 
@@ -157,4 +159,4 @@ needed before we can activate Apple Pay for you.
 [apple-pay-tc-sign-sweden]: https://signup.swedbankpay.com/se/applepay
 [apple-pay-tc-sign-norway]: https://signup.swedbankpay.com/no/applepay
 [apple-pay-verification-file]: /assets/documents/apple-ecom
-[support]: mailto:support.psp@swedbankpay.se
+[display-ui]: /checkout-v3/get-started/display-ui

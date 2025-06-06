@@ -48,7 +48,7 @@ containing the following information:
 **Login credentials:** You will receive a temporary password in a separate
 email.
 
-{% include alert.html type="warning" icon="warning" body="Please
+{% include alert.html type="informative" icon="info" body="Please
 check your spam folder if you haven't received this email. " %}
 
 ## Step 3: Get Your Access Tokens
@@ -79,7 +79,7 @@ the key.
     externally in a safe place. The token will not be visible unmasked in any of
     our systems, so a lost token must be replaced by a new one.
 
-{% include alert.html type="warning" icon="warning" body="Please note that the
+{% include alert.html type="informative" icon="info" body="Please note that the
 production and staging environment need separate tokens. " %}
 
 {% include iterator.html prev_href="/checkout-v3/get-started"
