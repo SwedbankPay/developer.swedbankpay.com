@@ -1,5 +1,6 @@
 allow:
   - american
+  - attacks
   - basically
   - black
   - blacklist

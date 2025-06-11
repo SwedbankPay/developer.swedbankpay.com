@@ -71,7 +71,14 @@ menu_order: 700
 
 To ensure that we can enable Apple Pay for you when using a
 [Seamless View integration][display-ui]{:target="_blank"}, there are a few steps
-you may need to complete.
+you may need to complete. This is required both for Mobile SDK solutions and
+otherwise.
+
+The domain verification is not needed for **native** iOS SDK Apple Pay
+integrations, but you need to [contact our integration team](mailto:ecomintegration@swedbankpay.com)
+for assistance in the setup process.
+
+No actions are necessary for Redirect integrations.
 
 {% capture downloadDomainFile %}
 {: .p .pl-3 .pr-3  }
