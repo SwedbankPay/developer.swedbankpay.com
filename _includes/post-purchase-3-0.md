@@ -636,7 +636,7 @@ api-supported-versions: 3.0{% endcapture %}
 | {% f amount, 2 %}                 | `integer`    | {% include fields/amount.md %}                                                    |
 | {% f vatAmount, 2 %}              | `integer`    | {% include fields/vat-amount.md %}                                                |
 | {% f description, 2 %}            | `string`     | A human readable description of maximum 40 characters of the transaction.         |
-| {% f payeeReference, 2 %}         | `string(30)`     | {% include fields/payee-reference.md describe_receipt=true %}                     |
+| {% f payeeReference, 2 %}         | `string(30)` | {% include fields/payee-reference.md describe_receipt=true %}                     |
 | {% f receiptReference %}          | `string(30)` | {% include fields/receipt-reference.md %}                                         |
 | {% f isOperational, 2 %}          | `boolean`    | `true`  if the transaction is operational; otherwise  `false` .                   |
 | {% f reconciliationNumber, 2 %}   | `string`     | The number of the reconciliation batch file where the transaction can be found.   |
