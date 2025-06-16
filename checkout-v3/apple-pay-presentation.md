@@ -107,6 +107,12 @@ For questions about uploading the file and making it available, please contact y
 {% endcapture %}
 {% include accordion-table.html content=uploadDomainFile header_text='2. Upload the file to your domain' header_expand_css='font-weight-normal' %}
 
+{% capture baseurl %}
+{: .p .pl-3 .pr-3  }
+If you're presenting Seamless View payments in a custom **plain web view** implementation, you need to make sure that the provided `baseURL` in the call to `loadHTMLString(_:baseURL:)` is set to the same domain as where you host the file. If not, it may fail to validate, making it so payments with Apple Pay may not function.
+{% endcapture %}
+{% include accordion-table.html content=contactUs header_text='Note: BaseUrl' header_expand_css='font-weight-normal' %}
+
 {% capture verifyDomainFile %}
 {: .p .pl-3 .pr-3  }
 Verify that the file has been uploaded correctly by opening the site. You should see a series of letters and numbers.
