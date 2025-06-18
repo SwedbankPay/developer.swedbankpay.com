@@ -69,16 +69,24 @@ menu_order: 700
     <p>Seamless View integration only</p>
 </div>
 
-To ensure that we can enable Apple Pay for you when using a
-[Seamless View integration][display-ui]{:target="_blank"}, there are a few steps
-you may need to complete. This is required both for Mobile SDK solutions and
-otherwise.
+Before we can enable Apple Pay for you, you need to complete a domain
+verification if you are using a [Seamless View integration][display-ui]{:target="_blank"}.
 
-The domain verification is not needed for **native** iOS SDK Apple Pay
-integrations, but you need to [contact our integration team](mailto:ecomintegration@swedbankpay.com)
-for assistance in the setup process.
+This is done to confirm that the website where you are using Apple Pay belongs
+to you. You need to verify all domains – both top-level and subdomains – where
+you plan on displaying the Apple Pay button and process payments. It is a
+security measure to prevent fraud, help compliance and for merchant
+identification.
 
-No actions are necessary for Redirect integrations.
+The domain verification is required for **all** Seamless View integrations, also
+Mobile SDK solutions.
+
+It is not needed for **native** iOS SDK Apple Pay integrations, but you need to
+[contact our integration team](mailto:ecomintegration@swedbankpay.com) for
+assistance in the setup process.
+
+No actions are necessary for Redirect integrations as it is on Swedbank Pay's
+domain, making it our responsibility that the domain file is present and active.
 
 {% capture downloadDomainFile %}
 {: .p .pl-3 .pr-3  }
@@ -99,19 +107,16 @@ You need a copy of our domain file.
 Upload the file to the following web path: `https://[DOMAIN-NAME]/.well-known/apple-developer-merchantid-domain-association`
 
 *   Replace `[DOMAIN-NAME]` with your own domain.
-*   If your website is https://example.com, then the site would be `https://example.com/.well-known/apple-developer-merchantid-domain-association`
+*   If your website is https://www.example.com, then the site would be `https://www.example.com/.well-known/apple-developer-merchantid-domain-association`. Remember to use the fully qualified domain name (in this case www.example.com instead of example.com).
 *   If you want to activate Apple Pay on multiple domains, for example `https://ecom.payex.com` and `https://developer.swedbankpay.com`, you need to upload the file to all of the unique domains.
+
+{: .p .pl-3 .pr-3  }
+If you're presenting Seamless View payments in a custom **plain web view** implementation, you need to make sure that the provided `baseURL` in the call to `loadHTMLString(_:baseURL:)` is set to the same domain as where you host the file. If not, it may fail to validate, making it so payments with Apple Pay may not function.
 
 {: .p .pl-3 .pr-3  }
 For questions about uploading the file and making it available, please contact your domain administrator or provider for further instructions and assistance.
 {% endcapture %}
 {% include accordion-table.html content=uploadDomainFile header_text='2. Upload the file to your domain' header_expand_css='font-weight-normal' %}
-
-{% capture baseurl %}
-{: .p .pl-3 .pr-3  }
-If you're presenting Seamless View payments in a custom **plain web view** implementation, you need to make sure that the provided `baseURL` in the call to `loadHTMLString(_:baseURL:)` is set to the same domain as where you host the file. If not, it may fail to validate, making it so payments with Apple Pay may not function.
-{% endcapture %}
-{% include accordion-table.html content=contactUs header_text='Note: BaseUrl' header_expand_css='font-weight-normal' %}
 
 {% capture verifyDomainFile %}
 {: .p .pl-3 .pr-3  }
