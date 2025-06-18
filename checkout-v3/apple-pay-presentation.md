@@ -75,7 +75,7 @@ verification if you are using a [Seamless View integration][display-ui]{:target=
 This is done to confirm that the website where you are using Apple Pay belongs
 to you. You need to verify all domains – both top-level and subdomains – where
 you plan on displaying the Apple Pay button and process payments. It is a
-security measure to prevent fraud, help compliance and for merchant
+security measure used to prevent fraud, ensure compliance and for merchant
 identification.
 
 The domain verification is required for **all** Seamless View integrations, also
