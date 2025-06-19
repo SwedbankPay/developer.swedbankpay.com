@@ -9,7 +9,7 @@ has_release_notes: true
 
 ## 1 April 2025
 
-### Portal Documentation Version 5.3.6
+### Documentation v5.3.6
 
 Our release notes are on the move! We are taking the steps towards a
 [release notes hub][rn-hub] for all sections, available straight from the main
@@ -20,7 +20,7 @@ devices and the handful of unsupported ones.
 
 ## 19 February 2025
 
-### Portal Documentation Version 5.3.5
+### Documentation v5.3.5
 
 [Pay SoftPos][softpos] is going live this week, and that calls for a proper
 introduction. Head over to the brand new section to read about it!
