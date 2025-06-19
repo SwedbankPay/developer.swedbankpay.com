@@ -12,8 +12,9 @@ below).
 ## Customizable Elements
 
 Our [accessibility compliant payment UI][wcag-presentation]{:target="_blank"}
-follows the guidelines of [WCAG v2.2][wcag-documentation], so the elements you
-can adjust are limited to the CTA button. Available changes are:
+follows the guidelines of [WCAG v2.2][wcag-documentation]{:target="_blank"}, so
+the elements you can adjust are limited to the CTA button. The vailable changes
+are:
 
 ### The background color of the CTA button
 

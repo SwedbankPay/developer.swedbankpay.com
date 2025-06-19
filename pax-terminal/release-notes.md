@@ -11,14 +11,14 @@ hide_from_sidebar: true
 
 ## 26 February 2024
 
-### Portal Documentation Version 4.8.0
+### Documentation v4.8.0
 
 *   Purchase order number may be included in payment and forwarded to Pospay.
 *   Updates for the [.Net SDK][dotnetrelease]
 
 ## 6 February 2024
 
-### Portal Documentation Version 4.7.0
+### Documentation v4.7.0
 
 *   [Manually entered Payment Instrument explained][keyinpaymentinstrument].
 *   [Automatic configuration of terminal address in POS][autoconfig].
@@ -28,7 +28,7 @@ hide_from_sidebar: true
 
 ## 19 December 23
 
-### Portal Documentation Version 4.6.1
+### Documentation v4.6.1
 
 *   Possibility to send PrintRequest to A920Pro.
 *   Documentation about fuel functionality.
@@ -36,7 +36,7 @@ hide_from_sidebar: true
 
 ## 7 November 23
 
-### Portal Documentation Version 4.6.0
+### Documentation v4.6.0
 
 *   Updated documentation for the [.Net SDK][dotnetrelease] and new methods in the interface.
 *   Added documentation about direct integration and the nexo Retailer interface.
