@@ -95,6 +95,10 @@ which are shown in the example below. This includes the place we want to
 open up the menu (container), the language we want the menu to
 display (culture), and any events we want to override.
 
+We recommend setting the Seamless View payment UI to `role = main` to make
+it accessible and compliant as advised by [WCAG 2.2][wcag], see **1.3.1** and
+**2.4.3**.
+
 {:.code-view-header}
 **JavaScript**
 
@@ -446,3 +450,4 @@ read more about how this is done.
 [fi]: https://www.swedbankpay.fi/riskit-ja-turvallisuus/nain-pci-vaikuttaa-sinuun
 [no]: https://www.swedbankpay.no/risiko-og-sikkerhet/pci-slik-pavirkes-du
 [se]: https://www.swedbankpay.se/risk-och-sakerhet/pci-sa-paverkas-du
+[wcag]: https://www.w3.org/WAI/WCAG22/quickref/

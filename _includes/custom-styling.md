@@ -11,10 +11,9 @@ below).
 
 ## Customizable Elements
 
-With the arrival of our
-[accessibility compliant payment UI][wcag-presentation]{:target="_blank"},
-the elements you can adjust are related to the CTA button. Available changes
-are:
+Our [accessibility compliant payment UI][wcag-presentation]{:target="_blank"}
+follows the guidelines of [WCAG v2.2][wcag-documentation], so the elements you
+can adjust are limited to the CTA button. Available changes are:
 
 ### The background color of the CTA button
 
@@ -111,4 +110,5 @@ script.onload = function () {
 
 [contact]: mailto:sales.swedbankpay@swedbank.se
 [playground]: https://playground.swedbankpay.com
+[wcag-documentation]: https://www.w3.org/WAI/WCAG22/quickref/
 [wcag-presentation]: https://www.swedbankpay.com/information/wcag
