@@ -317,7 +317,7 @@ Content-Type: application/json{% endcapture %}
     "consumer": {
         "socialSecurityNumber": "194810205957",
         "customerNumber": "123456",
-        "email": "someExample@payex.com",
+        "email": "someExample@swedbankpay.com",
         "msisdn": "+46765432198",
         "ip": "127.0.0.1"
     },

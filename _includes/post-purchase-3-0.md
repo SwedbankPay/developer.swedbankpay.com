@@ -1,4 +1,3 @@
-
 {% include alert.html type="informative" icon="info" body="If you hesitate which version to use, we recommend the version marked with *." %}
 
 {: .h2 }
@@ -637,7 +636,7 @@ api-supported-versions: 3.0{% endcapture %}
 | {% f amount, 2 %}                 | `integer`    | {% include fields/amount.md %}                                                    |
 | {% f vatAmount, 2 %}              | `integer`    | {% include fields/vat-amount.md %}                                                |
 | {% f description, 2 %}            | `string`     | A human readable description of maximum 40 characters of the transaction.         |
-| {% f payeeReference, 2 %}         | `string(30)`     | {% include fields/payee-reference.md describe_receipt=true %}                     |
+| {% f payeeReference, 2 %}         | `string(30)` | {% include fields/payee-reference.md describe_receipt=true %}                     |
 | {% f receiptReference %}          | `string(30)` | {% include fields/receipt-reference.md %}                                         |
 | {% f isOperational, 2 %}          | `boolean`    | `true`  if the transaction is operational; otherwise  `false` .                   |
 | {% f reconciliationNumber, 2 %}   | `string`     | The number of the reconciliation batch file where the transaction can be found.   |
@@ -645,10 +644,29 @@ api-supported-versions: 3.0{% endcapture %}
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
+### Done With The Basics
+
+You have reached the final step of the basic payment implementation and should
+be able to validate that everything works as intended, or maybe it's time for
+[acceptance tests][acceptance-test]?
+
+Some of our payment methods require a few additional steps before they can
+be activated and become available in your payment UI. Read more about them
+and what you need to do by clicking the cards below.
+
+There are other features and capabilities you can add to tailor the payment
+requests in order to meet your business needs. See what else we can offer by
+clicking **Additional Request Options**.
+
+{% include card-list.html card_list=page.card_list col_class="col-lg-5" %}
+
 {: .text-right .mt-3}
 [Top of page](#payment-order-v30)
 
-{% include iterator.html next_href="/checkout-v3/features/"
-                         next_title="Add To Your Payment Request" %}
+{% include iterator.html prev_href="/checkout-v3/get-started/validate-status"
+                         prev_title="Back To Validate Status"
+                         next_href="/checkout-v3/features/"
+                         next_title="Additional Request Options" %}
 
 [problems]: /checkout-v3/features/technical-reference/problems
+[acceptance-test]: /checkout-v3/get-started/#get-ready-to-go-live

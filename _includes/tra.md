@@ -50,7 +50,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
                 "countryCode": "SE"
             "requireConsumerInfo": false,
             "digitalProducts": false,
-            "email": "olivia.nyhuus@payex.com",
+            "email": "olivia.nyhuus@swedbankpay.com",
             "msisdn": "+4798765432",
             "authentication" : {
                 "type" : "Digital",
@@ -61,7 +61,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             "shippingAddress": {
                 "firstName": "Olivia",
                 "lastName": "Nyhuus",
-                "email": "olivia.nyhuus@payex.com",
+                "email": "olivia.nyhuus@swedbankpay.com",
                 "msisdn": "+4798765432",
                 "streetAddress": "Saltnestoppen 43",
                 "coAddress": "",
@@ -72,7 +72,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
               "billingAddress": {
                 "firstName": "Olivia",
                 "lastName": "Nyhuus",
-                "email": "olivia.nyhuus@payex.com",
+                "email": "olivia.nyhuus@swedbankpay.com",
                 "msisdn": "+4798765432",
                 "streetAddress": "Saltnestoppen 43",
                 "coAddress": "",
@@ -126,7 +126,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             }
         ],
         "riskIndicator": {
-            "deliveryEmailAddress": "olivia.nyhuus@payex.com",
+            "deliveryEmailAddress": "olivia.nyhuus@swedbankpay.com",
             "deliveryTimeFrameindicator": "01",
             "preOrderDate": "20210220",
             "preOrderPurchaseIndicator": "01",
@@ -174,7 +174,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 | {% icon check %} | {% f description %}              | `string`     | The description of the payment order.                                               |
 | {% icon check %} | {% f userAgent %}                | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f language %}                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
-| {% icon check %} | {% f productName %}              | `string`     | Used to tag the payment as Digital Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
+| {% icon check %} | {% f productName %}              | `string`     | Used to tag the payment as Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
 |                  | {% f implementation %}           | `string`     | Indicates which implementation to use.                                                                                                                                                                                                                                                                          |
 | {% icon check %} | {% f urls %}                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | {% f hostUrls, 2 %}                | `array`      | The array of valid host URLs.                                                                                                                                                                                                                                    |{% if include.integration_mode=="seamless-view" %}

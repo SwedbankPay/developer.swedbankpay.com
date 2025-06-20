@@ -1,8 +1,8 @@
 ---
-title: Payment Terminals
+title: In-Store Payments
 permalink: /:path/payment-terminals/
 description: |
-  The latest updates about our Payment Terminals.
+  The latest updates about our In-Store Payments.
 menu_order: 3
 tab_list:
 - title: Portal Updates
