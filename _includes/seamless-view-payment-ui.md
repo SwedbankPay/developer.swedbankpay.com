@@ -95,11 +95,11 @@ which are shown in the example below. This includes the place we want to
 open up the menu (container), the language we want the menu to
 display (culture), and any events we want to override.
 
-To help costumers using assistive technologies, we recommend that you mark the
+To help customers using assistive technologies, we recommend that you mark the
 DOM element where you host our seamless view window as either `<main>` or
-`role="main"`. Users will be able to easily skip to the Payment UI if their
-tools allows for it. This is advised by [WCAG v2.2][wcag]{:target="_blank"},
- see **1.3.1** and **2.4.3**.
+`role="main"`. With this implemented, users can easily skip to the Payment UI if
+their tools allows for it. This is advised by [WCAG v2.2][wcag]{:target="_blank"}
+section **1.3.1** and **2.4.3**.
 
 {:.code-view-header}
 **JavaScript**
