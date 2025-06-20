@@ -467,6 +467,10 @@ img {
   padding-left: 0;
 }
 
+.cards:has(.cards-cta) {
+  min-width: 100% !important;
+}
+
 body {
   font-size: 1.125rem;
 }
