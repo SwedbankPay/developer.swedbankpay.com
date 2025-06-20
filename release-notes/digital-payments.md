@@ -7,6 +7,31 @@ menu_order: 2
 has_release_notes: true
 ---
 
+## 20 June 2025
+
+### Documentation v5.3.8
+
+We've got one more in us before the beach towels and inflatable pool toys get
+our attention!
+
+As you may have noticed already, our two main sections have been renamed to
+In-Store Payments and Online Payments.
+
+We have given the [Apple Pay Domain Verification][apple-pay] a facelift. An
+easier domain file download and a re-structure of the verification steps have
+been added.
+
+The Get Started section has also received some attention. Minor adjustments is
+done to the navigation, and the [Display Payment UI][display-ui] step is now in
+the tab format you may have seen in Payment Request and Post-Purchase. The
+Seamless View code examples and events are updated, and an important
+recommendation on how to make your Seamless View more accessible is added under
+"Load the Seamless View". Quicklinks to payment methods which need additional
+steps before activation in [Post-Purchase][pp-3-1] sums it up.
+
+The ever-present typos, small re-writes and bugfixes wrap a bow on it all this
+time. Have a nice summer!
+
 ## 22 April 2025
 
 ### Documentation v5.3.7
