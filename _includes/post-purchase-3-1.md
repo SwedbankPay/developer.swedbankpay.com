@@ -1,5 +1,5 @@
 
-*Recommended version*
+**Recommended version*
 
 {: .h2 }
 

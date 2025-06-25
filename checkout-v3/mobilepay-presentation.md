@@ -9,12 +9,12 @@ menu_order: 500
 
 <section class="panel panel-brand">
  <header>
- <h3 class="panel-title">Pay anywhere, anytime with Mobile Pay!</h3>
+ <h3 class="panel-title">Pay anywhere, anytime with MobilePay!</h3>
  <p class="panel-sub-title"></p>
  </header>
  <div class="panel-body">
 <div>
- Streamline your payments with Mobile Pay — the quick, secure, and effortless way to pay using your smartphone.
+ Streamline your payments with MobilePay — the quick, secure, and effortless way to pay using your smartphone.
  </div>
  <br/>
  <ul>
