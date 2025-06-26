@@ -1,10 +1,11 @@
 
-## 14 May 2025
+## 27 June 2025
 
 ### Version 5.3.8
 
-*	Info about Net SDK availability on nuget.org.
-*	Info about ForceAcquisitionReference in SaleApplInfo for Net SDK.
+*   Info about Net SDK availability on nuget.org.
+*   Info about ForceAcquisitionReference in SaleApplInfo for Net SDK.
+*   LoyaltyResult may appear in PaymentResponse
 
 ## 1 April 2025
 

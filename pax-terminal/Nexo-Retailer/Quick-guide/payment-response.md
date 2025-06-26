@@ -12,6 +12,8 @@ Depending on why a payment is unapproved the response may not contain a receipt.
 The payment response carries both a merchant receipt and a customer receipt. The customer receipt should always be used. The merchant receipt is used if the receipt needs to be signed by the customer.
 The receiptdata is a Base64 encoded JSON structure.
 
+If the merchant is set up for loyalty handling via the SwedbankPay host, the payment response may contain a `LoyaltyResult` as well like shown below.
+
 {% include pax-payment-response.md %}
 
 ## For CVM method Signature default integration

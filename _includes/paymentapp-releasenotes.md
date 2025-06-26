@@ -1,4 +1,53 @@
 
+## 26 June 2025
+
+### Pax Release 1.3.0.10
+
+PAX-4119 Can now receive loyalty accounts from host
+
+PAX-4117 Can now requets and receive cloud logs via intents
+
+PAX-4099 Fixed an issue causing footer logo to behave unexpected on start of transaction on screen change
+
+PAX-4098 Added pairing option in cashier menu when using cloud connect.
+
+PAX-4097 Fixed an issue preventing the transaction outcome loader animation from animating outcome
+
+PAX-4075 Fixed a bug where the terminal could end up using a wrong CVM method for EMV cashback transactions
+
+PAX-4062 Terminal now support ecr cloud communication
+
+## 6 June 2025
+
+### Pax Release 1.3.0.9
+
+PAX-4091 Improve selectable profile start up check
+
+PAX-4089 A small fix to set APM error to false so we not showing the error text if we retry a APM payment after getting internet.
+
+PAX-4088 Improved initialising flow in terminal start up.
+
+PAX-4083 Set a 30 second callTimeout in the acquirer-client. To make sure the terminal does not hang more than 30 seconds waiting for a  response during poor network conditions (where the existing connect and read timeouts doesn't trigger).
+
+PAX-4066 Terminal will now retry to send apm cancel message every 2 minutes
+
+PAX-4064 Admin menu item 'Switch ECR mode' is now hidden when terminal is configured with an unselectable ECR profile.
+
+PAX-4047 'Purchase with cashback' is now (by default) hidden on Standalone terminals. Merchants that wants to
+support 'Purchase with cashback' must use the Admin-menu to make it visible.
+
+PAX-4041 Ignore Client Only ECRs trying to abort transactions when it is not allowed (or using Wrong Service ID or Device ID when trying to abort something). (Instead of trying to send them a notification they cannot receive)
+
+PAX-4038 Added serial number to system info
+
+PAX-4019 For simplification in the setup of new terminals, improvements has been implemented to when and how the setup screens for admin password, manager password and merchant verification are triggered.
+
+PAX-4018 Blind mode is implemented and available from the localization menu. After activation it will be on until one transaction is complete. The screens in the payment process will have speech, and own pin pad for blind on terminals with on screen pin pad.
+
+PAX-4014 Fix localization of 'Internet via USB' admin-menu option
+
+PAX-3221 Implemented new branding system
+
 ## 14 April 2025
 
 ### Pax Release 1.3.0.8
