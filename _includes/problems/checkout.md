@@ -47,8 +47,6 @@ The structure of a problem message will look like this:
 | {% f name %}        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
 | {% f description %} | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
 
-## Common Problems
-
 All common problem types will have a URL in the format
 `https://api.payex.com/psp/errordetail/<error-type>`. The **URL is an
 identifier** that you can hard-code and implement logic around. It is currently
@@ -63,6 +61,14 @@ future.
 | `forbidden`          | `403`  | The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking.                   |
 | `notfound`           | `404`  | The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.                                |
 | `systemerror`        | `500`  | A generic error message.                 |
+
+## Card Problems
+
+There are a few problems specific to the `creditcard` resource that you may want
+to guard against in your integrations. All credit card problem types will have
+the following URL structure:
+
+`https://api.payex.com/psp/errordetail/creditcard/<error-type>`
 
 ### Token Problems
 
@@ -188,14 +194,6 @@ will get a validation error.
     header=response_header
     json= response_content
     %}
-
-## Card Problems
-
-There are a few problems specific to the `creditcard` resource that you may want
-to guard against in your integrations. All credit card problem types will have
-the following URL structure:
-
-`https://api.payex.com/psp/errordetail/creditcard/<error-type>`
 
 ### Contractual Problem Types
 
