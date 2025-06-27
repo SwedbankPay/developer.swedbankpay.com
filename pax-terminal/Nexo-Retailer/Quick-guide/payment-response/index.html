@@ -772,7 +772,6 @@
           <ul class="">
           
           <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#problems">Problems</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#common-problems">Common Problems</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#card-problems">Card Problems</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#installment-account-problems">Installment Account Problems</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#invoice-problems">Invoice Problems</a></li>
@@ -2154,7 +2153,6 @@
           <ul class="">
           
           <li class="nav-leaf"><a href="/old-implementations/checkout-v2/features/technical-reference/problems/#problems">Problems</a></li>
-<li class="nav-leaf"><a href="/old-implementations/checkout-v2/features/technical-reference/problems/#common-problems">Common Problems</a></li>
 <li class="nav-leaf"><a href="/old-implementations/checkout-v2/features/technical-reference/problems/#card-problems">Card Problems</a></li>
 <li class="nav-leaf"><a href="/old-implementations/checkout-v2/features/technical-reference/problems/#installment-account-problems">Installment Account Problems</a></li>
 <li class="nav-leaf"><a href="/old-implementations/checkout-v2/features/technical-reference/problems/#invoice-problems">Invoice Problems</a></li>
@@ -5452,7 +5450,6 @@
           <ul class="">
           
           <li class="nav-leaf"><a href="/old-implementations/payment-menu-v2/features/technical-reference/problems/#problems">Problems</a></li>
-<li class="nav-leaf"><a href="/old-implementations/payment-menu-v2/features/technical-reference/problems/#common-problems">Common Problems</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-menu-v2/features/technical-reference/problems/#card-problems">Card Problems</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-menu-v2/features/technical-reference/problems/#installment-account-problems">Installment Account Problems</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-menu-v2/features/technical-reference/problems/#invoice-problems">Invoice Problems</a></li>
@@ -5634,6 +5631,8 @@ Depending on why a payment is unapproved the response may not contain a receipt.
 <p>The payment response carries both a merchant receipt and a customer receipt. The customer receipt should always be used. The merchant receipt is used if the receipt needs to be signed by the customer.
 The receiptdata is a Base64 encoded JSON structure.</p>
 
+<p>If the merchant is set up for loyalty handling via the SwedbankPay host, the payment response may contain a <code class="language-html highlighter-rouge">LoyaltyResult</code> as well like shown below.</p>
+
 <p class="code-view-header"><strong>Sample Payment Response for approved payment with physical payment card</strong></p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
@@ -5708,6 +5707,71 @@ The receiptdata is a Base64 encoded JSON structure.</p>
 <span class="nt">&lt;/SaleToPOIResponse&gt;</span>
 </pre></td>
 </tr></tbody></table></code></pre></div></div>
+      <h3 id="loyalty-result">
+        
+        
+          Loyalty Result <a href="#loyalty-result" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>If loyalty is handled via our host the response may include a <code class="language-html highlighter-rouge">LoyaltyResult</code> as well.</p>
+
+<p class="code-view-header"><strong>PaymentResponse like above but including LoyaltyResult (other tags not showing)</strong></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td>
+<td class="code-view-code"><pre><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;SaleToPOIResponse&gt;</span>
+ <span class="nt">&lt;MessageHeader</span> <span class="na">MessageClass=</span><span class="s">"Service"</span> <span class="na">MessageCategory=</span><span class="s">"Payment"</span> <span class="na">MessageType=</span><span class="s">"Response"</span> <span class="na">ServiceID=</span><span class="s">"3"</span> <span class="na">SaleID=</span><span class="s">"1"</span> <span class="na">POIID=</span><span class="s">"A-POIID"</span><span class="nt">/&gt;</span>
+ <span class="nt">&lt;PaymentResponse&gt;</span>
+  <span class="nt">&lt;Response</span> <span class="na">Result=</span><span class="s">"Success"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;SaleData&gt;</span>
+  <span class="nt">&lt;/SaleData&gt;</span>
+  <span class="nt">&lt;POIData&gt;</span>
+  <span class="nt">&lt;/POIData&gt;</span>
+  <span class="nt">&lt;PaymentResult</span> <span class="na">PaymentType=</span><span class="s">"Normal"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/PaymentResult&gt;</span>
+
+  <span class="nt">&lt;LoyaltyResult&gt;</span>
+    <span class="nt">&lt;LoyaltyAccount</span> <span class="na">LoyaltyBrand=</span><span class="s">"&lt;LOYALTY_BRAND_NAME&gt;"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;LoyaltyAccountID</span> <span class="na">EntryMode=</span><span class="s">"File"</span> <span class="na">IdentificationSupport=</span><span class="s">"LinkedCard"</span> <span class="na">IdentificationType=</span><span class="s">"AccountNumber"</span><span class="nt">&gt;</span>86dd8f2e005be7c4512d7af9dae89dd228689365<span class="nt">&lt;/LoyaltyAccountID&gt;</span>
+    <span class="nt">&lt;/LoyaltyAccount&gt;</span>
+  <span class="nt">&lt;/LoyaltyResult&gt;</span>
+
+  <span class="nt">&lt;PaymentReceipt</span> <span class="na">DocumentQualifier=</span><span class="s">"CashierReceipt"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/PamentReceipt&gt;</span>
+  <span class="nt">&lt;PaymentReceipt</span> <span class="na">DocumentQualifier=</span><span class="s">"CustomerReceipt"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/PaymentReceipt&gt;</span>
+ <span class="nt">&lt;/PaymentResponse&gt;</span>
+<span class="nt">&lt;/SaleToPOIResponse&gt;</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+    
       <h3 id="paymentresponse-in-detail">
         
         

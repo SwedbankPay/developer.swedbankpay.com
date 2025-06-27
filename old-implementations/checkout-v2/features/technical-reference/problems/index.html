@@ -773,7 +773,6 @@
           <ul class="">
           
           <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#problems">Problems</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#common-problems">Common Problems</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#card-problems">Card Problems</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#installment-account-problems">Installment Account Problems</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#invoice-problems">Invoice Problems</a></li>
@@ -2155,7 +2154,6 @@
           <ul class="">
           
           <li class="nav-leaf"><a href="/old-implementations/checkout-v2/features/technical-reference/problems/#problems">Problems</a></li>
-<li class="nav-leaf"><a href="/old-implementations/checkout-v2/features/technical-reference/problems/#common-problems">Common Problems</a></li>
 <li class="nav-leaf"><a href="/old-implementations/checkout-v2/features/technical-reference/problems/#card-problems">Card Problems</a></li>
 <li class="nav-leaf"><a href="/old-implementations/checkout-v2/features/technical-reference/problems/#installment-account-problems">Installment Account Problems</a></li>
 <li class="nav-leaf"><a href="/old-implementations/checkout-v2/features/technical-reference/problems/#invoice-problems">Invoice Problems</a></li>
@@ -5453,7 +5451,6 @@
           <ul class="">
           
           <li class="nav-leaf"><a href="/old-implementations/payment-menu-v2/features/technical-reference/problems/#problems">Problems</a></li>
-<li class="nav-leaf"><a href="/old-implementations/payment-menu-v2/features/technical-reference/problems/#common-problems">Common Problems</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-menu-v2/features/technical-reference/problems/#card-problems">Card Problems</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-menu-v2/features/technical-reference/problems/#installment-account-problems">Installment Account Problems</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-menu-v2/features/technical-reference/problems/#invoice-problems">Invoice Problems</a></li>
@@ -5749,14 +5746,6 @@ usually to the field in the request that was missing or contained invalid data.<
     </tr>
   </tbody>
 </table>
-    
-      <h2 id="common-problems">
-        
-        
-          Common Problems <a href="#common-problems" class="header-anchor"></a>
-        
-        
-      </h2>
 
 <p>All common problem types will have a URL in the format
 <code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/<span class="nt">&lt;error-type&gt;</span></code>. The <strong>URL is an
@@ -5800,6 +5789,20 @@ future.</p>
     </tr>
   </tbody>
 </table>
+    
+      <h2 id="card-problems">
+        
+        
+          Card Problems <a href="#card-problems" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>There are a few problems specific to the <code class="language-html highlighter-rouge">creditcard</code> resource that you may want
+to guard against in your integrations. All credit card problem types will have
+the following URL structure:</p>
+
+<p><code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/creditcard/<span class="nt">&lt;error-type&gt;</span></code></p>
     
       <h3 id="token-problems">
         
@@ -6081,20 +6084,6 @@ will get a validation error.</p>
 </span><span class="p">}</span><span class="w">
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
-    
-      <h2 id="card-problems">
-        
-        
-          Card Problems <a href="#card-problems" class="header-anchor"></a>
-        
-        
-      </h2>
-
-<p>There are a few problems specific to the <code class="language-html highlighter-rouge">creditcard</code> resource that you may want
-to guard against in your integrations. All credit card problem types will have
-the following URL structure:</p>
-
-<p><code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/creditcard/<span class="nt">&lt;error-type&gt;</span></code></p>
     
       <h3 id="contractual-problem-types">
         

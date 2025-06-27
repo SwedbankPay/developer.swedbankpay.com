@@ -772,7 +772,6 @@
           <ul class="">
           
           <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#problems">Problems</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#common-problems">Common Problems</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#card-problems">Card Problems</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#installment-account-problems">Installment Account Problems</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#invoice-problems">Invoice Problems</a></li>
@@ -2175,7 +2174,6 @@
           <ul class="">
           
           <li class="nav-leaf"><a href="/old-implementations/checkout-v2/features/technical-reference/problems/#problems">Problems</a></li>
-<li class="nav-leaf"><a href="/old-implementations/checkout-v2/features/technical-reference/problems/#common-problems">Common Problems</a></li>
 <li class="nav-leaf"><a href="/old-implementations/checkout-v2/features/technical-reference/problems/#card-problems">Card Problems</a></li>
 <li class="nav-leaf"><a href="/old-implementations/checkout-v2/features/technical-reference/problems/#installment-account-problems">Installment Account Problems</a></li>
 <li class="nav-leaf"><a href="/old-implementations/checkout-v2/features/technical-reference/problems/#invoice-problems">Invoice Problems</a></li>
@@ -5473,7 +5471,6 @@
           <ul class="">
           
           <li class="nav-leaf"><a href="/old-implementations/payment-menu-v2/features/technical-reference/problems/#problems">Problems</a></li>
-<li class="nav-leaf"><a href="/old-implementations/payment-menu-v2/features/technical-reference/problems/#common-problems">Common Problems</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-menu-v2/features/technical-reference/problems/#card-problems">Card Problems</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-menu-v2/features/technical-reference/problems/#installment-account-problems">Installment Account Problems</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-menu-v2/features/technical-reference/problems/#invoice-problems">Invoice Problems</a></li>
@@ -5746,6 +5743,7 @@
 16
 17
 18
+19
 </pre></td>
 <td class="code-view-code"><pre><span class="k">namespace</span> <span class="nn">SwpTrmLib</span>
 <span class="p">{</span>
@@ -5758,6 +5756,7 @@
         <span class="k">public</span> <span class="kt">string</span> <span class="n">ApplicationName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
         <span class="k">public</span> <span class="kt">string</span> <span class="n">SoftwareVersion</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
         <span class="k">public</span> <span class="kt">string</span> <span class="n">POIID</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">bool</span> <span class="n">ForceAcquisitionReference</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
         <span class="c1">// Summary:</span>
         <span class="c1">//     Default SaleCapabilities will result in a listener being started on a configured port.</span>
         <span class="c1">//     To use Client Only Mode use only the value SaleCapabilitiesEnum.PrinterReceipt.</span>
@@ -5767,6 +5766,43 @@
 <span class="p">}</span>
 </pre></td>
 </tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">ProviderIdentification</td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">Name of the integrator.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">ApplicationName</td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">Name of the application</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">SoftwareVersion</td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">Version of the application</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">POIID</td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">Identifies the POI for retrieving correct parameters and software</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">ForceAcquisitionReference</td>
+      <td style="text-align: left">bool</td>
+      <td style="text-align: left">If <code class="language-html highlighter-rouge">true</code>, the terminal requires a CardAcquisitionRequest ahead of any PaymentRequest</td>
+    </tr>
+  </tbody>
+</table>
 
 <nav class="iterator d-flex">
     
