@@ -4,7 +4,7 @@ permalink: /:path/payment-order-capture/
 redirect_from: /checkout-v3/features/core/payment-order-capture/
 description: |
   Capturing the authorized funds.
-                <span class="d-block">
+                <span class="d-block mt-3">
                   <span class="badge badge-default">Apple Pay</span>
                   <span class="badge badge-default">Card</span>
                   <span class="badge badge-default">Click to Pay</span>
