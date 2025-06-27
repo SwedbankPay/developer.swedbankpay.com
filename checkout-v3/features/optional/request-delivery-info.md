@@ -3,6 +3,11 @@ title: Request Delivery Information
 permalink: /:path/request-delivery-info/
 description: |
   Request that payment methods return delivery information.
+              <span class="d-block mt-3">
+                <span class="badge badge-default">Apple Pay</span>
+                <span class="badge badge-default">Click to Pay</span>
+                <span class="badge badge-default">Google Pay&trade;</span>
+              </span>
 menu_order: 2900
 ---
 

@@ -10,4 +10,6 @@ anchor_headings: false
 
 ## Customize The UI
 
+*Features not tagged with payment methods are available for all*
+
 {% include card-list.html %}
