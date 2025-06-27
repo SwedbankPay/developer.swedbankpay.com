@@ -38,9 +38,44 @@
 </SaleToPOIResponse>
 ```
 
+### Loyalty Result
+
+If loyalty is handled via our host the response may include a `LoyaltyResult` as well.
+
+{:.code-view-header }
+**PaymentResponse like above but including LoyaltyResult (other tags not showing)**
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SaleToPOIResponse>
+ <MessageHeader MessageClass="Service" MessageCategory="Payment" MessageType="Response" ServiceID="3" SaleID="1" POIID="A-POIID"/>
+ <PaymentResponse>
+  <Response Result="Success"/>
+  <SaleData>
+  </SaleData>
+  <POIData>
+  </POIData>
+  <PaymentResult PaymentType="Normal">
+  </PaymentResult>
+
+  <LoyaltyResult>
+    <LoyaltyAccount LoyaltyBrand="<LOYALTY_BRAND_NAME>">
+      <LoyaltyAccountID EntryMode="File" IdentificationSupport="LinkedCard" IdentificationType="AccountNumber">86dd8f2e005be7c4512d7af9dae89dd228689365</LoyaltyAccountID>
+    </LoyaltyAccount>
+  </LoyaltyResult>
+
+  <PaymentReceipt DocumentQualifier="CashierReceipt">
+  </PamentReceipt>
+  <PaymentReceipt DocumentQualifier="CustomerReceipt">
+  </PaymentReceipt>
+ </PaymentResponse>
+</SaleToPOIResponse>
+```
+
 ### PaymentResponse in Detail
 
 {:.table .table-striped}
+
 | Name | Lev | Attributes | Description |
 | :------------- | :---: | :-------------- |:--------------- |
 | PaymentResponse | 1 | | |

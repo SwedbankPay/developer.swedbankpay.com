@@ -9,9 +9,7 @@ menu_order: 1500
 
 ## Introduction
 
-SwpTrmLib is a Net Standard 2.0 nuget package that may be used when integrating Swedbank Pay terminal to a sale system. The
-package makes it simple and easy to get started.
-It has high abstraction and even if the actual protocol to the terminal changes this interface can stay the same.
+SwpTrmLib is a Net Standard 2.0 nuget package that may be used when integrating Swedbank Pay terminal to a sale system. The package is available on `nuget.org` with name `SwedbankPay.Pax.Sdk`. The package makes it simple and easy to get started. It has high abstraction and even if the actual protocol to the terminal changes this interface can stay the same.
 
 It offers both synchronous and asynchronous methods and for the [simplest form of implementation][client-style] it just takes a few calls to make a transaction.
 
