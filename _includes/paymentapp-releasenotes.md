@@ -27,7 +27,7 @@ PAX-4089 A small fix to set APM error to false so we not showing the error text 
 
 PAX-4088 Improved initialising flow in terminal start up.
 
-PAX-4083 Set a 30 second callTimeout in the acquirer-client. To make sure the terminal does not hang more than 30 seconds waiting for a  response during poor network conditions (where the existing connect and read timeouts doesn't trigger).
+PAX-4083 Set a 30 second callTimeout in the acquirer-client. To make sure the terminal does not hang more than 30 seconds waiting for a response during poor network conditions (where the existing connect and read timeouts doesn't trigger).
 
 PAX-4066 Terminal will now retry to send apm cancel message every 2 minutes
 
