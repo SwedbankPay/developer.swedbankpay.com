@@ -7,7 +7,7 @@
 
 {% include alert-agreement-required.md %}
 
-An Automated Fuel Dispenser (AFD) payment is a purchase where the merchant
+An Automated Fuel Dispenser payment is a purchase where the merchant
 requests an authorization transaction for an automatic fuel dispenser. The
 request contains the maximum purchase amount, but the issuer can reply with a
 partial approval to lower the maximum purchase amount. This can be used to stop
@@ -19,11 +19,11 @@ request under `PayeeInfo`. This feature is only supported with the `Purchase`
 operation. It does not support [order items][order-items].
 
 By default the available payment methods and card types will be limited to those
-which support AFD payments. To enable other payment options for the payer, send
-in `restrictedToAfdInstruments` with the value `false`.
+which support Automated Fuel Dispenser payments. To enable other payment options
+for the payer, send in `restrictedToAfdInstruments` with the value `false`.
 
-See the abbreviated example below on how to implement AFD payments by setting
-the `generateAfdPayment` to `true`.
+See the abbreviated example below on how to implement Automated Fuel Dispenser
+payments by setting the `generateAfdPayment` to `true`.
 
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
@@ -76,8 +76,8 @@ seamless view table:
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| {% f generateAfdPayment %}     | `bool`      | Set to `true` if the payment order is an AFD payment, `false` if not. |
-| {% f restrictedToAfdInstruments %}     | `bool`      | Set to `true` if the payment menu should show only payment options that support AFD, `false` to show all options. Default is true when using `generateAfdPayment`. |
+| {% f generateAfdPayment %}     | `bool`      | Set to `true` if the payment order is an Automated Fuel Dispenser payment, `false` if not. |
+| {% f restrictedToAfdInstruments %}     | `bool`      | Set to `true` if the payment menu should show only payment options that support Automated Fuel Dispenser payments, `false` to show all options. Default is true when using `generateAfdPayment`. |
 | {% f payeeInfo %}                | `object`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                             |
 | {% f mcc, 2 %}     | `integer`      | The merchant category code used for the purchase, 4 digits. |
 
