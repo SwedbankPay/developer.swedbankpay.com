@@ -1,6 +1,7 @@
 ---
 title: Automated Fuel Dispenser Payments
-permalink: /:path/afd/
+permalink: /:path/automated-fuel-dispenser/
+redirect_from: /checkout-v3/features/optional/afd/
 description: |
   Payments for automated fuel dispensers.
                 <span class="d-block mt-3">
@@ -9,6 +10,6 @@ description: |
 menu_order: 1600
 ---
 
-{% include payment-order-afd.md %}
+{% include payment-order-automated-fuel-dispenser.md %}
 
 {% include payment-order-capture.md %}
