@@ -12,4 +12,6 @@ anchor_headings: false
 
 ## Technical Reference
 
+*Features not tagged with payment methods are available for all*
+
 {% include card-list.html %}

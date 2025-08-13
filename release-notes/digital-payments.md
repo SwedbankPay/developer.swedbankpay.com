@@ -7,6 +7,15 @@ menu_order: 2
 has_release_notes: true
 ---
 
+## 13 August 2025
+
+### Documentation v5.3.9
+
+We are getting things rolling again after the vacation weeks with a small and
+sweet one. We are taking another step towards easier navigation by adding
+payment method tags to [features][features] that are limited to certain methods.
+Untagged features are universally available.
+
 ## 20 June 2025
 
 ### Documentation v5.3.8
@@ -963,7 +972,7 @@ This change contains build updates for the page. :octocat:
 *   Added and fixed several missing headings in template files.
 *   Expanded information about `verify`.
 *   Created new page for [Checkout Capture][checkout-capture].
-*   Mobile Pay Online was previously only referred to as Mobile Pay, this has been
+*   MobilePay Online was previously only referred to as MobilePay, this has been
     corrected.
 
 ## 7 February 2020

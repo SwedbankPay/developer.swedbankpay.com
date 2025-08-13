@@ -336,7 +336,7 @@ Content-Type: application/json{% endcapture %}
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
-## Mobile Pay Redirect Sequence Diagram
+## MobilePay Redirect Sequence Diagram
 
 The sequence diagram below shows the two requests you have to send to Swedbank
 Pay to make a purchase. The diagram also shows at a high level, the sequence of

@@ -10,7 +10,8 @@ To initiate recurring services, create a payment order with Swedbank Pay.
 This can be done by making an initial purchase, storing user details along with
 the transaction, or performing a `Verify` operation for account verification.
 `Verify` is a zero-sum operation used solely for registering details for future
-use.
+use. You can read more about the basic implementation of a payment order in our
+[Get Started][get-started] section.
 
 ## Step 2: Choose Recurring Model and Token
 
@@ -204,6 +205,7 @@ compiled relevant documentation below.
 [cancel]: /checkout-v3/features/payment-operations/cancel
 [capture]: /checkout-v3/features/payment-operations/payment-order-capture
 [delete-token]: /checkout-v3/features/optional/delete-token
+[get-started]: /checkout-v3/get-started/#the-basic-implementation
 [paid]: https://api.externalintegration.payex.com/psp/paymentorders/<PaymentOrderIdHere>/paid
 [recur]: /checkout-v3/features/optional/recur
 [reversal]: /checkout-v3/features/payment-operations/reversal

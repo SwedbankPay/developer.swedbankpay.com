@@ -26,6 +26,9 @@ inside our interface. It is most suitable for scenarios where you have the need
 to force a set of details to be used, or when you have built your own menu
 displaying payment methods.
 
+You can read more about the basic implementation of a payment order in our
+[Get Started][get-started] section.
+
 ## Payer Aware Menu
 
 To enable storing details for future purchases using the Payer Aware Menu,
@@ -183,3 +186,4 @@ Both scenarios generate the same response:
 
 [oc1]: /assets/img/OC1.JPG
 [pam1]: /assets/img/PAM1.JPG
+[get-started]: /checkout-v3/get-started/#the-basic-implementation

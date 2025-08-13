@@ -4,6 +4,11 @@ permalink: /:path/fees-discounts/
 redirect_from: /checkout-v3/features/optional/fees-discounts/
 description: |
   How to add fees and discounts to payment orders.
+                  <span class="d-block mt-3">
+                    <span class="badge badge-default">Installment Account</span>
+                    <span class="badge badge-default">Invoice</span>
+                    <span class="badge badge-default">Monthly Payments</span>
+                  </span>
 menu_order: 1400
 ---
 

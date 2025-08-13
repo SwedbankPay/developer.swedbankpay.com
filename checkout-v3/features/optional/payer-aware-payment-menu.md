@@ -3,6 +3,10 @@ title: Payer Aware Payment Menu
 permalink: /:path/payer-aware-payment-menu/
 description: |
   A payment menu tailored to the payer.
+                <span class="d-block mt-3">
+                  <span class="badge badge-default">Card</span>
+                  <span class="badge badge-default">Trustly</span>
+                </span>
 menu_order: 2400
 ---
 

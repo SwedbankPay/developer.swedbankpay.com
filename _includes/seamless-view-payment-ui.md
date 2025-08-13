@@ -410,6 +410,8 @@ The list below includes important URLs, but may not be exhaustive. Merchants
 need to stay up to date in case of URL changes, or if you need to whitelist URLs
 not listed here.
 
+For further details, refer to section 4.6.3 and 11.6.1 in this [PCI-DSS document][pci-url].
+
 {:.table .table-striped}
 | URL                       | Description                                                                                                  |
 | :------------------------ | :----------------------------------------------------------------------------------------------------------- |
@@ -448,6 +450,7 @@ read more about how this is done.
 [post-response]: /checkout-v3/get-started/payment-request/#payment-order-response-v31
 [post-request]: /checkout-v3/get-started/payment-request/#payment-order-request-v31
 [pci]: /assets/documents/PCI-DSS-v4-0-1-SAQ-A.pdf
+[pci-url]: /assets/documents/guidance-for-pci-dss-points.pdf
 [da]: https://www.swedbankpay.dk/risiko-og-sikkerhed/pci-sadan-bliver-du-pavirket
 [fi]: https://www.swedbankpay.fi/riskit-ja-turvallisuus/nain-pci-vaikuttaa-sinuun
 [no]: https://www.swedbankpay.no/risiko-og-sikkerhet/pci-slik-pavirkes-du

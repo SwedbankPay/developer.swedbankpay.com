@@ -3,7 +3,7 @@ title: Capture
 permalink: /:path/payment-order-capture/
 redirect_from: /checkout-v3/features/core/payment-order-capture/
 description: |
-  Capturing the authorized funds.
+  Capturing the authorized funds of two-phased transactions.
 menu_order: 1600
 ---
 
