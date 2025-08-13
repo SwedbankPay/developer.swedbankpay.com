@@ -149,8 +149,40 @@ request.send(JSON.stringify({ amount: 1200 }));
 
 ## Monitoring The Script URL
 
-You must confirm that your site is not susceptible to attacks from scripts that
-could affect the merchant’s e-commerce system(s).
+If you choose to stay with Seamless View, please take the following under
+advisement.
+
+To ensure compliance, we recommend implementing Content Security
+Policy rules to monitor and authorize scripts.
+
+Merchants must whitelist the following domains to restrict browser content
+retrieval to approved sources. While https://*.payex.com and
+https://*.swedbankpay.com cover most payment methods, digital wallets such as
+Apple Pay, Click to Pay, and Google Pay are delivered via Payair. Alongside the
+Payair URL, these wallets may also generate URLs from Apple, Google, MasterCard,
+and Visa. See the table below for more information.
+
+When it comes to ACS URLs, nothing is loaded from the ACS domain in the
+merchant’s end. It will either happen within Swedbank Pay’s domain or as a
+redirect, which will repeal the merchant’s CSP.
+
+The list below includes important URLs, but may not be exhaustive. Merchants
+need to stay up to date in case of URL changes, or if you need to whitelist URLs
+not listed here.
+
+For further details, refer to section 4.6.3 and 11.6.1 in this [PCI-DSS document][pci-url].
+
+{:.table .table-striped}
+| URL                       | Description                                                                                                  |
+| :------------------------ | :----------------------------------------------------------------------------------------------------------- |
+| https://*.cdn-apple.com   | URL needed for Apple Pay.                                                                                    |
+| https://*.google.com      | URL needed for Google Pay.                                                                                   |
+| https://*.gstatic.com     | Domain used by Google that hosts images, CSS, and javascript code to reduce bandwidth usage online.          |
+| https://*.mastercard.com  | URL needed for Click to Pay.                                                                                 |
+| https://*.payair.com      | URL for the digital wallets Apple Pay, Click to Pay and Google Pay.                                          |
+| https://*.payex.com       | Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+| https://*.swedbankpay.com | Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+| https://*.visa.com        | URL needed for Click to Pay.                                                                                 |
 
 ## How Seamless View Looks
 
@@ -284,3 +316,4 @@ rect rgba(138, 205, 195, 0.1)
 [operations]: /old-implementations/checkout-v2/features/technical-reference/operations
 [pci]: /assets/documents/PCI-DSS-v4-0-1-SAQ-A.pdf
 [csp]: https://www.w3.org/TR/CSP2/
+[pci-url]: /assets/documents/guidance-for-pci-dss-points.pdf
