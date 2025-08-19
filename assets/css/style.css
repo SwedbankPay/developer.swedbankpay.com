@@ -378,7 +378,7 @@
 }
 .title-header .title-header-container {
   width: 100%;
-  padding: 3rem 1rem;
+  padding: 4rem 1rem;
 }
 .title-header .title-header-container h1,
 .title-header .title-header-container h4,
@@ -451,6 +451,49 @@
 }
 .title-header-checkout-v3 .title-header-container a ::after {
   content: url(../img/external-url-dark-bg.svg);
+}
+
+#tipue_search_content nav {
+  display: flex;
+  font-family: Swedbank Headline, Arial, sans-serif;
+  justify-content: center;
+  margin: 1rem 0;
+  padding-left: 0;
+}
+#tipue_search_content nav ul {
+  display: flex;
+  color: #2f2424;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  line-height: 24px;
+}
+#tipue_search_content nav ul li {
+  border-radius: 0.125rem;
+  display: flex;
+  margin: 0.5rem;
+  color: #2f2424;
+}
+#tipue_search_content nav ul li a {
+  border: 2px solid transparent;
+  color: #2f2424;
+  cursor: pointer;
+  min-width: 1.75rem;
+  padding-top: 0.1rem;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  max-height: 29.6px;
+}
+#tipue_search_content nav ul li a:hover {
+  border: 2px solid #2f2424;
+  border-radius: 0.125rem;
+}
+#tipue_search_content nav ul li.current {
+  background-color: #2f2424;
+}
+#tipue_search_content nav ul li.current a {
+  color: white;
 }
 
 img {
@@ -794,20 +837,22 @@ body {
   }
 }
 
-.search-box {
-  position: absolute;
-  right: 8rem;
-  top: 1.5rem;
-  z-index: 2;
+#search-btn {
+  height: 56px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
-.search-box .search-input {
+
+.search-input {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.search-box #search-btn {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  height: 56px;
+
+.search-box {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  z-index: 2;
 }
 @media screen and (max-width: 992px) {
   .search-box {
@@ -816,14 +861,17 @@ body {
     top: 1rem;
     z-index: 401;
   }
-  .search-box #tipue_search_input {
-    display: none;
-  }
   .search-box #search-btn {
     border-top-left-radius: 8px;
     border-top-left-radius: var(--border-radius);
     border-bottom-left-radius: 8px;
     border-bottom-left-radius: var(--border-radius);
+  }
+  .search-box #tipue_search_input {
+    display: none;
+  }
+  .search-box #search-box-container {
+    max-width: 54px;
   }
 }
 

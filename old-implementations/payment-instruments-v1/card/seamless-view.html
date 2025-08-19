@@ -87,7 +87,7 @@
                     </a>
             </header>
             <div class="documentation">
-                <div class="form-group search-box search-expander">
+                <div id="search-box-container" class="form-group search-box search-expander">
                     
                     <form class="search d-flex" method="get" action="/search">
                         <input name="q" type="text" id="tipue_search_input" class="form-control search-input" placeholder="Search in documentation" onfocus="this.placeholder=''" onblur="this.placeholder='Search in documentation'" pattern=".{3,}" title="At least 3 characters">
@@ -397,15 +397,15 @@
               <header>Optional Features</header>
           
           <li class=" group">
-          <a href="/checkout-v3/features/optional/afd/">Automated Fuel Dispenser Payments</a>
+          <a href="/checkout-v3/features/optional/automated-fuel-dispenser/">Automated Fuel Dispenser Payments</a>
           <ul class="">
           
-          <li class="nav-leaf"><a href="/checkout-v3/features/optional/afd/#automated-fuel-dispenser-payments">Automated Fuel Dispenser Payments</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/optional/afd/#when-the-authorization-is-completed">When The Authorization Is Completed</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/optional/afd/#capture">Capture</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/optional/afd/#capture-request">Capture Request</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/optional/afd/#capture-response">Capture Response</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/optional/afd/#capture-sequence-diagram">Capture Sequence Diagram</a></li>
+          <li class="nav-leaf"><a href="/checkout-v3/features/optional/automated-fuel-dispenser/#automated-fuel-dispenser-payments">Automated Fuel Dispenser Payments</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/optional/automated-fuel-dispenser/#when-the-authorization-is-completed">When The Authorization Is Completed</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/optional/automated-fuel-dispenser/#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/optional/automated-fuel-dispenser/#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/optional/automated-fuel-dispenser/#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/optional/automated-fuel-dispenser/#capture-sequence-diagram">Capture Sequence Diagram</a></li>
           
       </ul>
         </li>
@@ -3373,7 +3373,7 @@
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/mobile-pay/redirect#step-2-get-the-transaction-status">Step 2: Get The Transaction Status</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/mobile-pay/redirect#get-transaction-status-request">GET Transaction Status Request</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/mobile-pay/redirect#get-transaction-status-response">GET Transaction Status Response</a></li>
-<li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/mobile-pay/redirect#mobile-pay-redirect-sequence-diagram">Mobile Pay Redirect Sequence Diagram</a></li>
+<li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/mobile-pay/redirect#mobilepay-redirect-sequence-diagram">MobilePay Redirect Sequence Diagram</a></li>
           
       </ul>
         </li>
@@ -5609,16 +5609,6 @@ directly in your webshop.</p>
 
             
         </div>
-
-        
-
-<a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/old-implementations/payment-instruments-v1/card/seamless-view.md" id="github" target="_blank" rel="noopener noreferrer" title="Edit 'Seamless View' on GitHub">
-    <svg aria-labelledby="simpleicons-github-icon" role="img" width="40" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <title id="simpleicons-github-icon">Edit "Seamless View" on GitHub</title>
-        <path fill="#fff" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
-    </svg>
-</a>
-
     </div>
 
                     
@@ -6959,8 +6949,71 @@ embedded on your website.</p>
         
       </h2>
 
-<p>You must confirm that your site is not susceptible to attacks from scripts that
-could affect the merchant’s e-commerce system(s).</p>
+<p>If you choose to stay with Seamless View, please take the following under
+advisement.</p>
+
+<p>To ensure compliance, we recommend implementing Content Security
+Policy rules to monitor and authorize scripts.</p>
+
+<p>Merchants must whitelist the following domains to restrict browser content
+retrieval to approved sources. While https://<em>.payex.com and
+https://</em>.swedbankpay.com cover most payment methods, digital wallets such as
+Apple Pay, Click to Pay, and Google Pay are delivered via Payair. Alongside the
+Payair URL, these wallets may also generate URLs from Apple, Google, MasterCard,
+and Visa. See the table below for more information.</p>
+
+<p>When it comes to ACS URLs, nothing is loaded from the ACS domain in the
+merchant’s end. It will either happen within Swedbank Pay’s domain or as a
+redirect, which will repeal the merchant’s CSP.</p>
+
+<p>The list below includes important URLs, but may not be exhaustive. Merchants
+need to stay up to date in case of URL changes, or if you need to whitelist URLs
+not listed here.</p>
+
+<p>For further details, refer to section 4.6.3 and 11.6.1 in this <a href="/assets/documents/guidance-for-pci-dss-points.pdf">PCI-DSS document</a>.</p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: left">URL</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">https://*.cdn-apple.com</td>
+      <td style="text-align: left">URL needed for Apple Pay.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">https://*.google.com</td>
+      <td style="text-align: left">URL needed for Google Pay.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">https://*.gstatic.com</td>
+      <td style="text-align: left">Domain used by Google that hosts images, CSS, and javascript code to reduce bandwidth usage online.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">https://*.mastercard.com</td>
+      <td style="text-align: left">URL needed for Click to Pay.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">https://*.payair.com</td>
+      <td style="text-align: left">URL for the digital wallets Apple Pay, Click to Pay and Google Pay.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">https://*.payex.com</td>
+      <td style="text-align: left">Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">https://*.swedbankpay.com</td>
+      <td style="text-align: left">Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">https://*.visa.com</td>
+      <td style="text-align: left">URL needed for Click to Pay.</td>
+    </tr>
+  </tbody>
+</table>
     
       <h2 id="events">
         

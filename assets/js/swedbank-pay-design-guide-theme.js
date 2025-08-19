@@ -96,7 +96,7 @@
 
 // Simple sidebar functionality while dg.js is being loaded
 
-function _handleSimpleSidebar (e) {
+function _handleSimpleSidebar(e) {
     const target = e.target.parentElement.parentElement;
 
     if (target.tagName === "LI") {
@@ -121,7 +121,7 @@ function _handleSimpleSidebar (e) {
 
 // Remove simple sidebar functionality when proper sidebar functionality is loaded
 (function () {
-    document.addEventListener("DOMContentLoaded", function(e) {
+    document.addEventListener("DOMContentLoaded", function (e) {
         const sidebar = document.querySelector(".sidebar");
 
         sidebar.removeEventListener("click", _handleSimpleSidebar);
@@ -131,7 +131,7 @@ function _handleSimpleSidebar (e) {
 
 // Override the topbar click to show and hide our own sidebar
 (function () {
-    const isLeaf = function(currentUrl) {
+    const isLeaf = function (currentUrl) {
         const path = window.location.pathname;
         const href = currentUrl || window.location.href;
         const pathIndex = href.indexOf(path);
@@ -142,11 +142,11 @@ function _handleSimpleSidebar (e) {
             : false;
     };
 
-    const isHome = function() {
+    const isHome = function () {
         return window.location.pathname === "/";
     };
 
-    const controlVisibility = function(currentUrl) {
+    const controlVisibility = function (currentUrl) {
         const sidebar = document.querySelector(".sidebar");
         const overlay = document.querySelector("#overlay");
         const topbarButton = document.querySelector(".topbar-btn");
@@ -158,12 +158,10 @@ function _handleSimpleSidebar (e) {
             overlay.style.display = "none";
             topbarButton.style.display = "flex";
             topbarClose.style.display = "none";
-        } else {
-            sidebar.classList.add("visible");
         }
     };
 
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         const topbarButton = document.querySelector(".topbar-btn");
         const newTopbarButton = topbarButton.cloneNode(true);
         const sidebar = document.querySelector(".sidebar");
@@ -179,7 +177,7 @@ function _handleSimpleSidebar (e) {
             overlay.style.display = "block";
         }
 
-        newTopbarButton.addEventListener("click", function(e) {
+        newTopbarButton.addEventListener("click", function (e) {
             if (sidebar.classList.contains("visible")) {
                 sidebar.classList.remove("visible");
                 newTopbarButton.style.display = "flex";
@@ -194,7 +192,7 @@ function _handleSimpleSidebar (e) {
             }
         });
 
-        topbarClose.addEventListener("click", function(e) {
+        topbarClose.addEventListener("click", function (e) {
             if (sidebar.classList.contains("visible")) {
                 sidebar.classList.remove("visible");
                 newTopbarButton.style.display = "flex";
@@ -208,7 +206,7 @@ function _handleSimpleSidebar (e) {
             }
         });
 
-        overlay.addEventListener("click", function(e) {
+        overlay.addEventListener("click", function (e) {
             if (sidebar.classList.contains("visible")) {
                 sidebar.classList.remove("visible");
                 newTopbarButton.style.display = "flex";
@@ -217,15 +215,15 @@ function _handleSimpleSidebar (e) {
             }
         });
 
-        document.querySelectorAll(".nav-leaf a").forEach(function(a) {
-            a.addEventListener("click", function(e) {
+        document.querySelectorAll(".nav-leaf a").forEach(function (a) {
+            a.addEventListener("click", function (e) {
                 controlVisibility(e.target.href);
             });
         });
 
         topbarButton.parentNode.replaceChild(newTopbarButton, topbarButton);
 
-        searchButton.addEventListener("click", function(e) {
+        searchButton.addEventListener("click", function (e) {
             const searchInput = document.querySelector(".search-input");
             const searchBtn = document.querySelector("#search-btn");
             return false;
@@ -233,9 +231,8 @@ function _handleSimpleSidebar (e) {
     });
 })();
 
-
 // Initialize Tipue search
-(function() {
+(function () {
     $(document).ready(function () {
         $("#tipue_search_input").tipuesearch();
     });

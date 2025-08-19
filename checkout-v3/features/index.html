@@ -86,7 +86,7 @@
                     </a>
             </header>
             <div class="documentation">
-                <div class="form-group search-box search-expander">
+                <div id="search-box-container" class="form-group search-box search-expander">
                     
                     <form class="search d-flex" method="get" action="/search">
                         <input name="q" type="text" id="tipue_search_input" class="form-control search-input" placeholder="Search in documentation" onfocus="this.placeholder=''" onblur="this.placeholder='Search in documentation'" pattern=".{3,}" title="At least 3 characters">
@@ -396,15 +396,15 @@
               <header>Optional Features</header>
           
           <li class=" group">
-          <a href="/checkout-v3/features/optional/afd/">Automated Fuel Dispenser Payments</a>
+          <a href="/checkout-v3/features/optional/automated-fuel-dispenser/">Automated Fuel Dispenser Payments</a>
           <ul class="">
           
-          <li class="nav-leaf"><a href="/checkout-v3/features/optional/afd/#automated-fuel-dispenser-payments">Automated Fuel Dispenser Payments</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/optional/afd/#when-the-authorization-is-completed">When The Authorization Is Completed</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/optional/afd/#capture">Capture</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/optional/afd/#capture-request">Capture Request</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/optional/afd/#capture-response">Capture Response</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/optional/afd/#capture-sequence-diagram">Capture Sequence Diagram</a></li>
+          <li class="nav-leaf"><a href="/checkout-v3/features/optional/automated-fuel-dispenser/#automated-fuel-dispenser-payments">Automated Fuel Dispenser Payments</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/optional/automated-fuel-dispenser/#when-the-authorization-is-completed">When The Authorization Is Completed</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/optional/automated-fuel-dispenser/#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/optional/automated-fuel-dispenser/#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/optional/automated-fuel-dispenser/#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/optional/automated-fuel-dispenser/#capture-sequence-diagram">Capture Sequence Diagram</a></li>
           
       </ul>
         </li>
@@ -3372,7 +3372,7 @@
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/mobile-pay/redirect#step-2-get-the-transaction-status">Step 2: Get The Transaction Status</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/mobile-pay/redirect#get-transaction-status-request">GET Transaction Status Request</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/mobile-pay/redirect#get-transaction-status-response">GET Transaction Status Response</a></li>
-<li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/mobile-pay/redirect#mobile-pay-redirect-sequence-diagram">Mobile Pay Redirect Sequence Diagram</a></li>
+<li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/mobile-pay/redirect#mobilepay-redirect-sequence-diagram">MobilePay Redirect Sequence Diagram</a></li>
           
       </ul>
         </li>
@@ -5602,23 +5602,15 @@
 
             
             <p></p>
-<p>All features listed in this section is supported by Swedbank Pay Digital
+<p>All features* listed in this section are supported by Swedbank Pay Digital
 Payments version 3.0 and newer. Code examples shared by all v3 iterations are
 tagged with 3.x. Code examples where the iterations differ are tagged with
-their version number (for example v3.1).</p>
+version numbers (for example v3.1).</p>
+
+<p><strong>*Features are valid for all payment methods unless otherwise specified.</strong></p>
 
             
         </div>
-
-        
-
-<a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/checkout-v3/features/index.md" id="github" target="_blank" rel="noopener noreferrer" title="Edit 'Features' on GitHub">
-    <svg aria-labelledby="simpleicons-github-icon" role="img" width="40" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <title id="simpleicons-github-icon">Edit "Features" on GitHub</title>
-        <path fill="#fff" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
-    </svg>
-</a>
-
     </div>
 
                     
@@ -5795,7 +5787,12 @@ their version number (for example v3.1).</p>
 
     <span class="h4">Fees And Discounts</span>
     <div class="cards-content">
-        <p>How to add fees and discounts to payment orders.</p>
+        <p>How to add fees and discounts to payment orders.
+                <span class="d-block mt-3">
+                  <span class="badge badge-default">Installment Account</span>
+                  <span class="badge badge-default">Invoice</span>
+                  <span class="badge badge-default">Monthly Payments</span>
+                </span></p>
 
     </div>
     <div class="cards-cta">
@@ -5841,7 +5838,7 @@ their version number (for example v3.1).</p>
 
     <span class="h4">Frictionless Payments</span>
     <div class="cards-content">
-        <p>Authenticating the cardholder.</p>
+        <p>Authenticating the cardholder. <span class="d-block mt-3"> <span class="badge badge-default">Card</span> </span></p>
 
     </div>
     <div class="cards-cta">
@@ -5887,7 +5884,7 @@ their version number (for example v3.1).</p>
 
     <span class="h4">Network Tokenization</span>
     <div class="cards-content">
-        <p>Stored cards made easier</p>
+        <p>Stored cards made easier. <span class="d-block mt-3"> <span class="badge badge-default">Card</span> </span></p>
 
     </div>
     <div class="cards-cta">
@@ -5955,7 +5952,7 @@ their version number (for example v3.1).</p>
 
     <span class="h4">Action Specific Text On Payment Button</span>
     <div class="cards-content">
-        <p>Change the text on your payment button</p>
+        <p>Change the text on your payment button.</p>
 
     </div>
     <div class="cards-cta">
@@ -6001,7 +5998,7 @@ their version number (for example v3.1).</p>
 
     <span class="h4">Corporate Limited Menu</span>
     <div class="cards-content">
-        <p>Limit the menu to what is supported by corporate payment methods.</p>
+        <p>Limit the menu to what is supported by corporate payment methods. <span class="d-block mt-3"> <span class="badge badge-default">Card</span> </span></p>
 
     </div>
     <div class="cards-cta">
@@ -6139,7 +6136,7 @@ their version number (for example v3.1).</p>
 
     <span class="h4">Customize Order Of Payment Menu</span>
     <div class="cards-content">
-        <p>Sort the order of and restrict your payment menu</p>
+        <p>Sort the order of and restrict your payment menu.</p>
 
     </div>
     <div class="cards-cta">
@@ -6231,7 +6228,7 @@ their version number (for example v3.1).</p>
 
     <span class="h4">Instrument Mode</span>
     <div class="cards-content">
-        <p>The Payment UI with one payment method</p>
+        <p>The Payment UI with only one payment method.</p>
 
     </div>
     <div class="cards-cta">
@@ -6338,14 +6335,17 @@ their version number (for example v3.1).</p>
 
 
 
-<a href="/checkout-v3/features/optional/afd/" class="cards cards-primary" target="_self">
+<a href="/checkout-v3/features/optional/automated-fuel-dispenser/" class="cards cards-primary" target="_self">
     
 
     
 
     <span class="h4">Automated Fuel Dispenser Payments</span>
     <div class="cards-content">
-        <p>Payments for automated fuel dispensers.</p>
+        <p>Payments for automated fuel dispensers.
+              <span class="d-block mt-3">
+                <span class="badge badge-default">Card</span>
+              </span></p>
 
     </div>
     <div class="cards-cta">
@@ -6391,7 +6391,10 @@ their version number (for example v3.1).</p>
 
     <span class="h4">Age Restrictions</span>
     <div class="cards-content">
-        <p>Restricting payments to an age limit</p>
+        <p>Restricting payments to an age limit.
+            <span class="d-block mt-3">
+              <span class="badge badge-default">Swish</span>
+            </span></p>
 
     </div>
     <div class="cards-cta">
@@ -6529,7 +6532,10 @@ their version number (for example v3.1).</p>
 
     <span class="h4">MOTO</span>
     <div class="cards-content">
-        <p>Card-based home order (Mail Order / Telephone Order) transactions.</p>
+        <p>Card-based home order (Mail Order / Telephone Order) transactions.
+                <span class="d-block mt-3">
+                  <span class="badge badge-default">Card</span>
+                </span></p>
 
     </div>
     <div class="cards-cta">
@@ -6575,7 +6581,11 @@ their version number (for example v3.1).</p>
 
     <span class="h4">One-Click Payments</span>
     <div class="cards-content">
-        <p>Prefilling the payment details using payment tokens.</p>
+        <p>Prefilling the payment details using payment tokens.
+            <span class="d-block mt-3">
+              <span class="badge badge-default">Card</span>
+              <span class="badge badge-default">Trustly</span>
+            </span></p>
 
     </div>
     <div class="cards-cta">
@@ -6621,7 +6631,7 @@ their version number (for example v3.1).</p>
 
     <span class="h4">Order Items</span>
     <div class="cards-content">
-        <p>Information about the order items</p>
+        <p>Information about the order items.</p>
 
     </div>
     <div class="cards-cta">
@@ -6667,7 +6677,11 @@ their version number (for example v3.1).</p>
 
     <span class="h4">Payer Aware Payment Menu</span>
     <div class="cards-content">
-        <p>A payment menu tailored to the payer.</p>
+        <p>A payment menu tailored to the payer.
+              <span class="d-block mt-3">
+                <span class="badge badge-default">Card</span>
+                <span class="badge badge-default">Trustly</span>
+              </span></p>
 
     </div>
     <div class="cards-cta">
@@ -6713,7 +6727,10 @@ their version number (for example v3.1).</p>
 
     <span class="h4">Restricted To SSN</span>
     <div class="cards-content">
-        <p>Restricting payments to a specific Social Security Number (SSN)</p>
+        <p>Restricting payments to a specific Social Security Number (SSN).
+                <span class="d-block mt-3">
+                  <span class="badge badge-default">Swish</span>
+                </span></p>
 
     </div>
     <div class="cards-cta">
@@ -6759,7 +6776,14 @@ their version number (for example v3.1).</p>
 
     <span class="h4">Payment Link</span>
     <div class="cards-content">
-        <p>Sending the payment via mail or SMS.</p>
+        <p>Sending the payment via mail or SMS.
+            <span class="d-block mt-3">
+              <span class="badge badge-default">Card</span>
+              <span class="badge badge-default">MobilePay</span>
+              <span class="badge badge-default">Swish</span>
+              <span class="badge badge-default">Trustly</span>
+              <span class="badge badge-default">Vipps</span>
+            </span></p>
 
     </div>
     <div class="cards-cta">
@@ -6805,7 +6829,7 @@ their version number (for example v3.1).</p>
 
     <span class="h4">Payout</span>
     <div class="cards-content">
-        <p>Paying out funds to the consumer’s account.</p>
+        <p>Paying out funds to the consumer’s account. <span class="d-block mt-3"> <span class="badge badge-default">Trustly</span> </span></p>
 
     </div>
     <div class="cards-cta">
@@ -6851,7 +6875,10 @@ their version number (for example v3.1).</p>
 
     <span class="h4">Recur</span>
     <div class="cards-content">
-        <p>Setting up subscriptions and recurring payments.</p>
+        <p>Setting up subscriptions and recurring payments.
+            <span class="d-block mt-3">
+              <span class="badge badge-default">Card</span>
+            </span></p>
 
     </div>
     <div class="cards-cta">
@@ -6897,7 +6924,12 @@ their version number (for example v3.1).</p>
 
     <span class="h4">Request Delivery Information</span>
     <div class="cards-content">
-        <p>Request that payment methods return delivery information.</p>
+        <p>Request that payment methods return delivery information.
+            <span class="d-block mt-3">
+              <span class="badge badge-default">Apple Pay</span>
+              <span class="badge badge-default">Click to Pay</span>
+              <span class="badge badge-default">Google Pay™</span>
+            </span></p>
 
     </div>
     <div class="cards-cta">
@@ -6943,7 +6975,11 @@ their version number (for example v3.1).</p>
 
     <span class="h4">Unscheduled Purchase</span>
     <div class="cards-content">
-        <p>Setting up subscriptions and merchant initiated payments.</p>
+        <p>Setting up subscriptions and merchant initiated payments.
+              <span class="d-block mt-3">
+                <span class="badge badge-default">Card</span>
+                <span class="badge badge-default">Trustly</span>
+              </span></p>
 
     </div>
     <div class="cards-cta">
@@ -6989,7 +7025,11 @@ their version number (for example v3.1).</p>
 
     <span class="h4">Verify</span>
     <div class="cards-content">
-        <p>Validating the payer’s payment details.</p>
+        <p>Validating the payer’s payment details.
+              <span class="d-block mt-3">
+                <span class="badge badge-default">Card</span>
+                <span class="badge badge-default">Trustly</span>
+              </span></p>
 
     </div>
     <div class="cards-cta">
@@ -7150,7 +7190,7 @@ transactions are performed on a payment.</p>
 
     <span class="h4">Cancel</span>
     <div class="cards-content">
-        <p>Canceling the authorization and releasing the funds.</p>
+        <p>Canceling the authorization and releasing the funds of two-phased transactions.</p>
 
     </div>
     <div class="cards-cta">
@@ -7196,7 +7236,7 @@ transactions are performed on a payment.</p>
 
     <span class="h4">Capture</span>
     <div class="cards-content">
-        <p>Capturing the authorized funds.</p>
+        <p>Capturing the authorized funds of two-phased transactions.</p>
 
     </div>
     <div class="cards-cta">
@@ -7288,7 +7328,7 @@ transactions are performed on a payment.</p>
 
     <span class="h4">Update Payment Order</span>
     <div class="cards-content">
-        <p>Updating the payment order</p>
+        <p>Updating the payment order.</p>
 
     </div>
     <div class="cards-cta">
@@ -7862,7 +7902,7 @@ transactions are performed on a payment.</p>
 
     <span class="h4">Urls</span>
     <div class="cards-content">
-        <p>The urls associated with the payment</p>
+        <p>The urls associated with the payment.</p>
 
     </div>
     <div class="cards-cta">
@@ -7908,7 +7948,7 @@ transactions are performed on a payment.</p>
 
     <span class="h4">User Agent</span>
     <div class="cards-content">
-        <p>An introduction to user agents</p>
+        <p>An introduction to user agents.</p>
 
     </div>
     <div class="cards-cta">
