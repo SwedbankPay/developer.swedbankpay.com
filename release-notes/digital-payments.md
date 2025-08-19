@@ -9,7 +9,7 @@ has_release_notes: true
 
 ## 13 August 2025
 
-### Documentation v5.3.9
+### Documentation v5.3.10
 
 We are getting things rolling again after the vacation weeks with a small and
 sweet one. We are taking another step towards easier navigation by adding
