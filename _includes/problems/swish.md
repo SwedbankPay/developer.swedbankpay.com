@@ -1,16 +1,12 @@
 ### Swish Problems
 
-There are a few problems specific to the `swish` resource that you may want to
-guard against in your integrations. All Swish problem types will have the
-following URL structure:
+There are problems specific to the `swish` resource that you may want to guard
+against in your integrations. All Swish problem types will have the following
+URL structure:
 
 `https://api.payex.com/psp/errordetail/<error-type>`
 
 #### `bankidalreadyinuse`
-
-Caused By:
-
-*   The payer's BankID is already in use
 
 {% capture response_header %}HTTP/1.1 409 Conflict Content-Type: application/json{% endcapture %}
 
@@ -30,10 +26,6 @@ Caused By:
     %}
 
 #### `bankidcancelled`
-
-Caused By:
-
-*   The payer cancelled BankID authorization.
 
 {% capture response_header %}HTTP/1.1 409 Conflict
 Content-Type: application/json{% endcapture %}
@@ -55,10 +47,6 @@ Content-Type: application/json{% endcapture %}
 
 #### `bankiderror`
 
-Caused By:
-
-*   Something went wrong with the payer's BankID authorization.
-
 {% capture response_header %}HTTP/1.1 502 Bad Gateway
 Content-Type: application/json{% endcapture %}
 
@@ -79,16 +67,18 @@ Content-Type: application/json{% endcapture %}
 
 #### `configerror`
 
-Caused By:
+Refer to the `detail` field in the problem response for a more specific error
+message. The error could be caused by:
 
 *   Payee alias is missing or not correct.
-*   PaymentReference is invalid.
+*   `PaymentReference` is invalid.
 *   Amount value is missing or not a valid number.
 *   Amount is less than agreed minimum.
 *   Amount value is too large.
 *   Invalid or missing currency.
 *   Wrong formatted message.
-*   Amount value is too large, or amount exceeds the amount of the original payment minus any previous refunds.
+*   Amount value is too large, or amount exceeds the amount of the original
+    payment minus any previous refunds.
 *   Counterpart is not activated.
 *   Payee not enrolled.
 
@@ -112,7 +102,8 @@ Content-Type: application/json{% endcapture %}
 
 #### `inputerror`
 
-Caused By:
+Refer to the `detail` field in the problem response for a more specific error
+message. The error could be caused by:
 
 *   MSISDN is invalid.
 *   Payer's MSISDN is not enrolled at Swish.
@@ -137,10 +128,6 @@ Content-Type: application/json{% endcapture %}
 
 #### `paymentagelimitnotmet`
 
-Caused By:
-
-*   The payer does not meet the payment's age limit.
-
 {% capture response_header %}HTTP/1.1 403 Forbidden
 Content-Type: application/json{% endcapture %}
 
@@ -160,10 +147,6 @@ Content-Type: application/json{% endcapture %}
     %}
 
 #### `socialsecuritynumbermismatch`
-
-Caused By:
-
-*   The payer's social security number does not match with the one required by this payment.
 
 {% capture response_header %}HTTP/1.1 403 Forbidden
 Content-Type: application/json{% endcapture %}
@@ -185,10 +168,6 @@ Content-Type: application/json{% endcapture %}
 
 #### `swishalreadyinuse`
 
-Caused By:
-
-*   The payer's Swish is already in use.
-
 {% capture response_header %}HTTP/1.1 403 Forbidden
 Content-Type: application/json{% endcapture %}
 
@@ -209,12 +188,15 @@ Content-Type: application/json{% endcapture %}
 
 #### `swishdeclined`
 
-Caused By:
+Refer to the `detail` field in the problem response for a more specific error
+message. The error could be caused by:
 
-*   Original payment not found or original payment is more than than 13 months old.
-*   It appears that merchant's organization number has changed since sale was made.
+*   Original payment not found or original payment is more than 13 months old.
+*   It appears that merchant's organization number has changed since sale was
+    made.
 *   The MSISDN of the original payer seems to have changed owner.
-*   Transaction declined. Could be that the payer has exceeded their swish limit or have insufficient founds.
+*   Transaction declined. Could be that the payer has exceeded their Swish limit
+    or have insufficient founds.
 *   Payment request not cancellable.
 
 {% capture response_header %}HTTP/1.1 403 Forbidden
@@ -237,7 +219,8 @@ Content-Type: application/json{% endcapture %}
 
 #### `swisherror`
 
-Caused By:
+Refer to the `detail` field in the problem response for a more specific error
+message. The error could be caused by:
 
 *   Bank system processing error.
 *   Swish timed out waiting for an answer from the banks after payment was started.
@@ -262,10 +245,6 @@ Content-Type: application/json{% endcapture %}
 
 #### `swishgatewaytimeout`
 
-Caused By:
-
-*   During a create a sale call to e-commerce, Swish responded with 504 (Gateway Timeout).
-
 {% capture response_header %}HTTP/1.1 504 Gateway Timeout
 Content-Type: application/json{% endcapture %}
 
@@ -285,10 +264,6 @@ Content-Type: application/json{% endcapture %}
     %}
 
 #### `swishtimeout`
-
-Caused By:
-
-*   Swish timed out before the payment was started.
 
 {% capture response_header %}HTTP/1.1 403 Forbidden
 Content-Type: application/json{% endcapture %}
@@ -329,10 +304,6 @@ Content-Type: application/json{% endcapture %}
     %}
 
 #### `usercancelled`
-
-Caused By:
-
-*   The payer cancelled the payment in the Swish app.
 
 {% capture response_header %}HTTP/1.1 403 Forbidden
 Content-Type: application/json{% endcapture %}
