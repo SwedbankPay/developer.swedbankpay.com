@@ -41,6 +41,10 @@ need. We get to them later on.
 
 #### Before You Start
 
+Both the payment request and other API calls are available and ready to use in
+our [collection of Online Payment APIs][testsuite]. You can use the collection
+with your own test account or with the generic test merchant.
+
 Depending on what you plan to include in your offering, we recommend stopping
 by the pages specific to each payment method.
 
@@ -405,3 +409,4 @@ Read more about possible additions to the request in our
 [apple-pay]: /checkout-v3/apple-pay-presentation
 [c2p]: /checkout-v3/click-to-pay-presentation
 [google-pay]: /checkout-v3/google-pay-presentation
+[testsuite]: https://www.postman.com/swedbankpay
