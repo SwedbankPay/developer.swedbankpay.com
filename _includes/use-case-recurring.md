@@ -14,9 +14,9 @@ use.
 
 You can read more about the basic implementation of a payment order in our
 [Get Started][get-started] section. The API calls needed for this use case are
-available and ready to use in our [collection of Online Payment APIs][testsuite].
-You can use the collection with your own test account or with the generic test
-merchant.
+available and ready to use in our
+[collection of Online Payment APIs][testsuite]{:target="_blank"}. You can use
+the collection with your own test account or with the generic test merchant.
 
 ## Step 2: Choose Recurring Model and Token
 

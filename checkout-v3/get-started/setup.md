@@ -22,8 +22,8 @@ salg@swedbankpay.dk (Denmark)." %}
 A test account gives you access to our unified dashboard for managing your
 account across different platforms. We call this dashboard the Merchant Portal.
 Simply add the ID and access token to your requests when you are using the
-[collection of Online Payments APIs][testsuite] for the end-to-end payment
-experience.
+[collection of Online Payments APIs][testsuite]{:target="_blank"} for the
+end-to-end payment experience.
 
 Your test account request should be sent to:
 [testaccount@swedbankpay.com](mailto:testaccount@swedbankpay.com) in order to

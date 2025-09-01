@@ -42,8 +42,9 @@ need. We get to them later on.
 #### Before You Start
 
 Both the payment request and other API calls are available and ready to use in
-our [collection of Online Payment APIs][testsuite]. You can use the collection
-with your own test account or with the generic test merchant.
+our [collection of Online Payment APIs][testsuite]{:target="_blank"}. You can
+use the collection with your own test account or with the provided generic test
+merchant.
 
 Depending on what you plan to include in your offering, we recommend stopping
 by the pages specific to each payment method.
