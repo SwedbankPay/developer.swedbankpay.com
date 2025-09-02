@@ -17,7 +17,7 @@ There are different integration types and different options how to integrate, bu
 ## Communication Types
 
 *   **Http over Local Network** - The POS need to know the IP address and port the terminal is listening for, and the terminal may need to know the IP address and port of the POS.
-*   **Http cloud connection** - using OAuth2 with client credentials grant type. By far the easiest way when installing and connecting to a POS.
+*   **Http cloud connection** - using OAuth2 with client credentials grant type. By far the easiest way when installing and connecting the terminal.
 *   **Broadcast intents** - on the device, the terminal, when a business app like a POS is placed side by side with our Payment application.
 
 ## How To Integrate
