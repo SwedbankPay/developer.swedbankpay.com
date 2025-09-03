@@ -26,11 +26,13 @@ salg@swedbankpay.dk (Denmark)." %}
  <ul>
  <li>Access to the merchant portal in our test environment</li>
  <li>Manage your account across different platforms</li>
- <li>Use the credentials in our [API collection][testsuite]{:target="_blank"}</li>
- <li>Follow your payments from creation to settlement</li>
+ <li>Use the credentials in our API collection</li>
+ <li>Follow your test payments from creation to settlement</li>
  </ul>
  </div>
 </section>
+
+[API collection](testsuite){:target="_blank"}
 
 ## Step 1: Sign Up For A Test Account
 

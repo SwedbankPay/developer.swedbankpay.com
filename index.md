@@ -62,7 +62,6 @@ hide_from_sidebar: true
         <a class="btn btn-primary playground-cta" target="_blank" href="https://www.postman.com/swedbankpay/swedbank-pay-online/collection/000bv9t/testsuite" type="button">Head to Postman <i class="at-arrow-right ml-2" aria-hidden="true"></i></a>
       </div>
     </div>
-    </div>
   </div>
 {% endcontentfor %}
 
