@@ -190,4 +190,4 @@ Both scenarios generate the same response:
 [oc1]: /assets/img/OC1.JPG
 [pam1]: /assets/img/PAM1.JPG
 [get-started]: /checkout-v3/get-started/#the-basic-implementation
-[testsuite]: https://www.postman.com/swedbankpay
+[testsuite]: https://www.postman.com/swedbankpay/swedbank-pay-online/folder/ds51yb3/one-click-payerawaremenu

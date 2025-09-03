@@ -410,4 +410,4 @@ Read more about possible additions to the request in our
 [apple-pay]: /checkout-v3/apple-pay-presentation
 [c2p]: /checkout-v3/click-to-pay-presentation
 [google-pay]: /checkout-v3/google-pay-presentation
-[testsuite]: https://www.postman.com/swedbankpay
+[testsuite]: https://www.postman.com/swedbankpay/swedbank-pay-online/collection/000bv9t/testsuite
