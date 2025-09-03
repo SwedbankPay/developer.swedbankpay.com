@@ -216,4 +216,4 @@ compiled relevant documentation below.
 [reversal]: /checkout-v3/features/payment-operations/reversal
 [unscheduled]: /checkout-v3/features/optional/unscheduled
 [verify]: /checkout-v3/features/optional/verify
-[testsuite]: https://www.postman.com/swedbankpay
+[testsuite]: https://www.postman.com/swedbankpay/swedbank-pay-online/folder/91etz5u/unscheduled

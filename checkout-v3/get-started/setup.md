@@ -17,13 +17,22 @@ with Swedbank Pay is required. Please contact Swedbank Pay Sales at
 sales@swedbankpay.se (Sweden), salg@swedbankpay.no (Norway) or
 salg@swedbankpay.dk (Denmark)." %}
 
-## Step 1: Sign Up For A Test Account
+<section class="panel panel-brand">
+ <header>
+ <h3 class="panel-title">Why have your own test account?</h3>
+ <p class="panel-sub-title"></p>
+ </header>
+ <div class="panel-body pb-0">
+ <ul>
+ <li>Access to the merchant portal in our test environment</li>
+ <li>Manage your account across different platforms</li>
+ <li>Use the credentials in our [API collection][testsuite]{:target="_blank"}</li>
+ <li>Follow your payments from creation to settlement</li>
+ </ul>
+ </div>
+</section>
 
-A test account gives you access to our unified dashboard for managing your
-account across different platforms. We call this dashboard the Merchant Portal.
-Simply add the ID and access token to your requests when you are using the
-[collection of Online Payments APIs][testsuite]{:target="_blank"} for the
-end-to-end payment experience.
+## Step 1: Sign Up For A Test Account
 
 Your test account request should be sent to:
 [testaccount@swedbankpay.com](mailto:testaccount@swedbankpay.com) in order to
@@ -90,4 +99,4 @@ production and staging environment need separate tokens. " %}
                          next_href="/checkout-v3/get-started/payment-request"
                          next_title="Start Integrating" %}
 
-[testsuite]: https://www.postman.com/swedbankpay
+[testsuite]: https://www.postman.com/swedbankpay/swedbank-pay-online/collection/000bv9t/testsuite

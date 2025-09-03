@@ -263,4 +263,4 @@ the following values:
 
 [otp-challenge-form]: /assets/img/new-otp-challenge-form.png
 [playground]: https://playground.swedbankpay.com
-[testsuite]: https://www.postman.com/swedbankpay
+[testsuite]: https://www.postman.com/swedbankpay/swedbank-pay-online/collection/000bv9t/testsuite
