@@ -51,19 +51,24 @@ hide_from_sidebar: true
   </div>
 {% endcontentfor %}
 
-{% contentfor api_collection %}
+{% contentfor playground %}
   <div class="row slab mt-5 ml-0 mr-0">
-    <div class="col-lg-7 pl-2 mb-2">
+    <div class="col pl-2 mb-2">
       <h2>Want to try our APIs?</h2>
-      <p>Use the API collection for a more technical deep dive. Every API you need is ready to use as they are, but also fully customizable.</p>
-      <p>Use your own test account to follow your payments from creation through settlements in the merchant portal.</p>
-      <p>The goal is to give you an introduction to the merchant user experience.</p>
+      <p>Our Postman API collection contains everything you need for our Online Payments. Every API is ready to use as is, but they are also fully customizable.</p>
+      <p>For the best merchant experience, use the credentials from your own test account to keep track of your payments and access them from our merchant portal.</p>
       <div class="mt-5">
         <a class="btn btn-primary playground-cta" target="_blank" href="https://www.postman.com/swedbankpay/swedbank-pay-online/collection/000bv9t/testsuite" type="button">Head to Postman <i class="at-arrow-right ml-2" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
 {% endcontentfor %}
+
+Want to try our APIs?
+
+Our Postman API collection contains everything you need for our Online Payments. Every API is ready to use as is, but they are also fully customizable.
+
+For the best merchant experience, use the credentials from your own test account to keep track of your payments and access them from our merchant portal.
 
 {% assign card_col_class="col-xl-4 col-lg-4" %}
 
