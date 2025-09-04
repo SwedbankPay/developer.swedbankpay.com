@@ -14,8 +14,9 @@ By creating a test account, you will not by default have a commercial
 relationship with Swedbank Pay, it is solely a test account for you to use and
 test towards our solution. To enjoy integration support, a commercial agreement
 with Swedbank Pay is required. Please contact Swedbank Pay Sales at
-sales@swedbankpay.se (Sweden), salg@swedbankpay.no (Norway) or
-salg@swedbankpay.dk (Denmark)." %}
+[sales@swedbankpay.se](mailto:sales@swedbankpay.se) (Sweden),
+[salg@swedbankpay.no](mailto:salg@swedbankpay.no) (Norway) or
+[salg@swedbankpay.dk](mailto:salg@swedbankpay.dk) (Denmark)." %}
 
 <section class="panel panel-brand">
  <header>
@@ -24,15 +25,13 @@ salg@swedbankpay.dk (Denmark)." %}
  </header>
  <div class="panel-body pb-0">
  <ul>
- <li>Access to the merchant portal in our test environment</li>
- <li>Manage your account across different platforms</li>
- <li>Use the credentials in our API collection</li>
- <li>Follow your test payments from creation to settlement</li>
+ <li>Get access to the merchant portal in our test environment.</li>
+ <li>Manage your account across different platforms.</li>
+ <li>Use the credentials in our <a target="_blank" href="https://www.postman.com/swedbankpay/swedbank-pay-online/collection/000bv9t/testsuite">API collection</a>.</li>
+ <li>Follow your test payments from creation to settlement and get the full merchant experience.</li>
  </ul>
  </div>
 </section>
-
-[API collection](testsuite){:target="_blank"}
 
 ## Step 1: Sign Up For A Test Account
 
