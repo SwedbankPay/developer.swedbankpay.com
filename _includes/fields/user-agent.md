@@ -1,5 +1,5 @@
 {%- capture user_agent -%}
-The [user agent](/checkout-v3/features/technical-reference/user-agent)
+The [user agent](/checkout-v3/technical-reference/user-agent)
 of the payer. Should typically be set to the value of the `User-Agent` header
 sent by the payer's web browser.
 {%- endcapture -%}
