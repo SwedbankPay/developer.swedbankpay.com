@@ -400,9 +400,9 @@ Read more about possible additions to the request in our
 [abort-feature]: /checkout-v3/features/payment-operations/abort
 [callback-31]: /checkout-v3/features/payment-operations/callback
 [features]: /checkout-v3/features/
-[fppa]: /checkout-v3/features/technical-reference/resource-sub-models#failedpostpurchaseattempts
+[fppa]: /checkout-v3/technical-reference/resource-sub-models#failedpostpurchaseattempts
 [frictionless]: /checkout-v3/features/customize-payments/frictionless-payments
-[history]: /checkout-v3/features/technical-reference/resource-sub-models#history
+[history]: /checkout-v3/technical-reference/resource-sub-models#history
 [order-items]: /checkout-v3/features/optional/order-items
 [post-31]: /checkout-v3/get-started/post-purchase/
 [trustly]: /checkout-v3/trustly-presentation
