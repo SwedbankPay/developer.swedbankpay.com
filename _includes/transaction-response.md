@@ -4,7 +4,7 @@
     {%- if documentation_section == nil or documentation_section == empty -%}
         /checkout-v3/get-started/fundamental-principles#operations
     {%- else -%}
-        {%- include utils/documentation-section-url.md href='/features/technical-reference/operations' -%}
+        {%- include utils/documentation-section-url.md href='/technical-reference/operations' -%}
     {%- endif -%}
 {%- endcapture -%}
 {% assign transaction = include.transaction | default: "capture" %}

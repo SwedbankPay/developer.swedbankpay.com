@@ -4,7 +4,7 @@
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 {%- capture url -%}
     {%- include utils/documentation-section-url.md
-        href='/features/technical-reference/resource-sub-models' -%}
+        href='/technical-reference/resource-sub-models' -%}
 {%- endcapture -%}
 
 The `status` field indicates the payment order's current status. `Initialized`

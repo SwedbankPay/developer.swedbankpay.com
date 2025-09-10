@@ -1,6 +1,6 @@
 {%- capture url -%}
     {%- include utils/documentation-section-url.md
-        href='/features/technical-reference/status' -%}
+        href='/technical-reference/status' -%}
 {%- endcapture -%}
 {%- capture text -%}
 `Initialized`, `Paid`, `Failed`, `Reversed` `Cancelled`, or `Aborted`. Indicates the

@@ -1,6 +1,6 @@
 {%- capture url -%}
     {%- include utils/documentation-section-url.md
-        href='/features/technical-reference/resource-sub-models#payer' -%}
+        href='/technical-reference/resource-sub-models#payer' -%}
 {%- endcapture -%}
 {%- capture text -%}
 The URL to the {% clink `payer` resource %}{{ url }}{% endclink %} where

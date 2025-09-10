@@ -1,7 +1,7 @@
 {%- assign resource=include.resource | default: 'payment order' -%}
 {%- capture url -%}
     {%- include utils/documentation-section-url.md
-        href='/features/technical-reference/complete-url' -%}
+        href='/technical-reference/complete-url' -%}
 {%- endcapture -%}
 {%- capture text -%}
 The URL that Swedbank Pay will redirect back to when the payer has completed

@@ -1,6 +1,6 @@
 {%- capture url -%}
     {%- include utils/documentation-section-url.md
-        href='/features/technical-reference/resource-sub-models#aborted' -%}
+        href='/technical-reference/resource-sub-models#aborted' -%}
 {%- endcapture -%}
 {%- capture text -%}
 The URL to the {% clink `aborted` resource %}{{ url }}{% endclink %} where
