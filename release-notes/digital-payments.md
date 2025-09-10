@@ -1249,11 +1249,11 @@ more convenient for both the integration and the payer.
 [checkout-checkin-front-end]:/old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [checkout-payment-menu-frontend]: /old-implementations/checkout-v2/checkin#step-2-display-swedbank-pay-checkin-module
 [checkout-payment-order-purchase]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
-[checkout-payment-url]: /old-implementations/checkout-v2/features/technical-reference/payment-url
+[checkout-payment-url]: /old-implementations/checkout-v2/technical-reference/payment-url
 [checkout-create-starter-paymentorder]: /old-implementations/enterprise/seamless-view#step-1-create-payment-order
 [checkout]: /old-implementations/checkout-v2/
 [checkout-v2]: /old-implementations/checkout-v2/
-[checkout-items]: /old-implementations/checkout-v2/features/technical-reference/items
+[checkout-items]: /old-implementations/checkout-v2/technical-reference/items
 [checkout-3ds2]: /old-implementations/checkout-v2/features/core/frictionless-payments
 [checkout-callback]: /old-implementations/checkout-v2/features/core/callback
 [checkout-v3-matrix]: /checkout-v3
@@ -1322,7 +1322,7 @@ more convenient for both the integration and the payer.
 [payment-order-update]: /checkout-v3/features/core/update
 [payment-request]: /checkout-v3/get-started/payment-request
 [payment-menu-invoice-capture]:/old-implementations/payment-menu-v2/capture
-[payment-menu-items]: /old-implementations/payment-menu-v2/features/technical-reference/items
+[payment-menu-items]: /old-implementations/payment-menu-v2/technical-reference/items
 [payment-menu-payment-link]: /old-implementations/payment-menu-v2/features/optional/payment-link
 [payments]: /old-implementations/payment-instruments-v1/
 [payer-aware-payment-menu]: /checkout-v3/features/optional/payer-aware-payment-menu
@@ -1334,7 +1334,7 @@ more convenient for both the integration and the payer.
 [pax-terminal]: /pax-terminal/
 [pmv2]: /old-implementations/payment-menu-v2/ui-migration/
 [pp-3-1]: /checkout-v3/get-started/post-purchase/
-[prices]: /old-implementations/checkout-v2/features/technical-reference/prices
+[prices]: /old-implementations/checkout-v2/technical-reference/prices
 [update-order-checkout]: /old-implementations/checkout-v2/features/core/update
 [recur]: /checkout-v3/features/optional/recur
 [resource-model-cancelled]: /checkout-v3/technical-reference/resource-sub-models#cancelled
@@ -1356,7 +1356,7 @@ more convenient for both the integration and the payer.
 [ssn-restrictions]: /checkout-v3/features/optional/payer-restrictions
 [status-models]: /checkout-v3/technical-reference/status-models
 [status-model-paid]: /checkout-v3/technical-reference/status-models#paid
-[status-model-paid-v2]: /old-implementations/checkout-v2/features/technical-reference/status-models#paid
+[status-model-paid-v2]: /old-implementations/checkout-v2/technical-reference/status-models#paid
 [storing-uri]: /checkout-v3/get-started/fundamental-principles#storing-urls
 [swish-api-errors]: /old-implementations/payment-instruments-v1/swish/features/technical-reference/problems
 [swish-direct-mcom]: /old-implementations/payment-instruments-v1/swish/direct#step-2b-create-m-commerce-sale-transaction
@@ -1370,7 +1370,7 @@ more convenient for both the integration and the payer.
 [stat-resp]: /checkout-v3/technical-reference/status-models/
 [swish]: /old-implementations/payment-instruments-v1/swish
 [swish-abort]: /old-implementations/payment-instruments-v1/swish/after-payment#abort
-[technical-reference]: /old-implementations/checkout-v2/features/technical-reference/
+[technical-reference]: /old-implementations/checkout-v2/technical-reference/
 [terminology]: /checkout-v3/get-started/terminology
 [test-data]: /checkout-v3/test-data
 [token04]: /checkout-v3/technical-reference/problems/#creditcard-payments-mit---do-not-try-again--excessive-reattempts

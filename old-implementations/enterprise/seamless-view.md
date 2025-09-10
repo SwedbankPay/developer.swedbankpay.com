@@ -166,5 +166,5 @@ capture and the other options you have after the purchase.
                          next_title="Post-Purchase" %}
 
 [abort-feature]: /old-implementations/enterprise/features/core/abort
-[seamless-view-events]: /old-implementations/enterprise/features/technical-reference/seamless-view-events
+[seamless-view-events]: /old-implementations/enterprise/technical-reference/seamless-view-events
 [seamless-enterprise-menu]: /assets/img/checkout/checkout-v3-seamless-menu.png
