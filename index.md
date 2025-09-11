@@ -32,7 +32,7 @@ hide_from_sidebar: true
   </div>
 {% endcontentfor %}
 
-{% contentfor playground %}
+{% contentfor promotion-container %}
   <div class="row slab mt-5 ml-0 mr-0">
     <div class="col-lg-7 pl-2 mb-2">
       <h2>Want to try Online Payments live?</h2>
@@ -40,7 +40,7 @@ hide_from_sidebar: true
       <p>See the menu clothed in your colors and with your logo.</p>
       <p>The goal is to give you an introduction to how you can setup the solution and how your customers will experience it.</p>
       <div class="mt-5">
-        <a class="btn btn-primary playground-cta" target="_blank" href="https://playground.swedbankpay.com" type="button">Head to our Playground <i class="at-arrow-right ml-2" aria-hidden="true"></i></a>
+        <a class="btn btn-primary promotion-container-cta" target="_blank" href="https://playground.swedbankpay.com" type="button">Head to our Playground <i class="at-arrow-right ml-2" aria-hidden="true"></i></a>
       </div>
     </div>
     <div class="col-lg-5 pr-0 d-flex justify-content-end">
@@ -51,16 +51,21 @@ hide_from_sidebar: true
   </div>
 {% endcontentfor %}
 
-{% contentfor playground %}
+{% contentfor promotion-container %}
   <div class="row slab mt-5 ml-0 mr-0">
     <div class="col pl-2 mb-2">
       <h2>Want to try our APIs?</h2>
       <p>Our Postman API collection contains everything you need for our Online Payments. Every API is ready to use as is, but they are also fully customizable.</p>
       <p>For the best merchant experience, use the credentials from your own test account to keep track of your payments and access them from our merchant portal.</p>
       <div class="mt-5">
-        <a class="btn btn-primary playground-cta" target="_blank" href="https://www.postman.com/swedbankpay/swedbank-pay-online/collection/000bv9t/testsuite" type="button">Head to Postman <i class="at-arrow-right ml-2" aria-hidden="true"></i></a>
+        <a class="btn btn-primary promotion-container-cta" target="_blank" href="https://www.postman.com/swedbankpay/swedbank-pay-online/collection/000bv9t/testsuite" type="button">Head to Postman <i class="at-arrow-right ml-2" aria-hidden="true"></i></a>
       </div>
     </div>
+    <div class="col-lg-5 pr-0 d-flex justify-content-end">
+  <div class="video-container">
+    <img src="/assets/img/postman-promo.png" alt="Postman Collection Image" class="img-fluid">
+  </div>
+</div>
   </div>
 {% endcontentfor %}
 
