@@ -1,4 +1,31 @@
 
+## 26 August 2025
+
+### Pax Release 1.3.0.11
+
+PAX-4189 When both the Terminal and Card support Dankort, Dankort will always be selected for 'Purchase with Cashback' transactions.
+
+PAX-4160 The accessibility mode button can now be hidden from the menu via TMS.
+
+PAX-4147 Improve configuration of APN settings for SIM-cards with known ICCID prefix. Now, the payment application will, when one of "our" SIM Cards is detected on startup, try to add and use an APN using 'internet.cxn' if the current APN is not set to 'internet.cxn'.
+
+PAX-4146 Improved Apm event handling
+
+PAX-4143 Removed pairing mode from standalone menu
+
+PAX-4142 Reports button only visible in standalone mode
+
+PAX-4129 ECR error screen will no longer be shown if configuration message to ECR is not received
+
+PAX-4082 Improved downloading software to terminal so we do not get parallel download's
+
+PAX-4076 A reversal after an APM transaction no longer faultily reverse the last card transaction.
+
+PAX-4025 Improved log upload to prevent the terminal from timing out during a long log upload job
+
+PAX-3818 In the event of an ECR connection error is triggered during a transaction process, the error will not be
+visible until it after transaction flow is complete
+
 ## 26 June 2025
 
 ### Pax Release 1.3.0.10
