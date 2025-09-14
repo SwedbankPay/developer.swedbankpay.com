@@ -52,9 +52,9 @@ payment method's specific section to make sure.
 ## Common Problems
 
 All common problem types will have a URL in the format
-`https://api.payex.com/psp/errordetail/<error-type>`. The **URL is an
-identifier** that you can hard-code and implement logic around. It is currently
-not not possible to dereference this URL, although that might be possible in the
+`https://api.payex.com/psp/errordetail/<error-type>`. The **URL is an**
+**identifier** that you can hard-code and implement logic around. It is currently
+not possible to dereference this URL, although that might be possible in the
 future.
 
 {:.table .table-striped}
