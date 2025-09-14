@@ -13,8 +13,15 @@ As the name implies, these payments are used for transactions which happen on a
 recurring basis. Common use cases could be subscriptions for magazines,
 newspapers or streaming services.
 
-Please note that you need to do a capture after sending the recur request.
-We have added a capture section at the end of this page for that reason.
+Identify the recurring model and token type based on your needs. We support both
+dynamic and static prices and intervals. Use the `RecurrenceToken` flow for
+recurring payments with a constant price and interval, and the
+`UnscheduledToken` flow for variable services or goods. We **highly** recommend
+using the [unscheduled][unscheduled] option, as it gives you flexibility
+regarding changes in amount and interval.
+
+Please note that you need to do a capture after sending the request. We have
+added a capture section at the end of this page for that reason.
 
 ## Generating The Token
 
@@ -579,3 +586,4 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 [old-payment-order-capture]: /old-implementations/checkout-v2/capture
 [payment-order-cancel]: /checkout-v3/get-started/post-purchase/#cancel-v31
 [payment-order-capture]: /checkout-v3/get-started/post-purchase/#capture-v31
+[unscheduled]: /checkout-v3/features/optional/unscheduled
