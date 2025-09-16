@@ -7,6 +7,18 @@ menu_order: 2
 has_release_notes: true
 ---
 
+## 16 September 2025
+
+### Documentation v5.3.11
+
+One big Online addition this time around. The brand new
+[Swedbank Pay Workspace][workspace] with an
+[Online Payments API collection][api-collection], complimenting our frontend
+live demo you can find in our playground. Fork it, play around and/or set it up
+with your test account for an end-to-end merchant experience.
+
+The rest is mostly bugfixes, typos and smaller changes.
+
 ## 13 August 2025
 
 ### Documentation v5.3.10
@@ -1211,6 +1223,7 @@ more convenient for both the integration and the payer.
 [age-restrictions]: /checkout-v3/features/optional/age-restrictions
 [android-sdk-documentation]: /checkout-v3/modules-sdks/mobile-sdk/android
 [apple-pay]: /checkout-v3/apple-pay-presentation
+[api-collection]: https://www.postman.com/swedbankpay/swedbank-pay-online/overview
 [astopb]: /checkout-v3/features/customize-ui/action-specific-text-on-payment-button
 [authorization-timeouts]: /old-implementations/checkout-v2/capture
 [azure-faq]: /checkout-v3/get-started/fundamental-principles/#migration-of-e-commerce-to-microsoft-azure---faq
@@ -1386,3 +1399,4 @@ more convenient for both the integration and the payer.
 [new-post-pur]: /checkout-v3/get-started/post-purchase/
 [new-callback]: /checkout-v3/features/payment-operations/callback/
 [rn-hub]: /release-notes/
+[workspace]: https://www.postman.com/swedbankpay
