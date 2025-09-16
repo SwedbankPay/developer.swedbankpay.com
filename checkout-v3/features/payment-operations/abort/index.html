@@ -1262,7 +1262,11 @@
           
           <li class=" leaf">
           <a href="/pax-terminal/">In-Store Payments</a>
-          <ul class="nav-ul"><li class="nav-leaf"><a href="/pax-terminal/#configure-the-terminal">Configure the terminal</a></li></ul>
+          <ul class="nav-ul">
+<li class="nav-leaf"><a href="/pax-terminal/#communication-types">Communication Types</a></li>
+<li class="nav-leaf"><a href="/pax-terminal/#how-to-integrate">How To Integrate</a></li>
+<li class="nav-leaf"><a href="/pax-terminal/#implementation-modes">Implementation Modes</a></li>
+</ul>
         </li>
           <li class="secondary-nav-li group">
           <a href="/pax-terminal/java/">Java SDK</a>
@@ -1624,6 +1628,14 @@
           
       </ul>
         </li>
+      </ul>
+        </li>
+<li class="secondary-nav-li group">
+          <a href="/pax-terminal/cloud/">Cloud Connection</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/pax-terminal/cloud/#detailed-information">Detailed information</a></li>
+          
       </ul>
         </li>
 <li class="secondary-nav-li group">
@@ -5695,7 +5707,7 @@ payment order response. You need to include the following in the request body:</
     <tr>
       <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">operation</code></span></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Abort</code></td>
+      <td style="text-align: left">Determines the initial operation, defining the type of payment order created. Possible options are Purchase, <a href="/checkout-v3/features/payment-operations/abort/">Abort</a> <a href="/checkout-v3/features/optional/verify">Verify</a>, <a href="/checkout-v3/features/optional/unscheduled">Unscheduled</a>, <a href="/checkout-v3/features/optional/recur">Recur</a> and <a href="/checkout-v3/features/optional/payout">Payout</a>. For this request it must be <code class="language-html highlighter-rouge">Abort</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">abortReason</code></span></td>
@@ -5968,7 +5980,7 @@ request towards the <code class="language-html highlighter-rouge">paymentorders<
     <tr>
       <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">operation</code></span></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Purchase</code></td>
+      <td style="text-align: left">Determines the initial operation, defining the type of payment order created. Possible options are Purchase, <a href="/checkout-v3/features/payment-operations/abort/">Abort</a> <a href="/checkout-v3/features/optional/verify">Verify</a>, <a href="/checkout-v3/features/optional/unscheduled">Unscheduled</a>, <a href="/checkout-v3/features/optional/recur">Recur</a> and <a href="/checkout-v3/features/optional/payout">Payout</a>. It will match the operation set in the request, in this case <code class="language-html highlighter-rouge">Purchase</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">status</code></span></td>
@@ -6664,7 +6676,7 @@ with <code class="language-html highlighter-rouge">history</code> expanded. It w
     <tr>
       <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">operation</code></span></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Purchase</code></td>
+      <td style="text-align: left">Determines the initial operation, defining the type of payment order created. Possible options are Purchase, <a href="/checkout-v3/features/payment-operations/abort/">Abort</a> <a href="/checkout-v3/features/optional/verify">Verify</a>, <a href="/checkout-v3/features/optional/unscheduled">Unscheduled</a>, <a href="/checkout-v3/features/optional/recur">Recur</a> and <a href="/checkout-v3/features/optional/payout">Payout</a>.</td>
     </tr>
     <tr>
       <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">status</code></span></td>

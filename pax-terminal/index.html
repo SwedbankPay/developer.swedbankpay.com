@@ -1262,7 +1262,11 @@
           
           <li class=" leaf active">
           <a href="/pax-terminal/">In-Store Payments</a>
-          <ul class="nav-ul"><li class="nav-leaf"><a href="/pax-terminal/#configure-the-terminal">Configure the terminal</a></li></ul>
+          <ul class="nav-ul">
+<li class="nav-leaf"><a href="/pax-terminal/#communication-types">Communication Types</a></li>
+<li class="nav-leaf"><a href="/pax-terminal/#how-to-integrate">How To Integrate</a></li>
+<li class="nav-leaf"><a href="/pax-terminal/#implementation-modes">Implementation Modes</a></li>
+</ul>
         </li>
           <li class="secondary-nav-li group">
           <a href="/pax-terminal/java/">Java SDK</a>
@@ -1624,6 +1628,14 @@
           
       </ul>
         </li>
+      </ul>
+        </li>
+<li class="secondary-nav-li group">
+          <a href="/pax-terminal/cloud/">Cloud Connection</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/pax-terminal/cloud/#detailed-information">Detailed information</a></li>
+          
       </ul>
         </li>
 <li class="secondary-nav-li group">
@@ -5616,47 +5628,65 @@ Swedbank Pay Payment Application implementation of nexo Retailer allows the
 integrated application to initiate the relevant functions within Swedbank Pay
 Payment Application.</p>
 
-<p>There are three options for integrating the Swedbank Pay terminals to a sale
+<p>There are different integration types and different options how to integrate, but all are using the same nexo messages and flow. The difference is how to communicate with the payment application in the terminal. All three works with the available PAX terminals A35, A920Pro and A30.</p>
+      <h2 id="communication-types">
+        
+        
+          Communication Types <a href="#communication-types" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<ul>
+  <li>
+<strong>Http over Local Network</strong> - The POS need to know the IP address and port the terminal is listening for, and the terminal may need to know the IP address and port of the POS.</li>
+  <li>
+<strong>Http cloud connection</strong> - using OAuth2 with client credentials grant type. By far the easiest way when installing and connecting the terminal.</li>
+  <li>
+<strong>Broadcast intents</strong> - on the device, the terminal, when a business app like a POS is placed side by side with our Payment application.</li>
+</ul>
+    
+      <h2 id="how-to-integrate">
+        
+        
+          How To Integrate <a href="#how-to-integrate" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>There are three ways for integrating the Swedbank Pay terminals to a sale
 system.</p>
 
 <ul>
   <li>
-<a href="/pax-terminal/Nexo-Retailer/">nexo Retailer</a> - As implemented by Swedbank Pay.</li>
+<a href="/pax-terminal/Nexo-Retailer/">nexo Retailer</a> - Do the job implementing the Swedbank Pay nexo Retailer protocol by building and parsing the messages to handle the different scenarios.</li>
   <li>
-<a href="/pax-terminal/NET/">.Net SDK</a> - abstract interface implementing the nexo Retailer.</li>
+<a href="/pax-terminal/NET/">.Net SDK</a> - Use the abstract interface that is implementing the nexo Retailer. Much less time consuming, but does not work for the On Device communication type.</li>
   <li>
-<a href="/pax-terminal/java">Java SDK</a> - abstract interface implementing the nexo Retailer.</li>
+<a href="/pax-terminal/java">Java SDK</a> - Use the abstract interface implementing the nexo Retailer. Does not work for the On Device or cloud communication types.</li>
 </ul>
+    
+      <h2 id="implementation-modes">
+        
+        
+          Implementation Modes <a href="#implementation-modes" class="header-anchor"></a>
+        
+        
+      </h2>
 
-<p>The Swedbank Pay SDK contains one implementation for using a PAX A30, A35 or
-A920 PRO terminal, but makes it possible to vary the style of use by
-configuration. There are two major styles that is decided by the
-SalesCapabilities string sent in as a LoginRequest:</p>
+<p>The nexo Retailer protocol may be implemented as any of two modes:</p>
 
 <ul>
   <li>Act as both server and client</li>
   <li>Act as client only</li>
 </ul>
 
-<p>The intended default style requires the consumer of the SwpTrmLib to act as both
-a server and a client. The server handles requests from the terminal, such as
+<p>The intended default mode requires the POS to act as both a server and a client. The server handles requests from the terminal, such as
 display information, events, and possible input request from the terminal, such
 as a request to confirm that a receipt has been signed if needed. The second
-style is to act as a client only and then lose information from terminal such as
+mode is to act as a client only and then lose information from terminal such as
 events informing that a card has been inserted or removed or display information
-helping the operator to see what is going on.</p>
-      <h2 id="configure-the-terminal">
-        
-        
-          Configure the terminal <a href="#configure-the-terminal" class="header-anchor"></a>
-        
-        
-      </h2>
-
-<p>In order for the terminal to communicate with the ECR the IP address need to be
-set in the admin menu. To enter the admin menu, tap the three dots in the
-footer. Then enter the code. Set the ECR IP address and then press the save
-button.</p>
+helping the operator to see what is going on. Which mode that will be used is decided by the LoginRequest from the POS to the terminal.</p>
         
     </article>
 </div>

@@ -1263,7 +1263,11 @@
           
           <li class=" leaf">
           <a href="/pax-terminal/">In-Store Payments</a>
-          <ul class="nav-ul"><li class="nav-leaf"><a href="/pax-terminal/#configure-the-terminal">Configure the terminal</a></li></ul>
+          <ul class="nav-ul">
+<li class="nav-leaf"><a href="/pax-terminal/#communication-types">Communication Types</a></li>
+<li class="nav-leaf"><a href="/pax-terminal/#how-to-integrate">How To Integrate</a></li>
+<li class="nav-leaf"><a href="/pax-terminal/#implementation-modes">Implementation Modes</a></li>
+</ul>
         </li>
           <li class="secondary-nav-li group">
           <a href="/pax-terminal/java/">Java SDK</a>
@@ -1625,6 +1629,14 @@
           
       </ul>
         </li>
+      </ul>
+        </li>
+<li class="secondary-nav-li group">
+          <a href="/pax-terminal/cloud/">Cloud Connection</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/pax-terminal/cloud/#detailed-information">Detailed information</a></li>
+          
       </ul>
         </li>
 <li class="secondary-nav-li group">
@@ -5624,8 +5636,8 @@
       </h2>
 
 <p>When performing operations against a resource in the Swedbank Pay API Platform,
-it will respond with a problem message that contain details of the error type if
-the request could not be successfully performed. Regardless of why the error
+it will respond with a problem message that contains details of the error type
+if the request could not be successfully performed. Regardless of why the error
 occurred, the problem message will follow the same structure as specified in the
 <a href="https://tools.ietf.org/html/rfc7807">Problem Details for HTTP APIs (RFC 7807)</a> specification.</p>
 
@@ -5634,7 +5646,9 @@ nature of the problem. The <code class="language-html highlighter-rouge">problem
 <code class="language-html highlighter-rouge">description</code> that will often help narrow down the specifics of the problem,
 usually to the field in the request that was missing or contained invalid data.</p>
 
-<p>The structure of a problem message will look like this:</p>
+<p>The structure of a problem message will have this general setup, but some
+payment methods - like Swish - might differ. We recommend you to check the
+payment method’s specific section to make sure.</p>
 
 <p class="code-view-header">
     Problem Example
@@ -5738,9 +5752,9 @@ usually to the field in the request that was missing or contained invalid data.<
 </table>
 
 <p>All common problem types will have a URL in the format
-<code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/<span class="nt">&lt;error-type&gt;</span></code>. The <strong>URL is an
-identifier</strong> that you can hard-code and implement logic around. It is currently
-not not possible to dereference this URL, although that might be possible in the
+<code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/<span class="nt">&lt;error-type&gt;</span></code>. The <strong>URL is an identifier</strong>
+that you can hard-code and implement logic around. It is currently not
+possible to dereference this URL, although that might be possible in the
 future.</p>
 
 <table class="table table-striped">
@@ -6268,23 +6282,22 @@ will get a validation error.</p>
         
       </h3>
 
-<p>In accordance with directives from Visa and Mastercard, we will be implementing
-2 different types of limitations in the amount of successive reattempts of a
+<p>In accordance with directives from Visa and Mastercard, we have
+2 different types of limitations for the number of successive reattempts of a
 previously failed transaction using either a <code class="language-html highlighter-rouge">recurrence</code>- or <code class="language-html highlighter-rouge">unscheduledToken</code>
-that can be done using card based payment methods. This limitation has up
-until now been handled by Swedbank Pay Acquiring, but will now be handled
+that can be done using card based payment methods. These limitations have
+previously been handled by Swedbank Pay Acquiring, but are now handled
 earlier in the transaction process - enabling us to provide better and clearer
 response messages through the e-commerce API.</p>
 
-<p>To test these response messages, we have added new magic amounts in the
-<a href="/checkout-v3/test-data/#magic-amounts-error-testing-using-amounts">test data section</a>. The new amounts are for <code class="language-html highlighter-rouge">DAILYLIMITEXCEEDED</code>,
+<p>To test these response messages, we have magic amounts in the
+<a href="/checkout-v3/test-data/#magic-amounts-error-testing-using-amounts">test data section</a>. The amounts are for <code class="language-html highlighter-rouge">DAILYLIMITEXCEEDED</code>,
 <code class="language-html highlighter-rouge">MONTHLYLIMITEXCEEDED</code>, <code class="language-html highlighter-rouge">DONOTRETRY</code> and <code class="language-html highlighter-rouge">MODIFICATIONSREQUIRED</code>.
-SuspensionWarning can be tested by using the <code class="language-html highlighter-rouge">limit exceeded</code> amounts.</p>
+<code class="language-html highlighter-rouge">SuspensionWarning</code> can be tested by using the <code class="language-html highlighter-rouge">limit exceeded</code> amounts.</p>
 
-<p>One such limitation will be limiting the amount of successive reattempts of a
+<p>One such limitation will be limiting the number of successive reattempts of a
 previously failed transaction that can be done using creditcard based payment
-method within a specified period The limitation in question varies based on the
-card brand:</p>
+method within a specified period. The limitation varies based on the card brand:</p>
 
 <ul>
   <li>MasterCard - 10 failed payment attempts allowed during a period of <strong>24 hours</strong>.</li>
@@ -6292,13 +6305,13 @@ card brand:</p>
   <li>Visa - 15 failed payment attempts allowed during a period of <strong>30 days</strong>.</li>
 </ul>
 
-<p>The other limitation that will be implemented is in the case that Visa or
-Mastercard gives such a response that is flagged as “Do Not Retry” in accordance
-to Visa and MasterCard regulations. This response is given in the cases that
-they deem the transaction to never be possible to be valid - as an example, if
-the card no longer exists, and thus there is no point in retrying.</p>
+<p>The other limitation implemented is in cases where Visa or Mastercard gives a
+response that is flagged as “Do Not Retry” in accordance to Visa and MasterCard
+regulations. This response is given in cases where they deem that the
+transaction can never be valid. As an example: If the card no longer exists,
+there is no point in retrying.</p>
 
-<p>In these cases, the card will be blocked immediately and no further attempts
+<p>In these cases, the card will be blocked immediately and no further attempts are
 allowed. This block will be active for <strong>30 days</strong> for both Visa and MasterCard.</p>
 
 <p>Both of these limitations are based on the combination of the acquiring
@@ -6315,7 +6328,7 @@ takes place - this is where the new, clearer response messages will help.</p>
 <strong>test and productions environments.</strong> We recommend having two test cards
 available if you are testing this functionality.</p>
 
-<p>When it comes to Excessive Reattempts, the new response messages will be
+<p>When it comes to Excessive Reattempts, the response messages will be
 returned if the quota for the period gets to 5 attempts remaining, as follows:</p>
 
 <p class="code-view-header">
@@ -6585,8 +6598,8 @@ MasterCard:</p>
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
 
-<p>Furthermore, a new response is added, being returned in cases where the
-transaction is declined, but might be accepted after modifications:</p>
+<p>This will be the response in cases where the transaction is declined, but might
+be accepted after modifications:</p>
 
 <p class="code-view-header">
     Transaction declined, modifications required
@@ -6668,8 +6681,8 @@ transaction is declined, but might be accepted after modifications:</p>
       </h2>
 
 <p>There are a few problems specific to the <code class="language-html highlighter-rouge">creditaccount</code> resource that you may
-want to guard against in your integrations. All invoice error types will have
-the following URL structure:</p>
+want to guard against in your integrations. All installment account error types
+will have the following URL structure:</p>
 
 <p><code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/creditaccount/<span class="nt">&lt;error-type&gt;</span></code></p>
 
@@ -7004,9 +7017,9 @@ merchants who have a special agreement with Swedbank Pay.</p>
         
       </h2>
 
-<p>There are a few problems specific to the <code class="language-html highlighter-rouge">swish</code> resource that you may want to
-guard against in your integrations. All Swish problem types will have the
-following URL structure:</p>
+<p>There are problems specific to the <code class="language-html highlighter-rouge">swish</code> resource that you may want to guard
+against in your integrations. All Swish problem types will have the following
+URL structure:</p>
 
 <p><code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/<span class="nt">&lt;error-type&gt;</span></code></p>
     
@@ -7017,12 +7030,6 @@ following URL structure:</p>
         
         
       </h3>
-
-<p>Caused By:</p>
-
-<ul>
-  <li>The payer’s BankID is already in use</li>
-</ul>
 
 <p class="code-view-header">
     Example response bankidalreadyinuse
@@ -7073,12 +7080,6 @@ following URL structure:</p>
         
         
       </h3>
-
-<p>Caused By:</p>
-
-<ul>
-  <li>The payer cancelled BankID authorization.</li>
-</ul>
 
 <p class="code-view-header">
     Example response bankidcancelled
@@ -7132,12 +7133,6 @@ following URL structure:</p>
         
       </h3>
 
-<p>Caused By:</p>
-
-<ul>
-  <li>Something went wrong with the payer’s BankID authorization.</li>
-</ul>
-
 <p class="code-view-header">
     Example response bankiderror
     
@@ -7190,17 +7185,20 @@ following URL structure:</p>
         
       </h3>
 
-<p>Caused By:</p>
+<p>Refer to the <code class="language-html highlighter-rouge">detail</code> field in the problem response for a more specific error
+message. The error could be caused by:</p>
 
 <ul>
   <li>Payee alias is missing or not correct.</li>
-  <li>PaymentReference is invalid.</li>
+  <li>
+<code class="language-html highlighter-rouge">PaymentReference</code> is invalid.</li>
   <li>Amount value is missing or not a valid number.</li>
   <li>Amount is less than agreed minimum.</li>
   <li>Amount value is too large.</li>
   <li>Invalid or missing currency.</li>
   <li>Wrong formatted message.</li>
-  <li>Amount value is too large, or amount exceeds the amount of the original payment minus any previous refunds.</li>
+  <li>Amount value is too large, or amount exceeds the amount of the original
+payment minus any previous refunds.</li>
   <li>Counterpart is not activated.</li>
   <li>Payee not enrolled.</li>
 </ul>
@@ -7257,7 +7255,8 @@ following URL structure:</p>
         
       </h3>
 
-<p>Caused By:</p>
+<p>Refer to the <code class="language-html highlighter-rouge">detail</code> field in the problem response for a more specific error
+message. The error could be caused by:</p>
 
 <ul>
   <li>MSISDN is invalid.</li>
@@ -7316,12 +7315,6 @@ following URL structure:</p>
         
       </h3>
 
-<p>Caused By:</p>
-
-<ul>
-  <li>The payer does not meet the payment’s age limit.</li>
-</ul>
-
 <p class="code-view-header">
     Example response paymentagelimitnotmet
     
@@ -7373,12 +7366,6 @@ following URL structure:</p>
         
         
       </h3>
-
-<p>Caused By:</p>
-
-<ul>
-  <li>The payer’s social security number does not match with the one required by this payment.</li>
-</ul>
 
 <p class="code-view-header">
     Example response socialsecuritynumbermismatch
@@ -7432,12 +7419,6 @@ following URL structure:</p>
         
       </h3>
 
-<p>Caused By:</p>
-
-<ul>
-  <li>The payer’s Swish is already in use.</li>
-</ul>
-
 <p class="code-view-header">
     Example response swishalreadyinuse
     
@@ -7490,13 +7471,16 @@ following URL structure:</p>
         
       </h3>
 
-<p>Caused By:</p>
+<p>Refer to the <code class="language-html highlighter-rouge">detail</code> field in the problem response for a more specific error
+message. The error could be caused by:</p>
 
 <ul>
-  <li>Original payment not found or original payment is more than than 13 months old.</li>
-  <li>It appears that merchant’s organization number has changed since sale was made.</li>
+  <li>Original payment not found or original payment is more than 13 months old.</li>
+  <li>It appears that merchant’s organization number has changed since sale was
+made.</li>
   <li>The MSISDN of the original payer seems to have changed owner.</li>
-  <li>Transaction declined. Could be that the payer has exceeded their swish limit or have insufficient founds.</li>
+  <li>Transaction declined. Could be that the payer has exceeded their swish limit
+or have insufficient founds.</li>
   <li>Payment request not cancellable.</li>
 </ul>
 
@@ -7552,11 +7536,13 @@ following URL structure:</p>
         
       </h3>
 
-<p>Caused By:</p>
+<p>Refer to the <code class="language-html highlighter-rouge">detail</code> field in the problem response for a more specific error
+message. The error could be caused by:</p>
 
 <ul>
-  <li>Bank system processing error.</li>
-  <li>Swish timed out waiting for an answer from the banks after payment was started.</li>
+  <li>A bank system processing error.</li>
+  <li>Swish timed out waiting for an answer from the banks after payment was
+started.</li>
 </ul>
 
 <p class="code-view-header">
@@ -7611,12 +7597,6 @@ following URL structure:</p>
         
       </h3>
 
-<p>Caused By:</p>
-
-<ul>
-  <li>During a create a sale call to e-commerce, Swish responded with 504 (Gateway Timeout).</li>
-</ul>
-
 <p class="code-view-header">
     Example response swishgatewaytimeout
     
@@ -7668,12 +7648,6 @@ following URL structure:</p>
         
         
       </h3>
-
-<p>Caused By:</p>
-
-<ul>
-  <li>Swish timed out before the payment was started.</li>
-</ul>
 
 <p class="code-view-header">
     Example response swishtimeout
@@ -7778,12 +7752,6 @@ following URL structure:</p>
         
         
       </h3>
-
-<p>Caused By:</p>
-
-<ul>
-  <li>The payer cancelled the payment in the Swish app.</li>
-</ul>
 
 <p class="code-view-header">
     Example response usercancelled

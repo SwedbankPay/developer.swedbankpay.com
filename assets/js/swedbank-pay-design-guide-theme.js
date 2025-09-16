@@ -234,6 +234,6 @@ function _handleSimpleSidebar(e) {
 // Initialize Tipue search
 (function () {
     $(document).ready(function () {
-        $("#tipue_search_input").tipuesearch();
+        $("#tipue_search_input").tipuesearch({ 'footerPages': 6 });
     });
 })();

@@ -1263,7 +1263,11 @@
           
           <li class=" leaf">
           <a href="/pax-terminal/">In-Store Payments</a>
-          <ul class="nav-ul"><li class="nav-leaf"><a href="/pax-terminal/#configure-the-terminal">Configure the terminal</a></li></ul>
+          <ul class="nav-ul">
+<li class="nav-leaf"><a href="/pax-terminal/#communication-types">Communication Types</a></li>
+<li class="nav-leaf"><a href="/pax-terminal/#how-to-integrate">How To Integrate</a></li>
+<li class="nav-leaf"><a href="/pax-terminal/#implementation-modes">Implementation Modes</a></li>
+</ul>
         </li>
           <li class="secondary-nav-li group">
           <a href="/pax-terminal/java/">Java SDK</a>
@@ -1625,6 +1629,14 @@
           
       </ul>
         </li>
+      </ul>
+        </li>
+<li class="secondary-nav-li group">
+          <a href="/pax-terminal/cloud/">Cloud Connection</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/pax-terminal/cloud/#detailed-information">Detailed information</a></li>
+          
       </ul>
         </li>
 <li class="secondary-nav-li group">
@@ -5637,6 +5649,13 @@ subsequent payments are made through server-to-server requests.</p>
         
         
       </h2>
+
+<p>Identify the recurring model and token type based on your needs. We support both
+dynamic and static prices and intervals. Use the <code class="language-html highlighter-rouge">RecurrenceToken</code> flow for
+recurring payments with a constant price and interval, and the
+<code class="language-html highlighter-rouge">UnscheduledToken</code> flow for variable services or goods. We <strong>highly</strong> recommend
+using the <a href="/old-implementations/payment-instruments-v1/card/features/optional/unscheduled">unscheduled</a> option, as it gives you flexibility
+regarding changes in amount and interval.</p>
 
 <p>Prior to making any server-to-server requests, you need to supply the payment
 method details and a payment token to Swedbank Pay by initial purchase.</p>

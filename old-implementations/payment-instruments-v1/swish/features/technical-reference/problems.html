@@ -1263,7 +1263,11 @@
           
           <li class=" leaf">
           <a href="/pax-terminal/">In-Store Payments</a>
-          <ul class="nav-ul"><li class="nav-leaf"><a href="/pax-terminal/#configure-the-terminal">Configure the terminal</a></li></ul>
+          <ul class="nav-ul">
+<li class="nav-leaf"><a href="/pax-terminal/#communication-types">Communication Types</a></li>
+<li class="nav-leaf"><a href="/pax-terminal/#how-to-integrate">How To Integrate</a></li>
+<li class="nav-leaf"><a href="/pax-terminal/#implementation-modes">Implementation Modes</a></li>
+</ul>
         </li>
           <li class="secondary-nav-li group">
           <a href="/pax-terminal/java/">Java SDK</a>
@@ -1625,6 +1629,14 @@
           
       </ul>
         </li>
+      </ul>
+        </li>
+<li class="secondary-nav-li group">
+          <a href="/pax-terminal/cloud/">Cloud Connection</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/pax-terminal/cloud/#detailed-information">Detailed information</a></li>
+          
       </ul>
         </li>
 <li class="secondary-nav-li group">
@@ -5746,9 +5758,9 @@ usually to the field in the request that was missing or contained invalid data.<
       </h2>
 
 <p>All common problem types will have a URL in the format
-<code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/<span class="nt">&lt;error-type&gt;</span></code>. The <strong>URL is an
-identifier</strong> that you can hard-code and implement logic around. It is currently
-not not possible to dereference this URL, although that might be possible in the
+<code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/<span class="nt">&lt;error-type&gt;</span></code>. The <strong>URL is an</strong>
+<strong>identifier</strong> that you can hard-code and implement logic around. It is currently
+not possible to dereference this URL, although that might be possible in the
 future.</p>
 
 <table class="table table-striped">
@@ -5796,9 +5808,9 @@ future.</p>
         
       </h3>
 
-<p>There are a few problems specific to the <code class="language-html highlighter-rouge">swish</code> resource that you may want to
-guard against in your integrations. All Swish problem types will have the
-following URL structure:</p>
+<p>There are problems specific to the <code class="language-html highlighter-rouge">swish</code> resource that you may want to guard
+against in your integrations. All Swish problem types will have the following
+URL structure:</p>
 
 <p><code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/<span class="nt">&lt;error-type&gt;</span></code></p>
     
@@ -5809,12 +5821,6 @@ following URL structure:</p>
         
         
       </h4>
-
-<p>Caused By:</p>
-
-<ul>
-  <li>The payer’s BankID is already in use</li>
-</ul>
 
 <p class="code-view-header">
     Example response bankidalreadyinuse
@@ -5865,12 +5871,6 @@ following URL structure:</p>
         
         
       </h4>
-
-<p>Caused By:</p>
-
-<ul>
-  <li>The payer cancelled BankID authorization.</li>
-</ul>
 
 <p class="code-view-header">
     Example response bankidcancelled
@@ -5924,12 +5924,6 @@ following URL structure:</p>
         
       </h4>
 
-<p>Caused By:</p>
-
-<ul>
-  <li>Something went wrong with the payer’s BankID authorization.</li>
-</ul>
-
 <p class="code-view-header">
     Example response bankiderror
     
@@ -5982,17 +5976,20 @@ following URL structure:</p>
         
       </h4>
 
-<p>Caused By:</p>
+<p>Refer to the <code class="language-html highlighter-rouge">detail</code> field in the problem response for a more specific error
+message. The error could be caused by:</p>
 
 <ul>
   <li>Payee alias is missing or not correct.</li>
-  <li>PaymentReference is invalid.</li>
+  <li>
+<code class="language-html highlighter-rouge">PaymentReference</code> is invalid.</li>
   <li>Amount value is missing or not a valid number.</li>
   <li>Amount is less than agreed minimum.</li>
   <li>Amount value is too large.</li>
   <li>Invalid or missing currency.</li>
   <li>Wrong formatted message.</li>
-  <li>Amount value is too large, or amount exceeds the amount of the original payment minus any previous refunds.</li>
+  <li>Amount value is too large, or amount exceeds the amount of the original
+payment minus any previous refunds.</li>
   <li>Counterpart is not activated.</li>
   <li>Payee not enrolled.</li>
 </ul>
@@ -6049,7 +6046,8 @@ following URL structure:</p>
         
       </h4>
 
-<p>Caused By:</p>
+<p>Refer to the <code class="language-html highlighter-rouge">detail</code> field in the problem response for a more specific error
+message. The error could be caused by:</p>
 
 <ul>
   <li>MSISDN is invalid.</li>
@@ -6108,12 +6106,6 @@ following URL structure:</p>
         
       </h4>
 
-<p>Caused By:</p>
-
-<ul>
-  <li>The payer does not meet the payment’s age limit.</li>
-</ul>
-
 <p class="code-view-header">
     Example response paymentagelimitnotmet
     
@@ -6165,12 +6157,6 @@ following URL structure:</p>
         
         
       </h4>
-
-<p>Caused By:</p>
-
-<ul>
-  <li>The payer’s social security number does not match with the one required by this payment.</li>
-</ul>
 
 <p class="code-view-header">
     Example response socialsecuritynumbermismatch
@@ -6224,12 +6210,6 @@ following URL structure:</p>
         
       </h4>
 
-<p>Caused By:</p>
-
-<ul>
-  <li>The payer’s Swish is already in use.</li>
-</ul>
-
 <p class="code-view-header">
     Example response swishalreadyinuse
     
@@ -6282,13 +6262,16 @@ following URL structure:</p>
         
       </h4>
 
-<p>Caused By:</p>
+<p>Refer to the <code class="language-html highlighter-rouge">detail</code> field in the problem response for a more specific error
+message. The error could be caused by:</p>
 
 <ul>
-  <li>Original payment not found or original payment is more than than 13 months old.</li>
-  <li>It appears that merchant’s organization number has changed since sale was made.</li>
+  <li>Original payment not found or original payment is more than 13 months old.</li>
+  <li>It appears that merchant’s organization number has changed since sale was
+made.</li>
   <li>The MSISDN of the original payer seems to have changed owner.</li>
-  <li>Transaction declined. Could be that the payer has exceeded their swish limit or have insufficient founds.</li>
+  <li>Transaction declined. Could be that the payer has exceeded their Swish limit
+or have insufficient founds.</li>
   <li>Payment request not cancellable.</li>
 </ul>
 
@@ -6344,7 +6327,8 @@ following URL structure:</p>
         
       </h4>
 
-<p>Caused By:</p>
+<p>Refer to the <code class="language-html highlighter-rouge">detail</code> field in the problem response for a more specific error
+message. The error could be caused by:</p>
 
 <ul>
   <li>Bank system processing error.</li>
@@ -6403,12 +6387,6 @@ following URL structure:</p>
         
       </h4>
 
-<p>Caused By:</p>
-
-<ul>
-  <li>During a create a sale call to e-commerce, Swish responded with 504 (Gateway Timeout).</li>
-</ul>
-
 <p class="code-view-header">
     Example response swishgatewaytimeout
     
@@ -6460,12 +6438,6 @@ following URL structure:</p>
         
         
       </h4>
-
-<p>Caused By:</p>
-
-<ul>
-  <li>Swish timed out before the payment was started.</li>
-</ul>
 
 <p class="code-view-header">
     Example response swishtimeout
@@ -6570,12 +6542,6 @@ following URL structure:</p>
         
         
       </h4>
-
-<p>Caused By:</p>
-
-<ul>
-  <li>The payer cancelled the payment in the Swish app.</li>
-</ul>
 
 <p class="code-view-header">
     Example response usercancelled

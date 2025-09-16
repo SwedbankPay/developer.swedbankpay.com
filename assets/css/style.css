@@ -882,11 +882,11 @@ body {
   }
 }
 
-.playground-cta {
+.promotion-container-cta {
   margin-top: 2.5rem;
 }
 @media screen and (max-width: 992px) {
-  .playground-cta {
+  .promotion-container-cta {
     margin-top: 0;
   }
 }

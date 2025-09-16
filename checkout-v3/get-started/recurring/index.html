@@ -1262,7 +1262,11 @@
           
           <li class=" leaf">
           <a href="/pax-terminal/">In-Store Payments</a>
-          <ul class="nav-ul"><li class="nav-leaf"><a href="/pax-terminal/#configure-the-terminal">Configure the terminal</a></li></ul>
+          <ul class="nav-ul">
+<li class="nav-leaf"><a href="/pax-terminal/#communication-types">Communication Types</a></li>
+<li class="nav-leaf"><a href="/pax-terminal/#how-to-integrate">How To Integrate</a></li>
+<li class="nav-leaf"><a href="/pax-terminal/#implementation-modes">Implementation Modes</a></li>
+</ul>
         </li>
           <li class="secondary-nav-li group">
           <a href="/pax-terminal/java/">Java SDK</a>
@@ -1624,6 +1628,14 @@
           
       </ul>
         </li>
+      </ul>
+        </li>
+<li class="secondary-nav-li group">
+          <a href="/pax-terminal/cloud/">Cloud Connection</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/pax-terminal/cloud/#detailed-information">Detailed information</a></li>
+          
       </ul>
         </li>
 <li class="secondary-nav-li group">
@@ -5637,8 +5649,13 @@ using card payments.</p>
 This can be done by making an initial purchase, storing user details along with
 the transaction, or performing a <code class="language-html highlighter-rouge">Verify</code> operation for account verification.
 <code class="language-html highlighter-rouge">Verify</code> is a zero-sum operation used solely for registering details for future
-use. You can read more about the basic implementation of a payment order in our
-<a href="/checkout-v3/get-started/#the-basic-implementation">Get Started</a> section.</p>
+use.</p>
+
+<p>You can read more about the basic implementation of a payment order in our
+<a href="/checkout-v3/get-started/#the-basic-implementation">Get Started</a> section. The API calls needed for this use case are
+available and ready to use in our
+<a href="https://www.postman.com/swedbankpay/swedbank-pay-online/folder/91etz5u/unscheduled" target="_blank">collection of Online Payment APIs</a>. You can use
+the collection with your own test account or with the generic test merchant.</p>
     
       <h2 id="step-2-choose-recurring-model-and-token">
         
