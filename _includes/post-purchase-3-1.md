@@ -779,5 +779,5 @@ clicking **Additional Request Options**.
                          next_href="/checkout-v3/features/"
                          next_title="Additional Request Options" %}
 
-[problems]: /checkout-v3/features/technical-reference/problems
+[problems]: /checkout-v3/technical-reference/problems
 [acceptance-test]: /checkout-v3/get-started/#get-ready-to-go-live

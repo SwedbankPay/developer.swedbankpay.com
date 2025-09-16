@@ -633,7 +633,7 @@ sequenceDiagram
 [sdk-package-repo]: https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git
 [sdk-pod]: https://cocoapods.org/pods/SwedbankPaySDK
 [cocoapods]: https://cocoapods.org/
-[payment-url]: /checkout-v3/features/technical-reference/payment-url
+[payment-url]: /checkout-v3/technical-reference/payment-url
 [custom-scheme-1]: /assets/img/mobile-sdk/ios-custom-scheme-1.png
 [custom-scheme-2]: /assets/img/mobile-sdk/ios-custom-scheme-2.png
 [assoc-domains-entitlement]: /assets/img/mobile-sdk/ios-assoc-domain.png
@@ -647,7 +647,7 @@ sequenceDiagram
 [xcode-add-cap]: https://help.apple.com/xcode/mac/current/#/dev88ff319e7
 [xcode-add-assoc-domain]: https://developer.apple.com/documentation/xcode/supporting-associated-domains#Add-the-associated-domain-file-to-your-website
 [rfc-7807]: https://tools.ietf.org/html/rfc7807
-[swedbankpay-problems]: /checkout-v3/features/technical-reference/problems
+[swedbankpay-problems]: /checkout-v3/technical-reference/problems
 [backend-problems]: /old-implementations/mobile-sdk/merchant-backend#problems
 [checkin-consumer]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [checkin-paymentorder]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order

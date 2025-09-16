@@ -340,7 +340,7 @@ and its duration.
 [checkin-start]: /assets/img/checkout/checkin-email-msisdn.png
 [checkin-options]: /assets/img/checkout/checkin-options.png
 [checkin-ssn]: /assets/img/checkout/checkin-ssn.png
-[checkin-events]: /old-implementations/checkout-v2/features/technical-reference/checkin-events
+[checkin-events]: /old-implementations/checkout-v2/technical-reference/checkin-events
 [data-protection]: /old-implementations/checkout-v2/data-protection#paymentorder-consumer-data
 [payment-menu]: /old-implementations/checkout-v2/payment-menu
 [iso-3166]: https://www.iso.org/iso-3166-country-codes.html

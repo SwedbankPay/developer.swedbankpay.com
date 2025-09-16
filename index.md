@@ -69,12 +69,6 @@ hide_from_sidebar: true
   </div>
 {% endcontentfor %}
 
-Want to try our APIs?
-
-Our Postman API collection contains everything you need for our Online Payments. Every API is ready to use as is, but they are also fully customizable.
-
-For the best merchant experience, use the credentials from your own test account to keep track of your payments and access them from our merchant portal.
-
 {% assign card_col_class="col-xl-4 col-lg-4" %}
 
 {% contentfor extras %}

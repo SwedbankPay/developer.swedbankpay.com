@@ -1,7 +1,7 @@
 {%- assign prices_kind=include.kind | default: 'CreditCard' -%}
 {%- capture url -%}
     {%- include utils/documentation-section-url.md
-        href='/features/technical-reference/prices' -%}
+        href='/technical-reference/prices' -%}
 {%- endcapture -%}
 {%- capture text -%}
 {%- case kind -%}

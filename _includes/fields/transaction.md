@@ -1,6 +1,6 @@
 {%- capture url -%}
     {%- include utils/documentation-section-url.md
-        href='/features/technical-reference/transactions' -%}
+        href='/technical-reference/transactions' -%}
 {%- endcapture -%}
 {%- capture text -%}
 The object representation of the generic {% clink `transaction` resource %}{{

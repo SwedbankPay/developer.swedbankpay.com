@@ -262,8 +262,8 @@ capture and the other options you have after the purchase.
                          next_href="/checkout-v3/get-started/post-purchase"
                          next_title="Post-Purchase" %}
 
-[aborted]: /checkout-v3/features/technical-reference/resource-sub-models/#failed
-[cancelled]: /checkout-v3/features/technical-reference/resource-sub-models/#cancelled
-[failed]: /checkout-v3/features/technical-reference/resource-sub-models/#failed
-[paid-resource-model]: /checkout-v3/features/technical-reference/resource-sub-models/#paid
+[aborted]: /checkout-v3/technical-reference/resource-sub-models/#failed
+[cancelled]: /checkout-v3/technical-reference/resource-sub-models/#cancelled
+[failed]: /checkout-v3/technical-reference/resource-sub-models/#failed
+[paid-resource-model]: /checkout-v3/technical-reference/resource-sub-models/#paid
 [pp-capture]: /checkout-v3/get-started/post-purchase/#capture-v31

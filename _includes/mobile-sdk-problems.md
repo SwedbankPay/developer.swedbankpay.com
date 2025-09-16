@@ -62,4 +62,4 @@ if case SwedbankPaySDK.MerchantBackendError.problem(let problem) = error {
 }
 ```
 
-[problems]: /checkout-v3/features/technical-reference/problems/
+[problems]: /checkout-v3/technical-reference/problems/
