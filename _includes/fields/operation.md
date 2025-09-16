@@ -5,7 +5,8 @@
 {%- assign resource=include.resource | default: 'payment order' -%}
 {%- capture text -%}
 Determines the initial operation, defining the type of {{ resource }} {% clink
-created %}{{ url }}{% endclink %}.
+created %}{{ url }}{% endclink %}. Possible options are Purchase, [Abort](/checkout-v3/features/payment-operations/abort/) [Verify](/checkout-v3/features/optional/verify), [Unscheduled](/checkout-v3/features/optional/unscheduled), [Recur](/checkout-v3/features/optional/recur) and
+[Payout](/checkout-v3/features/optional/payout).
 {%- endcapture -%}
 {%- comment -%}
 The following chain of Liquid filters converts newlines to spaces and removes
