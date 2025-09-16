@@ -4,8 +4,8 @@
 ## Problems
 
 When performing operations against a resource in the Swedbank Pay API Platform,
-it will respond with a problem message that contain details of the error type if
-the request could not be successfully performed. Regardless of why the error
+it will respond with a problem message that contains details of the error type
+if the request could not be successfully performed. Regardless of why the error
 occurred, the problem message will follow the same structure as specified in the
 [Problem Details for HTTP APIs (RFC 7807)][rfc-7807] specification.
 
@@ -14,7 +14,9 @@ nature of the problem. The `problems` array contains objects with `name` and
 `description` that will often help narrow down the specifics of the problem,
 usually to the field in the request that was missing or contained invalid data.
 
-The structure of a problem message will look like this:
+The structure of a problem message will have this general setup, but some
+payment methods - like Swish - might differ. We recommend you to check the
+payment method's specific section to make sure.
 
 {% capture response_content %}{
     "type": "https://api.payex.com/psp/errordetail/<resource>/inputerror",
@@ -48,9 +50,9 @@ The structure of a problem message will look like this:
 | {% f description %} | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
 
 All common problem types will have a URL in the format
-`https://api.payex.com/psp/errordetail/<error-type>`. The **URL is an
-identifier** that you can hard-code and implement logic around. It is currently
-not not possible to dereference this URL, although that might be possible in the
+`https://api.payex.com/psp/errordetail/<error-type>`. The **URL is an identifier**
+that you can hard-code and implement logic around. It is currently not
+possible to dereference this URL, although that might be possible in the
 future.
 
 {:.table .table-striped}
@@ -238,35 +240,34 @@ will get a validation error.
 
 ### Creditcard Payments MIT - Do Not Try Again & Excessive Reattempts
 
-In accordance with directives from Visa and Mastercard, we will be implementing
-2 different types of limitations in the amount of successive reattempts of a
+In accordance with directives from Visa and Mastercard, we have
+2 different types of limitations for the number of successive reattempts of a
 previously failed transaction using either a `recurrence`- or `unscheduledToken`
-that can be done using card based payment methods. This limitation has up
-until now been handled by Swedbank Pay Acquiring, but will now be handled
+that can be done using card based payment methods. These limitations have
+previously been handled by Swedbank Pay Acquiring, but are now handled
 earlier in the transaction process - enabling us to provide better and clearer
 response messages through the e-commerce API.
 
-To test these response messages, we have added new magic amounts in the
-[test data section][test-data]. The new amounts are for `DAILYLIMITEXCEEDED`,
+To test these response messages, we have magic amounts in the
+[test data section][test-data]. The amounts are for `DAILYLIMITEXCEEDED`,
 `MONTHLYLIMITEXCEEDED`, `DONOTRETRY` and `MODIFICATIONSREQUIRED`.
-SuspensionWarning can be tested by using the `limit exceeded` amounts.
+`SuspensionWarning` can be tested by using the `limit exceeded` amounts.
 
-One such limitation will be limiting the amount of successive reattempts of a
+One such limitation will be limiting the number of successive reattempts of a
 previously failed transaction that can be done using creditcard based payment
-method within a specified period The limitation in question varies based on the
-card brand:
+method within a specified period. The limitation varies based on the card brand:
 
 *   MasterCard - 10 failed payment attempts allowed during a period of **24 hours**.
 *   MasterCard - 35 failed payment attempts allowed during a period of **30 days**.
 *   Visa - 15 failed payment attempts allowed during a period of **30 days**.
 
-The other limitation that will be implemented is in the case that Visa or
-Mastercard gives such a response that is flagged as "Do Not Retry" in accordance
-to Visa and MasterCard regulations. This response is given in the cases that
-they deem the transaction to never be possible to be valid - as an example, if
-the card no longer exists, and thus there is no point in retrying.
+The other limitation implemented is in cases where Visa or Mastercard gives a
+response that is flagged as "Do Not Retry" in accordance to Visa and MasterCard
+regulations. This response is given in cases where they deem that the
+transaction can never be valid. As an example: If the card no longer exists,
+there is no point in retrying.
 
-In these cases, the card will be blocked immediately and no further attempts
+In these cases, the card will be blocked immediately and no further attempts are
 allowed. This block will be active for **30 days** for both Visa and MasterCard.
 
 Both of these limitations are based on the combination of the acquiring
@@ -283,7 +284,7 @@ takes place - this is where the new, clearer response messages will help.
 **test and productions environments.** We recommend having two test cards
 available if you are testing this functionality.
 
-When it comes to Excessive Reattempts, the new response messages will be
+When it comes to Excessive Reattempts, the response messages will be
 returned if the quota for the period gets to 5 attempts remaining, as follows:
 
 {% capture response_content %}{
@@ -393,8 +394,8 @@ The new responses for "Do Not Retry" will be as follows:
     json= response_content
     %}
 
-Furthermore, a new response is added, being returned in cases where the
-transaction is declined, but might be accepted after modifications:
+This will be the response in cases where the transaction is declined, but might
+be accepted after modifications:
 
 {% capture response_content %}{
     "type": "https://api.payex.com/psp/errordetail/creditcard/authenticationrequired",
@@ -426,8 +427,8 @@ transaction is declined, but might be accepted after modifications:
 ## Installment Account Problems
 
 There are a few problems specific to the `creditaccount` resource that you may
-want to guard against in your integrations. All invoice error types will have
-the following URL structure:
+want to guard against in your integrations. All installment account error types
+will have the following URL structure:
 
 `https://api.payex.com/psp/errordetail/creditaccount/<error-type>`
 
@@ -510,17 +511,13 @@ merchants who have a special agreement with Swedbank Pay.
 
 ## Swish Problems
 
-There are a few problems specific to the `swish` resource that you may want to
-guard against in your integrations. All Swish problem types will have the
-following URL structure:
+There are problems specific to the `swish` resource that you may want to guard
+against in your integrations. All Swish problem types will have the following
+URL structure:
 
 `https://api.payex.com/psp/errordetail/<error-type>`
 
 ### `bankidalreadyinuse`
-
-Caused By:
-
-*   The payer's BankID is already in use
 
 {% capture response_header %}HTTP/1.1 409 Conflict Content-Type: application/json{% endcapture %}
 
@@ -540,10 +537,6 @@ Caused By:
    %}
 
 ### `bankidcancelled`
-
-Caused By:
-
-*   The payer cancelled BankID authorization.
 
 {% capture response_header %}HTTP/1.1 409 Conflict
 Content-Type: application/json{% endcapture %}
@@ -565,10 +558,6 @@ Content-Type: application/json{% endcapture %}
 
 ### `bankiderror`
 
-Caused By:
-
-*   Something went wrong with the payer's BankID authorization.
-
 {% capture response_header %}HTTP/1.1 502 Bad Gateway
 Content-Type: application/json{% endcapture %}
 
@@ -589,16 +578,18 @@ Content-Type: application/json{% endcapture %}
 
 ### `configerror`
 
-Caused By:
+Refer to the `detail` field in the problem response for a more specific error
+message. The error could be caused by:
 
 *   Payee alias is missing or not correct.
-*   PaymentReference is invalid.
+*   `PaymentReference` is invalid.
 *   Amount value is missing or not a valid number.
 *   Amount is less than agreed minimum.
 *   Amount value is too large.
 *   Invalid or missing currency.
 *   Wrong formatted message.
-*   Amount value is too large, or amount exceeds the amount of the original payment minus any previous refunds.
+*   Amount value is too large, or amount exceeds the amount of the original
+    payment minus any previous refunds.
 *   Counterpart is not activated.
 *   Payee not enrolled.
 
@@ -622,7 +613,8 @@ Content-Type: application/json{% endcapture %}
 
 ### `inputerror`
 
-Caused By:
+Refer to the `detail` field in the problem response for a more specific error
+message. The error could be caused by:
 
 *   MSISDN is invalid.
 *   Payer's MSISDN is not enrolled at Swish.
@@ -647,10 +639,6 @@ Content-Type: application/json{% endcapture %}
 
 ### `paymentagelimitnotmet`
 
-Caused By:
-
-*   The payer does not meet the payment's age limit.
-
 {% capture response_header %}HTTP/1.1 403 Forbidden
 Content-Type: application/json{% endcapture %}
 
@@ -670,10 +658,6 @@ Content-Type: application/json{% endcapture %}
     %}
 
 ### `socialsecuritynumbermismatch`
-
-Caused By:
-
-*   The payer's social security number does not match with the one required by this payment.
 
 {% capture response_header %}HTTP/1.1 403 Forbidden
 Content-Type: application/json{% endcapture %}
@@ -695,10 +679,6 @@ Content-Type: application/json{% endcapture %}
 
 ### `swishalreadyinuse`
 
-Caused By:
-
-*   The payer's Swish is already in use.
-
 {% capture response_header %}HTTP/1.1 403 Forbidden
 Content-Type: application/json{% endcapture %}
 
@@ -719,12 +699,15 @@ Content-Type: application/json{% endcapture %}
 
 ### `swishdeclined`
 
-Caused By:
+Refer to the `detail` field in the problem response for a more specific error
+message. The error could be caused by:
 
-*   Original payment not found or original payment is more than than 13 months old.
-*   It appears that merchant's organization number has changed since sale was made.
+*   Original payment not found or original payment is more than 13 months old.
+*   It appears that merchant's organization number has changed since sale was
+    made.
 *   The MSISDN of the original payer seems to have changed owner.
-*   Transaction declined. Could be that the payer has exceeded their swish limit or have insufficient founds.
+*   Transaction declined. Could be that the payer has exceeded their swish limit
+    or have insufficient founds.
 *   Payment request not cancellable.
 
 {% capture response_header %}HTTP/1.1 403 Forbidden
@@ -747,10 +730,12 @@ Content-Type: application/json{% endcapture %}
 
 ### `swisherror`
 
-Caused By:
+Refer to the `detail` field in the problem response for a more specific error
+message. The error could be caused by:
 
-*   Bank system processing error.
-*   Swish timed out waiting for an answer from the banks after payment was started.
+*   A bank system processing error.
+*   Swish timed out waiting for an answer from the banks after payment was
+    started.
 
 {% capture response_header %}HTTP/1.1 502 Bad Gateway
 Content-Type: application/json{% endcapture %}
@@ -772,10 +757,6 @@ Content-Type: application/json{% endcapture %}
 
 ### `swishgatewaytimeout`
 
-Caused By:
-
-*   During a create a sale call to e-commerce, Swish responded with 504 (Gateway Timeout).
-
 {% capture response_header %}HTTP/1.1 504 Gateway Timeout
 Content-Type: application/json{% endcapture %}
 
@@ -795,10 +776,6 @@ Content-Type: application/json{% endcapture %}
     %}
 
 ### `swishtimeout`
-
-Caused By:
-
-*   Swish timed out before the payment was started.
 
 {% capture response_header %}HTTP/1.1 403 Forbidden
 Content-Type: application/json{% endcapture %}
@@ -839,10 +816,6 @@ Content-Type: application/json{% endcapture %}
     %}
 
 ### `usercancelled`
-
-Caused By:
-
-*   The payer cancelled the payment in the Swish app.
 
 {% capture response_header %}HTTP/1.1 403 Forbidden
 Content-Type: application/json{% endcapture %}

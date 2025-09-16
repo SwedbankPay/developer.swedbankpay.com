@@ -4,10 +4,11 @@
 
 When a payment order resource is created and during its lifetime, it will have a
 set of operations that can be performed on it. The state of the payment order
-resource, what the access token is authorized to do, the chosen payment
-method and its transactional states, etc. determine the available operations
-before the initial purchase. A list of possible operations and their explanation
-is given below.
+resource, what the access token is authorized to do, the chosen payment method
+and its transactional states, etc. determine the available operations before the
+initial purchase. A list of possible operations and their explanation is given
+below. Please note that these are the possible operations available in the
+payment response, not what you set in the payment request.
 
 {% if documentation_section contains "checkout-v3" %}
 

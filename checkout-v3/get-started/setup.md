@@ -14,13 +14,26 @@ By creating a test account, you will not by default have a commercial
 relationship with Swedbank Pay, it is solely a test account for you to use and
 test towards our solution. To enjoy integration support, a commercial agreement
 with Swedbank Pay is required. Please contact Swedbank Pay Sales at
-sales@swedbankpay.se (Sweden), salg@swedbankpay.no (Norway) or
-salg@swedbankpay.dk (Denmark)." %}
+[sales@swedbankpay.se](mailto:sales@swedbankpay.se) (Sweden),
+[salg@swedbankpay.no](mailto:salg@swedbankpay.no) (Norway) or
+[salg@swedbankpay.dk](mailto:salg@swedbankpay.dk) (Denmark)." %}
+
+<section class="panel panel-brand">
+ <header>
+ <h3 class="panel-title">Why have your own test account?</h3>
+ <p class="panel-sub-title"></p>
+ </header>
+ <div class="panel-body pb-0">
+ <ul>
+ <li>Get access to the merchant portal in our test environment.</li>
+ <li>Manage your account across different platforms.</li>
+ <li>Use the credentials in our <a target="_blank" href="https://www.postman.com/swedbankpay/swedbank-pay-online/collection/000bv9t/testsuite">API collection</a>.</li>
+ <li>Follow your test payments from creation to settlement and get the full merchant experience.</li>
+ </ul>
+ </div>
+</section>
 
 ## Step 1: Sign Up For A Test Account
-
-A test account gives you access to our unified dashboard for managing your
-account across different platforms. We call this dashboard the Merchant Portal.
 
 Your test account request should be sent to:
 [testaccount@swedbankpay.com](mailto:testaccount@swedbankpay.com) in order to
@@ -86,3 +99,5 @@ production and staging environment need separate tokens. " %}
                          prev_title="Back to Get Started"
                          next_href="/checkout-v3/get-started/payment-request"
                          next_title="Start Integrating" %}
+
+[testsuite]: https://www.postman.com/swedbankpay/swedbank-pay-online/collection/000bv9t/testsuite

@@ -12,35 +12,36 @@ Swedbank Pay Payment Application implementation of nexo Retailer allows the
 integrated application to initiate the relevant functions within Swedbank Pay
 Payment Application.
 
-There are three options for integrating the Swedbank Pay terminals to a sale
+There are different integration types and different options how to integrate, but all are using the same nexo messages and flow. The difference is how to communicate with the payment application in the terminal. All three works with the available PAX terminals A35, A920Pro and A30.
+
+## Communication Types
+
+*   **Http over Local Network** - The POS need to know the IP address and port the terminal is listening for, and the terminal may need to know the IP address and port of the POS.
+*   **Http cloud connection** - using OAuth2 with client credentials grant type. By far the easiest way when installing and connecting the terminal.
+*   **Broadcast intents** - on the device, the terminal, when a business app like a POS is placed side by side with our Payment application.
+
+## How To Integrate
+
+There are three ways for integrating the Swedbank Pay terminals to a sale
 system.
 
-*   [nexo Retailer][nexoretailer] - As implemented by Swedbank Pay.
-*   [.Net SDK][dotnetsdk] - abstract interface implementing the nexo Retailer.
-*   [Java SDK][javasdk] - abstract interface implementing the nexo Retailer.
+*   [nexo Retailer][nexoretailer] - Do the job implementing the Swedbank Pay nexo Retailer protocol by building and parsing the messages to handle the different scenarios.
+*   [.Net SDK][dotnetsdk] - Use the abstract interface that is implementing the nexo Retailer. Much less time consuming, but does not work for the On Device communication type.
+*   [Java SDK][javasdk] - Use the abstract interface implementing the nexo Retailer. Does not work for the On Device or cloud communication types.
 
-The Swedbank Pay SDK contains one implementation for using a PAX A30, A35 or
-A920 PRO terminal, but makes it possible to vary the style of use by
-configuration. There are two major styles that is decided by the
-SalesCapabilities string sent in as a LoginRequest:
+## Implementation Modes
+
+The nexo Retailer protocol may be implemented as any of two modes:
 
 *   Act as both server and client
 *   Act as client only
 
-The intended default style requires the consumer of the SwpTrmLib to act as both
-a server and a client. The server handles requests from the terminal, such as
+The intended default mode requires the POS to act as both a server and a client. The server handles requests from the terminal, such as
 display information, events, and possible input request from the terminal, such
 as a request to confirm that a receipt has been signed if needed. The second
-style is to act as a client only and then lose information from terminal such as
+mode is to act as a client only and then lose information from terminal such as
 events informing that a card has been inserted or removed or display information
-helping the operator to see what is going on.
-
-## Configure the terminal
-
-In order for the terminal to communicate with the ECR the IP address need to be
-set in the admin menu. To enter the admin menu, tap the three dots in the
-footer. Then enter the code. Set the ECR IP address and then press the save
-button.
+helping the operator to see what is going on. Which mode that will be used is decided by the LoginRequest from the POS to the terminal.
 
 [nexoretailer]: /pax-terminal/Nexo-Retailer/
 [dotnetsdk]: /pax-terminal/NET/

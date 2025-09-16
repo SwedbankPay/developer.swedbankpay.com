@@ -41,6 +41,11 @@ need. We get to them later on.
 
 #### Before You Start
 
+Both the payment request and other API calls are available and ready to use in
+our [collection of Online Payment APIs][testsuite]{:target="_blank"}. You can
+use the collection with your own test account or with the provided generic test
+merchant.
+
 Depending on what you plan to include in your offering, we recommend stopping
 by the pages specific to each payment method.
 
@@ -336,7 +341,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |
 | {% f created %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | {% f updated %}        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
-| {% f operation %}      | `string`     | `Purchase`                                                                                                                                                                                                                |
+| {% f operation %}      | `string`     | {% include fields/operation.md %}                                                                                                                                                                                                                          |
 | {% f status %}          | `string`     | Indicates the payment order's current status. `Initialized` is returned when the payment is created and still ongoing. The request example above has this status. `Paid` is returned when the payer has completed the payment successfully. See the [`Paid` response]({{ features_url }}/technical-reference/status-models#paid). `Failed` is returned when a payment has failed. You will find an error message in [the `Failed` response]({{ features_url }}/technical-reference/status-models#failed). `Cancelled` is returned when an authorized amount has been fully cancelled. See the [`Cancelled` response]({{ features_url }}/technical-reference/status-models#cancelled). It will contain fields from both the cancelled description and paid section. `Aborted` is returned when the merchant has aborted the payment, or if the payer cancelled the payment in the redirect integration (on the redirect page). See the [`Aborted` response]({{ features_url }}/technical-reference/status-models#aborted). |
 | {% f currency %}       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
 | {% f amount %}         | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                 |
@@ -405,3 +410,4 @@ Read more about possible additions to the request in our
 [apple-pay]: /checkout-v3/apple-pay-presentation
 [c2p]: /checkout-v3/click-to-pay-presentation
 [google-pay]: /checkout-v3/google-pay-presentation
+[testsuite]: https://www.postman.com/swedbankpay/swedbank-pay-online/collection/000bv9t/testsuite

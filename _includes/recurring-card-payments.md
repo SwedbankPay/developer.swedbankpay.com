@@ -8,6 +8,13 @@ subsequent payments are made through server-to-server requests. " %}
 
 ## Prerequisites
 
+Identify the recurring model and token type based on your needs. We support both
+dynamic and static prices and intervals. Use the `RecurrenceToken` flow for
+recurring payments with a constant price and interval, and the
+`UnscheduledToken` flow for variable services or goods. We **highly** recommend
+using the [unscheduled][unscheduled] option, as it gives you flexibility
+regarding changes in amount and interval.
+
 Prior to making any server-to-server requests, you need to supply the payment
 method details and a payment token to Swedbank Pay by initial purchase.
 
@@ -299,3 +306,4 @@ Content-Type: application/json{% endcapture %}
 [card-payment-cancel]: /old-implementations/payment-instruments-v1/card/after-payment#cancellations
 [card-payments-remove-payment-token]: {{ features_url }}/optional/delete-token
 [technical-reference-callback]: {{ features_url }}/core/callback
+[unscheduled]: /old-implementations/payment-instruments-v1/card/features/optional/unscheduled

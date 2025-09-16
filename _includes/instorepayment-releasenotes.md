@@ -1,4 +1,10 @@
 
+## 16 September 2025
+
+### Version 5.3.11
+
+*   Info about cloud connected PAX terminal
+
 ## 27 June 2025
 
 ### Version 5.3.8

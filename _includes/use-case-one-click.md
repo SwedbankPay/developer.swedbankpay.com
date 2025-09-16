@@ -27,7 +27,10 @@ to force a set of details to be used, or when you have built your own menu
 displaying payment methods.
 
 You can read more about the basic implementation of a payment order in our
-[Get Started][get-started] section.
+[Get Started][get-started] section. The API calls needed for this use case are
+available and ready to use in our
+[collection of Online Payment APIs][testsuite]{:target="_blank"}. You can use
+the collection with your own test account or with the generic test merchant.
 
 ## Payer Aware Menu
 
@@ -187,3 +190,4 @@ Both scenarios generate the same response:
 [oc1]: /assets/img/OC1.JPG
 [pam1]: /assets/img/PAM1.JPG
 [get-started]: /checkout-v3/get-started/#the-basic-implementation
+[testsuite]: https://www.postman.com/swedbankpay/swedbank-pay-online/folder/ds51yb3/one-click-payerawaremenu

@@ -12,7 +12,9 @@ menu_order: 6
 
 When implementing Online Payments, you can use the test data related to the
 different payment methods listed below. To see Online Payments in live action,
-please visit the [Playground][playground]{:target="_blank"}.
+please visit the [Playground][playground]{:target="_blank"}. If you want an even
+more technical introduction, you can also try our ready to use
+[collection of Online Payments APIs][testsuite]{:target="_blank"}
 
 To test a checked-in user in the Playground, please use the following test data:
 
@@ -261,3 +263,4 @@ the following values:
 
 [otp-challenge-form]: /assets/img/new-otp-challenge-form.png
 [playground]: https://playground.swedbankpay.com
+[testsuite]: https://www.postman.com/swedbankpay/swedbank-pay-online/collection/000bv9t/testsuite
