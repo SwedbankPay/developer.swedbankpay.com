@@ -1,5 +1,6 @@
 ---
 title: After Payment
+permalink: /:path/after-payment/
 redirect_from: /payments/vipps/after-payment
 menu_order: 1200
 ---
@@ -343,9 +344,9 @@ Content-Type: application/json{% endcapture %}
 {% include abort-reference.md %}
 
 {% include iterator.html
-        prev_href="capture"
+        prev_href="/old-implementations/payment-instruments-v1/vipps/capture"
         prev_title="Capture"
-        next_href="features"
+        next_href="/old-implementations/payment-instruments-v1/vipps/features"
         next_title="Features" %}
 
 [abort]: /old-implementations/payment-instruments-v1/vipps/after-payment#abort

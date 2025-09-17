@@ -1,5 +1,6 @@
 ---
 title: After Payment
+permalink: /:path/after-payment/
 redirect_from: /payments/mobile-pay/after-payment
 menu_order: 900
 ---
@@ -143,9 +144,9 @@ sequenceDiagram
 
 {% include abort-reference.md %}
 
-{% include iterator.html prev_href="seamless-view"
+{% include iterator.html prev_href="/old-implementations/payment-instruments-v1/mobile-pay/seamless-view"
                          prev_title="Seamless View"
-                         next_href="features"
+                         next_href="/old-implementations/payment-instruments-v1/mobile-pay/features/"
                          next_title="Features" %}
 
 [abort]: /old-implementations/payment-instruments-v1/mobile-pay/after-payment#abort

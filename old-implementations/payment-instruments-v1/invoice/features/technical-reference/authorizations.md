@@ -1,5 +1,6 @@
 ---
 title: Authorizations
+permalink: /:path/authorizations/
 description: |
   Receive asynchronous, server-to-server updates from Swedbank Pay when
   transactions are performed on a payment.

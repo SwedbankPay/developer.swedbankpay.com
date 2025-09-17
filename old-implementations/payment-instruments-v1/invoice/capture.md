@@ -1,5 +1,6 @@
 ---
 title: Capture
+permalink: /:path/capture/
 redirect_from: /payments/invoice/capture
 menu_order: 800
 ---

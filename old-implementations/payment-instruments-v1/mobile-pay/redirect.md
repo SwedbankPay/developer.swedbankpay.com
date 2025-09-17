@@ -1,6 +1,7 @@
 ---
 title: Redirect
 redirect_from: /payments/mobile-pay/redirect
+permalink: /:path/redirect/
 description: |
   **MobilePay Online** is a two-phase payment method which can be
   implemented by the supported redirect scenario.
@@ -394,9 +395,9 @@ sequenceDiagram
   deactivate Merchant
 ```
 
-{% include iterator.html prev_href="index"
+{% include iterator.html prev_href="/index"
                          prev_title="Back: Introduction"
-                         next_href="seamless-view"
+                         next_href="/old-implementations/payment-instruments-v1/mobile-pay/seamless-view"
                          next_title="Seamless View" %}
 
 [mobilepay-screenshot-1]: /assets/img/payments/mobilepay-redirect-en.png

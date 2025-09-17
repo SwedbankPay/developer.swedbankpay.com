@@ -1,5 +1,6 @@
 ---
 title: After Payment
+permalink: /:path/after-payment/
 redirect_from: /payments/card/after-payment
 description: |
   Apart from capturing the authorized funds, there are still a couple of options

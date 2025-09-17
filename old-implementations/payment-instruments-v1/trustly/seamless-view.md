@@ -1,5 +1,6 @@
 ---
 title: Seamless View
+permalink: /:path/seamless-view/
 menu_order: 900
 ---
 
@@ -275,8 +276,8 @@ sequenceDiagram
     Merchant-->>-Consumer: Display result
 ```
 
-{% include iterator.html prev_href="redirect" prev_title="Redirect"
-next_href="after-payment" next_title="After Payment" %}
+{% include iterator.html prev_href="/old-implementations/payment-instruments-v1/trustly/redirect" prev_title="Redirect"
+next_href="/old-implementations/payment-instruments-v1/trustly/after-payment" next_title="After Payment" %}
 
 [payment-resource]: /old-implementations/payment-instruments-v1/trustly/features/technical-reference/payment-resource
 [trustly-payment-embedded-view]: /assets/screenshots/trustly/consumer-information-input.png

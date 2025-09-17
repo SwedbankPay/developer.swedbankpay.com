@@ -1,5 +1,6 @@
 ---
 title: Redirect
+permalink: /:path/redirect/
 redirect_from: /payments/trustly/redirect
 menu_order: 800
 ---
@@ -232,7 +233,7 @@ to see what you can do when a payment is completed.
 Here you will also find info on `Abort` and `Reversal`.
 
 {% include iterator.html prev_href="./" prev_title="Introduction"
-next_href="seamless-view" next_title="Seamless View" %}
+next_href="/old-implementations/payment-instruments-v1/trustly/seamless-view" next_title="Seamless View" %}
 
 [deposit]: https://trustly.com/en/developer/api#/deposit
 [after-payment]: /old-implementations/payment-instruments-v1/trustly/after-payment

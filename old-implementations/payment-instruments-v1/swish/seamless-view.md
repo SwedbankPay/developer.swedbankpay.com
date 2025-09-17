@@ -1,6 +1,7 @@
 ---
 title: Seamless View
 redirect_from: /payments/swish/seamless-view
+permalink: /:path/seamless-view/
 description: |
   The **Seamless View** scenario gives your
   customers the opportunity to pay with Swish directly
@@ -319,8 +320,8 @@ sequenceDiagram
     Merchant->>-Browser: Payment Status
 ```
 
-{% include iterator.html prev_href="redirect" prev_title="Redirect"
-next_href="after-payment" next_title="After Payment" %}
+{% include iterator.html prev_href="/old-implementations/payment-instruments-v1/swish/redirect" prev_title="Redirect"
+next_href="/old-implementations/payment-instruments-v1/swish/after-payment" next_title="After Payment" %}
 
 [callback]: /old-implementations/payment-instruments-v1/swish/features/core/callback
 [purchase]: /old-implementations/payment-instruments-v1/swish/features/technical-reference/create-payment

@@ -1,6 +1,7 @@
 ---
 section: Old Implementations
 sidebar_icon: folder
+permalink: /:path/
 title: Introduction
 description: |
   A collection of our earlier implementation options.

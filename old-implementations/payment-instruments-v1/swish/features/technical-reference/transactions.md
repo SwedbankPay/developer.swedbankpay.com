@@ -1,8 +1,9 @@
 ---
 title: Transactions
+permalink: /:path/transactions/
 description: |
   The transactions making up a specific payment.
-menu_order: 
+menu_order:
 ---
 
 {% include transactions.md api_resource="swish" documentation_section="swish" %}

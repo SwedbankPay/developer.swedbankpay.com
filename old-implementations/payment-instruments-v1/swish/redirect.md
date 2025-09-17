@@ -1,6 +1,7 @@
 ---
 title: Redirect
 redirect_from: /payments/swish/redirect
+permalink: /:path/redirect/
 description: |
   Swish is a one-phase payment method supported by the
   major Swedish banks. **Swish Payments Redirect** is where Swedbank
@@ -254,8 +255,8 @@ sequenceDiagram
     Merchant-->>-Browser: Payment Status
 ```
 
-{% include iterator.html prev_href="direct" prev_title="Direct"
-next_href="seamless-view" next_title="Seamless View" %}
+{% include iterator.html prev_href="/old-implementations/payment-instruments-v1/swish/direct" prev_title="Direct"
+next_href="/old-implementations/payment-instruments-v1/swish/seamless-view" next_title="Seamless View" %}
 
 [callback-url]: /old-implementations/payment-instruments-v1/swish/features/core/callback
 [swish-redirect-image]: /assets/img/payments/swish-redirect-number-input-en.png

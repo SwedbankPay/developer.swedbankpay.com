@@ -1,5 +1,6 @@
 ---
 title: Redirect
+permalink: /:path/redirect/
 redirect_from: /payments/invoice/redirect
 menu_order: 500
 ---

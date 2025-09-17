@@ -1,5 +1,6 @@
 ---
 title: Recur
+permalink: /:path/payment-link/
 description: |
   Setting up subscriptions and recurring payments.
 menu_order: 1600
