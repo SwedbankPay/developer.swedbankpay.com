@@ -1,6 +1,7 @@
 ---
 title: Redirect
 redirect_from: /payments/swish/redirect
+permalink: /:path/redirect/
 description: |
   Swish is a one-phase payment method supported by the
   major Swedish banks. **Swish Payments Redirect** is where Swedbank

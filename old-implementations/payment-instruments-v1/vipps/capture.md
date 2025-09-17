@@ -1,6 +1,7 @@
 ---
 title: Capture
 redirect_from: /payments/vipps/capture
+permalink: /:path/capture/
 menu_order: 1100
 ---
 

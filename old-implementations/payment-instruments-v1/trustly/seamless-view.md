@@ -1,5 +1,6 @@
 ---
 title: Seamless View
+permalink: /:path/seamless-view/
 menu_order: 900
 ---
 

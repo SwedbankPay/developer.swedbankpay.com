@@ -1,5 +1,6 @@
 ---
 title: Direct
+permalink: /:path/direct/
 redirect_from: /payments/invoice/direct
 description: |
   **Direct** is a payment service where Swedbank

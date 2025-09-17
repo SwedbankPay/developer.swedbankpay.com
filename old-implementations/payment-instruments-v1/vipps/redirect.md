@@ -1,6 +1,7 @@
 ---
 title: Redirect
 redirect_from: /payments/vipps/redirect
+permalink: /:path/redirect/
 description: |
   **Vipps** is a two-phase
   payment method supported by the major Norwegian banks. In the redirect

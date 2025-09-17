@@ -1,6 +1,7 @@
 ---
 title: Seamless View
 redirect_from: /payments/mobile-pay/seamless-view
+permalink: /:path/seamless-view/
 description: |
   **Seamless View** scenario gives your payers the opportunity to pay with
   MobilePay directly from within your webshop. In the Seamless view scenario,

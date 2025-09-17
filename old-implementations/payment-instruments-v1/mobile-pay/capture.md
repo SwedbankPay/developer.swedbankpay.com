@@ -1,6 +1,7 @@
 ---
 title: Capture
 redirect_from: /payments/mobilepay/capture
+permalink: /:path/capture/
 description: |
   When the authorization is completed, it is time to capture the funds. How you
   go about doing that is explained in this section.

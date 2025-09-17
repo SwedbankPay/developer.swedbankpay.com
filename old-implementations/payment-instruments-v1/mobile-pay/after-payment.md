@@ -1,5 +1,6 @@
 ---
 title: After Payment
+permalink: /:path/after-payment/
 redirect_from: /payments/mobile-pay/after-payment
 menu_order: 900
 ---

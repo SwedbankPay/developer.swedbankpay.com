@@ -1,5 +1,6 @@
 ---
 title: Mobile
+permalink: /:path/mobile-card-payments/
 redirect_from: /payments/card/mobile-card-payments
 menu_order: 800
 ---

@@ -1,5 +1,6 @@
 ---
 title: Seamless View
+permalink: /:path/seamless-view/
 redirect_from: /payments/invoice/seamless-view
 description: |
   The Seamless View scenario represents the opportunity to implement Invoice
