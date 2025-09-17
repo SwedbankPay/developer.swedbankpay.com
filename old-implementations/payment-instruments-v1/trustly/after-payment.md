@@ -104,7 +104,7 @@ sequenceDiagram
     deactivate SwedbankPay
 ```
 
-{% include iterator.html prev_href="seamless-view" prev_title="Seamless View"
-next_href="features" next_title="Features" %}
+{% include iterator.html prev_href="/old-implementations/payment-instruments-v1/trustly/seamless-view" prev_title="Seamless View"
+next_href="/old-implementations/payment-instruments-v1/trustly/features/" next_title="Features" %}
 
 [callback-request]: /old-implementations/payment-instruments-v1/trustly/features/core/callback

@@ -140,8 +140,8 @@ sequenceDiagram
         end
 ```
 
-{% include iterator.html prev_href="redirect" prev_title="Redirect"
-next_href="after-payment" next_title="After Payment" %}
+{% include iterator.html prev_href="/old-implementations/payment-instruments-v1/card/redirect" prev_title="Redirect"
+next_href="/old-implementations/payment-instruments-v1/card/after-payment" next_title="After Payment" %}
 
 [create-payment]: /old-implementations/payment-instruments-v1/card/features/technical-reference/create-payment
 [purchase]: /old-implementations/payment-instruments-v1/card/features/core/purchase

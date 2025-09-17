@@ -402,7 +402,7 @@ purchased products) have to make a [Capture][capture] or
 
 {% include iterator.html prev_href="./"
                          prev_title="Introduction"
-                         next_href="seamless-view"
+                         next_href="/old-implementations/payment-instruments-v1/vipps/seamless-view"
                          next_title="Seamless view" %}
 
 [cancel]: /old-implementations/payment-instruments-v1/vipps/features/core/cancel

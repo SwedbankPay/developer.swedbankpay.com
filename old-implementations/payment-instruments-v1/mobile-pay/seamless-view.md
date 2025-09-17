@@ -299,7 +299,7 @@ sequenceDiagram
     successful.
 
 {% include iterator.html
-        prev_href="redirect"
+        prev_href="/old-implementations/payment-instruments-v1/mobile-pay/redirect"
         prev_title="Redirect"
-        next_href="after-payment"
+        next_href="/old-implementations/payment-instruments-v1/mobile-pay/after-payment"
         next_title="After Payment" %}

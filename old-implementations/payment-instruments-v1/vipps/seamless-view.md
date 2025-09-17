@@ -318,9 +318,9 @@ sequenceDiagram
    purchase in the Vipps app.
 
 {% include iterator.html
-        prev_href="redirect"
+        prev_href="/old-implementations/payment-instruments-v1/vipps/redirect"
         prev_title="Redirect"
-        next_href="capture"
+        next_href="/old-implementations/payment-instruments-v1/vipps/capture"
         next_title="Capture" %}
 
 [vipps-purchase-flow]: /assets/img/payments/vipps-purchase-flow.png

@@ -449,6 +449,6 @@ sequenceDiagram
 ```
 
 {% include iterator.html prev_href="./" prev_title="Introduction"
-next_href="redirect" next_title="Redirect" %}
+next_href="/old-implementations/payment-instruments-v1/swish/redirect" next_title="Redirect" %}
 
 [callback-url]: /old-implementations/payment-instruments-v1/swish/features/core/callback

@@ -239,9 +239,9 @@ payments before they are captured or reversed.
 Swish does not support `recurring` payments.
 
 {% include iterator.html
-    prev_href="seamless-view"
+    prev_href="/old-implementations/payment-instruments-v1/swish/seamless-view"
     prev_title="Seamless view"
-    next_href="features"
+    next_href="/old-implementations/payment-instruments-v1/swish/features"
     next_title="Features" %}
 
 [create-payment]: /old-implementations/payment-instruments-v1/swish/features/technical-reference/create-payment

@@ -15,7 +15,7 @@ operations described in After Payment.
 
 {% include authorizations-timeout.md %}
 
-{% include iterator.html prev_href="seamless-view"
+{% include iterator.html prev_href="/old-implementations/payment-instruments-v1/vipps/seamless-view"
                          prev_title="Seamless View"
-                         next_href="after-payment"
+                         next_href="/old-implementations/payment-instruments-v1/vipps/after-payment"
                          next_title="After Payment" %}
