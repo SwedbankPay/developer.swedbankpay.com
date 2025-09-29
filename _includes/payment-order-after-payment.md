@@ -1,4 +1,5 @@
 {% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture techref_url %}{% include utils/documentation-section-url.md %}{% endcapture %}
 
 ## Operations
 
@@ -96,4 +97,4 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 {% include alert.html type="informative" icon="info" body=" Note that all of the
 operations `Cancel`, `Capture` and `Reversal` must be implemented." %}
 
-[operations]: {{ features_url }}/technical-reference/operations
+[operations]: {{ techref_url }}/technical-reference/operations

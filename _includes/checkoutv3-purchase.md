@@ -1,6 +1,7 @@
 {% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 {% assign features_url = documentation_section | prepend: '/' | append: '/features' %}
+{% capture techref_url %}{% include utils/documentation-section-url.md %}{% endcapture %}
 {% assign implementation = documentation_section | split: "/"  | last | capitalize | remove: "-" %}
 
 ## Payment Order Request
@@ -331,10 +332,10 @@ api-supported-versions: 3.x/2.0
 | {% f language %}       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
 | {% f urls %}           | `string`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                                                                                                              |
 | {% f payeeInfo %}      | `object`     | {% include fields/payee-info.md %}                                                                                                          |
-| {% f payers %}         | `string`     | The URL to the [`payer` resource]({{ features_url }}/technical-reference/resource-sub-models#payer) where information about the payer can be retrieved.                                                                                                                 |
+| {% f payers %}         | `string`     | The URL to the [`payer` resource]({{ techref_url }}/technical-reference/resource-sub-models#payer) where information about the payer can be retrieved.                                                                                                                 |
 | {% f orderItems %}     | `string`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            |
 | {% f payments %}       | `string`     | The URL to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
 | {% f currentPayment %} | `string`     | The URL to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.                                                                                                |
-| {% f operations %}     | `array`      | {% include fields/operations.md %} [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+| {% f operations %}     | `array`      | {% include fields/operations.md %} [See Operations for details]({{ techref_url }}/technical-reference/operations).                                                                                              |
 {% endcapture %}
 {% include accordion-table.html content=table %}

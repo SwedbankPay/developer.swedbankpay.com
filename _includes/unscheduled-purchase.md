@@ -1,4 +1,5 @@
 {% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture techref_url %}{% include utils/documentation-section-url.md %}{% endcapture %}
 {% assign seamless_view = include.seamless_view | default: false %}
 {% assign full_reference = include.full_reference | default: false %}
 
@@ -531,6 +532,6 @@ See the table in the initial purchase response for descriptions.
 {% include capture.md %}
 
 [delete-token]: {{ features_url }}/optional/delete-token
-[paid-resource-model]: {{ features_url }}/technical-reference/resource-sub-models#paid
+[paid-resource-model]: {{ techref_url }}/technical-reference/resource-sub-models#paid
 [one-click-payments]: {{ features_url }}/optional/one-click-payments
 [verify]: {{ features_url }}/optional/verify
