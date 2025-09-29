@@ -324,5 +324,5 @@ sequenceDiagram
 next_href="/old-implementations/payment-instruments-v1/swish/after-payment" next_title="After Payment" %}
 
 [callback]: /old-implementations/payment-instruments-v1/swish/features/core/callback
-[purchase]: /old-implementations/payment-instruments-v1/swish/features/technical-reference/create-payment
+[purchase]: /old-implementations/payment-instruments-v1/swish/technical-reference/create-payment
 [seamless-view-img]: /assets/img/checkout/swish-seamless-view.png

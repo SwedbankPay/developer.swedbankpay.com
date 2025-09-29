@@ -167,6 +167,6 @@ card payment:
 next_href="/old-implementations/payment-instruments-v1/card/seamless-view" next_title="Seamless View" %}
 
 [card-payment]: /assets/img/payments/card-payment.png
-[payment-transaction-states]: /old-implementations/payment-instruments-v1/card/features/technical-reference/payment-transaction-states
+[payment-transaction-states]: /old-implementations/payment-instruments-v1/card/technical-reference/payment-transaction-states
 [purchase]: /old-implementations/payment-instruments-v1/card/features/core/purchase
 [swedish-card-payment]: /assets/img/payments/swedish-card-payment.png

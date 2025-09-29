@@ -567,6 +567,6 @@ Content-Type: application/json{% endcapture %}
 
 [card]: /old-implementations/payment-instruments-v1/card
 [one-click-image]: /assets/img/checkout/new-one-click.png
-[create-card-payment]: /old-implementations/payment-instruments-v1/card/features/technical-reference/create-payment
+[create-card-payment]: /old-implementations/payment-instruments-v1/card/technical-reference/create-payment
 [paid-resource]: /checkout-v3/technical-reference/status-models#paid
 [verify]: /checkout-v3/features/optional/verify

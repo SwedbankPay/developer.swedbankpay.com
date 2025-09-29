@@ -1232,11 +1232,11 @@ more convenient for both the integration and the payer.
 [callback]: /checkout-v3/features/payment-operations/callback
 [callback-3-1]: /checkout-v3/features/payment-operations/callback#callback-example-v31
 [card-delete-token]: /old-implementations/payment-instruments-v1/card/features/optional/delete-token
-[card-error-codes]: /old-implementations/payment-instruments-v1/card/features/technical-reference/problems
-[card-payment-url]: /old-implementations/payment-instruments-v1/card/features/technical-reference/payment-url
+[card-error-codes]: /old-implementations/payment-instruments-v1/card/technical-reference/problems
+[card-payment-url]: /old-implementations/payment-instruments-v1/card/technical-reference/payment-url
 [card-purchase]: /old-implementations/payment-instruments-v1/card/redirect#step-1-create-a-purchase
 [card-unscheduled-purchase]: /old-implementations/payment-instruments-v1/card/features/optional/unscheduled
-[card-transaction-states]: /old-implementations/payment-instruments-v1/card/features/technical-reference/payment-transaction-states
+[card-transaction-states]: /old-implementations/payment-instruments-v1/card/technical-reference/payment-transaction-states
 [card]: /old-implementations/payment-instruments-v1/card
 [card-3ds-info]: /old-implementations/payment-instruments-v1/card#sequence-diagram
 [card-3ds2]: /old-implementations/payment-instruments-v1/card/features/core/frictionless-payments
@@ -1358,7 +1358,7 @@ more convenient for both the integration and the payer.
 [status-model-paid]: /checkout-v3/technical-reference/status-models#paid
 [status-model-paid-v2]: /old-implementations/checkout-v2/technical-reference/status-models#paid
 [storing-uri]: /checkout-v3/get-started/fundamental-principles#storing-urls
-[swish-api-errors]: /old-implementations/payment-instruments-v1/swish/features/technical-reference/problems
+[swish-api-errors]: /old-implementations/payment-instruments-v1/swish/technical-reference/problems
 [swish-direct-mcom]: /old-implementations/payment-instruments-v1/swish/direct#step-2b-create-m-commerce-sale-transaction
 [swish-direct]: /old-implementations/payment-instruments-v1/swish/direct
 [swish-features]: /old-implementations/payment-instruments-v1/swish/features
@@ -1366,7 +1366,7 @@ more convenient for both the integration and the payer.
 [swish-seamless-view]: /old-implementations/payment-instruments-v1/swish/seamless-view
 [seamless-view-events]: /checkout-v3/technical-reference/seamless-view-events
 [seamless-view-events-onaborted]: /checkout-v3/technical-reference/seamless-view-events#onaborted
-[seamless-view-events-card]: /old-implementations/payment-instruments-v1/card/features/technical-reference/seamless-view-events
+[seamless-view-events-card]: /old-implementations/payment-instruments-v1/card/technical-reference/seamless-view-events
 [stat-resp]: /checkout-v3/technical-reference/status-models/
 [swish]: /old-implementations/payment-instruments-v1/swish
 [swish-abort]: /old-implementations/payment-instruments-v1/swish/after-payment#abort
@@ -1387,8 +1387,8 @@ more convenient for both the integration and the payer.
 [unscheduled-mit]: /checkout-v3/features/optional/unscheduled
 [v3-setup]: /checkout-v3/get-started/setup
 [validate-status]: /checkout-v3/get-started/validate-status
-[vipps-payment-resource]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-resource
-[vipps-payment-url]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-url
+[vipps-payment-resource]: /old-implementations/payment-instruments-v1/vipps/technical-reference/payment-resource
+[vipps-payment-url]: /old-implementations/payment-instruments-v1/vipps/technical-reference/payment-url
 [vipps]: /old-implementations/payment-instruments-v1/vipps
 [wcag]: https://www.swedbankpay.com/information/wcag
 [callback-ip]: /checkout-v3/features/payment-operations/callback/#callback-ip-addresses
