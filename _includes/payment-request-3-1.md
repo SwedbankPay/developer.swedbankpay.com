@@ -1,3 +1,4 @@
+{% capture techref_url %}{% include utils/documentation-section-url.md href='/technical-reference' %}{% endcapture %}
 
 **Recommended version*
 

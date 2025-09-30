@@ -1,3 +1,4 @@
+{% capture techref_url %}{% include utils/documentation-section-url.md href='/technical-reference' %}{% endcapture %}
 
 {% include alert.html type="informative" icon="info" body="If you hesitate which version to use, we recommend the version marked with *." %}
 
