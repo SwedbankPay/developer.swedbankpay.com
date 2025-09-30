@@ -1,4 +1,4 @@
-{% capture techref_url %}{% include utils/documentation-section-url.md href='/features/technical-reference' %}{% endcapture %}
+{% capture techref_url %}{% include utils/documentation-section-url.md href='/technical-reference' %}{% endcapture %}
 {% assign transactions_url = '/transactions' | prepend: techref_url %}
 {% assign operations_url = '/operations' | prepend: techref_url %}
 {% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
