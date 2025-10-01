@@ -97,4 +97,4 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 {% include alert.html type="informative" icon="info" body=" Note that all of the
 operations `Cancel`, `Capture` and `Reversal` must be implemented." %}
 
-[operations]: {{ techref_url }}/operations
+[operations]: /old-implementations/payment-menu-v2/technical-reference/operations
