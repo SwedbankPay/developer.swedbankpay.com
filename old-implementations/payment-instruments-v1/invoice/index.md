@@ -93,8 +93,8 @@ sequenceDiagram
 
 {% include iterator.html next_href="/old-implementations/payment-instruments-v1/invoice/redirect" next_title="Redirect" %}
 
-[financing-consumer]: /old-implementations/payment-instruments-v1/invoice/features/technical-reference/financing-consumer
+[financing-consumer]: /old-implementations/payment-instruments-v1/invoice/technical-reference/financing-consumer
 [fincon-invoice-redirect]: /assets/img/payments/fincon-invoice-redirect-first-en.png
-[purchase]: /old-implementations/payment-instruments-v1/invoice/features/technical-reference/create-payment
+[purchase]: /old-implementations/payment-instruments-v1/invoice/technical-reference/create-payment
 [setup-mail-norway]: mailto:ehandelsetup@swedbankpay.no
 [setup-mail-sweden]: mailto:ehandelsetup@swedbankpay.se

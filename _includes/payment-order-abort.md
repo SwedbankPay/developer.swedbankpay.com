@@ -1,6 +1,7 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
 {% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture techref_url %}{% include utils/documentation-section-url.md %}{% endcapture %}
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 
 ## Abort
@@ -187,7 +188,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 | {% f financialTransactions %}        | `id`     | {% include fields/financial-transactions.md %}                                                                                                                            |
 | {% f failedAttempts %}               | `id`     | {% include fields/failed-attempts.md %}                                                                                                                             |
 | {% f metadata %}                     | `id`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
-| {% f operations %}                   | `array`      | {% include fields/operations.md %} [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+| {% f operations %}                   | `array`      | {% include fields/operations.md %} [See Operations for details]({{ techref_url }}/technical-reference/operations).                                                                                              |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
@@ -475,7 +476,7 @@ api-supported-versions: 3.x{% endcapture %}
 | {% f financialTransactions %}        | `id`     | {% include fields/financial-transactions.md %}                                                                                                                            |
 | {% f failedAttempts %}               | `id`     | {% include fields/failed-attempts.md %}                                                                                                                             |
 | {% f metadata %}                     | `id`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
-| {% f operations %}                   | `array`      | {% include fields/operations.md %} [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+| {% f operations %}                   | `array`      | {% include fields/operations.md %} [See Operations for details]({{ techref_url }}/technical-reference/operations).                                                                                              |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 

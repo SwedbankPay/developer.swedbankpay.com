@@ -1,6 +1,6 @@
 {%- capture url -%}
     {%- include utils/documentation-section-url.md
-        href='/features/technical-reference/resource-sub-models#history' -%}
+        href='/technical-reference/resource-sub-models#history' -%}
 {%- endcapture -%}
 {%- capture text -%}
 The URL to the {% clink `history` resource %}{{ url }}{% endclink %} where

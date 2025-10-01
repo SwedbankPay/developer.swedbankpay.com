@@ -1,6 +1,6 @@
 {%- capture url -%}
     {%- include utils/documentation-section-url.md
-        href='/features/technical-reference/create-payment' -%}
+        href='/technical-reference/create-payment' -%}
 {%- endcapture -%}
 {%- assign resource=include.resource | default: 'payment order' -%}
 {%- capture text -%}

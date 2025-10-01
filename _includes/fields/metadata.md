@@ -1,9 +1,9 @@
 {%- capture documentation_section -%}{%- include utils/documentation-section.md -%}{%- endcapture -%}
 {%- capture metadata_url -%}
    {%- if documentation_section contains "checkout" or documentation_section contains "payment-menu" -%}
-        /{{documentation_section}}/features/technical-reference/metadata
+        /{{documentation_section}}/technical-reference/metadata
     {%- else -%}
-        /old-implementations/payment-instruments-v1/{{documentation_section}}/features/technical-reference/metadata
+        /old-implementations/payment-instruments-v1/{{documentation_section}}/technical-reference/metadata
     {%- endif -%}
 {%- endcapture -%}
 {%- capture metadata -%}

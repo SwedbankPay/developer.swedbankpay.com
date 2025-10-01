@@ -1,5 +1,5 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture technical_reference_url %}{% include utils/documentation-section-url.md href='/features/technical-reference' %}{% endcapture %}
+{% capture technical_reference_url %}{% include utils/documentation-section-url.md href='/technical-reference' %}{% endcapture %}
 {% assign when = include.when | default: "selecting the payment instrument" %}
 {% assign full_reference = include.full_reference | default: false %}
 

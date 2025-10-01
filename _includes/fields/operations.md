@@ -1,7 +1,7 @@
 {%- assign operative_resource=include.resource | default: 'payment order' -%}
 {%- capture url -%}
     {%- include utils/documentation-section-url.md
-        href='/features/technical-reference/operations' -%}
+        href='/technical-reference/operations' -%}
 {%- endcapture -%}
 {%- capture text -%}
 The array of {% clink operations %}{{ url }}{% endclink %} that are possible to

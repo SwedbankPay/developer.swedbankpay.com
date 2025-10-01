@@ -1,5 +1,6 @@
 {% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
 {% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture techref_url %}{% include utils/documentation-section-url.md %}{% endcapture %}
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 {% assign implementation = documentation_section | split: "/"  | last | capitalize | remove: "-" %}
 
@@ -70,7 +71,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     %}
 
 Request fields not covered in the common Online Payments [`Initialized`]({{
-features_url }}/technical-reference/status-models#initialized) redirect or
+techref_url }}/technical-reference/status-models#initialized) redirect or
 seamless view table:
 
 {:.table .table-striped}

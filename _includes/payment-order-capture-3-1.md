@@ -1,5 +1,6 @@
 {% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
 {% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture techref_url %}{% include utils/documentation-section-url.md %}{% endcapture %}
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 
 ## Capture v3.1
@@ -205,7 +206,7 @@ api-supported-versions: 3.1{% endcapture %}
 | {% f orderItems %}     | `id`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            |
 | {% f urls %}           | `id`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                                                                                                              |
 | {% f payeeInfo %}      | `id`     | The URL to the `payeeInfo` resource where information related to the payee can be retrieved.                                                                                                          |
-| {% f payer %}         | `id`     | The URL to the [`payer` resource]({{ features_url }}/technical-reference/resource-sub-models#payer) where information about the payer can be retrieved.                                                                                                                 |
+| {% f payer %}         | `id`     | The URL to the [`payer` resource]({{ techref_url }}/technical-reference/resource-sub-models#payer) where information about the payer can be retrieved.                                                                                                                 |
 | {% f history %}     | `id`     | The URL to the `history` resource where information about the payment's history can be retrieved.                                                                                                                            |
 | {% f failed %}     | `id`     | The URL to the `failed` resource where information about the failed transactions can be retrieved.                                                                                                                            |
 | {% f aborted %}     | `id`     | The URL to the `aborted` resource where information about the aborted transactions can be retrieved.                                                                                                                            |
@@ -215,7 +216,7 @@ api-supported-versions: 3.1{% endcapture %}
 | {% f failedAttempts %}     | `id`     | The URL to the `failedAttempts` resource where information about the failed attempts can be retrieved.                                                                                                                            |
 | {% f postPurchaseFailedAttempts %}     | `id`     | The URL to the `postPurchaseFailedAttempts` resource where information about the failed capture, cancel or reversal attempts can be retrieved.                                                                                                                            |
 | {% f metadata %}     | `id`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
-| {% f operations %}     | `array`      | {% include fields/operations.md %} [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+| {% f operations %}     | `array`      | {% include fields/operations.md %} [See Operations for details]({{ techref_url }}/technical-reference/operations).                                                                                              |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 

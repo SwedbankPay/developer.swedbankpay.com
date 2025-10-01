@@ -342,7 +342,7 @@ finalizing the payment in the [After Payment section][after-payment].
 [after-payment]: /old-implementations/checkout-v2/after-payment
 [guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu.png
 [swedish-login-payment-menu-image]: /assets/img/checkout/swedish-logged-in-payment-menu.png
-[operations]: /old-implementations/checkout-v2/features/technical-reference/operations
+[operations]: /old-implementations/checkout-v2/technical-reference/operations
 [technical-reference-onconsumer-identified]: /old-implementations/checkout-v2/checkin#step-2-display-swedbank-pay-checkin-module
-[urls]: /old-implementations/checkout-v2/features/technical-reference/urls#urls-resource
+[urls]: /old-implementations/checkout-v2/technical-reference/urls#urls-resource
 [pci-url]: /assets/documents/guidance-for-pci-dss-points.pdf

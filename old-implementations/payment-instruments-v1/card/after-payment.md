@@ -334,4 +334,4 @@ next_href="/old-implementations/payment-instruments-v1/card/features" next_title
 [abort]: /old-implementations/payment-instruments-v1/card/after-payment#abort
 [callback]: /old-implementations/payment-instruments-v1/card/features/core/callback
 [reversal]: /old-implementations/payment-instruments-v1/card/features/core/reversal
-[transaction-resource]: /old-implementations/payment-instruments-v1/card/features/technical-reference/transactions
+[transaction-resource]: /old-implementations/payment-instruments-v1/card/technical-reference/transactions

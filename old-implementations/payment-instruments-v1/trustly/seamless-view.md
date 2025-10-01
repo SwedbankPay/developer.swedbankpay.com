@@ -279,5 +279,5 @@ sequenceDiagram
 {% include iterator.html prev_href="/old-implementations/payment-instruments-v1/trustly/redirect" prev_title="Redirect"
 next_href="/old-implementations/payment-instruments-v1/trustly/after-payment" next_title="After Payment" %}
 
-[payment-resource]: /old-implementations/payment-instruments-v1/trustly/features/technical-reference/payment-resource
+[payment-resource]: /old-implementations/payment-instruments-v1/trustly/technical-reference/payment-resource
 [trustly-payment-embedded-view]: /assets/screenshots/trustly/consumer-information-input.png

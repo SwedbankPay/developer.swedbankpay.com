@@ -10,7 +10,7 @@ description: |
 menu_order: 700
 ---
 
-{% assign financing_consumer_url="/old-implementations/payment-instruments-v1/invoice/features/technical-reference/financing-consumer" %}
+{% assign financing_consumer_url="/old-implementations/payment-instruments-v1/invoice/technical-reference/financing-consumer" %}
 {% assign cancel_url="/old-implementations/payment-instruments-v1/invoice/after-payment#cancellations" %}
 {% assign capture_url="/old-implementations/payment-instruments-v1/invoice/capture" %}
 

@@ -47,5 +47,5 @@ Swedish (`sv-se`), and Finish (`fi-fi`).
 {% include iterator.html next_href="redirect" next_title="Redirect" %}
 
 [after-payment]: /old-implementations/payment-instruments-v1/trustly/after-payment
-[payment-resource]: /old-implementations/payment-instruments-v1/swish/features/technical-reference/payment-resource
+[payment-resource]: /old-implementations/payment-instruments-v1/swish/technical-reference/payment-resource
 [trustly-guidelines]: https://trustly.com/en/developer/documents

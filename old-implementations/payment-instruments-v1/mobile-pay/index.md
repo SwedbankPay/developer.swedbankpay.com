@@ -83,6 +83,6 @@ shipping to Denmark, for instance.
 [mobilepay-number-input]: /assets/img/payments/mobilepay-redirect-en.png
 [mobilepay-cancel]: /old-implementations/payment-instruments-v1/mobile-pay/after-payment#cancellations
 [mobilepay-capture]: /old-implementations/payment-instruments-v1/mobile-pay/features/core/capture
-[payment-resource]: /old-implementations/payment-instruments-v1/mobile-pay/features/technical-reference/payment-resource
-[features]: /old-implementations/payment-instruments-v1/mobile-pay/features/technical-reference/operations
+[payment-resource]: /old-implementations/payment-instruments-v1/mobile-pay/technical-reference/payment-resource
+[features]: /old-implementations/payment-instruments-v1/mobile-pay/technical-reference/operations
 [swedbankpay-landing-page]: /assets/img/payments/sbp-mobilepaylandingpage-en.png

@@ -283,7 +283,7 @@ PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
             val containerViewId = R.id.sdk_3d_secure_fragment // Specify a container ID for the fragment
             supportFragmentManager.beginTransaction()
                 .add(containerViewId, paymentState.fragment, "3DSecureFragment")
-                .commit() 
+                .commit()
             Log.d("SwedbankPay", "Show 3D Secure Fragment")
         }
 
@@ -402,7 +402,7 @@ PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
             val containerViewId = R.id.sdk_payment_fragment // Specify a container ID for the fragment
             supportFragmentManager.beginTransaction()
                 .add(containerViewId, paymentState.fragment, "PaymentFragment")
-                .commit() 
+                .commit()
         }
 
         is PaymentSessionState.PaymentSessionComplete,
@@ -944,7 +944,7 @@ let restrictedToInstruments = availableInstruments.filter {
     if case .webBased = $0 {
         return true
     }
-    
+
     return false
 }
 paymentSession.createSwedbankPaySDKController(mode: .menu(restrictedToInstruments: restrictedToInstruments))
@@ -1079,7 +1079,7 @@ sequenceDiagram
     participant SDK
     participant Backend as Merchant Backend
     participant SWP as Payment Order API
-    
+
     opt If you want to present saved tokens
         App ->> Backend: Fetch saved credit cards
         activate Backend
@@ -1127,7 +1127,7 @@ sequenceDiagram
 [android-bare-minimum-payment-session]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-sdk-payment-session
 [ios-bare-minimum-setup]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-setup
 [ios-bare-minimum-payment-session]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-sdk-payment-session
-[problem-technical-reference]: /checkout-v3/features/technical-reference/problems/
+[problem-technical-reference]: /checkout-v3/technical-reference/problems/
 [usage]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#usage
 [android-saved-credit-cards]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#saved-credit-cards
 [detailed-usage-flows]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#detailed-usage-flows

@@ -1,6 +1,6 @@
 {%- capture url -%}
     {%- include utils/documentation-section-url.md
-        href='/features/technical-reference/resource-sub-models#financialtransactions' -%}
+        href='/technical-reference/resource-sub-models#financialtransactions' -%}
 {%- endcapture -%}
 {%- capture text -%}
 The URL to the {% clink `financialTransactions` resource %}{{ url }}{% endclink
