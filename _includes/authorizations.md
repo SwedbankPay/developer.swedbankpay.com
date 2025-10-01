@@ -67,33 +67,234 @@ Content-Type: application/json{% endcapture %}
     json= request_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-| Required          | Field                          | Data type | Description                                                                                                                                                      |
-| :---------------- | :----------------------------- | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %}  | `transaction.activity`         | `string`  | `FinancingConsumer`                                                                                                                                              |
-| {% icon check %}  | `consumer`                     | `object`  | The payer object.                                                                                                                                             |
-| {% icon check %}  | {% f socialSecurityNumber %} | `string`  | The social security number (national identity number) of the payer. Format Sweden: `YYMMDD-NNNN`. Format Norway: `DDMMYYNNNNN`. Format Finland: `DDMMYYNNNNN` |
-|                   | {% f customerNumber %}       | `string`  | The customer number in the merchant system.                                                                                                                      |
-|                   | {% f email %}                | `string`  | The e-mail address of the payer.                                                                                                                              |
-| {% icon check %}  | {% f msisdn %}               | `string`  | The mobile phone number of the payer. Format Sweden: `+46707777777`. Format Norway: `+4799999999`. Format Finland: `+358501234567`                            |
-| {% icon check %}  | {% f ip %}                   | `string`  | The IP address of the payer.                                                                                                                                  |
-| {% icon check %}  | `legalAddress`                 | `object`  | The legal address object containing information about the payer's legal address.                                                                                |
-| {% icon check %}  | {% f addressee %}            | `string`  | The full (first and last) name of the payer.                                                                                                                  |
-|                   | {% f coAddress %}            | `string`  | The CO-address (if used)                                                                                                                                         |
-|                   | {% f streetAddress %}        | `string`  | The street address of the payer. Maximum 50 characters long.                                                                                                  |
-| {% icon check %}  | {% f zipCode %}              | `string`  | The postal code (ZIP code) of the payer.                                                                                                                      |
-| {% icon check %}  | {% f city %}                 | `string`  | The city of the payer.                                                                                                                                        |
-| {% icon check %}  | {% f countryCode %}          | `string`  | `SE`, `NO`, or `FI`. The country code of the payer.                                                                                                           |
-| {% icon check %}  | `billingAddress`               | `object`  | The billing address object containing information about the payer's billing address.                                                                            |
-| {% icon check %}  | {% f addressee %}            | `string`  | The full (first and last) name of the payer.                                                                                                                  |
-|                   | {% f coAddress %}            | `string`  | The CO-address (if used)                                                                                                                                         |
-| {% icon check %}︎︎︎︎ ︎ | {% f streetAddress %}        | `string`  | The street address of the payer. Maximum 50 characters long.                                                                                                   |
-| {% icon check %}  | {% f zipCode %}              | `string`  | The postal number (ZIP code) of the payer.                                                                                                                    |
-| {% icon check %}  | {% f city %}                 | `string`  | The city of the payer.                                                                                                                                        |
-| {% icon check %}  | {% f countryCode %}          | `string`  | `SE`, `NO`, or `FI`.                                                                                                                                             |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+<div class="api-compact" role="table" aria-label="Financing Consumer – Fields">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+    <div role="columnheader">Required</div>
+  </div>
+
+  <!-- LEVEL 0: transaction -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader"><code>transaction</code><span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+      <span class="req"></span>
+    </summary>
+    <div class="desc"><div class="indent-1">Transaction context.</div></div>
+
+    <!-- LEVEL 1: transaction children -->
+    <div class="api-children">
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader"><code>activity</code><span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-2"><code>FinancingConsumer</code></div></div>
+      </details>
+    </div>
+  </details>
+
+  <!-- LEVEL 0: consumer -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader"><code>consumer</code><span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc"><div class="indent-1">The payer object.</div></div>
+
+    <!-- LEVEL 1: consumer children -->
+    <div class="api-children">
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f socialSecurityNumber %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc">
+          <div class="indent-2">
+            The social security number (national identity number) of the payer.
+            Format Sweden: <code>YYMMDD-NNNN</code>. Format Norway: <code>DDMMYYNNNNN</code>. Format Finland: <code>DDMMYYNNNNN</code>.
+          </div>
+        </div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f customerNumber %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc"><div class="indent-2">The customer number in the merchant system.</div></div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f email %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc"><div class="indent-2">The e-mail address of the payer.</div></div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f msisdn %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc">
+          <div class="indent-2">The mobile phone number of the payer. Format Sweden: <code>+46707777777</code>. Format Norway: <code>+4799999999</code>. Format Finland: <code>+358501234567</code>.</div>
+        </div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f ip %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-2">The IP address of the payer.</div></div>
+      </details>
+    </div>
+  </details>
+
+  <!-- LEVEL 0: legalAddress -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader"><code>legalAddress</code><span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc"><div class="indent-1">The legal address object containing information about the payer's legal address.</div></div>
+
+    <!-- LEVEL 1: legalAddress children -->
+    <div class="api-children">
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f addressee %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-2">The full (first and last) name of the payer.</div></div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f coAddress %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc"><div class="indent-2">The CO-address (if used)</div></div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f streetAddress %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc"><div class="indent-2">The street address of the payer. Maximum 50 characters long.</div></div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f zipCode %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-2">The postal code (ZIP code) of the payer.</div></div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f city %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-2">The city of the payer.</div></div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f countryCode %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-2"><code>SE</code>, <code>NO</code>, or <code>FI</code>. The country code of the payer.</div></div>
+      </details>
+    </div>
+  </details>
+
+  <!-- LEVEL 0: billingAddress -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader"><code>billingAddress</code><span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc"><div class="indent-1">The billing address object containing information about the payer's billing address.</div></div>
+
+    <!-- LEVEL 1: billingAddress children -->
+    <div class="api-children">
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f addressee %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-2">The full (first and last) name of the payer.</div></div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f coAddress %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc"><div class="indent-2">The CO-address (if used)</div></div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f streetAddress %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-2">The street address of the payer. Maximum 50 characters long.</div></div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f zipCode %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-2">The postal number (ZIP code) of the payer.</div></div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f city %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-2">The city of the payer.</div></div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f countryCode %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-2"><code>SE</code>, <code>NO</code>, or <code>FI</code>.</div></div>
+      </details>
+    </div>
+  </details>
+</div>
 
 ## Authorization Response
 

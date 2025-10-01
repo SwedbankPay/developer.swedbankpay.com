@@ -254,19 +254,71 @@ your TOM/TAM or our support team.
     json= response_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
+{% capture id_md %}{% include fields/id.md resource="paymentorder" %}{% endcapture %}
 
-| Field                    | Type         | Description                                                                                                                                                                                                               |
-| :----------------------- | :----------- | :------------------- |
-| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
-| {% f id %}  | `string`   | {% include fields/id.md resource="paymentorder" %} |
-| {% f instrument %}                | `string`     | The payment method used in the payment.                     |
-| {% f payment, 0 %}           | `object`     | The payment object.                      |
-| {% f number %}                | `string`     | The attempt number which triggered the callback.                     |
-| {% f transaction, 0 %}           | `object`     | The transaction object.                      |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+<div class="api-compact" role="table" aria-label="Callback – Fields">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+  </div>
+
+  <!-- LEVEL 0: paymentOrder -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-1">The payment order object.</div></div>
+
+    <!-- LEVEL 1: children of paymentOrder -->
+    <div class="api-children">
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-2">{{ id_md | markdownify }}</div></div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f instrument %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-2">The payment method used in the payment.</div></div>
+      </details>
+    </div>
+  </details>
+
+  <!-- LEVEL 0: payment -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-1">The payment object.</div></div>
+
+    <!-- LEVEL 1: children of payment -->
+    <div class="api-children">
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f number %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-2">The attempt number which triggered the callback.</div></div>
+      </details>
+    </div>
+  </details>
+
+  <!-- LEVEL 0: transaction -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f transaction, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-1">The transaction object.</div></div>
+  </details>
+</div>
 
 {: .text-right .mt-3}
 
