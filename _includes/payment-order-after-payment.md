@@ -7,7 +7,7 @@ Most payment methods are two-phase payments – in which a successful payment
 order will result in an authorized transaction – that must be followed by a
 capture or cancellation transaction later on. One-phase payments like Swish are
 settled directly without the option to capture or cancel. For a full list of the
-available operations, see the [techincal reference][operations].
+available operations, see the [technical reference][operations].
 
 {:.table .table-striped}
 | Operation                      | Description                                                                                                                                                                                                                                                                    |
@@ -97,4 +97,4 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 {% include alert.html type="informative" icon="info" body=" Note that all of the
 operations `Cancel`, `Capture` and `Reversal` must be implemented." %}
 
-[operations]: {{ techref_url }}/technical-reference/operations
+[operations]: {{ techref_url }}/operations
