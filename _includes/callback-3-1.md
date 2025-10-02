@@ -256,7 +256,7 @@ original `POST` when you created the `paymentOrder`.
 
 {% capture id_md %}{% include fields/id.md resource="paymentorder" %}{% endcapture %}
 
-<div class="api-compact" role="table" aria-label="Callback – Fields">
+<div class="api-compact" role="table" aria-label="Callback Response">
   <div class="header" role="row">
     <div role="columnheader">Field</div>
     <div role="columnheader">Type</div>
@@ -268,7 +268,7 @@ original `POST` when you created the `paymentOrder`.
       <span class="field" role="rowheader">{% f orderReference, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>string</code></span>
     </summary>
-    <div class="desc"><div class="indent-1">The order reference found in the merchant's systems. If included in the request, the <code>orderReference</code> will appear in the callback.</div></div>
+    <div class="desc"><div class="indent-0">The order reference found in the merchant's systems. If included in the request, the <code>orderReference</code> will appear in the callback.</div></div>
   </details>
 
   <!-- LEVEL 0: paymentOrder -->
@@ -277,7 +277,7 @@ original `POST` when you created the `paymentOrder`.
       <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
     </summary>
-    <div class="desc"><div class="indent-1">The payment order object.</div></div>
+    <div class="desc"><div class="indent-0">The payment order object.</div></div>
 
     <!-- LEVEL 1: children of paymentOrder -->
     <div class="api-children">
@@ -287,7 +287,7 @@ original `POST` when you created the `paymentOrder`.
           <span class="field" role="rowheader">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">{{ id_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -295,7 +295,7 @@ original `POST` when you created the `paymentOrder`.
           <span class="field" role="rowheader">{% f instrument %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The payment method used in the payment.</div></div>
+        <div class="desc"><div class="indent-1">The payment method used in the payment.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -303,7 +303,7 @@ original `POST` when you created the `paymentOrder`.
           <span class="field" role="rowheader">{% f number %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The attempt number which triggered the callback.</div></div>
+        <div class="desc"><div class="indent-1">The attempt number which triggered the callback.</div></div>
       </details>
 
     </div>

@@ -67,7 +67,7 @@ Content-Type: application/json{% endcapture %}
     json= request_content
     %}
 
-<div class="api-compact" role="table" aria-label="Financing Consumer – Fields">
+<div class="api-compact" role="table" aria-label="Authorization Request">
   <div class="header" role="row">
     <div role="columnheader">Field</div>
     <div role="columnheader">Type</div>
@@ -81,7 +81,7 @@ Content-Type: application/json{% endcapture %}
       <span class="type"><code>object</code></span>
       <span class="req"></span>
     </summary>
-    <div class="desc"><div class="indent-1">Transaction context.</div></div>
+    <div class="desc"><div class="indent-0">Transaction context.</div></div>
 
     <!-- LEVEL 1: transaction children -->
     <div class="api-children">
@@ -91,7 +91,7 @@ Content-Type: application/json{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-2"><code>FinancingConsumer</code></div></div>
+        <div class="desc"><div class="indent-1"><code>FinancingConsumer</code></div></div>
       </details>
     </div>
   </details>
@@ -103,7 +103,7 @@ Content-Type: application/json{% endcapture %}
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
-    <div class="desc"><div class="indent-1">The payer object.</div></div>
+    <div class="desc"><div class="indent-0">The payer object.</div></div>
 
     <!-- LEVEL 1: consumer children -->
     <div class="api-children">
@@ -114,7 +114,7 @@ Content-Type: application/json{% endcapture %}
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc">
-          <div class="indent-2">
+          <div class="indent-1">
             The social security number (national identity number) of the payer.
             Format Sweden: <code>YYMMDD-NNNN</code>. Format Norway: <code>DDMMYYNNNNN</code>. Format Finland: <code>DDMMYYNNNNN</code>.
           </div>
@@ -127,7 +127,7 @@ Content-Type: application/json{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
-        <div class="desc"><div class="indent-2">The customer number in the merchant system.</div></div>
+        <div class="desc"><div class="indent-1">The customer number in the merchant system.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -136,7 +136,7 @@ Content-Type: application/json{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
-        <div class="desc"><div class="indent-2">The e-mail address of the payer.</div></div>
+        <div class="desc"><div class="indent-1">The e-mail address of the payer.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -146,7 +146,7 @@ Content-Type: application/json{% endcapture %}
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc">
-          <div class="indent-2">The mobile phone number of the payer. Format Sweden: <code>+46707777777</code>. Format Norway: <code>+4799999999</code>. Format Finland: <code>+358501234567</code>.</div>
+          <div class="indent-1">The mobile phone number of the payer. Format Sweden: <code>+46707777777</code>. Format Norway: <code>+4799999999</code>. Format Finland: <code>+358501234567</code>.</div>
         </div>
       </details>
 
@@ -156,7 +156,7 @@ Content-Type: application/json{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-2">The IP address of the payer.</div></div>
+        <div class="desc"><div class="indent-1">The IP address of the payer.</div></div>
       </details>
     </div>
   </details>
@@ -168,7 +168,7 @@ Content-Type: application/json{% endcapture %}
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
-    <div class="desc"><div class="indent-1">The legal address object containing information about the payer's legal address.</div></div>
+    <div class="desc"><div class="indent-0">The legal address object containing information about the payer's legal address.</div></div>
 
     <!-- LEVEL 1: legalAddress children -->
     <div class="api-children">
@@ -178,7 +178,7 @@ Content-Type: application/json{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-2">The full (first and last) name of the payer.</div></div>
+        <div class="desc"><div class="indent-1">The full (first and last) name of the payer.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -187,7 +187,7 @@ Content-Type: application/json{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
-        <div class="desc"><div class="indent-2">The CO-address (if used)</div></div>
+        <div class="desc"><div class="indent-1">The CO-address (if used)</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -196,7 +196,7 @@ Content-Type: application/json{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
-        <div class="desc"><div class="indent-2">The street address of the payer. Maximum 50 characters long.</div></div>
+        <div class="desc"><div class="indent-1">The street address of the payer. Maximum 50 characters long.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -205,7 +205,7 @@ Content-Type: application/json{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-2">The postal code (ZIP code) of the payer.</div></div>
+        <div class="desc"><div class="indent-1">The postal code (ZIP code) of the payer.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -214,7 +214,7 @@ Content-Type: application/json{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-2">The city of the payer.</div></div>
+        <div class="desc"><div class="indent-1">The city of the payer.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -223,7 +223,7 @@ Content-Type: application/json{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-2"><code>SE</code>, <code>NO</code>, or <code>FI</code>. The country code of the payer.</div></div>
+        <div class="desc"><div class="indent-1"><code>SE</code>, <code>NO</code>, or <code>FI</code>. The country code of the payer.</div></div>
       </details>
     </div>
   </details>
@@ -235,7 +235,7 @@ Content-Type: application/json{% endcapture %}
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
-    <div class="desc"><div class="indent-1">The billing address object containing information about the payer's billing address.</div></div>
+    <div class="desc"><div class="indent-0">The billing address object containing information about the payer's billing address.</div></div>
 
     <!-- LEVEL 1: billingAddress children -->
     <div class="api-children">
@@ -245,7 +245,7 @@ Content-Type: application/json{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-2">The full (first and last) name of the payer.</div></div>
+        <div class="desc"><div class="indent-1">The full (first and last) name of the payer.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -254,7 +254,7 @@ Content-Type: application/json{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
-        <div class="desc"><div class="indent-2">The CO-address (if used)</div></div>
+        <div class="desc"><div class="indent-1">The CO-address (if used)</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -263,7 +263,7 @@ Content-Type: application/json{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-2">The street address of the payer. Maximum 50 characters long.</div></div>
+        <div class="desc"><div class="indent-1">The street address of the payer. Maximum 50 characters long.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -272,7 +272,7 @@ Content-Type: application/json{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-2">The postal number (ZIP code) of the payer.</div></div>
+        <div class="desc"><div class="indent-1">The postal number (ZIP code) of the payer.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -281,7 +281,7 @@ Content-Type: application/json{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-2">The city of the payer.</div></div>
+        <div class="desc"><div class="indent-1">The city of the payer.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -290,7 +290,7 @@ Content-Type: application/json{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-2"><code>SE</code>, <code>NO</code>, or <code>FI</code>.</div></div>
+        <div class="desc"><div class="indent-1"><code>SE</code>, <code>NO</code>, or <code>FI</code>.</div></div>
       </details>
     </div>
   </details>

@@ -194,7 +194,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
 {% capture payee_info_md %}{% include fields/payee-info.md %}{% endcapture %}
 {% capture payee_ref_md %}{% include fields/payee-reference.md describe_receipt=true %}{% endcapture %}
 
-<div class="api-compact" role="table" aria-label="Payment Order – Create">
+<div class="api-compact" role="table" aria-label="Payment Order Requeste">
   <div class="header" role="row">
     <div role="columnheader">Field</div>
     <div role="columnheader">Type</div>
@@ -208,7 +208,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
-    <div class="desc"><div class="indent-1">The payment order object.</div></div>
+    <div class="desc"><div class="indent-0">The payment order object.</div></div>
 
     <!-- LEVEL 1 children -->
     <div class="api-children">
@@ -218,7 +218,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-2">{{ op_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{{ op_md | markdownify }}</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -227,7 +227,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-2">The currency of the payment.</div></div>
+        <div class="desc"><div class="indent-1">The currency of the payment.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -236,7 +236,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-2">{{ amount_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -245,7 +245,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-2">{{ vat_amount_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{{ vat_amount_md | markdownify }}</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -254,7 +254,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-2">The description of the payment order.</div></div>
+        <div class="desc"><div class="indent-1">The description of the payment order.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -263,7 +263,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-2">{{ user_agent_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{{ user_agent_md | markdownify }}</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -272,7 +272,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-2">{{ language_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -281,7 +281,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-2">Used to tag the payment as Online Payments v3.0. Mandatory for Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.</div></div>
+        <div class="desc"><div class="indent-1">Used to tag the payment as Online Payments v3.0. Mandatory for Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -290,7 +290,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
-        <div class="desc"><div class="indent-2">Indicates which implementation to use.</div></div>
+        <div class="desc"><div class="indent-1">Indicates which implementation to use.</div></div>
       </details>
 
       <!-- urls (LEVEL 1) + LEVEL 2 children -->
@@ -300,7 +300,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
           <span class="type"><code>object</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-2">The <code>urls</code> object, containing the URLs relevant for the payment order.</div></div>
+        <div class="desc"><div class="indent-1">The <code>urls</code> object, containing the URLs relevant for the payment order.</div></div>
 
         <div class="api-children">
           <details class="api-item" role="rowgroup" data-level="2">
@@ -309,7 +309,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>array</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-3">The array of valid host URLs.</div></div>
+            <div class="desc"><div class="indent-2">The array of valid host URLs.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -318,7 +318,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
-            <div class="desc"><div class="indent-3">{{ payment_url_md | markdownify }}</div></div>
+            <div class="desc"><div class="indent-2">{{ payment_url_md | markdownify }}</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -327,7 +327,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-3">{{ complete_url_md | markdownify }}</div></div>
+            <div class="desc"><div class="indent-2">{{ complete_url_md | markdownify }}</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -336,7 +336,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-3">The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an <code>abort</code> request of the <code>payment</code> or <code>paymentorder</code>.</div></div>
+            <div class="desc"><div class="indent-2">The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an <code>abort</code> request of the <code>payment</code> or <code>paymentorder</code>.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -345,7 +345,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-3">{{ callback_url_md | markdownify }}</div></div>
+            <div class="desc"><div class="indent-2">{{ callback_url_md | markdownify }}</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -354,7 +354,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
-            <div class="desc"><div class="indent-3">{{ logo_url_md | markdownify }}</div></div>
+            <div class="desc"><div class="indent-2">{{ logo_url_md | markdownify }}</div></div>
           </details>
         </div>
       </details>
@@ -366,7 +366,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
           <span class="type"><code>array</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-2">{{ order_items_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{{ order_items_md | markdownify }}</div></div>
 
         <div class="api-children">
           <details class="api-item" role="rowgroup" data-level="2">
@@ -375,7 +375,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-3">A reference that identifies the order item.</div></div>
+            <div class="desc"><div class="indent-2">A reference that identifies the order item.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -384,7 +384,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-3">The name of the order item.</div></div>
+            <div class="desc"><div class="indent-2">The name of the order item.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -393,7 +393,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>enum</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-3"><code>PRODUCT</code>, <code>SERVICE</code>, <code>SHIPPING_FEE</code>, <code>DISCOUNT</code>, <code>VALUE_CODE</code>, or <code>OTHER</code>. The type of the order item.</div></div>
+            <div class="desc"><div class="indent-2"><code>PRODUCT</code>, <code>SERVICE</code>, <code>SHIPPING_FEE</code>, <code>DISCOUNT</code>, <code>VALUE_CODE</code>, or <code>OTHER</code>. The type of the order item.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -402,7 +402,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-3">The classification of the order item. Can be used for assigning the order item to a specific product category, such as <code>MobilePhone</code>. Note that <code>class</code> cannot contain spaces and must follow the regex pattern <code>[\w-]*</code>. Swedbank Pay may use this field for statistics.</div></div>
+            <div class="desc"><div class="indent-2">The classification of the order item. Can be used for assigning the order item to a specific product category, such as <code>MobilePhone</code>. Note that <code>class</code> cannot contain spaces and must follow the regex pattern <code>[\w-]*</code>. Swedbank Pay may use this field for statistics.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -411,7 +411,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
-            <div class="desc"><div class="indent-3">The URL to a page that can display the purchased item, such as a product page</div></div>
+            <div class="desc"><div class="indent-2">The URL to a page that can display the purchased item, such as a product page</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -420,7 +420,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
-            <div class="desc"><div class="indent-3">The URL to an image of the order item.</div></div>
+            <div class="desc"><div class="indent-2">The URL to an image of the order item.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -429,7 +429,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
-            <div class="desc"><div class="indent-3">The human readable description of the order item.</div></div>
+            <div class="desc"><div class="indent-2">The human readable description of the order item.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -438,7 +438,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
-            <div class="desc"><div class="indent-3">The human readable description of the possible discount.</div></div>
+            <div class="desc"><div class="indent-2">The human readable description of the possible discount.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -447,7 +447,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>number</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-3">The 4 decimal precision quantity of order items being purchased.</div></div>
+            <div class="desc"><div class="indent-2">The 4 decimal precision quantity of order items being purchased.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -456,7 +456,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-3">The unit of the quantity, such as <code>pcs</code>, <code>grams</code>, or similar.</div></div>
+            <div class="desc"><div class="indent-2">The unit of the quantity, such as <code>pcs</code>, <code>grams</code>, or similar.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -465,7 +465,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-3">The price per unit of order item, including VAT.</div></div>
+            <div class="desc"><div class="indent-2">The price per unit of order item, including VAT.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -474,7 +474,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>integer</code></span>
               <span class="req"></span>
             </summary>
-            <div class="desc"><div class="indent-3">If the order item is purchased at a discounted price. This field should contain that price, including VAT.</div></div>
+            <div class="desc"><div class="indent-2">If the order item is purchased at a discounted price. This field should contain that price, including VAT.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -483,7 +483,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-3">The percent value of the VAT multiplied by 100, so <code>25%</code> becomes <code>2500</code>.</div></div>
+            <div class="desc"><div class="indent-2">The percent value of the VAT multiplied by 100, so <code>25%</code> becomes <code>2500</code>.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -492,7 +492,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-3">{{ amount_md | markdownify }}</div></div>
+            <div class="desc"><div class="indent-2">{{ amount_md | markdownify }}</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -501,7 +501,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-3">{{ vat_amount_md | markdownify }}</div></div>
+            <div class="desc"><div class="indent-2">{{ vat_amount_md | markdownify }}</div></div>
           </details>
         </div>
       </details>
@@ -513,7 +513,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
           <span class="type"><code>object</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-2">{{ payee_info_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{{ payee_info_md | markdownify }}</div></div>
 
         <div class="api-children">
           <details class="api-item" role="rowgroup" data-level="2">
@@ -522,7 +522,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-3">The ID of the payee, usually the merchant ID.</div></div>
+            <div class="desc"><div class="indent-2">The ID of the payee, usually the merchant ID.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -531,7 +531,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>string(30)</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-3">{{ payee_ref_md | markdownify }}</div></div>
+            <div class="desc"><div class="indent-2">{{ payee_ref_md | markdownify }}</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -540,7 +540,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
-            <div class="desc"><div class="indent-3">The name of the payee, usually the name of the merchant.</div></div>
+            <div class="desc"><div class="indent-2">The name of the payee, usually the name of the merchant.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -549,7 +549,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
               <span class="type"><code>string(50)</code></span>
               <span class="req"></span>
             </summary>
-            <div class="desc"><div class="indent-3">The order reference should reflect the order reference found in the merchant's systems.</div></div>
+            <div class="desc"><div class="indent-2">The order reference should reflect the order reference found in the merchant's systems.</div></div>
           </details>
         </div>
       </details>
@@ -674,7 +674,7 @@ api-supported-versions: 3.0{% endcapture %}
 {% capture language_md %}{% include fields/language.md %}{% endcapture %}
 {% capture operations_md %}{% include fields/operations.md %}{% endcapture %}
 
-<div class="api-compact" role="table" aria-label="Payment Order – Fields">
+<div class="api-compact" role="table" aria-label="Payment Order Response">
   <div class="header" role="row">
     <div role="columnheader">Field</div>
     <div role="columnheader">Type</div>
@@ -686,7 +686,7 @@ api-supported-versions: 3.0{% endcapture %}
       <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
     </summary>
-    <div class="desc"><div class="indent-1">The payment order object.</div></div>
+    <div class="desc"><div class="indent-0">The payment order object.</div></div>
 
     <!-- LEVEL 1: children of paymentOrder -->
     <div class="api-children">
@@ -695,7 +695,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">{{ id_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -703,7 +703,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f created %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The ISO-8601 date of when the payment order was created.</div></div>
+        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was created.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -711,7 +711,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f updated %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The ISO-8601 date of when the payment order was updated.</div></div>
+        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was updated.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -719,7 +719,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">{{ op_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{{ op_md | markdownify }}</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -728,7 +728,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc">
-          <div class="indent-2">
+          <div class="indent-1">
             Indicates the payment order's current status. <code>Initialized</code> is returned when the payment is created and still ongoing. The request example above has this status.
             <code>Paid</code> is returned when the payer has completed the payment successfully. See the <a href="{{ features_url }}/technical-reference/status-models#paid"><code>Paid</code> response</a>.
             <code>Failed</code> is returned when a payment has failed. You will find an error message in <a href="{{ features_url }}/technical-reference/status-models#failed">the <code>Failed</code> response</a>.
@@ -743,7 +743,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f currency %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The currency of the payment order.</div></div>
+        <div class="desc"><div class="indent-1">The currency of the payment order.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -751,7 +751,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">{{ amount_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -759,7 +759,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f vatAmount %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">{{ vat_amount_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{{ vat_amount_md | markdownify }}</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -767,7 +767,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string(40)</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">{{ description_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{{ description_md | markdownify }}</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -775,7 +775,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f initiatingSystemUserAgent %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">{{ init_sys_ua_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{{ init_sys_ua_md | markdownify }}</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -783,7 +783,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f language %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">{{ language_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -791,7 +791,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f availableInstruments %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">A list of methods available for this payment.</div></div>
+        <div class="desc"><div class="indent-1">A list of methods available for this payment.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -799,7 +799,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f implementation %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The merchant's Online Payments implementation type. <code>Enterprise</code> or <code>PaymentsOnly</code>. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.</div></div>
+        <div class="desc"><div class="indent-1">The merchant's Online Payments implementation type. <code>Enterprise</code> or <code>PaymentsOnly</code>. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -807,7 +807,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f integration %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The merchant's Online Payments integration type. <code>HostedView</code> (Seamless View) or <code>Redirect</code>. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.</div></div>
+        <div class="desc"><div class="indent-1">The merchant's Online Payments integration type. <code>HostedView</code> (Seamless View) or <code>Redirect</code>. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -815,7 +815,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f instrumentMode %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>bool</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">Set to <code>true</code> or <code>false</code>. Indicates if the payment is initialized with Instrument Mode (only one payment method available).</div></div>
+        <div class="desc"><div class="indent-1">Set to <code>true</code> or <code>false</code>. Indicates if the payment is initialized with Instrument Mode (only one payment method available).</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -823,7 +823,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f guestMode %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>bool</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">Set to <code>true</code> or <code>false</code>. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a <code>payerReference</code> in the original <code>paymentOrder</code> request.</div></div>
+        <div class="desc"><div class="indent-1">Set to <code>true</code> or <code>false</code>. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a <code>payerReference</code> in the original <code>paymentOrder</code> request.</div></div>
       </details>
 
       <!-- ID-type links -->
@@ -832,7 +832,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f payer %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>id</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#payer"><code>payer</code> resource</a> where information about the payer can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#payer"><code>payer</code> resource</a> where information about the payer can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -840,7 +840,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f orderItems %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>id</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The URL to the <code>orderItems</code> resource where information about the order items can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The URL to the <code>orderItems</code> resource where information about the order items can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -848,7 +848,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f history %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>id</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#history"><code>history</code> resource</a> where information about the payment's history can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#history"><code>history</code> resource</a> where information about the payment's history can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -856,7 +856,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f failed %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>id</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#failed"><code>failed</code> resource</a> where information about the failed transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#failed"><code>failed</code> resource</a> where information about the failed transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -864,7 +864,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f aborted %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>id</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#aborted"><code>aborted</code> resource</a> where information about the aborted transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#aborted"><code>aborted</code> resource</a> where information about the aborted transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -872,7 +872,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f paid %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>id</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#paid"><code>paid</code> resource</a> where information about the paid transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#paid"><code>paid</code> resource</a> where information about the paid transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -880,7 +880,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f cancelled %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>id</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#cancelled"><code>cancelled</code> resource</a> where information about the cancelled transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#cancelled"><code>cancelled</code> resource</a> where information about the cancelled transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -888,7 +888,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f financialTransactions %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>id</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#financialtransactions"><code>financialTransactions</code> resource</a> where information about the financial transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#financialtransactions"><code>financialTransactions</code> resource</a> where information about the financial transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -896,7 +896,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f failedAttempts %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>id</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#failedattempts"><code>failedAttempts</code> resource</a> where information about the failed attempts can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#failedattempts"><code>failedAttempts</code> resource</a> where information about the failed attempts can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -904,7 +904,7 @@ api-supported-versions: 3.0{% endcapture %}
           <span class="field" role="rowheader">{% f metadata %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>id</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The URL to the <code>metadata</code> resource where information about the metadata can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The URL to the <code>metadata</code> resource where information about the metadata can be retrieved.</div></div>
       </details>
     </div><!-- /level-1 -->
   </details>
@@ -915,7 +915,7 @@ api-supported-versions: 3.0{% endcapture %}
       <span class="field" role="rowheader">{% f operations, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>array</code></span>
     </summary>
-    <div class="desc"><div class="indent-1">{{ operations_md | markdownify }}</div></div>
+    <div class="desc"><div class="indent-0">{{ operations_md | markdownify }}</div></div>
   </details>
 </div>
 

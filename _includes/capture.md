@@ -36,14 +36,79 @@ Content-Type: application/json{% endcapture %}
     json= request_content
     %}
 
-{:.table .table-striped}
-|     Required     | Field                    | Type          | Description                                                                                                   |
-| :--------------: | :----------------------- | :------------ | :------------------------------------------------------------------------------------------------------------ |
-| {% icon check %} | `transaction`            | `object`      | {% include fields/transaction.md %}                        |
-| {% icon check %} | {% f amount %}         | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
-| {% icon check %} | {% f vatAmount %}      | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
-| {% icon check %} | {% f description %}    | `string`      | A textual description of the capture transaction.                                                             |
-| {% icon check %} | {% f payeeReference %} | `string(30)` | {% include fields/payee-reference.md documentation_section=include.documentation_section %}                               |
+<div class="api-compact" role="table" aria-label="Capture Request">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+    <div role="columnheader">Required</div>
+  </div>
+
+  <!-- LEVEL 0: transaction -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader"><code>transaction</code><span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc"><div class="indent-0">{% include fields/transaction.md %}</div></div>
+
+    <!-- LEVEL 1: children of transaction -->
+    <div class="api-children">
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            Amount is entered in the lowest monetary units of the selected currency.
+            E.g. <code>10000</code> = 100.00 NOK, <code>5000</code> = 50.00 SEK.
+          </div>
+        </div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f vatAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            Amount is entered in the lowest monetary units of the selected currency.
+            E.g. <code>10000</code> = 100.00 NOK, <code>5000</code> = 50.00 SEK.
+          </div>
+        </div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">A textual description of the capture transaction.</div>
+        </div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payeeReference %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string(30)</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">{% include fields/payee-reference.md documentation_section=include.documentation_section %}</div>
+        </div>
+      </details>
+
+    </div>
+  </details>
+</div>
+
 
 ## Capture Response
 
@@ -77,7 +142,7 @@ Content-Type: application/json{% endcapture %}
     json= response_content
     %}
 
-<div class="api-compact" role="table" aria-label="Capture – Resource">
+<div class="api-compact" role="table" aria-label="Capture Response">
   <div class="header" role="row">
     <div role="columnheader">Property</div>
     <div role="columnheader">Type</div>
@@ -89,7 +154,7 @@ Content-Type: application/json{% endcapture %}
       <span class="field" role="rowheader">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>string</code></span>
     </summary>
-    <div class="desc"><div class="indent-1">The relative URL of the payment this <code>capture</code> transaction belongs to.</div></div>
+    <div class="desc"><div class="indent-0">The relative URL of the payment this <code>capture</code> transaction belongs to.</div></div>
   </details>
 
   <!-- LEVEL 0: capture -->
@@ -98,7 +163,7 @@ Content-Type: application/json{% endcapture %}
       <span class="field" role="rowheader">{% f capture, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
     </summary>
-    <div class="desc"><div class="indent-1">The <code>capture</code> resource contains information about the <code>capture</code> transaction made against a card payment.</div></div>
+    <div class="desc"><div class="indent-0">The <code>capture</code> resource contains information about the <code>capture</code> transaction made against a card payment.</div></div>
 
     <!-- LEVEL 1: children of capture -->
     <div class="api-children">
@@ -107,7 +172,7 @@ Content-Type: application/json{% endcapture %}
           <span class="field" role="rowheader">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The relative URL of the created <code>capture</code> transaction.</div></div>
+        <div class="desc"><div class="indent-1">The relative URL of the created <code>capture</code> transaction.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -115,7 +180,7 @@ Content-Type: application/json{% endcapture %}
           <span class="field" role="rowheader">{% f transaction %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">{% include fields/transaction.md %}</div></div>
+        <div class="desc"><div class="indent-1">{% include fields/transaction.md %}</div></div>
 
         <!-- LEVEL 2: children of transaction -->
         <div class="api-children">
@@ -124,7 +189,7 @@ Content-Type: application/json{% endcapture %}
               <span class="field" role="rowheader">{% f id, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
-            <div class="desc"><div class="indent-3">The relative URL of the current <code>transaction</code> resource.</div></div>
+            <div class="desc"><div class="indent-2">The relative URL of the current <code>transaction</code> resource.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -132,7 +197,7 @@ Content-Type: application/json{% endcapture %}
               <span class="field" role="rowheader">{% f created, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
-            <div class="desc"><div class="indent-3">The ISO-8601 date and time of when the transaction was created.</div></div>
+            <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was created.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -140,7 +205,7 @@ Content-Type: application/json{% endcapture %}
               <span class="field" role="rowheader">{% f updated, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
-            <div class="desc"><div class="indent-3">The ISO-8601 date and time of when the transaction was updated.</div></div>
+            <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was updated.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -148,7 +213,7 @@ Content-Type: application/json{% endcapture %}
               <span class="field" role="rowheader">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
-            <div class="desc"><div class="indent-3">Indicates the transaction type.</div></div>
+            <div class="desc"><div class="indent-2">Indicates the transaction type.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -156,7 +221,7 @@ Content-Type: application/json{% endcapture %}
               <span class="field" role="rowheader">{% f state, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
-            <div class="desc"><div class="indent-3">{% include fields/state.md %}</div></div>
+            <div class="desc"><div class="indent-2">{% include fields/state.md %}</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -164,7 +229,7 @@ Content-Type: application/json{% endcapture %}
               <span class="field" role="rowheader">{% f number, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>integer</code></span>
             </summary>
-            <div class="desc"><div class="indent-3">{% include fields/number.md %}</div></div>
+            <div class="desc"><div class="indent-2">{% include fields/number.md %}</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -173,7 +238,7 @@ Content-Type: application/json{% endcapture %}
               <span class="type"><code>integer</code></span>
             </summary>
             <div class="desc">
-              <div class="indent-3">
+              <div class="indent-2">
                 Amount is entered in the lowest monetary units of the selected currency.
                 E.g. <code>10000</code> = 100.00 NOK, <code>5000</code> = 50.00 SEK.
               </div>
@@ -186,7 +251,7 @@ Content-Type: application/json{% endcapture %}
               <span class="type"><code>integer</code></span>
             </summary>
             <div class="desc">
-              <div class="indent-3">
+              <div class="indent-2">
                 If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only).
                 Set to <code>0</code> (zero) if this is not relevant.
               </div>
@@ -199,7 +264,7 @@ Content-Type: application/json{% endcapture %}
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc">
-              <div class="indent-3">A human readable description of maximum 40 characters of the transaction.</div>
+              <div class="indent-2">A human readable description of maximum 40 characters of the transaction.</div>
             </div>
           </details>
 
@@ -208,7 +273,7 @@ Content-Type: application/json{% endcapture %}
               <span class="field" role="rowheader">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string(30)</code></span>
             </summary>
-            <div class="desc"><div class="indent-3">{% include fields/payee-reference.md documentation_section=include.documentation_section %}</div></div>
+            <div class="desc"><div class="indent-2">{% include fields/payee-reference.md documentation_section=include.documentation_section %}</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -216,7 +281,7 @@ Content-Type: application/json{% endcapture %}
               <span class="field" role="rowheader">{% f failedReason, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
-            <div class="desc"><div class="indent-3">The human readable explanation of why the payment failed.</div></div>
+            <div class="desc"><div class="indent-2">The human readable explanation of why the payment failed.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -224,7 +289,7 @@ Content-Type: application/json{% endcapture %}
               <span class="field" role="rowheader">{% f isOperational, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>boolean</code></span>
             </summary>
-            <div class="desc"><div class="indent-3"><code>true</code> if the transaction is operational; otherwise <code>false</code>.</div></div>
+            <div class="desc"><div class="indent-2"><code>true</code> if the transaction is operational; otherwise <code>false</code>.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -232,7 +297,7 @@ Content-Type: application/json{% endcapture %}
               <span class="field" role="rowheader">{% f operations, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>array</code></span>
             </summary>
-            <div class="desc"><div class="indent-3">{% include fields/operations.md resource="transaction" %}</div></div>
+            <div class="desc"><div class="indent-2">{% include fields/operations.md resource="transaction" %}</div></div>
           </details>
         </div>
       </details>

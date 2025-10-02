@@ -63,7 +63,7 @@ Content-Type: application/json{% endcapture %}
     json= request_content
     %}
 
-<div class="api-compact" role="table" aria-label="Card – Transaction Input">
+<div class="api-compact" role="table" aria-label="Authorization Request">
   <div class="header" role="row">
     <div role="columnheader">Field</div>
     <div role="columnheader">Type</div>
@@ -77,7 +77,7 @@ Content-Type: application/json{% endcapture %}
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
-    <div class="desc"><div class="indent-1">The transaction object.</div></div>
+    <div class="desc"><div class="indent-0">The transaction object.</div></div>
 
     <!-- LEVEL 1: children of transaction -->
     <div class="api-children">
@@ -89,7 +89,7 @@ Content-Type: application/json{% endcapture %}
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc">
-          <div class="indent-2">Primary Account Number (PAN) of the card, printed on the face of the card.</div>
+          <div class="indent-1">Primary Account Number (PAN) of the card, printed on the face of the card.</div>
         </div>
       </details>
 
@@ -100,7 +100,7 @@ Content-Type: application/json{% endcapture %}
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc">
-          <div class="indent-2">Expiry month of the card, printed on the face of the card.</div>
+          <div class="indent-1">Expiry month of the card, printed on the face of the card.</div>
         </div>
       </details>
 
@@ -111,7 +111,7 @@ Content-Type: application/json{% endcapture %}
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc">
-          <div class="indent-2">Expiry year of the card, printed on the face of the card.</div>
+          <div class="indent-1">Expiry year of the card, printed on the face of the card.</div>
         </div>
       </details>
 
@@ -122,7 +122,7 @@ Content-Type: application/json{% endcapture %}
           <span class="req"></span>
         </summary>
         <div class="desc">
-          <div class="indent-2">Card verification code (CVC/CVV/CVC2), usually printed on the back of the card.</div>
+          <div class="indent-1">Card verification code (CVC/CVV/CVC2), usually printed on the back of the card.</div>
         </div>
       </details>
 
@@ -133,7 +133,7 @@ Content-Type: application/json{% endcapture %}
           <span class="req"></span>
         </summary>
         <div class="desc">
-          <div class="indent-2">Name of the cardholder, usually printed on the face of the card.</div>
+          <div class="indent-1">Name of the cardholder, usually printed on the face of the card.</div>
         </div>
       </details>
 
@@ -201,7 +201,7 @@ Content-Type: application/json{% endcapture %}
     json= response_content
     %}
 
-<div class="api-compact" role="table" aria-label="Authorization – Details">
+<div class="api-compact" role="table" aria-label="Authorization Response">
   <div class="header" role="row">
     <div role="columnheader">Field</div>
     <div role="columnheader">Type</div>
@@ -213,7 +213,7 @@ Content-Type: application/json{% endcapture %}
       <span class="field" role="rowheader">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
     </summary>
-    <div class="desc"><div class="indent-1">The payment object.</div></div>
+    <div class="desc"><div class="indent-0">The payment object.</div></div>
   </details>
 
   <!-- LEVEL 0: authorization -->
@@ -222,7 +222,7 @@ Content-Type: application/json{% endcapture %}
       <span class="field" role="rowheader">{% f authorization, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
     </summary>
-    <div class="desc"><div class="indent-1">The authorization object.</div></div>
+    <div class="desc"><div class="indent-0">The authorization object.</div></div>
 
     <!-- LEVEL 1: children of authorization -->
     <div class="api-children">
@@ -232,7 +232,7 @@ Content-Type: application/json{% endcapture %}
           <span class="field" role="rowheader">{% f direct %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The type of the authorization.</div></div>
+        <div class="desc"><div class="indent-1">The type of the authorization.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -240,7 +240,7 @@ Content-Type: application/json{% endcapture %}
           <span class="field" role="rowheader">{% f cardBrand %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2"><code>Visa</code>, <code>MC</code>, etc. The brand of the card.</div></div>
+        <div class="desc"><div class="indent-1"><code>Visa</code>, <code>MC</code>, etc. The brand of the card.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -248,7 +248,7 @@ Content-Type: application/json{% endcapture %}
           <span class="field" role="rowheader">{% f cardType %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2"><code>Credit Card</code> or <code>Debit Card</code>. Indicates the type of card used for the authorization.</div></div>
+        <div class="desc"><div class="indent-1"><code>Credit Card</code> or <code>Debit Card</code>. Indicates the type of card used for the authorization.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -256,7 +256,7 @@ Content-Type: application/json{% endcapture %}
           <span class="field" role="rowheader">{% f issuingBank %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The name of the bank that issued the card used for the authorization.</div></div>
+        <div class="desc"><div class="indent-1">The name of the bank that issued the card used for the authorization.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -264,7 +264,7 @@ Content-Type: application/json{% endcapture %}
           <span class="field" role="rowheader">{% f paymentToken %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The payment token created for the card used in the authorization.</div></div>
+        <div class="desc"><div class="indent-1">The payment token created for the card used in the authorization.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -272,7 +272,7 @@ Content-Type: application/json{% endcapture %}
           <span class="field" role="rowheader">{% f maskedPan %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The masked PAN number of the card.</div></div>
+        <div class="desc"><div class="indent-1">The masked PAN number of the card.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -280,7 +280,7 @@ Content-Type: application/json{% endcapture %}
           <span class="field" role="rowheader">{% f expiryDate %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The month and year of when the card expires.</div></div>
+        <div class="desc"><div class="indent-1">The month and year of when the card expires.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -288,7 +288,7 @@ Content-Type: application/json{% endcapture %}
           <span class="field" role="rowheader">{% f panToken %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The token representing the specific PAN of the card.</div></div>
+        <div class="desc"><div class="indent-1">The token representing the specific PAN of the card.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -296,7 +296,7 @@ Content-Type: application/json{% endcapture %}
           <span class="field" role="rowheader">{% f panEnrolled %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2"></div></div>
+        <div class="desc"><div class="indent-1"></div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -304,7 +304,7 @@ Content-Type: application/json{% endcapture %}
           <span class="field" role="rowheader">{% f acquirerTransactionTime %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The ISO-8601 date and time of the acquirer transaction.</div></div>
+        <div class="desc"><div class="indent-1">The ISO-8601 date and time of the acquirer transaction.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -312,7 +312,7 @@ Content-Type: application/json{% endcapture %}
           <span class="field" role="rowheader">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">{% include fields/id.md resource="itemDescriptions" %}</div></div>
+        <div class="desc"><div class="indent-1">{% include fields/id.md resource="itemDescriptions" %}</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -320,7 +320,7 @@ Content-Type: application/json{% endcapture %}
           <span class="field" role="rowheader">{% f nonPaymentToken %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The result of our own card tokenization. Activated in POS for the merchant or merchant group.</div></div>
+        <div class="desc"><div class="indent-1">The result of our own card tokenization. Activated in POS for the merchant or merchant group.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -329,7 +329,7 @@ Content-Type: application/json{% endcapture %}
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc">
-          <div class="indent-2">
+          <div class="indent-1">
             The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc.
             For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token.
           </div>
@@ -342,7 +342,7 @@ Content-Type: application/json{% endcapture %}
           <span class="field" role="rowheader">{% f transaction %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">{% include fields/transaction.md %}</div></div>
+        <div class="desc"><div class="indent-1">{% include fields/transaction.md %}</div></div>
 
         <div class="api-children">
           <details class="api-item" role="rowgroup" data-level="2">
@@ -350,7 +350,7 @@ Content-Type: application/json{% endcapture %}
               <span class="field" role="rowheader">{% f id, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
-            <div class="desc"><div class="indent-3">{% include fields/id.md resource="transaction" %}</div></div>
+            <div class="desc"><div class="indent-2">{% include fields/id.md resource="transaction" %}</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -358,7 +358,7 @@ Content-Type: application/json{% endcapture %}
               <span class="field" role="rowheader">{% f created, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
-            <div class="desc"><div class="indent-3">The ISO-8601 date and time of when the transaction was created.</div></div>
+            <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was created.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -366,7 +366,7 @@ Content-Type: application/json{% endcapture %}
               <span class="field" role="rowheader">{% f updated, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
-            <div class="desc"><div class="indent-3">The ISO-8601 date and time of when the transaction was updated.</div></div>
+            <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was updated.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -374,7 +374,7 @@ Content-Type: application/json{% endcapture %}
               <span class="field" role="rowheader">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
-            <div class="desc"><div class="indent-3">Indicates the transaction type.</div></div>
+            <div class="desc"><div class="indent-2">Indicates the transaction type.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -382,7 +382,7 @@ Content-Type: application/json{% endcapture %}
               <span class="field" role="rowheader">{% f state, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
-            <div class="desc"><div class="indent-3"><code>Initialized</code>, <code>Completed</code> or <code>Failed</code>. Indicates the state of the transaction.</div></div>
+            <div class="desc"><div class="indent-2"><code>Initialized</code>, <code>Completed</code> or <code>Failed</code>. Indicates the state of the transaction.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -390,7 +390,7 @@ Content-Type: application/json{% endcapture %}
               <span class="field" role="rowheader">{% f number, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>integer</code></span>
             </summary>
-            <div class="desc"><div class="indent-3">{% include fields/number.md %}</div></div>
+            <div class="desc"><div class="indent-2">{% include fields/number.md %}</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -399,7 +399,7 @@ Content-Type: application/json{% endcapture %}
               <span class="type"><code>integer</code></span>
             </summary>
             <div class="desc">
-              <div class="indent-3">
+              <div class="indent-2">
                 Amount is entered in the lowest monetary unit of the selected currency.
                 E.g. <code>10000</code> = 100.00 NOK, <code>5000</code> = 50.00 SEK.
               </div>
@@ -412,7 +412,7 @@ Content-Type: application/json{% endcapture %}
               <span class="type"><code>integer</code></span>
             </summary>
             <div class="desc">
-              <div class="indent-3">
+              <div class="indent-2">
                 If the amount given includes VAT, this may be displayed for the user on the payment page (redirect only).
                 Set to <code>0</code> (zero) if this is not relevant.
               </div>
@@ -424,7 +424,7 @@ Content-Type: application/json{% endcapture %}
               <span class="field" role="rowheader">{% f description, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
-            <div class="desc"><div class="indent-3">{% include fields/description.md %}</div></div>
+            <div class="desc"><div class="indent-2">{% include fields/description.md %}</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -432,7 +432,7 @@ Content-Type: application/json{% endcapture %}
               <span class="field" role="rowheader">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string(30)</code></span>
             </summary>
-            <div class="desc"><div class="indent-3">{% include fields/payee-reference.md %}</div></div>
+            <div class="desc"><div class="indent-2">{% include fields/payee-reference.md %}</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -440,7 +440,7 @@ Content-Type: application/json{% endcapture %}
               <span class="field" role="rowheader">{% f failedReason, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
-            <div class="desc"><div class="indent-3">The human readable explanation of why the payment failed.</div></div>
+            <div class="desc"><div class="indent-2">The human readable explanation of why the payment failed.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -448,7 +448,7 @@ Content-Type: application/json{% endcapture %}
               <span class="field" role="rowheader">{% f isOperational, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>bool</code></span>
             </summary>
-            <div class="desc"><div class="indent-3"><code>true</code> if the transaction is operational; otherwise <code>false</code>.</div></div>
+            <div class="desc"><div class="indent-2"><code>true</code> if the transaction is operational; otherwise <code>false</code>.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -456,7 +456,7 @@ Content-Type: application/json{% endcapture %}
               <span class="field" role="rowheader">{% f operations, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>array</code></span>
             </summary>
-            <div class="desc"><div class="indent-3">{% include fields/operations.md resource="transaction" %}</div></div>
+            <div class="desc"><div class="indent-2">{% include fields/operations.md resource="transaction" %}</div></div>
           </details>
         </div>
       </details>

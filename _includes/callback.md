@@ -200,7 +200,7 @@ your TOM/TAM or our support team.
     json= response_content
     %}
 
-<div class="api-compact" role="table" aria-label="Callback – Summary">
+<div class="api-compact" role="table" aria-label="Callback Response">
   <div class="header" role="row">
     <div role="columnheader">Field</div>
     <div role="columnheader">Type</div>
@@ -212,7 +212,7 @@ your TOM/TAM or our support team.
       <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
     </summary>
-    <div class="desc"><div class="indent-1">The payment order object.</div></div>
+    <div class="desc"><div class="indent-0">The payment order object.</div></div>
 
     <!-- LEVEL 1: children of paymentOrder -->
     <div class="api-children">
@@ -221,7 +221,7 @@ your TOM/TAM or our support team.
           <span class="field" role="rowheader">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">{% include fields/id.md resource="paymentorder" %}</div></div>
+        <div class="desc"><div class="indent-1">{% include fields/id.md resource="paymentorder" %}</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -229,7 +229,7 @@ your TOM/TAM or our support team.
           <span class="field" role="rowheader">{% f instrument %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The payment method used in the payment.</div></div>
+        <div class="desc"><div class="indent-1">The payment method used in the payment.</div></div>
       </details>
     </div>
   </details>
@@ -240,7 +240,7 @@ your TOM/TAM or our support team.
       <span class="field" role="rowheader">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
     </summary>
-    <div class="desc"><div class="indent-1">The payment object.</div></div>
+    <div class="desc"><div class="indent-0">The payment object.</div></div>
 
     <!-- LEVEL 1: children of payment -->
     <div class="api-children">
@@ -249,7 +249,7 @@ your TOM/TAM or our support team.
           <span class="field" role="rowheader">{% f number %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The attempt number which triggered the callback.</div></div>
+        <div class="desc"><div class="indent-1">The attempt number which triggered the callback.</div></div>
       </details>
     </div>
   </details>
@@ -260,7 +260,7 @@ your TOM/TAM or our support team.
       <span class="field" role="rowheader">{% f transaction, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
     </summary>
-    <div class="desc"><div class="indent-1">The transaction object.</div></div>
+    <div class="desc"><div class="indent-0">The transaction object.</div></div>
   </details>
 </div>
 
@@ -283,7 +283,7 @@ your TOM/TAM or our support team.
     json= response_content
     %}
 
-<div class="api-compact" role="table" aria-label="Callback – Payment Summary">
+<div class="api-compact" role="table" aria-label="Callback Response">
   <div class="header" role="row">
     <div role="columnheader">Field</div>
     <div role="columnheader">Type</div>
@@ -295,7 +295,7 @@ your TOM/TAM or our support team.
       <span class="field" role="rowheader">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
     </summary>
-    <div class="desc"><div class="indent-1">The payment object.</div></div>
+    <div class="desc"><div class="indent-0">The payment object.</div></div>
 
     <!-- LEVEL 1: children of payment -->
     <div class="api-children">
@@ -304,7 +304,7 @@ your TOM/TAM or our support team.
           <span class="field" role="rowheader">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">{% include fields/id.md resource="payments" %}</div></div>
+        <div class="desc"><div class="indent-1">{% include fields/id.md resource="payments" %}</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -312,7 +312,7 @@ your TOM/TAM or our support team.
           <span class="field" role="rowheader">{% f number %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The attempt number which triggered the callback.</div></div>
+        <div class="desc"><div class="indent-1">The attempt number which triggered the callback.</div></div>
       </details>
     </div>
   </details>
@@ -323,7 +323,7 @@ your TOM/TAM or our support team.
       <span class="field" role="rowheader">{% f transaction, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
     </summary>
-    <div class="desc"><div class="indent-1">The transaction object.</div></div>
+    <div class="desc"><div class="indent-0">The transaction object.</div></div>
   </details>
 </div>
 
