@@ -158,43 +158,217 @@ Content-Type: application/json{% endcapture %}
 
 {% endif %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-| Field                             | Type      | Description                                                                                                                                                                                                  |
-| :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |{% if documentation_section contains "checkout" or "payment-menu" %}
-| {% f paymentOrder, 0 %}                         | `string`  | {% include fields/id.md %}                                                                                                                                                    | {% else %}
-| {% f payment, 0 %}                         | `string`  | {% include fields/id.md sub_resource=plural %}                                                                                                                                                    |
-| `{{ plural }}`                    | `object`  | The current `{{ plural }}` resource.                                                                                                                                                                         | {% endif %}
-| {% f id %}                      | `string`  | {% include fields/id.md resource=transaction %}                                                                                                                                                   | {% if api_resource == "creditcard" %} |
-| {% f paymentToken %}            | `string`  | The payment token created for the card used in the authorization.                                                                                                                                            |
-| {% f maskedPan %}               | `string`  | The masked PAN number of the card.                                                                                                                                                                           |
-| {% f expireDate %}              | `string`  | The month and year of when the card expires.                                                                                                                                                                 |
-| {% f panToken %}                | `string`  | The token representing the specific PAN of the card.                                                                                                                                                         |
-| {% f cardBrand %}               | `string`  | `Visa`, `MC`, etc. The brand of the card.                                                                                                                                                                    |
-| {% f cardType %}                | `string`  | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.                                                                                                                        |
-| {% f issuingBank %}             | `string`  | The name of the bank that issued the card used for the authorization.                                                                                                                                        |
-| {% f countryCode %}             | `string`  | The country the card is issued in.                                                                                                                                                                           |
-| {% f acquirerTransactionType %} | `string`  | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.                                                                                                                                         |
-| {% f acquirerStan %}            | `string`  | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.                                                                                                                 |
-| {% f acquirerTerminalId %}      | `string`  | The ID of the acquirer terminal.                                                                                                                                                                             |
-| {% f acquirerTransactionTime %} | `string`  | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                      |
-| {% f authenticationStatus %}    | `string`  | `Y`, `A`, `U` or `N`. Indicates the status of the authentication.                                                                                                                                            | {% endif %}                           |
-| {% f itemDescriptions %}        | `object`  | The object representation of the `itemDescriptions` resource.                                                                                                                                                |
-| {% f id, 2 %}                     | `string`  | {% include fields/id.md resource="itemDescriptions" %}                                                                                                                                            |
-| {% f transaction %}             | `object`  | {% include fields/transaction.md %}                                                                                                                                               |
-| {% f id, 2 %}                     | `string`  | {% include fields/id.md resource="transaction" %}                                                                                                                                                 |
-| {% f created, 2 %}                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| {% f updated, 2 %}                | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
-| {% f type, 2 %}                   | `string`  | Indicates the transaction type.                                                                                                                                                                              |
-| {% f state, 2 %}                  | `string`  |{% include fields/state.md %}    |
-| {% f number, 2 %}                 | `integer` | {% include fields/number.md %} |
-| {% f amount, 2 %}                 | `integer` | {% include fields/amount.md %}                                                                                                                                                                    |
-| {% f vatAmount, 2 %}              | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
-| {% f description, 2 %}            | `string`  | {% include fields/description.md %}                                                                                                                   |
-| {% f payeeReference, 2 %}         | `string(30)`  | {% include fields/payee-reference.md describe_receipt=true %}                                                                                         |
-| {% f receiptReference, 2 %}       | `string`  | {% include fields/receipt-reference.md %}                                                                                                                 |
-| {% f failedReason, 2 %}           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
-| {% f isOperational, 2 %}          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
-| {% f operations, 2 %}             | `array`   | {% include fields/operations.md resource="transaction" %}                                                                                                  |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+<!-- Captures for markdown-includes -->
+{%- capture id_generic_md -%}{% include fields/id.md %}{%- endcapture -%}
+{%- capture id_sub_plural_md -%}{% include fields/id.md sub_resource=plural %}{%- endcapture -%}
+{%- capture id_auth_md -%}{% include fields/id.md resource="authorization" %}{%- endcapture -%}
+{%- capture id_itemdesc_md -%}{% include fields/id.md resource="itemDescriptions" %}{%- endcapture -%}
+{%- capture transaction_md -%}{% include fields/transaction.md %}{%- endcapture -%}
+{%- capture id_tx_md -%}{% include fields/id.md resource="transaction" %}{%- endcapture -%}
+{%- capture state_md -%}{% include fields/state.md %}{%- endcapture -%}
+{%- capture number_md -%}{% include fields/number.md %}{%- endcapture -%}
+{%- capture amount_md -%}{% include fields/amount.md %}{%- endcapture -%}
+{%- capture vat_amount_md -%}{% include fields/vat-amount.md %}{%- endcapture -%}
+{%- capture description_md -%}{% include fields/description.md %}{%- endcapture -%}
+{%- capture payee_ref_receipt_md -%}{% include fields/payee-reference.md describe_receipt=true %}{%- endcapture -%}
+{%- capture receipt_ref_md -%}{% include fields/receipt-reference.md %}{%- endcapture -%}
+{%- capture operations_tx_md -%}{% include fields/operations.md resource="transaction" %}{%- endcapture -%}
+
+<div class="api-compact" role="table" aria-label="Response">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+  </div>
+
+  <!-- Level 0 (original order; all nodes CLOSED by default) -->
+  {% if documentation_section contains "checkout" or "payment-menu" %}
+    <!-- paymentOrder (string) -->
+    <details class="api-item" role="rowgroup" data-level="0">
+      <summary role="row">
+        <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+        <span class="type"><code>string</code></span>
+      </summary>
+      <div class="desc"><div class="indent-0">{{ id_generic_md | markdownify }}</div></div>
+    </details>
+  {% else %}
+    <!-- payment (string) -->
+    <details class="api-item" role="rowgroup" data-level="0">
+      <summary role="row">
+        <span class="field" role="rowheader">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+        <span class="type"><code>string</code></span>
+      </summary>
+      <div class="desc"><div class="indent-0">{{ id_sub_plural_md | markdownify }}</div></div>
+    </details>
+
+    <!-- {{ plural }} (object) -->
+    <details class="api-item" role="rowgroup" data-level="0">
+      <summary role="row">
+        <span class="field" role="rowheader"><code>{{ plural }}</code><span class="chev" aria-hidden="true">▸</span></span>
+        <span class="type"><code>object</code></span>
+      </summary>
+      <div class="desc"><div class="indent-0">The current <code>{{ plural }}</code> resource.</div></div>
+    </details>
+  {% endif %}
+
+  <!-- authorization (object) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f authorization, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The authorization object.</div></div>
+
+    <div class="api-children">
+      <!-- id -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ id_auth_md | markdownify }}</div></div>
+      </details>
+
+      <!-- itemDescriptions (object) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f itemDescriptions %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The object representation of the <code>itemDescriptions</code> resource.</div></div>
+
+        <div class="api-children">
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f id, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ id_itemdesc_md | markdownify }}</div></div>
+          </details>
+        </div>
+      </details>
+
+      <!-- transaction (object) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f transaction %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ transaction_md | markdownify }}</div></div>
+
+        <div class="api-children">
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f id, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ id_tx_md | markdownify }}</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f created, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was created.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f updated, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was updated.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Indicates the transaction type.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f state, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ state_md | markdownify }}</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f number, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>integer</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ number_md | markdownify }}</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f amount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>integer</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ amount_md | markdownify }}</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f vatAmount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>integer</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ vat_amount_md | markdownify }}</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f description, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ description_md | markdownify }}</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string(30)</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ payee_ref_receipt_md | markdownify }}</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f receiptReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ receipt_ref_md | markdownify }}</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f failedReason, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The human readable explanation of why the payment failed.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f isOperational, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>bool</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2"><code>true</code> if the transaction is operational; otherwise <code>false</code>.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f operations, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>array</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ operations_tx_md | markdownify }}</div></div>
+          </details>
+        </div>
+      </details>
+    </div>
+  </details>
+</div>

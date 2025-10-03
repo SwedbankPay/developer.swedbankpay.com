@@ -49,28 +49,218 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     json= request_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-|     Required     | Field                              | Type         | Description                                                                                                                                                                                                                                                                                              |
-| :--------------: | :--------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %} | {% f paymentOrder, 0 %}                     | `object`     | The payment order object.                                                                                                                                                                                                                                                                                |
-| {% icon check %} | {% f corporateMode %}            | `bool`     | Determines if the menu should only show payment methods that support corporate payment methods and has been enabled in your contracts.                                                                                                                                                                                                                                                                            |
-| {% icon check %} | {% f instrument %}               | `string`     | The payment methods you want to restrict to in corporate mode. Selected by using {% if documentation_section contains "checkout-v3" %} [Instrument Mode]({{ features_url }}/customize-ui/instrument-mode) {% else %} [3-D Secure 2]({{ features_url }}/optional/instrument-mode) {% endif %} .                                                                                             |
-| {% icon check %} | {% f operation %}                | `string`     | {% include fields/operation.md %}                                                                                                                                                                                                                                             |
-| {% icon check %} | {% f currency %}                 | `string`     | The currency of the payment.                                                                                                                                                                                                                                                                             |
-| {% icon check %} | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                                                |
-| {% icon check %} | {% f vatAmount %}                | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                                             |
-| {% icon check %} | {% f description %}              | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                    |
-| {% icon check %} | {% f userAgent %}                | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                             |
-| {% icon check %} | {% f language %}                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
-| {% icon check %} | {% f urls %}                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
-| {% icon check %} | {% f hostUrls, 2 %}                | `array`      | The array of valid host URLs.                                                                                                                                                                                                                                |
-| {% icon check %} | {% f completeUrl, 2 %}             | `string`     | {% include fields/complete-url.md %} |
-| {% icon check %} | {% f callbackUrl, 2 %}             | `string`     | {% include fields/callback-url.md %}                                                                                                                                                                                              |
-| {% icon check %} | {% f termsOfServiceUrl, 2 %}       | `string`     | {% include fields/terms-of-service-url.md %}                                                                                                                                                                                                                                                     |
-| {% icon check %} | {% f logoUrl, 2 %}                 | `string`     | {% include fields/logo-url.md %}                                                                                                                                                                                                                                                               |
-| {% icon check %} | {% f payeeInfo %}                | `object`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                             |
-| {% icon check %} | {% f payeeId, 2 %}                 | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                                                                                                            |
-| {% icon check %} | {% f payeeReference, 2 %}          | `string(30)` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                                                                                                 |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+<!-- Captures for markdown-includes -->
+{%- capture operation_md -%}{% include fields/operation.md %}{%- endcapture -%}
+{%- capture amount_md -%}{% include fields/amount.md %}{%- endcapture -%}
+{%- capture vat_amount_md -%}{% include fields/vat-amount.md %}{%- endcapture -%}
+{%- capture user_agent_md -%}{% include fields/user-agent.md %}{%- endcapture -%}
+{%- capture complete_url_md -%}{% include fields/complete-url.md %}{%- endcapture -%}
+{%- capture callback_url_md -%}{% include fields/callback-url.md %}{%- endcapture -%}
+{%- capture tos_url_md -%}{% include fields/terms-of-service-url.md %}{%- endcapture -%}
+{%- capture logo_url_md -%}{% include fields/logo-url.md %}{%- endcapture -%}
+{%- capture payee_info_md -%}{% include fields/payee-info.md %}{%- endcapture -%}
+{%- capture payee_ref_receipt_md -%}{% include fields/payee-reference.md describe_receipt=true %}{%- endcapture -%}
+
+<div class="api-compact" role="table" aria-label="Request">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+    <div role="columnheader">Required</div>
+  </div>
+
+  <!-- Level 0, all nodes CLOSED by default (original order) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc"><div class="indent-0">The payment order object.</div></div>
+
+    <div class="api-children">
+      <!-- corporateMode (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f corporateMode %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>bool</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">Determines if the menu should only show payment methods that support corporate payment methods and has been enabled in your contracts.</div></div>
+      </details>
+
+      <!-- instrument (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f instrument %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The payment methods you want to restrict to in corporate mode. Selected by using {% if documentation_section contains "checkout-v3" %} <a href="{{ features_url }}/customize-ui/instrument-mode">Instrument Mode</a> {% else %} <a href="{{ features_url }}/optional/instrument-mode">3-D Secure 2</a> {% endif %}.</div></div>
+      </details>
+
+      <!-- operation (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ operation_md | markdownify }}</div></div>
+      </details>
+
+      <!-- currency (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f currency %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The currency of the payment.</div></div>
+      </details>
+
+      <!-- amount (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
+      </details>
+
+      <!-- vatAmount (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f vatAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ vat_amount_md | markdownify }}</div></div>
+      </details>
+
+      <!-- description (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The description of the payment order.</div></div>
+      </details>
+
+      <!-- userAgent (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f userAgent %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ user_agent_md | markdownify }}</div></div>
+      </details>
+
+      <!-- language (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f language %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The language of the payer.</div></div>
+      </details>
+
+      <!-- urls (object, required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f urls %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The <code>urls</code> object, containing the URLs relevant for the payment order.</div></div>
+
+        <div class="api-children">
+          <!-- hostUrls (required) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f hostUrls, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>array</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The array of valid host URLs.</div></div>
+          </details>
+
+          <!-- completeUrl (required) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f completeUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ complete_url_md | markdownify }}</div></div>
+          </details>
+
+          <!-- callbackUrl (required) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f callbackUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ callback_url_md | markdownify }}</div></div>
+          </details>
+
+          <!-- termsOfServiceUrl (required) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f termsOfServiceUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ tos_url_md | markdownify }}</div></div>
+          </details>
+
+          <!-- logoUrl (required) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f logoUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ logo_url_md | markdownify }}</div></div>
+          </details>
+        </div>
+      </details>
+
+      <!-- payeeInfo (object, required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payeeInfo %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ payee_info_md | markdownify }}</div></div>
+
+        <div class="api-children">
+          <!-- payeeId (required) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f payeeId, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The ID of the payee, usually the merchant ID.</div></div>
+          </details>
+
+          <!-- payeeReference (required) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string(30)</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ payee_ref_receipt_md | markdownify }}</div></div>
+          </details>
+        </div>
+      </details>
+    </div>
+  </details>
+</div>

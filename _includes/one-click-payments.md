@@ -61,15 +61,44 @@ setting the initial operation to [`Verify`][verify].
     json= request_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-|     Required     | Field                              | Type         | Description                                                                                                                                                                                                                                                                                              |
-| :--------------: | :--------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|  | {% f generatePaymentToken, 0 %}                     | `bool`     | Determines if a payment token should be generated. Default value is `false`.                                                                                                                                                                                                                                             |
-| | {% f payer, 0 %}                | `object`     | The payer object                                                                                                                                                                                                                                           |
-| | {% f payerReference, 0 %}                 | `string`     | A reference used to recognize the payer when no SSN is stored.                                                                                                                                                                                                                                                                            |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+<div class="api-compact" role="table" aria-label="Request">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+    <div role="columnheader">Required</div>
+  </div>
+
+  <!-- Level 0 (all nodes CLOSED by default) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f generatePaymentToken, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>bool</code></span>
+      <span class="req"></span>
+    </summary>
+    <div class="desc"><div class="indent-0">Determines if a payment token should be generated. Default value is <code>false</code>.</div></div>
+  </details>
+
+  <!-- payer (level 0) with child payerReference (level 1) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f payer, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+      <span class="req"></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The payer object</div></div>
+
+    <div class="api-children">
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payerReference %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc"><div class="indent-1">A reference used to recognize the payer when no SSN is stored.</div></div>
+      </details>
+    </div>
+  </details>
+</div>
 
 ## Finding The `paymentToken` Value
 
@@ -175,15 +204,91 @@ Content-Type: application/json{% endcapture %}
 
 {% endif %}
 
-{:.table .table-striped}
-|     Required     | Field                  | Type      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| :--------------: | ---------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %} | {% f payment, 0 %}              | `object`  | The `payment` object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| {% icon check %} | {% f operation %}    | `string`  | {% include fields/operation.md resource="payment" %} |
-| {% icon check %} | {% f intent %}       | `string`  | {% include fields/intent.md %} |
-| {% icon check %} | {% f paymentToken %} | `string`  | The `paymentToken` value received in `GET` response towards the Payment Resource is the same `paymentToken` generated in the initial purchase request. The token allow you to use already stored card data to initiate one-click payments.                                                                                                                                                                                                                                                                                                                                                |
-|                  | {% f creditCard %}   | `object`  | An object that holds different scenarios for card payments.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-|                  | {% f noCvc, 2 %}       | `boolean` | To use this feature it has to be enabled on the contract with Swedbank Pay. The CVC field is not required in the UI, but you can set it to `false` if you want to show it. Otherwise it will be set to `true`.                                                                                                                                                                                                                                                                                                                                                                               |
+<!-- Captures for markdown-includes -->
+{%- capture op_md -%}{% include fields/operation.md resource="payment" %}{%- endcapture -%}
+{%- capture intent_md -%}{% include fields/intent.md %}{%- endcapture -%}
+
+<div class="api-compact" role="table" aria-label="Request">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+    <div role="columnheader">Required</div>
+  </div>
+
+  <!-- Level 0 (all nodes CLOSED by default; original order retained) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc"><div class="indent-0">The <code>payment</code> object.</div></div>
+
+    <div class="api-children">
+      <!-- operation (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ op_md | markdownify }}</div></div>
+      </details>
+
+      <!-- intent (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f intent %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ intent_md | markdownify }}</div></div>
+      </details>
+
+      <!-- paymentToken (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f paymentToken %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            The <code>paymentToken</code> value received in <code>GET</code> response towards the Payment Resource is the same <code>paymentToken</code> generated in the initial purchase request.
+            The token allow you to use already stored card data to initiate one-click payments.
+          </div>
+        </div>
+      </details>
+
+      <!-- creditCard (object, optional) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f creditCard %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc"><div class="indent-1">An object that holds different scenarios for card payments.</div></div>
+
+        <div class="api-children">
+          <!-- noCvc (level 2 under creditCard) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f noCvc, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>boolean</code></span>
+              <span class="req"></span>
+            </summary>
+            <div class="desc">
+              <div class="indent-2">
+                To use this feature it has to be enabled on the contract with Swedbank Pay. The CVC field is not required in the UI, but you can set it to <code>false</code> if you want to show it.
+                Otherwise it will be set to <code>true</code>.
+              </div>
+            </div>
+          </details>
+        </div>
+      </details>
+    </div>
+  </details>
+</div>
 
 {% endunless %}
 
@@ -284,33 +389,211 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
 {% if documentation_section contains "payment-instruments" %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-|     Required     | Field                  | Type      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| :--------------: | ---------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %} | {% f payment, 0 %}   | `object`  | The `payment` object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| {% icon check %} | {% f operation %}    | `string`  | {% include fields/operation.md resource="payment" %} |
-| {% icon check %} | {% f intent %}       | `string`  | {% include fields/intent.md %}                    |
-| {% icon check %} | {% f paymentToken %} | `string`  | The `paymentToken` value received in `GET` response towards the Payment Resource is the same `paymentToken` generated in the initial purchase request. The token allow you to use already stored card data to initiate one-click payments.                                                                                                                                                                                                                                                                                                                                                |
-|                  | {% f generatePaymentToken %}     | `bool`       | Determines if a payment token should be generated. Default value is `false`.                                               |
-|                  | {% f payer %}                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                |
-|                  | {% f payerReference, 2 %}                     | `string`     | A reference used in the Enterprise and Payments Only implementations to recognize the payer when no SSN is stored.                                                                                                                                                                                                            |
-|                  | {% f creditCard %}   | `object`  | An object that holds different scenarios for card payments.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-|                  | {% f noCvc, 2 %}       | `boolean` | `true` if the CVC field should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                 |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+<!-- Captures for markdown-includes -->
+{%- capture op_md -%}{% include fields/operation.md resource="payment" %}{%- endcapture -%}
+{%- capture intent_md -%}{% include fields/intent.md %}{%- endcapture -%}
+
+<div class="api-compact" role="table" aria-label="Request">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+    <div role="columnheader">Required</div>
+  </div>
+
+  <!-- Level 0 (all nodes CLOSED by default; original order retained) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc"><div class="indent-0">The <code>payment</code> object.</div></div>
+
+    <div class="api-children">
+      <!-- operation (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ op_md | markdownify }}</div></div>
+      </details>
+
+      <!-- intent (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f intent %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ intent_md | markdownify }}</div></div>
+      </details>
+
+      <!-- paymentToken (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f paymentToken %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            The <code>paymentToken</code> value received in <code>GET</code> response towards the Payment Resource is the same
+            <code>paymentToken</code> generated in the initial purchase request. The token allow you to use already stored card
+            data to initiate one-click payments.
+          </div>
+        </div>
+      </details>
+
+      <!-- generatePaymentToken (optional) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f generatePaymentToken %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>bool</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc"><div class="indent-1">Determines if a payment token should be generated. Default value is <code>false</code>.</div></div>
+      </details>
+
+      <!-- payer (object, optional) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payer %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The <code>payer</code> object containing information about the payer relevant for the payment order.</div></div>
+
+        <div class="api-children">
+          <!-- payerReference (level 2 under payer) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f payerReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req"></span>
+            </summary>
+            <div class="desc"><div class="indent-2">A reference used in the Enterprise and Payments Only implementations to recognize the payer when no SSN is stored.</div></div>
+          </details>
+        </div>
+      </details>
+
+      <!-- creditCard (object, optional) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f creditCard %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc"><div class="indent-1">An object that holds different scenarios for card payments.</div></div>
+
+        <div class="api-children">
+          <!-- noCvc (level 2 under creditCard) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f noCvc, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>boolean</code></span>
+              <span class="req"></span>
+            </summary>
+            <div class="desc">
+              <div class="indent-2">
+                <code>true</code> if the CVC field should be disabled for this payment in the case a stored card is used; otherwise <code>false</code> per default.
+                To use this feature it has to be enabled on the contract with Swedbank Pay.
+              </div>
+            </div>
+          </details>
+        </div>
+      </details>
+    </div>
+  </details>
+</div>
 
 {% else %}
 
-{:.table .table-striped}
-|     Required     | Field                  | Type      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| :--------------: | ---------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %} | {% f paymentOrder, 0 %}              | `object`  | The `paymentorder` object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| {% icon check %} | {% f operation %}    | `string`  | {% include fields/operation.md %} |
-| {% icon check %} | {% f paymentToken %} | `string`  | The `paymentToken` value received in `GET` response towards the Payment Resource is the same `paymentToken` generated in the initial purchase request. The token allow you to use already stored card data to initiate one-click payments.                                                                                                                                                                                                                                                                                                                                                |
-|                  | {% f generatePaymentToken %}     | `bool`       | Determines if a payment token should be generated. Default value is `false`.                                               |
-|                  | {% f payer %}                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                |
-|                  | {% f payerReference %}                     | `string`     | A reference used in the Enterprise and Payments Only implementations to recognize the payer when no SSN is stored.                                                                                                                                                                                                            |
+<!-- Captures for markdown-includes -->
+{%- capture op_md -%}{% include fields/operation.md %}{%- endcapture -%}
+
+<div class="api-compact" role="table" aria-label="Request">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+    <div role="columnheader">Required</div>
+  </div>
+
+  <!-- Level 0: paymentOrder (all nodes CLOSED by default) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc"><div class="indent-0">The <code>paymentorder</code> object.</div></div>
+
+    <div class="api-children">
+      <!-- operation (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ op_md | markdownify }}</div></div>
+      </details>
+
+      <!-- paymentToken (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f paymentToken %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            The <code>paymentToken</code> value received in <code>GET</code> response towards the Payment Resource is the same
+            <code>paymentToken</code> generated in the initial purchase request. The token allow you to use already stored card
+            data to initiate one-click payments.
+          </div>
+        </div>
+      </details>
+
+      <!-- generatePaymentToken (optional) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f generatePaymentToken %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>bool</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc"><div class="indent-1">Determines if a payment token should be generated. Default value is <code>false</code>.</div></div>
+      </details>
+    </div>
+  </details>
+
+  <!-- Level 0: payer (moved to level 0) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f payer, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+      <span class="req"></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The <code>payer</code> object containing information about the payer relevant for the payment order.</div></div>
+
+    <div class="api-children">
+      <!-- payerReference (child of payer at level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payerReference %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            A reference used in the Enterprise and Payments Only implementations to recognize the payer when no SSN is stored.
+          </div>
+        </div>
+      </details>
+    </div>
+  </details>
+</div>
 
 {% endif %}
 
@@ -361,16 +644,55 @@ in a validation error.
     json= request_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-|     Required     | Field                              | Type         | Description                                                                                                                                                                                                                                                                                              |
-| :--------------: | :--------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %} | {% f paymentOrder, 0 %}                     | `object`     | The payment order object.                                                                                                                                                                                                                                                                                |
-|  | {% f EnablePaymentDetailsConsentCheckbox %}                     | `bool`     | Set to `true` or `false`. Used to determine if the checkbox used to save payment details is shown or not. Will only work if the parameter `disableStoredPaymentDetails` is set to `true`.                                                                                                                                                                                                                                                                                 |
-|  | {% f disableStoredPaymentDetails %}                     | `bool`     | Set to `true` or `false`. Must be set to `true` for `enablePaymentDetailsConsentCheckbox` to work.                                                                                                                                                                                                                                           |
+<div class="api-compact" role="table" aria-label="Request">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+    <div role="columnheader">Required</div>
+  </div>
 
-{% endcapture %}
-{% include accordion-table.html content=table %}
+  <!-- Level 0 (all nodes CLOSED by default; original order retained) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc"><div class="indent-0">The payment order object.</div></div>
+
+    <div class="api-children">
+      <!-- EnablePaymentDetailsConsentCheckbox (optional) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f EnablePaymentDetailsConsentCheckbox %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>bool</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            Set to <code>true</code> or <code>false</code>. Used to determine if the checkbox used to save payment details is shown or not.
+            Will only work if the parameter <code>disableStoredPaymentDetails</code> is set to <code>true</code>.
+          </div>
+        </div>
+      </details>
+
+      <!-- disableStoredPaymentDetails (optional) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f disableStoredPaymentDetails %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>bool</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            Set to <code>true</code> or <code>false</code>. Must be set to <code>true</code> for
+            <code>enablePaymentDetailsConsentCheckbox</code> to work.
+          </div>
+        </div>
+      </details>
+    </div>
+  </details>
+</div>
 
 {% endif %}
 
