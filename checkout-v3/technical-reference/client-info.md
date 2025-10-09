@@ -1,5 +1,5 @@
 ---
-title: Client Info
+title: ClientInfo
 permalink: /:path/client-info/
 description: |
   Payment specific client information.
