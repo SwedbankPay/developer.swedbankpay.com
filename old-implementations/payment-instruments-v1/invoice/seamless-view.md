@@ -103,39 +103,306 @@ Content-Type: application/json{% endcapture %}
     json= request_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-|     Required     | Field                             | Type          | Description                                                                                                                                                                                                                                                                                                                                    |
-| :--------------: | :-------------------------------- | :------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %} | {% f payment, 0 %}                         | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                          |
-| {% icon check %} | {% f operation %}               | `string`      | The operation that the `payment` is supposed to perform. The [`FinancingConsumer`]({{ financing_consumer_url }}) operation is used in our example. |
-| {% icon check %} | {% f intent %}                  | `string`      | `Authorization`. Reserves the amount, and is followed by a [cancellation]({{ cancel_url }}) or [capture]({{ capture_url }}) of funds.                                                                                                                                                                                                                              |
-| {% icon check %} | {% f currency %}                | `string`      | NOK or SEK.                                                                                                                                                                                                                                                                                                                                    |
-| {% icon check %} | {% f prices %}                  | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                          |
-| {% icon check %} | {% f type, 2 %}                   | `string`      | {% include fields/prices-type.md kind="Invoice" %}                                                                                                                                                                                                                                  |
-| {% icon check %} | {% f amount, 2 %}                 | `integer`     | {% include fields/amount.md %}                                                                                                                                                                                                                                                                                                      |
-| {% icon check %} | {% f vatAmount, 2 %}              | `integer`     | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                                                                                   |
-| {% icon check %} | {% f description %}             | `string(40)`  | {% include fields/description.md %}                                                                                                                                                                                                                                                                 |
-|                  | {% f generatePaymentToken %}    | `boolean`     | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as One Click.                                                                                                                                                                                                                                        |
-| {% icon check %} | {% f userAgent %}               | `string`      | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                           |
-| {% icon check %} | {% f language %}                | `string`      | {% include fields/language.md %}                                                                                                                                                                                                                                                                             |
-| {% icon check %} | {% f urls %}                    | `object`      | The`urls`resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                                           |
-| {% icon check %} | {% f hostUrls, 2 %}               | `array`       | The array of valid host URLs.                                                                                                                                                                                                                   |
-| {% icon check %} | {% f completeUrl, 2 %}            | `string`      | {% include fields/complete-url.md resource="payment" %} |
-|                  | {% f cancelUrl, 2 %}              | `string`      | The URL to redirect the payer to if the payment is cancelled. Only used in redirect scenarios. Can not be used simultaneously with`paymentUrl`; only cancelUrl or`paymentUrl`can be used, not both.                                                                                                                                             |
-|                  | {% f callbackUrl, 2 %}            | `string`      | {% include fields/callback-url.md resource="payment" %}                                                                                                                                                                                          |
-|                  | {% f termsOfServiceUrl, 2 %}      | `string`      | {% include fields/terms-of-service-url.md %}                                                                                                                                                                                                                                                                                           |
-| {% icon check %} | {% f payeeInfo %}               | `object`      | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                                                            |
-| {% icon check %} | {% f payeeId, 2 %}                | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                                                                          |
-| {% icon check %} | {% f payeeReference, 2 %}         | `string(30)` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                                                                                                       |
-|                  | {% f payeeName, 2 %}              | `string`      | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                                                                                                        |
-|                  | {% f productCategory, 2 %}        | `string(50)`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                 |
-|                  | {% f orderReference, 2 %}         | `string(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                        |
-|                  | {% f payer %}                   | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
-|                  | {% f payerReference, 2 %}         | `string`     | {% include fields/payer-reference.md documentation_section="invoice" %}                                                                                                                                                                                                                                                           |
-| {% icon check %} | {% f invoiceType, 2 %}            | `string`      | `PayExFinancingSe`, `PayExFinancingNo` or `PayExFinancingFi` depending on which country you're doing business with Swedbank Pay in. (Other external financing partner names must be agreed upon with Swedbank Pay.)                                                                                                                            |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+<div class="api-compact" role="table" aria-label="Request">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+    <div role="columnheader">Required</div>
+  </div>
+
+  <!-- payment (root) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc"><div class="indent-0">The <code>payment</code> object contains information about the specific payment.</div></div>
+
+    <div class="api-children">
+      <!-- operation -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The operation that the <code>payment</code> is supposed to perform. The <a href="{{ financing_consumer_url }}">FinancingConsumer</a> operation is used in our example.</div></div>
+      </details>
+
+      <!-- intent -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f intent %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1"><code>Authorization</code>. Reserves the amount, and is followed by a <a href="{{ cancel_url }}">cancellation</a> or <a href="{{ capture_url }}">capture</a> of funds.</div></div>
+      </details>
+
+      <!-- currency -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f currency %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">NOK or SEK.</div></div>
+      </details>
+
+      <!-- prices (object) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f prices %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The <code>prices</code> resource lists the prices related to a specific payment.</div></div>
+
+        <div class="api-children">
+          <!-- type -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            {% capture prices_type_md %}{% include fields/prices-type.md kind="Invoice" %}{% endcapture %}
+            <div class="desc"><div class="indent-2">{{ prices_type_md | markdownify }}</div></div>
+          </details>
+
+          <!-- amount -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f amount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>integer</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            {% capture amount_md_lvl2 %}{% include fields/amount.md %}{% endcapture %}
+            <div class="desc"><div class="indent-2">{{ amount_md_lvl2 | markdownify }}</div></div>
+          </details>
+
+          <!-- vatAmount -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f vatAmount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>integer</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            {% capture vat_amount_md_lvl2 %}{% include fields/vat-amount.md %}{% endcapture %}
+            <div class="desc"><div class="indent-2">{{ vat_amount_md_lvl2 | markdownify }}</div></div>
+          </details>
+
+          <!-- description -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f description, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string(40)</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            {% capture description_md_lvl2 %}{% include fields/description.md %}{% endcapture %}
+            <div class="desc"><div class="indent-2">{{ description_md_lvl2 | markdownify }}</div></div>
+          </details>
+        </div>
+      </details>
+
+      <!-- generatePaymentToken (optional) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f generatePaymentToken %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>boolean</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1"><code>true</code> or <code>false</code>. Set this to <code>true</code> if you want to create a paymentToken for future use as One Click.</div></div>
+      </details>
+
+      <!-- userAgent -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f userAgent %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        {% capture user_agent_md %}{% include fields/user-agent.md %}{% endcapture %}
+        <div class="desc"><div class="indent-1">{{ user_agent_md | markdownify }}</div></div>
+      </details>
+
+      <!-- language -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f language %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        {% capture language_md %}{% include fields/language.md %}{% endcapture %}
+        <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>
+      </details>
+
+      <!-- urls (object) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f urls %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The<code>urls</code>resource lists urls that redirects users to relevant sites.</div></div>
+
+        <div class="api-children">
+          <!-- hostUrls -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f hostUrls, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>array</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The array of valid host URLs.</div></div>
+          </details>
+
+          <!-- completeUrl -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f completeUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            {% capture complete_url_md %}{% include fields/complete-url.md resource="payment" %}{% endcapture %}
+            <div class="desc"><div class="indent-2">{{ complete_url_md | markdownify }}</div></div>
+          </details>
+
+          <!-- cancelUrl (optional) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f cancelUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The URL to redirect the payer to if the payment is cancelled. Only used in redirect scenarios. Can not be used simultaneously with<code>paymentUrl</code>; only <code>cancelUrl</code> or <code>paymentUrl</code> can be used, not both.</div></div>
+          </details>
+
+          <!-- paymentUrl (optional) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f paymentUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            {% capture payment_url_md %}{% include fields/payment-url.md %}{% endcapture %}
+            <div class="desc"><div class="indent-2">{{ payment_url_md | markdownify }}</div></div>
+          </details>
+
+          <!-- callbackUrl (optional) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f callbackUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            {% capture callback_url_md %}{% include fields/callback-url.md resource="payment" %}{% endcapture %}
+            <div class="desc"><div class="indent-2">{{ callback_url_md | markdownify }}</div></div>
+          </details>
+
+          <!-- termsOfServiceUrl (optional) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f termsOfServiceUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            {% capture tos_url_md %}{% include fields/terms-of-service-url.md %}{% endcapture %}
+            <div class="desc"><div class="indent-2">{{ tos_url_md | markdownify }}</div></div>
+          </details>
+        </div>
+      </details>
+
+      <!-- payeeInfo (object) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payeeInfo %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        {% capture payee_info_md %}{% include fields/payee-info.md %}{% endcapture %}
+        <div class="desc"><div class="indent-1">{{ payee_info_md | markdownify }}</div></div>
+
+        <div class="api-children">
+          <!-- payeeId -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f payeeId, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.</div></div>
+          </details>
+
+          <!-- payeeReference -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string(30)</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            {% capture payee_reference_md %}{% include fields/payee-reference.md describe_receipt=true %}{% endcapture %}
+            <div class="desc"><div class="indent-2">{{ payee_reference_md | markdownify }}</div></div>
+          </details>
+
+          <!-- payeeName (optional) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f payeeName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.</div></div>
+          </details>
+
+          <!-- productCategory (optional) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f productCategory, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string(50)</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.</div></div>
+          </details>
+
+          <!-- orderReference (optional) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f orderReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string(50)</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The order reference should reflect the order reference found in the merchant's systems.</div></div>
+          </details>
+        </div>
+      </details>
+
+      <!-- payer (link with nested reference) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payer %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The <code>payer</code> object, containing information about the payer.</div></div>
+
+        <div class="api-children">
+          <!-- payerReference -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f payerReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            {% capture payer_reference_md %}{% include fields/payer-reference.md documentation_section="invoice" %}{% endcapture %}
+            <div class="desc"><div class="indent-2">{{ payer_reference_md | markdownify }}</div></div>
+          </details>
+
+          <!-- invoiceType -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f invoiceType, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2"><code>PayExFinancingSe</code>, <code>PayExFinancingNo</code> or <code>PayExFinancingFi</code> depending on which country you're doing business with Swedbank Pay in. (Other external financing partner names must be agreed upon with Swedbank Pay.)</div></div>
+          </details>
+        </div>
+      </details>
+    </div>
+  </details>
+</div>
 
 ## Seamless View Response
 

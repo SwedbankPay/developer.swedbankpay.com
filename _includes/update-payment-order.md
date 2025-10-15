@@ -75,33 +75,231 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     json= request_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-|     Required     | Field                          | Type      | Description                                                                                                                                                                                                                                                                           |
-| :--------------: | :----------------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| {% icon check %} | {% f paymentOrder, 0 %}                 | `object`  | The payment order object.                                                                                                                                                                                                                                                             |
-| {% icon check %} | {% f operation %}            | `string`  | {% include fields/operation.md %}                                                                                                                                                                                                                          |
-| {% icon check %} | {% f amount %}               | `integer` | {% include fields/amount.md %}                                                                                                                                                                                                                                             |
-| {% icon check %} | {% f vatAmount %}            | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                          |
-| {% icon check %} | {% f description %}          | `string`  | The description of the payment order.                                                                                                                                                                                                                                                 |
-| {% icon check %} | {% f orderItems %}           | `array`   | {% include fields/order-items.md %}                                                                                                                                                                                                                                         |
-| {% icon check %} | {% f reference, 2 %}           | `string`  | A reference that identifies the order item.                                                                                                                                                                                                                                           |
-| {% icon check %} | {% f name, 2 %}                | `string`  | The name of the order item.                                                                                                                                                                                                                                                           |
-| {% icon check %} | {% f type, 2 %}                | `enum`    | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `PAYMENT_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.                                                                                                                                                                 |
-| {% icon check %} | {% f class, 2 %}               | `string`  | The classification of the order item. Can be used for assigning the order item to a specific product category, such as `MobilePhone`. Note that `class` cannot contain spaces and must follow the regex pattern `[\w-]*`. Swedbank Pay may use this field for statistics. |
-| {% icon check %} | {% f itemUrl, 2 %}             | `string`  | The URL to a page that can display the purchased item, product or similar.                                                                                                                                                                                                            |
-| {% icon check %} | {% f imageUrl, 2 %}            | `string`  | The URL to an image of the order item.                                                                                                                                                                                                                                                |
-| {% icon check %} | {% f description, 2 %}         | `string`  | The human readable description of the order item.                                                                                                                                                                                                                                     |
-| {% icon check %} | {% f discountDescription, 2 %} | `string`  | The human readable description of the possible discount.                                                                                                                                                                                                                              |
-| {% icon check %} | {% f quantity, 2 %}            | `number` | The 4 decimal precision quantity of order items being purchased.                                                                                                                                                                                                                      |
-| {% icon check %} | {% f quantityUnit, 2 %}        | `string`  | The unit of the quantity, such as `pcs`, `grams`, or similar. This is used for your own book keeping.                                                                                                                                                        |
-| {% icon check %} | {% f unitPrice, 2 %}           | `integer` | The price per unit of order item, including VAT.                                                                                                                                                                                                                                      |
-| {% icon check %} | {% f discountPrice, 2 %}       | `integer` | If the order item is purchased at a discounted price. This field should contain that price, including VAT.                                                                                                                                                                            |
-| {% icon check %} | {% f vatPercent, 2 %}          | `integer` | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                              |
-| {% icon check %} | {% f amount, 2 %}              | `integer` | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                                                                 |
-| {% icon check %} | {% f vatAmount, 2 %}           | `integer` | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                                                                        |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+<div class="api-compact" role="table" aria-label="Request">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+    <div role="columnheader">Required</div>
+  </div>
+
+  <!-- paymentOrder (root) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc"><div class="indent-0">The payment order object.</div></div>
+
+    <div class="api-children">
+      <!-- operation -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        {% capture operation_md %}{% include fields/operation.md %}{% endcapture %}
+        <div class="desc"><div class="indent-1">{{ operation_md | markdownify }}</div></div>
+      </details>
+
+      <!-- amount -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        {% capture amount_md_root %}{% include fields/amount.md %}{% endcapture %}
+        <div class="desc"><div class="indent-1">{{ amount_md_root | markdownify }}</div></div>
+      </details>
+
+      <!-- vatAmount -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f vatAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        {% capture vat_amount_md_root %}{% include fields/vat-amount.md %}{% endcapture %}
+        <div class="desc"><div class="indent-1">{{ vat_amount_md_root | markdownify }}</div></div>
+      </details>
+
+      <!-- description -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The description of the payment order.</div></div>
+      </details>
+
+      <!-- orderItems (array container) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f orderItems %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>array</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        {% capture order_items_md %}{% include fields/order-items.md %}{% endcapture %}
+        <div class="desc"><div class="indent-1">{{ order_items_md | markdownify }}</div></div>
+
+        <div class="api-children">
+          <!-- reference -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f reference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">A reference that identifies the order item.</div></div>
+          </details>
+
+          <!-- name -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f name, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The name of the order item.</div></div>
+          </details>
+
+          <!-- type -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>enum</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2"><code>PRODUCT</code>, <code>SERVICE</code>, <code>SHIPPING_FEE</code>, <code>PAYMENT_FEE</code>, <code>DISCOUNT</code>, <code>VALUE_CODE</code> or <code>OTHER</code>. The type of the order item.</div></div>
+          </details>
+
+          <!-- class -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f class, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The classification of the order item. Can be used for assigning the order item to a specific product category, such as <code>MobilePhone</code>. Note that <code>class</code> cannot contain spaces and must follow the regex pattern <code>[\w-]*</code>. Swedbank Pay may use this field for statistics.</div></div>
+          </details>
+
+          <!-- itemUrl -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f itemUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The URL to a page that can display the purchased item, product or similar.</div></div>
+          </details>
+
+          <!-- imageUrl -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f imageUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The URL to an image of the order item.</div></div>
+          </details>
+
+          <!-- description (item) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f description, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The human readable description of the order item.</div></div>
+          </details>
+
+          <!-- discountDescription -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f discountDescription, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The human readable description of the possible discount.</div></div>
+          </details>
+
+          <!-- quantity -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f quantity, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>number</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The 4 decimal precision quantity of order items being purchased.</div></div>
+          </details>
+
+          <!-- quantityUnit -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f quantityUnit, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The unit of the quantity, such as <code>pcs</code>, <code>grams</code>, or similar. This is used for your own book keeping.</div></div>
+          </details>
+
+          <!-- unitPrice -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f unitPrice, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>integer</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The price per unit of order item, including VAT.</div></div>
+          </details>
+
+          <!-- discountPrice -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f discountPrice, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>integer</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">If the order item is purchased at a discounted price. This field should contain that price, including VAT.</div></div>
+          </details>
+
+          <!-- vatPercent -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f vatPercent, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>integer</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The percent value of the VAT multiplied by 100, so <code>25%</code> becomes <code>2500</code>.</div></div>
+          </details>
+
+          <!-- amount (item) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f amount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>integer</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. <code>10000</code> equals <code>100.00 NOK</code> and <code>500</code>0 equals <code>50.00 NOK</code>.</div></div>
+          </details>
+
+          <!-- vatAmount (item) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f vatAmount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>integer</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. <code>10000</code> equals <code>100.00 NOK</code> and <code>500</code>0 equals <code>50.00 NOK</code>.</div></div>
+          </details>
+        </div>
+      </details>
+    </div>
+  </details>
+</div>
 
 {% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.x/2.0
@@ -172,31 +370,220 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     json= response_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-| Field                             | Type         | Description                                                                                                                                                                                                                                                                                                                                                |
-| :-------------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% f payment, 0 %}                         | `object`     | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                      |
-| {% f id %}                      | `string`     | {% include fields/id.md %}                                                                                                                                                                                                                                                                                                                      |
-| {% f number %}                  | `integer`    | {% include fields/number.md resource="payment" %}                                                                                                                                                           |
-| {% f created %}                 | `string`     | The ISO-8601 date of when the payment was created.                                                                                                                                                                                                                                                                                                         |
-| {% f updated %}                 | `string`     | The ISO-8601 date of when the payment was updated.                                                                                                                                                                                                                                                                                                         |
-| {% f state %}                   | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment, not the state of any transactions performed on the payment. To find the state of the payment's transactions (such as a successful authorization), see the `transactions` resource or the different specialized type-specific resources such as `authorizations` or `sales`. |
-| {% f prices %}                  | `object`     | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                      |
-| {% f id, 2 %}                     | `string`     | {% include fields/id.md resource="prices" %}                                                                                                                                                                                                                                                                                                    |
-| {% f amount %}                  | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                                                                                                  |
-| {% f remainingCaptureAmount %}  | `integer`    | The available amount to capture.                                                                                                                                                                                                                                                                                                                           |
-| {% f remainingCancelAmount %}   | `integer`    | The available amount to cancel.                                                                                                                                                                                                                                                                                                                            |
-| {% f remainingReversalAmount %} | `integer`    | The available amount to reverse.                                                                                                                                                                                                                                                                                                                           |
-| {% f description %}             | `string(40)` | {% include fields/description.md %}                                                                                                                                                                                                                                                         |
-| {% f userAgent %}               | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                                             |
-| {% f language %}                | `string`     | {% include fields/language.md %}                                                                                                                                                                                                                                                                                      |
-| {% f urls %}                    | `string`     | The URL to the urls resource where all URLs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
-| {% f payeeInfo %}               | `object`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                 |
-| {% f payers %}                  | `string`     | The URL to the `payer` resource where the information about the payer can be retrieved.                                                        |
-| {% f operations, 0 %}                      | `array`      | {% include fields/operations.md resource="payment" %}                                                                                                                                                                                                                                                                                                                |
-| {% f method, 2 %}                 | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
-| {% f href, 2 %}                   | `string`     | The target URL to perform the operation against.                                                                                                                                                                                                                                                                                                           |
-| {% f rel, 2 %}                    | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+<div class="api-compact" role="table" aria-label="Response">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+  </div>
+
+  <!-- payment (root) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The <code>payment</code> object contains information about the specific payment.</div></div>
+
+    <div class="api-children">
+      <!-- id -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        {% capture id_md %}{% include fields/id.md %}{% endcapture %}
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
+      </details>
+
+      <!-- number -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f number %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        {% capture number_payment_md %}{% include fields/number.md resource="payment" %}{% endcapture %}
+        <div class="desc"><div class="indent-1">{{ number_payment_md | markdownify }}</div></div>
+      </details>
+
+      <!-- created -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f created %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment was created.</div></div>
+      </details>
+
+      <!-- updated -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f updated %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment was updated.</div></div>
+      </details>
+
+      <!-- state -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f state %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1"><code>Ready</code>, <code>Pending</code>, <code>Failed</code> or <code>Aborted</code>. Indicates the state of the payment, not the state of any transactions performed on the payment. To find the state of the payment's transactions (such as a successful authorization), see the <code>transactions</code> resource or the different specialized type-specific resources such as <code>authorizations</code> or <code>sales</code>.</div></div>
+      </details>
+
+      <!-- prices (object) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f prices %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The <code>prices</code> resource lists the prices related to a specific payment.</div></div>
+
+        <div class="api-children">
+          <!-- prices.id -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f id, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            {% capture prices_id_md %}{% include fields/id.md resource="prices" %}{% endcapture %}
+            <div class="desc"><div class="indent-2">{{ prices_id_md | markdownify }}</div></div>
+          </details>
+        </div>
+      </details>
+
+      <!-- amount -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        {% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
+        <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
+      </details>
+
+      <!-- remaining amounts -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f remainingCaptureAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The available amount to capture.</div></div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f remainingCancelAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The available amount to cancel.</div></div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f remainingReversalAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The available amount to reverse.</div></div>
+      </details>
+
+      <!-- description -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string(40)</code></span>
+        </summary>
+        {% capture description_md %}{% include fields/description.md %}{% endcapture %}
+        <div class="desc"><div class="indent-1">{{ description_md | markdownify }}</div></div>
+      </details>
+
+      <!-- userAgent -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f userAgent %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        {% capture user_agent_md %}{% include fields/user-agent.md %}{% endcapture %}
+        <div class="desc"><div class="indent-1">{{ user_agent_md | markdownify }}</div></div>
+      </details>
+
+      <!-- language -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f language %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        {% capture language_md %}{% include fields/language.md %}{% endcapture %}
+        <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>
+      </details>
+
+      <!-- urls (link) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f urls %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the urls resource where all URLs related to the payment can be retrieved.</div></div>
+      </details>
+
+      <!-- payeeInfo (object) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payeeInfo %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+        </summary>
+        {% capture payee_info_md %}{% include fields/payee-info.md %}{% endcapture %}
+        <div class="desc"><div class="indent-1">{{ payee_info_md | markdownify }}</div></div>
+      </details>
+
+      <!-- payers (link) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payers %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <code>payer</code> resource where the information about the payer can be retrieved.</div></div>
+      </details>
+
+      <!-- operations (array) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f operations, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>array</code></span>
+        </summary>
+        {% capture operations_md %}{% include fields/operations.md resource="payment" %}{% endcapture %}
+        <div class="desc"><div class="indent-1">{{ operations_md | markdownify }}</div></div>
+
+        <div class="api-children">
+          <!-- method -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f method, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The HTTP method to use when performing the operation.</div></div>
+          </details>
+
+          <!-- href -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f href, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The target URL to perform the operation against.</div></div>
+          </details>
+
+          <!-- rel -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f rel, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The name of the relation the operation has to the current resource.</div></div>
+          </details>
+        </div>
+      </details>
+    </div>
+  </details>
+</div>

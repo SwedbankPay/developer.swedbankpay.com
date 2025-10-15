@@ -141,30 +141,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 }
 ```
 
-{%- capture operation_md -%}{% include fields/operation.md %}{%- endcapture -%}
-{%- capture amount_md -%}{% include fields/amount.md %}{%- endcapture -%}
-{%- capture vat_amount_md -%}{% include fields/vat-amount.md %}{%- endcapture -%}
-{%- capture user_agent_md -%}{% include fields/user-agent.md %}{%- endcapture -%}
-{%- capture language_md -%}{% include fields/language.md %}{%- endcapture -%}
-{%- capture payee_info_md -%}{% include fields/payee-info.md %}{%- endcapture -%}
-{%- capture payment_url_md -%}{% include fields/payment-url.md %}{%- endcapture -%}
-{%- capture complete_url_md -%}{% include fields/complete-url.md %}{%- endcapture -%}
-{%- capture callback_url_md -%}{% include fields/callback-url.md %}{%- endcapture -%}
-{%- capture tos_url_md -%}{% include fields/terms-of-service-url.md %}{%- endcapture -%}
-{%- capture logo_url_md -%}{% include fields/logo-url.md %}{%- endcapture -%}
-{%- capture description_md -%}{% include fields/description.md %}{%- endcapture -%}
-{%- capture subsite_md -%}{% include fields/subsite.md %}{%- endcapture -%}
-{%- capture site_id_md -%}{% include fields/site-id.md %}{%- endcapture -%}
-{%- capture order_items_md -%}{% include fields/order-items.md %}{%- endcapture -%}
-
 <div class="api-compact" role="table" aria-label="Request">
-  <div class="header" role="row">
-    <div role="columnheader">Field</div>
-    <div role="columnheader">Type</div>
-    <div role="columnheader">Required</div>
-  </div>
-
-  <!-- Level 0, all nodes CLOSED by default (original order) -->
   <details class="api-item" role="rowgroup" data-level="0">
     <summary role="row">
       <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
@@ -172,110 +149,97 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       <span class="req">{% icon check %}</span>
     </summary>
     <div class="desc"><div class="indent-0">The payment order object.</div></div>
-
     <div class="api-children">
-      <!-- operation -->
+
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field" role="rowheader">{% f operation, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">{{ operation_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{% capture _inc %}{% include fields/operation.md %}{% endcapture %}{{ _inc | markdownify }}</div></div>
       </details>
 
-      <!-- currency -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f currency %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field" role="rowheader">{% f currency, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">The currency of the payment.</div></div>
       </details>
 
-      <!-- amount -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field" role="rowheader">{% f amount, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{% capture _inc %}{% include fields/amount.md %}{% endcapture %}{{ _inc | markdownify }}</div></div>
       </details>
 
-      <!-- vatAmount -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f vatAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field" role="rowheader">{% f vatAmount, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">{{ vat_amount_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{% capture _inc %}{% include fields/vat-amount.md %}{% endcapture %}{{ _inc | markdownify }}</div></div>
       </details>
 
-      <!-- description -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field" role="rowheader">{% f description, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">The description of the payment order.</div></div>
       </details>
 
-      <!-- userAgent -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f userAgent %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field" role="rowheader">{% f userAgent, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">{{ user_agent_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{% capture _inc %}{% include fields/user-agent.md %}{% endcapture %}{{ _inc | markdownify }}</div></div>
       </details>
 
-      <!-- language -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f language %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field" role="rowheader">{% f language, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">The language of the payer.</div></div>
       </details>
 
-      <!-- productName -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f productName %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field" role="rowheader">{% f productName, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">Used to tag the payment as Online Payments v3.0. Mandatory for Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.</div></div>
       </details>
 
-      <!-- implementation (optional) -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f implementation %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field" role="rowheader">{% f implementation, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
-          <span class="req"></span>
         </summary>
         <div class="desc"><div class="indent-1">Indicates which implementation to use.</div></div>
       </details>
 
-      <!-- urls (object) -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f urls %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field" role="rowheader">{% f urls, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>object</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">The <code>urls</code> object, containing the URLs relevant for the payment order.</div></div>
-
         <div class="api-children">
           {% if include.integration_mode=="seamless-view" %}
-          <!-- hostUrls (required in seamless-view) -->
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
               <span class="field" role="rowheader">{% f hostUrls, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
@@ -285,82 +249,71 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             <div class="desc"><div class="indent-2">The array of valid host URLs.</div></div>
           </details>
 
-          <!-- paymentUrl (optional in seamless-view) -->
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
               <span class="field" role="rowheader">{% f paymentUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
-              <span class="req"></span>
             </summary>
-            <div class="desc"><div class="indent-2">{{ payment_url_md | markdownify }}</div></div>
+            <div class="desc"><div class="indent-2">{% capture _inc %}{% include fields/payment-url.md %}{% endcapture %}{{ _inc | markdownify }}</div></div>
           </details>
           {% endif %}
 
-          <!-- completeUrl (required) -->
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
               <span class="field" role="rowheader">{% f completeUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-2">{{ complete_url_md | markdownify }}</div></div>
+            <div class="desc"><div class="indent-2">{% capture _inc %}{% include fields/complete-url.md %}{% endcapture %}{{ _inc | markdownify }}</div></div>
           </details>
 
-          <!-- cancelUrl (optional) -->
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
               <span class="field" role="rowheader">{% f cancelUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
-              <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an <code>abort</code> request of the <code>payment</code> or <code>paymentorder</code>.</div></div>
           </details>
 
-          <!-- callbackUrl (required) -->
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
               <span class="field" role="rowheader">{% f callbackUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-2">{{ callback_url_md | markdownify }}</div></div>
+            <div class="desc"><div class="indent-2">{% capture _inc %}{% include fields/callback-url.md %}{% endcapture %}{{ _inc | markdownify }}</div></div>
           </details>
 
-          <!-- termsOfServiceUrl (required) -->
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
               <span class="field" role="rowheader">{% f termsOfServiceUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-2">{{ tos_url_md | markdownify }}</div></div>
+            <div class="desc"><div class="indent-2">{% capture _inc %}{% include fields/terms-of-service-url.md %}{% endcapture %}{{ _inc | markdownify }}</div></div>
           </details>
 
           {% if include.integration_mode=="redirect" %}
-          <!-- logoUrl (required in redirect) -->
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
               <span class="field" role="rowheader">{% f logoUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-2">{{ logo_url_md | markdownify }}</div></div>
+            <div class="desc"><div class="indent-2">{% capture _inc %}{% include fields/logo-url.md %}{% endcapture %}{{ _inc | markdownify }}</div></div>
           </details>
           {% endif %}
         </div>
       </details>
 
-      <!-- payeeInfo (object) -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f payeeInfo %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field" role="rowheader">{% f payeeInfo, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>object</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">{{ payee_info_md | markdownify }}</div></div>
-
+        <div class="desc"><div class="indent-1">{% capture _inc %}{% include fields/payee-info.md %}{% endcapture %}{{ _inc | markdownify }}</div></div>
         <div class="api-children">
-          <!-- payeeId (required) -->
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
               <span class="field" role="rowheader">{% f payeeId, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
@@ -370,22 +323,19 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             <div class="desc"><div class="indent-2">The ID of the payee, usually the merchant ID.</div></div>
           </details>
 
-          <!-- payeeReference (required) -->
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
               <span class="field" role="rowheader">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string(30)</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-2">{% include fields/payee-reference.md describe_receipt=true %}</div></div>
+            <div class="desc"><div class="indent-2">{% capture _inc %}{% include fields/payee-reference.md describe_receipt=true %}{% endcapture %}{{ _inc | markdownify }}</div></div>
           </details>
 
-          <!-- Optional payeeInfo fields -->
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
               <span class="field" role="rowheader">{% f payeeName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
-              <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">The name of the payee, usually the name of the merchant.</div></div>
           </details>
@@ -394,7 +344,6 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             <summary role="row">
               <span class="field" role="rowheader">{% f productCategory, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string(50)</code></span>
-              <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.</div></div>
           </details>
@@ -403,7 +352,6 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             <summary role="row">
               <span class="field" role="rowheader">{% f orderReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string(50)</code></span>
-              <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">The order reference should reflect the order reference found in the merchant's systems.</div></div>
           </details>
@@ -412,47 +360,47 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             <summary role="row">
               <span class="field" role="rowheader">{% f subsite, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string(40)</code></span>
-              <span class="req"></span>
             </summary>
-            <div class="desc"><div class="indent-2">{{ subsite_md | markdownify }}</div></div>
+            <div class="desc"><div class="indent-2">{% capture _inc %}{% include fields/subsite.md %}{% endcapture %}{{ _inc | markdownify }}</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
               <span class="field" role="rowheader">{% f siteId, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string(15)</code></span>
-              <span class="req"></span>
             </summary>
-            <div class="desc"><div class="indent-2">{{ site_id_md | markdownify }}</div></div>
+            <div class="desc"><div class="indent-2">{% capture _inc %}{% include fields/site-id.md %}{% endcapture %}{{ _inc | markdownify }}</div></div>
           </details>
         </div>
       </details>
 
-      <!-- payer (object, optional) -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f payer %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field" role="rowheader">{% f payer, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>object</code></span>
-          <span class="req"></span>
         </summary>
         <div class="desc"><div class="indent-1">The <code>payer</code> object containing information about the payer relevant for the payment order.</div></div>
-
         <div class="api-children">
-          <!-- nationalIdentifier (object) -->
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f digitalProducts, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>bool</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Set to <code>true</code> for merchants who only sell digital goods and only require <code>email</code> and/or <code>msisdn</code> as shipping details. Set to <code>false</code> if the merchant also sells physical goods.</div></div>
+          </details>
+
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
               <span class="field" role="rowheader">{% f nationalIdentifier, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
-              <span class="type"><code>object</code></span>
-              <span class="req"></span>
+              <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The national identifier object.</div></div>
-
             <div class="api-children">
               <details class="api-item" role="rowgroup" data-level="3">
                 <summary role="row">
                   <span class="field" role="rowheader">{% f socialSecurityNumber, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
-                  <span class="req"></span>
                 </summary>
                 <div class="desc"><div class="indent-3">The payer's social security number.</div></div>
               </details>
@@ -461,19 +409,16 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
                 <summary role="row">
                   <span class="field" role="rowheader">{% f countryCode, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
-                  <span class="req"></span>
                 </summary>
                 <div class="desc"><div class="indent-3">The country code of the payer.</div></div>
               </details>
             </div>
           </details>
 
-          <!-- Basic payer fields -->
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
               <span class="field" role="rowheader">{% f firstName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
-              <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">The first name of the payer.</div></div>
           </details>
@@ -482,7 +427,6 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             <summary role="row">
               <span class="field" role="rowheader">{% f lastName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
-              <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">The last name of the payer.</div></div>
           </details>
@@ -491,268 +435,224 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             <summary role="row">
               <span class="field" role="rowheader">{% f email, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
-              <span class="req"></span>
             </summary>
-            <div class="desc"><div class="indent-2">The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer's profile, if not already set. Increases the chance for {% if documentation_section contains "checkout-v3" %} <a href="{{ features_url }}/customize-payments/frictionless-payments">frictionless 3-D Secure 2 flow</a> {% else %} <a href="{{ features_url }}/core/frictionless-payments">frictionless 3-D Secure 2 flow</a> {% endif %}.</div></div>
+            <div class="desc"><div class="indent-2">The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer's profile, if not already set. Increases the chance for {% if documentation_section contains "checkout-v3" %} [frictionless 3-D Secure 2 flow]({{ features_url }}/customize-payments/frictionless-payments) {% else %} [frictionless 3-D Secure 2 flow]({{ features_url }}/core/frictionless-payments) {% endif %}.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
               <span class="field" role="rowheader">{% f msisdn, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
-              <span class="req"></span>
             </summary>
-            <div class="desc"><div class="indent-2">The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer's profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to {% if documentation_section contains "checkout-v3" %} <a href="{{ features_url }}/customize-payments/frictionless-payments">3-D Secure 2</a> {% else %} <a href="{{ features_url }}/core/frictionless-payments">3-D Secure 2</a> {% endif %}.</div></div>
+            <div class="desc"><div class="indent-2">The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer's profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to {% if documentation_section contains "checkout-v3" %} [3-D Secure 2]({{ features_url }}/customize-payments/frictionless-payments) {% else %} [3-D Secure 2]({{ features_url }}/core/frictionless-payments) {% endif %}.</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
               <span class="field" role="rowheader">{% f payerReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
-              <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">A reference used in Enterprise integrations to recognize the payer in the absence of SSN and/or a secure login. Read more about this in the <a href="/old-implementations/enterprise/features/optional/enterprise-payer-reference">payerReference</a> feature section.</div></div>
           </details>
 
-          <!-- shippingAddress (object) -->
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
-              <span class="field" role="rowheader">{% f shippingAddress, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field" role="rowheader">{% f shippingAddress, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>object</code></span>
-              <span class="req"></span>
             </summary>
-            <div class="desc"><div class="indent-2">The shipping address object related to the <code>payer</code>. The field is related to {% if documentation_section contains "checkout-v3" %} <a href="{{ features_url }}/customize-payments/frictionless-payments">3-D Secure 2</a> {% else %} <a href="{{ features_url }}/core/frictionless-payments">3-D Secure 2</a> {% endif %}.</div></div>
-
+            <div class="desc"><div class="indent-1">The shipping address object related to the <code>payer</code>. The field is related to {% if documentation_section contains "checkout-v3" %} [3-D Secure 2]({{ features_url }}/customize-payments/frictionless-payments) {% else %} [3-D Secure 2]({{ features_url }}/core/frictionless-payments) {% endif %}.</div></div>
             <div class="api-children">
-              <details class="api-item" role="rowgroup" data-level="3">
+              <details class="api-item" role="rowgroup" data-level="2">
                 <summary role="row">
-                  <span class="field" role="rowheader">{% f firstName, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field" role="rowheader">{% f firstName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
-                  <span class="req"></span>
                 </summary>
-                <div class="desc"><div class="indent-3">The first name of the addressee – the receiver of the shipped goods.</div></div>
+                <div class="desc"><div class="indent-2">The first name of the addressee – the receiver of the shipped goods.</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
+              <details class="api-item" role="rowgroup" data-level="2">
                 <summary role="row">
-                  <span class="field" role="rowheader">{% f lastName, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field" role="rowheader">{% f lastName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
-                  <span class="req"></span>
                 </summary>
-                <div class="desc"><div class="indent-3">The last name of the addressee – the receiver of the shipped goods.</div></div>
+                <div class="desc"><div class="indent-2">The last name of the addressee – the receiver of the shipped goods.</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
+              <details class="api-item" role="rowgroup" data-level="2">
                 <summary role="row">
-                  <span class="field" role="rowheader">{% f streetAddress, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field" role="rowheader">{% f streetAddress, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
-                  <span class="req"></span>
                 </summary>
-                <div class="desc"><div class="indent-3">Payer's street address. Maximum 50 characters long.</div></div>
+                <div class="desc"><div class="indent-2">Payer's street address. Maximum 50 characters long.</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
+              <details class="api-item" role="rowgroup" data-level="2">
                 <summary role="row">
-                  <span class="field" role="rowheader">{% f coAddress, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field" role="rowheader">{% f coAddress, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
-                  <span class="req"></span>
                 </summary>
-                <div class="desc"><div class="indent-3">Payer's c/o address, if applicable.</div></div>
+                <div class="desc"><div class="indent-2">Payer's c/o address, if applicable.</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
+              <details class="api-item" role="rowgroup" data-level="2">
                 <summary role="row">
-                  <span class="field" role="rowheader">{% f zipCode, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field" role="rowheader">{% f zipCode, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
-                  <span class="req"></span>
                 </summary>
-                <div class="desc"><div class="indent-3">Payer's zip code.</div></div>
+                <div class="desc"><div class="indent-2">Payer's zip code</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
+              <details class="api-item" role="rowgroup" data-level="2">
                 <summary role="row">
-                  <span class="field" role="rowheader">{% f city, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field" role="rowheader">{% f city, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
-                  <span class="req"></span>
                 </summary>
-                <div class="desc"><div class="indent-3">Payer's city of residence.</div></div>
+                <div class="desc"><div class="indent-2">Payer's city of residence.</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
+              <details class="api-item" role="rowgroup" data-level="2">
                 <summary role="row">
-                  <span class="field" role="rowheader">{% f countryCode, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field" role="rowheader">{% f countryCode, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
-                  <span class="req"></span>
                 </summary>
-                <div class="desc"><div class="indent-3">Country code for country of residence.</div></div>
+                <div class="desc"><div class="indent-2">Country code for country of residence.</div></div>
               </details>
             </div>
           </details>
 
-          <!-- billingAddress (object) -->
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
-              <span class="field" role="rowheader">{% f billingAddress, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field" role="rowheader">{% f billingAddress, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>object</code></span>
-              <span class="req"></span>
             </summary>
-            <div class="desc"><div class="indent-2">The billing address object containing information about the payer's billing address.</div></div>
-
+            <div class="desc"><div class="indent-1">The billing address object containing information about the payer's billing address.</div></div>
             <div class="api-children">
-              <details class="api-item" role="rowgroup" data-level="3">
+              <details class="api-item" role="rowgroup" data-level="2">
                 <summary role="row">
-                  <span class="field" role="rowheader">{% f firstName, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field" role="rowheader">{% f firstName %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
-                  <span class="req"></span>
                 </summary>
-                <div class="desc"><div class="indent-3">The first name of the payer.</div></div>
+                <div class="desc"><div class="indent-2">The first name of the payer.</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
+              <details class="api-item" role="rowgroup" data-level="2">
                 <summary role="row">
-                  <span class="field" role="rowheader">{% f lastName, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field" role="rowheader">{% f lastName %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
-                  <span class="req"></span>
                 </summary>
-                <div class="desc"><div class="indent-3">The last name of the payer.</div></div>
+                <div class="desc"><div class="indent-2">The last name of the payer.</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
+              <details class="api-item" role="rowgroup" data-level="2">
                 <summary role="row">
-                  <span class="field" role="rowheader">{% f streetAddress, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field" role="rowheader">{% f streetAddress %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
-                  <span class="req"></span>
                 </summary>
-                <div class="desc"><div class="indent-3">The street address of the payer. Maximum 50 characters long.</div></div>
+                <div class="desc"><div class="indent-2">The street address of the payer. Maximum 50 characters long.</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
+              <details class="api-item" role="rowgroup" data-level="2">
                 <summary role="row">
-                  <span class="field" role="rowheader">{% f coAddress, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field" role="rowheader">{% f coAddress %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
-                  <span class="req"></span>
                 </summary>
-                <div class="desc"><div class="indent-3">The CO-address (if used)</div></div>
+                <div class="desc"><div class="indent-2">The CO-address (if used)</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
+              <details class="api-item" role="rowgroup" data-level="2">
                 <summary role="row">
-                  <span class="field" role="rowheader">{% f zipCode, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field" role="rowheader">{% f zipCode %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
-                  <span class="req"></span>
                 </summary>
-                <div class="desc"><div class="indent-3">The postal number (ZIP code) of the payer.</div></div>
+                <div class="desc"><div class="indent-2">The postal number (ZIP code) of the payer.</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
+              <details class="api-item" role="rowgroup" data-level="2">
                 <summary role="row">
-                  <span class="field" role="rowheader">{% f city, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field" role="rowheader">{% f city %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
-                  <span class="req"></span>
                 </summary>
-                <div class="desc"><div class="indent-3">The city of the payer.</div></div>
+                <div class="desc"><div class="indent-2">The city of the payer.</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
+              <details class="api-item" role="rowgroup" data-level="2">
                 <summary role="row">
-                  <span class="field" role="rowheader">{% f countryCode, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field" role="rowheader">{% f countryCode %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
-                  <span class="req"></span>
                 </summary>
-                <div class="desc"><div class="indent-3"><code>SE</code>, <code>NO</code>, or <code>FI</code>.</div></div>
+                <div class="desc"><div class="indent-2"><code>SE</code>, <code>NO</code>, or <code>FI</code>.</div></div>
               </details>
             </div>
           </details>
 
-          <!-- accountInfo (object) -->
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
               <span class="field" role="rowheader">{% f accountInfo, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>object</code></span>
-              <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">Object related to the <code>payer</code> containing info about the payer's account.</div></div>
-
             <div class="api-children">
               <details class="api-item" role="rowgroup" data-level="3">
                 <summary role="row">
-                  <span class="field" role="rowheader">{% f accountAgeIndicator, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field" role="rowheader">{% f accountAgeIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
-                  <span class="req"></span>
                 </summary>
                 <div class="desc"><div class="indent-3">Indicates the age of the payer's account. <br><code>01</code> (No account, guest checkout) <br><code>02</code> (Created during this transaction) <br><code>03</code> (Less than 30 days old) <br><code>04</code> (30 to 60 days old) <br><code>05</code> (More than 60 days old)</div></div>
               </details>
 
               <details class="api-item" role="rowgroup" data-level="3">
                 <summary role="row">
-                  <span class="field" role="rowheader">{% f accountChangeIndicator, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field" role="rowheader">{% f accountChangeIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
-                  <span class="req"></span>
                 </summary>
                 <div class="desc"><div class="indent-3">Indicates when the last account changes occurred. <br><code>01</code> (Changed during this transaction) <br><code>02</code> (Less than 30 days ago) <br><code>03</code> (30 to 60 days ago) <br><code>04</code> (More than 60 days ago)</div></div>
               </details>
 
               <details class="api-item" role="rowgroup" data-level="3">
                 <summary role="row">
-                  <span class="field" role="rowheader">{% f accountChangePwdIndicator, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field" role="rowheader">{% f accountChangePwdIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
-                  <span class="req"></span>
                 </summary>
                 <div class="desc"><div class="indent-3">Indicates when the account's password was last changed. <br><code>01</code> (No changes) <br><code>02</code> (Changed during this transaction) <br><code>03</code> (Less than 30 days ago) <br><code>04</code> (30 to 60 days ago) <br><code>05</code> (More than 60 days old)</div></div>
               </details>
 
               <details class="api-item" role="rowgroup" data-level="3">
                 <summary role="row">
-                  <span class="field" role="rowheader">{% f shippingAddressUsageIndicator, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field" role="rowheader">{% f shippingAddressUsageIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
-                  <span class="req"></span>
                 </summary>
                 <div class="desc"><div class="indent-3">Indicates when the payer's shipping address was last used. <br><code>01</code>(This transaction) <br><code>02</code> (Less than 30 days ago) <br><code>03</code> (30 to 60 days ago) <br><code>04</code> (More than 60 days ago)</div></div>
               </details>
 
               <details class="api-item" role="rowgroup" data-level="3">
                 <summary role="row">
-                  <span class="field" role="rowheader">{% f shippingNameIndicator, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field" role="rowheader">{% f shippingNameIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
-                  <span class="req"></span>
                 </summary>
                 <div class="desc"><div class="indent-3">Indicates if the account name matches the shipping name. <br><code>01</code> (Account name identical to shipping name) <br><code>02</code> (Account name different from shipping name)</div></div>
               </details>
 
               <details class="api-item" role="rowgroup" data-level="3">
                 <summary role="row">
-                  <span class="field" role="rowheader">{% f suspiciousAccountActivity, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field" role="rowheader">{% f suspiciousAccountActivity, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
-                  <span class="req"></span>
                 </summary>
                 <div class="desc"><div class="indent-3">Indicates if there have been any suspicious activities linked to this account. <br><code>01</code> (No suspicious activity has been observed) <br><code>02</code> (Suspicious activity has been observed)</div></div>
               </details>
             </div>
           </details>
+
         </div>
       </details>
 
-      <!-- digitalProducts (root-level, optional) -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f digitalProducts %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>bool</code></span>
-          <span class="req"></span>
-        </summary>
-        <div class="desc"><div class="indent-1">Set to <code>true</code> for merchants who only sell digital goods and only require <code>email</code> and/or <code>msisdn</code> as shipping details. Set to <code>false</code> if the merchant also sells physical goods.</div></div>
-      </details>
-
-      <!-- orderItems (array, required) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f orderItems %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field" role="rowheader">{% f orderItems, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>array</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">{{ order_items_md | markdownify }}</div></div>
-
+        <div class="desc"><div class="indent-1">{% capture _inc %}{% include fields/order-items.md %}{% endcapture %}{{ _inc | markdownify }}</div></div>
         <div class="api-children">
-          <!-- Per-item fields (level 2) -->
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
               <span class="field" role="rowheader">{% f reference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
@@ -789,12 +689,10 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             <div class="desc"><div class="indent-2">The classification of the order item. Can be used for assigning the order item to a specific product category, such as <code>MobilePhone</code>. Note that <code>class</code> cannot contain spaces and must follow the regex pattern <code>[\w-]*</code>. Swedbank Pay may use this field for statistics.</div></div>
           </details>
 
-          <!-- Optional per-item fields -->
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
               <span class="field" role="rowheader">{% f itemUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
-              <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">The URL to a page that can display the purchased item, product or similar.</div></div>
           </details>
@@ -803,7 +701,6 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             <summary role="row">
               <span class="field" role="rowheader">{% f imageUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
-              <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">The URL to an image of the order item.</div></div>
           </details>
@@ -812,21 +709,18 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             <summary role="row">
               <span class="field" role="rowheader">{% f description, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
-              <span class="req"></span>
             </summary>
-            <div class="desc"><div class="indent-2">{{ description_md | markdownify }}</div></div>
+            <div class="desc"><div class="indent-2">{% capture _inc %}{% include fields/description.md %}{% endcapture %}{{ _inc | markdownify }}</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
               <span class="field" role="rowheader">{% f discountDescription, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
-              <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">The human readable description of the possible discount.</div></div>
           </details>
 
-          <!-- Required numeric per-item fields -->
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
               <span class="field" role="rowheader">{% f quantity, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
@@ -858,7 +752,6 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             <summary role="row">
               <span class="field" role="rowheader">{% f discountPrice, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>integer</code></span>
-              <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">If the order item is purchased at a discounted price. This field should contain that price, including VAT.</div></div>
           </details>
@@ -878,7 +771,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-2">{{ amount_md | markdownify }}</div></div>
+            <div class="desc"><div class="indent-2">{% capture _inc %}{% include fields/amount.md %}{% endcapture %}{{ _inc | markdownify }}</div></div>
           </details>
 
           <details class="api-item" role="rowgroup" data-level="2">
@@ -887,24 +780,145 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
-            <div class="desc"><div class="indent-2">{{ vat_amount_md | markdownify }}</div></div>
+            <div class="desc"><div class="indent-2">{% capture _inc %}{% include fields/vat-amount.md %}{% endcapture %}{{ _inc | markdownify }}</div></div>
           </details>
         </div>
       </details>
 
-      <!-- restrictedToInstruments (root-level, optional) -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f restrictedToInstruments %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field" role="rowheader">{% f restrictedToInstruments, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>array</code></span>
-          <span class="req"></span>
         </summary>
         <div class="desc"><div class="indent-1">A list of the payment methods you wish to restrict the payment to. Currently <code>Invoice</code> only. <code>Invoice</code> supports the subtypes <code>PayExFinancingNo</code>, <code>PayExFinancingSe</code> and <code>PayMonthlyInvoiceSe</code>, separated by a dash, e.g.; <code>Invoice-PayExFinancingNo</code>. Default value is all supported payment methods. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain payment methods by adding this field to the orderline you want to restrict. Use positive amounts to add fees and negative amounts to add discounts.</div></div>
       </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f riskIndicator, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>array</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">This <strong>optional</strong> object consist of information that helps verifying the payer. Providing these fields decreases the likelihood of having to prompt for 3-D Secure 2.0 authentication of the payer when they are authenticating the purchase.</div></div>
+        <div class="api-children">
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f deliveryEmailAdress, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">For electronic delivery, the email address to which the merchandise was delivered. Providing this field when appropriate decreases the likelihood of a 3-D Secure authentication for the payer.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f deliveryTimeFrameIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Indicates the merchandise delivery timeframe. <br><code>01</code> (Electronic Delivery) <br><code>02</code> (Same day shipping) <br><code>03</code> (Overnight shipping) <br><code>04</code> (Two-day or more shipping)</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f preOrderDate, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">For a pre-ordered purchase. The expected date that the merchandise will be available. Format: <code>YYYYMMDD</code></div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f preOrderPurchaseIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Indicates whether the payer is placing an order for merchandise with a future availability or release date. <br><code>01</code> (Merchandise available) <br><code>02</code> (Future availability)</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f shipIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Indicates shipping method chosen for the transaction. <br><code>01</code> (Ship to cardholder's billing address) <br><code>02</code> (Ship to another verified address on file with merchant)<br><code>03</code> (Ship to address that is different than cardholder's billing address)<br><code>04</code> (Ship to Store / Pick-up at local store. Store address shall be populated in shipping address fields)<br><code>05</code> (Digital goods, includes online services, electronic giftcards and redemption codes) <br><code>06</code> (Travel and Event tickets, not shipped) <br><code>07</code> (Other, e.g. gaming, digital service)</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f giftCardPurchase, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>bool</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2"><code>true</code> if this is a purchase of a gift card.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f reOrderPurchaseIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Indicates whether the cardholder is reordering previously purchased merchandise. <br><code>01</code> (First time ordered) <br><code>02</code> (Reordered).</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f pickUpAddress %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>object</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">If <code>shipIndicator</code> set to <code>04</code>, then prefill this with the payers <code>pickUpAddress</code> of the purchase to decrease the risk factor of the purchase.</div></div>
+            <div class="api-children">
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f name, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">If <code>shipIndicator</code> set to <code>04</code>, then prefill this with the payers <code>name</code> of the purchase to decrease the risk factor of the purchase.</div></div>
+              </details>
+
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f streetAddress, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">If <code>shipIndicator</code> set to <code>04</code>, then prefill this with the payers <code>streetAddress</code> of the purchase to decrease the risk factor of the purchase. Maximum 50 characters long.</div></div>
+              </details>
+
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f coAddress, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">If <code>shipIndicator</code> set to <code>04</code>, then prefill this with the payers <code>coAddress</code> of the purchase to decrease the risk factor of the purchase.</div></div>
+              </details>
+
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f city, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">If <code>shipIndicator</code> set to <code>04</code>, then prefill this with the payers <code>city</code> of the purchase to decrease the risk factor of the purchase.</div></div>
+              </details>
+
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f zipCode, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">If <code>shipIndicator</code> set to <code>04</code>, then prefill this with the payers <code>zipCode</code> of the purchase to decrease the risk factor of the purchase.</div></div>
+              </details>
+
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f countryCode, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">If <code>shipIndicator</code> set to <code>04</code>, then prefill this with the payers <code>countryCode</code> of the purchase to decrease the risk factor of the purchase.</div></div>
+              </details>
+            </div>
+          </details>
+
+        </div>
+      </details>
+
     </div>
   </details>
 </div>
-{% include risk-indicator-table.md %}
 
 ## Payment Order Response
 

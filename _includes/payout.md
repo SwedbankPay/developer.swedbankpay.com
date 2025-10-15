@@ -123,43 +123,43 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
 {% capture request_content %}{
    "paymentorder": {
-     "restrictedToPayoutInstruments": true,
-     "generateUnscheduledToken": true,
-     "operation": "Verify",
-     "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
-     "currency": "SEK",
-     "description": "Bank account verification",
-     "userAgent": "Mozilla/5.0...",
-     "language": "sv-SE",
-     "urls": {
-       "completeUrl": "http://complete.url",
-       "hostUrls": ["http://testmerchant.url"],
-       "cancelUrl": "http://cancel.url"
-     },
-     "payeeInfo": {
-       "payeeId": "{{merchantId}}",
-       "payeeReference": "{{$timestamp}}",
-       "payeeName": "Testmerchant"
-     },
-     "payer": {
-       "payerReference": "{{payerReference}}",
-       "firstName": "Example",
-       "lastName": "Name",
-       "nationalIdentifier": {
-            "socialSecurityNumber": "199710202392",
-            "countryCode": "SE"
+        "restrictedToPayoutInstruments": true,
+        "generateUnscheduledToken": true,
+        "operation": "Verify",
+        "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
+        "currency": "SEK",
+        "description": "Bank account verification",
+        "userAgent": "Mozilla/5.0...",
+        "language": "sv-SE",
+        "urls": {
+            "completeUrl": "http://complete.url",
+            "hostUrls": ["http://testmerchant.url"],
+            "cancelUrl": "http://cancel.url"
+        },
+        "payeeInfo": {
+            "payeeId": "{{merchantId}}",
+            "payeeReference": "{{$timestamp}}",
+            "payeeName": "Testmerchant"
+        },
+        "payer": {
+            "payerReference": "{{payerReference}}",
+            "firstName": "Example",
+            "lastName": "Name",
+            "nationalIdentifier": {
+                "socialSecurityNumber": "199710202392",
+                "countryCode": "SE"
             },
-     "email": "test@swedbankpay.com",
-     "msisdn": "+46709876543",
-     "address": {
-       "streetAddress": "Main Street 1",
-       "coAddress": "Apartment 123, 2 stairs up",
-       "city": "Stockholm",
-       "zipCode": "SE-11253",
-       "countryCode": "SE"
-     }
-   }
- }
+            "email": "test@swedbankpay.com",
+            "msisdn": "+46709876543",
+            "address": {
+                "streetAddress": "Main Street 1",
+                "coAddress": "Apartment 123, 2 stairs up",
+                "city": "Stockholm",
+                "zipCode": "SE-11253",
+                "countryCode": "SE"
+            }
+        }
+    }
 }{% endcapture %}
 
 {% include code-example.html
@@ -168,44 +168,318 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     json= request_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-|     Required     | Field                              | Type         | Description                                                                                                                                                                                                                                                                                              |
-| :--------------: | :--------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %} | {% f paymentOrder, 0 %}                     | `object`     | The payment order object.                                                                                                                                                                                                                                                                                |
-| {% icon check %} | {% f operation %}                | `string`     | {% include fields/operation.md %} Must be set to `Verify`    .                                                                                                                                                                                                                                     |
-| {% icon check %} | {% f productName %}                | `string`     | Must be set to `Checkout3`. Mandatory for Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                  |
-| {% icon check %} | {% f currency %}                 | `string`     | The currency of the payment.                                                                                                                                                                                                                                                                             |
-| {% icon check %} | {% f restrictedToPayoutInstruments %}                       | `bool` | Set to `true` to only show Payout enabled payment methods (Trustly). |
-| {% icon check %} | {% f generateUnscheduledToken %}                       | `bool` | Set to `true`. |
-| {% icon check %} | {% f description %}              | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                    |
-| {% icon check %} | {% f userAgent %}                | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                             |
-| {% icon check %} | {% f language %}                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
-| {% icon check %} | {% f urls %}                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
-| {% icon check %} | {% f hostUrls, 2 %}                | `array`      | The array of valid URLs.                                                                                                                                                                                           |
-| {% icon check %} | {% f completeUrl, 2 %}             | `string`     | {% include fields/complete-url.md %} |
-| {% icon check %} | {% f cancelUrl, 2 %}               | `string`     | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
-| {% icon check %} | {% f payeeInfo %}                | `object`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                             |
-| {% icon check %} | {% f payeeId, 2 %}                 | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                                                                                                            |
-| {% icon check %} | {% f payeeReference, 2 %}          | `string(30)` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                                                                                                 |
-|                  | {% f payeeName, 2 %}               | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                                                                                                                 |
-|                  | {% f payer %}                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                |
-|                  | {% f payerReference, 2 %}                     | `string`     | The merchant’s unique reference to the payer.                                                                                                                |
-| {% icon check %} | {% f firstName, 2 %}                    | `string`     | The first name of the payer or the company name.                                                                                                                                                                                                                                                                              |
-| | {% f lastName, 2 %}                    | `string`     | The last name of the payer.                                                                                                                                                                                                                                                                              |
-|                  | {% f nationalIdentifier, 2 %}    | `object` | The national identifier object. This is required when using the `restrictedToSocialSecurityNumber` parameter.                                                                      |
-|          | {% f socialSecurityNumber, 2 %} | `string` | The payer's social security number. |
-| | {% f countryCode, 2 %}                | `string` | Country code of the payer.                                                          |
-|                  | {% f email %}                   | `string`     | The e-mail address of the payer.                                                       |
-|                  | {% f msisdn %}                  | `string`     | The mobile phone number of the Payer. The mobile number must have a country code prefix and be 8 to 15 digits in length.             |
-|  | {% f address %}              | `object`  | The address object containing information about the payer's address.                                                                            |
-|  ︎ | {% f streetAddress, 1 %}        | `string`  | The street address of the payer. Maximum 50 characters long.                                                                                                   |
-|    | {% f coAddress, 1 %}            | `string`  | The payer's CO-address (if used).                                                                                                                                         |
-|  | {% f city, 1 %}                 | `string`  | The payer's city of residence.                                                                                                                                        |
-|   | {% f zipCode, 1 %}              | `string`  | The postal number (ZIP code) of the payer.                                                                                                                    |
-|  | {% f countryCode, 1 %}          | `string`  | Country code for country of residence, e.g. `SE`, `NO`, or `FI`.                                                                                                                                             |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+{% capture operation_md %}{% include fields/operation.md %}{% endcapture %}
+{% capture complete_url_md %}{% include fields/complete-url.md %}{% endcapture %}
+{% capture user_agent_md %}{% include fields/user-agent.md %}{% endcapture %}
+{% capture payee_info_md %}{% include fields/payee-info.md %}{% endcapture %}
+{% capture payee_reference_md %}{% include fields/payee-reference.md describe_receipt=true %}{% endcapture %}
+
+<div class="api-compact" role="table" aria-label="Request">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+    <div role="columnheader">Required</div>
+  </div>
+
+  <!-- Root: paymentOrder (level 0) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc"><div class="indent-0">The payment order object.</div></div>
+
+    <div class="api-children">
+      <!-- operation (req) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f operation, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ operation_md | markdownify }} Must be set to <code>Verify</code>.</div></div>
+      </details>
+
+      <!-- productName (req) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f productName, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">Must be set to <code>Checkout3</code>. Mandatory for Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.</div></div>
+      </details>
+
+      <!-- currency (req) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f currency, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The currency of the payment.</div></div>
+      </details>
+
+      <!-- restrictedToPayoutInstruments (req) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f restrictedToPayoutInstruments, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>bool</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">Set to <code>true</code> to only show Payout enabled payment methods (Trustly).</div></div>
+      </details>
+
+      <!-- generateUnscheduledToken (req) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f generateUnscheduledToken, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>bool</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">Set to <code>true</code>.</div></div>
+      </details>
+
+      <!-- description (req) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f description, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The description of the payment order.</div></div>
+      </details>
+
+      <!-- userAgent (req) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f userAgent, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ user_agent_md | markdownify }}</div></div>
+      </details>
+
+      <!-- language (req) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f language, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The language of the payer.</div></div>
+      </details>
+
+      <!-- urls (req) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f urls, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The <code>urls</code> object, containing the URLs relevant for the payment order.</div></div>
+        <div class="api-children">
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f hostUrls, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>array</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The array of valid URLs.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f completeUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ complete_url_md | markdownify }}</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f cancelUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an <code>abort</code> request of the <code>payment</code> or <code>paymentorder</code>.</div></div>
+          </details>
+        </div>
+      </details>
+
+      <!-- payeeInfo (req) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payeeInfo, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ payee_info_md | markdownify }}</div></div>
+        <div class="api-children">
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f payeeId, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The ID of the payee, usually the merchant ID.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string(30)</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ payee_reference_md | markdownify }}</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f payeeName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The name of the payee, usually the name of the merchant.</div></div>
+          </details>
+        </div>
+      </details>
+
+      <!-- payer (opt) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payer, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The <code>payer</code> object containing information about the payer relevant for the payment order.</div></div>
+        <div class="api-children">
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f payerReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The merchant’s unique reference to the payer.</div></div>
+          </details>
+
+          <!-- firstName (req) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f firstName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The first name of the payer or the company name.</div></div>
+          </details>
+
+          <!-- lastName (opt) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f lastName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The last name of the payer.</div></div>
+          </details>
+
+          <!-- nationalIdentifier (opt, but required if restrictedToSocialSecurityNumber) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f nationalIdentifier, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>object</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The national identifier object. This is required when using the <code>restrictedToSocialSecurityNumber</code> parameter.</div></div>
+            <div class="api-children">
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f socialSecurityNumber, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The payer's social security number.</div></div>
+              </details>
+
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f countryCode, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Country code of the payer.</div></div>
+              </details>
+            </div>
+          </details>
+
+          <!-- email (opt) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f email, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The e-mail address of the payer.</div></div>
+          </details>
+
+          <!-- msisdn (opt) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f msisdn, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The mobile phone number of the Payer. The mobile number must have a country code prefix and be 8 to 15 digits in length.</div></div>
+          </details>
+
+          <!-- address (opt) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f address, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>object</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The address object containing information about the payer's address.</div></div>
+            <div class="api-children">
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f streetAddress, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The street address of the payer. Maximum 50 characters long.</div></div>
+              </details>
+
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f coAddress, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The payer's CO-address (if used).</div></div>
+              </details>
+
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f city, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The payer's city of residence.</div></div>
+              </details>
+
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f zipCode, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The postal number (ZIP code) of the payer.</div></div>
+              </details>
+
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f countryCode, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Country code for country of residence, e.g. <code>SE</code>, <code>NO</code>, or <code>FI</code>.</div></div>
+              </details>
+            </div>
+          </details>
+        </div>
+      </details>
+
+    </div>
+  </details>
+</div>
 
 ## Verify Response
 
@@ -311,41 +585,283 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     json= response_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-| Field                    | Type         | Description                                                                                                                                                                                                               |
-| :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
-| {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |
-| {% f created %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
-| {% f updated %}        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
-| {% f operation %}      | `string`     | {% include fields/operation.md %}                                                                                                                                                                                                               |
-| {% f status %}          | `string`     | Indicates the payment order's current status. `Initialized` is returned when the payment is created and still ongoing. The request example above has this status. `Paid` is returned when the payer has completed the payment successfully. See the [`Paid` response]({{ techref_url }}/technical-reference/status-models#paid). `Failed` is returned when a payment has failed. You will find an error message in [the `Failed` response]({{ techref_url }}/technical-reference/status-models#failed). `Cancelled` is returned when an authorized amount has been fully cancelled. See the [`Cancelled` response]({{ techref_url }}/technical-reference/status-models#cancelled). It will contain fields from both the cancelled description and paid section. `Aborted` is returned when the merchant has aborted the payment, or if the payer cancelled the payment in the redirect integration (on the redirect page). See the [`Aborted` response]({{ techref_url }}/technical-reference/status-models#aborted). |
-| {% f currency %}       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
-| {% f amount %}         | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                 |
-| {% f vatAmount %}      | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                              |
-| {% f description %}    | `string(40)` | {% include fields/description.md %}                                                                                                                        |
-| {% f initiatingSystemUserAgent %}      | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
-| {% f language %}       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
-| {% f availableInstruments %}       | `string`     | A list of payment methods available for this payment.                                                                                                                                                   |
-| {% f implementation %}       | `string`     | The merchant's Online Payments implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
-| {% f integration %}       | `string`     | The merchant's Online Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.                           |
-| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment methods available.                                                                                    |
-| {% f guestMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a `payerReference` in the original `paymentOrder` request.                                                                                                                                                |
-| {% f urls %}           | `id`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                                                                                                              |
-| {% f payeeInfo %}      | `id`     | The URL to the `payeeInfo` resource where information related to the payee can be retrieved.                                                                                                                              |
-| {% f payer %}         | `id`     | The URL to the [`payer` resource]({{ techref_url }}/technical-reference/resource-sub-models#payer) where information about the payer can be retrieved.                                                                                                                  |
-| {% f history %}     | `id`     | The URL to the [`history` resource]({{ techref_url }}/technical-reference/resource-sub-models#history) where information about the payment's history can be retrieved.                                                                                                                            |
-| {% f failed %}     | `id`     | The URL to the [`failed` resource]({{ techref_url }}/technical-reference/resource-sub-models#failed) where information about the failed transactions can be retrieved.                                                                                                                            |
-| {% f aborted %}     | `id`     | The URL to the [`aborted` resource]({{ techref_url }}/technical-reference/resource-sub-models#aborted) where information about the aborted transactions can be retrieved.                                                                                                                            |
-| {% f paid %}     | `id`     | The URL to the [`paid` resource]({{ techref_url }}/technical-reference/resource-sub-models#paid) where information about the paid transactions can be retrieved.                                                                                                                            |
-| {% f cancelled %}     | `id`     | The URL to the [`cancelled` resource]({{ techref_url }}/technical-reference/resource-sub-models#cancelled) where information about the cancelled transactions can be retrieved.                                                                                                                            |
-| {% f financialTransactions %}     | `id`     | The URL to the [`financialTransactions` resource]({{ techref_url }}/technical-reference/resource-sub-models#financialtransactions) where information about the financial transactions can be retrieved.                                                                                                                            |
-| {% f failedAttempts %}     | `id`     | The URL to the [`failedAttempts` resource]({{ techref_url }}/technical-reference/resource-sub-models#failedattempts) where information about the failed attempts can be retrieved.                                                                                                                            |
-| {% f metadata %}     | `id`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
-| {% f operations %}     | `array`      | {% include fields/operations.md %}                                                                                              |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+{% capture paymentorder_id_md %}{% include fields/id.md resource="paymentorder" %}{% endcapture %}
+{% capture operation_md %}{% include fields/operation.md %}{% endcapture %}
+{% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
+{% capture vat_amount_md %}{% include fields/vat-amount.md %}{% endcapture %}
+{% capture description_md %}{% include fields/description.md %}{% endcapture %}
+{% capture initiating_system_user_agent_md %}{% include fields/initiating-system-user-agent.md %}{% endcapture %}
+{% capture language_md %}{% include fields/language.md %}{% endcapture %}
+{% capture operations_md %}{% include fields/operations.md %}{% endcapture %}
+
+<div class="api-compact" role="table" aria-label="Response">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+  </div>
+
+  <!-- Root: paymentOrder (level 0) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The payment order object.</div></div>
+
+    <div class="api-children">
+      <!-- id (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f id, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ paymentorder_id_md | markdownify }}</div></div>
+      </details>
+
+      <!-- created (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f created, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was created.</div></div>
+      </details>
+
+      <!-- updated (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f updated, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was updated.</div></div>
+      </details>
+
+      <!-- operation (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f operation, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ operation_md | markdownify }}</div></div>
+      </details>
+
+      <!-- status (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f status, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">Indicates the payment order's current status. <code>Initialized</code> is returned when the payment is created and still ongoing. The request example above has this status. <code>Paid</code> is returned when the payer has completed the payment successfully. See the <a href="{{ features_url }}/technical-reference/status-models#paid">Paid response</a>. <code>Failed</code> is returned when a payment has failed. You will find an error message in <a href="{{ features_url }}/technical-reference/status-models#failed">the Failed response</a>. <code>Cancelled</code> is returned when an authorized amount has been fully cancelled. See the <a href="{{ features_url }}/technical-reference/status-models#cancelled">Cancelled response</a>. It will contain fields from both the cancelled description and paid section. <code>Aborted</code> is returned when the merchant has aborted the payment, or if the payer cancelled the payment in the redirect integration (on the redirect page). See the <a href="{{ features_url }}/technical-reference/status-models#aborted">Aborted response</a>.</div></div>
+      </details>
+
+      <!-- currency (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f currency, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The currency of the payment order.</div></div>
+      </details>
+
+      <!-- amount (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f amount, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
+      </details>
+
+      <!-- vatAmount (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f vatAmount, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ vat_amount_md | markdownify }}</div></div>
+      </details>
+
+      <!-- description (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f description, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string(40)</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ description_md | markdownify }}</div></div>
+      </details>
+
+      <!-- initiatingSystemUserAgent (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f initiatingSystemUserAgent, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ initiating_system_user_agent_md | markdownify }}</div></div>
+      </details>
+
+      <!-- language (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f language, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>
+      </details>
+
+      <!-- availableInstruments (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f availableInstruments, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">A list of payment methods available for this payment.</div></div>
+      </details>
+
+      <!-- implementation (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f implementation, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The merchant's Online Payments implementation type. <code>Enterprise</code> or <code>PaymentsOnly</code>. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.</div></div>
+      </details>
+
+      <!-- integration (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f integration, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The merchant's Online Payments integration type. <code>HostedView</code> (Seamless View) or <code>Redirect</code>. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.</div></div>
+      </details>
+
+      <!-- instrumentMode (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f instrumentMode, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>bool</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">Set to <code>true</code> or <code>false</code>. Indicates if the payment is initialized with only one payment methods available.</div></div>
+      </details>
+
+      <!-- guestMode (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f guestMode, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>bool</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">Set to <code>true</code> or <code>false</code>. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a <code>payerReference</code> in the original <code>paymentOrder</code> request.</div></div>
+      </details>
+
+      <!-- urls link (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f urls, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <code>urls</code> resource where all URLs related to the payment order can be retrieved.</div></div>
+      </details>
+
+      <!-- payeeInfo link (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payeeInfo, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <code>payeeInfo</code> resource where information related to the payee can be retrieved.</div></div>
+      </details>
+
+      <!-- payer link (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payer, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#payer"><code>payer</code> resource</a> where information about the payer can be retrieved.</div></div>
+      </details>
+
+      <!-- history link (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f history, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#history"><code>history</code> resource</a> where information about the payment's history can be retrieved.</div></div>
+      </details>
+
+      <!-- failed link (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f failed, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#failed"><code>failed</code> resource</a> where information about the failed transactions can be retrieved.</div></div>
+      </details>
+
+      <!-- aborted link (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f aborted, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#aborted"><code>aborted</code> resource</a> where information about the aborted transactions can be retrieved.</div></div>
+      </details>
+
+      <!-- paid link (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f paid, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#paid"><code>paid</code> resource</a> where information about the paid transactions can be retrieved.</div></div>
+      </details>
+
+      <!-- cancelled link (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f cancelled, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#cancelled"><code>cancelled</code> resource</a> where information about the cancelled transactions can be retrieved.</div></div>
+      </details>
+
+      <!-- financialTransactions link (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f financialTransactions, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#financialtransactions"><code>financialTransactions</code> resource</a> where information about the financial transactions can be retrieved.</div></div>
+      </details>
+
+      <!-- failedAttempts link (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f failedAttempts, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#failedattempts"><code>failedAttempts</code> resource</a> where information about the failed attempts can be retrieved.</div></div>
+      </details>
+
+      <!-- metadata link (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f metadata, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <code>metadata</code> resource where information about the metadata can be retrieved.</div></div>
+      </details>
+    </div>
+  </details>
+  <!-- operations (level 0) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+      <summary role="row">
+        <span class="field" role="rowheader">{% f operations, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+        <span class="type"><code>array</code></span>
+      </summary>
+      <div class="desc"><div class="indent-0">{{ operations_md | markdownify }}</div></div>
+  </details>
+</div>
 
 ## PATCH Verify Request
 
@@ -372,17 +888,62 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     json= request_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-| Field                    | Type         | Description                                                                                                                                                                                                               |
-| :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
-| {% f operation %}      | `string`     | {% include fields/operation.md %}                                                                                                                                                                                                                |
-| {% f clearingHouse %}      | `string`     | The clearing house of the recipient's bank account. Typically the name of a country in uppercase letters.                                                                                                                                                                                                               |
-| {% f bankNumber %}      | `string`     | The bank number identifying the recipient's bank in the given clearing house. For bank accounts in IBAN format you should just provide an empty string (""). For non-IBAN, see the example in our request or [the bank number format table](https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format).                                                                                                                                                                                                       |
-| {% f accountNumber %}      | `string`     | The account number, identifying the recipient's account in the bank. Can be either IBAN or country-specific format. See [the account number format table](https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format) for further information.                                                                                                                                                                                        |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+{% capture operation_md %}{% include fields/operation.md %}{% endcapture %}
+
+<div class="api-compact" role="table" aria-label="Response">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+  </div>
+
+  <!-- Root: paymentOrder (level 0) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The payment order object.</div></div>
+
+    <div class="api-children">
+      <!-- operation -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f operation, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ operation_md | markdownify }}</div></div>
+      </details>
+
+      <!-- clearingHouse -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f clearingHouse, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The clearing house of the recipient's bank account. Typically the name of a country in uppercase letters.</div></div>
+      </details>
+
+      <!-- bankNumber -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f bankNumber, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The bank number identifying the recipient's bank in the given clearing house. For bank accounts in IBAN format you should just provide an empty string (<code>""</code>). For non-IBAN, see the example in our request or <a href="https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format" target="_blank" rel="noopener">the bank number format table</a>.</div></div>
+      </details>
+
+      <!-- accountNumber -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f accountNumber, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The account number, identifying the recipient's account in the bank. Can be either IBAN or country-specific format. See <a href="https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format" target="_blank" rel="noopener">the account number format table</a> for further information.</div></div>
+      </details>
+
+    </div>
+  </details>
+</div>
 
 ## PATCH Verify Response
 
@@ -469,41 +1030,284 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     json= response_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-| Field                    | Type         | Description                                                                                                                                                                                                               |
-| :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
-| {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |
-| {% f created %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
-| {% f updated %}        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
-| {% f operation %}      | `string`     | {% include fields/operation.md %}                                                                                                                                                                                                                |
-| {% f status %}          | `string`     | Indicates the payment order's current status. `Initialized` is returned when the payment is created and still ongoing. The request example above has this status. `Paid` is returned when the payer has completed the payment successfully. See the [`Paid` response]({{ techref_url }}/technical-reference/status-models#paid). `Failed` is returned when a payment has failed. You will find an error message in [the `Failed` response]({{ techref_url }}/technical-reference/status-models#failed). `Cancelled` is returned when an authorized amount has been fully cancelled. See the [`Cancelled` response]({{ techref_url }}/technical-reference/status-models#cancelled). It will contain fields from both the cancelled description and paid section. `Aborted` is returned when the merchant has aborted the payment, or if the payer cancelled the payment in the redirect integration (on the redirect page). See the [`Aborted` response]({{ techref_url }}/technical-reference/status-models#aborted). |
-| {% f currency %}       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
-| {% f amount %}         | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                 |
-| {% f vatAmount %}      | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                              |
-| {% f description %}    | `string(40)` | {% include fields/description.md %}                                                                                                                        |
-| {% f initiatingSystemUserAgent %}      | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
-| {% f language %}       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
-| {% f availableInstruments %}       | `string`     | A list of payment methods available for this payment.                                                                                                                                                   |
-| {% f implementation %}       | `string`     | The merchant's Online Payments implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
-| {% f integration %}       | `string`     | The merchant's Online Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.                           |
-| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment method available.                                                                                    |
-| {% f guestMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a `payerReference` in the original `paymentOrder` request.                                                                                                                                                |
-| {% f urls %}           | `id`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                                                                                                              |
-| {% f payeeInfo %}      | `id`     | The URL to the `payeeInfo` resource where information related to the payee can be retrieved.                                                                                                                          |
-| {% f payer %}         | `id`     | The URL to the [`payer` resource]({{ techref_url }}/technical-reference/resource-sub-models#payer) where information about the payer can be retrieved.                                                                                                                  |
-| {% f history %}     | `id`     | The URL to the [`history` resource]({{ techref_url }}/technical-reference/resource-sub-models#history) where information about the payment's history can be retrieved.                                                                                                                            |
-| {% f failed %}     | `id`     | The URL to the [`failed` resource]({{ techref_url }}/technical-reference/resource-sub-models#failed) where information about the failed transactions can be retrieved.                                                                                                                            |
-| {% f aborted %}     | `id`     | The URL to the [`aborted` resource]({{ techref_url }}/technical-reference/resource-sub-models#aborted) where information about the aborted transactions can be retrieved.                                                                                                                            |
-| {% f paid %}     | `id`     | The URL to the [`paid` resource]({{ techref_url }}/technical-reference/resource-sub-models#paid) where information about the paid transactions can be retrieved.                                                                                                                            |
-| {% f cancelled %}     | `id`     | The URL to the [`cancelled` resource]({{ techref_url }}/technical-reference/resource-sub-models#cancelled) where information about the cancelled transactions can be retrieved.                                                                                                                            |
-| {% f financialTransactions %}     | `id`     | The URL to the [`financialTransactions` resource]({{ techref_url }}/technical-reference/resource-sub-models#financialtransactions) where information about the financial transactions can be retrieved.                                                                                                                            |
-| {% f failedAttempts %}     | `id`     | The URL to the [`failedAttempts` resource]({{ techref_url }}/technical-reference/resource-sub-models#failedattempts) where information about the failed attempts can be retrieved.                                                                                                                            |
-| {% f metadata %}     | `id`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
-| {% f operations %}     | `array`      | {% include fields/operations.md %}                                                                                              |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+{% capture paymentorder_id_md %}{% include fields/id.md resource="paymentorder" %}{% endcapture %}
+{% capture operation_md %}{% include fields/operation.md %}{% endcapture %}
+{% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
+{% capture vat_amount_md %}{% include fields/vat-amount.md %}{% endcapture %}
+{% capture description_md %}{% include fields/description.md %}{% endcapture %}
+{% capture initiating_system_user_agent_md %}{% include fields/initiating-system-user-agent.md %}{% endcapture %}
+{% capture language_md %}{% include fields/language.md %}{% endcapture %}
+{% capture operations_md %}{% include fields/operations.md %}{% endcapture %}
+
+<div class="api-compact" role="table" aria-label="Response">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+  </div>
+
+  <!-- Root: paymentOrder (level 0) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The payment order object.</div></div>
+
+    <div class="api-children">
+      <!-- id (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f id, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ paymentorder_id_md | markdownify }}</div></div>
+      </details>
+
+      <!-- created (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f created, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was created.</div></div>
+      </details>
+
+      <!-- updated (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f updated, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was updated.</div></div>
+      </details>
+
+      <!-- operation (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f operation, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ operation_md | markdownify }}</div></div>
+      </details>
+
+      <!-- status (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f status, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">Indicates the payment order's current status. <code>Initialized</code> is returned when the payment is created and still ongoing. The request example above has this status. <code>Paid</code> is returned when the payer has completed the payment successfully. See the <a href="{{ features_url }}/technical-reference/status-models#paid">Paid response</a>. <code>Failed</code> is returned when a payment has failed. You will find an error message in <a href="{{ features_url }}/technical-reference/status-models#failed">the Failed response</a>. <code>Cancelled</code> is returned when an authorized amount has been fully cancelled. See the <a href="{{ features_url }}/technical-reference/status-models#cancelled">Cancelled response</a>. It will contain fields from both the cancelled description and paid section. <code>Aborted</code> is returned when the merchant has aborted the payment, or if the payer cancelled the payment in the redirect integration (on the redirect page). See the <a href="{{ features_url }}/technical-reference/status-models#aborted">Aborted response</a>.</div></div>
+      </details>
+
+      <!-- currency (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f currency, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The currency of the payment order.</div></div>
+      </details>
+
+      <!-- amount (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f amount, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
+      </details>
+
+      <!-- vatAmount (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f vatAmount, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ vat_amount_md | markdownify }}</div></div>
+      </details>
+
+      <!-- description (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f description, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string(40)</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ description_md | markdownify }}</div></div>
+      </details>
+
+      <!-- initiatingSystemUserAgent (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f initiatingSystemUserAgent, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ initiating_system_user_agent_md | markdownify }}</div></div>
+      </details>
+
+      <!-- language (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f language, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>
+      </details>
+
+      <!-- availableInstruments (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f availableInstruments, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">A list of payment methods available for this payment.</div></div>
+      </details>
+
+      <!-- implementation (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f implementation, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The merchant's Online Payments implementation type. <code>Enterprise</code> or <code>PaymentsOnly</code>. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.</div></div>
+      </details>
+
+      <!-- integration (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f integration, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The merchant's Online Payments integration type. <code>HostedView</code> (Seamless View) or <code>Redirect</code>. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.</div></div>
+      </details>
+
+      <!-- instrumentMode (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f instrumentMode, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>bool</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">Set to <code>true</code> or <code>false</code>. Indicates if the payment is initialized with only one payment method available.</div></div>
+      </details>
+
+      <!-- guestMode (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f guestMode, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>bool</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">Set to <code>true</code> or <code>false</code>. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a <code>payerReference</code> in the original <code>paymentOrder</code> request.</div></div>
+      </details>
+
+      <!-- urls link (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f urls, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <code>urls</code> resource where all URLs related to the payment order can be retrieved.</div></div>
+      </details>
+
+      <!-- payeeInfo link (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payeeInfo, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <code>payeeInfo</code> resource where information related to the payee can be retrieved.</div></div>
+      </details>
+
+      <!-- payer link (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payer, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#payer"><code>payer</code> resource</a> where information about the payer can be retrieved.</div></div>
+      </details>
+
+      <!-- history link (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f history, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#history"><code>history</code> resource</a> where information about the payment's history can be retrieved.</div></div>
+      </details>
+
+      <!-- failed link (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f failed, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#failed"><code>failed</code> resource</a> where information about the failed transactions can be retrieved.</div></div>
+      </details>
+
+      <!-- aborted link (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f aborted, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#aborted"><code>aborted</code> resource</a> where information about the aborted transactions can be retrieved.</div></div>
+      </details>
+
+      <!-- paid link (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f paid, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#paid"><code>paid</code> resource</a> where information about the paid transactions can be retrieved.</div></div>
+      </details>
+
+      <!-- cancelled link (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f cancelled, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#cancelled"><code>cancelled</code> resource</a> where information about the cancelled transactions can be retrieved.</div></div>
+      </details>
+
+      <!-- financialTransactions link (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f financialTransactions, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#financialtransactions"><code>financialTransactions</code> resource</a> where information about the financial transactions can be retrieved.</div></div>
+      </details>
+
+      <!-- failedAttempts link (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f failedAttempts, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#failedattempts"><code>failedAttempts</code> resource</a> where information about the failed attempts can be retrieved.</div></div>
+      </details>
+
+      <!-- metadata link (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f metadata, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <code>metadata</code> resource where information about the metadata can be retrieved.</div></div>
+      </details>
+    </div>
+  </details>
+  
+  <!-- operations (level 0) -->
+    <details class="api-item" role="rowgroup" data-level="0">
+        <summary role="row">
+            <span class="field" role="rowheader">{% f operations, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+            <span class="type"><code>array</code></span>
+        </summary>
+        <div class="desc"><div class="indent-0">{{ operations_md | markdownify }}</div></div>
+    </details>
+</div>
 
 ## Payout Request
 
@@ -543,30 +1347,203 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     json= request_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-|     Required     | Field                              | Type         | Description                                                                                                                                                                                                                                                                                              |
-| :--------------: | :--------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %} | {% f paymentOrder, 0 %}                     | `object`     | The payment order object.                                                                                                                                                                                                                                                                                |
-| {% icon check %} | {% f operation %}                | `string`     | {% include fields/operation.md %} Must be set to `Payout`.                                                                                                                                                                                                                                     |
-| {% icon check %} | {% f productName %}                | `string`     | Must be set to `Checkout3`. Mandatory for Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                 |
-| {% icon check %} | {% f currency %}                 | `string`     | The currency of the payment.                                                                                                                                                                                                                                                                             |
-| {% icon check %} | {% f amount %}                  | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                                                |
-| {% icon check %} | {% f vatAmount %}               | `integer`    | {% include fields/vat-amount.md %}                                                     |
-| | {% f unscheduledToken %}                       | `string` | Must be provided to specify the consumer account to be the receiver of the payout. |
-| {% icon check %} | {% f description %}              | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                    |
-| {% icon check %} | {% f userAgent %}                | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                             |
-| {% icon check %} | {% f language %}                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
-| {% icon check %} | {% f urls %}                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
-| {% icon check %} | {% f callbackUrl, 2 %}             | `string`     | {% include fields/callback-url.md %}                                                                                                                                                                                              |
-| {% icon check %} | {% f payeeInfo %}                | `object`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                             |
-| {% icon check %} | {% f payeeId, 2 %}                 | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                                                                                                            |
-| {% icon check %} | {% f payeeReference, 2 %}          | `string(30)` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                                                                                                 |
-|                  | {% f payeeName, 2 %}               | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                                                                                                                 |
-|                  | {% f payer %}                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                |
-|                  | {% f payerReference, 2 %}                     | `string`     | The merchant’s unique reference to the payer.                                                                                                                |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+{% capture operation_md %}{% include fields/operation.md %}{% endcapture %}
+{% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
+{% capture vat_amount_md %}{% include fields/vat-amount.md %}{% endcapture %}
+{% capture user_agent_md %}{% include fields/user-agent.md %}{% endcapture %}
+{% capture callback_url_md %}{% include fields/callback-url.md %}{% endcapture %}
+{% capture payee_info_md %}{% include fields/payee-info.md %}{% endcapture %}
+{% capture payee_reference_md %}{% include fields/payee-reference.md describe_receipt=true %}{% endcapture %}
+
+<div class="api-compact" role="table" aria-label="Request">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+    <div role="columnheader">Required</div>
+  </div>
+
+  <!-- Root: paymentOrder (level 0, required) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc"><div class="indent-0">The payment order object.</div></div>
+
+    <div class="api-children">
+      <!-- operation (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f operation, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ operation_md | markdownify }} Must be set to <code>Payout</code>.</div></div>
+      </details>
+
+      <!-- productName (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f productName, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">Must be set to <code>Checkout3</code>. Mandatory for Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.</div></div>
+      </details>
+
+      <!-- currency (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f currency, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The currency of the payment.</div></div>
+      </details>
+
+      <!-- amount (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f amount, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
+      </details>
+
+      <!-- vatAmount (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f vatAmount, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ vat_amount_md | markdownify }}</div></div>
+      </details>
+
+      <!-- unscheduledToken (optional) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f unscheduledToken, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">Must be provided to specify the consumer account to be the receiver of the payout.</div></div>
+      </details>
+
+      <!-- description (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f description, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The description of the payment order.</div></div>
+      </details>
+
+      <!-- userAgent (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f userAgent, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ user_agent_md | markdownify }}</div></div>
+      </details>
+
+      <!-- language (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f language, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The language of the payer.</div></div>
+      </details>
+
+      <!-- urls (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f urls, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The <code>urls</code> object, containing the URLs relevant for the payment order.</div></div>
+        <div class="api-children">
+          <!-- callbackUrl (required) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f callbackUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ callback_url_md | markdownify }}</div></div>
+          </details>
+        </div>
+      </details>
+
+      <!-- payeeInfo (required) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payeeInfo, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ payee_info_md | markdownify }}</div></div>
+        <div class="api-children">
+          <!-- payeeId (required) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f payeeId, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The ID of the payee, usually the merchant ID.</div></div>
+          </details>
+
+          <!-- payeeReference (required) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string(30)</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ payee_reference_md | markdownify }}</div></div>
+          </details>
+
+          <!-- payeeName (optional) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f payeeName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The name of the payee, usually the name of the merchant.</div></div>
+          </details>
+        </div>
+      </details>
+
+      <!-- payer (optional) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payer, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The <code>payer</code> object containing information about the payer relevant for the payment order.</div></div>
+        <div class="api-children">
+          <!-- payerReference (optional) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f payerReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The merchant’s unique reference to the payer.</div></div>
+          </details>
+        </div>
+      </details>
+
+    </div>
+  </details>
+</div>
 
 ## Payout Response
 
@@ -635,41 +1612,293 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     json= response_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-| Field                    | Type         | Description                                                                                                                                                                                                               |
-| :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
-| {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |
-| {% f created %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
-| {% f updated %}        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
-| {% f operation %}      | `string`     | {% include fields/operation.md %}                                                                                                                                                                                                                  |
-| {% f status %}          | `string`     | Indicates the payment order's current status. `Initialized` is returned when the payment is created and still ongoing. The request example above has this status. `Paid` is returned when the payer has completed the payment successfully. See the [`Paid` response]({{ techref_url }}/technical-reference/status-models#paid). `Failed` is returned when a payment has failed. You will find an error message in [the `Failed` response]({{ techref_url }}/technical-reference/status-models#failed). `Cancelled` is returned when an authorized amount has been fully cancelled. See the [`Cancelled` response]({{ techref_url }}/technical-reference/status-models#cancelled). It will contain fields from both the cancelled description and paid section. `Aborted` is returned when the merchant has aborted the payment, or if the payer cancelled the payment in the redirect integration (on the redirect page). See the [`Aborted` response]({{ techref_url }}/technical-reference/status-models#aborted). |
-| {% f currency %}       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
-| {% f amount %}         | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                 |
-| {% f vatAmount %}      | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                              |
-| {% f description %}    | `string(40)` | {% include fields/description.md %}                                                                                                                        |
-| {% f initiatingSystemUserAgent %}      | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
-| {% f language %}       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
-| {% f availableInstruments %}       | `string`     | A list of payment methods available for this payment.                                                                                                                                                   |
-| {% f implementation %}       | `string`     | The merchant's Online Payments implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
-| {% f integration %}       | `string`     | The merchant's Online Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.                           |
-| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment methods available.                                                                                    |
-| {% f guestMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a `payerReference` in the original `paymentOrder` request.                                                                                                                                                |
-| {% f orderItems %}     | `id`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            |
-| {% f urls %}           | `id`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                                                                                                              |
-| {% f payeeInfo %}      | `id`     | The URL to the `payeeInfo` resource where information related to the payee can be retrieved.                                                                                                                          |
-| {% f history %}     | `id`     | The URL to the [`history` resource]({{ techref_url }}/technical-reference/resource-sub-models#history) where information about the payment's history can be retrieved.                                                                                                                            |
-| {% f failed %}     | `id`     | The URL to the [`failed` resource]({{ techref_url }}/technical-reference/resource-sub-models#failed) where information about the failed transactions can be retrieved.                                                                                                                            |
-| {% f aborted %}     | `id`     | The URL to the [`aborted` resource]({{ techref_url }}/technical-reference/resource-sub-models#aborted) where information about the aborted transactions can be retrieved.                                                                                                                            |
-| {% f paid %}     | `id`     | The URL to the [`paid` resource]({{ techref_url }}/technical-reference/resource-sub-models#paid) where information about the paid transactions can be retrieved.                                                                                                                            |
-| {% f cancelled %}     | `id`     | The URL to the [`cancelled` resource]({{ techref_url }}/technical-reference/resource-sub-models#cancelled) where information about the cancelled transactions can be retrieved.                                                                                                                            |
-| {% f financialTransactions %}     | `id`     | The URL to the [`financialTransactions` resource]({{ techref_url }}/technical-reference/resource-sub-models#financialtransactions) where information about the financial transactions can be retrieved.                                                                                                                            |
-| {% f failedAttempts %}     | `ic`     | The URL to the [`failedAttempts` resource]({{ techref_url }}/technical-reference/resource-sub-models#failedattempts) where information about the failed attempts can be retrieved.                                                                                                                            |
-| {% f metadata %}     | `id`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
-| {% f operations %}     | `array`      | {% include fields/operations.md %}                                                                                              |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+{% capture paymentorder_id_md %}{% include fields/id.md resource="paymentorder" %}{% endcapture %}
+{% capture operation_md %}{% include fields/operation.md %}{% endcapture %}
+{% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
+{% capture vat_amount_md %}{% include fields/vat-amount.md %}{% endcapture %}
+{% capture description_md %}{% include fields/description.md %}{% endcapture %}
+{% capture initiating_system_user_agent_md %}{% include fields/initiating-system-user-agent.md %}{% endcapture %}
+{% capture language_md %}{% include fields/language.md %}{% endcapture %}
+{% capture operations_md %}{% include fields/operations.md %}{% endcapture %}
+
+<div class="api-compact" role="table" aria-label="Response">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+  </div>
+
+  <!-- Root: paymentOrder (level 0) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The payment order object.</div></div>
+
+    <div class="api-children">
+      <!-- id -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f id, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ paymentorder_id_md | markdownify }}</div></div>
+      </details>
+
+      <!-- created -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f created, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was created.</div></div>
+      </details>
+
+      <!-- updated -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f updated, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was updated.</div></div>
+      </details>
+
+      <!-- operation -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f operation, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ operation_md | markdownify }}</div></div>
+      </details>
+
+      <!-- status -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f status, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">Indicates the payment order's current status. <code>Initialized</code> is returned when the payment is created and still ongoing. The request example above has this status. <code>Paid</code> is returned when the payer has completed the payment successfully. See the <a href="{{ features_url }}/technical-reference/status-models#paid">Paid response</a>. <code>Failed</code> is returned when a payment has failed. You will find an error message in <a href="{{ features_url }}/technical-reference/status-models#failed">the Failed response</a>. <code>Cancelled</code> is returned when an authorized amount has been fully cancelled. See the <a href="{{ features_url }}/technical-reference/status-models#cancelled">Cancelled response</a>. It will contain fields from both the cancelled description and paid section. <code>Aborted</code> is returned when the merchant has aborted the payment, or if the payer cancelled the payment in the redirect integration (on the redirect page). See the <a href="{{ features_url }}/technical-reference/status-models#aborted">Aborted response</a>.</div></div>
+      </details>
+
+      <!-- currency -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f currency, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The currency of the payment order.</div></div>
+      </details>
+
+      <!-- amount -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f amount, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
+      </details>
+
+      <!-- vatAmount -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f vatAmount, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ vat_amount_md | markdownify }}</div></div>
+      </details>
+
+      <!-- description -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f description, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string(40)</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ description_md | markdownify }}</div></div>
+      </details>
+
+      <!-- initiatingSystemUserAgent -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f initiatingSystemUserAgent, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ initiating_system_user_agent_md | markdownify }}</div></div>
+      </details>
+
+      <!-- language -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f language, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>
+      </details>
+
+      <!-- availableInstruments -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f availableInstruments, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">A list of payment methods available for this payment.</div></div>
+      </details>
+
+      <!-- implementation -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f implementation, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The merchant's Online Payments implementation type. <code>Enterprise</code> or <code>PaymentsOnly</code>. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.</div></div>
+      </details>
+
+      <!-- integration -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f integration, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The merchant's Online Payments integration type. <code>HostedView</code> (Seamless View) or <code>Redirect</code>. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.</div></div>
+      </details>
+
+      <!-- instrumentMode -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f instrumentMode, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>bool</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">Set to <code>true</code> or <code>false</code>. Indicates if the payment is initialized with only one payment method available.</div></div>
+      </details>
+
+      <!-- guestMode -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f guestMode, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>bool</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">Set to <code>true</code> or <code>false</code>. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a <code>payerReference</code> in the original <code>paymentOrder</code> request.</div></div>
+      </details>
+
+      <!-- orderItems link -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f orderItems, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <code>orderItems</code> resource where information about the order items can be retrieved.</div></div>
+      </details>
+
+      <!-- urls link -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f urls, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <code>urls</code> resource where all URLs related to the payment order can be retrieved.</div></div>
+      </details>
+
+      <!-- payeeInfo link -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payeeInfo, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <code>payeeInfo</code> resource where information related to the payee can be retrieved.</div></div>
+      </details>
+
+      <!-- payer link -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payer, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#payer"><code>payer</code> resource</a> where information about the payer can be retrieved.</div></div>
+      </details>
+
+      <!-- history link -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f history, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#history"><code>history</code> resource</a> where information about the payment's history can be retrieved.</div></div>
+      </details>
+
+      <!-- failed link -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f failed, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#failed"><code>failed</code> resource</a> where information about the failed transactions can be retrieved.</div></div>
+      </details>
+
+      <!-- aborted link -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f aborted, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#aborted"><code>aborted</code> resource</a> where information about the aborted transactions can be retrieved.</div></div>
+      </details>
+
+      <!-- paid link -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f paid, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#paid"><code>paid</code> resource</a> where information about the paid transactions can be retrieved.</div></div>
+      </details>
+
+      <!-- cancelled link -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f cancelled, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#cancelled"><code>cancelled</code> resource</a> where information about the cancelled transactions can be retrieved.</div></div>
+      </details>
+
+      <!-- financialTransactions link -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f financialTransactions, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#financialtransactions"><code>financialTransactions</code> resource</a> where information about the financial transactions can be retrieved.</div></div>
+      </details>
+
+      <!-- failedAttempts link (note: type 'ic' kept as provided) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f failedAttempts, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>ic</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#failedattempts"><code>failedAttempts</code> resource</a> where information about the failed attempts can be retrieved.</div></div>
+      </details>
+
+      <!-- metadata link -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f metadata, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <code>metadata</code> resource where information about the metadata can be retrieved.</div></div>
+      </details>
+    </div>
+  </details>
+  
+    <!-- operations -->
+    <details class="api-item" role="rowgroup" data-level="0">
+        <summary role="row">
+            <span class="field" role="rowheader">{% f operations, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+            <span class="type"><code>array</code></span>
+        </summary>
+        <div class="desc"><div class="indent-0">{{ operations_md | markdownify }}</div></div>
+    </details>
+</div>
 
 ## GET Payment Order
 
@@ -760,58 +1989,413 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     json= response_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-| Field                    | Type         | Description                                                                                                                                                                                                               |
-| :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
-| {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |
-| {% f created %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
-| {% f updated %}        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
-| {% f operation %}      | `string`     | {% include fields/operation.md %}                                                                                                                                                                                                                 |
-| {% f status %}          | `string`     | Indicates the payment order's current status. `Initialized` is returned when the payment is created and still ongoing. The request example above has this status. `Paid` is returned when the payer has completed the payment successfully. See the [`Paid` response]({{ techref_url }}/technical-reference/status-models#paid). `Failed` is returned when a payment has failed. You will find an error message in [the `Failed` response]({{ techref_url }}/technical-reference/status-models#failed). `Cancelled` is returned when an authorized amount has been fully cancelled. See the [`Cancelled` response]({{ techref_url }}/technical-reference/status-models#cancelled). It will contain fields from both the cancelled description and paid section. `Aborted` is returned when the merchant has aborted the payment, or if the payer cancelled the payment in the redirect integration (on the redirect page). See the [`Aborted` response]({{ techref_url }}/technical-reference/status-models#aborted). |
-| {% f currency %}       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
-| {% f amount %}         | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                 |
-| {% f vatAmount %}      | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                              |
-| {% f description %}    | `string(40)` | {% include fields/description.md %}                                                                                                                        |
-| {% f initiatingSystemUserAgent %}      | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
-| {% f language %}       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
-| {% f availableInstruments %}       | `string`     | A list of payment methods available for this payment.                                                                                                                                                   |
-| {% f implementation %}       | `string`     | The merchant's Online Payments implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
-| {% f integration %}       | `string`     | The merchant's Online Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.                           |
-| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment method available.                                                                                    |
-| {% f guestMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a `payerReference` in the original `paymentOrder` request.                                                                                                                                                |
-| {% f urls %}           | `string`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                                                                                                              |
-| {% f id, 2 %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
-| {% f callbackUrl, 2 %}             | `string`     | {% include fields/callback-url.md %}                                                                                                                                                                                              |
-| {% f payeeInfo %}      | `object`     | {% include fields/payee-info.md %}                                                                                                          |
-| {% f payer %}         | `string`     | The URL to the [`payer` resource]({{ techref_url }}/technical-reference/resource-sub-models#payer) where information about the payer can be retrieved.                                                                                                                  |
-| {% f history %}     | `string`     | The URL to the [`history` resource]({{ techref_url }}/technical-reference/resource-sub-models#history) where information about the payment's history can be retrieved.                                                                                                                            |
-| {% f failed %}     | `string`     | The URL to the [`failed` resource]({{ techref_url }}/technical-reference/resource-sub-models#failed) where information about the failed transactions can be retrieved.                                                                                                                            |
-| {% f aborted %}     | `string`     | The URL to the [`aborted` resource]({{ techref_url }}/technical-reference/resource-sub-models#aborted) where information about the aborted transactions can be retrieved.                                                                                                                            |
-| {% f paid %}     | `string`     | The URL to the [`paid` resource]({{ techref_url }}/technical-reference/resource-sub-models#paid) where information about the paid transactions can be retrieved.                                                                                                                            |
-| {% f id, 2 %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
-| {% f instrument, 2 %}             | `string`     | The payment method used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
-| {% f number, 2 %}         | `integer` | {% include fields/number.md %} |
-| {% f payeeReference, 2 %}          | `string(30)` | {% include fields/payee-reference.md %} |
-| {% f transactionType, 2 %}          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a capture on this payment order. Swedbank Pay recommends using the different operations to figure out if a capture is needed. |
-| {% f amount, 2 %}                   | `integer`    | {% include fields/amount.md %}                                            |
-| {% f tokens, 2 %}                   | `integer`    | A list of tokens connected to the payment.                                                   |
-| {% f type, 3 %}  | `string`   | {% f payment, 0 %}, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
-| {% f token, 3 %}  | `string`   | The token `guid`. |
-| {% f name, 3 %}  | `string`   | The name of the token. In the example, a masked version of a card number. |
-| {% f expiryDate, 3 %}  | `string`   | The expiry date of the token. |
-| {% f feeAmount, 2 %}                   | `integer`    | If the payment method used had a unique fee, it will be displayed in this field.                                            |
-| {% f discountAmount, 2 %}                   | `integer`    | If the payment method used had a unique discount, it will be displayed in this field.                                                |
-| {% f details, 2 %}                   | `integer`    | Details connected to the payment. |
-| {% f trustlyOrderId, 2 %}          | `string` | A Trustly specific order id meant to be use if there is a support case. |
-| {% f cancelled %}     | `id`     | The URL to the [`cancelled` resource]({{ techref_url }}/technical-reference/resource-sub-models#cancelled) where information about the cancelled transactions can be retrieved.                                                                                                                            |
-| {% f financialTransactions %}     | `id`     | The URL to the [`financialTransactions` resource]({{ techref_url }}/technical-reference/resource-sub-models#financialtransactions) where information about the financial transactions can be retrieved.                                                                                                                            |
-| {% f failedAttempts %}     | `id`     | The URL to the [`failedAttempts` resource]({{ techref_url }}/technical-reference/resource-sub-models#failedattempts) where information about the failed attempts can be retrieved.                                                                                                                            |
-| {% f metadata %}     | `id`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
-| {% f operations, 0 %}     | `array`      | {% include fields/operations.md %}                                                                                              |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+{% capture paymentorder_id_md %}{% include fields/id.md resource="paymentorder" %}{% endcapture %}
+{% capture operation_md %}{% include fields/operation.md %}{% endcapture %}
+{% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
+{% capture vat_amount_md %}{% include fields/vat-amount.md %}{% endcapture %}
+{% capture description_md %}{% include fields/description.md %}{% endcapture %}
+{% capture initiating_system_user_agent_md %}{% include fields/initiating-system-user-agent.md %}{% endcapture %}
+{% capture language_md %}{% include fields/language.md %}{% endcapture %}
+{% capture callback_url_md %}{% include fields/callback-url.md %}{% endcapture %}
+{% capture number_md %}{% include fields/number.md %}{% endcapture %}
+{% capture payee_reference_md %}{% include fields/payee-reference.md %}{% endcapture %}
+{% capture operations_md %}{% include fields/operations.md %}{% endcapture %}
+
+<div class="api-compact" role="table" aria-label="Response">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+  </div>
+
+  <!-- Root: paymentOrder (level 0) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The payment order object.</div></div>
+
+    <div class="api-children">
+      <!-- id -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f id, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ paymentorder_id_md | markdownify }}</div></div>
+      </details>
+
+      <!-- created -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f created, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was created.</div></div>
+      </details>
+
+      <!-- updated -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f updated, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was updated.</div></div>
+      </details>
+
+      <!-- operation -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f operation, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ operation_md | markdownify }}</div></div>
+      </details>
+
+      <!-- status -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f status, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">Indicates the payment order's current status. <code>Initialized</code> is returned when the payment is created and still ongoing. The request example above has this status. <code>Paid</code> is returned when the payer has completed the payment successfully. See the <a href="{{ features_url }}/technical-reference/status-models#paid">Paid response</a>. <code>Failed</code> is returned when a payment has failed. You will find an error message in <a href="{{ features_url }}/technical-reference/status-models#failed">the Failed response</a>. <code>Cancelled</code> is returned when an authorized amount has been fully cancelled. See the <a href="{{ features_url }}/technical-reference/status-models#cancelled">Cancelled response</a>. It will contain fields from both the cancelled description and paid section. <code>Aborted</code> is returned when the merchant has aborted the payment, or if the payer cancelled the payment in the redirect integration (on the redirect page). See the <a href="{{ features_url }}/technical-reference/status-models#aborted">Aborted response</a>.</div></div>
+      </details>
+
+      <!-- currency -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f currency, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The currency of the payment order.</div></div>
+      </details>
+
+      <!-- amount -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f amount, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
+      </details>
+
+      <!-- vatAmount -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f vatAmount, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ vat_amount_md | markdownify }}</div></div>
+      </details>
+
+      <!-- description -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f description, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string(40)</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ description_md | markdownify }}</div></div>
+      </details>
+
+      <!-- initiatingSystemUserAgent -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f initiatingSystemUserAgent, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ initiating_system_user_agent_md | markdownify }}</div></div>
+      </details>
+
+      <!-- language -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f language, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>
+      </details>
+
+      <!-- availableInstruments -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f availableInstruments, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">A list of payment methods available for this payment.</div></div>
+      </details>
+
+      <!-- implementation -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f implementation, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The merchant's Online Payments implementation type. <code>Enterprise</code> or <code>PaymentsOnly</code>. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.</div></div>
+      </details>
+
+      <!-- integration -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f integration, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The merchant's Online Payments integration type. <code>HostedView</code> (Seamless View) or <code>Redirect</code>. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.</div></div>
+      </details>
+
+      <!-- instrumentMode -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f instrumentMode, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>bool</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">Set to <code>true</code> or <code>false</code>. Indicates if the payment is initialized with only one payment method available.</div></div>
+      </details>
+
+      <!-- guestMode -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f guestMode, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>bool</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">Set to <code>true</code> or <code>false</code>. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a <code>payerReference</code> in the original <code>paymentOrder</code> request.</div></div>
+      </details>
+
+      <!-- urls (string with children) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f urls, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <code>urls</code> resource where all URLs related to the payment order can be retrieved.</div></div>
+        <div class="api-children">
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f id, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ paymentorder_id_md | markdownify }}</div></div>
+          </details>
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f callbackUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ callback_url_md | markdownify }}</div></div>
+          </details>
+        </div>
+      </details>
+
+      <!-- payeeInfo (object, include text) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payeeInfo, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{% include fields/payee-info.md %}</div></div>
+      </details>
+
+      <!-- payer link -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payer, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#payer"><code>payer</code> resource</a> where information about the payer can be retrieved.</div></div>
+      </details>
+
+      <!-- history link -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f history, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#history"><code>history</code> resource</a> where information about the payment's history can be retrieved.</div></div>
+      </details>
+
+      <!-- failed link -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f failed, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#failed"><code>failed</code> resource</a> where information about the failed transactions can be retrieved.</div></div>
+      </details>
+
+      <!-- aborted link -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f aborted, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#aborted"><code>aborted</code> resource</a> where information about the aborted transactions can be retrieved.</div></div>
+      </details>
+
+      <!-- paid link (with detailed children) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f paid, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#paid"><code>paid</code> resource</a> where information about the paid transactions can be retrieved.</div></div>
+        <div class="api-children">
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f id, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ paymentorder_id_md | markdownify }}</div></div>
+          </details>
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f instrument, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The payment method used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a <code>capture</code> is needed, we recommend using <code>operations</code> or the <code>transactionType</code> field.</div></div>
+          </details>
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f number, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>integer</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ number_md | markdownify }}</div></div>
+          </details>
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string(30)</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ payee_reference_md | markdownify }}</div></div>
+          </details>
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f transactionType, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">This will either be set to <code>Authorization</code> or <code>Sale</code>. Can be used to understand if there is a need for doing a capture on this payment order. Swedbank Pay recommends using the different operations to figure out if a capture is needed.</div></div>
+          </details>
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f amount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>integer</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ amount_md | markdownify }}</div></div>
+          </details>
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f tokens, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>integer</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">A list of tokens connected to the payment.</div></div>
+            <div class="api-children">
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f type, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">{% f payment, 0 %}, <code>recurrence</code>, <code>transactionOnFile</code> or <code>unscheduled</code>. The different types of available tokens.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f token, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The token <code>guid</code>.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f name, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The name of the token. In the example, a masked version of a card number.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f expiryDate, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The expiry date of the token.</div></div>
+              </details>
+            </div>
+          </details>
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f feeAmount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>integer</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">If the payment method used had a unique fee, it will be displayed in this field.</div></div>
+          </details>
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f discountAmount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>integer</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">If the payment method used had a unique discount, it will be displayed in this field.</div></div>
+          </details>
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f details, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>integer</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Details connected to the payment.</div></div>
+          </details>
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f trustlyOrderId, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">A Trustly specific order id meant to be use if there is a support case.</div></div>
+          </details>
+        </div>
+      </details>
+
+      <!-- cancelled link -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f cancelled, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#cancelled"><code>cancelled</code> resource</a> where information about the cancelled transactions can be retrieved.</div></div>
+      </details>
+
+      <!-- financialTransactions link -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f financialTransactions, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#financialtransactions"><code>financialTransactions</code> resource</a> where information about the financial transactions can be retrieved.</div></div>
+      </details>
+
+      <!-- failedAttempts link -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f failedAttempts, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#failedattempts"><code>failedAttempts</code> resource</a> where information about the failed attempts can be retrieved.</div></div>
+      </details>
+
+      <!-- metadata link -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f metadata, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <code>metadata</code> resource where information about the metadata can be retrieved.</div></div>
+      </details>
+
+    </div>
+  </details>
+
+  <!-- Root sibling: operations (level 0) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f operations, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>array</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">{{ operations_md | markdownify }}</div></div>
+  </details>
+</div>
 
 ## Select Account Flow
 

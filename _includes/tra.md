@@ -161,111 +161,912 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     json= request_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-| Field | Type | Description |
-| :---- | :--- | :---------- |
-| {% icon check %} | {% f paymentOrder %}                | `object` | {% include fields/id.md resource="paymentorder" sub_resource="payer" %}                                             |
-| {% icon check %} | {% f requestTraExemption %}      | `bool`       | Set to `true` if the merchant requests a TRA exemption. |
-| {% icon check %} | {% f operation %}                | `string`     | {% include fields/operation.md %}                        |
-| {% icon check %} | {% f currency %}                 | `string`     | The currency of the payment.                                             |
-| {% icon check %} | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                       |
-| {% icon check %} | {% f vatAmount %}                | `integer`    | {% include fields/vat-amount.md %}                    |
-| {% icon check %} | {% f description %}              | `string`     | The description of the payment order.                                               |
-| {% icon check %} | {% f userAgent %}                | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                             |
-| {% icon check %} | {% f language %}                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
-| {% icon check %} | {% f productName %}              | `string`     | Used to tag the payment as Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
-|                  | {% f implementation %}           | `string`     | Indicates which implementation to use.                                                                                                                                                                                                                                                                          |
-| {% icon check %} | {% f urls %}                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
-| {% icon check %} | {% f hostUrls, 2 %}                | `array`      | The array of valid host URLs.                                                                                                                                                                                                                                    |{% if include.integration_mode=="seamless-view" %}
-|                  | {% f paymentUrl, 2 %}              | `string`     | {% include fields/payment-url.md %} | {% endif %}
-| {% icon check %} | {% f completeUrl, 2 %}             | `string`     | {% include fields/complete-url.md %} |
-|                  | {% f cancelUrl, 2 %}               | `string`     | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
-| {% icon check %} | {% f callbackUrl, 2 %}             | `string`     | {% include fields/callback-url.md %}                                                                                                                                                                                              |
-| {% icon check %} | {% f termsOfServiceUrl, 2 %}       | `string`     | {% include fields/terms-of-service-url.md %}                                                                                                                                                                                                                                                     |{% if include.integration_mode=="redirect" %},
-| {% icon check %} | {% f logoUrl, 2 %}                 | `string`     | {% include fields/logo-url.md %}                                                                                                                                                                                                                                                               |{% endif %}
-| {% icon check %} | {% f payeeInfo %}                | `object`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                             |
-| {% icon check %} | {% f payeeId, 2 %}                 | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                                                                                                            |
-| {% icon check %} | {% f payeeReference, 2 %}          | `string(30)` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                                                                                                 |
-|                  | {% f payeeName, 2 %}               | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                                                                                                                 |
-|                  | {% f productCategory, 2 %}         | `string(50)`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
-|                  | {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
-|                  | {% f subsite, 2 %}                 | `string(40)` | {% include fields/subsite.md %} | {% if documentation_section contains "checkout-v3" %}
-|                  | {% f siteId, 2 %}                 | `string(15)` | {% include fields/site-id.md %}                                                                                                                    | {% endif %}
-|                   |{% f payer %}                       | `object` | The payer object.       |
-|                  | {% f nationalIdentifier, 2 %}    | `object` | The national identifier object.                                                                      |
-|                  | {% f socialSecurityNumber, 3 %} | `string` | The payer's social security number. |
-|                  | {% f countryCode, 3 %}          | `string` | The country code of the payer.                                                                     |
-|                   | {% f requireConsumerInfo %}                       | `bool` | Set to `true` if the merchant wants to receive profile information from Swedbank Pay. Applicable for when the merchant only needs `email` and/or `msisdn` for digital goods, or when the full shipping address is necessary. If set to `false`, Swedbank Pay will depend on the merchant to send `email` and/or `msisdn` for digital products and shipping address for physical orders. |
-|                   | {% f digitalProducts %}                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. |
-|                   | {% f email %}                       | `string` | Payer's registered email address.                                                                                                                                                                                                                                                                                                                       |
-|                   | {% f msisdn %}                      | `string` | Payer's registered mobile phone number.                                                                                                                                                                                                                                                                                                               |
-|                   | {% f authentication %}            | `object` | The authentication object related to the `payer`.                                                                                                                                                                                                                                                                                                                                             |
-|                   | {% f type %}                      | `string` | Set to `Physical` or `Digital`, depending on how the authentication was done.                                                                                                                                                                                                                                                                                                               |
-|                   | {% f method %}                      | `string` | Indicator of the authentication method. Set to `OneFactor`, `MultiFactor`, `BankId`, `nationalIdentityCard` or `RecurringToken`.                                                                                                                                                                                                                                  |
-|                   | {% f nationalIdentityCardType %}    | `string` | Form of identity card used for the authentication. Set to `Passport`, `DriversLicense` or `BankCard`.                                                                                                                                                                                                                                                                                                  |
-|                   | {% f reference %}                      | `string` | Used if the authentication method has an associated reference. Use the passport number for `Passport` authentications, session numbers for `BankID` sessions etc.                                                                                                                                    |
-|                   | {% f shippingAddress %}            | `object` | The shipping address object related to the `payer`.                                                                                                                                                                                                         |
-|                   | {% f firstName, 2 %}                   | `string` | The first name of the addressee – the receiver of the shipped goods.                                                                                                                                                                                                                              |
-|                   | {% f lastName, 2 %}                   | `string` | The last name of the addressee – the receiver of the shipped goods.                                                                                                                                                                                                                            |
-|                   | {% f email %}                       | `string` | Payer's registered email address.                                                                                                                                                                                                                                                                                                                      |
-|                   | {% f msisdn %}                      | `string` | Payer's registered mobile phone number.                                                                                                                                                                                                                                                                                                               |
-|                   | {% f streetAddress, 2 %}              | `string` | Payer's street address. Maximum 50 characters long.                                                                                                                                                                                                                                                                   |
-|                   | {% f coAddress, 2 %}                  | `string` | Payer's c/o address, if applicable.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-|                   | {% f city, 2 %}                       | `string` | Payer's city of residence.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-|                   | {% f zipCode, 2 %}                    | `string` | Payer's zip code.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-|                   | {% f countryCode, 2 %}                | `string` | Country code for the payer's country of residence.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|                   | {% f billingAddress %}            | `object` | The billing address object related to the `payer`.                                                                                                                                                                                                                                                                                                                                             |
-|                   | {% f firstName, 2 %}                   | `string` | The first name of the addressee – the receiver of the shipped goods.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|                   | {% f lastName, 2 %}                   | `string` | The last name of the addressee – the receiver of the shipped goods.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|                   | {% f email %}                       | `string` | Payer's registered email address.                                                                                                                                                                                                                                                                                                                      |
-|                   | {% f msisdn %}                      | `string` | Payer's registered mobile phone number.                                                                                                                                                                                                                                                                                                               |
-|                   | {% f streetAddress, 2 %}              | `string` | Payer's street address. Maximum 50 characters long.                                                                                                                                                                                                                                                            |
-|                   | {% f coAddress, 2 %}                  | `string` | Payer's c/o address, if applicable.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-|                   | {% f city, 2 %}                       | `string` | Payer's city of residence.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-|                   | {% f zipCode, 2 %}                    | `string` | Payer's zip code.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-|                   | {% f countryCode, 2 %}                | `string` | Country code for the payer's country of residence.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-|                   | {% f accountInfo %}            | `object` | Object related to the `payer` containing info about the payer's account.                                                                                                                                                                                                                                                                                                                                           |
-|                   | {% f accountAgeIndicator, 2 %} | `string` | Indicates the age of the payer's account. <br>`01` (No account, guest checkout) <br>`02` (Created during this transaction) <br>`03` (Less than 30 days old) <br>`04` (30 to 60 days old) <br>`05` (More than 60 days old)             |
-|                   | {% f accountChangeIndicator, 2 %} | `string` | Indicates when the last account changes occurred. <br>`01` (Changed during this transaction) <br>`02` (Less than 30 days ago) <br>`03` (30 to 60 days ago) <br>`04` (More than 60 days ago) |
-|                   | {% f accountChangePwdIndicator, 2 %} | `string` | Indicates when the account's password was last changed. <br>`01` (No changes) <br>`02` (Changed during this transaction) <br>`03` (Less than 30 days ago) <br>`04` (30 to 60 days ago) <br>`05` (More than 60 days old) |
-|                   | {% f shippingAddressUsageIndicator, 2 %} | `string` | Indicates when the payer's shipping address was last used. <br>`01`(This transaction) <br>`02` (Less than 30 days ago) <br>`03` (30 to 60 days ago) <br>`04` (More than 60 days ago) |
-|                   | {% f shippingNameIndicator, 2 %} | `string` | Indicates if the account name matches the shipping name. <br>`01` (Account name identical to shipping name) <br>`02` (Account name different from shipping name) |
-|                   | {% f suspiciousAccountActivity, 2 %} | `string` | Indicates if there have been any suspicious activities linked to this account. <br>`01` (No suspicious activity has been observed) <br>`02` (Suspicious activity has been observed) |
-|                   | {% f addressMatchIndicator, 2 %} | `bool` | Allows the antifraud system to indicate if the payer's billing and shipping address are the same. |
-|                   | {% f orderItems %}            | `object` | The object containing items being purchased with the order, and info about them. If you have GPC codes for the items and add them here, you won't have to include the items at the bottom of the code example.                                                                                             |
-| {% icon check %} | {% f reference, 2 %}           | `string`  | A reference that identifies the order item.                                                                                                                                                                                                                                           |
-| {% icon check %} | {% f name, 2 %}                | `string`  | The name of the order item.                                                                                                                                                                                                                                                           |
-| {% icon check %} | {% f type, 2 %}                | `enum`    | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.                                                                                                                                                                               |
-| {% icon check %} | {% f class, 2 %}               | `string`  | The classification of the order item. Can be used for assigning the order item to a specific product category, such as `MobilePhone`. Note that `class` cannot contain spaces and must follow the regex pattern `[\w-]*`. Swedbank Pay may use this field for statistics. |
-|                  | {% f itemUrl, 2 %}             | `string`  | The URL to a page that can display the purchased item, such as a product page                                                                                                                                                                                                         |
-|                  | {% f imageUrl, 2 %}            | `string`  | The URL to an image of the order item.                                                                                                                                                                                                                                                |
-|                  | {% f description, 2 %}         | `string`  | The human readable description of the order item.                                                                                                                                                                                                                                     |
-|                  | {% f discountDescription, 2 %} | `string`  | The human readable description of the possible discount.                                                                                                                                                                                                                              |
-| {% icon check %} | {% f quantity, 2 %}            | `number` | The 4 decimal precision quantity of order items being purchased.                                                                                                                                                                                                                      |
-| {% icon check %} | {% f quantityUnit, 2 %}        | `string`  | The unit of the quantity, such as `pcs`, `grams`, or similar.                                                                                                                                                                                                                         |
-| {% icon check %} | {% f unitPrice, 2 %}           | `integer` | The price per unit of order item, including VAT.                                                                                                                                                                                                                                      |
-|                  | {% f discountPrice, 2 %}       | `integer` | If the order item is purchased at a discounted price. This field should contain that price, including VAT.                                                                                                                                                                            |
-| {% icon check %} | {% f vatPercent, 2 %}          | `integer` | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                              |
-| {% icon check %} | {% f amount, 2 %}              | `integer` | {% include fields/amount.md %}                                                                                                                                                                                                                                             |
-| {% icon check %} | {% f vatAmount, 2 %}           | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                          |
-|                   | {% f riskIndicator %}               | `object` | This object consists of information that helps verifying the payer. Providing these fields decreases the likelihood of having to prompt for 3-D Secure authentication of the payer when they are authenticating the purchase.                                                                                                                                            |
-|                   | {% f deliveryEmailAdress, 2 %}        | `string` | For electronic delivery (see `shipIndicator` below), the email address to which the merchandise was delivered. Providing this field when appropriate decreases the likelihood of a 3-D Secure authentication for the payer.                                                                                                                                                                              |
-|                   | {% f deliveryTimeFrameIndicator, 2 %} | `string` | Indicates the merchandise delivery timeframe. <br>`01` (Electronic Delivery) <br>`02` (Same day shipping) <br>`03` (Overnight shipping) <br>`04` (Two-day or more shipping).                                                                                                                                                                                                                                                                                                                                                                                      |
-|                   | {% f preOrderDate, 2 %}               | `string` | For a pre-ordered purchase. The expected date that the merchandise will be available. Format: `YYYYMMDD`.                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-|                   | {% f preOrderPurchaseIndicator, 2 %}  | `string` | Indicates whether the payer is placing an order for merchandise with a future availability or release date. <br>`01` (Merchandise available) <br>`02` (Future availability).                                                                                                                                                                                                                                                                                                                                                                                     |
-|                   | {% f shipIndicator, 2 %}              | `string` | Indicates shipping method chosen for the transaction. <br>`01` (Ship to cardholder's billing address) <br>`02` (Ship to another verified address on file with merchant)<br>`03` (Ship to address that is different than cardholder's billing address)<br>`04` (Ship to Store / Pick-up at local store. Store address shall be populated in the `riskIndicator.pickUpAddress` and `payer.shippingAddress` fields)<br>`05` (Digital goods, includes online services, electronic giftcards and redemption codes) <br>`06` (Travel and Event tickets, not shipped) <br>`07` (Other, e.g. gaming, digital service) |
-|                   |{% f giftCardPurchase, 2 %}           | `bool`   | `true` if this is a purchase of a gift card.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|                   | {% f reOrderPurchaseIndicator, 2 %}   | `string` | Indicates whether the cardholder is reordering previously purchased merchandise. <br>`01` (First time ordered) <br>`02` (Reordered).                                                                                                                                                                                                                                                                                                                                                                                     |
-|                   | {% f pickUpAddress %}            | `object` | Object related to the `riskIndicator`, containing info about the merchant's pick-up address. If the `shipIndicator` is set to `04`, this should be filled out with the merchant's pick-up address. Do not use if the shipment is sent or delivered to a consumer address (ShipIndicator `01`, `02` or `03`). In those cases, the shipping address in the `Payer` field should be used instead.                                                                                                                                           |
-|                   | {% f pickUpAddress.Name, 2 %}                   | `string` | The name of the shop or merchant.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-|                   | {% f pickUpAddress.streetAddress, 2 %}              | `string` | The shop or merchant's street address. Maximum 50 characters long.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|                   | {% f pickUpAddress.coAddress, 2 %}                  | `string` | The shop or merchant's c/o address, if applicable.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-|                   | {% f pickUpAddress.City, 2 %}                       | `string` | The city where the shop or merchant is located.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-|                   | {% f pickUpAddress.zipCode, 2 %}                    | `string` | The zip code where the shop or merchant is located.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|                   | {% f pickUpAddress.countryCode, 2 %}                | `string` | The country code where the shop or merchant is located.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-|                   | {% f items %}            | `object` | Object related to the `riskIndicator`, containing info about the items ordered. Should be added if the GPC codes for the items are available. If the `orderItems` object is used and includes the GPC codes, there is no need to add this field. Should only be used by merchants who don't use the `orderItems` object.                                                                                                                                          |
-|                   | {% f gpcNumber, 2 %}                   | `string` | The specific [GPC Number](https://www.gs1.org/standards/gpc) for the order line. |
-|                   | {% f amount, 2 %}                   | `string` | The amount of the specific order line. |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+<div class="api-compact" role="table" aria-label="Request">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+    <div role="columnheader">Required</div>
+  </div>
+
+  <!-- paymentOrder (root) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f paymentOrder %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>object</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    {% capture paymentorder_md %}{% include fields/id.md resource="paymentorder" sub_resource="payer" %}{% endcapture %}
+    <div class="desc"><div class="indent-0">{{ paymentorder_md | markdownify }}</div></div>
+
+    <div class="api-children">
+      <!-- requestTraExemption -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f requestTraExemption %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>bool</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">Set to <code>true</code> if the merchant requests a TRA exemption.</div></div>
+      </details>
+
+      <!-- operation -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        {% capture operation_md %}{% include fields/operation.md %}{% endcapture %}
+        <div class="desc"><div class="indent-1">{{ operation_md | markdownify }}</div></div>
+      </details>
+
+      <!-- currency -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f currency %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The currency of the payment.</div></div>
+      </details>
+
+      <!-- amount -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        {% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
+        <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
+      </details>
+
+      <!-- vatAmount -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f vatAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        {% capture vat_amount_md %}{% include fields/vat-amount.md %}{% endcapture %}
+        <div class="desc"><div class="indent-1">{{ vat_amount_md | markdownify }}</div></div>
+      </details>
+
+      <!-- description -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The description of the payment order.</div></div>
+      </details>
+
+      <!-- userAgent -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f userAgent %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        {% capture user_agent_md %}{% include fields/user-agent.md %}{% endcapture %}
+        <div class="desc"><div class="indent-1">{{ user_agent_md | markdownify }}</div></div>
+      </details>
+
+      <!-- language -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f language %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The language of the payer.</div></div>
+      </details>
+
+      <!-- productName -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f productName %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">Used to tag the payment as Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.</div></div>
+      </details>
+
+      <!-- implementation (optional) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f implementation %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">Indicates which implementation to use.</div></div>
+      </details>
+
+      <!-- urls -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f urls %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The <code>urls</code> object, containing the URLs relevant for the payment order.</div></div>
+
+        <div class="api-children">
+          <!-- hostUrls -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f hostUrls, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>array</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The array of valid host URLs.</div></div>
+          </details>
+
+          <!-- paymentUrl (conditional, seamless-view) -->
+          {% if include.integration_mode=="seamless-view" %}
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f paymentUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            {% capture payment_url_md %}{% include fields/payment-url.md %}{% endcapture %}
+            <div class="desc"><div class="indent-2">{{ payment_url_md | markdownify }}</div></div>
+          </details>
+          {% endif %}
+
+          <!-- completeUrl -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f completeUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            {% capture complete_url_md %}{% include fields/complete-url.md %}{% endcapture %}
+            <div class="desc"><div class="indent-2">{{ complete_url_md | markdownify }}</div></div>
+          </details>
+
+          <!-- cancelUrl (optional) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f cancelUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an <code>abort</code> request of the <code>payment</code> or <code>paymentorder</code>.</div></div>
+          </details>
+
+          <!-- callbackUrl -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f callbackUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            {% capture callback_url_md %}{% include fields/callback-url.md %}{% endcapture %}
+            <div class="desc"><div class="indent-2">{{ callback_url_md | markdownify }}</div></div>
+          </details>
+
+          <!-- termsOfServiceUrl -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f termsOfServiceUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            {% capture tos_url_md %}{% include fields/terms-of-service-url.md %}{% endcapture %}
+            <div class="desc"><div class="indent-2">{{ tos_url_md | markdownify }}</div></div>
+          </details>
+
+          <!-- logoUrl (conditional, redirect) -->
+          {% if include.integration_mode=="redirect" %}
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f logoUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            {% capture logo_url_md %}{% include fields/logo-url.md %}{% endcapture %}
+            <div class="desc"><div class="indent-2">{{ logo_url_md | markdownify }}</div></div>
+          </details>
+          {% endif %}
+        </div>
+      </details>
+
+      <!-- payeeInfo -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payeeInfo %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        {% capture payee_info_md %}{% include fields/payee-info.md %}{% endcapture %}
+        <div class="desc"><div class="indent-1">{{ payee_info_md | markdownify }}</div></div>
+
+        <div class="api-children">
+          <!-- payeeId -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f payeeId, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The ID of the payee, usually the merchant ID.</div></div>
+          </details>
+
+          <!-- payeeReference -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string(30)</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            {% capture payee_reference_md %}{% include fields/payee-reference.md describe_receipt=true %}{% endcapture %}
+            <div class="desc"><div class="indent-2">{{ payee_reference_md | markdownify }}</div></div>
+          </details>
+
+          <!-- payeeName (optional) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f payeeName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The name of the payee, usually the name of the merchant.</div></div>
+          </details>
+
+          <!-- productCategory (optional) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f productCategory, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string(50)</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.</div></div>
+          </details>
+
+          <!-- orderReference (optional) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f orderReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string(50)</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The order reference should reflect the order reference found in the merchant's systems.</div></div>
+          </details>
+
+          <!-- subsite (optional) -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f subsite, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string(40)</code></span>
+            </summary>
+            {% capture subsite_md %}{% include fields/subsite.md %}{% endcapture %}
+            <div class="desc"><div class="indent-2">{{ subsite_md | markdownify }}</div></div>
+          </details>
+
+          <!-- siteId (conditional section) -->
+          {% if documentation_section contains "checkout-v3" %}
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f siteId, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string(15)</code></span>
+            </summary>
+            {% capture site_id_md %}{% include fields/site-id.md %}{% endcapture %}
+            <div class="desc"><div class="indent-2">{{ site_id_md | markdownify }}</div></div>
+          </details>
+          {% endif %}
+        </div>
+      </details>
+
+      <!-- payer -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payer %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The payer object.</div></div>
+
+        <div class="api-children">
+          <!-- nationalIdentifier -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f nationalIdentifier, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>object</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The national identifier object.</div></div>
+
+            <div class="api-children">
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f socialSecurityNumber, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The payer's social security number.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f countryCode, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The country code of the payer.</div></div>
+              </details>
+            </div>
+          </details>
+
+          <!-- requireConsumerInfo -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f requireConsumerInfo %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>bool</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Set to <code>true</code> if the merchant wants to receive profile information from Swedbank Pay. Applicable for when the merchant only needs <code>email</code> and/or <code>msisdn</code> for digital goods, or when the full shipping address is necessary. If set to <code>false</code>, Swedbank Pay will depend on the merchant to send <code>email</code> and/or <code>msisdn</code> for digital products and shipping address for physical orders.</div></div>
+          </details>
+
+          <!-- digitalProducts -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f digitalProducts %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>bool</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Set to <code>true</code> for merchants who only sell digital goods and only require <code>email</code> and/or <code>msisdn</code> as shipping details. Set to <code>false</code> if the merchant also sells physical goods.</div></div>
+          </details>
+
+          <!-- email -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f email %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Payer's registered email address.</div></div>
+          </details>
+
+          <!-- msisdn -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f msisdn %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Payer's registered mobile phone number.</div></div>
+          </details>
+
+          <!-- authentication -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f authentication %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>object</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The authentication object related to the <code>payer</code>.</div></div>
+
+            <div class="api-children">
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f type %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Set to <code>Physical</code> or <code>Digital</code>, depending on how the authentication was done.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f method %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Indicator of the authentication method. Set to <code>OneFactor</code>, <code>MultiFactor</code>, <code>BankId</code>, <code>nationalIdentityCard</code> or <code>RecurringToken</code>.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f nationalIdentityCardType %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Form of identity card used for the authentication. Set to <code>Passport</code>, <code>DriversLicense</code> or <code>BankCard</code>.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f reference %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Used if the authentication method has an associated reference. Use the passport number for <code>Passport</code> authentications, session numbers for <code>BankID</code> sessions etc.</div></div>
+              </details>
+            </div>
+          </details>
+
+          <!-- shippingAddress -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f shippingAddress %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>object</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The shipping address object related to the <code>payer</code>.</div></div>
+
+            <div class="api-children">
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f firstName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The first name of the addressee – the receiver of the shipped goods.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f lastName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The last name of the addressee – the receiver of the shipped goods.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f email %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Payer's registered email address.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f msisdn %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Payer's registered mobile phone number.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f streetAddress, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Payer's street address. Maximum 50 characters long.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f coAddress, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Payer's c/o address, if applicable.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f city, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Payer's city of residence.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f zipCode, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Payer's zip code.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f countryCode, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Country code for the payer's country of residence.</div></div>
+              </details>
+            </div>
+          </details>
+
+          <!-- billingAddress -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f billingAddress %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>object</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The billing address object related to the <code>payer</code>.</div></div>
+
+            <div class="api-children">
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f firstName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The first name of the addressee – the receiver of the shipped goods.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f lastName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The last name of the addressee – the receiver of the shipped goods.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f email %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Payer's registered email address.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f msisdn %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Payer's registered mobile phone number.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f streetAddress, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Payer's street address. Maximum 50 characters long.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f coAddress, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Payer's c/o address, if applicable.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f city, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Payer's city of residence.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f zipCode, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Payer's zip code.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f countryCode, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Country code for the payer's country of residence.</div></div>
+              </details>
+            </div>
+          </details>
+
+          <!-- accountInfo -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f accountInfo %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>object</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Object related to the <code>payer</code> containing info about the payer's account.</div></div>
+
+            <div class="api-children">
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f accountAgeIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Indicates the age of the payer's account. <br><code>01</code> (No account, guest checkout) <br><code>02</code> (Created during this transaction) <br><code>03</code> (Less than 30 days old) <br><code>04</code> (30 to 60 days old) <br><code>05</code> (More than 60 days old)</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f accountChangeIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Indicates when the last account changes occurred. <br><code>01</code> (Changed during this transaction) <br><code>02</code> (Less than 30 days ago) <br><code>03</code> (30 to 60 days ago) <br><code>04</code> (More than 60 days ago)</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f accountChangePwdIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Indicates when the account's password was last changed. <br><code>01</code> (No changes) <br><code>02</code> (Changed during this transaction) <br><code>03</code> (Less than 30 days ago) <br><code>04</code> (30 to 60 days ago) <br><code>05</code> (More than 60 days old)</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f shippingAddressUsageIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Indicates when the payer's shipping address was last used. <br><code>01</code>(This transaction) <br><code>02</code> (Less than 30 days ago) <br><code>03</code> (30 to 60 days ago) <br><code>04</code> (More than 60 days ago)</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f shippingNameIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Indicates if the account name matches the shipping name. <br><code>01</code> (Account name identical to shipping name) <br><code>02</code> (Account name different from shipping name)</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f suspiciousAccountActivity, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Indicates if there have been any suspicious activities linked to this account. <br><code>01</code> (No suspicious activity has been observed) <br><code>02</code> (Suspicious activity has been observed)</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f addressMatchIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>bool</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Allows the antifraud system to indicate if the payer's billing and shipping address are the same.</div></div>
+              </details>
+            </div>
+          </details>
+        </div>
+      </details>
+
+      <!-- orderItems -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f orderItems %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The object containing items being purchased with the order, and info about them. If you have GPC codes for the items and add them here, you won't have to include the items at the bottom of the code example.</div></div>
+
+        <div class="api-children">
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f reference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">A reference that identifies the order item.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f name, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The name of the order item.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>enum</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2"><code>PRODUCT</code>, <code>SERVICE</code>, <code>SHIPPING_FEE</code>, <code>DISCOUNT</code>, <code>VALUE_CODE</code>, or <code>OTHER</code>. The type of the order item.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f class, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The classification of the order item. Can be used for assigning the order item to a specific product category, such as <code>MobilePhone</code>. Note that <code>class</code> cannot contain spaces and must follow the regex pattern <code>[\w-]*</code>. Swedbank Pay may use this field for statistics.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f itemUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The URL to a page that can display the purchased item, such as a product page</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f imageUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The URL to an image of the order item.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f description, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The human readable description of the order item.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field role="rowheader">{% f discountDescription, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The human readable description of the possible discount.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f quantity, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>number</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The 4 decimal precision quantity of order items being purchased.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f quantityUnit, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The unit of the quantity, such as <code>pcs</code>, <code>grams</code>, or similar.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f unitPrice, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>integer</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The price per unit of order item, including VAT.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f discountPrice, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>integer</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">If the order item is purchased at a discounted price. This field should contain that price, including VAT.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f vatPercent, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>integer</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The percent value of the VAT multiplied by 100, so <code>25%</code> becomes <code>2500</code>.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f amount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>integer</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            {% capture orderitems_amount_md %}{% include fields/amount.md %}{% endcapture %}
+            <div class="desc"><div class="indent-2">{{ orderitems_amount_md | markdownify }}</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f vatAmount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>integer</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            {% capture orderitems_vat_amount_md %}{% include fields/vat-amount.md %}{% endcapture %}
+            <div class="desc"><div class="indent-2">{{ orderitems_vat_amount_md | markdownify }}</div></div>
+          </details>
+        </div>
+      </details>
+
+      <!-- riskIndicator -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f riskIndicator %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">This object consists of information that helps verifying the payer. Providing these fields decreases the likelihood of having to prompt for 3-D Secure authentication of the payer when they are authenticating the purchase.</div></div>
+
+        <div class="api-children">
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f deliveryEmailAdress, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">For electronic delivery (see <code>shipIndicator</code> below), the email address to which the merchandise was delivered. Providing this field when appropriate decreases the likelihood of a 3-D Secure authentication for the payer.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f deliveryTimeFrameIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Indicates the merchandise delivery timeframe. <br><code>01</code> (Electronic Delivery) <br><code>02</code> (Same day shipping) <br><code>03</code> (Overnight shipping) <br><code>04</code> (Two-day or more shipping).</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f preOrderDate, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">For a pre-ordered purchase. The expected date that the merchandise will be available. Format: <code>YYYYMMDD</code>.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f preOrderPurchaseIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Indicates whether the payer is placing an order for merchandise with a future availability or release date. <br><code>01</code> (Merchandise available) <br><code>02</code> (Future availability).</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f shipIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Indicates shipping method chosen for the transaction. <br><code>01</code> (Ship to cardholder's billing address) <br><code>02</code> (Ship to another verified address on file with merchant)<br><code>03</code> (Ship to address that is different than cardholder's billing address)<br><code>04</code> (Ship to Store / Pick-up at local store. Store address shall be populated in the <code>riskIndicator.pickUpAddress</code> and <code>payer.shippingAddress</code> fields)<br><code>05</code> (Digital goods, includes online services, electronic giftcards and redemption codes) <br><code>06</code> (Travel and Event tickets, not shipped) <br><code>07</code> (Other, e.g. gaming, digital service)</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f giftCardPurchase, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>bool</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2"><code>true</code> if this is a purchase of a gift card.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f reOrderPurchaseIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Indicates whether the cardholder is reordering previously purchased merchandise. <br><code>01</code> (First time ordered) <br><code>02</code> (Reordered).</div></div>
+          </details>
+
+          <!-- pickUpAddress -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f pickUpAddress %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>object</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Object related to the <code>riskIndicator</code>, containing info about the merchant's pick-up address. If the <code>shipIndicator</code> is set to <code>04</code>, this should be filled out with the merchant's pick-up address. Do not use if the shipment is sent or delivered to a consumer address (ShipIndicator <code>01</code>, <code>02</code> or <code>03</code>). In those cases, the shipping address in the <code>Payer</code> field should be used instead.</div></div>
+
+            <div class="api-children">
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f pickUpAddress.Name, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The name of the shop or merchant.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f pickUpAddress.streetAddress, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The shop or merchant's street address. Maximum 50 characters long.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f pickUpAddress.coAddress, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The shop or merchant's c/o address, if applicable.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f pickUpAddress.City, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The city where the shop or merchant is located.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f pickUpAddress.zipCode, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The zip code where the shop or merchant is located.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f pickUpAddress.countryCode, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The country code where the shop or merchant is located.</div></div>
+              </details>
+            </div>
+          </details>
+
+          <!-- items -->
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f items %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>object</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Object related to the <code>riskIndicator</code>, containing info about the items ordered. Should be added if the GPC codes for the items are available. If the <code>orderItems</code> object is used and includes the GPC codes, there is no need to add this field. Should only be used by merchants who don't use the <code>orderItems</code> object.</div></div>
+
+            <div class="api-children">
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f gpcNumber, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The specific <a href="https://www.gs1.org/standards/gpc">GPC Number</a> for the order line.</div></div>
+              </details>
+              <details class="api-item" role="rowgroup" data-level="3">
+                <summary role="row">
+                  <span class="field" role="rowheader">{% f amount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The amount of the specific order line.</div></div>
+              </details>
+            </div>
+          </details>
+        </div>
+      </details>
+    </div>
+  </details>
+</div>

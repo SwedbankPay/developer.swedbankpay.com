@@ -77,14 +77,33 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     json= request_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-|     Required     | Field                              | Type         | Description                                                                                                                                                                                                                                                                                              |
-| :--------------: | :--------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|                  | {% f subsite, 2 %}                 | `string(40)` | {% include fields/subsite.md %} |
-|                  | {% f siteId, 2 %}                 | `string(15)` | {% include fields/site-id.md %}                                                                                           |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+<div class="api-compact" role="table" aria-label="Request">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+    <div role="columnheader">Required</div>
+  </div>
+
+  <!-- subsite (required, level 0) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f subsite, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>string(40)</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc"><div class="indent-0">{% include fields/subsite.md %}</div></div>
+  </details>
+
+  <!-- siteId (required, level 0) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f siteId, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>string(15)</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc"><div class="indent-0">{% include fields/site-id.md %}</div></div>
+  </details>
+</div>
 
 ## The Upsides Of Split Settlement
 

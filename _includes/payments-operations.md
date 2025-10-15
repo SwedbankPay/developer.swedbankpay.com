@@ -124,32 +124,188 @@ Content-Type: application/json{% endcapture %}
 
 {% endif %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-| Field                              | Type         | Description                                                                                                                                                                                                                                                                                          |
-| :--------------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% f payment, 0 %}                          | `string`     | {% include fields/id.md sub_resource="transaction" %}                                                                                                                                                                                                                                     |
-| {% f transaction %}              | `string`     | {% include fields/transaction.md %}                                                                                                                                                                                                                        |
-| {% f id, 2 %}                      | `string`     | {% include fields/id.md resource="transaction" %}                                                                                                                                                                                                                                         |
-| {% f number, 2 %}                  | `integer`    | {% include fields/number.md %}                                                                                         |
-| {% f payeeReference %}           | `string(30)`     | {% include fields/payee-reference.md %}                                                                                                                                                                                                       |
-| {% f orderReference %}           | `string(50)` | The order reference, which should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                              |
-| {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                                            |
-| {% f tokens %}                   | `integer`    | A list of generated tokens.                                                                                                                                                                                                                                                                            |
-| {% f details %}                  | `integer`    | A human readable and descriptive text of the payment.                                                                                                                                                                                                                                                |
-| {% f cardBrand, 2 %}               | `string`     | `Visa`, `MC`, etc. The brand of the card.                                                                                                                                                                                                                                                            |
-| {% f maskedPan, 2 %}               | `string`     | The masked PAN number of the card.                                                                                                                                                                                                                                                                   |
-| {% f cardType, 2 %}                | `string`     | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.                                                                                                                                                                                                                |
-| {% f issuingBank, 2 %}             | `string`     | The name of the bank that issued the card used for the authorization.                                                                                                                                                                                                                                |
-| {% f countryCode, 2 %}             | `string`     | The country the card is issued in.                                                                                                                                                                                                                                                                   |
-| {% f acquirerTransactionType, 2 %} | `string`     | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.                                                                                                                                                                                                                                 |
-| {% f acquirerStan, 2 %}            | `string`     | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.                                                                                                                                                                                                         |
-| {% f acquirerTerminalId, 2 %}      | `string`     | The ID of the acquirer terminal.                                                                                                                                                                                                                                                                     |
-| {% f acquirerTransactionTime, 2 %} | `string`     | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                                                                                                              |
-| {% f nonPaymentToken, 2 %}         | `string`     | The result of our own card tokenization. Activated in POS for the merchant or merchant group.                                                                                                                                                                                                     |
-| {% f externalNonPaymentToken, 2 %} | `string`     | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token. |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+{% capture payment_txn_link_md %}{% include fields/id.md sub_resource="transaction" %}{% endcapture %}
+{% capture transaction_md %}{% include fields/transaction.md %}{% endcapture %}
+{% capture id_txn_md %}{% include fields/id.md resource="transaction" %}{% endcapture %}
+{% capture number_md %}{% include fields/number.md %}{% endcapture %}
+{% capture payee_reference_md %}{% include fields/payee-reference.md %}{% endcapture %}
+{% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
+
+<div class="api-compact" role="table" aria-label="Response">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+  </div>
+
+  <!-- Root: payment (level 0) -->
+  <details class="api-item" role="rowgroup" data-level="0">
+    <summary role="row">
+      <span class="field" role="rowheader">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">{{ payment_txn_link_md | markdownify }}</div></div>
+
+    <div class="api-children">
+      <!-- transaction (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f transaction, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ transaction_md | markdownify }}</div></div>
+
+        <!-- Children of transaction (level 2) -->
+        <div class="api-children">
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f id, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ id_txn_md | markdownify }}</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f number, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>integer</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ number_md | markdownify }}</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f cardBrand, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2"><code>Visa</code>, <code>MC</code>, etc. The brand of the card.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f maskedPan, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The masked PAN number of the card.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f cardType, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2"><code>Credit Card</code> or <code>Debit Card</code>. Indicates the type of card used for the authorization.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f issuingBank, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The name of the bank that issued the card used for the authorization.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f countryCode, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The country the card is issued in.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f acquirerTransactionType, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2"><code>3DSECURE</code> or <code>SSL</code>. Indicates the transaction type of the acquirer.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f acquirerStan, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f acquirerTerminalId, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The ID of the acquirer terminal.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f acquirerTransactionTime, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The ISO-8601 date and time of the acquirer transaction.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f nonPaymentToken, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The result of our own card tokenization. Activated in POS for the merchant or merchant group.</div></div>
+          </details>
+
+          <details class="api-item" role="rowgroup" data-level="2">
+            <summary role="row">
+              <span class="field" role="rowheader">{% f externalNonPaymentToken, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token.</div></div>
+          </details>
+        </div>
+      </details>
+
+      <!-- Siblings to transaction (level 1) -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f payeeReference, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string(30)</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ payee_reference_md | markdownify }}</div></div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f orderReference, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string(50)</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The order reference, which should reflect the order reference found in the merchant's systems.</div></div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f amount, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f tokens, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">A list of generated tokens.</div></div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f details, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">A human readable and descriptive text of the payment.</div></div>
+      </details>
+
+    </div>
+  </details>
+</div>
 
 ## Operation `failed-payment`
 
