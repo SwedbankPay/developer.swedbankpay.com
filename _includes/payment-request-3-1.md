@@ -248,10 +248,10 @@ Content-Type: application/json;version=3.1{% endcapture %}
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>string(40)</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">The description of the payment order.</div></div>
+        <div class="desc"><div class="indent-1">Human-readable description for the payment order.</div></div>
       </details>
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
@@ -264,7 +264,7 @@ Content-Type: application/json;version=3.1{% endcapture %}
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f language %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>string(5)</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>
@@ -364,7 +364,7 @@ Content-Type: application/json;version=3.1{% endcapture %}
           <details class="api-item" role="rowgroup" data-level="2">
             <summary role="row">
               <span class="field" role="rowheader">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
-              <span class="type"><code>string(30)</code></span>
+              <span class="type"><code>string(50)</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
             <div class="desc"><div class="indent-2">{{ payee_ref_md | markdownify }}</div></div>
@@ -673,117 +673,116 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         <div class="desc"><div class="indent-1">Set to <code>true</code> or <code>false</code>. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a <code>payerReference</code> in the original <code>paymentOrder</code> request.</div></div>
       </details>
 
-      <!-- id-type links (level 1) -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f orderItems %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="field" role="rowheader">{% f orderItems, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>orderItems</code> resource where information about the order items can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>orderItems</code> resource where information about the order items can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f urls %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="field" role="rowheader">{% f urls, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>urls</code> resource where all URLs related to the payment order can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>urls</code> resource where all URLs related to the payment order can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f payeeInfo %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="field" role="rowheader">{% f payeeInfo, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>payeeInfo</code> resource where information related to the payee can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>payeeInfo</code> resource where information related to the payee can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f payer %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="field" role="rowheader">{% f payer, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#payer"><code>payer</code> resource</a> where information about the payer can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>payer</code> resource where information about the payer can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f history %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="field" role="rowheader">{% f history, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#history"><code>history</code> resource</a> where information about the payment's history can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>history</code> resource where information about the payment's history can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f failed %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="field" role="rowheader">{% f failed, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#failed"><code>failed</code> resource</a> where information about the failed transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>failed</code> resource where information about the failed transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f aborted %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="field" role="rowheader">{% f aborted, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#aborted"><code>aborted</code> resource</a> where information about the aborted transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>aborted</code> resource where information about the aborted transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f paid %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="field" role="rowheader">{% f paid, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#paid"><code>paid</code> resource</a> where information about the paid transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>paid</code> resource where information about the paid transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f cancelled %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="field" role="rowheader">{% f cancelled, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#cancelled"><code>cancelled</code> resource</a> where information about the cancelled transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>cancelled</code> resource where information about the cancelled transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f reversed %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="field" role="rowheader">{% f reversed, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>reversed</code> resource where information about the reversed transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>cancelled</code> resource where information about the reversed transactions can be retrieved.</div></div>
+      </details>
+      
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f financialTransactions, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The id for the <code>financialTransactions</code> resource where information about the financial transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f financialTransactions %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="field" role="rowheader">{% f failedAttempts, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#financialtransactions"><code>financialTransactions</code> resource</a> where information about the financial transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>failedAttempts</code> resource where information about the failed attempts can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f failedAttempts %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="field" role="rowheader">{% f postPurchaseFailedAttempts, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#failedattempts"><code>failedAttempts</code> resource</a> where information about the failed attempts can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>postPurchaseFailedAttempts</code> resource where information about the failed capture, cancel or reversal attempts can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
-          <span class="field" role="rowheader">{% f postPurchaseFailedAttempts %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="field" role="rowheader">{% f metadata, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>postPurchaseFailedAttempts</code> resource where information about the failed capture, cancel or reversal attempts can be retrieved.</div></div>
-      </details>
-
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f metadata %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
-        </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>metadata</code> resource where information about the metadata can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>metadata</code> resource where information about the metadata can be retrieved.</div></div>
       </details>
 
     </div><!-- /level-1 children -->

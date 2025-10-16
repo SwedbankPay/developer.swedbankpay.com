@@ -275,6 +275,9 @@ api-supported-versions: 3.1{% endcapture %}
     "cancelled": {
       "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/cancelled"
     },
+    "reversed": {
+      "id": "/psp/paymentorders/{{ page.payment_order_id }}/reversed"
+    },
     "financialTransactions": {
       "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/financialtransactions"
     },
@@ -554,6 +557,14 @@ api-supported-versions: 3.1{% endcapture %}
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
+          <span class="field" role="rowheader">{% f reversed, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The id for the <code>cancelled</code> resource where information about the reversed transactions can be retrieved.</div></div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
           <span class="field" role="rowheader">{% f financialTransactions, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>object</code></span>
         </summary>
@@ -767,6 +778,9 @@ api-supported-versions: 3.1{% endcapture %}
     },
     "cancelled": {
       "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/cancelled"
+    },
+    "reversed": {
+      "id": "/psp/paymentorders/{{ page.payment_order_id }}/reversed"
     },
     "financialTransactions": {
       "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/financialtransactions"
@@ -1058,6 +1072,14 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="type"><code>object</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The id for the <code>cancelled</code> resource where information about the cancelled transactions can be retrieved.</div></div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f reversed, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The id for the <code>cancelled</code> resource where information about the reversed transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
@@ -1481,6 +1503,9 @@ api-supported-versions: 3.1{% endcapture %}
     "cancelled": {
       "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/cancelled"
     },
+    "reversed": {
+      "id": "/psp/paymentorders/{{ page.payment_order_id }}/reversed"
+    },
     "financialTransactions": {
       "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/financialtransactions"
     },
@@ -1778,6 +1803,14 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="type"><code>object</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The id for the <code>cancelled</code> resource where information about the cancelled transactions can be retrieved.</div></div>
+      </details>
+
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f reversed, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>object</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The id for the <code>cancelled</code> resource where information about the reversed transactions can be retrieved.</div></div>
       </details>
 
       <!-- financialTransactions link -->
