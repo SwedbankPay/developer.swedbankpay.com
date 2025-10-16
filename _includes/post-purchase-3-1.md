@@ -168,7 +168,7 @@ Content-Type: application/json;version=3.1{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">The description of the capture transaction.</div></div>
+        <div class="desc"><div class="indent-1">Human-readable description for the capture. Shown in dashboard/logs.</div></div>
       </details>
 
       <!-- amount -->
@@ -195,7 +195,7 @@ Content-Type: application/json;version=3.1{% endcapture %}
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f payeeReference, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>string(30)</code></span>
+          <span class="type"><code>string(50)</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">{{ payee_reference_md | markdownify }}</div></div>
@@ -205,166 +205,9 @@ Content-Type: application/json;version=3.1{% endcapture %}
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f receiptReference, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>string(30)</code></span>
+          <span class="type"><code>string(50)</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ receipt_reference_md | markdownify }}</div></div>
-      </details>
-
-      <!-- orderItems -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f orderItems, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>array</code></span>
-          <span class="req">{% icon check %}</span>
-        </summary>
-        <div class="desc"><div class="indent-1">{{ order_items_md | markdownify }}</div></div>
-
-        <div class="api-children">
-          <!-- reference -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f reference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
-              <span class="type"><code>string</code></span>
-              <span class="req">{% icon check %}</span>
-            </summary>
-            <div class="desc"><div class="indent-2">A reference that identifies the order item.</div></div>
-          </details>
-
-          <!-- name -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f name, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
-              <span class="type"><code>string</code></span>
-              <span class="req">{% icon check %}</span>
-            </summary>
-            <div class="desc"><div class="indent-2">The name of the order item.</div></div>
-          </details>
-
-          <!-- type -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
-              <span class="type"><code>enum</code></span>
-              <span class="req">{% icon check %}</span>
-            </summary>
-            <div class="desc"><div class="indent-2"><code>PRODUCT</code>, <code>SERVICE</code>, <code>SHIPPING_FEE</code>, <code>PAYMENT_FEE</code>, <code>DISCOUNT</code>, <code>VALUE_CODE</code> or <code>OTHER</code>. The type of the order item.</div></div>
-          </details>
-
-          <!-- class -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f class, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
-              <span class="type"><code>string</code></span>
-              <span class="req">{% icon check %}</span>
-            </summary>
-            <div class="desc"><div class="indent-2">The classification of the order item. Can be used for assigning the order item to a specific product category, such as <code>MobilePhone</code>. Note that <code>class</code> cannot contain spaces and must follow the regex pattern <code>[\w-]*</code>. Swedbank Pay may use this field for statistics.</div></div>
-          </details>
-
-          <!-- itemUrl (optional) -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f itemUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
-              <span class="type"><code>string</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">The URL to a page that can display the purchased item, product or similar.</div></div>
-          </details>
-
-          <!-- imageUrl (optional) -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f imageUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
-              <span class="type"><code>string</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">The URL to an image of the order item.</div></div>
-          </details>
-
-          <!-- description (optional, per item) -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f description, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
-              <span class="type"><code>string</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">The human readable description of the order item.</div></div>
-          </details>
-
-          <!-- discountDescription (optional) -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f discountDescription, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
-              <span class="type"><code>string</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">The human readable description of the possible discount.</div></div>
-          </details>
-
-          <!-- quantity -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f quantity, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
-              <span class="type"><code>number</code></span>
-              <span class="req">{% icon check %}</span>
-            </summary>
-            <div class="desc"><div class="indent-2">The 4 decimal precision quantity of order items being purchased.</div></div>
-          </details>
-
-          <!-- quantityUnit -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f quantityUnit, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
-              <span class="type"><code>string</code></span>
-              <span class="req">{% icon check %}</span>
-            </summary>
-            <div class="desc"><div class="indent-2">The unit of the quantity, such as <code>pcs</code>, <code>grams</code>, or similar. This is used for your own book keeping.</div></div>
-          </details>
-
-          <!-- unitPrice -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f unitPrice, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
-              <span class="type"><code>integer</code></span>
-              <span class="req">{% icon check %}</span>
-            </summary>
-            <div class="desc"><div class="indent-2">The price per unit of order item, including VAT.</div></div>
-          </details>
-
-          <!-- discountPrice (optional) -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f discountPrice, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
-              <span class="type"><code>integer</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">If the order item is purchased at a discounted price. This field should contain that price, including VAT.</div></div>
-          </details>
-
-          <!-- vatPercent -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f vatPercent, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
-              <span class="type"><code>integer</code></span>
-              <span class="req">{% icon check %}</span>
-            </summary>
-            <div class="desc"><div class="indent-2">The percent value of the VAT multiplied by 100, so <code>25%</code> becomes <code>2500</code>.</div></div>
-          </details>
-
-          <!-- amount (per item) -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f amount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
-              <span class="type"><code>integer</code></span>
-              <span class="req">{% icon check %}</span>
-            </summary>
-            <div class="desc"><div class="indent-2">The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. <code>10000</code> equals <code>100.00 SEK</code> and <code>5000</code> equals <code>50.00 SEK</code>.</div></div>
-          </details>
-
-          <!-- vatAmount (per item) -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f vatAmount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
-              <span class="type"><code>integer</code></span>
-              <span class="req">{% icon check %}</span>
-            </summary>
-            <div class="desc"><div class="indent-2">The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. <code>10000</code> equals <code>100.00 SEK</code> and <code>5000</code> equals <code>50.00 SEK</code>.</div></div>
-          </details>
-        </div>
       </details>
     </div>
   </details>
@@ -478,7 +321,7 @@ api-supported-versions: 3.1{% endcapture %}
   <details class="api-item" role="rowgroup" data-level="0">
     <summary role="row">
       <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
-      <span class="type"><code>string</code></span>
+      <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The relative URL of the payment order this capture transaction belongs to.</div></div>
 
@@ -575,7 +418,7 @@ api-supported-versions: 3.1{% endcapture %}
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f description, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>string(40)</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ description_md | markdownify }}</div></div>
       </details>
@@ -599,7 +442,7 @@ api-supported-versions: 3.1{% endcapture %}
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f availableInstruments, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>array</code></span>
         </summary>
         <div class="desc"><div class="indent-1">A list of payment methods available for this payment.</div></div>
       </details>
@@ -640,105 +483,105 @@ api-supported-versions: 3.1{% endcapture %}
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f orderItems, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>orderItems</code> resource where information about the order items can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>orderItems</code> resource where information about the order items can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f urls, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>urls</code> resource where all URLs related to the payment order can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>urls</code> resource where all URLs related to the payment order can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f payeeInfo, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>payeeInfo</code> resource where information related to the payee can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>payeeInfo</code> resource where information related to the payee can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f payer, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>payer</code> resource where information about the payer can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>payer</code> resource where information about the payer can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f history, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>history</code> resource where information about the payment's history can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>history</code> resource where information about the payment's history can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f failed, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>failed</code> resource where information about the failed transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>failed</code> resource where information about the failed transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f aborted, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>aborted</code> resource where information about the aborted transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>aborted</code> resource where information about the aborted transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f paid, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>paid</code> resource where information about the paid transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>paid</code> resource where information about the paid transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f cancelled, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>cancelled</code> resource where information about the cancelled transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>cancelled</code> resource where information about the cancelled transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f financialTransactions, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>financialTransactions</code> resource where information about the financial transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>financialTransactions</code> resource where information about the financial transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f failedAttempts, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>failedAttempts</code> resource where information about the failed attempts can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>failedAttempts</code> resource where information about the failed attempts can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f postPurchaseFailedAttempts, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>postPurchaseFailedAttempts</code> resource where information about the failed capture, cancel or reversal attempts can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>postPurchaseFailedAttempts</code> resource where information about the failed capture, cancel or reversal attempts can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f metadata, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>metadata</code> resource where information about the metadata can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>metadata</code> resource where information about the metadata can be retrieved.</div></div>
       </details>
     </div>
   </details>
@@ -847,17 +690,17 @@ Content-Type: application/json;version=3.1{% endcapture %}
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f description, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>string(40)</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">A textual description of why the transaction is cancelled.</div></div>
+        <div class="desc"><div class="indent-1">Human-readable description of why the transaction is cancelled. Shown in dashboard/logs.</div></div>
       </details>
 
       <!-- payeeReference -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f payeeReference, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>string(30)</code></span>
+          <span class="type"><code>string(50)</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">{{ payee_reference_md | markdownify }}</div></div>
@@ -1076,7 +919,7 @@ api-supported-versions: 3.1{% endcapture %}
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f description, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>string(40)</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ description_md | markdownify }}</div></div>
       </details>
@@ -1103,7 +946,7 @@ api-supported-versions: 3.1{% endcapture %}
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f availableInstruments, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>array</code></span>
         </summary>
         <div class="desc"><div class="indent-1">A list of payment methods available for this payment.</div></div>
       </details>
@@ -1148,105 +991,105 @@ api-supported-versions: 3.1{% endcapture %}
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f orderItems, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>orderItems</code> resource where information about the order items can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>orderItems</code> resource where information about the order items can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f urls, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>urls</code> resource where all URLs related to the payment order can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>urls</code> resource where all URLs related to the payment order can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f payeeInfo, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>payeeInfo</code> resource where information related to the payee can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>payeeInfo</code> resource where information related to the payee can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f payer, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>payer</code> resource where information about the payer can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>payer</code> resource where information about the payer can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f history, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>history</code> resource where information about the payment's history can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>history</code> resource where information about the payment's history can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f failed, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>failed</code> resource where information about the failed transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>failed</code> resource where information about the failed transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f aborted, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>aborted</code> resource where information about the aborted transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>aborted</code> resource where information about the aborted transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f paid, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>paid</code> resource where information about the paid transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>paid</code> resource where information about the paid transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f cancelled, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>cancelled</code> resource where information about the cancelled transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>cancelled</code> resource where information about the cancelled transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f financialTransactions, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>financialTransactions</code> resource where information about the financial transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>financialTransactions</code> resource where information about the financial transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f failedAttempts, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>failedAttempts</code> resource where information about the failed attempts can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>failedAttempts</code> resource where information about the failed attempts can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f postPurchaseFailedAttempts, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>postPurchaseFailedAttempts</code> resource where information about the failed capture, cancel or reversal attempts can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>postPurchaseFailedAttempts</code> resource where information about the failed capture, cancel or reversal attempts can be retrieved.</div></div>
       </details>
 
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f metadata, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>metadata</code> resource where information about the metadata can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>metadata</code> resource where information about the metadata can be retrieved.</div></div>
       </details>
 
     </div>
@@ -1393,7 +1236,7 @@ Content-Type: application/json;version=3.1{% endcapture %}
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f payeeReference, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>string(30)</code></span>
+          <span class="type"><code>string(50)</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">{{ payee_reference_md | markdownify }}</div></div>
@@ -1403,7 +1246,7 @@ Content-Type: application/json;version=3.1{% endcapture %}
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f receiptReference, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>string(30)</code></span>
+          <span class="type"><code>string(50)</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ receipt_reference_md | markdownify }}</div></div>
       </details>
@@ -1415,7 +1258,7 @@ Content-Type: application/json;version=3.1{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">Textual description of why the transaction is reversed.</div></div>
+        <div class="desc"><div class="indent-1">Human-readable description of why the transaction is reversed. Shown in dashboard/logs.</div></div>
       </details>
 
       <!-- orderItems -->
@@ -1815,7 +1658,7 @@ api-supported-versions: 3.1{% endcapture %}
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f availableInstruments, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>array</code></span>
         </summary>
         <div class="desc"><div class="indent-1">A list of payment methods available for this payment.</div></div>
       </details>
@@ -1860,117 +1703,117 @@ api-supported-versions: 3.1{% endcapture %}
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f orderItems, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>orderItems</code> resource where information about the order items can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>orderItems</code> resource where information about the order items can be retrieved.</div></div>
       </details>
 
       <!-- urls link -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f urls, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>urls</code> resource where all URLs related to the payment order can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>urls</code> resource where all URLs related to the payment order can be retrieved.</div></div>
       </details>
 
       <!-- payeeInfo link -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f payeeInfo, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>payeeInfo</code> resource where information related to the payee can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>payeeInfo</code> resource where information related to the payee can be retrieved.</div></div>
       </details>
 
       <!-- payer link -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f payer, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>payer</code> resource where information about the payer can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>payer</code> resource where information about the payer can be retrieved.</div></div>
       </details>
 
       <!-- history link -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f history, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>history</code> resource where information about the payment's history can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>history</code> resource where information about the payment's history can be retrieved.</div></div>
       </details>
 
       <!-- failed link -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f failed, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>failed</code> resource where information about the failed transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>failed</code> resource where information about the failed transactions can be retrieved.</div></div>
       </details>
 
       <!-- aborted link -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f aborted, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>aborted</code> resource where information about the aborted transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>aborted</code> resource where information about the aborted transactions can be retrieved.</div></div>
       </details>
 
       <!-- paid link -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f paid, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>paid</code> resource where information about the paid transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>paid</code> resource where information about the paid transactions can be retrieved.</div></div>
       </details>
 
       <!-- cancelled link -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f cancelled, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>cancelled</code> resource where information about the cancelled transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>cancelled</code> resource where information about the cancelled transactions can be retrieved.</div></div>
       </details>
 
       <!-- financialTransactions link -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f financialTransactions, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>financialTransactions</code> resource where information about the financial transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>financialTransactions</code> resource where information about the financial transactions can be retrieved.</div></div>
       </details>
 
       <!-- failedAttempts link -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f failedAttempts, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>failedAttempts</code> resource where information about the failed attempts can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>failedAttempts</code> resource where information about the failed attempts can be retrieved.</div></div>
       </details>
 
       <!-- postPurchaseFailedAttempts link -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f postPurchaseFailedAttempts, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>postPurchaseFailedAttempts</code> resource where information about the failed capture, cancel or reversal attempts can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>postPurchaseFailedAttempts</code> resource where information about the failed capture, cancel or reversal attempts can be retrieved.</div></div>
       </details>
 
       <!-- metadata link -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
           <span class="field" role="rowheader">{% f metadata, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>id</code></span>
+          <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <code>metadata</code> resource where information about the metadata can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <code>metadata</code> resource where information about the metadata can be retrieved.</div></div>
       </details>
     </div>
   </details>

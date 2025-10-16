@@ -142,6 +142,11 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 ```
 
 <div class="api-compact" role="table" aria-label="Request">
+  <div class="header" role="row">
+    <div role="columnheader">Field</div>
+    <div role="columnheader">Type</div>
+    <div role="columnheader">Required</div>
+  </div>
   <details class="api-item" role="rowgroup" data-level="0">
     <summary role="row">
       <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
