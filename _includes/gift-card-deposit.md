@@ -50,7 +50,7 @@ Content-Type: application/json
   <!-- accountIdentifier (object, REQUIRED) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f accountIdentifier, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f accountIdentifier, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -60,7 +60,7 @@ Content-Type: application/json
       <!-- Level 1 children of accountIdentifier (original order) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f accountId %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f accountId %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
@@ -69,7 +69,7 @@ Content-Type: application/json
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f accountKey %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f accountKey %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -78,7 +78,7 @@ Content-Type: application/json
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f cvc %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f cvc %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
@@ -87,7 +87,7 @@ Content-Type: application/json
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f encryptedPin %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f encryptedPin %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
@@ -96,7 +96,7 @@ Content-Type: application/json
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f expiryDate %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f expiryDate %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
@@ -105,7 +105,7 @@ Content-Type: application/json
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f securityCode %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f securityCode %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
@@ -114,7 +114,7 @@ Content-Type: application/json
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f track2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f track2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
@@ -123,7 +123,7 @@ Content-Type: application/json
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f additionalData %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f additionalData %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
@@ -135,7 +135,7 @@ Content-Type: application/json
   <!-- amount (REQUIRED) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f amount, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f amount, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>integer</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -145,7 +145,7 @@ Content-Type: application/json
   <!-- currency (REQUIRED) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f currency, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f currency, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>string</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -155,7 +155,7 @@ Content-Type: application/json
   <!-- description -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f description, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f description, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>string</code></span>
       <span class="req"></span>
     </summary>
@@ -165,7 +165,7 @@ Content-Type: application/json
   <!-- merchant (object, REQUIRED) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f merchant, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f merchant, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -175,7 +175,7 @@ Content-Type: application/json
       <!-- merchantName (REQUIRED) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f merchantName %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f merchantName %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -185,7 +185,7 @@ Content-Type: application/json
       <!-- terminalId -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f terminalId %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f terminalId %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
@@ -197,7 +197,7 @@ Content-Type: application/json
   <!-- paymentOrderRef (REQUIRED) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f paymentOrderRef, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f paymentOrderRef, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>string</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -207,7 +207,7 @@ Content-Type: application/json
   <!-- paymentTransactionRef (REQUIRED) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f paymentTransactionRef, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f paymentTransactionRef, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>string</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -217,7 +217,7 @@ Content-Type: application/json
   <!-- repeat -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f repeat, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f repeat, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>boolean</code></span>
       <span class="req"></span>
     </summary>
@@ -227,7 +227,7 @@ Content-Type: application/json
   <!-- stan -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f stan, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f stan, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>string</code></span>
       <span class="req"></span>
     </summary>

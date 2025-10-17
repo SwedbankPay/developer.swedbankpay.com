@@ -87,7 +87,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
   <!-- subsite (required, level 0) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f subsite, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f subsite, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>string(40)</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -97,7 +97,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
   <!-- siteId (required, level 0) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f siteId, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f siteId, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>string(15)</code></span>
       <span class="req">{% icon check %}</span>
     </summary>

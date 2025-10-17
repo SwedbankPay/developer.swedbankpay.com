@@ -140,7 +140,7 @@ Content-Type: application/json{% endcapture %}
   <!-- Root: payment (level 0) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f payment, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>string</code></span>
     </summary>
     <div class="desc"><div class="indent-0">{{ payment_txn_link_md | markdownify }}</div></div>
@@ -149,7 +149,7 @@ Content-Type: application/json{% endcapture %}
       <!-- transaction (level 1) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f transaction, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f transaction, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ transaction_md | markdownify }}</div></div>
@@ -158,7 +158,7 @@ Content-Type: application/json{% endcapture %}
         <div class="api-children">
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f id, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f id, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ id_txn_md | markdownify }}</div></div>
@@ -166,7 +166,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f number, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f number, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>integer</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ number_md | markdownify }}</div></div>
@@ -174,7 +174,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f cardBrand, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f cardBrand, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2"><code>Visa</code>, <code>MC</code>, etc. The brand of the card.</div></div>
@@ -182,7 +182,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f maskedPan, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f maskedPan, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The masked PAN number of the card.</div></div>
@@ -190,7 +190,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f cardType, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f cardType, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2"><code>Credit Card</code> or <code>Debit Card</code>. Indicates the type of card used for the authorization.</div></div>
@@ -198,7 +198,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f issuingBank, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f issuingBank, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The name of the bank that issued the card used for the authorization.</div></div>
@@ -206,7 +206,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f countryCode, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f countryCode, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The country the card is issued in.</div></div>
@@ -214,7 +214,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f acquirerTransactionType, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f acquirerTransactionType, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2"><code>3DSECURE</code> or <code>SSL</code>. Indicates the transaction type of the acquirer.</div></div>
@@ -222,7 +222,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f acquirerStan, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f acquirerStan, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.</div></div>
@@ -230,7 +230,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f acquirerTerminalId, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f acquirerTerminalId, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The ID of the acquirer terminal.</div></div>
@@ -238,7 +238,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f acquirerTransactionTime, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f acquirerTransactionTime, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The ISO-8601 date and time of the acquirer transaction.</div></div>
@@ -246,7 +246,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f nonPaymentToken, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f nonPaymentToken, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The result of our own card tokenization. Activated in POS for the merchant or merchant group.</div></div>
@@ -254,7 +254,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f externalNonPaymentToken, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f externalNonPaymentToken, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token.</div></div>
@@ -265,7 +265,7 @@ Content-Type: application/json{% endcapture %}
       <!-- Siblings to transaction (level 1) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f payeeReference, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f payeeReference, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string(30)</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ payee_reference_md | markdownify }}</div></div>
@@ -273,7 +273,7 @@ Content-Type: application/json{% endcapture %}
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f orderReference, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f orderReference, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string(50)</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The order reference, which should reflect the order reference found in the merchant's systems.</div></div>
@@ -281,7 +281,7 @@ Content-Type: application/json{% endcapture %}
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f amount, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f amount, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
@@ -289,7 +289,7 @@ Content-Type: application/json{% endcapture %}
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f tokens, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f tokens, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-1">A list of generated tokens.</div></div>
@@ -297,7 +297,7 @@ Content-Type: application/json{% endcapture %}
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f details, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f details, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-1">A human readable and descriptive text of the payment.</div></div>

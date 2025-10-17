@@ -51,7 +51,7 @@ Content-Type: application/json{% endcapture %}
   <!-- Level 0 (all nodes CLOSED by default; original order retained) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f transaction, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f transaction, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -61,7 +61,7 @@ Content-Type: application/json{% endcapture %}
       <!-- activity -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f activity %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f activity %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
@@ -71,7 +71,7 @@ Content-Type: application/json{% endcapture %}
       <!-- consumer (object) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f consumer %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f consumer %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>object</code></span>
           <span class="req"></span>
         </summary>
@@ -80,7 +80,7 @@ Content-Type: application/json{% endcapture %}
         <div class="api-children">
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f socialSecurityNumber %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f socialSecurityNumber %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -89,7 +89,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f customerNumber %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f customerNumber %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -98,7 +98,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f email %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f email %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -107,7 +107,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f msisdn %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f msisdn %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -116,7 +116,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f ip %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f ip %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -128,7 +128,7 @@ Content-Type: application/json{% endcapture %}
       <!-- legalAddress (object) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f legalAddress %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f legalAddress %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>object</code></span>
           <span class="req"></span>
         </summary>
@@ -137,7 +137,7 @@ Content-Type: application/json{% endcapture %}
         <div class="api-children">
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f addressee %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f addressee %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -146,7 +146,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f coAddress %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f coAddress %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -155,7 +155,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f streetAddress %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f streetAddress %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -164,7 +164,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f zipCode %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f zipCode %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -173,7 +173,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f city %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f city %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -182,7 +182,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f countryCode %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f countryCode %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -194,7 +194,7 @@ Content-Type: application/json{% endcapture %}
       <!-- billingAddress (object) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f billingAddress %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f billingAddress %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>object</code></span>
           <span class="req"></span>
         </summary>
@@ -203,7 +203,7 @@ Content-Type: application/json{% endcapture %}
         <div class="api-children">
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f addressee %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f addressee %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -212,7 +212,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f coAddress %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f coAddress %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -221,7 +221,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f streetAddress %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f streetAddress %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -230,7 +230,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f zipCode %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f zipCode %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -239,7 +239,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f city %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f city %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -248,7 +248,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f countryCode %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f countryCode %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -330,7 +330,7 @@ Content-Type: application/json{% endcapture %}
   <!-- Level 0 (original order; all nodes CLOSED by default) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f payment, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>string</code></span>
     </summary>
     <div class="desc"><div class="indent-0">{{ payment_id_sub_md | markdownify }}</div></div>
@@ -339,7 +339,7 @@ Content-Type: application/json{% endcapture %}
   <!-- authorization (object) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f authorization, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f authorization, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The transaction object.</div></div>
@@ -348,7 +348,7 @@ Content-Type: application/json{% endcapture %}
       <!-- Level 1 children of authorization (exact markdown order) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ auth_id_md | markdownify }}</div></div>
@@ -356,7 +356,7 @@ Content-Type: application/json{% endcapture %}
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f created %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f created %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The ISO-8601 date and time of when the transaction was created.</div></div>
@@ -364,7 +364,7 @@ Content-Type: application/json{% endcapture %}
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f updated %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f updated %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The ISO-8601 date and time of when the transaction was updated.</div></div>
@@ -372,7 +372,7 @@ Content-Type: application/json{% endcapture %}
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f type %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f type %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">Indicates the transaction type.</div></div>
@@ -380,7 +380,7 @@ Content-Type: application/json{% endcapture %}
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f state %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f state %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1"><code>Initialized</code>, <code>Completed</code> or <code>Failed</code>. Indicates the state of the transaction.</div></div>
@@ -388,7 +388,7 @@ Content-Type: application/json{% endcapture %}
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f number %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f number %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ number_md | markdownify }}</div></div>
@@ -396,7 +396,7 @@ Content-Type: application/json{% endcapture %}
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f amount %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
@@ -404,7 +404,7 @@ Content-Type: application/json{% endcapture %}
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f vatAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f vatAmount %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ vat_amount_md | markdownify }}</div></div>
@@ -412,7 +412,7 @@ Content-Type: application/json{% endcapture %}
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f description %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ description_md | markdownify }}</div></div>
@@ -420,7 +420,7 @@ Content-Type: application/json{% endcapture %}
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f payeeReference %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f payeeReference %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string(30)</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ payee_reference_md | markdownify }}</div></div>
@@ -428,7 +428,7 @@ Content-Type: application/json{% endcapture %}
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f failedReason %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f failedReason %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The human readable explanation of why the payment failed.</div></div>
@@ -436,7 +436,7 @@ Content-Type: application/json{% endcapture %}
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f isOperational %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f isOperational %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>bool</code></span>
         </summary>
         <div class="desc"><div class="indent-1"><code>true</code> if the transaction is operational; otherwise <code>false</code>.</div></div>
@@ -445,7 +445,7 @@ Content-Type: application/json{% endcapture %}
       <!-- operations (array) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f operations %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f operations %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>array</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ operations_md | markdownify }}</div></div>

@@ -243,7 +243,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
   <!-- Level 0 (root; all nodes CLOSED by default) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -254,7 +254,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f operation %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -263,7 +263,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f currency %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f currency %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -272,7 +272,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f amount %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -281,7 +281,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f vatAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f vatAmount %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -290,7 +290,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f description %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -300,7 +300,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
       {% if include.documentation_section contains "payment-menu" %}
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f instrument %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f instrument %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -310,7 +310,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f disableStoredPaymentDetails %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f disableStoredPaymentDetails %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>bool</code></span>
           <span class="req"></span>
         </summary>
@@ -319,7 +319,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f userAgent %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f userAgent %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -328,7 +328,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f generatePaymentToken %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f generatePaymentToken %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>bool</code></span>
           <span class="req"></span>
         </summary>
@@ -337,7 +337,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f language %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f language %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -347,7 +347,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
       {% if documentation_section contains "checkout-v3/payments-only" %}
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f productName %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f productName %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -358,7 +358,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
       <!-- urls (object) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f urls %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f urls %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>object</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -367,7 +367,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
         <div class="api-children">
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f hostUrls, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f hostUrls, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>array</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -377,7 +377,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
           {% if include.integration_mode=="seamless-view" %}
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f paymentUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f paymentUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -387,7 +387,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f completeUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f completeUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -396,7 +396,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f cancelUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f cancelUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -405,7 +405,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f callbackUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f callbackUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -414,7 +414,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f termsOfServiceUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f termsOfServiceUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -424,7 +424,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
           {% if include.integration_mode=="redirect" %}
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f logoUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f logoUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -437,7 +437,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
       <!-- payeeInfo (object) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f payeeInfo %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f payeeInfo %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>object</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -446,7 +446,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
         <div class="api-children">
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f payeeId, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f payeeId, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -455,7 +455,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f payeeReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string(30)</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -464,7 +464,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f payeeName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f payeeName, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -473,7 +473,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f productCategory, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f productCategory, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string(50)</code></span>
               <span class="req"></span>
             </summary>
@@ -482,7 +482,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f orderReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f orderReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string(50)</code></span>
               <span class="req"></span>
             </summary>
@@ -491,7 +491,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f subsite, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f subsite, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string(40)</code></span>
               <span class="req"></span>
             </summary>
@@ -501,7 +501,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
           {% if documentation_section contains "checkout-v3/payments-only" %}
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f siteId, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f siteId, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string(15)</code></span>
               <span class="req"></span>
             </summary>
@@ -514,7 +514,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
       <!-- payer (object) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f payer %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f payer %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>object</code></span>
           <span class="req"></span>
         </summary>
@@ -524,7 +524,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
           <!-- scalar children of payer -->
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f digitalProducts %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f digitalProducts %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>bool</code></span>
               <span class="req"></span>
             </summary>
@@ -533,7 +533,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f firstName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f firstName, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -542,7 +542,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f lastName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f lastName, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -551,7 +551,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f email, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f email, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -560,7 +560,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f msisdn, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f msisdn, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -569,7 +569,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f payerReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f payerReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -579,7 +579,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
           <!-- shippingAddress (object) -->
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f shippingAddress %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f shippingAddress %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>object</code></span>
               <span class="req"></span>
             </summary>
@@ -588,7 +588,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
             <div class="api-children">
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f firstName, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f firstName, 3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -597,7 +597,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f lastName, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f lastName, 3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -606,7 +606,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f streetAddress, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f streetAddress, 3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -615,7 +615,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f coAddress, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f coAddress, 3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -624,7 +624,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f zipCode, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f zipCode, 3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -633,7 +633,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f city, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f city, 3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -642,7 +642,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f countryCode, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f countryCode, 3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -654,7 +654,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
           <!-- billingAddress (object) -->
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f billingAddress, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f billingAddress, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>object</code></span>
               <span class="req"></span>
             </summary>
@@ -663,7 +663,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
             <div class="api-children">
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f firstName,3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f firstName,3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -672,7 +672,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f lastName,3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f lastName,3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -681,7 +681,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f streetAddress,3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f streetAddress,3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -690,7 +690,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f coAddress,3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f coAddress,3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -699,7 +699,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f zipCode,3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f zipCode,3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -708,7 +708,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f city,3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f city,3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -717,7 +717,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f countryCode,3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f countryCode,3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -729,7 +729,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
           <!-- accountInfo (object) -->
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f accountInfo %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f accountInfo %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>object</code></span>
               <span class="req"></span>
             </summary>
@@ -738,7 +738,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
             <div class="api-children">
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f accountAgeIndicator, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f accountAgeIndicator, 3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -747,7 +747,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f accountChangeIndicator, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f accountChangeIndicator, 3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -756,7 +756,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f accountChangePwdIndicator, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f accountChangePwdIndicator, 3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -765,7 +765,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f shippingAddressUsageIndicator, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f shippingAddressUsageIndicator, 3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -774,7 +774,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f shippingNameIndicator, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f shippingNameIndicator, 3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -783,7 +783,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f suspiciousAccountActivity, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f suspiciousAccountActivity, 3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -797,7 +797,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
       <!-- orderItems (array) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f orderItems %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f orderItems %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>array</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -806,7 +806,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
         <div class="api-children">
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f reference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f reference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -815,7 +815,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f name, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f name, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -824,7 +824,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f type, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -833,7 +833,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f class, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f class, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -842,7 +842,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f itemUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f itemUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -851,7 +851,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f imageUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f imageUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -860,7 +860,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f description, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f description, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -869,7 +869,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f discountDescription, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f discountDescription, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -878,7 +878,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f quantity, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f quantity, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>number</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -887,7 +887,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f quantityUnit, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f quantityUnit, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -896,7 +896,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f unitPrice, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f unitPrice, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -905,7 +905,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f discountPrice, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f discountPrice, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>integer</code></span>
               <span class="req"></span>
             </summary>
@@ -914,7 +914,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f vatPercent, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f vatPercent, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -923,7 +923,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f amount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f amount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -932,7 +932,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f vatAmount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f vatAmount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -941,7 +941,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f restrictedToInstruments %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f restrictedToInstruments %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>array</code></span>
               <span class="req"></span>
             </summary>
@@ -957,7 +957,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
       <!-- riskIndicator (array) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f riskIndicator %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f riskIndicator %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>array</code></span>
           <span class="req"></span>
         </summary>
@@ -970,7 +970,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
         <div class="api-children">
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f deliveryEmailAdress, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f deliveryEmailAdress, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -983,7 +983,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f deliveryTimeFrameIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f deliveryTimeFrameIndicator, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -1000,7 +1000,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f preOrderDate, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f preOrderDate, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -1013,7 +1013,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f preOrderPurchaseIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f preOrderPurchaseIndicator, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -1028,7 +1028,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f shipIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f shipIndicator, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -1048,7 +1048,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f giftCardPurchase, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f giftCardPurchase, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>bool</code></span>
               <span class="req"></span>
             </summary>
@@ -1061,7 +1061,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f reOrderPurchaseIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f reOrderPurchaseIndicator, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -1077,7 +1077,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
           <!-- pickUpAddress (object) -->
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f pickUpAddress %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f pickUpAddress %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>object</code></span>
               <span class="req"></span>
             </summary>
@@ -1090,7 +1090,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
             <div class="api-children">
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f name, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f name, 3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -1099,7 +1099,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f streetAddress, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f streetAddress, 3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -1108,7 +1108,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f coAddress, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f coAddress, 3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -1117,7 +1117,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f city, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f city, 3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -1126,7 +1126,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f zipCode, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f zipCode, 3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -1135,7 +1135,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f countryCode, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+                  <span class="field">{% f countryCode, 3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -1272,7 +1272,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
   <!-- Level 0 (all nodes CLOSED by default; original order retained except operations promoted to level 0) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The payment order object.</div></div>
@@ -1282,7 +1282,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- id -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
@@ -1291,7 +1291,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- created -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f created %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f created %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was created.</div></div>
@@ -1300,7 +1300,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- updated -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f updated %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f updated %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was updated.</div></div>
@@ -1309,7 +1309,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- operation -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f operation %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ operation_md | markdownify }}</div></div>
@@ -1319,7 +1319,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- status (checkout-v3) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f status %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f status %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc">
@@ -1337,7 +1337,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- state (non-checkout-v3) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f state %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f state %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc">
@@ -1351,7 +1351,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- paymentToken -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f paymentToken %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f paymentToken %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The payment token generated in the initial purchase.</div></div>
@@ -1360,7 +1360,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- currency -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f currency %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f currency %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The currency of the payment order.</div></div>
@@ -1369,7 +1369,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- amount -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f amount %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
@@ -1378,7 +1378,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- vatAmount -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f vatAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f vatAmount %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ vat_amount_md | markdownify }}</div></div>
@@ -1387,7 +1387,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- description -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f description %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string(40)</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ description_md | markdownify }}</div></div>
@@ -1396,7 +1396,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- initiatingSystemUserAgent -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f initiatingSystemUserAgent %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f initiatingSystemUserAgent %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The <code>userAgent</code> of the system used when the merchant makes a call towards the resource.</div></div>
@@ -1405,7 +1405,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- language -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f language %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f language %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>
@@ -1414,7 +1414,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- availableInstruments -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f availableInstruments %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f availableInstruments %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">A list of payment methods available for this payment.</div></div>
@@ -1423,7 +1423,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- implementation -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f implementation %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f implementation %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc">
@@ -1438,7 +1438,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- integration -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f integration %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f integration %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc">
@@ -1454,7 +1454,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- instrumentMode -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f instrumentMode %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f instrumentMode %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>bool</code></span>
         </summary>
         <div class="desc"><div class="indent-1">Set to <code>true</code> or <code>false</code>. Indicates if the payment is initialized with only one payment method available.</div></div>
@@ -1463,7 +1463,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- guestMode -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f guestMode %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f guestMode %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>bool</code></span>
         </summary>
         <div class="desc">
@@ -1478,7 +1478,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       {% if documentation_section contains "checkout-v3" %}
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f payer %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f payer %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc">
@@ -1490,7 +1490,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       {% else %}
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f payer %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f payer %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <code>payer</code> resource where information about the payer can be retrieved.</div></div>
@@ -1500,7 +1500,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- orderItems -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f orderItems %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f orderItems %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <code>orderItems</code> resource where information about the order items can be retrieved.</div></div>
@@ -1509,7 +1509,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- history -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f history %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f history %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <code>history</code> resource where information about the payment's history can be retrieved.</div></div>
@@ -1518,7 +1518,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- failed -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f failed %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f failed %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <code>failed</code> resource where information about the failed transactions can be retrieved.</div></div>
@@ -1527,7 +1527,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- aborted -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f aborted %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f aborted %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <code>aborted</code> resource where information about the aborted transactions can be retrieved.</div></div>
@@ -1536,7 +1536,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- paid -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f paid %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f paid %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <code>paid</code> resource where information about the paid transactions can be retrieved.</div></div>
@@ -1545,7 +1545,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- cancelled -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f cancelled %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f cancelled %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <code>cancelled</code> resource where information about the cancelled transactions can be retrieved.</div></div>
@@ -1554,7 +1554,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- financialTransactions -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f financialTransactions %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f financialTransactions %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <code>financialTransactions</code> resource where information about the financial transactions can be retrieved.</div></div>
@@ -1563,7 +1563,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- failedAttempts -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f failedAttempts %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f failedAttempts %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <code>failedAttempts</code> resource where information about the failed attempts can be retrieved.</div></div>
@@ -1572,7 +1572,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- metadata -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f metadata %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f metadata %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <code>metadata</code> resource where information about the metadata can be retrieved.</div></div>
@@ -1583,7 +1583,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
   <!-- operations promoted to Level 0 -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f operations,0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f operations,0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>array</code></span>
     </summary>
     <div class="desc">
@@ -1630,7 +1630,7 @@ if you try.
   <!-- Level 0 (root; node closed by default) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -1641,7 +1641,7 @@ if you try.
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f EnablePaymentDetailsConsentCheckbox %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f EnablePaymentDetailsConsentCheckbox %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>bool</code></span>
           <span class="req"></span>
         </summary>
@@ -1655,7 +1655,7 @@ if you try.
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f disableStoredPaymentDetails %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f disableStoredPaymentDetails %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>bool</code></span>
           <span class="req"></span>
         </summary>
@@ -1791,7 +1791,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
   <!-- Level 0 (root; nodes CLOSED by default) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f payerOwnedTokens, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f payerOwnedTokens, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The <code>payerOwnedTokens</code> object containing information about the payer relevant for the payment order.</div></div>
@@ -1801,7 +1801,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- id -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f id, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f id, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{% include fields/id.md resource="paymentorder" %}</div></div>
@@ -1810,7 +1810,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- payerReference -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f payerReference, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f payerReference, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">A reference used in the Enterprise and Payments Only implementations to recognize the payer when no SSN is stored.</div></div>
@@ -1819,7 +1819,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- tokens (list) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f tokens, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f tokens, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>array</code></span>
         </summary>
         <div class="desc"><div class="indent-1">A list of tokens connected to the payment.</div></div>
@@ -1828,7 +1828,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         <div class="api-children">
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f token, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f token, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The token <code>guid</code>.</div></div>
@@ -1836,7 +1836,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f tokenType, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f tokenType, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{% f payment, 0 %}, <code>recurrence</code>, <code>transactionOnFile</code> or <code>unscheduled</code>. The different types of available tokens.</div></div>
@@ -1844,7 +1844,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f instrument, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f instrument, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">Payment method connected to the token.</div></div>
@@ -1852,7 +1852,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f instrumentDisplayName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f instrumentDisplayName, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">Payment method connected to the token.</div></div>
@@ -1860,7 +1860,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f correlationId, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f correlationId, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">A unique ID used in the system. Makes it easier to see cards, accounts etc. the token is connected to.</div></div>
@@ -1868,7 +1868,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f instrumentParameters, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f instrumentParameters, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>object</code></span>
             </summary>
             <div class="desc"><div class="indent-2">A list of additional information connected to the token. Depending on the payment method, it can e.g. be <code>expiryDate</code>, <code>cardBrand</code>, <code>email</code>, <code>msisdn</code> or <code>zipCode</code>.</div></div>
@@ -1876,7 +1876,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-                <span class="field">{% f operations, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+                <span class="field">{% f operations, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
                 <span class="type"><code>array</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{% include fields/operations.md resource="token" %}</div></div>
@@ -1889,7 +1889,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
   <!-- Level 0 sibling: operations -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f operations, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f operations, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>array</code></span>
     </summary>
     <div class="desc"><div class="indent-0">{% include fields/operations.md resource="token" %}</div></div>
@@ -1925,14 +1925,14 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
   <!-- Level 0 (root; node closed by default) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f state, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f state, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The state you want the token to be in.</div></div>
   </details>
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f comment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f comment, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">Explanation as to why the token is being deleted.</div></div>
@@ -1992,7 +1992,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
   <!-- Level 0 (root; node closed by default) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f payerOwnedTokens, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f payerOwnedTokens, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The <code>payerOwnedTokens</code> object containing information about the payer relevant for the payment order.</div></div>
@@ -2003,7 +2003,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- id -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{% include fields/id.md resource="paymentorder" %}</div></div>
@@ -2012,7 +2012,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- payerReference -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f payerReference %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f payerReference %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">A reference used in the Enterprise and Payments Only implementations to recognize the payer when no SSN is stored.</div></div>
@@ -2021,7 +2021,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- tokens (array-like list; spec says integer but holds list items) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f tokens %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f tokens %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>array</code></span>
         </summary>
         <div class="desc"><div class="indent-1">A list of tokens connected to the payment.</div></div>
@@ -2030,7 +2030,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         <div class="api-children">
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f token, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f token, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The token <code>guid</code>.</div></div>
@@ -2038,7 +2038,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f tokenType, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f tokenType, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{% f payment, 0 %}, <code>recurrence</code>, <code>transactionOnFile</code> or <code>unscheduled</code>. The different types of available tokens.</div></div>
@@ -2046,7 +2046,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f instrument, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f instrument, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">Payment methods connected to the token.</div></div>
@@ -2054,7 +2054,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f instrumentDisplayName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f instrumentDisplayName, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">Payment method connected to the token.</div></div>
@@ -2062,7 +2062,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f correlationId, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f correlationId, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">A unique ID used in the system. Makes it easier to see cards, accounts etc. the token is connected to.</div></div>
@@ -2070,7 +2070,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f instrumentParameters, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f instrumentParameters, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>object</code></span>
             </summary>
             <div class="desc"><div class="indent-2">A list of additional information connected to the token. Depending on the payment method, it can e.g. be <code>expiryDate</code>, <code>cardBrand</code>, <code>email</code>, <code>msisdn</code> or <code>zipCode</code>.</div></div>

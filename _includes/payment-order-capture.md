@@ -115,7 +115,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
   <!-- Level 0 (root) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f transaction, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f transaction, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -127,7 +127,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
       <!-- description (required) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f description %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -137,7 +137,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
       <!-- amount (required) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f amount %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -147,7 +147,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
       <!-- vatAmount (required) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f vatAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f vatAmount %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -157,7 +157,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
       <!-- payeeReference (required) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f payeeReference %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f payeeReference %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string(30)</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -167,7 +167,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
       <!-- receiptReference (optional) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f receiptReference %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f receiptReference %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string(30)</code></span>
           <span class="req"></span>
         </summary>
@@ -177,7 +177,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
       <!-- orderItems (required array) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f orderItems %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f orderItems %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>array</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -188,7 +188,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f reference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f reference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -197,7 +197,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f name, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f name, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -206,7 +206,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f type, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>enum</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -215,7 +215,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f class, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f class, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -224,7 +224,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f itemUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f itemUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -233,7 +233,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f imageUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f imageUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -242,7 +242,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f description, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f description, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -251,7 +251,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f discountDescription, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f discountDescription, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -260,7 +260,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f quantity, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f quantity, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>number</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -269,7 +269,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f quantityUnit, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f quantityUnit, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -278,7 +278,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f unitPrice, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f unitPrice, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -287,7 +287,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f discountPrice, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f discountPrice, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>integer</code></span>
               <span class="req"></span>
             </summary>
@@ -296,7 +296,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f vatPercent, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f vatPercent, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -305,7 +305,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f amount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f amount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -314,7 +314,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f vatAmount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f vatAmount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -324,7 +324,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
           <!-- second set (as in source; order preserved) -->
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f reference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f reference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -333,7 +333,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f name, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f name, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -342,7 +342,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f type, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>enum</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -351,7 +351,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f class, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f class, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -360,7 +360,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f itemUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f itemUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -369,7 +369,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f imageUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f imageUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -378,7 +378,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f description, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f description, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -387,7 +387,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f discountDescription, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f discountDescription, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -396,7 +396,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f quantity, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f quantity, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>number</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -405,7 +405,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f quantityUnit, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f quantityUnit, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -414,7 +414,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f unitPrice, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f unitPrice, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -423,7 +423,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f discountPrice, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f discountPrice, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>integer</code></span>
               <span class="req"></span>
             </summary>
@@ -432,7 +432,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f vatPercent, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f vatPercent, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -441,7 +441,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f amount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f amount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -450,7 +450,7 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f vatAmount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f vatAmount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -514,7 +514,7 @@ api-supported-versions: 3.0/2.0{% endcapture %}
   <!-- Level 0 (root; node closed by default) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f payment, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>string</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The relative URL of the payment this capture transaction belongs to.</div></div>
@@ -523,7 +523,7 @@ api-supported-versions: 3.0/2.0{% endcapture %}
   <!-- capture (root; level 0) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f capture, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <span class="field">{% f capture, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The capture object, containing the information about the capture transaction.</div></div>
@@ -534,7 +534,7 @@ api-supported-versions: 3.0/2.0{% endcapture %}
       <!-- capture.id -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The relative URL of the created capture transaction.</div></div>
@@ -543,7 +543,7 @@ api-supported-versions: 3.0/2.0{% endcapture %}
       <!-- capture.transaction -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f transaction %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="field">{% f transaction %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ transaction_md | markdownify }}</div></div>
@@ -553,7 +553,7 @@ api-supported-versions: 3.0/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f id, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f id, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The relative URL of the current <code>transaction</code> resource.</div></div>
@@ -561,7 +561,7 @@ api-supported-versions: 3.0/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f created, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f created, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was created.</div></div>
@@ -569,7 +569,7 @@ api-supported-versions: 3.0/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f updated, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f updated, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was updated.</div></div>
@@ -577,7 +577,7 @@ api-supported-versions: 3.0/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f type, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">Indicates the transaction type.</div></div>
@@ -585,7 +585,7 @@ api-supported-versions: 3.0/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f state, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f state, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ state_md | markdownify }}</div></div>
@@ -593,7 +593,7 @@ api-supported-versions: 3.0/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f number, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f number, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>integer</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ number_md | markdownify }}</div></div>
@@ -601,7 +601,7 @@ api-supported-versions: 3.0/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f amount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f amount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>integer</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ amount_md | markdownify }}</div></div>
@@ -609,7 +609,7 @@ api-supported-versions: 3.0/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f vatAmount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f vatAmount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>integer</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ vat_amount_md | markdownify }}</div></div>
@@ -617,7 +617,7 @@ api-supported-versions: 3.0/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f description, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f description, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ description_md | markdownify }}</div></div>
@@ -625,7 +625,7 @@ api-supported-versions: 3.0/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f payeeReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string(30)</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ payee_reference_md | markdownify }}</div></div>
@@ -633,7 +633,7 @@ api-supported-versions: 3.0/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f receiptReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <span class="field">{% f receiptReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
               <span class="type"><code>string(30)</code></span>
             </summary>
             <div class="desc"><div class="indent-2">A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. It is used to supplement <code>payeeReference</code> as an additional receipt number.</div></div>
