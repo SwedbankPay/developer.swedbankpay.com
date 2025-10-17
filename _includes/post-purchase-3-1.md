@@ -4,7 +4,7 @@
 
 {: .h2 }
 
-### Payment order v3.1
+### Post-Purchase v3.1
 
 <div class="slab mb-5">
   <ul class="toc-list" role="navigation" aria-label="Article content">

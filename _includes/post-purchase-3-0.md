@@ -2,7 +2,7 @@
 
 {: .h2 }
 
-### Payment order v3.0
+### Post-Purchase v3.0
 
 <div class="slab mb-5">
   <ul class="toc-list" role="navigation" aria-label="Article content">
@@ -425,6 +425,7 @@ api-supported-versions: 3.0{% endcapture %}
             "updated": "2020-06-22T10:56:56.4035291Z",
             "type": "Capture",
             "state": "Completed",
+            "number": 12345678,
             "amount": 1500,
             "vatAmount": 375,
             "description": "Capturing the authorized payment",
@@ -1018,6 +1019,16 @@ Content-Type: application/json;version=3.0     // Version optional, can be set i
     <div class="desc"><div class="indent-0">The transaction object.</div></div>
 
     <div class="api-children">
+      <!-- description -->
+      <details class="api-item" role="rowgroup" data-level="1">
+        <summary role="row">
+          <span class="field" role="rowheader">{% f description, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">Textual description of why the transaction is reversed.</div></div>
+      </details>
+
       <!-- amount -->
       <details class="api-item" role="rowgroup" data-level="1">
         <summary role="row">
@@ -1055,16 +1066,6 @@ Content-Type: application/json;version=3.0     // Version optional, can be set i
           <span class="type"><code>string(30)</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ receipt_reference_md | markdownify }}</div></div>
-      </details>
-
-      <!-- description -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f description, 1 %}<span class="chev" aria-hidden="true">▸</span></span>
-          <span class="type"><code>string</code></span>
-          <span class="req">{% icon check %}</span>
-        </summary>
-        <div class="desc"><div class="indent-1">Textual description of why the transaction is reversed.</div></div>
       </details>
 
       <!-- orderItems -->
