@@ -174,36 +174,36 @@ Content-Type: application/json{% endcapture %}
 {%- capture receipt_ref_md -%}{% include fields/receipt-reference.md %}{%- endcapture -%}
 {%- capture operations_tx_md -%}{% include fields/operations.md resource="transaction" %}{%- endcapture -%}
 
-<div class="api-compact" role="table" aria-label="Response">
-  <div class="header" role="row">
-    <div role="columnheader">Field</div>
-    <div role="columnheader">Type</div>
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
   </div>
 
   <!-- Level 0 (original order; all nodes CLOSED by default) -->
   {% if documentation_section contains "checkout" or "payment-menu" %}
     <!-- paymentOrder (string) -->
-    <details class="api-item" role="rowgroup" data-level="0">
-      <summary role="row">
-        <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+    <details class="api-item" data-level="0">
+      <summary>
+        <span class="field">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
         <span class="type"><code>string</code></span>
       </summary>
       <div class="desc"><div class="indent-0">{{ id_generic_md | markdownify }}</div></div>
     </details>
   {% else %}
     <!-- payment (string) -->
-    <details class="api-item" role="rowgroup" data-level="0">
-      <summary role="row">
-        <span class="field" role="rowheader">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+    <details class="api-item" data-level="0">
+      <summary>
+        <span class="field">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
         <span class="type"><code>string</code></span>
       </summary>
       <div class="desc"><div class="indent-0">{{ id_sub_plural_md | markdownify }}</div></div>
     </details>
 
     <!-- {{ plural }} (object) -->
-    <details class="api-item" role="rowgroup" data-level="0">
-      <summary role="row">
-        <span class="field" role="rowheader"><code>{{ plural }}</code><span class="chev" aria-hidden="true">▸</span></span>
+    <details class="api-item" data-level="0">
+      <summary>
+        <span class="field"><code>{{ plural }}</code><span class="chev" aria-hidden="true">▸</span></span>
         <span class="type"><code>object</code></span>
       </summary>
       <div class="desc"><div class="indent-0">The current <code>{{ plural }}</code> resource.</div></div>
@@ -211,35 +211,35 @@ Content-Type: application/json{% endcapture %}
   {% endif %}
 
   <!-- authorization (object) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f authorization, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f authorization, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The authorization object.</div></div>
 
     <div class="api-children">
       <!-- id -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ id_auth_md | markdownify }}</div></div>
       </details>
 
       <!-- itemDescriptions (object) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f itemDescriptions %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f itemDescriptions %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>object</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The object representation of the <code>itemDescriptions</code> resource.</div></div>
 
         <div class="api-children">
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f id, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f id, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ id_itemdesc_md | markdownify }}</div></div>
@@ -248,121 +248,121 @@ Content-Type: application/json{% endcapture %}
       </details>
 
       <!-- transaction (object) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f transaction %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f transaction %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>object</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ transaction_md | markdownify }}</div></div>
 
         <div class="api-children">
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f id, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f id, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ id_tx_md | markdownify }}</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f created, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f created, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was created.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f updated, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f updated, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was updated.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">Indicates the transaction type.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f state, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f state, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ state_md | markdownify }}</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f number, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f number, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>integer</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ number_md | markdownify }}</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f amount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f amount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>integer</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ amount_md | markdownify }}</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f vatAmount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f vatAmount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>integer</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ vat_amount_md | markdownify }}</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f description, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f description, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ description_md | markdownify }}</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string(30)</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ payee_ref_receipt_md | markdownify }}</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f receiptReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f receiptReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ receipt_ref_md | markdownify }}</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f failedReason, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f failedReason, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The human readable explanation of why the payment failed.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f isOperational, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f isOperational, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>bool</code></span>
             </summary>
             <div class="desc"><div class="indent-2"><code>true</code> if the transaction is operational; otherwise <code>false</code>.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f operations, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f operations, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>array</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ operations_tx_md | markdownify }}</div></div>

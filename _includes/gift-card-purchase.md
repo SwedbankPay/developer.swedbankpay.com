@@ -49,19 +49,19 @@ Content-Type: application/json
 }
 ```
 
-<div class="api-compact" role="table" aria-label="Request">
-  <div class="header" role="row">
-    <div role="columnheader">Field</div>
-    <div role="columnheader">Type</div>
-    <div role="columnheader">Required</div>
+<div class="api-compact" aria-label="Request">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Required</div>
   </div>
 
   <!-- Level 0 (all nodes CLOSED by default; original order retained) -->
 
   <!-- accountIdentifier (object, REQUIRED) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f accountIdentifier, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f accountIdentifier, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -69,72 +69,72 @@ Content-Type: application/json
 
     <div class="api-children">
       <!-- Level 1 children of accountIdentifier -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f accountId %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f accountId %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
         <div class="desc"><div class="indent-1">Swedbank Pay internal id for card/account.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f accountKey %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f accountKey %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">Primary Account Number (PAN) for card/account. This is mandatory if ‘track2’ is not present.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f cvc %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f cvc %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
         <div class="desc"><div class="indent-1">Card Verification Code.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f encryptedPin %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f encryptedPin %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
         <div class="desc"><div class="indent-1">If ‘000’ is set on authorization request, encrypted PIN block will be returned here.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f expiryDate %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f expiryDate %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
         <div class="desc"><div class="indent-1">Expiry date on card (only applicable for PaymentInstrumentType ‘creditcard’) where expiry date is printed on card. Format MM/YY</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f securityCode %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f securityCode %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
         <div class="desc"><div class="indent-1">Card Security Code.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f track2 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f track2 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
         <div class="desc"><div class="indent-1">Track 2 excluding start and end sentinel.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f additionalData %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f additionalData %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
@@ -144,9 +144,9 @@ Content-Type: application/json
   </details>
 
   <!-- amount (REQUIRED) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f amount, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f amount, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>integer</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -154,9 +154,9 @@ Content-Type: application/json
   </details>
 
   <!-- currency (REQUIRED) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f currency, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f currency, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>string</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -164,9 +164,9 @@ Content-Type: application/json
   </details>
 
   <!-- description -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f description, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f description, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>string</code></span>
       <span class="req"></span>
     </summary>
@@ -174,9 +174,9 @@ Content-Type: application/json
   </details>
 
   <!-- merchant (object, REQUIRED) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f merchant, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f merchant, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -184,9 +184,9 @@ Content-Type: application/json
 
     <div class="api-children">
       <!-- merchantName (REQUIRED) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f merchantName %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f merchantName %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -194,9 +194,9 @@ Content-Type: application/json
       </details>
 
       <!-- terminalId -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f terminalId %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f terminalId %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
@@ -206,9 +206,9 @@ Content-Type: application/json
   </details>
 
   <!-- paymentOrderRef (REQUIRED) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f paymentOrderRef, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrderRef, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>string</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -216,9 +216,9 @@ Content-Type: application/json
   </details>
 
   <!-- paymentTransactionRef (REQUIRED) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f paymentTransactionRef, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentTransactionRef, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>string</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -226,9 +226,9 @@ Content-Type: application/json
   </details>
 
   <!-- products (array, OPTIONAL) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f products, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f products, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>array</code></span>
       <span class="req"></span>
     </summary>
@@ -236,63 +236,63 @@ Content-Type: application/json
 
     <div class="api-children">
       <!-- Level 1 children of products -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">Monetary value of purchased product (in cents).</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
         <div class="desc"><div class="indent-1">Optional product description.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f productId %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f productId %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">A product identifier provided by Swedbank Pay.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f quantity %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f quantity %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>number</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">Number of product units sold (both integer and decimal numbers supported).</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f unitOfMeasure %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f unitOfMeasure %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">Type of measurement, L=Liter, U=Unit, G=Grams. This may refer to the number of packs, number of bottles etc., O=present (denotes no measurement). Enum: [L, U, G, O].</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f vatAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f vatAmount %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
           <span class="req"></span>
         </summary>
         <div class="desc"><div class="indent-1">Monetary value of vat-amount for purchased product (in cents).</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f vatRate %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f vatRate %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>number</code></span>
           <span class="req"></span>
         </summary>
@@ -302,9 +302,9 @@ Content-Type: application/json
   </details>
 
   <!-- repeat -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f repeat, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f repeat, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>boolean</code></span>
       <span class="req"></span>
     </summary>
@@ -312,9 +312,9 @@ Content-Type: application/json
   </details>
 
   <!-- stan -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f stan, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f stan, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>string</code></span>
       <span class="req"></span>
     </summary>

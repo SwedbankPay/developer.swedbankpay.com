@@ -75,17 +75,17 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     json= request_content
     %}
 
-<div class="api-compact" role="table" aria-label="Request">
-  <div class="header" role="row">
-    <div role="columnheader">Field</div>
-    <div role="columnheader">Type</div>
-    <div role="columnheader">Required</div>
+<div class="api-compact" aria-label="Request">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Required</div>
   </div>
 
   <!-- paymentOrder (root) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -93,9 +93,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
     <div class="api-children">
       <!-- operation -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -104,9 +104,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       </details>
 
       <!-- amount -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -115,9 +115,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       </details>
 
       <!-- vatAmount -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f vatAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f vatAmount %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -126,9 +126,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       </details>
 
       <!-- description -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -136,9 +136,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       </details>
 
       <!-- orderItems (array container) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f orderItems %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f orderItems %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>array</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -147,9 +147,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
         <div class="api-children">
           <!-- reference -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f reference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f reference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -157,9 +157,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           </details>
 
           <!-- name -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f name, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f name, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -167,9 +167,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           </details>
 
           <!-- type -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>enum</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -177,9 +177,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           </details>
 
           <!-- class -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f class, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f class, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -187,9 +187,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           </details>
 
           <!-- itemUrl -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f itemUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f itemUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -197,9 +197,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           </details>
 
           <!-- imageUrl -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f imageUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f imageUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -207,9 +207,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           </details>
 
           <!-- description (item) -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f description, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f description, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -217,9 +217,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           </details>
 
           <!-- discountDescription -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f discountDescription, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f discountDescription, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -227,9 +227,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           </details>
 
           <!-- quantity -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f quantity, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f quantity, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>number</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -237,9 +237,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           </details>
 
           <!-- quantityUnit -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f quantityUnit, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f quantityUnit, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -247,9 +247,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           </details>
 
           <!-- unitPrice -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f unitPrice, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f unitPrice, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -257,9 +257,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           </details>
 
           <!-- discountPrice -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f discountPrice, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f discountPrice, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -267,9 +267,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           </details>
 
           <!-- vatPercent -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f vatPercent, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f vatPercent, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -277,9 +277,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           </details>
 
           <!-- amount (item) -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f amount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f amount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -287,9 +287,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           </details>
 
           <!-- vatAmount (item) -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f vatAmount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f vatAmount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -370,25 +370,25 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     json= response_content
     %}
 
-<div class="api-compact" role="table" aria-label="Response">
-  <div class="header" role="row">
-    <div role="columnheader">Field</div>
-    <div role="columnheader">Type</div>
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
   </div>
 
   <!-- payment (root) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The <code>payment</code> object contains information about the specific payment.</div></div>
 
     <div class="api-children">
       <!-- id -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         {% capture id_md %}{% include fields/id.md %}{% endcapture %}
@@ -396,9 +396,9 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       </details>
 
       <!-- number -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f number %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f number %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
         </summary>
         {% capture number_payment_md %}{% include fields/number.md resource="payment" %}{% endcapture %}
@@ -406,45 +406,45 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       </details>
 
       <!-- created -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f created %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f created %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment was created.</div></div>
       </details>
 
       <!-- updated -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f updated %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f updated %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment was updated.</div></div>
       </details>
 
       <!-- state -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f state %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f state %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1"><code>Ready</code>, <code>Pending</code>, <code>Failed</code> or <code>Aborted</code>. Indicates the state of the payment, not the state of any transactions performed on the payment. To find the state of the payment's transactions (such as a successful authorization), see the <code>transactions</code> resource or the different specialized type-specific resources such as <code>authorizations</code> or <code>sales</code>.</div></div>
       </details>
 
       <!-- prices (object) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f prices %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f prices %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>object</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The <code>prices</code> resource lists the prices related to a specific payment.</div></div>
 
         <div class="api-children">
           <!-- prices.id -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f id, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f id, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             {% capture prices_id_md %}{% include fields/id.md resource="prices" %}{% endcapture %}
@@ -454,9 +454,9 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       </details>
 
       <!-- amount -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
         </summary>
         {% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
@@ -464,34 +464,34 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       </details>
 
       <!-- remaining amounts -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f remainingCaptureAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f remainingCaptureAmount %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The available amount to capture.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f remainingCancelAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f remainingCancelAmount %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The available amount to cancel.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f remainingReversalAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f remainingReversalAmount %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The available amount to reverse.</div></div>
       </details>
 
       <!-- description -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string(40)</code></span>
         </summary>
         {% capture description_md %}{% include fields/description.md %}{% endcapture %}
@@ -499,9 +499,9 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       </details>
 
       <!-- userAgent -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f userAgent %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f userAgent %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         {% capture user_agent_md %}{% include fields/user-agent.md %}{% endcapture %}
@@ -509,9 +509,9 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       </details>
 
       <!-- language -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f language %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f language %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         {% capture language_md %}{% include fields/language.md %}{% endcapture %}
@@ -519,18 +519,18 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       </details>
 
       <!-- urls (link) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f urls %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f urls %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the urls resource where all URLs related to the payment can be retrieved.</div></div>
       </details>
 
       <!-- payeeInfo (object) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f payeeInfo %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f payeeInfo %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>object</code></span>
         </summary>
         {% capture payee_info_md %}{% include fields/payee-info.md %}{% endcapture %}
@@ -538,18 +538,18 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       </details>
 
       <!-- payers (link) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f payers %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f payers %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <code>payer</code> resource where the information about the payer can be retrieved.</div></div>
       </details>
 
       <!-- operations (array) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f operations, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f operations, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>array</code></span>
         </summary>
         {% capture operations_md %}{% include fields/operations.md resource="payment" %}{% endcapture %}
@@ -557,27 +557,27 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
         <div class="api-children">
           <!-- method -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f method, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f method, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The HTTP method to use when performing the operation.</div></div>
           </details>
 
           <!-- href -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f href, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f href, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The target URL to perform the operation against.</div></div>
           </details>
 
           <!-- rel -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f rel, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f rel, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The name of the relation the operation has to the current resource.</div></div>

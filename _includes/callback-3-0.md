@@ -256,33 +256,33 @@ your TOM/TAM or our support team.
 
 {% capture id_md %}{% include fields/id.md resource="paymentorder" %}{% endcapture %}
 
-<div class="api-compact" role="table" aria-label="Callback Response">
-  <div class="header" role="row">
-    <div role="columnheader">Field</div>
-    <div role="columnheader">Type</div>
+<div class="api-compact" aria-label="Callback Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
   </div>
 
   <!-- LEVEL 0: paymentOrder -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The payment order object.</div></div>
 
     <!-- LEVEL 1: children of paymentOrder -->
     <div class="api-children">
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f instrument %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f instrument %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The payment method used in the payment.</div></div>
@@ -291,18 +291,18 @@ your TOM/TAM or our support team.
   </details>
 
   <!-- LEVEL 0: payment -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The payment object.</div></div>
 
     <!-- LEVEL 1: children of payment -->
     <div class="api-children">
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f number %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f number %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The attempt number which triggered the callback.</div></div>
@@ -311,9 +311,9 @@ your TOM/TAM or our support team.
   </details>
 
   <!-- LEVEL 0: transaction -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f transaction, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f transaction, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The transaction object.</div></div>

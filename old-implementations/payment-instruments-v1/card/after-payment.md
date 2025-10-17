@@ -94,43 +94,43 @@ Content-Type: application/json{% endcapture %}
     json= response_content
     %}
 
-<div class="api-compact" role="table" aria-label="Response">
-  <div class="header" role="row">
-    <div role="columnheader">Field</div>
-    <div role="columnheader">Type</div>
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
   </div>
 
   <!-- payment (root sibling) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>string</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The relative URL of the payment this <code>cancellation</code> transaction belongs to.</div></div>
   </details>
 
   <!-- cancellation (root with children) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f cancellation, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f cancellation, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The <code>cancellation</code> resource contains information about the <code>cancellation</code> transaction made against a card payment.</div></div>
 
     <div class="api-children">
       <!-- cancellation.id -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The relative URL of the created <code>cancellation</code> transaction.</div></div>
       </details>
 
       <!-- transaction (object) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f transaction %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f transaction %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>object</code></span>
         </summary>
         {% capture transaction_md %}{% include fields/transaction.md %}{% endcapture %}
@@ -138,54 +138,54 @@ Content-Type: application/json{% endcapture %}
 
         <div class="api-children">
           <!-- transaction.id -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f id, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f id, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The relative URL of the current  transaction  resource.</div></div>
           </details>
 
           <!-- created -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f created, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f created, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was created.</div></div>
           </details>
 
           <!-- updated -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f updated, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f updated, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was updated.</div></div>
           </details>
 
           <!-- type -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">Indicates the transaction type.</div></div>
           </details>
 
           <!-- state -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f state, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f state, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">Initialized ,  Completed  or  Failed . Indicates the state of the transaction</div></div>
           </details>
 
           <!-- number -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f number, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f number, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>integer</code></span>
             </summary>
             {% capture number_md %}{% include fields/number.md %}{% endcapture %}
@@ -193,9 +193,9 @@ Content-Type: application/json{% endcapture %}
           </details>
 
           <!-- amount -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f amount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f amount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>integer</code></span>
             </summary>
             {% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
@@ -203,9 +203,9 @@ Content-Type: application/json{% endcapture %}
           </details>
 
           <!-- vatAmount -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f vatAmount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f vatAmount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>integer</code></span>
             </summary>
             {% capture vat_amount_md %}{% include fields/vat-amount.md %}{% endcapture %}
@@ -213,9 +213,9 @@ Content-Type: application/json{% endcapture %}
           </details>
 
           <!-- description -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f description, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f description, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             {% capture description_md %}{% include fields/description.md %}{% endcapture %}
@@ -223,9 +223,9 @@ Content-Type: application/json{% endcapture %}
           </details>
 
           <!-- payeeReference -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string(30)</code></span>
             </summary>
             {% capture payee_reference_md %}{% include fields/payee-reference.md %}{% endcapture %}
@@ -233,18 +233,18 @@ Content-Type: application/json{% endcapture %}
           </details>
 
           <!-- isOperational -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f isOperational, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f isOperational, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>boolean</code></span>
             </summary>
             <div class="desc"><div class="indent-2"><code>true</code>  if the transaction is operational; otherwise  <code>false</code> .</div></div>
           </details>
 
           <!-- operations -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f operations, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f operations, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>array</code></span>
             </summary>
             {% capture operations_md %}{% include fields/operations.md %}{% endcapture %}
@@ -309,17 +309,17 @@ Content-Type: application/json{% endcapture %}
     json= request_content
     %}
 
-<div class="api-compact" role="table" aria-label="Request">
-  <div class="header" role="row">
-    <div role="columnheader">Field</div>
-    <div role="columnheader">Type</div>
-    <div role="columnheader">Required</div>
+<div class="api-compact" aria-label="Request">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Required</div>
   </div>
 
   <!-- transaction -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">`transaction`<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">`transaction`<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -327,9 +327,9 @@ Content-Type: application/json{% endcapture %}
   </details>
 
   <!-- amount -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>integer</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -338,9 +338,9 @@ Content-Type: application/json{% endcapture %}
   </details>
 
   <!-- vatAmount -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f vatAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f vatAmount %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>integer</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -349,9 +349,9 @@ Content-Type: application/json{% endcapture %}
   </details>
 
   <!-- description -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>string</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -359,9 +359,9 @@ Content-Type: application/json{% endcapture %}
   </details>
 
   <!-- payeeReference -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f payeeReference %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f payeeReference %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>string(50)</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -406,43 +406,43 @@ Content-Type: application/json{% endcapture %}
     json= response_content
     %}
 
-<div class="api-compact" role="table" aria-label="Response">
-  <div class="header" role="row">
-    <div role="columnheader">Field</div>
-    <div role="columnheader">Type</div>
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
   </div>
 
   <!-- payment (root sibling) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>string</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The relative URL of the payment this <code>reversal</code> transaction belongs to.</div></div>
   </details>
 
   <!-- reversal (root with children) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f reversal, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f reversal, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The <code>reversal</code> resource contains information about the <code>reversal</code> transaction made against a card payment.</div></div>
 
     <div class="api-children">
       <!-- reversal.id -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The relative URL of the created <code>reversal</code>transaction.</div></div>
       </details>
 
       <!-- transaction (object) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f transaction %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f transaction %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>object</code></span>
         </summary>
         {% capture transaction_md %}{% include fields/transaction.md %}{% endcapture %}
@@ -450,45 +450,45 @@ Content-Type: application/json{% endcapture %}
 
         <div class="api-children">
           <!-- transaction.id -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f id, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f id, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The relative URL of the current  transaction  resource.</div></div>
           </details>
 
           <!-- created -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f created, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f created, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was created.</div></div>
           </details>
 
           <!-- updated -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f updated, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f updated, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was updated.</div></div>
           </details>
 
           <!-- type -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">Indicates the transaction type.</div></div>
           </details>
 
           <!-- state -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f state, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f state, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             {% capture state_md %}{% include fields/state.md %}{% endcapture %}
@@ -496,9 +496,9 @@ Content-Type: application/json{% endcapture %}
           </details>
 
           <!-- number -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f number, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f number, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             {% capture number_md %}{% include fields/number.md %}{% endcapture %}
@@ -506,9 +506,9 @@ Content-Type: application/json{% endcapture %}
           </details>
 
           <!-- amount -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f amount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f amount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>integer</code></span>
             </summary>
             {% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
@@ -516,9 +516,9 @@ Content-Type: application/json{% endcapture %}
           </details>
 
           <!-- vatAmount -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f vatAmount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f vatAmount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>integer</code></span>
             </summary>
             {% capture vat_amount_md %}{% include fields/vat-amount.md %}{% endcapture %}
@@ -526,9 +526,9 @@ Content-Type: application/json{% endcapture %}
           </details>
 
           <!-- description -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f description, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f description, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             {% capture description_md %}{% include fields/description.md %}{% endcapture %}
@@ -536,9 +536,9 @@ Content-Type: application/json{% endcapture %}
           </details>
 
           <!-- payeeReference -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string(30)</code></span>
             </summary>
             {% capture payee_reference_md %}{% include fields/payee-reference.md %}{% endcapture %}
@@ -546,27 +546,27 @@ Content-Type: application/json{% endcapture %}
           </details>
 
           <!-- failedReason -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f failedReason, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f failedReason, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The human readable explanation of why the payment failed.</div></div>
           </details>
 
           <!-- isOperational -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f isOperational, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f isOperational, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>boolean</code></span>
             </summary>
             <div class="desc"><div class="indent-2"><code>true</code>  if the transaction is operational; otherwise  <code>false</code> .</div></div>
           </details>
 
           <!-- operations -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f operations, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f operations, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>array</code></span>
             </summary>
             {% capture operations_md %}{% include fields/operations.md %}{% endcapture %}

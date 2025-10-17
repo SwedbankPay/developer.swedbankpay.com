@@ -39,17 +39,17 @@ by using the `description` and `amount` fields from the `paymentOrder`.
 {%- capture amount_md -%}{% include fields/amount.md %}{%- endcapture -%}
 {%- capture vat_amount_md -%}{% include fields/vat-amount.md %}{%- endcapture -%}
 
-<div class="api-compact" role="table" aria-label="Request">
-  <div class="header" role="row">
-    <div role="columnheader">Field</div>
-    <div role="columnheader">Type</div>
-    <div role="columnheader">Required</div>
+<div class="api-compact" aria-label="Request">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Required</div>
   </div>
 
   <!-- Level 0 (all nodes CLOSED by default) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f orderItems, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f orderItems, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>array</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -57,18 +57,18 @@ by using the `description` and `amount` fields from the `paymentOrder`.
 
     <div class="api-children">
       <!-- Level 1 children of orderItems -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f reference %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f reference %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">A reference that identifies the order item.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f name %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f name %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -76,9 +76,9 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       </details>
 
       <!-- type (enum) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f type %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f type %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>enum</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -86,9 +86,9 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       </details>
 
       <!-- class -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f class %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f class %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -96,9 +96,9 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       </details>
 
       <!-- itemUrl (optional) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f itemUrl %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f itemUrl %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
@@ -106,9 +106,9 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       </details>
 
       <!-- imageUrl (optional) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f imageUrl %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f imageUrl %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
@@ -116,9 +116,9 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       </details>
 
       <!-- description (optional) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
@@ -126,9 +126,9 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       </details>
 
       <!-- discountDescription (optional) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f discountDescription %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f discountDescription %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
@@ -136,9 +136,9 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       </details>
 
       <!-- quantity -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f quantity %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f quantity %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>number</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -146,9 +146,9 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       </details>
 
       <!-- quantityUnit -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f quantityUnit %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f quantityUnit %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -156,9 +156,9 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       </details>
 
       <!-- unitPrice -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f unitPrice %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f unitPrice %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -166,9 +166,9 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       </details>
 
       <!-- discountPrice (optional) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f discountPrice %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f discountPrice %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
           <span class="req"></span>
         </summary>
@@ -176,9 +176,9 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       </details>
 
       <!-- vatPercent -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f vatPercent %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f vatPercent %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -186,9 +186,9 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       </details>
 
       <!-- amount -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -196,9 +196,9 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       </details>
 
       <!-- vatAmount -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f vatAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f vatAmount %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>

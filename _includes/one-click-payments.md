@@ -61,17 +61,17 @@ setting the initial operation to [`Verify`][verify].
     json= request_content
     %}
 
-<div class="api-compact" role="table" aria-label="Request">
-  <div class="header" role="row">
-    <div role="columnheader">Field</div>
-    <div role="columnheader">Type</div>
-    <div role="columnheader">Required</div>
+<div class="api-compact" aria-label="Request">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Required</div>
   </div>
 
   <!-- Level 0 (all nodes CLOSED by default) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f generatePaymentToken, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f generatePaymentToken, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>bool</code></span>
       <span class="req"></span>
     </summary>
@@ -79,18 +79,18 @@ setting the initial operation to [`Verify`][verify].
   </details>
 
   <!-- payer (level 0) with child payerReference (level 1) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f payer, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f payer, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
       <span class="req"></span>
     </summary>
     <div class="desc"><div class="indent-0">The payer object</div></div>
 
     <div class="api-children">
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f payerReference %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f payerReference %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
@@ -208,17 +208,17 @@ Content-Type: application/json{% endcapture %}
 {%- capture op_md -%}{% include fields/operation.md resource="payment" %}{%- endcapture -%}
 {%- capture intent_md -%}{% include fields/intent.md %}{%- endcapture -%}
 
-<div class="api-compact" role="table" aria-label="Request">
-  <div class="header" role="row">
-    <div role="columnheader">Field</div>
-    <div role="columnheader">Type</div>
-    <div role="columnheader">Required</div>
+<div class="api-compact" aria-label="Request">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Required</div>
   </div>
 
   <!-- Level 0 (all nodes CLOSED by default; original order retained) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -226,9 +226,9 @@ Content-Type: application/json{% endcapture %}
 
     <div class="api-children">
       <!-- operation (required) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -236,9 +236,9 @@ Content-Type: application/json{% endcapture %}
       </details>
 
       <!-- intent (required) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f intent %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f intent %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -246,9 +246,9 @@ Content-Type: application/json{% endcapture %}
       </details>
 
       <!-- paymentToken (required) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f paymentToken %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f paymentToken %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -261,9 +261,9 @@ Content-Type: application/json{% endcapture %}
       </details>
 
       <!-- creditCard (object, optional) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f creditCard %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f creditCard %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>object</code></span>
           <span class="req"></span>
         </summary>
@@ -271,9 +271,9 @@ Content-Type: application/json{% endcapture %}
 
         <div class="api-children">
           <!-- noCvc (level 2 under creditCard) -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f noCvc, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f noCvc, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>boolean</code></span>
               <span class="req"></span>
             </summary>
@@ -393,17 +393,17 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 {%- capture op_md -%}{% include fields/operation.md resource="payment" %}{%- endcapture -%}
 {%- capture intent_md -%}{% include fields/intent.md %}{%- endcapture -%}
 
-<div class="api-compact" role="table" aria-label="Request">
-  <div class="header" role="row">
-    <div role="columnheader">Field</div>
-    <div role="columnheader">Type</div>
-    <div role="columnheader">Required</div>
+<div class="api-compact" aria-label="Request">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Required</div>
   </div>
 
   <!-- Level 0 (all nodes CLOSED by default; original order retained) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f payment, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -411,9 +411,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
     <div class="api-children">
       <!-- operation (required) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -421,9 +421,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       </details>
 
       <!-- intent (required) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f intent %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f intent %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -431,9 +431,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       </details>
 
       <!-- paymentToken (required) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f paymentToken %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f paymentToken %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -447,9 +447,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       </details>
 
       <!-- generatePaymentToken (optional) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f generatePaymentToken %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f generatePaymentToken %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>bool</code></span>
           <span class="req"></span>
         </summary>
@@ -457,9 +457,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       </details>
 
       <!-- payer (object, optional) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f payer %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f payer %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>object</code></span>
           <span class="req"></span>
         </summary>
@@ -467,9 +467,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
         <div class="api-children">
           <!-- payerReference (level 2 under payer) -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f payerReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f payerReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -479,9 +479,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       </details>
 
       <!-- creditCard (object, optional) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f creditCard %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f creditCard %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>object</code></span>
           <span class="req"></span>
         </summary>
@@ -489,9 +489,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
         <div class="api-children">
           <!-- noCvc (level 2 under creditCard) -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f noCvc, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f noCvc, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>boolean</code></span>
               <span class="req"></span>
             </summary>
@@ -513,17 +513,17 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 <!-- Captures for markdown-includes -->
 {%- capture op_md -%}{% include fields/operation.md %}{%- endcapture -%}
 
-<div class="api-compact" role="table" aria-label="Request">
-  <div class="header" role="row">
-    <div role="columnheader">Field</div>
-    <div role="columnheader">Type</div>
-    <div role="columnheader">Required</div>
+<div class="api-compact" aria-label="Request">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Required</div>
   </div>
 
   <!-- Level 0: paymentOrder (all nodes CLOSED by default) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -531,9 +531,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
     <div class="api-children">
       <!-- operation (required) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -541,9 +541,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       </details>
 
       <!-- paymentToken (required) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f paymentToken %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f paymentToken %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -557,9 +557,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       </details>
 
       <!-- generatePaymentToken (optional) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f generatePaymentToken %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f generatePaymentToken %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>bool</code></span>
           <span class="req"></span>
         </summary>
@@ -569,9 +569,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
   </details>
 
   <!-- Level 0: payer (moved to level 0) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f payer, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f payer, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
       <span class="req"></span>
     </summary>
@@ -579,9 +579,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
     <div class="api-children">
       <!-- payerReference (child of payer at level 1) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f payerReference %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f payerReference %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
@@ -644,17 +644,17 @@ in a validation error.
     json= request_content
     %}
 
-<div class="api-compact" role="table" aria-label="Request">
-  <div class="header" role="row">
-    <div role="columnheader">Field</div>
-    <div role="columnheader">Type</div>
-    <div role="columnheader">Required</div>
+<div class="api-compact" aria-label="Request">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Required</div>
   </div>
 
   <!-- Level 0 (all nodes CLOSED by default; original order retained) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -662,9 +662,9 @@ in a validation error.
 
     <div class="api-children">
       <!-- EnablePaymentDetailsConsentCheckbox (optional) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f EnablePaymentDetailsConsentCheckbox %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f EnablePaymentDetailsConsentCheckbox %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>bool</code></span>
           <span class="req"></span>
         </summary>
@@ -677,9 +677,9 @@ in a validation error.
       </details>
 
       <!-- disableStoredPaymentDetails (optional) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f disableStoredPaymentDetails %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f disableStoredPaymentDetails %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>bool</code></span>
           <span class="req"></span>
         </summary>

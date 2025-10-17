@@ -65,15 +65,15 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
     json= request_content
     %}
 
-<div class="api-compact" role="table" aria-label="Request">  
-    <div class="header" role="row">
-        <div role="columnheader">Field</div>
-        <div role="columnheader">Type</div>
-        <div role="columnheader">Required</div>
+<div class="api-compact" aria-label="Request">  
+    <div class="header">
+        <div>Field</div>
+        <div>Type</div>
+        <div>Required</div>
     </div>
-    <details class="api-item" role="rowgroup" data-level="0">
-        <summary role="row">
-            <span class="field" role="rowheader">{% f Content-Type, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+    <details class="api-item" data-level="0">
+        <summary>
+            <span class="field">{% f Content-Type, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
             <span class="type"><code>string</code></span>
             <span class="req">{% icon check %}</span>
         </summary>
@@ -81,9 +81,9 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
     </details>
 
     <!-- Authorization -->
-    <details class="api-item" role="rowgroup" data-level="0">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f Authorization, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+    <details class="api-item" data-level="0">
+        <summary>
+          <span class="field">{% f Authorization, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -91,18 +91,18 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
     </details>
 
     <!-- User-Agent -->
-    <details class="api-item" role="rowgroup" data-level="0">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f User-Agent, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+    <details class="api-item" data-level="0">
+        <summary>
+          <span class="field">{% f User-Agent, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-0">The [user agent][user-agent] of the HTTP client making the HTTP request. Should be set to identify the system performing requests towards Swedbank Pay. The value submitted here will be returned in the response field <code>initiatingSystemUserAgent</code>.</div></div>
     </details>
 
     <!-- Accept -->
-    <details class="api-item" role="rowgroup" data-level="0">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f Accept, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+    <details class="api-item" data-level="0">
+        <summary>
+          <span class="field">{% f Accept, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -110,18 +110,18 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
     </details>
 
     <!-- Session-Id -->
-    <details class="api-item" role="rowgroup" data-level="0">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f Session-Id, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+    <details class="api-item" data-level="0">
+        <summary>
+          <span class="field">{% f Session-Id, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-0">A trace identifier used to trace calls through the API Platform (ref [RFC 7329][rfc-7329]). Each request must mint a new [GUID/UUID][uuid]. If no <code>Session-Id</code> is provided, Swedbank Pay will generate one for the request.</div></div>
     </details>
 
     <!-- Forwarded -->
-    <details class="api-item" role="rowgroup" data-level="0">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f Forwarded, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+    <details class="api-item" data-level="0">
+        <summary>
+          <span class="field">{% f Forwarded, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-0">The IP address of the payer as well as the host and protocol of the payer-facing web page. When the header is present, only the <code>for</code> parameter containing the payer's IP address is required, the other parameters are optional. See [RFC 7239][rfc-7239] for details.</div></div>

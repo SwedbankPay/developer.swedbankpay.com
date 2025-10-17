@@ -216,17 +216,17 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 {% capture order_items_md %}{% include fields/order-items.md %}{% endcapture %}
 {% capture description_md %}{% include fields/description.md %}{% endcapture %}
 
-<div class="api-compact" role="table" aria-label="Payment Order Request">
-  <div class="header" role="row">
-    <div role="columnheader">Field</div>
-    <div role="columnheader">Type</div>
-    <div role="columnheader">Required</div>
+<div class="api-compact" aria-label="Payment Order Request">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Required</div>
   </div>
 
   <!-- LEVEL 0 -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -235,9 +235,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     <!-- LEVEL 1: paymentOrder children -->
     <div class="api-children">
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f autoClick %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f autoClick %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>bool</code></span>
           <span class="req"></span>
         </summary>
@@ -249,81 +249,81 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
         </div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">{{ op_md | markdownify }}</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f currency %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f currency %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">The currency of the payment.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f vatAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f vatAmount %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">{{ vat_amount_md | markdownify }}</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">The description of the payment order.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f userAgent %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f userAgent %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">{{ user_agent_md | markdownify }}</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f language %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f language %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">The language of the payer.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f productName %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f productName %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">Used to tag the payment as Online Payments v3.0. Mandatory for Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f implementation %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f implementation %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
@@ -331,18 +331,18 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       </details>
 
       <!-- urls (LEVEL 1) + LEVEL 2 children -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f urls %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f urls %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>object</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">The <code>urls</code> object, containing the URLs relevant for the payment order.</div></div>
 
         <div class="api-children">
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f hostUrls, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f hostUrls, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>array</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -350,9 +350,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           </details>
 
           {% if include.integration_mode=="seamless-view" %}
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f paymentUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f paymentUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -360,36 +360,36 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           </details>
           {% endif %}
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f completeUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f completeUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
             <div class="desc"><div class="indent-2">{{ complete_url_md | markdownify }}</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f cancelUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f cancelUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an <code>abort</code> request of the <code>payment</code> or <code>paymentorder</code>.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f callbackUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f callbackUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
             <div class="desc"><div class="indent-2">{{ callback_url_md | markdownify }}</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f termsOfServiceUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f termsOfServiceUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -397,9 +397,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           </details>
 
           {% if include.integration_mode=="redirect" %}
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f logoUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f logoUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -410,72 +410,72 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       </details>
 
       <!-- payeeInfo (LEVEL 1) + LEVEL 2 children -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f payeeInfo %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f payeeInfo %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>object</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">{{ payee_info_md | markdownify }}</div></div>
 
         <div class="api-children">
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f payeeId, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f payeeId, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
             <div class="desc"><div class="indent-2">The ID of the payee, usually the merchant ID.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string(30)</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
             <div class="desc"><div class="indent-2">{{ payee_ref_md | markdownify }}</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f payeeName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f payeeName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">The name of the payee, usually the name of the merchant.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f productCategory, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f productCategory, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string(50)</code></span>
               <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f orderReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f orderReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string(50)</code></span>
               <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">The order reference should reflect the order reference found in the merchant's systems.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f subsite, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f subsite, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string(40)</code></span>
               <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ subsite_md | markdownify }}</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f siteId, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f siteId, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string(15)</code></span>
               <span class="req"></span>
             </summary>
@@ -485,9 +485,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       </details>
 
       <!-- payer (LEVEL 1) + nested structures -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f payer %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f payer %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>object</code></span>
           <span class="req"></span>
         </summary>
@@ -495,9 +495,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
         <div class="api-children">
           <!-- payer direct fields (LEVEL 2) -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f digitalProducts %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f digitalProducts %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>bool</code></span>
               <span class="req"></span>
             </summary>
@@ -511,27 +511,27 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
           {% if documentation_section contains "old-implementations/enterprise" %}
           <!-- nationalIdentifier under payer -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f nationalIdentifier, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f nationalIdentifier, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>object</code></span>
               <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">The national identifier object.</div></div>
 
             <div class="api-children">
-              <details class="api-item" role="rowgroup" data-level="3">
-                <summary role="row">
-                  <span class="field" role="rowheader">{% f socialSecurityNumber, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f socialSecurityNumber, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
                 <div class="desc"><div class="indent-3">The payer's social security number.</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
-                <summary role="row">
-                  <span class="field" role="rowheader">{% f countryCode, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f countryCode, 3 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -542,27 +542,27 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           {% endif %}
 
           <!-- payer name & contact (LEVEL 2) -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f firstName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f firstName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">The first name of the payer.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f lastName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f lastName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">The last name of the payer.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f email, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f email, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -578,9 +578,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             </div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f msisdn, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f msisdn, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -597,9 +597,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             </div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f payerReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f payerReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
@@ -612,9 +612,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           </details>
 
           <!-- shippingAddress under payer -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f shippingAddress %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f shippingAddress %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>object</code></span>
               <span class="req"></span>
             </summary>
@@ -630,63 +630,63 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             </div>
 
             <div class="api-children">
-              <details class="api-item" role="rowgroup" data-level="3">
-                <summary role="row">
-                  <span class="field" role="rowheader">{% f firstName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f firstName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
                 <div class="desc"><div class="indent-3">The first name of the addressee – the receiver of the shipped goods.</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
-                <summary role="row">
-                  <span class="field" role="rowheader">{% f lastName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f lastName, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
                 <div class="desc"><div class="indent-3">The last name of the addressee – the receiver of the shipped goods.</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
-                <summary role="row">
-                  <span class="field" role="rowheader">{% f streetAddress, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f streetAddress, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
                 <div class="desc"><div class="indent-3">Payer's street address. Maximum 50 characters long.</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
-                <summary role="row">
-                  <span class="field" role="rowheader">{% f coAddress, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f coAddress, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
                 <div class="desc"><div class="indent-3">Payer's c/o address, if applicable.</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
-                <summary role="row">
-                  <span class="field" role="rowheader">{% f zipCode, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f zipCode, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
                 <div class="desc"><div class="indent-3">Payer's zip code</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
-                <summary role="row">
-                  <span class="field" role="rowheader">{% f city, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f city, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
                 <div class="desc"><div class="indent-3">Payer's city of residence.</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
-                <summary role="row">
-                  <span class="field" role="rowheader">{% f countryCode, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f countryCode, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -696,72 +696,72 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           </details>
 
           <!-- billingAddress under payer -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader"><code>billingAddress</code><span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field"><code>billingAddress</code><span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>object</code></span>
               <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">The billing address object containing information about the payer's billing address.</div></div>
 
             <div class="api-children">
-              <details class="api-item" role="rowgroup" data-level="3">
-                <summary role="row">
-                  <span class="field" role="rowheader">{% f firstName %}<span class="chev" aria-hidden="true">▸</span></span>
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f firstName %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
                 <div class="desc"><div class="indent-3">The first name of the payer.</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
-                <summary role="row">
-                  <span class="field" role="rowheader">{% f lastName %}<span class="chev" aria-hidden="true">▸</span></span>
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f lastName %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
                 <div class="desc"><div class="indent-3">The last name of the payer.</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
-                <summary role="row">
-                  <span class="field" role="rowheader">{% f streetAddress %}<span class="chev" aria-hidden="true">▸</span></span>
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f streetAddress %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
                 <div class="desc"><div class="indent-3">The street address of the payer. Maximum 50 characters long.</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
-                <summary role="row">
-                  <span class="field" role="rowheader">{% f coAddress %}<span class="chev" aria-hidden="true">▸</span></span>
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f coAddress %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
                 <div class="desc"><div class="indent-3">The CO-address (if used)</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
-                <summary role="row">
-                  <span class="field" role="rowheader">{% f zipCode %}<span class="chev" aria-hidden="true">▸</span></span>
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f zipCode %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
                 <div class="desc"><div class="indent-3">The postal number (ZIP code) of the payer.</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
-                <summary role="row">
-                  <span class="field" role="rowheader">{% f city %}<span class="chev" aria-hidden="true">▸</span></span>
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f city %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
                 <div class="desc"><div class="indent-3">The city of the payer.</div></div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
-                <summary role="row">
-                  <span class="field" role="rowheader">{% f countryCode %}<span class="chev" aria-hidden="true">▸</span></span>
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f countryCode %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -771,18 +771,18 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           </details>
 
           <!-- accountInfo under payer -->
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f accountInfo %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f accountInfo %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>object</code></span>
               <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">Object related to the <code>payer</code> containing info about the payer's account.</div></div>
 
             <div class="api-children">
-              <details class="api-item" role="rowgroup" data-level="3">
-                <summary role="row">
-                  <span class="field" role="rowheader">{% f accountAgeIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f accountAgeIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -798,9 +798,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
                 </div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
-                <summary role="row">
-                  <span class="field" role="rowheader">{% f accountChangeIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f accountChangeIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -815,9 +815,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
                 </div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
-                <summary role="row">
-                  <span class="field" role="rowheader">{% f accountChangePwdIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f accountChangePwdIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -833,9 +833,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
                 </div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
-                <summary role="row">
-                  <span class="field" role="rowheader">{% f shippingAddressUsageIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f shippingAddressUsageIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -850,9 +850,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
                 </div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
-                <summary role="row">
-                  <span class="field" role="rowheader">{% f shippingNameIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f shippingNameIndicator, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -865,9 +865,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
                 </div>
               </details>
 
-              <details class="api-item" role="rowgroup" data-level="3">
-                <summary role="row">
-                  <span class="field" role="rowheader">{% f suspiciousAccountActivity, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f suspiciousAccountActivity, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
                   <span class="type"><code>string</code></span>
                   <span class="req"></span>
                 </summary>
@@ -886,36 +886,36 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       </details>
 
       <!-- orderItems (LEVEL 1) + LEVEL 2 children -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f orderItems %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f orderItems %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>array</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">{{ order_items_md | markdownify }}</div></div>
 
         <div class="api-children">
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f reference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f reference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
             <div class="desc"><div class="indent-2">A reference that identifies the order item.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f name, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f name, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
             <div class="desc"><div class="indent-2">The name of the order item.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -927,9 +927,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             </div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f class, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f class, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -941,108 +941,108 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             </div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f itemUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f itemUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">The URL to a page that can display the purchased item, product or similar.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f imageUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f imageUrl, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">The URL to an image of the order item.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f description, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f description, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ description_md | markdownify }}</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f discountDescription, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f discountDescription, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">The human readable description of the possible discount.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f quantity, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f quantity, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>number</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
             <div class="desc"><div class="indent-2">The 4 decimal precision quantity of order items being purchased.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f quantityUnit, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f quantityUnit, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
             <div class="desc"><div class="indent-2">The unit of the quantity, such as <code>pcs</code>, <code>grams</code>, or similar. This is used for your own book keeping.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f unitPrice, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f unitPrice, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
             <div class="desc"><div class="indent-2">The price per unit of order item, including VAT.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f discountPrice, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f discountPrice, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>integer</code></span>
               <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">If the order item is purchased at a discounted price. This field should contain that price, including VAT.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f vatPercent, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f vatPercent, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
             <div class="desc"><div class="indent-2">The percent value of the VAT multiplied by 100, so <code>25%</code> becomes <code>2500</code>.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f amount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f amount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
             <div class="desc"><div class="indent-2">{{ amount_md | markdownify }}</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f vatAmount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f vatAmount, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>integer</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
             <div class="desc"><div class="indent-2">{{ vat_amount_md | markdownify }}</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f restrictedToInstruments %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f restrictedToInstruments %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>array</code></span>
               <span class="req"></span>
             </summary>
@@ -1178,16 +1178,16 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 {% capture status_md %}{% include fields/status.md %}{% endcapture %}
 {% capture operations_md %}{% include fields/operations.md %}{% endcapture %}
 
-<div class="api-compact" role="table" aria-label="Payment Order Response">
-  <div class="header" role="row">
-    <div role="columnheader">Field</div>
-    <div role="columnheader">Type</div>
+<div class="api-compact" aria-label="Payment Order Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
   </div>
 
   <!-- LEVEL 0 -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The payment order object.</div></div>
@@ -1195,221 +1195,221 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     <!-- LEVEL 1 children of paymentOrder -->
     <div class="api-children">
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{% include fields/id.md resource="paymentorder" %}</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f created %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f created %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was created.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f updated %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f updated %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was updated.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f operation %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ op_md | markdownify }}</div></div>
       </details>
 
       {% if documentation_section contains "checkout-v3" %}
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f status %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f status %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ status_md | markdownify }}</div></div>
       </details>
       {% else %}
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f state %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f state %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1"><code>Ready</code>, <code>Pending</code>, <code>Failed</code> or <code>Aborted</code>. Indicates the state of the payment order. Does not reflect the state of any ongoing payments initiated from the payment order. This field is only for status display purposes.</div></div>
       </details>
       {% endif %}
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f currency %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f currency %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The currency of the payment order.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f vatAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f vatAmount %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ vat_amount_md | markdownify }}</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f description %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string(40)</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ desc_md | markdownify }}</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f initiatingSystemUserAgent %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f initiatingSystemUserAgent %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ init_sys_ua_md | markdownify }}</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f language %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f language %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f availableInstruments %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f availableInstruments %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">A list of payment methods available for this payment.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f implementation %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f implementation %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The merchant's Online Payments implementation type. <code>Enterprise</code> or <code>PaymentsOnly</code>. Do not build logic around this field’s response; names may change.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f integration %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f integration %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The merchant's Online Payments integration type. <code>HostedView</code> (Seamless View) or <code>Redirect</code>. Populated after the payer opens the payment UI and the hosting container is identified.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f instrumentMode %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f instrumentMode %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>bool</code></span>
         </summary>
         <div class="desc"><div class="indent-1">Set to <code>true</code> or <code>false</code>. Indicates if the payment is initialized with only one payment method available.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f guestMode %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f guestMode %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>bool</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ guest_mode_md | markdownify }}</div></div>
       </details>
 
       <!-- Links -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f payer %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f payer %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#payer"><code>payer</code> resource</a> where information about the payer can be retrieved.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f orderItems %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f orderItems %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <code>orderItems</code> resource where information about the order items can be retrieved.</div></div>
       </details>
 
       {% if documentation_section contains "checkout-v3" %}
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f history %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f history %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#history"><code>history</code> resource</a> where information about the payment's history can be retrieved.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f failed %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f failed %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#failed"><code>failed</code> resource</a> where information about the failed transactions can be retrieved.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f aborted %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f aborted %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#aborted"><code>aborted</code> resource</a> where information about the aborted transactions can be retrieved.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f paid %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f paid %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#paid"><code>paid</code> resource</a> where information about the paid transactions can be retrieved.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f cancelled %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f cancelled %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#cancelled"><code>cancelled</code> resource</a> where information about the cancelled transactions can be retrieved.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f financialTransactions %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f financialTransactions %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#financialtransactions"><code>financialTransactions</code> resource</a> where information about the financial transactions can be retrieved.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f failedAttempts %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f failedAttempts %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#failedattempts"><code>failedAttempts</code> resource</a> where information about the failed attempts can be retrieved.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f metadata %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f metadata %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <code>metadata</code> resource where information about the metadata can be retrieved.</div></div>
@@ -1420,9 +1420,9 @@ api-supported-versions: 3.x/2.0{% endcapture %}
   </details>
 
   <!-- LEVEL 0: operations -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f operations, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f operations, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>array</code></span>
     </summary>
     <div class="desc">

@@ -6,19 +6,19 @@ affect how the payment is performed.
 {% include alert.html type="warning" icon="warning" header="MobilePay"
 body="Please note that by adding the `shoplogoUrl` field, the default logo-url configured during contract setup will be overridden for this transaction. If logo-url is missing in the contract setup, it must be provided as an input parameter." %}
 
-<div class="api-compact" role="table" aria-label="Request">
-  <div class="header" role="row">
-    <div role="columnheader">Field</div>
-    <div role="columnheader">Type</div>
-    <div role="columnheader">Required</div>
+<div class="api-compact" aria-label="Request">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Required</div>
   </div>
 
   <!-- Level 0 (original order; all nodes CLOSED by default) -->
 
   <!-- creditCard (object) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f creditCard, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f creditCard, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
       <span class="req"></span>
     </summary>
@@ -26,9 +26,9 @@ body="Please note that by adding the `shoplogoUrl` field, the default logo-url c
 
     <div class="api-children">
       <!-- children of creditCard (level 1) -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f rejectDebitCards %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f rejectDebitCards %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>bool</code></span>
           <span class="req"></span>
         </summary>
@@ -36,36 +36,36 @@ body="Please note that by adding the `shoplogoUrl` field, the default logo-url c
       </details>
 
       <!-- duplicate row preserved per source markdown -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f rejectDebitCards %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f rejectDebitCards %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>bool</code></span>
           <span class="req"></span>
         </summary>
         <div class="desc"><div class="indent-1"><code>true</code> if debit cards should be declined; otherwise <code>false</code> per default. Default value is set by Swedbank Pay and can be changed at your request.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f rejectCreditCards %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f rejectCreditCards %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>bool</code></span>
           <span class="req"></span>
         </summary>
         <div class="desc"><div class="indent-1"><code>true</code> if credit cards should be declined; otherwise <code>false</code> per default. Default value is set by Swedbank Pay and can be changed at your request.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f rejectConsumerCards %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f rejectConsumerCards %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>bool</code></span>
           <span class="req"></span>
         </summary>
         <div class="desc"><div class="indent-1"><code>true</code> if consumer cards should be declined; otherwise <code>false</code> per default. Default value is set by Swedbank Pay and can be changed at your request.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f rejectCorporateCards %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f rejectCorporateCards %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>bool</code></span>
           <span class="req"></span>
         </summary>
@@ -75,9 +75,9 @@ body="Please note that by adding the `shoplogoUrl` field, the default logo-url c
   </details>
 
   <!-- swish (object) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f swish, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f swish, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
       <span class="req"></span>
     </summary>
@@ -85,9 +85,9 @@ body="Please note that by adding the `shoplogoUrl` field, the default logo-url c
 
     <div class="api-children">
       <!-- child of swish -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f enableEcomOnly %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f enableEcomOnly %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>bool</code></span>
           <span class="req"></span>
         </summary>
@@ -97,9 +97,9 @@ body="Please note that by adding the `shoplogoUrl` field, the default logo-url c
   </details>
 
   <!-- mobilePay (object) -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f mobilePay, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f mobilePay, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
       <span class="req"></span>
     </summary>
@@ -107,9 +107,9 @@ body="Please note that by adding the `shoplogoUrl` field, the default logo-url c
 
     <div class="api-children">
       <!-- child of mobilePay -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f shoplogoUrl %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f shoplogoUrl %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>

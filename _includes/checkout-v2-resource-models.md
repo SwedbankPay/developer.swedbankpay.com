@@ -345,16 +345,16 @@ api-supported-versions: 2.0{% endcapture %}
 {% capture number_payment_md %}{% include fields/number.md resource="payment" %}{% endcapture %}
 {% capture payee_ref_md %}{% include fields/payee-reference.md %}{% endcapture %}
 
-<div class="api-compact" role="table" aria-label="Trustly Response">
-  <div class="header" role="row">
-    <div role="columnheader">Field</div>
-    <div role="columnheader">Type</div>
+<div class="api-compact" aria-label="Trustly Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
   </div>
 
   <!-- LEVEL 0: paymentOrder -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The payment order object.</div></div>
@@ -362,9 +362,9 @@ api-supported-versions: 2.0{% endcapture %}
     <!-- LEVEL 1: children of paymentOrder -->
     <div class="api-children">
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f id %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ id_paymentorder_md | markdownify }}</div></div>
@@ -374,9 +374,9 @@ api-supported-versions: 2.0{% endcapture %}
   </details>
 
   <!-- LEVEL 0: paid -->
-  <details class="api-item" role="rowgroup" data-level="0">
-    <summary role="row">
-      <span class="field" role="rowheader">{% f paid, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paid, 0 %}<span class="chev" aria-hidden="true">▸</span></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The paid object.</div></div>
@@ -384,9 +384,9 @@ api-supported-versions: 2.0{% endcapture %}
     <!-- LEVEL 1: children of paid -->
     <div class="api-children">
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f instrument %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f instrument %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc">
@@ -398,33 +398,33 @@ api-supported-versions: 2.0{% endcapture %}
       </details>
 
       <!-- LEVEL 2 items related to the paid result -->
-      <details class="api-item" role="rowgroup" data-level="2">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f number, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="2">
+        <summary>
+          <span class="field">{% f number, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-2">{{ number_payment_md | markdownify }}</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="2">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="2">
+        <summary>
+          <span class="field">{% f payeeReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string(30)</code></span>
         </summary>
         <div class="desc"><div class="indent-2">{{ payee_ref_md | markdownify }}</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="2">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f orderReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="2">
+        <summary>
+          <span class="field">{% f orderReference, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string(50)</code></span>
         </summary>
         <div class="desc"><div class="indent-2">The order reference should reflect the order reference found in the merchant's systems.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="2">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f transactionType, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="2">
+        <summary>
+          <span class="field">{% f transactionType, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc">
@@ -437,17 +437,17 @@ api-supported-versions: 2.0{% endcapture %}
       </details>
 
       <!-- LEVEL 1 amounts and lists -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f amount %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f submittedAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f submittedAmount %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc">
@@ -458,34 +458,34 @@ api-supported-versions: 2.0{% endcapture %}
         </div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f feeAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f feeAmount %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-1">If the payment method used had a unique fee, it will be displayed in this field.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f discountAmount %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f discountAmount %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-1">If the payment method used had a unique discount, it will be displayed in this field.</div></div>
       </details>
 
       <!-- tokens (LEVEL 1) + LEVEL 2 children -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f tokens %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f tokens %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-1">A list of tokens connected to the payment.</div></div>
 
         <div class="api-children">
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f type, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc">
@@ -495,25 +495,25 @@ api-supported-versions: 2.0{% endcapture %}
             </div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f token, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f token, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The token <code>guid</code>.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f name, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f name, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The name of the token. In the example, a masked version of a card number.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f expiryDate, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f expiryDate, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The expiry date of the token.</div></div>
@@ -522,25 +522,25 @@ api-supported-versions: 2.0{% endcapture %}
       </details>
 
       <!-- details (LEVEL 1) + LEVEL 2 children -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f details %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f details %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-1">Details connected to the payment.</div></div>
 
         <div class="api-children">
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f nonPaymentToken, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f nonPaymentToken, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The result of our own card tokenization. Activated in POS for the merchant or merchant group.</div></div>
           </details>
 
-          <details class="api-item" role="rowgroup" data-level="2">
-            <summary role="row">
-              <span class="field" role="rowheader">{% f externalNonPaymentToken, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f externalNonPaymentToken, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc">
@@ -554,90 +554,90 @@ api-supported-versions: 2.0{% endcapture %}
       </details>
 
       <!-- card/basic fields as LEVEL 1 -->
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f cardType %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f cardType %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1"><code>Credit Card</code> or <code>Debit Card</code>. Indicates the type of card used for the authorization.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f maskedPan %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f maskedPan %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The masked PAN number of the card.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="1">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f expiryDate %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f expiryDate %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The month and year of when the card expires.</div></div>
       </details>
 
       <!-- acquirer/issuer details (LEVEL 2) -->
-      <details class="api-item" role="rowgroup" data-level="2">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f issuerAuthorizationApprovalCode, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="2">
+        <summary>
+          <span class="field">{% f issuerAuthorizationApprovalCode, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-2">Payment reference code provided by the issuer.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="2">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f acquirerTransactionType, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="2">
+        <summary>
+          <span class="field">{% f acquirerTransactionType, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-2"><code>3DSECURE</code> or <code>STANDARD</code>. Indicates the transaction type of the acquirer.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="2">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f acquirerStan, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="2">
+        <summary>
+          <span class="field">{% f acquirerStan, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-2">The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="2">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f acquirerTerminalId, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="2">
+        <summary>
+          <span class="field">{% f acquirerTerminalId, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-2">The ID of the acquirer terminal.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="2">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f acquirerTransactionTime, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="2">
+        <summary>
+          <span class="field">{% f acquirerTransactionTime, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-2">The ISO-8601 date and time of the acquirer transaction.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="2">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f transactionInitatior, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="2">
+        <summary>
+          <span class="field">{% f transactionInitatior, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-2">The party which initiated the transaction. <code>MERCHANT</code> or <code>CARDHOLDER</code>.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="2">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f bin, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="2">
+        <summary>
+          <span class="field">{% f bin, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-2">The first six digits of the <code>maskedPan</code>.</div></div>
       </details>
 
-      <details class="api-item" role="rowgroup" data-level="2">
-        <summary role="row">
-          <span class="field" role="rowheader">{% f msisdn, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
+      <details class="api-item" data-level="2">
+        <summary>
+          <span class="field">{% f msisdn, 2 %}<span class="chev" aria-hidden="true">▸</span></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-2">The msisdn used in the purchase. Only available when paid with Swish.</div></div>
