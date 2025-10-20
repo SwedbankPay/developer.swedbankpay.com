@@ -50,7 +50,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
   <!-- Level 0 (root; node closed by default) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The payment order object.</div></div>
@@ -61,7 +61,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       <!-- operation -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f operation %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f operation %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc">
@@ -75,7 +75,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       <!-- abortReason -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f abortReason %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f abortReason %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc">
@@ -222,7 +222,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
   <!-- Level 0 (root; node closed by default) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The payment order object.</div></div>
@@ -233,7 +233,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- id -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
@@ -242,7 +242,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- created -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f created %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f created %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was created.</div></div>
@@ -251,7 +251,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- updated -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f updated %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f updated %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was updated.</div></div>
@@ -260,7 +260,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- operation -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f operation %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f operation %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc">
@@ -274,7 +274,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- status -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f status %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f status %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1"><code>Initialized</code>, <code>Paid</code>, <code>Failed</code>, <code>Cancelled</code> or <code>Aborted</code>. Indicates the state of the payment order.</div></div>
@@ -283,7 +283,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- currency -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f currency %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f currency %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The currency of the payment order.</div></div>
@@ -292,7 +292,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- amount -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f amount %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f amount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
@@ -301,7 +301,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- vatAmount -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f vatAmount %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f vatAmount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ vat_amount_md | markdownify }}</div></div>
@@ -310,7 +310,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- description -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f description %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f description %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string(40)</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ description_md | markdownify }}</div></div>
@@ -319,7 +319,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- initiatingSystemUserAgent -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f initiatingSystemUserAgent %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f initiatingSystemUserAgent %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ isu_md | markdownify }}</div></div>
@@ -328,7 +328,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- language -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f language %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f language %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>
@@ -337,7 +337,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- availableInstruments -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f availableInstruments %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f availableInstruments %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">A list of payment methods available for this payment.</div></div>
@@ -346,7 +346,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- implementation -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f implementation %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f implementation %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ implementation_md | markdownify }}</div></div>
@@ -355,7 +355,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- integration -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f integration %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f integration %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The merchant's Online Payments integration type. <code>HostedView</code> (Seamless View) or <code>Redirect</code>. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe.</div></div>
@@ -364,7 +364,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- instrumentMode -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f instrumentMode %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f instrumentMode %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>bool</code></span>
         </summary>
         <div class="desc"><div class="indent-1">Set to <code>true</code> or <code>false</code>. Indicates if the payment is initialized with only one payment method available.</div></div>
@@ -373,7 +373,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- guestMode -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f guestMode %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f guestMode %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>bool</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{% include fields/guest-mode.md %}</div></div>
@@ -382,7 +382,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- orderItems (link id as string) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f orderItems %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f orderItems %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{% include fields/order-items.md %}</div></div>
@@ -391,7 +391,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- urls -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f urls %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f urls %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <code>urls</code> resource where information about the urls can be retrieved.</div></div>
@@ -400,7 +400,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- payeeInfo (id) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f payeeInfo %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f payeeInfo %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ payee_info_md | markdownify }}</div></div>
@@ -409,7 +409,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- payer (id) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f payer %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f payer %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ payer_md | markdownify }}</div></div>
@@ -418,7 +418,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- history (id) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f history %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f history %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ history_md | markdownify }}</div></div>
@@ -427,7 +427,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- failed (id) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f failed %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f failed %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ failed_md | markdownify }}</div></div>
@@ -436,7 +436,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- aborted (id) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f aborted %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f aborted %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ aborted_md | markdownify }}</div></div>
@@ -445,7 +445,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- paid (id) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f paid %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f paid %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ paid_md | markdownify }}</div></div>
@@ -454,7 +454,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- cancelled (id) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f cancelled %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f cancelled %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ cancelled_md | markdownify }}</div></div>
@@ -463,7 +463,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- financialTransactions (id) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f financialTransactions %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f financialTransactions %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ fin_tx_md | markdownify }}</div></div>
@@ -472,7 +472,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- failedAttempts (id) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f failedAttempts %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f failedAttempts %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ failed_attempts_md | markdownify }}</div></div>
@@ -481,7 +481,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <!-- metadata (id) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f metadata %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f metadata %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The URL to the <code>metadata</code> resource where information about the metadata can be retrieved.</div></div>
@@ -492,7 +492,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
   <!-- operations (array) -->
   <details class="api-item" data-level="0">
       <summary>
-          <span class="field">{% f operations,0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f operations,0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>array</code></span>
       </summary>
       <div class="desc"><div class="indent-0">{% include fields/operations.md %} <a href="{{ features_url }}/technical-reference/operations">See Operations for details</a>.</div></div>
@@ -777,7 +777,7 @@ api-supported-versions: 3.x{% endcapture %}
   <!-- Level 0 (root; node closed by default) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The payment order object.</div></div>
@@ -788,7 +788,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- id -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
@@ -797,7 +797,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- created -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f created %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f created %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was created.</div></div>
@@ -806,7 +806,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- updated -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f updated %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f updated %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was updated.</div></div>
@@ -815,7 +815,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- operation -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f operation %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f operation %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ operation_md | markdownify }}</div></div>
@@ -824,7 +824,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- status -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f status %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f status %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1"><code>Initialized</code>, <code>Paid</code>, <code>Failed</code>, <code>Cancelled</code> or <code>Aborted</code>. Indicates the state of the payment order.</div></div>
@@ -833,7 +833,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- currency -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f currency %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f currency %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The currency of the payment order.</div></div>
@@ -842,7 +842,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- amount -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f amount %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f amount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
@@ -851,7 +851,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- vatAmount -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f vatAmount %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f vatAmount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>integer</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ vat_amount_md | markdownify }}</div></div>
@@ -860,7 +860,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- description -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f description %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f description %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string(40)</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ description_md | markdownify }}</div></div>
@@ -869,7 +869,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- initiatingSystemUserAgent -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f initiatingSystemUserAgent %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f initiatingSystemUserAgent %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ isu_md | markdownify }}</div></div>
@@ -878,7 +878,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- language -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f language %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f language %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>
@@ -887,7 +887,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- availableInstruments -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f availableInstruments %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f availableInstruments %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">A list of payment methods available for this payment.</div></div>
@@ -896,7 +896,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- viewableInstruments -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f viewableInstruments %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f viewableInstruments %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">A list of payment methods with viewable details for this payment.</div></div>
@@ -905,7 +905,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- implementation -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f implementation %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f implementation %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ implementation_md | markdownify }}</div></div>
@@ -914,7 +914,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- integration -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f integration %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f integration %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc">
@@ -927,7 +927,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- instrumentMode -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f instrumentMode %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f instrumentMode %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>bool</code></span>
         </summary>
         <div class="desc"><div class="indent-1">Set to <code>true</code> or <code>false</code>. Indicates if the payment is initialized with only one payment method available.</div></div>
@@ -936,7 +936,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- guestMode -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f guestMode %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f guestMode %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>bool</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{% include fields/guest-mode.md %}</div></div>
@@ -945,7 +945,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- orderItems (link id as string) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f orderItems %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f orderItems %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ order_items_md | markdownify }}</div></div>
@@ -954,7 +954,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- urls (string link to resource) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f urls %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f urls %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc">
@@ -965,7 +965,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- payeeInfo (id) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f payeeInfo %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f payeeInfo %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ payee_info_md | markdownify }}</div></div>
@@ -974,7 +974,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- payer (id) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f payer %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f payer %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ payer_md | markdownify }}</div></div>
@@ -983,7 +983,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- history (id) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f history %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f history %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ history_md | markdownify }}</div></div>
@@ -992,7 +992,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- failed (id) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f failed %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f failed %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ failed_md | markdownify }}</div></div>
@@ -1001,7 +1001,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- aborted (id) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f aborted %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f aborted %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ aborted_md | markdownify }}</div></div>
@@ -1010,7 +1010,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- paid (id) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f paid %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f paid %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ paid_md | markdownify }}</div></div>
@@ -1019,7 +1019,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- cancelled (id) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f cancelled %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f cancelled %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ cancelled_md | markdownify }}</div></div>
@@ -1028,7 +1028,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- financialTransactions (id) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f financialTransactions %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f financialTransactions %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ fin_tx_md | markdownify }}</div></div>
@@ -1037,7 +1037,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- failedAttempts (id) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f failedAttempts %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f failedAttempts %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ failed_attempts_md | markdownify }}</div></div>
@@ -1046,7 +1046,7 @@ api-supported-versions: 3.x{% endcapture %}
       <!-- metadata (id) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f metadata %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f metadata %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
         <div class="desc">
@@ -1059,7 +1059,7 @@ api-supported-versions: 3.x{% endcapture %}
   <!-- operations (array) -->
   <details class="api-item" data-level="0">
       <summary>
-          <span class="field">{% f operations,0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f operations,0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>array</code></span>
       </summary>
       <div class="desc">

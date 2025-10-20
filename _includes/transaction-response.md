@@ -185,7 +185,7 @@ Content-Type: application/json{% endcapture %}
     <!-- paymentOrder (string) -->
     <details class="api-item" data-level="0">
       <summary>
-        <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+        <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
         <span class="type"><code>string</code></span>
       </summary>
       <div class="desc"><div class="indent-0">{{ id_generic_md | markdownify }}</div></div>
@@ -194,7 +194,7 @@ Content-Type: application/json{% endcapture %}
     <!-- payment (string) -->
     <details class="api-item" data-level="0">
       <summary>
-        <span class="field">{% f payment, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+        <span class="field">{% f payment, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
         <span class="type"><code>string</code></span>
       </summary>
       <div class="desc"><div class="indent-0">{{ id_sub_plural_md | markdownify }}</div></div>
@@ -203,7 +203,7 @@ Content-Type: application/json{% endcapture %}
     <!-- {{ plural }} (object) -->
     <details class="api-item" data-level="0">
       <summary>
-        <span class="field"><code>{{ plural }}</code><i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+        <span class="field"><code>{{ plural }}</code><i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
         <span class="type"><code>object</code></span>
       </summary>
       <div class="desc"><div class="indent-0">The current <code>{{ plural }}</code> resource.</div></div>
@@ -213,7 +213,7 @@ Content-Type: application/json{% endcapture %}
   <!-- authorization (object) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f authorization, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+      <span class="field">{% f authorization, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The authorization object.</div></div>
@@ -222,7 +222,7 @@ Content-Type: application/json{% endcapture %}
       <!-- id -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ id_auth_md | markdownify }}</div></div>
@@ -231,7 +231,7 @@ Content-Type: application/json{% endcapture %}
       <!-- itemDescriptions (object) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f itemDescriptions %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f itemDescriptions %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The object representation of the <code>itemDescriptions</code> resource.</div></div>
@@ -239,7 +239,7 @@ Content-Type: application/json{% endcapture %}
         <div class="api-children">
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f id, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f id, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ id_itemdesc_md | markdownify }}</div></div>
@@ -250,7 +250,7 @@ Content-Type: application/json{% endcapture %}
       <!-- transaction (object) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f transaction %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f transaction %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ transaction_md | markdownify }}</div></div>
@@ -258,7 +258,7 @@ Content-Type: application/json{% endcapture %}
         <div class="api-children">
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f id, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f id, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ id_tx_md | markdownify }}</div></div>
@@ -266,7 +266,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f created, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f created, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was created.</div></div>
@@ -274,7 +274,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f updated, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f updated, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was updated.</div></div>
@@ -282,7 +282,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f type, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f type, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">Indicates the transaction type.</div></div>
@@ -290,7 +290,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f state, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f state, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ state_md | markdownify }}</div></div>
@@ -298,7 +298,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f number, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f number, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>integer</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ number_md | markdownify }}</div></div>
@@ -306,7 +306,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f amount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f amount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>integer</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ amount_md | markdownify }}</div></div>
@@ -314,7 +314,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f vatAmount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f vatAmount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>integer</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ vat_amount_md | markdownify }}</div></div>
@@ -322,7 +322,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f description, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f description, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ description_md | markdownify }}</div></div>
@@ -330,7 +330,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f payeeReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f payeeReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string(30)</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ payee_ref_receipt_md | markdownify }}</div></div>
@@ -338,7 +338,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f receiptReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f receiptReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ receipt_ref_md | markdownify }}</div></div>
@@ -346,7 +346,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f failedReason, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f failedReason, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The human readable explanation of why the payment failed.</div></div>
@@ -354,7 +354,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f isOperational, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f isOperational, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>bool</code></span>
             </summary>
             <div class="desc"><div class="indent-2"><code>true</code> if the transaction is operational; otherwise <code>false</code>.</div></div>
@@ -362,7 +362,7 @@ Content-Type: application/json{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f operations, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f operations, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>array</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ operations_tx_md | markdownify }}</div></div>

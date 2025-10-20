@@ -146,7 +146,7 @@ Content-Type: application/json{% endcapture %}
   {% if documentation_section contains "checkout" or "payment-menu" %}
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
       <span class="type"><code>string</code></span>
     </summary>
     {% capture id_md_checkout %}{% include fields/id.md %}{% endcapture %}
@@ -155,7 +155,7 @@ Content-Type: application/json{% endcapture %}
   {% else %}
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f payment, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+      <span class="field">{% f payment, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
       <span class="type"><code>string</code></span>
     </summary>
     {% capture id_md_payment %}{% include fields/id.md sub_resource=plural %}{% endcapture %}
@@ -166,7 +166,7 @@ Content-Type: application/json{% endcapture %}
   <!-- {{ plural }} object (root sibling) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">`{{ plural }}`<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+      <span class="field">`{{ plural }}`<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The current <code>{{ plural }}</code> resource.</div></div>
@@ -175,7 +175,7 @@ Content-Type: application/json{% endcapture %}
       <!-- id (child of {{ plural }}) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         {% capture id_md_plural %}{% include fields/id.md resource=plural %}{% endcapture %}
@@ -185,7 +185,7 @@ Content-Type: application/json{% endcapture %}
       <!-- {{ transaction }}List (array) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f {{ transaction }}List %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f {{ transaction }}List %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>array</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The array of {{ transaction }} transaction objects.</div></div>
@@ -194,7 +194,7 @@ Content-Type: application/json{% endcapture %}
           <!-- array item object -->
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f {{ transaction }}List[] %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f {{ transaction }}List[] %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>object</code></span>
             </summary>
             <div class="desc"><div class="indent-2">The {{ transaction }} transaction object described in the <code>{{ transaction }}</code> resource below.</div></div>
@@ -203,7 +203,7 @@ Content-Type: application/json{% endcapture %}
               <!-- transaction.id -->
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f id, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+                  <span class="field">{% f id, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
                   <span class="type"><code>string</code></span>
                 </summary>
                 {% capture id_md_txn %}{% include fields/id.md resource="transaction" %}{% endcapture %}
@@ -213,7 +213,7 @@ Content-Type: application/json{% endcapture %}
               <!-- created -->
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f created, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+                  <span class="field">{% f created, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
                   <span class="type"><code>string</code></span>
                 </summary>
                 <div class="desc"><div class="indent-3">The ISO-8601 date and time of when the transaction was created.</div></div>
@@ -222,7 +222,7 @@ Content-Type: application/json{% endcapture %}
               <!-- updated -->
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f updated, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+                  <span class="field">{% f updated, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
                   <span class="type"><code>string</code></span>
                 </summary>
                 <div class="desc"><div class="indent-3">The ISO-8601 date and time of when the transaction was updated.</div></div>
@@ -231,7 +231,7 @@ Content-Type: application/json{% endcapture %}
               <!-- type -->
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f type, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+                  <span class="field">{% f type, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
                   <span class="type"><code>string</code></span>
                 </summary>
                 <div class="desc"><div class="indent-3">Indicates the transaction type.</div></div>
@@ -240,7 +240,7 @@ Content-Type: application/json{% endcapture %}
               <!-- state -->
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f state, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+                  <span class="field">{% f state, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
                   <span class="type"><code>string</code></span>
                 </summary>
                 {% capture state_md %}{% include fields/state.md %}{% endcapture %}
@@ -250,7 +250,7 @@ Content-Type: application/json{% endcapture %}
               <!-- number -->
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f number, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+                  <span class="field">{% f number, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
                   <span class="type"><code>integer</code></span>
                 </summary>
                 {% capture number_md %}{% include fields/number.md %}{% endcapture %}
@@ -260,7 +260,7 @@ Content-Type: application/json{% endcapture %}
               <!-- amount -->
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f amount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+                  <span class="field">{% f amount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
                   <span class="type"><code>integer</code></span>
                 </summary>
                 {% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
@@ -270,7 +270,7 @@ Content-Type: application/json{% endcapture %}
               <!-- vatAmount -->
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f vatAmount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+                  <span class="field">{% f vatAmount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
                   <span class="type"><code>integer</code></span>
                 </summary>
                 {% capture vat_amount_md %}{% include fields/vat-amount.md %}{% endcapture %}
@@ -280,7 +280,7 @@ Content-Type: application/json{% endcapture %}
               <!-- description -->
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f description, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+                  <span class="field">{% f description, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
                   <span class="type"><code>string</code></span>
                 </summary>
                 {% capture description_md %}{% include fields/description.md %}{% endcapture %}
@@ -290,7 +290,7 @@ Content-Type: application/json{% endcapture %}
               <!-- payeeReference -->
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f payeeReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+                  <span class="field">{% f payeeReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
                   <span class="type"><code>string(30)</code></span>
                 </summary>
                 {% capture payee_reference_md %}{% include fields/payee-reference.md describe_receipt=true %}{% endcapture %}
@@ -301,7 +301,7 @@ Content-Type: application/json{% endcapture %}
               {% if api_resource == "invoice" %}
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f receiptReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+                  <span class="field">{% f receiptReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
                   <span class="type"><code>string</code></span>
                 </summary>
                 {% capture receipt_reference_md %}{% include fields/receipt-reference.md %}{% endcapture %}
@@ -312,7 +312,7 @@ Content-Type: application/json{% endcapture %}
               <!-- isOperational -->
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f isOperational, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+                  <span class="field">{% f isOperational, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
                   <span class="type"><code>bool</code></span>
                 </summary>
                 <div class="desc"><div class="indent-3"><code>true</code> if the transaction is operational; otherwise <code>false</code>.</div></div>
@@ -321,7 +321,7 @@ Content-Type: application/json{% endcapture %}
               <!-- operations -->
               <details class="api-item" data-level="3">
                 <summary>
-                  <span class="field">{% f operations, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+                  <span class="field">{% f operations, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
                   <span class="type"><code>array</code></span>
                 </summary>
                 {% capture operations_md %}{% include fields/operations.md resource="transaction" %}{% endcapture %}

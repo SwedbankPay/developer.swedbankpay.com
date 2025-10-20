@@ -71,7 +71,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
   <!-- Level 0, all nodes CLOSED by default (original order) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -81,7 +81,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       <!-- corporateMode (required) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f corporateMode %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f corporateMode %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>bool</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -91,7 +91,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       <!-- instrument (required) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f instrument %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f instrument %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -101,7 +101,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       <!-- operation (required) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f operation %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f operation %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -111,7 +111,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       <!-- currency (required) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f currency %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f currency %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -121,7 +121,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       <!-- amount (required) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f amount %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f amount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -131,7 +131,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       <!-- vatAmount (required) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f vatAmount %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f vatAmount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -141,7 +141,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       <!-- description (required) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f description %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f description %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -151,7 +151,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       <!-- userAgent (required) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f userAgent %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f userAgent %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -161,7 +161,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       <!-- language (required) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f language %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f language %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -171,7 +171,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       <!-- urls (object, required) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f urls %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f urls %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -181,7 +181,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           <!-- hostUrls (required) -->
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f hostUrls, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f hostUrls, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>array</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -191,7 +191,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           <!-- completeUrl (required) -->
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f completeUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f completeUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -201,7 +201,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           <!-- callbackUrl (required) -->
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f callbackUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f callbackUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -211,7 +211,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           <!-- termsOfServiceUrl (required) -->
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f termsOfServiceUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f termsOfServiceUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -221,7 +221,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           <!-- logoUrl (required) -->
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f logoUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f logoUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -233,7 +233,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       <!-- payeeInfo (object, required) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f payeeInfo %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f payeeInfo %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -243,7 +243,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           <!-- payeeId (required) -->
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f payeeId, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f payeeId, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
               <span class="req">{% icon check %}</span>
             </summary>
@@ -253,7 +253,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           <!-- payeeReference (required) -->
           <details class="api-item" data-level="2">
             <summary>
-              <span class="field">{% f payeeReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+              <span class="field">{% f payeeReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string(30)</code></span>
               <span class="req">{% icon check %}</span>
             </summary>

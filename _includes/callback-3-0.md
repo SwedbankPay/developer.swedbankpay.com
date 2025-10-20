@@ -265,7 +265,7 @@ your TOM/TAM or our support team.
   <!-- LEVEL 0: paymentOrder -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The payment order object.</div></div>
@@ -274,7 +274,7 @@ your TOM/TAM or our support team.
     <div class="api-children">
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
@@ -282,7 +282,7 @@ your TOM/TAM or our support team.
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f instrument %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f instrument %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The payment method used in the payment.</div></div>
@@ -293,7 +293,7 @@ your TOM/TAM or our support team.
   <!-- LEVEL 0: payment -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f payment, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+      <span class="field">{% f payment, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The payment object.</div></div>
@@ -302,7 +302,7 @@ your TOM/TAM or our support team.
     <div class="api-children">
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f number %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f number %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The attempt number which triggered the callback.</div></div>
@@ -313,7 +313,7 @@ your TOM/TAM or our support team.
   <!-- LEVEL 0: transaction -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f transaction, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+      <span class="field">{% f transaction, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The transaction object.</div></div>

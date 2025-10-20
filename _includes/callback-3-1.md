@@ -265,7 +265,7 @@ original `POST` when you created the `paymentOrder`.
   <!-- LEVEL 0: orderReference -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f orderReference, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+      <span class="field">{% f orderReference, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
       <span class="type"><code>string</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The order reference found in the merchant's systems. If included in the request, the <code>orderReference</code> will appear in the callback.</div></div>
@@ -274,7 +274,7 @@ original `POST` when you created the `paymentOrder`.
   <!-- LEVEL 0: paymentOrder -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The payment order object.</div></div>
@@ -284,7 +284,7 @@ original `POST` when you created the `paymentOrder`.
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
@@ -292,7 +292,7 @@ original `POST` when you created the `paymentOrder`.
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f instrument %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f instrument %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The payment method used in the payment.</div></div>
@@ -300,7 +300,7 @@ original `POST` when you created the `paymentOrder`.
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f number %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f number %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">The attempt number which triggered the callback.</div></div>

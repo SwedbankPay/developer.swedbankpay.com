@@ -73,7 +73,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
     </div>
     <details class="api-item" data-level="0">
         <summary>
-            <span class="field">{% f Content-Type, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+            <span class="field">{% f Content-Type, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
             <span class="type"><code>string</code></span>
             <span class="req">{% icon check %}</span>
         </summary>
@@ -83,7 +83,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
     <!-- Authorization -->
     <details class="api-item" data-level="0">
         <summary>
-          <span class="field">{% f Authorization, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f Authorization, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -93,7 +93,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
     <!-- User-Agent -->
     <details class="api-item" data-level="0">
         <summary>
-          <span class="field">{% f User-Agent, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f User-Agent, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-0">The [user agent][user-agent] of the HTTP client making the HTTP request. Should be set to identify the system performing requests towards Swedbank Pay. The value submitted here will be returned in the response field <code>initiatingSystemUserAgent</code>.</div></div>
@@ -102,7 +102,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
     <!-- Accept -->
     <details class="api-item" data-level="0">
         <summary>
-          <span class="field">{% f Accept, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f Accept, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -112,7 +112,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
     <!-- Session-Id -->
     <details class="api-item" data-level="0">
         <summary>
-          <span class="field">{% f Session-Id, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f Session-Id, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-0">A trace identifier used to trace calls through the API Platform (ref [RFC 7329][rfc-7329]). Each request must mint a new [GUID/UUID][uuid]. If no <code>Session-Id</code> is provided, Swedbank Pay will generate one for the request.</div></div>
@@ -121,7 +121,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
     <!-- Forwarded -->
     <details class="api-item" data-level="0">
         <summary>
-          <span class="field">{% f Forwarded, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f Forwarded, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-0">The IP address of the payer as well as the host and protocol of the payer-facing web page. When the header is present, only the <code>for</code> parameter containing the payer's IP address is required, the other parameters are optional. See [RFC 7239][rfc-7239] for details.</div></div>

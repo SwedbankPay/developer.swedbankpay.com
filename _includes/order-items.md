@@ -49,7 +49,7 @@ by using the `description` and `amount` fields from the `paymentOrder`.
   <!-- Level 0 (all nodes CLOSED by default) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f orderItems, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+      <span class="field">{% f orderItems, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
       <span class="type"><code>array</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
@@ -59,7 +59,7 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       <!-- Level 1 children of orderItems -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f reference %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f reference %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -68,7 +68,7 @@ by using the `description` and `amount` fields from the `paymentOrder`.
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f name %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f name %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -78,7 +78,7 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       <!-- type (enum) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f type %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f type %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>enum</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -88,7 +88,7 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       <!-- class -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f class %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f class %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -98,7 +98,7 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       <!-- itemUrl (optional) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f itemUrl %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f itemUrl %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
@@ -108,7 +108,7 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       <!-- imageUrl (optional) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f imageUrl %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f imageUrl %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
@@ -118,7 +118,7 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       <!-- description (optional) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f description %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f description %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
@@ -128,7 +128,7 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       <!-- discountDescription (optional) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f discountDescription %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f discountDescription %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
@@ -138,7 +138,7 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       <!-- quantity -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f quantity %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f quantity %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>number</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -148,7 +148,7 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       <!-- quantityUnit -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f quantityUnit %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f quantityUnit %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -158,7 +158,7 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       <!-- unitPrice -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f unitPrice %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f unitPrice %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -168,7 +168,7 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       <!-- discountPrice (optional) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f discountPrice %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f discountPrice %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>integer</code></span>
           <span class="req"></span>
         </summary>
@@ -178,7 +178,7 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       <!-- vatPercent -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f vatPercent %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f vatPercent %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -188,7 +188,7 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       <!-- amount -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f amount %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f amount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -198,7 +198,7 @@ by using the `description` and `amount` fields from the `paymentOrder`.
       <!-- vatAmount -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f vatAmount %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f vatAmount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>integer</code></span>
           <span class="req">{% icon check %}</span>
         </summary>

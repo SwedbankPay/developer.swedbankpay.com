@@ -18,7 +18,7 @@ body="Please note that by adding the `shoplogoUrl` field, the default logo-url c
   <!-- creditCard (object) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f creditCard, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+      <span class="field">{% f creditCard, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
       <span class="type"><code>object</code></span>
       <span class="req"></span>
     </summary>
@@ -28,7 +28,7 @@ body="Please note that by adding the `shoplogoUrl` field, the default logo-url c
       <!-- children of creditCard (level 1) -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f rejectDebitCards %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f rejectDebitCards %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>bool</code></span>
           <span class="req"></span>
         </summary>
@@ -38,7 +38,7 @@ body="Please note that by adding the `shoplogoUrl` field, the default logo-url c
       <!-- duplicate row preserved per source markdown -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f rejectDebitCards %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f rejectDebitCards %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>bool</code></span>
           <span class="req"></span>
         </summary>
@@ -47,7 +47,7 @@ body="Please note that by adding the `shoplogoUrl` field, the default logo-url c
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f rejectCreditCards %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f rejectCreditCards %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>bool</code></span>
           <span class="req"></span>
         </summary>
@@ -56,7 +56,7 @@ body="Please note that by adding the `shoplogoUrl` field, the default logo-url c
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f rejectConsumerCards %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f rejectConsumerCards %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>bool</code></span>
           <span class="req"></span>
         </summary>
@@ -65,7 +65,7 @@ body="Please note that by adding the `shoplogoUrl` field, the default logo-url c
 
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f rejectCorporateCards %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f rejectCorporateCards %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>bool</code></span>
           <span class="req"></span>
         </summary>
@@ -77,7 +77,7 @@ body="Please note that by adding the `shoplogoUrl` field, the default logo-url c
   <!-- swish (object) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f swish, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+      <span class="field">{% f swish, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
       <span class="type"><code>object</code></span>
       <span class="req"></span>
     </summary>
@@ -87,7 +87,7 @@ body="Please note that by adding the `shoplogoUrl` field, the default logo-url c
       <!-- child of swish -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f enableEcomOnly %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f enableEcomOnly %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>bool</code></span>
           <span class="req"></span>
         </summary>
@@ -99,7 +99,7 @@ body="Please note that by adding the `shoplogoUrl` field, the default logo-url c
   <!-- mobilePay (object) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">{% f mobilePay, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+      <span class="field">{% f mobilePay, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
       <span class="type"><code>object</code></span>
       <span class="req"></span>
     </summary>
@@ -109,7 +109,7 @@ body="Please note that by adding the `shoplogoUrl` field, the default logo-url c
       <!-- child of mobilePay -->
       <details class="api-item" data-level="1">
         <summary>
-          <span class="field">{% f shoplogoUrl %}<i aria-hidden="true" class="chev swepay-icon-plus-add small"></i></span>
+          <span class="field">{% f shoplogoUrl %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req"></span>
         </summary>
