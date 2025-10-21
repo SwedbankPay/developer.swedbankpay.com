@@ -495,7 +495,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           <span class="field">{% f operations,0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>array</code></span>
       </summary>
-      <div class="desc"><div class="indent-0">{% include fields/operations.md %} <a href="{{ features_url }}/technical-reference/operations">See Operations for details</a>.</div></div>
+      <div class="desc"><div class="indent-0">{% include fields/operations.md %} <a href="{{ techref_url }}/technical-reference/operations">See Operations for details</a>.</div></div>
   </details>
 </div>
 
@@ -1064,7 +1064,7 @@ api-supported-versions: 3.x{% endcapture %}
       </summary>
       <div class="desc">
           <div class="indent-0">
-            {% include fields/operations.md %} <a href="{{ features_url }}/technical-reference/operations">See Operations for details</a>.
+            {% include fields/operations.md %} <a href="{{ techref_url }}/technical-reference/operations">See Operations for details</a>.
           </div>
       </div>
   </details>
