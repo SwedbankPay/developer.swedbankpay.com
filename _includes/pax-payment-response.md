@@ -15,10 +15,10 @@
   </POIData>
   <PaymentResult PaymentType="Normal">
    <PaymentInstrumentData PaymentInstrumentType="Card">
-    <CardData PaymentBrand="01,Mastercard Debit" MaskedPAN="516815******9659" EntryMode="Contactless">
-     <PaymentToken TokenRequestedType="Customer" TokenValue="6FD955C23A48A041D881003CDBF836DC59F89CE0ECA8288129696CDF9BB8B8DD67F233"/>
-    </CardData>
-   </PaymentInstrumentData>
+     <CardData PaymentBrand="01,Mastercard Debit" MaskedPAN="516815******9659" PaymentAccountRef="5c0e2bdfe30fb6e3d7dd1eee887de" EntryMode="Contactless">
+       <PaymentToken TokenRequestedType="Customer" TokenValue="6FD9550491A5EA28850181E76297295740E2F3781A3FB9D0561343179D6AA3017A6CAB"/>
+     </CardData>
+    </PaymentInstrumentData>
    <AmountsResp Currency="SEK" AuthorizedAmount="56" CashBackAmount="0.00"/>
    <PaymentAcquirerData MerchantID="10020001" AcquirerPOIID="877888">
     <ApprovalCode>611506</ApprovalCode>
@@ -40,36 +40,30 @@
 
 ### Loyalty Result
 
-If loyalty is handled via our host the response may include a `LoyaltyResult` as well.
+If `nonPaymentToken` is activated for merchant or if loyalty is handled via our host the response may include a `LoyaltyResult` as well.
+
+The xml element `LoyaltyResult` may contain more than one `LoyaltyAccount` element or none. The `LoyaltyResult` appears on the same level as `PaymentResult`.
 
 {:.code-view-header }
-**PaymentResponse like above but including LoyaltyResult (other tags not showing)**
+**LoyaltyResult from a PaymentResponse with a nonPaymentToken for a card**
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<SaleToPOIResponse>
- <MessageHeader MessageClass="Service" MessageCategory="Payment" MessageType="Response" ServiceID="3" SaleID="1" POIID="A-POIID"/>
- <PaymentResponse>
-  <Response Result="Success"/>
-  <SaleData>
-  </SaleData>
-  <POIData>
-  </POIData>
-  <PaymentResult PaymentType="Normal">
-  </PaymentResult>
+  <LoyaltyResult>
+    <LoyaltyAccount LoyaltyBrand="nonPaymentToken">
+      <LoyaltyAccountID EntryMode="File" IdentificationSupport="LinkedCard" IdentificationType="AccountNumber">d9b53d79-c677-4468-b4c2-7d85d675457e</LoyaltyAccountID>
+    </LoyaltyAccount>
+  </LoyaltyResult>
+```
 
+{:.code-view-header }
+**LoyaltyResult from a PaymentResponse for a loyalty brand name**
+
+```xml
   <LoyaltyResult>
     <LoyaltyAccount LoyaltyBrand="<LOYALTY_BRAND_NAME>">
       <LoyaltyAccountID EntryMode="File" IdentificationSupport="LinkedCard" IdentificationType="AccountNumber">86dd8f2e005be7c4512d7af9dae89dd228689365</LoyaltyAccountID>
     </LoyaltyAccount>
   </LoyaltyResult>
-
-  <PaymentReceipt DocumentQualifier="CashierReceipt">
-  </PamentReceipt>
-  <PaymentReceipt DocumentQualifier="CustomerReceipt">
-  </PaymentReceipt>
- </PaymentResponse>
-</SaleToPOIResponse>
 ```
 
 ### PaymentResponse in Detail
@@ -92,6 +86,7 @@ If loyalty is handled via our host the response may include a `LoyaltyResult` as
 | PaymentInstrumentData | 3 | PaymentInstrumentType | Values: `Card` for any transaction made by the terminal with a card or any consumer device. `Mobile` for an alternative payment instrument made via the terminal. |
 | CardData | 4 | PaymentBrand | Comma separated string where the first part is card type. `01`-payment card. `02`-Combined payment and Loyalty, `03`-Loyalty, `04`-Neither. May be used instead of 03 for controlling the dialog in the terminal. Second part is the product name. |
 | | | MaskedPAN | |
+| | | PaymentAccountRef | PAR - token delivered from card issuer |
 | | | EntryMode | `ICC`, `Contactless`, `Magstripe`. |
 | PaymentToken | 5 | TokenRequestedType | `Customer`. |
 | | | TokenValue | An irreversible 70 byte hash computed locally in the terminal. A specific card will get the same CNA in all SwedbankPay PAX terminals. |
