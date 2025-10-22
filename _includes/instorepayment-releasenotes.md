@@ -1,4 +1,10 @@
 
+## 28 October 2025
+
+### Versions 5.3.12
+
+*   Info about available tokenization from terminal
+
 ## 16 September 2025
 
 ### Version 5.3.11
