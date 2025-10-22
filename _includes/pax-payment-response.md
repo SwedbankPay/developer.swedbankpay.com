@@ -97,6 +97,12 @@ The xml element `LoyaltyResult` may contain more than one `LoyaltyAccount` eleme
 | PaymentAquirerData | 3 | MerchantID | Id of merchant set by Swedbank Pay. |
 | | | AquirerPOIID | A terminal id within Swedbank Pay. |
 | ApprovalCode | 4 | | Authorization approval code. Only present if Result is Success. |
+| LoyaltyResult | 2 | | |
+| LoyaltyAccount | 3 | LoyaltyBrand | Values: `nonPaymentToken` or a loyalty brand name |
+| LoyaltyAccountID | 4 | | Holds a loyalty account number or a `nonPaymentToken` |
+| | | EntryMode | "File" |
+| | | IdentificationSupport | "LinkedCard" |
+| | | IdentificationType | "AccountNumber" |
 | PaymentReceipt | 2 | DocumentQualifier | `CashierReceipt`- Merchant copy. `CustomerReceipt`- receipt information for customer. Note! This element appears twice. |
 | OutputContent | 3 | OutputFormat | Only value `Text`. |
 | OutputText | 4 | | A Base64 encoded JSON structure with information for the receipt. |
