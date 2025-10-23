@@ -427,7 +427,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
         <!-- Children of payer (Level 2) -->
         <div class="api-children">
 
-          {% if documentation_section contains "checkout" -%}
+          {% if documentation_section contains "checkout-v2" -%}
           <details class="api-item" data-level="2">
             <summary>
               <span class="field">{% f consumerProfileRef, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
@@ -1060,7 +1060,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           <span class="field">{% f payer %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <a href="{{ ftechref_url }}/technical-reference/resource-sub-models#payer"><code>payer</code> resource</a> where information about the payer can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ techref_url }}/technical-reference/resource-sub-models#payer"><code>payer</code> resource</a> where information about the payer can be retrieved.</div></div>
       </details>
       {% else %}
       <!-- payer (non-checkout-v3) -->
