@@ -1146,7 +1146,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
         </div>
       </details>
 
-    </div> 
+    </div>
   </details>
 </div>
 
@@ -1325,11 +1325,11 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         <div class="desc">
           <div class="indent-1">
             Indicates the payment order's current status. <code>Initialized</code> is returned when the payment is created and still ongoing. The request example above has this status.
-            <code>Paid</code> is returned when the payer has completed the payment successfully. See the <a href="{{ features_url }}/technical-reference/status-models#paid"><code>Paid</code> response</a>.
-            <code>Failed</code> is returned when a payment has failed. You will find an error message in <a href="{{ features_url }}/technical-reference/status-models#failed">the <code>Failed</code> response</a>.
-            <code>Cancelled</code> is returned when an authorized amount has been fully cancelled. See the <a href="{{ features_url }}/technical-reference/status-models#cancelled"><code>Cancelled</code> response</a>. It will contain fields from both the cancelled description and paid section.
+            <code>Paid</code> is returned when the payer has completed the payment successfully. See the <a href="{{ techref_url }}/technical-reference/status-models#paid"><code>Paid</code> response</a>.
+            <code>Failed</code> is returned when a payment has failed. You will find an error message in <a href="{{ techref_url }}/technical-reference/status-models#failed">the <code>Failed</code> response</a>.
+            <code>Cancelled</code> is returned when an authorized amount has been fully cancelled. See the <a href="{{ techref_url }}/technical-reference/status-models#cancelled"><code>Cancelled</code> response</a>. It will contain fields from both the cancelled description and paid section.
             <code>Aborted</code> is returned when the merchant has aborted the payment, or if the payer cancelled the payment in the redirect integration (on the redirect page).
-            See the <a href="{{ features_url }}/technical-reference/status-models#aborted"><code>Aborted</code> response</a>.
+            See the <a href="{{ techref_url }}/technical-reference/status-models#aborted"><code>Aborted</code> response</a>.
           </div>
         </div>
       </details>
@@ -1483,7 +1483,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         </summary>
         <div class="desc">
           <div class="indent-1">
-            The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#payer"><code>payer</code> resource</a> where information about the payer can be retrieved.
+            The URL to the <a href="{{ techref_url }}/technical-reference/resource-sub-models#payer"><code>payer</code> resource</a> where information about the payer can be retrieved.
           </div>
         </div>
       </details>
@@ -1589,7 +1589,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     <div class="desc">
       <div class="indent-0">
         {{ operations_md | markdownify }}
-        <a href="{{ features_url }}/technical-reference/operations">See Operations for details</a>.
+        <a href="{{ techref_url }}/technical-reference/operations">See Operations for details</a>.
       </div>
     </div>
   </details>

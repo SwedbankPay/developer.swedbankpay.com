@@ -394,7 +394,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f payer %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>id</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#payer"><code>payer</code> resource</a>…</div></div>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ techref_url }}/technical-reference/resource-sub-models#payer"><code>payer</code> resource</a>…</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -475,7 +475,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f operations %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>array</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">{{ operations_md | markdownify }} <a href="{{ features_url }}/technical-reference/operations">See Operations for details</a>.</div></div>
+        <div class="desc"><div class="indent-1">{{ operations_md | markdownify }} <a href="{{ techref_url }}/technical-reference/operations">See Operations for details</a>.</div></div>
       </details>
 
     </div>

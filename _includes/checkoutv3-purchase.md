@@ -1181,7 +1181,7 @@ api-supported-versions: 3.x/2.0
           <span class="field">{% f payers %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The URL to the <a href="{{ features_url }}/technical-reference/resource-sub-models#payer"><code>payer</code> resource</a> where information about the payer can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The URL to the <a href="{{ techref_url }}/technical-reference/resource-sub-models#payer"><code>payer</code> resource</a> where information about the payer can be retrieved.</div></div>
       </details>
 
       <!-- orderItems (link to resource) -->
@@ -1217,7 +1217,7 @@ api-supported-versions: 3.x/2.0
           <span class="field">{% f operations %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>array</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">{{ operations_md | markdownify }} <a href="{{ features_url }}/technical-reference/operations">See Operations for details</a>.</div></div>
+        <div class="desc"><div class="indent-1">{{ operations_md | markdownify }} <a href="{{ techref_url }}/technical-reference/operations">See Operations for details</a>.</div></div>
       </details>
     </div>
   </details>
