@@ -319,54 +319,56 @@ Content-Type: application/json{% endcapture %}
   <!-- transaction -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">`transaction`<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="field">{% f transaction, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
     <div class="desc"><div class="indent-0">The <code>object</code> representation of the generic <a href="#transaction-resource">transaction resource</a>.</div></div>
-  </details>
 
-  <!-- amount -->
-  <details class="api-item" data-level="0">
-    <summary>
-      <span class="field">{% f amount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-      <span class="type"><code>integer</code></span>
-      <span class="req">{% icon check %}</span>
-    </summary>
-    {% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
-    <div class="desc"><div class="indent-0">{{ amount_md | markdownify }}</div></div>
-  </details>
+    <div class="api-children">
+        <!-- amount -->
+        <details class="api-item" data-level="1">
+            <summary>
+                <span class="field">{% f amount, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                <span class="type"><code>integer</code></span>
+                <span class="req">{% icon check %}</span>
+            </summary>
+            {% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
+            <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
+        </details>
 
-  <!-- vatAmount -->
-  <details class="api-item" data-level="0">
-    <summary>
-      <span class="field">{% f vatAmount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-      <span class="type"><code>integer</code></span>
-      <span class="req">{% icon check %}</span>
-    </summary>
-    {% capture vat_amount_md %}{% include fields/vat-amount.md %}{% endcapture %}
-    <div class="desc"><div class="indent-0">{{ vat_amount_md | markdownify }}</div></div>
-  </details>
+        <!-- vatAmount -->
+        <details class="api-item" data-level="1">
+            <summary>
+                <span class="field">{% f vatAmount, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                <span class="type"><code>integer</code></span>
+                <span class="req">{% icon check %}</span>
+            </summary>
+            {% capture vat_amount_md %}{% include fields/vat-amount.md %}{% endcapture %}
+            <div class="desc"><div class="indent-1">{{ vat_amount_md | markdownify }}</div></div>
+        </details>
 
-  <!-- description -->
-  <details class="api-item" data-level="0">
-    <summary>
-      <span class="field">{% f description %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-      <span class="type"><code>string</code></span>
-      <span class="req">{% icon check %}</span>
-    </summary>
-    <div class="desc"><div class="indent-0">A textual description of the <code>reversal</code>.</div></div>
-  </details>
+        <!-- description -->
+        <details class="api-item" data-level="1">
+            <summary>
+                <span class="field">{% f description, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                <span class="type"><code>string</code></span>
+                <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-1">A textual description of the <code>reversal</code>.</div></div>
+        </details>
 
-  <!-- payeeReference -->
-  <details class="api-item" data-level="0">
-    <summary>
-      <span class="field">{% f payeeReference %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-      <span class="type"><code>string(50)</code></span>
-      <span class="req">{% icon check %}</span>
-    </summary>
-    {% capture payee_reference_md %}{% include fields/payee-reference.md %}{% endcapture %}
-    <div class="desc"><div class="indent-0">{{ payee_reference_md | markdownify }}</div></div>
+        <!-- payeeReference -->
+        <details class="api-item" data-level="1">
+            <summary>
+                <span class="field">{% f payeeReference, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                <span class="type"><code>string(50)</code></span>
+                <span class="req">{% icon check %}</span>
+            </summary>
+            {% capture payee_reference_md %}{% include fields/payee-reference.md %}{% endcapture %}
+            <div class="desc"><div class="indent-1">{{ payee_reference_md | markdownify }}</div></div>
+        </details>
+      </div>
   </details>
 </div>
 

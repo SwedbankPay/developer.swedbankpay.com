@@ -163,16 +163,19 @@ Content-Type: application/json{% endcapture %}
   </details>
   {% endif %}
 
-  <!-- {{ plural }} object (root sibling) -->
   <details class="api-item" data-level="0">
     <summary>
-      <span class="field">`{{ plural }}`<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      {% if plural == "cancellations" %}
+        <span class="field">{% f cancellations, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      {% else if plural == "reversals" %}
+        <span class="field">{% f reversals, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      {% else %}
+        <span class="field">{% f transactions, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      {% endif %}
       <span class="type"><code>object</code></span>
     </summary>
     <div class="desc"><div class="indent-0">The current <code>{{ plural }}</code> resource.</div></div>
-
     <div class="api-children">
-      <!-- id (child of {{ plural }}) -->
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
@@ -181,155 +184,135 @@ Content-Type: application/json{% endcapture %}
         {% capture id_md_plural %}{% include fields/id.md resource=plural %}{% endcapture %}
         <div class="desc"><div class="indent-1">{{ id_md_plural | markdownify }}</div></div>
       </details>
-
-      <!-- {{ transaction }}List (array) -->
       <details class="api-item" data-level="1">
-        <summary>
-          <span class="field">{% f {{ transaction }}List %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>array</code></span>
-        </summary>
-        <div class="desc"><div class="indent-1">The array of {{ transaction }} transaction objects.</div></div>
-
-        <div class="api-children">
-          <!-- array item object -->
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f {{ transaction }}List[] %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>object</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">The {{ transaction }} transaction object described in the <code>{{ transaction }}</code> resource below.</div></div>
-
-            <div class="api-children">
+          <summary>
+            {% if plural == "cancellations" %}
+              <span class="field">{% f cancellationList, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            {% else if plural == "reversals" %}
+              <span class="field">{% f reversalList, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            {% else %}
+              <span class="field">{% f transactionList, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            {% endif %}
+            <span class="type"><code>array</code></span>
+          </summary>
+          <div class="desc"><div class="indent-1">The {{ transaction }} transaction object described in the <code>{{ transaction }}</code> resource below.</div></div>
+          <div class="api-children">
               <!-- transaction.id -->
-              <details class="api-item" data-level="3">
-                <summary>
-                  <span class="field">{% f id, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-                  <span class="type"><code>string</code></span>
-                </summary>
-                {% capture id_md_txn %}{% include fields/id.md resource="transaction" %}{% endcapture %}
-                <div class="desc"><div class="indent-3">{{ id_md_txn | markdownify }}</div></div>
+              <details class="api-item" data-level="2">
+                  <summary>
+                      <span class="field">{% f id, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                      <span class="type"><code>string</code></span>
+                  </summary>
+                  {% capture id_md_txn %}{% include fields/id.md resource="transaction" %}{% endcapture %}
+                  <div class="desc"><div class="indent-2">{{ id_md_txn | markdownify }}</div></div>
               </details>
-
               <!-- created -->
-              <details class="api-item" data-level="3">
-                <summary>
-                  <span class="field">{% f created, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-                  <span class="type"><code>string</code></span>
-                </summary>
-                <div class="desc"><div class="indent-3">The ISO-8601 date and time of when the transaction was created.</div></div>
+              <details class="api-item" data-level="2">
+                  <summary>
+                      <span class="field">{% f created, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                      <span class="type"><code>string</code></span>
+                  </summary>
+                  <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was created.</div></div>
               </details>
-
               <!-- updated -->
-              <details class="api-item" data-level="3">
-                <summary>
-                  <span class="field">{% f updated, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-                  <span class="type"><code>string</code></span>
-                </summary>
-                <div class="desc"><div class="indent-3">The ISO-8601 date and time of when the transaction was updated.</div></div>
+              <details class="api-item" data-level="2">
+                  <summary>
+                      <span class="field">{% f updated, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                      <span class="type"><code>string</code></span>
+                  </summary>
+                  <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was updated.</div></div>
               </details>
-
               <!-- type -->
-              <details class="api-item" data-level="3">
-                <summary>
-                  <span class="field">{% f type, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-                  <span class="type"><code>string</code></span>
-                </summary>
-                <div class="desc"><div class="indent-3">Indicates the transaction type.</div></div>
+              <details class="api-item" data-level="2">
+                  <summary>
+                      <span class="field">{% f type, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                      <span class="type"><code>string</code></span>
+                  </summary>
+                  <div class="desc"><div class="indent-2">Indicates the transaction type.</div></div>
               </details>
-
               <!-- state -->
-              <details class="api-item" data-level="3">
-                <summary>
-                  <span class="field">{% f state, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-                  <span class="type"><code>string</code></span>
-                </summary>
-                {% capture state_md %}{% include fields/state.md %}{% endcapture %}
-                <div class="desc"><div class="indent-3">{{ state_md | markdownify }}</div></div>
+              <details class="api-item" data-level="2">
+                  <summary>
+                      <span class="field">{% f state, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                      <span class="type"><code>string</code></span>
+                  </summary>
+                  {% capture state_md %}{% include fields/state.md %}{% endcapture %}
+                  <div class="desc"><div class="indent-2">{{ state_md | markdownify }}</div></div>
               </details>
-
               <!-- number -->
-              <details class="api-item" data-level="3">
-                <summary>
-                  <span class="field">{% f number, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-                  <span class="type"><code>integer</code></span>
-                </summary>
-                {% capture number_md %}{% include fields/number.md %}{% endcapture %}
-                <div class="desc"><div class="indent-3">{{ number_md | markdownify }}</div></div>
+              <details class="api-item" data-level="2">
+                  <summary>
+                      <span class="field">{% f number, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                      <span class="type"><code>integer</code></span>
+                  </summary>
+                  {% capture number_md %}{% include fields/number.md %}{% endcapture %}
+                  <div class="desc"><div class="indent-2">{{ number_md | markdownify }}</div></div>
               </details>
-
               <!-- amount -->
-              <details class="api-item" data-level="3">
-                <summary>
-                  <span class="field">{% f amount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-                  <span class="type"><code>integer</code></span>
-                </summary>
-                {% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
-                <div class="desc"><div class="indent-3">{{ amount_md | markdownify }}</div></div>
+              <details class="api-item" data-level="2">
+                  <summary>
+                      <span class="field">{% f amount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                      <span class="type"><code>integer</code></span>
+                  </summary>
+                  {% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
+                  <div class="desc"><div class="indent-2">{{ amount_md | markdownify }}</div></div>
               </details>
-
               <!-- vatAmount -->
-              <details class="api-item" data-level="3">
-                <summary>
-                  <span class="field">{% f vatAmount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-                  <span class="type"><code>integer</code></span>
-                </summary>
-                {% capture vat_amount_md %}{% include fields/vat-amount.md %}{% endcapture %}
-                <div class="desc"><div class="indent-3">{{ vat_amount_md | markdownify }}</div></div>
+              <details class="api-item" data-level="2">
+                  <summary>
+                      <span class="field">{% f vatAmount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                      <span class="type"><code>integer</code></span>
+                  </summary>
+                  {% capture vat_amount_md %}{% include fields/vat-amount.md %}{% endcapture %}
+                  <div class="desc"><div class="indent-2">{{ vat_amount_md | markdownify }}</div></div>
               </details>
-
               <!-- description -->
-              <details class="api-item" data-level="3">
-                <summary>
-                  <span class="field">{% f description, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-                  <span class="type"><code>string</code></span>
-                </summary>
-                {% capture description_md %}{% include fields/description.md %}{% endcapture %}
-                <div class="desc"><div class="indent-3">{{ description_md | markdownify }}</div></div>
+              <details class="api-item" data-level="2">
+                  <summary>
+                      <span class="field">{% f description, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                      <span class="type"><code>string</code></span>
+                  </summary>
+                  {% capture description_md %}{% include fields/description.md %}{% endcapture %}
+                  <div class="desc"><div class="indent-2">{{ description_md | markdownify }}</div></div>
               </details>
-
               <!-- payeeReference -->
-              <details class="api-item" data-level="3">
-                <summary>
-                  <span class="field">{% f payeeReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-                  <span class="type"><code>string(30)</code></span>
-                </summary>
-                {% capture payee_reference_md %}{% include fields/payee-reference.md describe_receipt=true %}{% endcapture %}
-                <div class="desc"><div class="indent-3">{{ payee_reference_md | markdownify }}</div></div>
+              <details class="api-item" data-level="2">
+                  <summary>
+                      <span class="field">{% f payeeReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                      <span class="type"><code>string(30)</code></span>
+                  </summary>
+                  {% capture payee_reference_md %}{% include fields/payee-reference.md describe_receipt=true %}{% endcapture %}
+                  <div class="desc"><div class="indent-2">{{ payee_reference_md | markdownify }}</div></div>
               </details>
-
               <!-- receiptReference (only for invoice) -->
               {% if api_resource == "invoice" %}
-              <details class="api-item" data-level="3">
-                <summary>
-                  <span class="field">{% f receiptReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-                  <span class="type"><code>string</code></span>
-                </summary>
-                {% capture receipt_reference_md %}{% include fields/receipt-reference.md %}{% endcapture %}
-                <div class="desc"><div class="indent-3">{{ receipt_reference_md | markdownify }}</div></div>
-              </details>
+                  <details class="api-item" data-level="3">
+                      <summary>
+                        <span class="field">{% f receiptReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                        <span class="type"><code>string</code></span>
+                      </summary>
+                      {% capture receipt_reference_md %}{% include fields/receipt-reference.md %}{% endcapture %}
+                      <div class="desc"><div class="indent-3">{{ receipt_reference_md | markdownify }}</div></div>
+                  </details>
               {% endif %}
-
               <!-- isOperational -->
-              <details class="api-item" data-level="3">
-                <summary>
-                  <span class="field">{% f isOperational, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-                  <span class="type"><code>bool</code></span>
-                </summary>
-                <div class="desc"><div class="indent-3"><code>true</code> if the transaction is operational; otherwise <code>false</code>.</div></div>
+              <details class="api-item" data-level="2">
+                  <summary>
+                      <span class="field">{% f isOperational, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                      <span class="type"><code>bool</code></span>
+                  </summary>
+                  <div class="desc"><div class="indent-2"><code>true</code> if the transaction is operational; otherwise <code>false</code>.</div></div>
               </details>
-
               <!-- operations -->
-              <details class="api-item" data-level="3">
-                <summary>
-                  <span class="field">{% f operations, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-                  <span class="type"><code>array</code></span>
-                </summary>
-                {% capture operations_md %}{% include fields/operations.md resource="transaction" %}{% endcapture %}
-                <div class="desc"><div class="indent-3">{{ operations_md | markdownify }}</div></div>
+              <details class="api-item" data-level="2">
+                  <summary>
+                      <span class="field">{% f operations, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                      <span class="type"><code>array</code></span>
+                  </summary>
+                  {% capture operations_md %}{% include fields/operations.md resource="transaction" %}{% endcapture %}
+                  <div class="desc"><div class="indent-2">{{ operations_md | markdownify }}</div></div>
               </details>
-            </div>
-          </details>
-        </div>
+          </div>
       </details>
     </div>
   </details>
