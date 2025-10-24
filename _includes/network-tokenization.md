@@ -144,8 +144,8 @@ track of it. See the [Paid resource for cards][paid-resource-model].
 
 [card]: /old-implementations/payment-instruments-v1/card/
 [paid-resource-model]: /checkout-v3/technical-reference/resource-sub-models#card-paid-resource
-[one-click]: /checkout-v3/features/optional/one-click
+[one-click]: /checkout-v3/features/optional/one-click-payments/
 [unscheduled]: /checkout-v3/features/optional/unscheduled
 [recur]: /checkout-v3/features/optional/recur
 [payment-order]: /checkout-v3/get-started/payment-request
-[test-data]: /checkout-v3/test-data/network-tokenization
+[test-data]: /checkout-v3/test-data
