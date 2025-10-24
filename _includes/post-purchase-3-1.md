@@ -111,7 +111,7 @@ accompanying `href` returned in the `operations` list. See the abbreviated
 request and response below:
 
 {: .text-right}
-[Top of page](#payment-order-v31)
+[Top of page](#post-purchase-v31)
 
 {: .h3 }
 
@@ -215,7 +215,7 @@ Content-Type: application/json;version=3.1{% endcapture %}
 
 {: .text-right .mt-3}
 
-[Top of page](#payment-order-v31)
+[Top of page](#post-purchase-v31)
 
 {: .h3 }
 
@@ -607,7 +607,7 @@ api-supported-versions: 3.1{% endcapture %}
 </div>
 
 {: .text-right .mt-3}
-[Top of page](#payment-order-v31)
+[Top of page](#post-purchase-v31)
 
 {: .h3 }
 
@@ -638,7 +638,7 @@ the payer wants to return goods? For these instances, we have `cancel` and
 {% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
 
 {: .text-right}
-[Top of page](#payment-order-v31)
+[Top of page](#post-purchase-v31)
 
 {: .h3 }
 
@@ -654,7 +654,7 @@ must be funds left that are only authorized. If you cancel before any capture
 has been done, no captures can be performed later.
 
 {: .text-right}
-[Top of page](#payment-order-v31)
+[Top of page](#post-purchase-v31)
 
 {: .h3 }
 
@@ -721,7 +721,7 @@ Content-Type: application/json;version=3.1{% endcapture %}
 </div>
 
 {: .text-right}
-[Top of page](#payment-order-v31)
+[Top of page](#post-purchase-v31)
 
 {: .h3 }
 
@@ -1134,7 +1134,7 @@ api-supported-versions: 3.1{% endcapture %}
 </div>
 
 {: .text-right .mt-3}
-[Top of page](#payment-order-v31)
+[Top of page](#post-purchase-v31)
 
 {: .h3 }
 
@@ -1164,7 +1164,7 @@ sequenceDiagram
 {% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
 
 {: .text-right}
-[Top of page](#payment-order-v31)
+[Top of page](#post-purchase-v31)
 
 {: .h2 }
 
@@ -1185,7 +1185,7 @@ If we want to reverse a previously captured amount, we need to perform
 `operations` list.
 
 {: .text-right}
-[Top of page](#payment-order-v31)
+[Top of page](#post-purchase-v31)
 
 {: .h3 }
 
@@ -1444,7 +1444,7 @@ Content-Type: application/json;version=3.1{% endcapture %}
 </div>
 
 {: .text-right .mt-3}
-[Top of page](#payment-order-v31)
+[Top of page](#post-purchase-v31)
 
 {: .h3 }
 
@@ -1879,7 +1879,7 @@ clicking **Additional Request Options**.
 {% include card-list.html card_list=page.card_list col_class="col-lg-5" %}
 
 {: .text-right .mt-3}
-[Top of page](#payment-order-v31)
+[Top of page](#post-purchase-v31)
 
 {% include iterator.html prev_href="/checkout-v3/get-started/validate-status"
                          prev_title="Back To Validate Status"
