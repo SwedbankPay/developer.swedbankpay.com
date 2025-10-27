@@ -321,8 +321,8 @@ PAX-3740 Improved save button design on ECR initial setup screens.
 
 PAX-3733 Fix swedish translation for no more pin attempts.
 
-PAX-3725 Fixed an issue that certain senarios triggered multiple messages to the
-ECR when aborting a transaction.
+PAX-3725 Fixed an issue that certain scenarios triggered multiple messages to
+the ECR when aborting a transaction.
 
 PAX-3723 Improved card acquisition cancelling.
 
