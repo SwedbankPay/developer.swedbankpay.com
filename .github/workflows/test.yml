@@ -36,7 +36,7 @@ jobs:
             --site-url=https://developer.swedbankpay.com
 
       - name: Upload site
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: build-site
           path: _site
