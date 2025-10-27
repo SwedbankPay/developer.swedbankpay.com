@@ -323,7 +323,7 @@ Content-Type: application/json{% endcapture %}
       <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
-    <div class="desc"><div class="indent-0">The <code>object</code> representation of the generic <a href="#transaction-resource">transaction resource</a>.</div></div>
+    <div class="desc"><div class="indent-0">The <code>object</code> representation of the generic transaction resource</a>.</div></div>
 
     <div class="api-children">
         <!-- amount -->
