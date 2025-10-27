@@ -87,7 +87,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-0">The OAuth 2 Access Token is generated in the [Merchant Portal][admin].</div></div>
+        <div class="desc"><div class="indent-0">The OAuth 2 Access Token is generated in the Merchant Portal.</div></div>
     </details>
 
     <!-- User-Agent -->
