@@ -96,7 +96,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
           <span class="field">{% f User-Agent, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-0">The [user agent][user-agent] of the HTTP client making the HTTP request. Should be set to identify the system performing requests towards Swedbank Pay. The value submitted here will be returned in the response field <code>initiatingSystemUserAgent</code>.</div></div>
+        <div class="desc"><div class="indent-0">The user agent of the HTTP client making the HTTP request. Should be set to identify the system performing requests towards Swedbank Pay. The value submitted here will be returned in the response field <code>initiatingSystemUserAgent</code>.</div></div>
     </details>
 
     <!-- Accept -->
