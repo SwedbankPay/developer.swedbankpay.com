@@ -106,7 +106,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-0">The [content type][content-type] accepted by the client. Usually set to <code>application/json</code> and <code>application/problem+json</code> so both regular responses as well as errors can be received properly.</div></div>
+        <div class="desc"><div class="indent-0">The content type accepted by the client. Usually set to <code>application/json</code> and <code>application/problem+json</code> so both regular responses as well as errors can be received properly.</div></div>
     </details>
 
     <!-- Session-Id -->
