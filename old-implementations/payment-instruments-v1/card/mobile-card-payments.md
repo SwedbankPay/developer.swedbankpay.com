@@ -1,5 +1,6 @@
 ---
 title: Mobile
+permalink: /:path/mobile-card-payments/
 redirect_from: /payments/card/mobile-card-payments
 menu_order: 800
 ---
@@ -139,10 +140,10 @@ sequenceDiagram
         end
 ```
 
-{% include iterator.html prev_href="redirect" prev_title="Redirect"
-next_href="after-payment" next_title="After Payment" %}
+{% include iterator.html prev_href="/old-implementations/payment-instruments-v1/card/redirect" prev_title="Redirect"
+next_href="/old-implementations/payment-instruments-v1/card/after-payment" next_title="After Payment" %}
 
-[create-payment]: /old-implementations/payment-instruments-v1/card/features/technical-reference/create-payment
+[create-payment]: /old-implementations/payment-instruments-v1/card/technical-reference/create-payment
 [purchase]: /old-implementations/payment-instruments-v1/card/features/core/purchase
 [mobile-redirect-page]: /assets/img/payments/mobile-card-page.png
 [swedish-mobile-redirect-page]: /assets/img/payments/swedish-mobile-card-page.png

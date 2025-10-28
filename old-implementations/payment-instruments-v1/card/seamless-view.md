@@ -1,6 +1,7 @@
 ---
 title: Seamless View
 redirect_from: /payments/card/seamless-view
+permalink: /:path/seamless-view/
 description: |
   The Seamless View purchase scenario
   represents the opportunity to implement card payments

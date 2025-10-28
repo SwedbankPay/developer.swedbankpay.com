@@ -69,7 +69,7 @@ Swedish `sv-SE`.
 
 {% include iterator.html next_href="redirect" next_title="Redirect" %}
 
-[payment-resource]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-resource
-[after-payment]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/operations
+[payment-resource]: /old-implementations/payment-instruments-v1/vipps/technical-reference/payment-resource
+[after-payment]: /old-implementations/payment-instruments-v1/vipps/technical-reference/operations
 [vipps-redirect]: /assets/img/payments/vipps-redirect-en.png
 [vipps-number-input]: /assets/img/payments/vipps-number-input-en.png

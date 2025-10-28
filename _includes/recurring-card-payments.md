@@ -108,35 +108,249 @@ Content-Type: application/json{% endcapture %}
     json= request_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-|     Required     | Field                          | Type         | Description                                                                                                                                                                                                                                                                           |
-| :--------------: | :----------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| {% icon check %} | {% f payment, 0 %}                      | `object`     | The payment object.                                                                                                                                                                                                                                                                  |
-| {% icon check %} | `operation`                    | `object`     | `Recur`.                                                                                                                                                                                                                                                                              |
-| {% icon check %} | {% f intent %}                | `string` | {% include fields/intent.md %} |
-| {% icon check %} | {% f recurrenceToken %}      | `string`     | The created recurrenceToken, if `operation: Verify`, `operation: Recur` or `generateRecurrenceToken: true` was used.                                                                                                                                                                  |
-| {% icon check %} | {% f currency %}             | `string`     | The currency of the payment order.                                                                                                                                                                                                                                                    |
-| {% icon check %} | {% f amount %}               | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                             |
-| {% icon check %} | {% f vatAmount %}            | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                          |
-| {% icon check %} | {% f description %}          | `string`     | {% include fields/description.md %}                                                                                                                                                                                     |
-| {% icon check %} | {% f userAgent, 2 %}           | `string`     | The [`User-Agent` string](https://en.wikipedia.org/wiki/User_agent) of the payer's web browser.                                                                                                                                                                                                                  |
-| {% icon check %} | {% f language, 2 %}            | `string`     | {% include fields/language.md %}                                                                                                                                                                                                              |
-| {% icon check %} | {% f urls, 2 %}                | `string`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                                                                                                                                                                          |
-| {% icon check %} | {% f callbackUrl, 2 %}         | `string`     | {% include fields/callback-url.md %}                                                                                                                              |
-| {% icon check %} | {% f payeeInfo %}            | `object`     | {% include fields/payee-info.md %}                                                                                                                                                                                          |
-| {% icon check %} | {% f payeeId, 2 %}             | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                 |
-| {% icon check %} | {% f payeeReference %}       | `string(50)` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                          |
-|                  | {% f receiptReference %}     | `string(30)` | {% include fields/receipt-reference.md %}                                                                                                                                                               |
-| {% icon check %} | {% f payeeName, 2 %}           | `string`     | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                                               |
-| {% icon check %} | {% f productCategory, 2 %}     | `string(50)`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                        |
-| {% icon check %} | {% f orderReference, 2 %}      | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                               |
-| {% icon check %} | {% f subsite, 2 %}             | `string(40)` | {% include fields/subsite.md %} |
-|                  | {% f payer %}                | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
-|                  | {% f payerReference, 2 %}      | `string`     | {% include fields/payer-reference.md %}                                                                                                                                                                                                                                                           |
-|                  | {% f metadata %}             | `object`     | {% include fields/metadata.md %}                                                                                                                                                 |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+{% capture intent_md %}{% include fields/intent.md %}{% endcapture %}
+{% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
+{% capture vat_amount_md %}{% include fields/vat-amount.md %}{% endcapture %}
+{% capture description_md %}{% include fields/description.md %}{% endcapture %}
+{% capture language_md %}{% include fields/language.md %}{% endcapture %}
+{% capture callback_url_md %}{% include fields/callback-url.md %}{% endcapture %}
+{% capture payee_info_md %}{% include fields/payee-info.md %}{% endcapture %}
+{% capture payee_reference_md %}{% include fields/payee-reference.md describe_receipt=true %}{% endcapture %}
+{% capture metadata_md %}{% include fields/metadata.md %}{% endcapture %}
+
+<div class="api-compact" aria-label="Request">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Required</div>
+  </div>
+
+  <!-- Root: payment (function 0) -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f payment, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc"><div class="indent-0">The payment object</div></div>
+
+    <div class="api-children">
+      <!-- operation (literal field name as given) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field"><code>operation</code><i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>object</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1"><code>Recur</code>.</div></div>
+      </details>
+
+      <!-- intent -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f intent, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ intent_md | markdownify }}</div></div>
+      </details>
+
+      <!-- recurrenceToken -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f recurrenceToken, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The created <code>recurrenceToken</code>, if <code>operation: Verify</code>, <code>operation: Recur</code> or <code>generateRecurrenceToken: true</code> was used.</div></div>
+      </details>
+
+      <!-- currency -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f currency, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The currency of the payment order.</div></div>
+      </details>
+
+      <!-- amount -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f amount, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>integer</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
+      </details>
+
+      <!-- vatAmount -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f vatAmount, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>integer</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ vat_amount_md | markdownify }}</div></div>
+      </details>
+
+      <!-- description -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f description, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ description_md | markdownify }}</div></div>
+      </details>
+
+      <!-- userAgent (level 2 as given) -->
+      <details class="api-item" data-level="2">
+        <summary>
+          <span class="field">{% f userAgent, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc">
+          <div class="indent-2">The <a href="https://en.wikipedia.org/wiki/User_agent"><code>User-Agent</code> string</a> of the payer's web browser.</div>
+        </div>
+      </details>
+
+      <!-- language (level 2) -->
+      <details class="api-item" data-level="2">
+        <summary>
+          <span class="field">{% f language, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-2">{{ language_md | markdownify }}</div></div>
+      </details>
+
+      <!-- urls (level 2) -->
+      <details class="api-item" data-level="2">
+        <summary>
+          <span class="field">{% f urls, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-2">The URL to the <code>urls</code> resource where all URLs related to the payment order can be retrieved.</div></div>
+      </details>
+
+      <!-- callbackUrl (level 2) -->
+      <details class="api-item" data-level="2">
+        <summary>
+          <span class="field">{% f callbackUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-2">{{ callback_url_md | markdownify }}</div></div>
+      </details>
+
+      <!-- payeeInfo -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f payeeInfo, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>object</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ payee_info_md | markdownify }}</div></div>
+
+        <div class="api-children">
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f payeeId, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f payeeReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string(50)</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ payee_reference_md | markdownify }}</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f receiptReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string(30)</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{% include fields/receipt-reference.md %}</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f payeeName, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f productCategory, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string(50)</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f orderReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string(50)</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The order reference should reflect the order reference found in the merchant's systems.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f subsite, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string(40)</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">{% include fields/subsite.md %}</div></div>
+          </details>
+        </div>
+      </details>
+
+      <!-- payer -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f payer, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The <code>payer</code> object, containing information about the payer.</div></div>
+
+        <div class="api-children">
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f payerReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{% include fields/payer-reference.md %}</div></div>
+          </details>
+        </div>
+      </details>
+
+      <!-- metadata -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f metadata, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>object</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ metadata_md | markdownify }}</div></div>
+      </details>
+    </div>
+  </details>
+</div>
 
 {% include alert.html type="informative" icon="info" body="
 Please note that this `POST`request is made directly on the payment level,

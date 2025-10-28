@@ -283,7 +283,7 @@ PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
             val containerViewId = R.id.sdk_3d_secure_fragment // Specify a container ID for the fragment
             supportFragmentManager.beginTransaction()
                 .add(containerViewId, paymentState.fragment, "3DSecureFragment")
-                .commit() 
+                .commit()
             Log.d("SwedbankPay", "Show 3D Secure Fragment")
         }
 
@@ -402,7 +402,7 @@ PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
             val containerViewId = R.id.sdk_payment_fragment // Specify a container ID for the fragment
             supportFragmentManager.beginTransaction()
                 .add(containerViewId, paymentState.fragment, "PaymentFragment")
-                .commit() 
+                .commit()
         }
 
         is PaymentSessionState.PaymentSessionComplete,
@@ -802,6 +802,87 @@ Numbers in the Wallet app of the device. When testing Apple Pay, you must use a
 Sandbox Apple ID and Test Cards. Production Apple Pay Cards will not work and
 you should never use production credit cards in testing environments.
 
+## Payment menu styling
+
+{% include alert.html type="warning" icon="warning" body="This feature is only
+available for merchants who have a specific agreement with Swedbank Pay." %}
+
+Styling the payment menu is done by setting `paymentMenuStyle` on the payment session.
+This must be done before showing the menu.
+
+The elements you can adjust is limited to the CTA button. You can read more about [custom styling here][custom-styling].
+
+Creating `paymentMenuStyle` can be done by parsing a json string.
+
+```swift
+// iOS
+let styleText = """
+    {
+        button: {
+            backgroundColor: "#000000",
+            color: "#FFFFFF",
+            borderRadius: "0px",
+            disabled: {
+                color: "#FFFFFF",
+                backgroundColor: "#DDDDDD"
+            }
+        }
+    }
+"""
+
+var paymentMenuStyle: [String: Any] {
+    let cssString = styleText.trimmingCharacters(in: .whitespacesAndNewlines)
+    return parse(text: cssString) ?? [:]
+}
+    
+private func parse(text: String) -> [String: Any]? {
+    let context = JSContext()
+    let jsResult = context?.evaluateScript(
+    """
+    var result = \(text);
+    result;
+    """
+    )
+    let rawResult = jsResult.flatMap {
+        $0.isObject ? $0.toDictionary() : nil
+    }
+    let resultWithStringKeys = rawResult?.map { (key, value) in
+        (String(describing: key), value)
+    }
+    return resultWithStringKeys.map {
+        .init($0, uniquingKeysWith: { (first, _) in first })
+    }
+}
+
+// Set style on the payment session
+paymentSession.paymentMenuStyle = paymentMenuStyle
+```
+
+In the example below we are using Gson to parse the json string.
+Feel free to use whatever parsing library you prefer.
+
+```kotlin
+// Android
+val paymentMenuStyling = """
+    {
+        button: {
+            backgroundColor: "#000000",
+            color: "#FFFFFF",
+            borderRadius: "0px",
+            disabled: {
+                color: "#FFFFFF",
+                backgroundColor: "#DDDDDD"
+            }
+        }
+    }
+""".trimIndent()
+
+val parsedStyling = Gson().fromJson(paymentMenuStyling, Map::class.java)
+
+// Set style on the payment session
+paymentSession.paymentMenuStyle = parsedStyling
+```
+
 ## Problem handling
 
 There are two categories of problems that can occur during a payment session,
@@ -944,12 +1025,11 @@ let restrictedToInstruments = availableInstruments.filter {
     if case .webBased = $0 {
         return true
     }
-    
+
     return false
 }
 paymentSession.createSwedbankPaySDKController(mode: .menu(restrictedToInstruments: restrictedToInstruments))
 ```
-
 
 ```kotlin
 val restrictedToInstruments = availableInstruments.filterIsInstance<AvailableInstrument.WebBased>()
@@ -1079,7 +1159,7 @@ sequenceDiagram
     participant SDK
     participant Backend as Merchant Backend
     participant SWP as Payment Order API
-    
+
     opt If you want to present saved tokens
         App ->> Backend: Fetch saved credit cards
         activate Backend
@@ -1127,7 +1207,7 @@ sequenceDiagram
 [android-bare-minimum-payment-session]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-sdk-payment-session
 [ios-bare-minimum-setup]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-setup
 [ios-bare-minimum-payment-session]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-sdk-payment-session
-[problem-technical-reference]: /checkout-v3/features/technical-reference/problems/
+[problem-technical-reference]: /checkout-v3/technical-reference/problems/
 [usage]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#usage
 [android-saved-credit-cards]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#saved-credit-cards
 [detailed-usage-flows]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#detailed-usage-flows
@@ -1141,3 +1221,4 @@ sequenceDiagram
 [google-pay-test-group]: https://groups.google.com/g/googlepay-test-mode-stub-data
 [apple-pay-setup]: https://developer.apple.com/documentation/passkit_apple_pay_and_wallet/apple_pay/setting_up_apple_pay
 [apple-pay-sandbox]: https://developer.apple.com/apple-pay/sandbox-testing/
+[custom-styling]: /checkout-v3/features/customize-ui/custom-styling

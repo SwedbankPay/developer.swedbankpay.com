@@ -1,5 +1,6 @@
 ---
 title: After Payment
+permalink: /:path/after-payment/
 redirect_from: /payments/vipps/after-payment
 menu_order: 1200
 ---
@@ -77,7 +78,7 @@ Content-Type: application/json{% endcapture %}
 | {% icon check %}︎ | {% f operation %}          | `string`     | {% include fields/operation.md resource="payment" %}                                                                                                                                                                                                                                                |
 | {% icon check %}︎ | {% f intent %}             | `string`     | `Authorization`                                                                                                                                                                                                                                           |
 | {% icon check %}︎ | {% f currency %}           | `string`     | NOK                                                                                                                                                                                                                                                       |
-| {% icon check %}︎ | {% f prices %}             | `object`     | The [`prices`](/old-implementations/payment-instruments-v1/vipps/features/technical-reference/prices) object.                                                                                                                                                                                                                            |
+| {% icon check %}︎ | {% f prices %}             | `object`     | The [`prices`](/old-implementations/payment-instruments-v1/vipps/technical-reference/prices) object.                                                                                                                                                                                                                            |
 | {% icon check %}︎ | {% f type, 2 %}              | `string`     | `vipps`                                                                                                                                                                                                                                                   |
 | {% icon check %}︎ | {% f amount, 2 %}            | `integer`    | {% include fields/amount.md currency="NOK" %}                                                                                                                                                                                                  |
 | {% icon check %}︎ | {% f vatAmount, 2 %}         | `integer`    | {% include fields/vat-amount.md currency="NOK" %}                                                                                                                                                                                               |
@@ -343,9 +344,9 @@ Content-Type: application/json{% endcapture %}
 {% include abort-reference.md %}
 
 {% include iterator.html
-        prev_href="capture"
+        prev_href="/old-implementations/payment-instruments-v1/vipps/capture"
         prev_title="Capture"
-        next_href="features"
+        next_href="/old-implementations/payment-instruments-v1/vipps/features"
         next_title="Features" %}
 
 [abort]: /old-implementations/payment-instruments-v1/vipps/after-payment#abort

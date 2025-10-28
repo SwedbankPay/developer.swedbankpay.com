@@ -1,5 +1,5 @@
 {%- capture documentation_section -%}{%- include utils/documentation-section.md -%}{%- endcapture -%}
-{%- capture payee_info_url -%}{%- include utils/documentation-section-url.md href="/features/technical-reference/payee-info" -%}{%- endcapture -%}
+{%- capture payee_info_url -%}{%- include utils/documentation-section-url.md href="/technical-reference/payee-info" -%}{%- endcapture -%}
 {%- capture text -%}
 The `payeeInfo` object, containing information about the payee (the recipient of
 the money). See [`payeeInfo`]({{ payee_info_url }}) for details.

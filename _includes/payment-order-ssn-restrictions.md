@@ -48,13 +48,13 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
 {% capture request_content %}{
     "paymentorder": {
-    "payer": {
+        "payer": {
             "digitalProducts": false,
             "nationalIdentifier": {
                 "socialSecurityNumber": "{{ page.consumer_ssn_se }}",
                 "countryCode": "SE",
                 "guestMode": true
-             },
+            },
             "restrictedToSocialSecurityNumber": true,
             "firstName": "Leia",
             "lastName": "Ahlström",
@@ -71,21 +71,138 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     json= request_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-| Required         | Field     | Type         | Description   |
-| :--------------: | :-------- | :----------- | :------------ |
-|                  | {% f payer %}                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                |
-| | {% f digitalProducts %}                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. | {% if documentation_section contains "old-implementations/enterprise" %}
-|                  | {% f nationalIdentifier, 2 %}    | `object` | The national identifier object.                                                                      |
-|                  | {% f socialSecurityNumber, 3 %} | `string` | The payer's social security number. |
-|                  | {% f countryCode, 3 %}          | `string` | The country code of the payer.                                                                     |
-|                  | {% f guestMode, 3 %}          | `bool` | Set to `true` if you do not want to do a lookup to checkout profile, and only want to use the Social Security Number to restrict a payment.                                                                     | {% endif %}
-|                  | {% f restrictedToSocialSecurityNumber, 2 %}                    | `bool`     | Set to `true` if you want to restrict your payment to a Social Security Number.                                                                                                |
-| {% icon check %} | {% f firstName, 2 %}                    | `string`     | The first name of the payer.                                                                                                                                                                                                                                                                              |
-| {% icon check %} | {% f lastName, 2 %}                    | `string`     | The last name of the payer.                                                                                                                                                                                                                                                                              |
-|                  | {% f email, 2 %}                   | `string`     | The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer's profile, if not already set. Increases the chance for {% if documentation_section contains "checkout-v3" %} [frictionless 3-D Secure 2 flow]({{ features_url }}/customize-payments/frictionless-payments) {% else %} [frictionless 3-D Secure 2 flow]({{ features_url }}/core/frictionless-payments) {% endif %}.                                                                             |
-|                  | {% f msisdn, 2 %}                  | `string`     | The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer's profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to {% if documentation_section contains "checkout-v3" %} [3-D Secure 2]({{ features_url }}/customize-payments/frictionless-payments) {% else %} [3-D Secure 2]({{ features_url }}/core/frictionless-payments) {% endif %}.            |
-|                  | {% f payerReference, 2 %}                     | `string`     | A reference used in Enterprise integrations to recognize the payer in the absence of SSN and/or a secure login. Read more about this in the [payerReference](/old-implementations/enterprise/features/optional/enterprise-payer-reference) feature section.                                                                                                                                                                                                                       |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+<div class="api-compact" aria-label="Request">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Required</div>
+  </div>
+
+  <!-- Root: paymentOrder (level 0) -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The <code>paymentOrder</code> object.</div></div>
+
+    <!-- Children of paymentOrder -->
+    <div class="api-children">
+
+      <!-- payer (first child at level 1) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f payer, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>object</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The <code>payer</code> object containing information about the payer relevant for the payment order.</div></div>
+
+        <!-- Children of payer (all level 2) -->
+        <div class="api-children">
+          <!-- digitalProducts -->
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f digitalProducts, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>bool</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Set to <code>true</code> for merchants who only sell digital goods and only require <code>email</code> and/or <code>msisdn</code> as shipping details. Set to <code>false</code> if the merchant also sells physical goods.</div></div>
+          </details>
+
+          <!-- nationalIdentifier (now included, object) -->
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f nationalIdentifier, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>object</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The national identifier object.</div></div>
+
+            <!-- Children of nationalIdentifier (level 3) -->
+            <div class="api-children">
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f socialSecurityNumber, 3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The payer's social security number.</div></div>
+              </details>
+
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f countryCode, 3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                  <span class="type"><code>string</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The country code of the payer.</div></div>
+              </details>
+
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f guestMode, 3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                  <span class="type"><code>bool</code></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Set to <code>true</code> if you do not want to do a lookup to checkout profile, and only want to use the Social Security Number to restrict a payment.</div></div>
+              </details>
+            </div>
+          </details>
+
+          <!-- restrictedToSocialSecurityNumber -->
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f restrictedToSocialSecurityNumber, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>bool</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Set to <code>true</code> if you want to restrict your payment to a Social Security Number.</div></div>
+          </details>
+
+          <!-- firstName (required) -->
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f firstName, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The first name of the payer.</div></div>
+          </details>
+
+          <!-- lastName (required) -->
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f lastName, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
+            </summary>
+            <div class="desc"><div class="indent-2">The last name of the payer.</div></div>
+          </details>
+
+          <!-- email -->
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f email, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer's profile, if not already set. Increases the chance for {% if documentation_section contains "checkout-v3" %}<a href="{{ features_url }}/customize-payments/frictionless-payments">frictionless 3-D Secure 2 flow</a>{% else %}<a href="{{ features_url }}/core/frictionless-payments">frictionless 3-D Secure 2 flow</a>{% endif %}.</div></div>
+          </details>
+
+          <!-- msisdn -->
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f msisdn, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer's profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to {% if documentation_section contains "checkout-v3" %}<a href="{{ features_url }}/customize-payments/frictionless-payments">3-D Secure 2</a>{% else %}<a href="{{ features_url }}/core/frictionless-payments">3-D Secure 2</a>{% endif %}.</div></div>
+          </details>
+
+          <!-- payerReference -->
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f payerReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">A reference used in Enterprise integrations to recognize the payer in the absence of SSN and/or a secure login. Read more about this in the <a href="/old-implementations/enterprise/features/optional/enterprise-payer-reference">payerReference</a> feature section.</div></div>
+          </details>
+
+        </div>
+      </details>
+
+    </div>
+  </details>
+</div>

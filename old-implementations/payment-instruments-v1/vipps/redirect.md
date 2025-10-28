@@ -1,6 +1,7 @@
 ---
 title: Redirect
 redirect_from: /payments/vipps/redirect
+permalink: /:path/redirect/
 description: |
   **Vipps** is a two-phase
   payment method supported by the major Norwegian banks. In the redirect
@@ -401,7 +402,7 @@ purchased products) have to make a [Capture][capture] or
 
 {% include iterator.html prev_href="./"
                          prev_title="Introduction"
-                         next_href="seamless-view"
+                         next_href="/old-implementations/payment-instruments-v1/vipps/seamless-view"
                          next_title="Seamless view" %}
 
 [cancel]: /old-implementations/payment-instruments-v1/vipps/features/core/cancel

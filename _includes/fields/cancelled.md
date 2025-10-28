@@ -1,6 +1,6 @@
 {%- capture url -%}
     {%- include utils/documentation-section-url.md
-        href='/features/technical-reference/resource-sub-models#cancelled' -%}
+        href='/technical-reference/resource-sub-models#cancelled' -%}
 {%- endcapture -%}
 {%- capture text -%}
 The URL to the [`cancelled` resource]({{ url }}) where information about the

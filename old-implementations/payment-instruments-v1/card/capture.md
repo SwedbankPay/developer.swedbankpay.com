@@ -1,5 +1,6 @@
 ---
 title: Capture
+permalink: /:path/capture/
 redirect_from: /payments/card/capture
 description: |
   When the authorization is completed, it is time to capture the funds. How you

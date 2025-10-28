@@ -1,4 +1,5 @@
 {% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture techref_url %}{% include utils/documentation-section-url.md %}{% endcapture %}
 
 ## Payment And Transaction States
 
@@ -53,6 +54,6 @@ the course of a purchase. You can find a short description of each state below.
     like Swish, Vipps or MobilePay, or 3-D Secure verifications for card
     payments.
 
-[aborted-payment]: {{ features_url }}/technical-reference/operations#operation-aborted-payment
-[failed-payment]: {{ features_url }}/technical-reference/operations#operation-failed-payment
-[paid-payment]: {{ features_url }}/technical-reference/operations#operation-paid-payment
+[aborted-payment]: {{ techref_url }}/technical-reference/operations#operation-aborted-payment
+[failed-payment]: {{ techref_url }}/technical-reference/operations#operation-failed-payment
+[paid-payment]: {{ techref_url }}/technical-reference/operations#operation-paid-payment

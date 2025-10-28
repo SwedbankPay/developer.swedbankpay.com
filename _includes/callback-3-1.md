@@ -254,18 +254,61 @@ original `POST` when you created the `paymentOrder`.
     json= response_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
+{% capture id_md %}{% include fields/id.md resource="paymentorder" %}{% endcapture %}
 
-| Field                    | Type         | Description                                                                                                                                                                                                               |
-| :----------------------- | :----------- | :------------------- |
-| {% f orderReference, 0 %}                | `string`     | The order reference found in the merchant's systems.  If included in the request, the orderReference will appear in the callback.                     |
-| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
-| {% f id %}  | `string`   | {% include fields/id.md resource="paymentorder" %} |
-| {% f instrument %}                | `string`     | The payment method used in the payment.                     |
-| {% f number %}                | `string`     | The attempt number which triggered the callback.                     |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+<div class="api-compact" aria-label="Callback Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
+
+  <!-- LEVEL 0: orderReference -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f orderReference, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The order reference found in the merchant's systems. If included in the request, the <code>orderReference</code> will appear in the callback.</div></div>
+  </details>
+
+  <!-- LEVEL 0: paymentOrder -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The payment order object.</div></div>
+
+    <!-- LEVEL 1: children of paymentOrder -->
+    <div class="api-children">
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f instrument %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The payment method used in the payment.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f number %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The attempt number which triggered the callback.</div></div>
+      </details>
+
+    </div>
+  </details>
+</div>
 
 {: .text-right .mt-3}
 

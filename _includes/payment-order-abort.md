@@ -1,6 +1,7 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
 {% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture techref_url %}{% include utils/documentation-section-url.md %}{% endcapture %}
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 
 ## Abort
@@ -26,7 +27,6 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
 {% capture request_content %}{
-{
   "paymentorder": {
     "operation": "Abort",
     "abortReason": "CancelledByConsumer"
@@ -39,12 +39,53 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     json= request_content
     %}
 
-{:.table .table-striped}
-| Field                    | Type         | Description                                                                                                                                                                                                               |
-| :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
-| {% f operation %}      | `string`     | {% include fields/operation.md %} For this request it must be `Abort`.                                                                                                                                                                                                                |
-| {% f abortReason %}      | `string`     | `CancelledByConsumer` or `CancelledByCustomer`. Why the payment was aborted.                                                                                                                                                                         |
+{%- capture operation_md -%}{% include fields/operation.md %}{%- endcapture -%}
+
+<div class="api-compact" aria-label="Request">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
+
+  <!-- Level 0 (root; node closed by default) -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The payment order object.</div></div>
+
+    <!-- Children of paymentOrder (Level 1) -->
+    <div class="api-children">
+
+      <!-- operation -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f operation %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            {{ operation_md | markdownify }}
+            For this request it must be <code>Abort</code>.
+          </div>
+        </div>
+      </details>
+
+      <!-- abortReason -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f abortReason %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1"><code>CancelledByConsumer</code> or <code>CancelledByCustomer</code>. Why the payment was aborted.</div>
+        </div>
+      </details>
+
+    </div>
+  </details>
+</div>
 
 ## Abort PATCH Response
 
@@ -154,42 +195,309 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     json= response_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-| Field                                  | Type         | Description                                                                                                                                                                                                               |
-| :------------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| {% f paymentOrder, 0 %}                         | `object`     | The payment order object.                                                                                                                                                                                                 |
-| {% f id %}                           | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |
-| {% f created %}                      | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
-| {% f updated %}                      | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
-| {% f operation %}                    | `string`     | {% include fields/operation.md %} It will match the operation set in the request, in this case `Purchase`.                                                                                                                                                                                                          |
-| {% f status %}                       | `string`     | `Initialized`, `Paid`, `Failed`, `Cancelled` or `Aborted`. Indicates the state of the payment order. |
-| {% f currency %}                     | `string`     | The currency of the payment order.                                                                                                                                                                                        |
-| {% f amount %}                       | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                 |
-| {% f vatAmount %}                    | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                              |
-| {% f description %}                  | `string(40)` | {% include fields/description.md %}                                                                                                                        |
-| {% f initiatingSystemUserAgent %}    | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
-| {% f language %}                     | `string`     | {% include fields/language.md %}                                                                                                                                                  |
-| {% f availableInstruments %}         | `string`     | A list of payment methods available for this payment.                                                                                                                                                   |
-| {% f implementation %}               | `string`     | {% include fields/implementation.md %}                                                                                                                                                  |
-| {% f integration %}                  | `string`     | The merchant's Online Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe.                                                                                                                               |
-| {% f instrumentMode %}               | `bool`       | Set to `true` or `false`. Indicates if the payment is initialized with only one payment method available.                                                                                    |
-| {% f guestMode %}                    | `bool`       | {% include fields/guest-mode.md %}                                                                                                                                                |
-| {% f orderItems %}                   | `string`     | {% include fields/order-items.md %}                                                                                                                            |
-| {% f urls %}                         | `string`     | The URL to the `urls` resource where information about the urls can be retrieved.                                                                                                                            |
-| {% f payeeInfo %}                    | `id`     | {% include fields/payee-info.md %}                                                                                                                            |
-| {% f payer %}                        | `id`     | {% include fields/payer.md %}                                                                                                                 |
-| {% f history %}                      | `id`     | {% include fields/history.md %}                                                                                                                            |
-| {% f failed %}                       | `id`     | {% include fields/failed.md %}                                                                                                                           |
-| {% f aborted %}                      | `id`     | {% include fields/aborted.md %}                                                                                                                            |
-| {% f paid %}                         | `id`     | {% include fields/paid.md %}                                                                                                                            |
-| {% f cancelled %}                    | `id`     | {% include fields/cancelled.md %}                                                                                                                            |
-| {% f financialTransactions %}        | `id`     | {% include fields/financial-transactions.md %}                                                                                                                            |
-| {% f failedAttempts %}               | `id`     | {% include fields/failed-attempts.md %}                                                                                                                             |
-| {% f metadata %}                     | `id`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
-| {% f operations %}                   | `array`      | {% include fields/operations.md %} [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+{%- capture id_md -%}{% include fields/id.md resource="paymentorder" %}{%- endcapture -%}
+{%- capture operation_md -%}{% include fields/operation.md %}{%- endcapture -%}
+{%- capture amount_md -%}{% include fields/amount.md %}{%- endcapture -%}
+{%- capture vat_amount_md -%}{% include fields/vat-amount.md %}{%- endcapture -%}
+{%- capture description_md -%}{% include fields/description.md %}{%- endcapture -%}
+{%- capture isu_md -%}{% include fields/initiating-system-user-agent.md %}{%- endcapture -%}
+{%- capture language_md -%}{% include fields/language.md %}{%- endcapture -%}
+{%- capture implementation_md -%}{% include fields/implementation.md %}{%- endcapture -%}
+{%- capture payee_info_md -%}{% include fields/payee-info.md %}{%- endcapture -%}
+{%- capture payer_md -%}{% include fields/payer.md %}{%- endcapture -%}
+{%- capture history_md -%}{% include fields/history.md %}{%- endcapture -%}
+{%- capture failed_md -%}{% include fields/failed.md %}{%- endcapture -%}
+{%- capture aborted_md -%}{% include fields/aborted.md %}{%- endcapture -%}
+{%- capture paid_md -%}{% include fields/paid.md %}{%- endcapture -%}
+{%- capture cancelled_md -%}{% include fields/cancelled.md %}{%- endcapture -%}
+{%- capture fin_tx_md -%}{% include fields/financial-transactions.md %}{%- endcapture -%}
+{%- capture failed_attempts_md -%}{% include fields/failed-attempts.md %}{%- endcapture -%}
+
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
+
+  <!-- Level 0 (root; node closed by default) -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The payment order object.</div></div>
+
+    <!-- Children of paymentOrder (Level 1) -->
+    <div class="api-children">
+
+      <!-- id -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
+      </details>
+
+      <!-- created -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f created %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was created.</div></div>
+      </details>
+
+      <!-- updated -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f updated %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was updated.</div></div>
+      </details>
+
+      <!-- operation -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f operation %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            {{ operation_md | markdownify }}
+            It will match the operation set in the request, in this case <code>Purchase</code>.
+          </div>
+        </div>
+      </details>
+
+      <!-- status -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f status %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1"><code>Initialized</code>, <code>Paid</code>, <code>Failed</code>, <code>Cancelled</code> or <code>Aborted</code>. Indicates the state of the payment order.</div></div>
+      </details>
+
+      <!-- currency -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f currency %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The currency of the payment order.</div></div>
+      </details>
+
+      <!-- amount -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f amount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
+      </details>
+
+      <!-- vatAmount -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f vatAmount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ vat_amount_md | markdownify }}</div></div>
+      </details>
+
+      <!-- description -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f description %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string(40)</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ description_md | markdownify }}</div></div>
+      </details>
+
+      <!-- initiatingSystemUserAgent -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f initiatingSystemUserAgent %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ isu_md | markdownify }}</div></div>
+      </details>
+
+      <!-- language -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f language %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>
+      </details>
+
+      <!-- availableInstruments -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f availableInstruments %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">A list of payment methods available for this payment.</div></div>
+      </details>
+
+      <!-- implementation -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f implementation %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ implementation_md | markdownify }}</div></div>
+      </details>
+
+      <!-- integration -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f integration %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The merchant's Online Payments integration type. <code>HostedView</code> (Seamless View) or <code>Redirect</code>. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe.</div></div>
+      </details>
+
+      <!-- instrumentMode -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f instrumentMode %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>bool</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">Set to <code>true</code> or <code>false</code>. Indicates if the payment is initialized with only one payment method available.</div></div>
+      </details>
+
+      <!-- guestMode -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f guestMode %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>bool</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{% include fields/guest-mode.md %}</div></div>
+      </details>
+
+      <!-- orderItems (link id as string) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f orderItems %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{% include fields/order-items.md %}</div></div>
+      </details>
+
+      <!-- urls -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f urls %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <code>urls</code> resource where information about the urls can be retrieved.</div></div>
+      </details>
+
+      <!-- payeeInfo (id) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f payeeInfo %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ payee_info_md | markdownify }}</div></div>
+      </details>
+
+      <!-- payer (id) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f payer %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ payer_md | markdownify }}</div></div>
+      </details>
+
+      <!-- history (id) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f history %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ history_md | markdownify }}</div></div>
+      </details>
+
+      <!-- failed (id) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f failed %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ failed_md | markdownify }}</div></div>
+      </details>
+
+      <!-- aborted (id) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f aborted %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ aborted_md | markdownify }}</div></div>
+      </details>
+
+      <!-- paid (id) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f paid %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ paid_md | markdownify }}</div></div>
+      </details>
+
+      <!-- cancelled (id) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f cancelled %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ cancelled_md | markdownify }}</div></div>
+      </details>
+
+      <!-- financialTransactions (id) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f financialTransactions %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ fin_tx_md | markdownify }}</div></div>
+      </details>
+
+      <!-- failedAttempts (id) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f failedAttempts %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ failed_attempts_md | markdownify }}</div></div>
+      </details>
+
+      <!-- metadata (id) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f metadata %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The URL to the <code>metadata</code> resource where information about the metadata can be retrieved.</div></div>
+      </details>
+
+    </div>
+  </details>
+  <!-- operations (array) -->
+  <details class="api-item" data-level="0">
+      <summary>
+          <span class="field">{% f operations,0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>array</code></span>
+      </summary>
+      <div class="desc"><div class="indent-0">{% include fields/operations.md %} <a href="{{ techref_url }}/technical-reference/operations">See Operations for details</a>.</div></div>
+  </details>
+</div>
 
 {% else %}
 
@@ -441,42 +749,325 @@ api-supported-versions: 3.x{% endcapture %}
     json= response_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-| Field                                  | Type         | Description                                                                                                                                                                                                               |
-| :------------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| {% f paymentOrder, 0 %}                         | `object`     | The payment order object.                                                                                                                                                                                                 |
-| {% f id %}                           | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |
-| {% f created %}                      | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
-| {% f updated %}                      | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
-| {% f operation %}                    | `string`     | {% include fields/operation.md %}                                                                                                                                                                                                           |
-| {% f status %}                       | `string`     | `Initialized`, `Paid`, `Failed`, `Cancelled` or `Aborted`. Indicates the state of the payment order. |
-| {% f currency %}                     | `string`     | The currency of the payment order.                                                                                                                                                                                        |
-| {% f amount %}                       | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                 |
-| {% f vatAmount %}                    | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                              |
-| {% f description %}                  | `string(40)` | {% include fields/description.md %}                                                                                                                        |
-| {% f initiatingSystemUserAgent %}    | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
-| {% f language %}                     | `string`     | {% include fields/language.md %}                                                                                                                                                  |
-| {% f availableInstruments %}         | `string`     | A list of payment methods available for this payment.                                                                                                                                                   |
-| {% f viewableInstruments %}         | `string`     | A list of payment methods with viewable details for this payment.                                                                                                                                                   |
-| {% f implementation %}               | `string`     | {% include fields/implementation.md %}                                                                                                                                                  |
-| {% f integration %}                  | `string`     | The merchant's Online Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe.                                                                                                                               |
-| {% f instrumentMode %}               | `bool`       | Set to `true` or `false`. Indicates if the payment is initialized with only one payment method available.                                                                                    |
-| {% f guestMode %}                    | `bool`       | {% include fields/guest-mode.md %}                                                                                                                                                |
-| {% f orderItems %}                   | `string`     | {% include fields/order-items.md %}                                                                                                                            |
-| {% f urls %}                         | `string`     | The URL to the `urls` resource where information about the urls can be retrieved.                                                                                                                            |
-| {% f payeeInfo %}                    | `id`     | {% include fields/payee-info.md %}                                                                                                                            |
-| {% f payer %}                        | `id`     | {% include fields/payer.md %}                                                                                                                 |
-| {% f history %}                      | `id`     | {% include fields/history.md %}                                                                                                                            |
-| {% f failed %}                       | `id`     | {% include fields/failed.md %}                                                                                                                           |
-| {% f aborted %}                      | `id`     | {% include fields/aborted.md %}                                                                                                                            |
-| {% f paid %}                         | `id`     | {% include fields/paid.md %}                                                                                                                            |
-| {% f cancelled %}                    | `id`     | {% include fields/cancelled.md %}                                                                                                                            |
-| {% f financialTransactions %}        | `id`     | {% include fields/financial-transactions.md %}                                                                                                                            |
-| {% f failedAttempts %}               | `id`     | {% include fields/failed-attempts.md %}                                                                                                                             |
-| {% f metadata %}                     | `id`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
-| {% f operations %}                   | `array`      | {% include fields/operations.md %} [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+{%- capture id_md -%}{% include fields/id.md resource="paymentorder" %}{%- endcapture -%}
+{%- capture operation_md -%}{% include fields/operation.md %}{%- endcapture -%}
+{%- capture amount_md -%}{% include fields/amount.md %}{%- endcapture -%}
+{%- capture vat_amount_md -%}{% include fields/vat-amount.md %}{%- endcapture -%}
+{%- capture description_md -%}{% include fields/description.md %}{%- endcapture -%}
+{%- capture isu_md -%}{% include fields/initiating-system-user-agent.md %}{%- endcapture -%}
+{%- capture language_md -%}{% include fields/language.md %}{%- endcapture -%}
+{%- capture implementation_md -%}{% include fields/implementation.md %}{%- endcapture -%}
+{%- capture order_items_md -%}{% include fields/order-items.md %}{%- endcapture -%}
+{%- capture payee_info_md -%}{% include fields/payee-info.md %}{%- endcapture -%}
+{%- capture payer_md -%}{% include fields/payer.md %}{%- endcapture -%}
+{%- capture history_md -%}{% include fields/history.md %}{%- endcapture -%}
+{%- capture failed_md -%}{% include fields/failed.md %}{%- endcapture -%}
+{%- capture aborted_md -%}{% include fields/aborted.md %}{%- endcapture -%}
+{%- capture paid_md -%}{% include fields/paid.md %}{%- endcapture -%}
+{%- capture cancelled_md -%}{% include fields/cancelled.md %}{%- endcapture -%}
+{%- capture fin_tx_md -%}{% include fields/financial-transactions.md %}{%- endcapture -%}
+{%- capture failed_attempts_md -%}{% include fields/failed-attempts.md %}{%- endcapture -%}
+
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
+
+  <!-- Level 0 (root; node closed by default) -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The payment order object.</div></div>
+
+    <!-- Children of paymentOrder (Level 1) -->
+    <div class="api-children">
+
+      <!-- id -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
+      </details>
+
+      <!-- created -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f created %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was created.</div></div>
+      </details>
+
+      <!-- updated -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f updated %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was updated.</div></div>
+      </details>
+
+      <!-- operation -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f operation %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ operation_md | markdownify }}</div></div>
+      </details>
+
+      <!-- status -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f status %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1"><code>Initialized</code>, <code>Paid</code>, <code>Failed</code>, <code>Cancelled</code> or <code>Aborted</code>. Indicates the state of the payment order.</div></div>
+      </details>
+
+      <!-- currency -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f currency %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The currency of the payment order.</div></div>
+      </details>
+
+      <!-- amount -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f amount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
+      </details>
+
+      <!-- vatAmount -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f vatAmount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ vat_amount_md | markdownify }}</div></div>
+      </details>
+
+      <!-- description -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f description %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string(40)</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ description_md | markdownify }}</div></div>
+      </details>
+
+      <!-- initiatingSystemUserAgent -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f initiatingSystemUserAgent %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ isu_md | markdownify }}</div></div>
+      </details>
+
+      <!-- language -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f language %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>
+      </details>
+
+      <!-- availableInstruments -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f availableInstruments %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">A list of payment methods available for this payment.</div></div>
+      </details>
+
+      <!-- viewableInstruments -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f viewableInstruments %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">A list of payment methods with viewable details for this payment.</div></div>
+      </details>
+
+      <!-- implementation -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f implementation %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ implementation_md | markdownify }}</div></div>
+      </details>
+
+      <!-- integration -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f integration %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            The merchant's Online Payments integration type. <code>HostedView</code> (Seamless View) or <code>Redirect</code>. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe.
+          </div>
+        </div>
+      </details>
+
+      <!-- instrumentMode -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f instrumentMode %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>bool</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">Set to <code>true</code> or <code>false</code>. Indicates if the payment is initialized with only one payment method available.</div></div>
+      </details>
+
+      <!-- guestMode -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f guestMode %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>bool</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{% include fields/guest-mode.md %}</div></div>
+      </details>
+
+      <!-- orderItems (link id as string) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f orderItems %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ order_items_md | markdownify }}</div></div>
+      </details>
+
+      <!-- urls (string link to resource) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f urls %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">The URL to the <code>urls</code> resource where information about the urls can be retrieved.</div>
+        </div>
+      </details>
+
+      <!-- payeeInfo (id) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f payeeInfo %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ payee_info_md | markdownify }}</div></div>
+      </details>
+
+      <!-- payer (id) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f payer %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ payer_md | markdownify }}</div></div>
+      </details>
+
+      <!-- history (id) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f history %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ history_md | markdownify }}</div></div>
+      </details>
+
+      <!-- failed (id) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f failed %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ failed_md | markdownify }}</div></div>
+      </details>
+
+      <!-- aborted (id) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f aborted %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ aborted_md | markdownify }}</div></div>
+      </details>
+
+      <!-- paid (id) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f paid %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ paid_md | markdownify }}</div></div>
+      </details>
+
+      <!-- cancelled (id) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f cancelled %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ cancelled_md | markdownify }}</div></div>
+      </details>
+
+      <!-- financialTransactions (id) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f financialTransactions %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ fin_tx_md | markdownify }}</div></div>
+      </details>
+
+      <!-- failedAttempts (id) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f failedAttempts %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ failed_attempts_md | markdownify }}</div></div>
+      </details>
+
+      <!-- metadata (id) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f metadata %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>id</code></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">The URL to the <code>metadata</code> resource where information about the metadata can be retrieved.</div>
+        </div>
+      </details>
+    </div>
+  </details>
+
+  <!-- operations (array) -->
+  <details class="api-item" data-level="0">
+      <summary>
+          <span class="field">{% f operations,0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>array</code></span>
+      </summary>
+      <div class="desc">
+          <div class="indent-0">
+            {% include fields/operations.md %} <a href="{{ techref_url }}/technical-reference/operations">See Operations for details</a>.
+          </div>
+      </div>
+  </details>
+</div>
 
 {% endif %}

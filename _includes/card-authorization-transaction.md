@@ -63,6 +63,84 @@ Content-Type: application/json{% endcapture %}
     json= request_content
     %}
 
+<div class="api-compact" aria-label="Authorization Request">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Required</div>
+  </div>
+
+  <!-- LEVEL 0: transaction -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field"><code>transaction</code><i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc"><div class="indent-0">The transaction object.</div></div>
+
+    <!-- LEVEL 1: children of transaction -->
+    <div class="api-children">
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f cardNumber %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">Primary Account Number (PAN) of the card, printed on the face of the card.</div>
+        </div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f cardExpiryMonth %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>integer</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">Expiry month of the card, printed on the face of the card.</div>
+        </div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f cardExpiryYear %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>integer</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">Expiry year of the card, printed on the face of the card.</div>
+        </div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f cardVerificationCode %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">Card verification code (CVC/CVV/CVC2), usually printed on the back of the card.</div>
+        </div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f cardholderName %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">Name of the cardholder, usually printed on the face of the card.</div>
+        </div>
+      </details>
+
+    </div>
+  </details>
+</div>
+
 ## Authorization Response
 
 {% capture response_header %}HTTP/1.1 200 OK
@@ -123,48 +201,266 @@ Content-Type: application/json{% endcapture %}
     json= response_content
     %}
 
-{:.table .table-striped}
-|     Required     | Field                          | Type      | Description                                                                     |
-| :--------------: | :----------------------------- | :-------- | :------------------------------------------------------------------------------ |
-| {% icon check %} | `transaction`                  | `object`  | The transaction object.                                                         |
-| {% icon check %} | {% f cardNumber %}           | `string`  | Primary Account Number (PAN) of the card, printed on the face of the card.      |
-| {% icon check %} | {% f cardExpiryMonth %}      | `integer` | Expiry month of the card, printed on the face of the card.                      |
-| {% icon check %} | {% f cardExpiryYear %}       | `integer` | Expiry year of the card, printed on the face of the card.                       |
-|                  | {% f cardVerificationCode %} | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
-|                  | {% f cardholderName %}       | `string`  | Name of the cardholder, usually printed on the face of the card.               |
+<div class="api-compact" aria-label="Authorization Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-| Field                             | Type      | Description                                                                                                                                                                                                                                                                                          |
-| :-------------------------------- | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% f payment, 0 %}                         | `object`  | The payment object.                                                                                                                                                                                                                                                                                  |
-| {% f authorization, 0 %}                   | `object`  | The authorization object.                                                                                                                                                                                                                                                                            |
-| {% f direct %}                  | `string`  | The type of the authorization.                                                                                                                                                                                                                                                                       |
-| {% f cardBrand %}               | `string`  | `Visa`, `MC`, etc. The brand of the card.                                                                                                                                                                                                                                                            |
-| {% f cardType %}                | `string`  | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.                                                                                                                                                                                                                |
-| {% f issuingBank %}             | `string`  | The name of the bank that issued the card used for the authorization.                                                                                                                                                                                                                                |
-| {% f paymentToken %}            | `string`  | The payment token created for the card used in the authorization.                                                                                                                                                                                                                                    |
-| {% f maskedPan %}               | `string`  | The masked PAN number of the card.                                                                                                                                                                                                                                                                   |
-| {% f expiryDate %}              | `string`  | The month and year of when the card expires.                                                                                                                                                                                                                                                         |
-| {% f panToken %}                | `string`  | The token representing the specific PAN of the card.                                                                                                                                                                                                                                                 |
-| {% f panEnrolled %}             | `string`  |                                                                                                                                                                                                                                                                                                      |
-| {% f acquirerTransactionTime %} | `string`  | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                                                                                                 |
-| {% f id %}                      | `string`  | {% include fields/id.md resource="itemDescriptions" %}                                                                                                                                                                                                                                    |
-| {% f nonPaymentToken %}         | `string`  | The result of our own card tokenization. Activated in POS for the merchant or merchant group.                                                                                                                                                                                                    |
-| {% f externalNonPaymentToken %} | `string`  | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token.                                                                                                                                                                 |
-| {% f transaction %}             | `object`  | {% include fields/transaction.md %}                                                                                                                                                                                                                        |
-| {% f id, 2 %}                     | `string`  | {% include fields/id.md resource="transaction" %}                                                                                                                                                                                                                                         |
-| {% f created, 2 %}                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                                                                                                                      |
-| {% f updated, 2 %}                | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                                                                                                                      |
-| {% f type, 2 %}                   | `string`  | Indicates the transaction type.                                                                                                                                                                                                                                                                      |
-| {% f state, 2 %}                  | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                                                                                                                      |
-| {% f number, 2 %}                 | `integer` | {% include fields/number.md %}                                                                                         |
-| {% f amount, 2 %}                 | `integer` | Amount is entered in the lowest monetary unit of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                                                                                                             |
-| {% f vatAmount, 2 %}              | `integer` | If the amount given includes VAT, this may be displayed for the user on the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                                                                                   |
-| {% f description, 2 %}            | `string`  | {% include fields/description.md %}                                                                                                                                                                                                                          |
-| {% f payeeReference, 2 %}         | `string(30)`  | {% include fields/payee-reference.md %}                                                                                                                                                                                                                      |
-| {% f failedReason, 2 %}           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                                                                                                            |
-| {% f isOperational, 2 %}          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                                                                                                         |
-| {% f operations, 2 %}             | `array`   | {% include fields/operations.md resource="transaction" %}                                                                                                                                                                                                        |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+  <!-- LEVEL 0: payment -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f payment, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The payment object.</div></div>
+  </details>
+
+  <!-- LEVEL 0: authorization -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f authorization, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The authorization object.</div></div>
+
+    <!-- LEVEL 1: children of authorization -->
+    <div class="api-children">
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f direct %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The type of the authorization.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f cardBrand %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1"><code>Visa</code>, <code>MC</code>, etc. The brand of the card.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f cardType %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1"><code>Credit Card</code> or <code>Debit Card</code>. Indicates the type of card used for the authorization.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f issuingBank %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The name of the bank that issued the card used for the authorization.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f paymentToken %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The payment token created for the card used in the authorization.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f maskedPan %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The masked PAN number of the card.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f expiryDate %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The month and year of when the card expires.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f panToken %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The token representing the specific PAN of the card.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f panEnrolled %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1"></div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f acquirerTransactionTime %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The ISO-8601 date and time of the acquirer transaction.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{% include fields/id.md resource="itemDescriptions" %}</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f nonPaymentToken %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The result of our own card tokenization. Activated in POS for the merchant or merchant group.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f externalNonPaymentToken %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc.
+            For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token.
+          </div>
+        </div>
+      </details>
+
+      <!-- transaction (LEVEL 1) + LEVEL 2 children -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f transaction %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>object</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{% include fields/transaction.md %}</div></div>
+
+        <div class="api-children">
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f id, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{% include fields/id.md resource="transaction" %}</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f created, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was created.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f updated, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was updated.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f type, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Indicates the transaction type.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f state, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2"><code>Initialized</code>, <code>Completed</code> or <code>Failed</code>. Indicates the state of the transaction.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f number, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>integer</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{% include fields/number.md %}</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f amount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>integer</code></span>
+            </summary>
+            <div class="desc">
+              <div class="indent-2">
+                Amount is entered in the lowest monetary unit of the selected currency.
+                E.g. <code>10000</code> = 100.00 NOK, <code>5000</code> = 50.00 SEK.
+              </div>
+            </div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f vatAmount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>integer</code></span>
+            </summary>
+            <div class="desc">
+              <div class="indent-2">
+                If the amount given includes VAT, this may be displayed for the user on the payment page (redirect only).
+                Set to <code>0</code> (zero) if this is not relevant.
+              </div>
+            </div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f description, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{% include fields/description.md %}</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f payeeReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string(30)</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{% include fields/payee-reference.md %}</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f failedReason, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The human readable explanation of why the payment failed.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f isOperational, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>bool</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2"><code>true</code> if the transaction is operational; otherwise <code>false</code>.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f operations, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>array</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{% include fields/operations.md resource="transaction" %}</div></div>
+          </details>
+        </div>
+      </details>
+
+    </div>
+  </details>
+</div>

@@ -46,12 +46,48 @@ Content-Type: application/json;version=3.0/2.0      // Version optional{% endcap
     json= request_content
     %}
 
-{:.table .table-striped}
-|     Required     | Field                    | Type         | Description                                                                                    |
-| :--------------: | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------- |
-| {% icon check %} | `transaction`            | `object`     | The transaction object.                                                                        |
-| {% icon check %} | {% f description %}    | `string`     | A textual description of why the transaction is cancelled.                                     |
-| {% icon check %} | {% f payeeReference %} | `string(30)` | {% include fields/payee-reference.md %} |
+{% capture payee_reference_md %}{% include fields/payee-reference.md %}{% endcapture %}
+
+<div class="api-compact" aria-label="Request">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Required</div>
+  </div>
+
+  <!-- Level 0 (root) -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f transaction, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc"><div class="indent-0">The transaction object.</div></div>
+
+    <!-- Children of transaction (level 1) -->
+    <div class="api-children">
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f description %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">A textual description of why the transaction is cancelled.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f payeeReference %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string(30)</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ payee_reference_md | markdownify }}</div></div>
+      </details>
+
+    </div><!-- /.api-children -->
+  </details><!-- /.level-0 -->
+</div><!-- /.api-compact -->
 
 ## Cancel Response
 
@@ -87,26 +123,144 @@ api-supported-versions: 3.0/2.0{% endcapture %}
     json= response_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-| Property                  | Type      | Description                                                                                                                                                                                                  |
-| :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% f payment, 0 %}                 | `string`  | The relative URL of the payment this cancellation transaction belongs to.                                                                                                                                    |
-| {% f cancellation, 0 %}            | `object`  | The cancellation object, containing information about the cancellation transaction.                                                                                                                          |
-| {% f id %}              | `string`  | The relative URL of the cancellation transaction.                                                                                                                                                            |
-| {% f transaction %}     | `object`  | {% include fields/transaction.md %}                                                                                                                                |
-| {% f id, 2 %}             | `string`  | The relative URL of the current `transaction` resource.                                                                                                                                                      |
-| {% f created, 2 %}        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| {% f updated, 2 %}        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
-| {% f type, 2 %}           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
-| {% f state, 2 %}          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
-| {% f number, 2 %}         | `integer` | {% include fields/number.md %} |
-| {% f amount, 2 %}         | `integer` | {% include fields/amount.md %}                                                                                                                                                                    |
-| {% f vatAmount, 2 %}      | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
-| {% f description, 2 %}    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
-| {% f payeeReference, 2 %} | `string(30)`  | {% include fields/payee-reference.md describe_receipt=true %}                                                                                         |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+{% capture transaction_md %}{% include fields/transaction.md %}{% endcapture %}
+{% capture number_md %}{% include fields/number.md %}{% endcapture %}
+{% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
+{% capture vat_amount_md %}{% include fields/vat-amount.md %}{% endcapture %}
+{% capture payee_reference_md %}{% include fields/payee-reference.md describe_receipt=true %}{% endcapture %}
+
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
+
+  <!-- payment (root 0) -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f payment, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The relative URL of the payment this cancellation transaction belongs to.</div></div>
+  </details>
+
+  <!-- cancellation (root 0) -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f cancellation, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The cancellation object, containing information about the cancellation transaction.</div></div>
+
+    <!-- Children of cancellation (level 1) -->
+    <div class="api-children">
+
+      <!-- cancellation.id -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The relative URL of the cancellation transaction.</div></div>
+      </details>
+
+      <!-- cancellation.transaction -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f transaction %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>object</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ transaction_md | markdownify }}</div></div>
+
+        <!-- Children of transaction (level 2) -->
+        <div class="api-children">
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f id, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The relative URL of the current <code>transaction</code> resource.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f created, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was created.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f updated, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was updated.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f type, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Indicates the transaction type.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f state, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2"><code>Initialized</code>, <code>Completed</code> or <code>Failed</code>. Indicates the state of the transaction.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f number, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>integer</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ number_md | markdownify }}</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f amount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>integer</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ amount_md | markdownify }}</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f vatAmount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>integer</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ vat_amount_md | markdownify }}</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f description, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">A human readable description of maximum 40 characters of the transaction.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f payeeReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string(30)</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ payee_reference_md | markdownify }}</div></div>
+          </details>
+
+        </div>
+      </details>
+
+    </div>
+  </details>
+</div>
 
 ## Cancel Sequence Diagram
 

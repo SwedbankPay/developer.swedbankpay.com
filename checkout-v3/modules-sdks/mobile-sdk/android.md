@@ -473,7 +473,7 @@ the payment menu.
 [dokka-problem-exception-problem]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/
 [dokka-unexpected-exception]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/
 [rfc-7807]: https://tools.ietf.org/html/rfc7807
-[swedbankpay-problems]: /checkout-v3/features/technical-reference/problems
+[swedbankpay-problems]: /checkout-v3/technical-reference/problems
 [backend-problems]: /old-implementations/mobile-sdk/merchant-backend#problems
 [dokka-problem]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/index.md
 [dokka-problem-client]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/-client/index.md
@@ -482,5 +482,5 @@ the payment menu.
 [dokka-problem-server]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/-server/index.md
 [dokka-problem-server-swedbankpay]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/-server/-swedbank-pay/index.md
 [dokka-swedbankpayproblem]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-swedbank-pay-problem/index.md
-[paymenturl]: /checkout-v3/features/technical-reference/payment-url
+[paymenturl]: /checkout-v3/technical-reference/payment-url
 [gradle-manifest-placeholders]: https://developer.android.com/build/manage-manifests#inject_build_variables_into_the_manifest

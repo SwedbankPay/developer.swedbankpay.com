@@ -1,5 +1,6 @@
 ---
 title: After Payment
+permalink: /:path/after-payment/
 redirect_from: /payments/swish/after-payment
 menu_order: 1000
 ---
@@ -238,12 +239,12 @@ payments before they are captured or reversed.
 Swish does not support `recurring` payments.
 
 {% include iterator.html
-    prev_href="seamless-view"
+    prev_href="/old-implementations/payment-instruments-v1/swish/seamless-view"
     prev_title="Seamless view"
-    next_href="features"
+    next_href="/old-implementations/payment-instruments-v1/swish/features"
     next_title="Features" %}
 
-[create-payment]: /old-implementations/payment-instruments-v1/swish/features/technical-reference/create-payment
+[create-payment]: /old-implementations/payment-instruments-v1/swish/technical-reference/create-payment
 [payex-admin-portal]: https://merchantportal.externalintegration.swedbankpay.com
 [sales-transaction]: #create-sales-transactions
 [technical-reference-callback]: /old-implementations/payment-instruments-v1/swish/features/core/callback

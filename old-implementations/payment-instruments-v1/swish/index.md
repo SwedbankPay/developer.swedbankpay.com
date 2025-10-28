@@ -92,7 +92,7 @@ Swedish `sv-SE`.
 [handelsbanken]: https://www.handelsbanken.se/sv/foretag/konton-betalningar/ta-betalt/swish-for-foretag
 [lansforsakringar]: https://www.lansforsakringar.se/stockholm/foretag/bank/lopande-ekonomi/betalningstjanster/swish-handel/
 [nordea]: https://www.nordea.se/foretag/produkter/betala/swish-handel.html
-[payment-resource]: /old-implementations/payment-instruments-v1/swish/features/technical-reference/payment-resource
+[payment-resource]: /old-implementations/payment-instruments-v1/swish/technical-reference/payment-resource
 [seb-swish]: https://seb.se/foretag/digitala-tjanster/swish-handel
 [sparbanken-oresund]: https://www.sparbankenskane.se/foretag/digitala-tjanster/swish/swish-handel.html
 [sparbanken-syd]: https://www.sparbankensyd.se/vardagstjanster/betala/swish-for-foretag

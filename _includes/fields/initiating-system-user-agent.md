@@ -4,7 +4,7 @@
     {%- assign api_resource = "Payment Order" -%}
 {%- endif -%}
 {%- capture initiating_system_user_agent -%}
-The [user agent](/checkout-v3/features/technical-reference/user-agent) of the HTTP client making the
+The [user agent](/checkout-v3/technical-reference/user-agent) of the HTTP client making the
 request, reflecting the value sent in the `User-Agent` header with the initial
 `POST` request which created the {{ api_resource | strip }}.
 {%- endcapture -%}

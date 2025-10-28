@@ -1,6 +1,7 @@
 ---
 title: Direct
 redirect_from: /payments/swish/direct
+permalink: /:path/direct/
 description: |
   Swish is a one-phase payment method supported by the major Swedish banks.
   In the Direct scenario, Swedbank Pay receives the Swish registered mobile
@@ -448,6 +449,6 @@ sequenceDiagram
 ```
 
 {% include iterator.html prev_href="./" prev_title="Introduction"
-next_href="redirect" next_title="Redirect" %}
+next_href="/old-implementations/payment-instruments-v1/swish/redirect" next_title="Redirect" %}
 
 [callback-url]: /old-implementations/payment-instruments-v1/swish/features/core/callback

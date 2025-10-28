@@ -442,10 +442,10 @@ read more about how this is done.
                          next_href="/checkout-v3/get-started/validate-status"
                          next_title="Validate Status" %}
 
-[seamless-view-events]: /checkout-v3/features/technical-reference/seamless-view-events
+[seamless-view-events]: /checkout-v3/technical-reference/seamless-view-events
 [seamless-enterprise-menu]: /assets/img/wcag-seamless.png
 [payments-callback]: /checkout-v3/features/payment-operations/callback
-[payments-seamless-view-events]: /checkout-v3/features/technical-reference/seamless-view-events
+[payments-seamless-view-events]: /checkout-v3/technical-reference/seamless-view-events
 [custom-logo]: /checkout-v3/features/customize-ui/custom-logo/
 [post-response]: /checkout-v3/get-started/payment-request/#payment-order-response-v31
 [post-request]: /checkout-v3/get-started/payment-request/#payment-order-request-v31

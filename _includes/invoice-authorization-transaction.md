@@ -41,34 +41,224 @@ Content-Type: application/json{% endcapture %}
     json= request_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-|     Required     | Field                          | Type     | Description                                                            |
-| :--------------: | :----------------------------- | :------- | :--------------------------------------------------------------------- |
-| {% icon check %} | `transaction`                  | `object` | The transaction object.                                                |
-|                  | {% f activity %}             | `string` | Only the value `"FinancingConsumer"` or `"AccountsReceivableConsumer"` |
-|                  | `consumer`                     | `object` | The payer object.                                                   |
-|                  | {% f socialSecurityNumber %} | `string` | The social security number of the payer.                            |
-|                  | {% f customerNumber %}       | `string` | Customer number of the payer.                                       |
-|                  | {% f email %}                | `string` | The customer email address.                                            |
-|                  | {% f msisdn %}               | `string` | The MSISDN of the payer.                                            |
-|                  | {% f ip %}                   | `string` | The IP address of the payer.                                        |
-|                  | `legalAddress`                 | `object` | The Address object.                                                    |
-|                  | {% f addressee %}            | `string` | The full name of the addressee of this invoice                         |
-|                  | {% f coAddress %}            | `string` | The co Address of the addressee.                                       |
-|                  | {% f streetAddress %}        | `string` | The street address of the addresse. Maximum 50 characters long.        |
-|                  | {% f zipCode %}              | `string` | The zip code of the addresse.                                          |
-|                  | {% f city %}                 | `string` | The city name  of the addresse.                                        |
-|                  | {% f countryCode %}          | `string` | The country code of the addresse.                                      |
-|                  | `billingAddress`               | `object` | The BillingAddress object for the billing address of the addresse.     |
-|                  | {% f addressee %}            | `string` | The full name of the billing address adressee.                         |
-|                  | {% f coAddress %}            | `string` | The co address of the billing address adressee.                        |
-|                  | {% f streetAddress %}        | `string` | The street address of the billing address adressee. Maximum 50 characters long.|
-|                  | {% f zipCode %}              | `string` | The zip code of the billing address adressee.                          |
-|                  | {% f city %}                 | `string` | The city name of the billing address adressee.                         |
-|                  | {% f countryCode %}          | `string` | The country code of the billing address adressee.                      |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+<div class="api-compact" aria-label="Request">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Required</div>
+  </div>
+
+  <!-- Level 0 (all nodes CLOSED by default; original order retained) -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f transaction, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc"><div class="indent-0">The transaction object.</div></div>
+
+    <div class="api-children">
+      <!-- activity -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f activity %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc"><div class="indent-1">Only the value <code>"FinancingConsumer"</code> or <code>"AccountsReceivableConsumer"</code>.</div></div>
+      </details>
+
+      <!-- consumer (object) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f consumer %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>object</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The payer object.</div></div>
+
+        <div class="api-children">
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f socialSecurityNumber %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+              <span class="req"></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The social security number of the payer.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f customerNumber %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+              <span class="req"></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Customer number of the payer.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f email %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+              <span class="req"></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The customer email address.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f msisdn %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+              <span class="req"></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The MSISDN of the payer.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f ip %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+              <span class="req"></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The IP address of the payer.</div></div>
+          </details>
+        </div>
+      </details>
+
+      <!-- legalAddress (object) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f legalAddress %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>object</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The Address object.</div></div>
+
+        <div class="api-children">
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f addressee %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+              <span class="req"></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The full name of the addressee of this invoice</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f coAddress %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+              <span class="req"></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The co Address of the addressee.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f streetAddress %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+              <span class="req"></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The street address of the addresse. Maximum 50 characters long.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f zipCode %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+              <span class="req"></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The zip code of the addresse.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f city %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+              <span class="req"></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The city name  of the addresse.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f countryCode %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+              <span class="req"></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The country code of the addresse.</div></div>
+          </details>
+        </div>
+      </details>
+
+      <!-- billingAddress (object) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f billingAddress %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>object</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The BillingAddress object for the billing address of the addresse.</div></div>
+
+        <div class="api-children">
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f addressee %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+              <span class="req"></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The full name of the billing address adressee.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f coAddress %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+              <span class="req"></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The co address of the billing address adressee.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f streetAddress %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+              <span class="req"></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The street address of the billing address adressee. Maximum 50 characters long.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f zipCode %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+              <span class="req"></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The zip code of the billing address adressee.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f city %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+              <span class="req"></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The city name of the billing address adressee.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f countryCode %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+              <span class="req"></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The country code of the billing address adressee.</div></div>
+          </details>
+        </div>
+      </details>
+    </div>
+  </details>
+</div>
 
 ## Invoice Authorization Response
 
@@ -121,27 +311,148 @@ Content-Type: application/json{% endcapture %}
     json= response_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-| Field                    | Type      | Description                                                                                                                                                                                                  |
-| :----------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% f payment, 0 %}                | `string`  | {% include fields/id.md sub_resource="authorization" %}                                                                                                                                           |
-| {% f authorization, 0 %}          | `object`  | The transaction object.                                                                                                                                                                                      |
-| {% f id %}             | `string`  | {% include fields/id.md resource="authorization" %}                                                                                                                                               |
-| {% f created %}        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| {% f updated %}        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
-| {% f type %}           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
-| {% f state %}          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
-| {% f number %}         | `integer` | {% include fields/number.md %} |
-| {% f amount %}         | `integer` | {% include fields/amount.md %}                                                                                                                                                                    |
-| {% f vatAmount %}      | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
-| {% f description %}    | `string`  | {% include fields/description.md %}                                                                                                                               |
-| {% f payeeReference %} | `string(30)`  | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                     |
-| {% f failedReason %}   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
-| {% f isOperational %}  | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
-| {% f operations %}     | `array`   | {% include fields/operations.md resource="transaction" %}                                                                                                                |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+<!-- Captures for markdown-includes -->
+{%- capture payment_id_sub_md -%}{% include fields/id.md sub_resource="authorization" %}{%- endcapture -%}
+{%- capture auth_id_md -%}{% include fields/id.md resource="authorization" %}{%- endcapture -%}
+{%- capture number_md -%}{% include fields/number.md %}{%- endcapture -%}
+{%- capture amount_md -%}{% include fields/amount.md %}{%- endcapture -%}
+{%- capture vat_amount_md -%}{% include fields/vat-amount.md %}{%- endcapture -%}
+{%- capture description_md -%}{% include fields/description.md %}{%- endcapture -%}
+{%- capture payee_reference_md -%}{% include fields/payee-reference.md describe_receipt=true %}{%- endcapture -%}
+{%- capture operations_md -%}{% include fields/operations.md resource="transaction" %}{%- endcapture -%}
+
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
+
+  <!-- Level 0 (original order; all nodes CLOSED by default) -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f payment, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">{{ payment_id_sub_md | markdownify }}</div></div>
+  </details>
+
+  <!-- authorization (object) -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f authorization, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The transaction object.</div></div>
+
+    <div class="api-children">
+      <!-- Level 1 children of authorization (exact markdown order) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ auth_id_md | markdownify }}</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f created %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The ISO-8601 date and time of when the transaction was created.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f updated %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The ISO-8601 date and time of when the transaction was updated.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f type %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">Indicates the transaction type.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f state %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1"><code>Initialized</code>, <code>Completed</code> or <code>Failed</code>. Indicates the state of the transaction.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f number %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ number_md | markdownify }}</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f amount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f vatAmount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ vat_amount_md | markdownify }}</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f description %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ description_md | markdownify }}</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f payeeReference %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string(30)</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ payee_reference_md | markdownify }}</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f failedReason %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The human readable explanation of why the payment failed.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f isOperational %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>bool</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1"><code>true</code> if the transaction is operational; otherwise <code>false</code>.</div></div>
+      </details>
+
+      <!-- operations (array) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f operations %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>array</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ operations_md | markdownify }}</div></div>
+      </details>
+    </div>
+  </details>
+</div>
 
 The `authorization` resource contains information about an authorization
 transaction made towards a payment, as previously described.

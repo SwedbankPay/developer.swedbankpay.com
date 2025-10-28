@@ -14,13 +14,13 @@ group :jekyll_plugins do
   gem 'kramdown', '>= 2.3'
   gem 'kramdown-plantuml', '>= 1.3'
   gem 'rouge', '>= 4.0.1'
-  gem 'swedbank-pay-design-guide-jekyll-theme', '2.6.7'
+  gem 'swedbank-pay-design-guide-jekyll-theme', '2.7.7'
 end
 
 group :test do
   gem 'html-proofer', '>= 4'
   gem 'html-proofer-unrendered-markdown', '>= 0.2'
-  gem 'ffi', '1.17.1'
+  gem 'ffi', '~> 1.15', '< 1.17'
   gem 'rake', '>= 13'
   gem 'rspec', '>= 3'
   gem 'rubocop', '>= 1'

@@ -7,6 +7,23 @@ menu_order: 2
 has_release_notes: true
 ---
 
+## 28 October 2025
+
+### Version 5.3.12
+
+The first steps of a major code table facelift is going live! [Get Started][3-1]
+has been fitted with a more user-friendly. expandable edition of the tables
+following the code examples. More sections will get the same makeover going
+forward.
+
+Technical Reference has been moved out of the Features section, and placed at
+the [top level of Online Payments][checkout-v3].
+
+Elsewhere, information about [payment menu styling][nat-pay-styling] has been
+added to Mobile SDK Native Payments.
+
+An [Available Tokenization][av-tok] section has been added to nexo Retailer.
+
 ## 16 September 2025
 
 ### Documentation v5.3.11
@@ -1226,17 +1243,18 @@ more convenient for both the integration and the payer.
 [api-collection]: https://www.postman.com/swedbankpay/swedbank-pay-online/overview
 [astopb]: /checkout-v3/features/customize-ui/action-specific-text-on-payment-button
 [authorization-timeouts]: /old-implementations/checkout-v2/capture
+[av-tok]: /pax-terminal/Nexo-Retailer/tokenization/
 [azure-faq]: /checkout-v3/get-started/fundamental-principles/#migration-of-e-commerce-to-microsoft-azure---faq
 [bare-min]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/
 [btb]: /checkout-v3/features/balancing-the-books/
 [callback]: /checkout-v3/features/payment-operations/callback
 [callback-3-1]: /checkout-v3/features/payment-operations/callback#callback-example-v31
 [card-delete-token]: /old-implementations/payment-instruments-v1/card/features/optional/delete-token
-[card-error-codes]: /old-implementations/payment-instruments-v1/card/features/technical-reference/problems
-[card-payment-url]: /old-implementations/payment-instruments-v1/card/features/technical-reference/payment-url
+[card-error-codes]: /old-implementations/payment-instruments-v1/card/technical-reference/problems
+[card-payment-url]: /old-implementations/payment-instruments-v1/card/technical-reference/payment-url
 [card-purchase]: /old-implementations/payment-instruments-v1/card/redirect#step-1-create-a-purchase
 [card-unscheduled-purchase]: /old-implementations/payment-instruments-v1/card/features/optional/unscheduled
-[card-transaction-states]: /old-implementations/payment-instruments-v1/card/features/technical-reference/payment-transaction-states
+[card-transaction-states]: /old-implementations/payment-instruments-v1/card/technical-reference/payment-transaction-states
 [card]: /old-implementations/payment-instruments-v1/card
 [card-3ds-info]: /old-implementations/payment-instruments-v1/card#sequence-diagram
 [card-3ds2]: /old-implementations/payment-instruments-v1/card/features/core/frictionless-payments
@@ -1249,11 +1267,11 @@ more convenient for both the integration and the payer.
 [checkout-checkin-front-end]:/old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [checkout-payment-menu-frontend]: /old-implementations/checkout-v2/checkin#step-2-display-swedbank-pay-checkin-module
 [checkout-payment-order-purchase]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
-[checkout-payment-url]: /old-implementations/checkout-v2/features/technical-reference/payment-url
+[checkout-payment-url]: /old-implementations/checkout-v2/technical-reference/payment-url
 [checkout-create-starter-paymentorder]: /old-implementations/enterprise/seamless-view#step-1-create-payment-order
 [checkout]: /old-implementations/checkout-v2/
 [checkout-v2]: /old-implementations/checkout-v2/
-[checkout-items]: /old-implementations/checkout-v2/features/technical-reference/items
+[checkout-items]: /old-implementations/checkout-v2/technical-reference/items
 [checkout-3ds2]: /old-implementations/checkout-v2/features/core/frictionless-payments
 [checkout-callback]: /old-implementations/checkout-v2/features/core/callback
 [checkout-v3-matrix]: /checkout-v3
@@ -1281,13 +1299,13 @@ more convenient for both the integration and the payer.
 [display-ui]: /checkout-v3/get-started/display-ui
 [dom-ver]: /checkout-v3/apple-pay-presentation#domain-verification
 [eligibility-check]: /checkout-v3/features/customize-ui/instrument-mode#eligibility-check
-[error-invoice]: /checkout-v3/features/technical-reference/problems/#invoice-problems
+[error-invoice]: /checkout-v3/technical-reference/problems/#invoice-problems
 [expand-first]: /checkout-v3/features/customize-ui/expand-method/
-[ex-re]: /checkout-v3/features/technical-reference/problems/#creditcard-payments-mit---do-not-try-again--excessive-reattempts
+[ex-re]: /checkout-v3/technical-reference/problems/#creditcard-payments-mit---do-not-try-again--excessive-reattempts
 [mac]: /old-implementations/checkout-v2/features/optional/mac
-[fa]: /checkout-v3/features/technical-reference/resource-sub-models#failedattempts
+[fa]: /checkout-v3/technical-reference/resource-sub-models#failedattempts
 [features]: /checkout-v3/features
-[fppa]: /checkout-v3/features/technical-reference/resource-sub-models#failedpostpurchaseattempts
+[fppa]: /checkout-v3/technical-reference/resource-sub-models#failedpostpurchaseattempts
 [frictionless-payments]: /checkout-v3/features/customize-payments/frictionless-payments
 [frontpage]: https://developer.swedbankpay.com/
 [fundamental-principles]: /checkout-v3/get-started/fundamental-principles
@@ -1296,7 +1314,7 @@ more convenient for both the integration and the payer.
 [google-pay]: /checkout-v3/google-pay-presentation
 [home-technical-information]: /checkout-v3/get-started/fundamental-principles
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
-[inacc]: /checkout-v3/features/technical-reference/problems/#installment-account-problems
+[inacc]: /checkout-v3/technical-reference/problems/#installment-account-problems
 [invoice-direct]: /old-implementations/payment-instruments-v1/invoice/direct
 [invoice]: /old-implementations/payment-instruments-v1/invoice
 [int-com]: /checkout-v3/features/optional/integrated-commerce
@@ -1322,9 +1340,10 @@ more convenient for both the integration and the payer.
 [payment-order-update]: /checkout-v3/features/core/update
 [payment-request]: /checkout-v3/get-started/payment-request
 [payment-menu-invoice-capture]:/old-implementations/payment-menu-v2/capture
-[payment-menu-items]: /old-implementations/payment-menu-v2/features/technical-reference/items
+[payment-menu-items]: /old-implementations/payment-menu-v2/technical-reference/items
 [payment-menu-payment-link]: /old-implementations/payment-menu-v2/features/optional/payment-link
 [payments]: /old-implementations/payment-instruments-v1/
+[nat-pay-styling]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#payment-menu-styling
 [payer-aware-payment-menu]: /checkout-v3/features/optional/payer-aware-payment-menu
 [payout]: /checkout-v3/features/optional/payout
 [payout-patch]: /checkout-v3/features/optional/payout#patch-verify-request
@@ -1334,14 +1353,14 @@ more convenient for both the integration and the payer.
 [pax-terminal]: /pax-terminal/
 [pmv2]: /old-implementations/payment-menu-v2/ui-migration/
 [pp-3-1]: /checkout-v3/get-started/post-purchase/
-[prices]: /old-implementations/checkout-v2/features/technical-reference/prices
+[prices]: /old-implementations/checkout-v2/technical-reference/prices
 [update-order-checkout]: /old-implementations/checkout-v2/features/core/update
 [recur]: /checkout-v3/features/optional/recur
-[resource-model-cancelled]: /checkout-v3/features/technical-reference/resource-sub-models#cancelled
-[resource-model-paid]: /checkout-v3/features/technical-reference/resource-sub-models#paid
-[resource-model-paid-swish]: /checkout-v3/features/technical-reference/resource-sub-models#swish-paid-resource
-[resource-model-payer]: /checkout-v3/features/technical-reference/resource-sub-models#payer
-[resource-models]: /checkout-v3/features/technical-reference/resource-sub-models
+[resource-model-cancelled]: /checkout-v3/technical-reference/resource-sub-models#cancelled
+[resource-model-paid]: /checkout-v3/technical-reference/resource-sub-models#paid
+[resource-model-paid-swish]: /checkout-v3/technical-reference/resource-sub-models#swish-paid-resource
+[resource-model-payer]: /checkout-v3/technical-reference/resource-sub-models#payer
+[resource-models]: /checkout-v3/technical-reference/resource-sub-models
 [request-delivery-information]: /checkout-v3/features/optional/request-delivery-info
 [ruc]: /checkout-v3/get-started/recurring
 [seamless-view-script]: /checkout-v3/get-started/display-ui#monitoring-the-script-url
@@ -1354,27 +1373,27 @@ more convenient for both the integration and the payer.
 [split-settlement]: /checkout-v3/features/balancing-the-books/split-settlement
 [spp]: https://playground.swedbankpay.com
 [ssn-restrictions]: /checkout-v3/features/optional/payer-restrictions
-[status-models]: /checkout-v3/features/technical-reference/status-models
-[status-model-paid]: /checkout-v3/features/technical-reference/status-models#paid
-[status-model-paid-v2]: /old-implementations/checkout-v2/features/technical-reference/status-models#paid
+[status-models]: /checkout-v3/technical-reference/status-models
+[status-model-paid]: /checkout-v3/technical-reference/status-models#paid
+[status-model-paid-v2]: /old-implementations/checkout-v2/technical-reference/status-models#paid
 [storing-uri]: /checkout-v3/get-started/fundamental-principles#storing-urls
-[swish-api-errors]: /old-implementations/payment-instruments-v1/swish/features/technical-reference/problems
+[swish-api-errors]: /old-implementations/payment-instruments-v1/swish/technical-reference/problems
 [swish-direct-mcom]: /old-implementations/payment-instruments-v1/swish/direct#step-2b-create-m-commerce-sale-transaction
 [swish-direct]: /old-implementations/payment-instruments-v1/swish/direct
 [swish-features]: /old-implementations/payment-instruments-v1/swish/features
 [swish-redirect]: /old-implementations/payment-instruments-v1/swish/redirect
 [swish-seamless-view]: /old-implementations/payment-instruments-v1/swish/seamless-view
-[seamless-view-events]: /checkout-v3/features/technical-reference/seamless-view-events
-[seamless-view-events-onaborted]: /checkout-v3/features/technical-reference/seamless-view-events#onaborted
-[seamless-view-events-card]: /old-implementations/payment-instruments-v1/card/features/technical-reference/seamless-view-events
-[stat-resp]: /checkout-v3/features/technical-reference/status-models/
+[seamless-view-events]: /checkout-v3/technical-reference/seamless-view-events
+[seamless-view-events-onaborted]: /checkout-v3/technical-reference/seamless-view-events#onaborted
+[seamless-view-events-card]: /old-implementations/payment-instruments-v1/card/technical-reference/seamless-view-events
+[stat-resp]: /checkout-v3/technical-reference/status-models/
 [swish]: /old-implementations/payment-instruments-v1/swish
 [swish-abort]: /old-implementations/payment-instruments-v1/swish/after-payment#abort
-[technical-reference]: /old-implementations/checkout-v2/features/technical-reference/
+[technical-reference]: /old-implementations/checkout-v2/technical-reference/
 [terminology]: /checkout-v3/get-started/terminology
 [test-data]: /checkout-v3/test-data
-[token04]: /checkout-v3/features/technical-reference/problems/#creditcard-payments-mit---do-not-try-again--excessive-reattempts
-[token-problems]: /checkout-v3/features/technical-reference/problems/#token-problems
+[token04]: /checkout-v3/technical-reference/problems/#creditcard-payments-mit---do-not-try-again--excessive-reattempts
+[token-problems]: /checkout-v3/technical-reference/problems/#token-problems
 [tos-url]: /checkout-v3/features/customize-ui/tos
 [trustly-pres]: /checkout-v3/trustly-presentation
 [trans-guide]: /checkout-v3/get-started/display-ui#change-from-seamless-view-to-redirect-ui
@@ -1387,8 +1406,8 @@ more convenient for both the integration and the payer.
 [unscheduled-mit]: /checkout-v3/features/optional/unscheduled
 [v3-setup]: /checkout-v3/get-started/setup
 [validate-status]: /checkout-v3/get-started/validate-status
-[vipps-payment-resource]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-resource
-[vipps-payment-url]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-url
+[vipps-payment-resource]: /old-implementations/payment-instruments-v1/vipps/technical-reference/payment-resource
+[vipps-payment-url]: /old-implementations/payment-instruments-v1/vipps/technical-reference/payment-url
 [vipps]: /old-implementations/payment-instruments-v1/vipps
 [wcag]: https://www.swedbankpay.com/information/wcag
 [callback-ip]: /checkout-v3/features/payment-operations/callback/#callback-ip-addresses

@@ -11,6 +11,7 @@ updates:
   ignore:
     - dependency-name: swedbank-pay-design-guide-jekyll-theme
     - dependency-name: ffi
+    - dependency-name: rubocop
 
 - package-ecosystem: npm
   directory: "/"

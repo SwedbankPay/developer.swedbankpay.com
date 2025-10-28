@@ -254,19 +254,71 @@ your TOM/TAM or our support team.
     json= response_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
+{% capture id_md %}{% include fields/id.md resource="paymentorder" %}{% endcapture %}
 
-| Field                    | Type         | Description                                                                                                                                                                                                               |
-| :----------------------- | :----------- | :------------------- |
-| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
-| {% f id %}  | `string`   | {% include fields/id.md resource="paymentorder" %} |
-| {% f instrument %}                | `string`     | The payment method used in the payment.                     |
-| {% f payment, 0 %}           | `object`     | The payment object.                      |
-| {% f number %}                | `string`     | The attempt number which triggered the callback.                     |
-| {% f transaction, 0 %}           | `object`     | The transaction object.                      |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+<div class="api-compact" aria-label="Callback Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
+
+  <!-- LEVEL 0: paymentOrder -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The payment order object.</div></div>
+
+    <!-- LEVEL 1: children of paymentOrder -->
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f instrument %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The payment method used in the payment.</div></div>
+      </details>
+    </div>
+  </details>
+
+  <!-- LEVEL 0: payment -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f payment, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The payment object.</div></div>
+
+    <!-- LEVEL 1: children of payment -->
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f number %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The attempt number which triggered the callback.</div></div>
+      </details>
+    </div>
+  </details>
+
+  <!-- LEVEL 0: transaction -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f transaction, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The transaction object.</div></div>
+  </details>
+</div>
 
 {: .text-right .mt-3}
 

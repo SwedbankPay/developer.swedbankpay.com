@@ -67,33 +67,234 @@ Content-Type: application/json{% endcapture %}
     json= request_content
     %}
 
-{% capture table %}
-{:.table .table-striped .mb-5}
-| Required          | Field                          | Data type | Description                                                                                                                                                      |
-| :---------------- | :----------------------------- | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %}  | `transaction.activity`         | `string`  | `FinancingConsumer`                                                                                                                                              |
-| {% icon check %}  | `consumer`                     | `object`  | The payer object.                                                                                                                                             |
-| {% icon check %}  | {% f socialSecurityNumber %} | `string`  | The social security number (national identity number) of the payer. Format Sweden: `YYMMDD-NNNN`. Format Norway: `DDMMYYNNNNN`. Format Finland: `DDMMYYNNNNN` |
-|                   | {% f customerNumber %}       | `string`  | The customer number in the merchant system.                                                                                                                      |
-|                   | {% f email %}                | `string`  | The e-mail address of the payer.                                                                                                                              |
-| {% icon check %}  | {% f msisdn %}               | `string`  | The mobile phone number of the payer. Format Sweden: `+46707777777`. Format Norway: `+4799999999`. Format Finland: `+358501234567`                            |
-| {% icon check %}  | {% f ip %}                   | `string`  | The IP address of the payer.                                                                                                                                  |
-| {% icon check %}  | `legalAddress`                 | `object`  | The legal address object containing information about the payer's legal address.                                                                                |
-| {% icon check %}  | {% f addressee %}            | `string`  | The full (first and last) name of the payer.                                                                                                                  |
-|                   | {% f coAddress %}            | `string`  | The CO-address (if used)                                                                                                                                         |
-|                   | {% f streetAddress %}        | `string`  | The street address of the payer. Maximum 50 characters long.                                                                                                  |
-| {% icon check %}  | {% f zipCode %}              | `string`  | The postal code (ZIP code) of the payer.                                                                                                                      |
-| {% icon check %}  | {% f city %}                 | `string`  | The city of the payer.                                                                                                                                        |
-| {% icon check %}  | {% f countryCode %}          | `string`  | `SE`, `NO`, or `FI`. The country code of the payer.                                                                                                           |
-| {% icon check %}  | `billingAddress`               | `object`  | The billing address object containing information about the payer's billing address.                                                                            |
-| {% icon check %}  | {% f addressee %}            | `string`  | The full (first and last) name of the payer.                                                                                                                  |
-|                   | {% f coAddress %}            | `string`  | The CO-address (if used)                                                                                                                                         |
-| {% icon check %}︎︎︎︎ ︎ | {% f streetAddress %}        | `string`  | The street address of the payer. Maximum 50 characters long.                                                                                                   |
-| {% icon check %}  | {% f zipCode %}              | `string`  | The postal number (ZIP code) of the payer.                                                                                                                    |
-| {% icon check %}  | {% f city %}                 | `string`  | The city of the payer.                                                                                                                                        |
-| {% icon check %}  | {% f countryCode %}          | `string`  | `SE`, `NO`, or `FI`.                                                                                                                                             |
-{% endcapture %}
-{% include accordion-table.html content=table %}
+<div class="api-compact" aria-label="Authorization Request">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Required</div>
+  </div>
+
+  <!-- LEVEL 0: transaction -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field"><code>transaction</code><i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+      <span class="req"></span>
+    </summary>
+    <div class="desc"><div class="indent-0">Transaction context.</div></div>
+
+    <!-- LEVEL 1: transaction children -->
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field"><code>activity</code><i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1"><code>FinancingConsumer</code></div></div>
+      </details>
+    </div>
+  </details>
+
+  <!-- LEVEL 0: consumer -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field"><code>consumer</code><i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc"><div class="indent-0">The payer object.</div></div>
+
+    <!-- LEVEL 1: consumer children -->
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f socialSecurityNumber %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            The social security number (national identity number) of the payer.
+            Format Sweden: <code>YYMMDD-NNNN</code>. Format Norway: <code>DDMMYYNNNNN</code>. Format Finland: <code>DDMMYYNNNNN</code>.
+          </div>
+        </div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f customerNumber %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The customer number in the merchant system.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f email %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The e-mail address of the payer.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f msisdn %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">The mobile phone number of the payer. Format Sweden: <code>+46707777777</code>. Format Norway: <code>+4799999999</code>. Format Finland: <code>+358501234567</code>.</div>
+        </div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f ip %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The IP address of the payer.</div></div>
+      </details>
+    </div>
+  </details>
+
+  <!-- LEVEL 0: legalAddress -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field"><code>legalAddress</code><i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc"><div class="indent-0">The legal address object containing information about the payer's legal address.</div></div>
+
+    <!-- LEVEL 1: legalAddress children -->
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f addressee %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The full (first and last) name of the payer.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f coAddress %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The CO-address (if used)</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f streetAddress %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The street address of the payer. Maximum 50 characters long.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f zipCode %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The postal code (ZIP code) of the payer.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f city %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The city of the payer.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f countryCode %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1"><code>SE</code>, <code>NO</code>, or <code>FI</code>. The country code of the payer.</div></div>
+      </details>
+    </div>
+  </details>
+
+  <!-- LEVEL 0: billingAddress -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field"><code>billingAddress</code><i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc"><div class="indent-0">The billing address object containing information about the payer's billing address.</div></div>
+
+    <!-- LEVEL 1: billingAddress children -->
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f addressee %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The full (first and last) name of the payer.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f coAddress %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req"></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The CO-address (if used)</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f streetAddress %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The street address of the payer. Maximum 50 characters long.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f zipCode %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The postal number (ZIP code) of the payer.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f city %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The city of the payer.</div></div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f countryCode %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1"><code>SE</code>, <code>NO</code>, or <code>FI</code>.</div></div>
+      </details>
+    </div>
+  </details>
+</div>
 
 ## Authorization Response
 
