@@ -65,7 +65,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
     json= request_content
     %}
 
-<div class="api-compact" aria-label="Request">  
+<div class="api-compact" aria-label="Request">
     <div class="header">
         <div>Field</div>
         <div>Type</div>
@@ -77,7 +77,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
             <span class="type"><code>string</code></span>
             <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-0">The [content type][content-type] of the body of the HTTP request. Usually set to <code>application/json</code>.</div></div>
+        <div class="desc"><div class="indent-0">The content type of the body of the HTTP request. Usually set to <code>application/json</code>.</div></div>
     </details>
 
     <!-- Authorization -->
@@ -87,7 +87,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-0">The OAuth 2 Access Token is generated in the [Merchant Portal][admin].</div></div>
+        <div class="desc"><div class="indent-0">The OAuth 2 Access Token is generated in the Merchant Portal.</div></div>
     </details>
 
     <!-- User-Agent -->
@@ -96,7 +96,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
           <span class="field">{% f User-Agent, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-0">The [user agent][user-agent] of the HTTP client making the HTTP request. Should be set to identify the system performing requests towards Swedbank Pay. The value submitted here will be returned in the response field <code>initiatingSystemUserAgent</code>.</div></div>
+        <div class="desc"><div class="indent-0">The user agent of the HTTP client making the HTTP request. Should be set to identify the system performing requests towards Swedbank Pay. The value submitted here will be returned in the response field <code>initiatingSystemUserAgent</code>.</div></div>
     </details>
 
     <!-- Accept -->
@@ -106,7 +106,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-0">The [content type][content-type] accepted by the client. Usually set to <code>application/json</code> and <code>application/problem+json</code> so both regular responses as well as errors can be received properly.</div></div>
+        <div class="desc"><div class="indent-0">The content type accepted by the client. Usually set to <code>application/json</code> and <code>application/problem+json</code> so both regular responses as well as errors can be received properly.</div></div>
     </details>
 
     <!-- Session-Id -->
@@ -127,7 +127,6 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
         <div class="desc"><div class="indent-0">The IP address of the payer as well as the host and protocol of the payer-facing web page. When the header is present, only the <code>for</code> parameter containing the payer's IP address is required, the other parameters are optional. See [RFC 7239][rfc-7239] for details.</div></div>
     </details>
 </div>
-
 
 ## URL Usage
 
