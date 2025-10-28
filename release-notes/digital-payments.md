@@ -7,6 +7,23 @@ menu_order: 2
 has_release_notes: true
 ---
 
+## 28 October 2025
+
+### Version 5.3.12
+
+The first steps of a major code table facelift is going live! [Get Started][3-1]
+has been fitted with a more user-friendly. expandable edition of the tables
+following the code examples. More sections will get the same makeover going
+forward.
+
+Technical Reference has been moved out of the Features section, and placed at
+the [top level of Online Payments][checkout-v3].
+
+Elsewhere, information about [payment menu styling][nat-pay-styling] has been
+added to Mobile SDK Native Payments.
+
+An [Available Tokenization][av-tok] section has been added to nexo Retailer.
+
 ## 16 September 2025
 
 ### Documentation v5.3.11
@@ -1226,6 +1243,7 @@ more convenient for both the integration and the payer.
 [api-collection]: https://www.postman.com/swedbankpay/swedbank-pay-online/overview
 [astopb]: /checkout-v3/features/customize-ui/action-specific-text-on-payment-button
 [authorization-timeouts]: /old-implementations/checkout-v2/capture
+[av-tok]: /pax-terminal/Nexo-Retailer/tokenization/
 [azure-faq]: /checkout-v3/get-started/fundamental-principles/#migration-of-e-commerce-to-microsoft-azure---faq
 [bare-min]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/
 [btb]: /checkout-v3/features/balancing-the-books/
@@ -1325,6 +1343,7 @@ more convenient for both the integration and the payer.
 [payment-menu-items]: /old-implementations/payment-menu-v2/technical-reference/items
 [payment-menu-payment-link]: /old-implementations/payment-menu-v2/features/optional/payment-link
 [payments]: /old-implementations/payment-instruments-v1/
+[nat-pay-styling]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#payment-menu-styling
 [payer-aware-payment-menu]: /checkout-v3/features/optional/payer-aware-payment-menu
 [payout]: /checkout-v3/features/optional/payout
 [payout-patch]: /checkout-v3/features/optional/payout#patch-verify-request
