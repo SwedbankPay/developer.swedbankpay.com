@@ -547,6 +547,198 @@ body {
   margin-bottom: 0;
 }
 
+/** API object detailed table styles **/
+/* Container */
+.api-compact {
+  border: 1px solid #EBE7E2;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #FFF;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  margin-top: 2em;
+}
+
+.api-compact .header {
+  display: grid;
+  grid-template-columns: 1fr 74px 68px;
+  gap: 12px;
+  padding: 10px 14px;
+  font-weight: 550;
+  background-color: #F9F8F6;
+  border-bottom: 2px solid #EBE7E2;
+}
+
+/* Item */
+.api-item {
+  position: relative;
+}
+
+.api-item > summary {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 80px 70px;
+  gap: 12px;
+  align-items: start;
+  padding: 10px 14px;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+}
+
+.api-item > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Expanderingsikon */
+.api-item[open] > summary i.chev {
+  transform: rotate(45deg);
+}
+
+/* Field/Type/Req */
+.api-item .field {
+  font-weight: 550;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  position: relative;
+}
+
+.api-item .field code {
+  border-radius: 6px;
+  border: 1px solid #EE7023;
+}
+
+.api-item .type code {
+  font-size: 0.9em;
+  background: #f6f8fa;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.field-level::before {
+  font-family: "Akkurat Mono", monospace;
+  color: #EE7023;
+  content: "╰─╼";
+}
+
+.field-level-0::before {
+  content: "";
+}
+
+.api-item .req {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.api-item .desc {
+  padding: 16px 14px 16px 16px;
+  border-left: 3px solid transparent;
+  border-bottom: thin solid lightgray;
+}
+
+/* Indrag (summary) */
+.api-item[data-level="0"] > summary .field, .api-item[data-level="1"] > summary .field {
+  padding-left: 0;
+}
+
+.api-item[data-level="2"] > summary .field {
+  padding-left: 22px;
+}
+
+.api-item[data-level="3"] > summary .field {
+  padding-left: 44px;
+}
+
+.api-item[data-level="4"] > summary .field {
+  padding-left: 70px;
+}
+
+/* Description – nivå (level+1) med kort lokal linje*/
+.indent-0 {
+  margin-left: 4px;
+}
+
+.indent-1 {
+  margin-left: 26px;
+}
+
+.indent-2 {
+  margin-left: 48px;
+}
+
+.indent-3 {
+  margin-left: 70px;
+}
+
+.indent-4 {
+  margin-left: 92px;
+}
+
+/* Öppen */
+.api-item[open] > .desc {
+  background: #fafafa;
+}
+
+/* Hover */
+.api-item:has(> summary:hover) > summary,
+.api-item:has(> .desc:hover) > summary {
+  background: #EBE7E2;
+  border-left-color: #EE7023;
+}
+
+.api-item:has(> summary:hover) > .desc,
+.api-item:has(> .desc:hover) > .desc {
+  background: #EBE7E2;
+}
+
+/* Fokus */
+.api-item:has(> summary:focus-visible) > .desc,
+.api-item:has(> .desc:focus-within) > .desc {
+  background: #fafafa;
+}
+
+/* Vänsterkantsaccent på just DENNA desc när summary ELLER desc hovras */
+.api-item[open]:has(> summary:hover) > .desc,
+.api-item[open]:has(> .desc:hover) > .desc {
+  border-left-color: #EE7023;
+}
+
+/* Tangentbordsstöd: accent på summary när dess egna desc får fokus */
+.api-item:has(> .desc:focus-within) > summary,
+.api-item:has(> summary:focus-visible) > summary {
+  background: #fafafa;
+  border-left-color: #EE7023;
+}
+
+/* Children wrapper */
+.api-children {
+  padding-left: 0;
+  margin: 6px 0 10px 0;
+}
+
+.api-children .api-item {
+  border-bottom: none;
+}
+
+/* Mobil */
+@media (max-width: 640px) {
+  .api-compact .header {
+    display: none;
+  }
+  .api-item > summary {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .api-item .type, .api-item .req {
+    opacity: 0.85;
+    font-weight: 500;
+    justify-content: flex-start;
+  }
+}
+/** API object detailed table styles - END **/
 #designguide .designguide-header .topbar-info a {
   margin-left: 5px;
   color: rgba(34, 34, 34, 0.75);

@@ -237,10 +237,10 @@
   <span class="nt">&lt;/POIData&gt;</span>
   <span class="nt">&lt;PaymentResult</span> <span class="na">PaymentType=</span><span class="s">"Normal"</span><span class="nt">&gt;</span>
    <span class="nt">&lt;PaymentInstrumentData</span> <span class="na">PaymentInstrumentType=</span><span class="s">"Card"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;CardData</span> <span class="na">PaymentBrand=</span><span class="s">"01,Mastercard Debit"</span> <span class="na">MaskedPAN=</span><span class="s">"516815******9659"</span> <span class="na">EntryMode=</span><span class="s">"Contactless"</span><span class="nt">&gt;</span>
-     <span class="nt">&lt;PaymentToken</span> <span class="na">TokenRequestedType=</span><span class="s">"Customer"</span> <span class="na">TokenValue=</span><span class="s">"6FD955C23A48A041D881003CDBF836DC59F89CE0ECA8288129696CDF9BB8B8DD67F233"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/CardData&gt;</span>
-   <span class="nt">&lt;/PaymentInstrumentData&gt;</span>
+     <span class="nt">&lt;CardData</span> <span class="na">PaymentBrand=</span><span class="s">"01,Mastercard Debit"</span> <span class="na">MaskedPAN=</span><span class="s">"516815******9659"</span> <span class="na">PaymentAccountRef=</span><span class="s">"5c0e2bdfe30fb6e3d7dd1eee887de"</span> <span class="na">EntryMode=</span><span class="s">"Contactless"</span><span class="nt">&gt;</span>
+       <span class="nt">&lt;PaymentToken</span> <span class="na">TokenRequestedType=</span><span class="s">"Customer"</span> <span class="na">TokenValue=</span><span class="s">"6FD9550491A5EA28850181E76297295740E2F3781A3FB9D0561343179D6AA3017A6CAB"</span><span class="nt">/&gt;</span>
+     <span class="nt">&lt;/CardData&gt;</span>
+    <span class="nt">&lt;/PaymentInstrumentData&gt;</span>
    <span class="nt">&lt;AmountsResp</span> <span class="na">Currency=</span><span class="s">"SEK"</span> <span class="na">AuthorizedAmount=</span><span class="s">"56"</span> <span class="na">CashBackAmount=</span><span class="s">"0.00"</span><span class="nt">/&gt;</span>
    <span class="nt">&lt;PaymentAcquirerData</span> <span class="na">MerchantID=</span><span class="s">"10020001"</span> <span class="na">AcquirerPOIID=</span><span class="s">"877888"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;ApprovalCode&gt;</span>611506<span class="nt">&lt;/ApprovalCode&gt;</span>
@@ -267,58 +267,36 @@
         
       </h3>
 
-<p>If loyalty is handled via our host the response may include a <code class="language-html highlighter-rouge">LoyaltyResult</code> as well.</p>
+<p>If <code class="language-html highlighter-rouge">nonPaymentToken</code> is activated for merchant or if loyalty is handled via our host the response may include a <code class="language-html highlighter-rouge">LoyaltyResult</code> as well.</p>
 
-<p class="code-view-header"><strong>PaymentResponse like above but including LoyaltyResult (other tags not showing)</strong></p>
+<p>The xml element <code class="language-html highlighter-rouge">LoyaltyResult</code> may contain more than one <code class="language-html highlighter-rouge">LoyaltyAccount</code> element or none. The <code class="language-html highlighter-rouge">LoyaltyResult</code> appears on the same level as <code class="language-html highlighter-rouge">PaymentResult</code>.</p>
+
+<p class="code-view-header"><strong>LoyaltyResult from a PaymentResponse with a nonPaymentToken for a card</strong></p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr><td class="code-view-numbers gl"><pre class="lineno">1
 2
 3
 4
 5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-</pre></td><td class="code-view-code"><pre><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;SaleToPOIResponse&gt;</span>
- <span class="nt">&lt;MessageHeader</span> <span class="na">MessageClass=</span><span class="s">"Service"</span> <span class="na">MessageCategory=</span><span class="s">"Payment"</span> <span class="na">MessageType=</span><span class="s">"Response"</span> <span class="na">ServiceID=</span><span class="s">"3"</span> <span class="na">SaleID=</span><span class="s">"1"</span> <span class="na">POIID=</span><span class="s">"A-POIID"</span><span class="nt">/&gt;</span>
- <span class="nt">&lt;PaymentResponse&gt;</span>
-  <span class="nt">&lt;Response</span> <span class="na">Result=</span><span class="s">"Success"</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;SaleData&gt;</span>
-  <span class="nt">&lt;/SaleData&gt;</span>
-  <span class="nt">&lt;POIData&gt;</span>
-  <span class="nt">&lt;/POIData&gt;</span>
-  <span class="nt">&lt;PaymentResult</span> <span class="na">PaymentType=</span><span class="s">"Normal"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/PaymentResult&gt;</span>
+</pre></td><td class="code-view-code"><pre>  <span class="nt">&lt;LoyaltyResult&gt;</span>
+    <span class="nt">&lt;LoyaltyAccount</span> <span class="na">LoyaltyBrand=</span><span class="s">"nonPaymentToken"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;LoyaltyAccountID</span> <span class="na">EntryMode=</span><span class="s">"File"</span> <span class="na">IdentificationSupport=</span><span class="s">"LinkedCard"</span> <span class="na">IdentificationType=</span><span class="s">"AccountNumber"</span><span class="nt">&gt;</span>d9b53d79-c677-4468-b4c2-7d85d675457e<span class="nt">&lt;/LoyaltyAccountID&gt;</span>
+    <span class="nt">&lt;/LoyaltyAccount&gt;</span>
+  <span class="nt">&lt;/LoyaltyResult&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-  <span class="nt">&lt;LoyaltyResult&gt;</span>
+<p class="code-view-header"><strong>LoyaltyResult from a PaymentResponse for a loyalty brand name</strong></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr><td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="code-view-code"><pre>  <span class="nt">&lt;LoyaltyResult&gt;</span>
     <span class="nt">&lt;LoyaltyAccount</span> <span class="na">LoyaltyBrand=</span><span class="s">"&lt;LOYALTY_BRAND_NAME&gt;"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;LoyaltyAccountID</span> <span class="na">EntryMode=</span><span class="s">"File"</span> <span class="na">IdentificationSupport=</span><span class="s">"LinkedCard"</span> <span class="na">IdentificationType=</span><span class="s">"AccountNumber"</span><span class="nt">&gt;</span>86dd8f2e005be7c4512d7af9dae89dd228689365<span class="nt">&lt;/LoyaltyAccountID&gt;</span>
     <span class="nt">&lt;/LoyaltyAccount&gt;</span>
   <span class="nt">&lt;/LoyaltyResult&gt;</span>
-
-  <span class="nt">&lt;PaymentReceipt</span> <span class="na">DocumentQualifier=</span><span class="s">"CashierReceipt"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/PamentReceipt&gt;</span>
-  <span class="nt">&lt;PaymentReceipt</span> <span class="na">DocumentQualifier=</span><span class="s">"CustomerReceipt"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/PaymentReceipt&gt;</span>
- <span class="nt">&lt;/PaymentResponse&gt;</span>
-<span class="nt">&lt;/SaleToPOIResponse&gt;</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
     
       <h3 id="paymentresponse-in-detail">
@@ -426,6 +404,12 @@
     <tr>
       <td style="text-align: left"> </td>
       <td style="text-align: center"> </td>
+      <td style="text-align: left">PaymentAccountRef</td>
+      <td style="text-align: left">PAR - token delivered from card issuer</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: center"> </td>
       <td style="text-align: left">EntryMode</td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">ICC</code>, <code class="language-html highlighter-rouge">Contactless</code>, <code class="language-html highlighter-rouge">Magstripe</code>.</td>
     </tr>
@@ -482,6 +466,42 @@
       <td style="text-align: center">4</td>
       <td style="text-align: left"> </td>
       <td style="text-align: left">Authorization approval code. Only present if Result is Success.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">LoyaltyResult</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">LoyaltyAccount</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: left">LoyaltyBrand</td>
+      <td style="text-align: left">Values: <code class="language-html highlighter-rouge">nonPaymentToken</code> or a loyalty brand name</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">LoyaltyAccountID</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">Holds a loyalty account number or a <code class="language-html highlighter-rouge">nonPaymentToken</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">EntryMode</td>
+      <td style="text-align: left">“File”</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">IdentificationSupport</td>
+      <td style="text-align: left">“LinkedCard”</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">IdentificationType</td>
+      <td style="text-align: left">“AccountNumber”</td>
     </tr>
     <tr>
       <td style="text-align: left">PaymentReceipt</td>
