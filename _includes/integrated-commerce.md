@@ -78,15 +78,112 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     json= response_content
     %}
 
-{:.table .table-striped}
-| Field                     | Type      | Description                                                        |
-| :------------------------ | :-------- | :----------------------------------------------------------------- |
-| {% f paymentOrder, 0 %}   | `object`  | The payment order object.                                          |
-| {% f paid, 0 %}           | `object`  | The paid object.                                                   |
-| {% f id %}                | `string`  | {% include fields/id.md resource="paymentorder" %}                 |
-| {% f instrument %}        | `string`  | Payment method used in the cancelled payment.                  |
-| {% f number, 2 %}         | `integer` | {% include fields/number.md %}                                     |
-| {% f payeeReference, 2 %} | `string(30)`  | {% include fields/payee-reference.md %}                            |
-| {% f amount %}            | `integer` | {% include fields/amount.md %}                                     |
-| {% f referenceCode, 2 %}  | `string`  | A 16 digit reference code which can be used for tracking payments. |
-| {% f details %}           | `integer` | Details connected to the payment.                                  |
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
+
+  <!-- 1) paymentOrder (rot) -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">The payment order object.</div>
+    </div>
+  </details>
+
+  <!-- 2) paid (rot) -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paid, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">The paid object.</div>
+    </div>
+
+    <div class="api-children" data-level="1">
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f id, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            {% capture inc %}{% include fields/id.md resource="paymentorder" %}{% endcapture %}{{ inc | markdownify }}
+          </div>
+        </div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f instrument, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">Payment method used in the cancelled payment.</div>
+        </div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f number, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            {% capture inc %}{% include fields/number.md %}{% endcapture %}{{ inc | markdownify }}
+          </div>
+        </div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f payeeReference, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string(30)</code></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            {% capture inc %}{% include fields/payee-reference.md %}{% endcapture %}{{ inc | markdownify }}
+          </div>
+        </div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f referenceCode, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">A 16 digit reference code which can be used for tracking payments.</div>
+        </div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f amount, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            {% capture inc %}{% include fields/amount.md %}{% endcapture %}{{ inc | markdownify }}
+          </div>
+        </div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f details, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">Details connected to the payment.</div>
+        </div>
+      </details>
+    </div>
+  </details>
+</div>
