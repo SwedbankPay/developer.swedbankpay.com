@@ -77,7 +77,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
             <span class="type"><code>string</code></span>
             <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-0">The content type of the body of the HTTP request. Usually set to <code>application/json</code>.</div></div>
+        <div class="desc"><div class="indent-0">The [content type][content-type] of the body of the HTTP request. Usually set to <code>application/json</code>.</div></div>
     </details>
 
     <!-- Authorization -->
@@ -87,7 +87,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-0">The OAuth 2 Access Token is generated in the Merchant Portal.</div></div>
+        <div class="desc"><div class="indent-0">The OAuth 2 Access Token is generated in the [Merchant Portal][admin].</div></div>
     </details>
 
     <!-- User-Agent -->
@@ -96,7 +96,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
           <span class="field">{% f User-Agent, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-0">The user agent of the HTTP client making the HTTP request. Should be set to identify the system performing requests towards Swedbank Pay. The value submitted here will be returned in the response field <code>initiatingSystemUserAgent</code>.</div></div>
+        <div class="desc"><div class="indent-0">The [user agent][user-agent] of the HTTP client making the HTTP request. Should be set to identify the system performing requests towards Swedbank Pay. The value submitted here will be returned in the response field <code>initiatingSystemUserAgent</code>.</div></div>
     </details>
 
     <!-- Accept -->
@@ -106,7 +106,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-0">The content type accepted by the client. Usually set to <code>application/json</code> and <code>application/problem+json</code> so both regular responses as well as errors can be received properly.</div></div>
+        <div class="desc"><div class="indent-0">The [content type][content-type] accepted by the client. Usually set to <code>application/json</code> and <code>application/problem+json</code> so both regular responses as well as errors can be received properly.</div></div>
     </details>
 
     <!-- Session-Id -->
