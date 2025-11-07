@@ -51,8 +51,34 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     json= request_content
     %}
 
-{:.table .table-striped}
-| Required         | Field                        | Type     | Description                                                   |
-| :--------------: | :--------------------------- | :------- | :------------------------------------------------------------ |
-| {% icon check %} | {% f paymentOrder, 0 %}               | `object` | The payment order object.                                     |
-|                  | {% f restrictedToAgeLimit %} | `int`    | Used for setting the age you want to restrict the payment to. |
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Required</div>
+  </div>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+      <span class="required">{% icon check %}</span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The payment order object.
+      </div>
+    </div>
+
+    <div class="api-children">
+        <details class="api-item" data-level="1">
+            <summary>
+                <span class="field">{% f restrictedToAgeLimit %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                <span class="type"><code>int</code></span>
+                <span class="required"></span>
+            </summary>
+            <div class="desc"><div class="indent-1">Used for setting the age you want to restrict the payment to.</div></div>
+        </details>
+    </div>
+  </details>
+</div>

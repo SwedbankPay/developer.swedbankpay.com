@@ -1,3 +1,18 @@
+<!-- Captures for tables -->
+{% capture transaction_md %}{% include fields/transaction.md %}{% endcapture %}
+{% capture number_md %}{% include fields/number.md %}{% endcapture %}
+{% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
+{% capture vat_amount_md %}{% include fields/vat-amount.md %}{% endcapture %}
+{% capture payee_reference_md %}{% include fields/payee-reference.md describe_receipt=true %}{% endcapture %}
+{% capture operation_md %}{% include fields/operation.md %}{% endcapture %}
+{% capture status_md %}{% include fields/status.md %}{% endcapture %}
+{% capture description_md %}{% include fields/description.md %}{% endcapture %}
+{% capture initiating_system_user_agent_md %}{% include fields/initiating-system-user-agent.md %}{% endcapture %}
+{% capture language_md %}{% include fields/language.md %}{% endcapture %}
+{% capture operations_md %}{% include fields/operations.md %}{% endcapture %}
+{% capture payee_reference_desc %}{% include fields/payee-reference.md %}{% endcapture %}
+<!-- Captures for tables -->
+
 {% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 {% capture techref_url %}{% include utils/documentation-section-url.md %}{% endcapture %}
 {% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
@@ -35,12 +50,48 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     json= request_content
     %}
 
-{:.table .table-striped}
-|     Required     | Field                    | Type         | Description                                                                                    |
-| :--------------: | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------- |
-| {% icon check %} | `transaction`            | `object`     | The transaction object.                                                                        |
-| {% icon check %} | {% f description %}    | `string`     | A textual description of why the transaction is cancelled.                                     |
-| {% icon check %} | {% f payeeReference %} | `string(30)` | {% include fields/payee-reference.md %} |
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Required</div>
+  </div>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f transaction, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+      <span class="required">{% icon check %}</span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">The transaction object.</div>
+    </div>
+
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f description %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="required">{% icon check %}</span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">A textual description of why the transaction is cancelled.</div>
+        </div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f payeeReference %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string(30)</code></span>
+          <span class="required">{% icon check %}</span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">{{ payee_reference_desc | markdownify }}</div>
+        </div>
+      </details>
+    </div>
+  </details>
+</div>
 
 ## Cancel Response
 
@@ -75,12 +126,6 @@ api-supported-versions: 3.0/2.0{% endcapture %}
     header=response_header
     json= response_content
     %}
-
-{% capture transaction_md %}{% include fields/transaction.md %}{% endcapture %}
-{% capture number_md %}{% include fields/number.md %}{% endcapture %}
-{% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
-{% capture vat_amount_md %}{% include fields/vat-amount.md %}{% endcapture %}
-{% capture payee_reference_md %}{% include fields/payee-reference.md describe_receipt=true %}{% endcapture %}
 
 <div class="api-compact" aria-label="Request|Response">
   <div class="header">
@@ -291,15 +336,6 @@ api-supported-versions: 3.1{% endcapture %}
     header=response_header
     json= response_content
     %}
-
-{% capture operation_md %}{% include fields/operation.md %}{% endcapture %}
-{% capture status_md %}{% include fields/status.md %}{% endcapture %}
-{% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
-{% capture vat_amount_md %}{% include fields/vat-amount.md %}{% endcapture %}
-{% capture description_md %}{% include fields/description.md %}{% endcapture %}
-{% capture initiating_system_user_agent_md %}{% include fields/initiating-system-user-agent.md %}{% endcapture %}
-{% capture language_md %}{% include fields/language.md %}{% endcapture %}
-{% capture operations_md %}{% include fields/operations.md %}{% endcapture %}
 
 <div class="api-compact" aria-label="Response">
   <div class="header">

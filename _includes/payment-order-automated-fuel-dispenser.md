@@ -1,3 +1,7 @@
+<!-- Captures for tables -->
+{% capture payee_info_desc %}{% include fields/payee-info.md %}{% endcapture %}
+<!-- Captures for tables -->
+
 {% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
 {% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 {% capture techref_url %}{% include utils/documentation-section-url.md %}{% endcapture %}
@@ -74,13 +78,74 @@ Request fields not covered in the common Online Payments [`Initialized`]({{
 techref_url }}/technical-reference/status-models#initialized) redirect or
 seamless view table:
 
-{:.table .table-striped}
-| Field                    | Type         | Description                                                                                                                                                                                                               |
-| :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| {% f generateAfdPayment %}     | `bool`      | Set to `true` if the payment order is an Automated Fuel Dispenser payment, `false` if not. |
-| {% f restrictedToAfdInstruments %}     | `bool`      | Set to `true` if the payment menu should show only payment options that support Automated Fuel Dispenser payments, `false` to show all options. Default is true when using `generateAfdPayment`. |
-| {% f payeeInfo %}                | `object`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                             |
-| {% f mcc, 2 %}     | `integer`      | The merchant category code used for the purchase, 4 digits. |
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">The paymentOrder object.</div>
+    </div>
+
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f generateAfdPayment %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>bool</code></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            Set to <code>true</code> if the payment order is an Automated Fuel Dispenser payment, <code>false</code> if not.
+          </div>
+        </div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f restrictedToAfdInstruments %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>bool</code></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            Set to <code>true</code> if the payment menu should show only payment options that support Automated Fuel Dispenser payments, <code>false</code> to show all options. Default is true when using <code>generateAfdPayment</code>.
+          </div>
+        </div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f payeeInfo %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>object</code></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            {{ payee_info_desc | markdownify }}
+          </div>
+        </div>
+
+        <div class="api-children">
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f mcc, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>integer</code></span>
+            </summary>
+            <div class="desc">
+              <div class="indent-2">
+                The merchant category code used for the purchase, 4 digits.
+              </div>
+            </div>
+          </details>
+        </div>
+      </details>
+    </div>
+  </details>
+</div>
 
 {% if include.integration_mode=="redirect" %}
 
