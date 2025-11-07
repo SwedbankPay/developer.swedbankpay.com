@@ -185,13 +185,12 @@ payment resource, what the access token is authorized to do, etc.
 | `rel`    | The name of the relation the operation has to the current resource. |
 | `method` | The HTTP method to use when performing the operation.               |
 
-The operations should be performed as described in each response and not as
-described here in the documentation.
-Always use the `href` and `method` as specified in the response by finding
-the appropriate operation based on its `rel` value.
-The only thing that should be hard coded in the client is the value of the
-`rel` and the request that will be sent in the HTTP body of the request for
-the given operation.
+The operations listed in this documentation are examples. Refer to your actual
+response for the correct information. Always use the `href` and `method` as
+specified in the response by finding the appropriate operation based on its
+`rel` value. The only thing that should be hard coded in the client is the value
+of the `rel` and the request that will be sent in the HTTP body of the request
+for the given operation.
 
 {:.table .table-striped}
 | Operation                | Description                                                                      |
