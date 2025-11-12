@@ -492,7 +492,7 @@ api-supported-versions: 3.1{% endcapture %}
   <details class="api-item" data-level="0">
     <summary>
       <span class="field">{% f language %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-      <span class="type"><code>string</code></span>
+      <span class="type"><code>enum(string)</code></span>
     </summary>
     {% capture language_md %}{% include fields/language.md %}{% endcapture %}
     <div class="desc"><div class="indent-0">{{ language_md | markdownify }}</div></div>

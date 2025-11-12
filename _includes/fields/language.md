@@ -2,14 +2,14 @@
 {%- capture language -%}
     {%- case api_resource -%}
         {% when "creditcard" %}
-            `sv-SE`, `nb-NO`, `da-DK`, `de-DE`, `ee-EE`, `en-US`, `es-ES`, `fr-FR`,
+            Allowed locale code values: `sv-SE`, `nb-NO`, `da-DK`, `de-DE`, `ee-EE`, `en-US`, `es-ES`, `fr-FR`,
             `lv-LV`, `lt-LT`, `ru-RU` or `fi-FI`.
         {% when "mobilepay" %}
-            `da-DK`, `fi-FI` or `en-US`.
+            Allowed locale code values: `da-DK`, `fi-FI` or `en-US`.
         {% when "paymentorders" %}
-            `sv-SE`, `nb-NO`, `da-DK`, `en-US` or `fi-FI`.
+            Allowed locale code values: `sv-SE`, `nb-NO`, `da-DK`, `en-US` or `fi-FI`.
         {% else %}
-            `sv-SE`, `nb-NO` or `en-US`.
+            Allowed locale code values: `sv-SE`, `nb-NO` or `en-US`.
     {%- endcase -%}
 {%- endcapture -%}
 
