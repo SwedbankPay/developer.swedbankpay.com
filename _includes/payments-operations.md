@@ -239,9 +239,9 @@ Content-Type: application/json{% endcapture %}
           <details class="api-item" data-level="2">
             <summary>
               <span class="field">{% f acquirerTransactionTime, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
+              <span class="type"><code>date(string)</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">The ISO-8601 date and time of the acquirer transaction.</div></div>
+            <div class="desc"><div class="indent-2">The ISO 8601 date and time of the acquirer transaction. Written in the format YYYY-MM-DDTHH:MM:SSZ, where Z indicates UTC.</div></div>
           </details>
 
           <details class="api-item" data-level="2">
