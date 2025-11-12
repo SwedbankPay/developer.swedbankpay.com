@@ -626,9 +626,9 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           <details class="api-item" data-level="2">
             <summary>
               <span class="field">{% f created, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
+              <span class="type"><code>date(string)</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">The ISO-8601 date of when the payment order was created.</div></div>
+            <div class="desc"><div class="indent-2">The ISO 8601 date of when the payment order was created. Written in the format YYYY-MM-DDTHH:MM:SSZ, where Z indicates UTC.</div></div>
           </details>
 
           <details class="api-item" data-level="2">
@@ -843,9 +843,9 @@ api-supported-versions: 3.x{% endcapture %}
           <details class="api-item" data-level="2">
             <summary>
               <span class="field">{% f created, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
+              <span class="type"><code>date(string)</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">The ISO-8601 date of when the payment order was created.</div></div>
+            <div class="desc"><div class="indent-2">The ISO 8601 date of when the payment order was created. Written in the format YYYY-MM-DDTHH:MM:SSZ, where Z indicates UTC.</div></div>
           </details>
 
           <details class="api-item" data-level="2">
@@ -1079,17 +1079,17 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           <details class="api-item" data-level="2">
             <summary>
               <span class="field">{% f created, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
+              <span class="type"><code>date(string)</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">The ISO-8601 date of when the payment order was created.</div></div>
+            <div class="desc"><div class="indent-2">The ISO 8601 date of when the payment order was created. Written in the format YYYY-MM-DDTHH:MM:SSZ, where Z indicates UTC.</div></div>
           </details>
 
           <details class="api-item" data-level="2">
             <summary>
               <span class="field">{% f updated, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
+              <span class="type"><code>date(string)</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">The ISO-8601 date of when the payment order was updated.</div></div>
+            <div class="desc"><div class="indent-2">The ISO 8601 date of when the payment order was updated. Written in the format YYYY-MM-DDTHH:MM:SSZ, where Z indicates UTC.</div></div>
           </details>
 
           <details class="api-item" data-level="2">
@@ -1393,9 +1393,9 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           <details class="api-item" data-level="2">
             <summary>
               <span class="field">{% f created %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
+              <span class="type"><code>date(string)</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">The ISO-8601 date of when the history event was created.</div></div>
+            <div class="desc"><div class="indent-2">The ISO 8601 date of when the history event was created. Written in the format YYYY-MM-DDTHH:MM:SSZ, where Z indicates UTC.</div></div>
           </details>
 
           <details class="api-item" data-level="2">
@@ -2721,7 +2721,7 @@ api-supported-versions: 3.x{% endcapture %}
     header=response_header
     json= response_content
     %}
-    
+
 <div class="api-compact" aria-label="Response">
   <div class="header">
     <div>Field</div>
@@ -2986,9 +2986,9 @@ api-supported-versions: 3.x{% endcapture %}
           <details class="api-item" data-level="2">
             <summary>
               <span class="field">{% f acquirerTransactionTime, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
+              <span class="type"><code>date(string)</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">The ISO-8601 date and time of the acquirer transaction.</div></div>
+            <div class="desc"><div class="indent-2">The ISO 8601 date and time of the acquirer transaction. Written in the format YYYY-MM-DDTHH:MM:SSZ, where Z indicates UTC.</div></div>
           </details>
 
           <!-- corrected spelling -->

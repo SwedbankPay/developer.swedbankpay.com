@@ -311,7 +311,7 @@ All currencies are expressed according to the
 
 ### Dates
 
-All dates are expressed according to the [ISO 8601][iso-8601]{:target="_blank"}
+All dates are expressed according to the [ISO 8601][ISO-8601]{:target="_blank"}
 standard that combine dates, time and timezone data into a string, e.g.
 `2018-09-14T13:21:57.6627579Z`.
 
@@ -503,7 +503,7 @@ For technical questions:
 [iso-3166]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 [iso-4217]: https://en.wikipedia.org/wiki/ISO_4217
 [iso-639-1]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
-[iso-8601]: https://en.wikipedia.org/wiki/ISO_8601
+[ISO-8601]: https://en.wikipedia.org/wiki/ISO_8601
 [java-tls]: https://blogs.oracle.com/java/post/jdk-8-will-use-tls-12-as-default
 [json]: https://www.json.org/
 [node-tls]: https://stackoverflow.com/a/44635449/61818
