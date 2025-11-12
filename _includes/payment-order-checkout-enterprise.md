@@ -173,10 +173,10 @@ Content-Type: application/json
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f currency %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">The currency of the payment.</div></div>
+        <div class="desc"><div class="indent-1">The currency of the payment in the ISO 4217 format (e.g. `EUR`, `DKK`, `NOK` or `SEK`). Some payment methods are only available with selected currencies.</div></div>
       </details>
 
       <!-- amount -->
@@ -1009,9 +1009,9 @@ Content-Type: application/json
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f currency %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The currency of the payment order.</div></div>
+        <div class="desc"><div class="indent-1">The currency of the payment order in the ISO 4217 format (e.g. `EUR`, `DKK`, `NOK` or `SEK`). Some payment methods are only available with selected currencies.</div></div>
       </details>
 
       <!-- amount -->
