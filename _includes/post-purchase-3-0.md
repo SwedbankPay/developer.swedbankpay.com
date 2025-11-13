@@ -506,7 +506,7 @@ api-supported-versions: 3.0{% endcapture %}
               <span class="field">{% f created, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>date(string)</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> date and time when the transaction was created.</div></div>
+            <div class="desc"><div class="indent-2">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the transaction was created.</div></div>
           </details>
 
           <details class="api-item" data-level="2">
@@ -514,7 +514,7 @@ api-supported-versions: 3.0{% endcapture %}
               <span class="field">{% f updated, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>date(string)</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> date and time when the transaction was updated.</div></div>
+            <div class="desc"><div class="indent-2">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the transaction was updated.</div></div>
           </details>
 
           <details class="api-item" data-level="2">
@@ -813,7 +813,7 @@ api-supported-versions: 3.0{% endcapture %}
               <span class="field">{% f created, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>date(string)</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> date and time when the transaction was created.</div></div>
+            <div class="desc"><div class="indent-2">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the transaction was created.</div></div>
           </details>
 
           <details class="api-item" data-level="2">
@@ -821,7 +821,7 @@ api-supported-versions: 3.0{% endcapture %}
               <span class="field">{% f updated, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>date(string)</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> date and time when the transaction was updated.</div></div>
+            <div class="desc"><div class="indent-2">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the transaction was updated.</div></div>
           </details>
 
           <details class="api-item" data-level="2">
@@ -1335,7 +1335,7 @@ api-supported-versions: 3.0{% endcapture %}
               <span class="field">{% f created, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>date(string)</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> date and time when the transaction was created.</div></div>
+            <div class="desc"><div class="indent-2">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the transaction was created.</div></div>
           </details>
 
           <details class="api-item" data-level="2">
@@ -1343,7 +1343,7 @@ api-supported-versions: 3.0{% endcapture %}
               <span class="field">{% f updated, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>date(string)</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> date and time when the transaction was updated.</div></div>
+            <div class="desc"><div class="indent-2">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the transaction was updated.</div></div>
           </details>
 
           <details class="api-item" data-level="2">
