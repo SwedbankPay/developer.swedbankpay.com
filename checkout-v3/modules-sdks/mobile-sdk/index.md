@@ -1,6 +1,7 @@
 ---
 section: Mobile SDK
 title: Introduction
+redirect_from: /modules-sdks/mobile-sdk/
 description: |
   **Swedbank Pay Mobile SDK** provides an easy way of integrating Swedbank Pay
   Online Payments to your Android and iOS applications.
