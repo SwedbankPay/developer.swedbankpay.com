@@ -24,7 +24,7 @@ The created `{{ transaction }}` resource contains information about the
 {% if documentation_section contains "checkout" or "payment-menu" %}
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
+Content-Type: application/json; charset=utf-8; version=<PaymentOrderVersion>
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{

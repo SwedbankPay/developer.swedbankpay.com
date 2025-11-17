@@ -5,7 +5,7 @@ The `clientInfo` resource contains information about the client used for a speci
 {% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/clientInfo HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 
 {% include code-example.html
     title='GET Request'

@@ -18,7 +18,8 @@ Swish transactions where the funds are captured instantly and automatically).
 
 ## Perform the GET
 
-You can do this by perfoming a `GET` on your payment.
+You can do this by perfoming a `GET` on your payment. Remember that adding the
+version is optional for v3.0 and v2.0, but needed if you are using v3.1.
 
 The status field should simply have the status `Paid`. As long as this is the
 case, you are good to go and proceed to doing the [capture][pp-capture].
@@ -34,7 +35,7 @@ node being collapsed.
 {% capture request_header %}GET /psp/paymentorders/34761895-d1e4-412a-0a30-08dc43423140?$expand=paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 
 {% include code-example.html
     title='GET Request with expanded paid node'
@@ -42,7 +43,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     %}
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
+Content-Type: application/json; charset=utf-8; version=<PaymentOrderVersion>
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
@@ -183,7 +184,7 @@ An alternative option to expanding the paid node is performing a
 {% capture request_header %}GET /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 
 {% include code-example.html
     title='GET Request directly towards the paid resource'
@@ -191,7 +192,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     %}
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
+Content-Type: application/json; charset=utf-8; version=<PaymentOrderVersion>
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{

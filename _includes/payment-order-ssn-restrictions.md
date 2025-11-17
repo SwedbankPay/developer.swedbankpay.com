@@ -44,7 +44,7 @@ documented on the page linked above.
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {

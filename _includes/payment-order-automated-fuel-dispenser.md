@@ -33,7 +33,7 @@ payments by setting the `generateAfdPayment` to `true`.
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {
@@ -46,7 +46,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
+        "productName": "Checkout3",
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], {% if include.integration_mode=="seamless-view" %}
             "paymentUrl": "https://example.com/perform-payment", {% endif %}
@@ -166,7 +166,7 @@ response provided below.
 {% endif %}
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
+Content-Type: application/json; charset=utf-8; version=<PaymentOrderVersion>
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{

@@ -119,14 +119,14 @@ If something failed in the payout process this flow will happen.
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 
 {% capture request_content %}{
    "paymentorder": {
         "restrictedToPayoutInstruments": true,
         "generateUnscheduledToken": true,
         "operation": "Verify",
-        "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
+        "productName": "Checkout3",
         "currency": "SEK",
         "description": "Bank account verification",
         "userAgent": "Mozilla/5.0...",
@@ -488,7 +488,7 @@ in the merchant's contract and the payer's first and last name is added in the
 request.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
+Content-Type: application/json; charset=utf-8; version=<PaymentOrderVersion>
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
@@ -871,7 +871,7 @@ account details.
 {% capture request_header %}PATCH /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {
@@ -951,7 +951,7 @@ Note that the status in the response has changed to `Paid`, with the correlating
 disappearance of `PATCH` operations.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
+Content-Type: application/json; charset=utf-8; version=<PaymentOrderVersion>
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
@@ -1314,12 +1314,12 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 
 {% capture request_content %}{
   "paymentorder": {
     "operation": "Payout",
-    "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
+    "productName": "Checkout3",
     "currency": "SEK",
     "amount": 1500,
     "vatAmount": 0,
@@ -1548,7 +1548,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 ## Payout Response
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
+Content-Type: application/json; charset=utf-8; version=<PaymentOrderVersion>
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
@@ -1907,7 +1907,7 @@ A GET performed after the callback is received on a `paymentOrder` with status
 `Paid` node. This can be used for support correspondance.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 
 {% capture response_content %}{
     "paymentOrder": {

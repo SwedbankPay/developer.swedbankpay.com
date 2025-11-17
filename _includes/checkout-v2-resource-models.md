@@ -13,7 +13,7 @@ while MobilePay does return this field, the value present is actually a
 {% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=2.0      // Version optional for 2.0{% endcapture %}
+Content-Type: application/json;version=2.0{% endcapture %}
 
 {% include code-example.html
     title='Request'

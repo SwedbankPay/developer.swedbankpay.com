@@ -84,7 +84,7 @@ A Payer Aware Payment Menu request can look like this.
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+CContent-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {
@@ -96,7 +96,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
         "userAgent": "Mozilla/5.0...",
         "generatePaymentToken": true,
         "language": "sv-SE", {% if documentation_section contains "checkout-v3/payments-only" %}
-        "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
+        "productName": "Checkout3",
         {% endif %}
         "disableStoredPaymentDetails": false,
         "urls": {
@@ -351,7 +351,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">Used to tag the payment as Online Payments v3.0. Mandatory for Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.</div></div>
+        <div class="desc"><div class="indent-1">Used to tag the payment as Online Payments v3.0. Mandatory for Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field. Not in use for v3.1.</div></div>
       </details>
       {% endif %}
 
@@ -1153,7 +1153,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 ## Payer Aware Payment Menu Response
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
+Content-Type: application/json; charset=utf-8; version=<PaymentOrderVersion>
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
@@ -1688,7 +1688,7 @@ the operation(s) available for them.
 {% capture request_header %}GET /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0 {% endcapture %}
+Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 
 {% include code-example.html
     title='GET Tokens Request'
@@ -1698,7 +1698,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 ## GET Tokens Response
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
+Content-Type: application/json; charset=utf-8; version=<PaymentOrderVersion>
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
@@ -1903,7 +1903,7 @@ You can remove the tokens by using the following `PATCH` request.
 {% capture request_header %}PATCH /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 
 {% capture request_content %}{
   "state": "Deleted",
@@ -1942,7 +1942,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 Which will provide this response.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
+Content-Type: application/json; charset=utf-8; version=<PaymentOrderVersion>
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{

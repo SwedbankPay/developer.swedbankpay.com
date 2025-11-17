@@ -146,7 +146,7 @@ responsibility for ensuring the **lawful processing, protection, and handling**
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.0     // Version optional{% endcapture %}
+Content-Type: application/json;version=3.0{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {
@@ -157,12 +157,12 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
+        "productName": "Checkout3",
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],
-            "paymentUrl": "https://example.com/perform-payment", //Seamless View only
+            "paymentUrl": "https://example.com/perform-payment",
             "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-cancelled", //Redirect only
+            "cancelUrl": "https://example.com/payment-cancelled",
             "callbackUrl": "https://api.example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png"
         },
