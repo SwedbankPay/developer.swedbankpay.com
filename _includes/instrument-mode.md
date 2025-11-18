@@ -81,7 +81,7 @@ An example with invoice as the payment method of choice.
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
+Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {
@@ -200,7 +200,7 @@ either `view-checkout` (Seamless View) or `redirect-checkout` will appear in the
 response. Never both at the same time.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=<PaymentOrderVersion>
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
@@ -419,7 +419,7 @@ the following `PATCH` request, here with Swish as an example.
 {% capture request_header %}PATCH /psp/{{ include.api_resource }}/paymentorders/{{ page.payment_id }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
+Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
   "paymentorder": {

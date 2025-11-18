@@ -27,7 +27,7 @@ initial `Purchase` request.
 
 {% capture request_header %}PATCH /psp/paymentorders/{{ page.payment_order_id }} HTTP/1.1
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
+Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {
@@ -302,7 +302,7 @@ Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 </div>
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=<PaymentOrderVersion>
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
