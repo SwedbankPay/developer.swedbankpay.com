@@ -2261,6 +2261,17 @@ api-supported-versions: 3.x{% endcapture %}
       "city": "city",
       "countryCode": "countryCode"
     },
+    "billingAddress": {
+      "firstName": "firstname/companyname",
+      "lastName": "lastname",
+      "email": "karl.anderssson@mail.se",
+      "msisdn": "+46759123456",
+      "streetAddress": "string",
+      "coAddress": "string",
+      "city": "Solna",
+      "zipCode": "17674",
+      "countryCode": "SE"
+    },
     "device": {
       "detectionAccuracy": 48,
       "ipAddress": "127.0.0.1",
@@ -2483,6 +2494,81 @@ api-supported-versions: 3.x{% endcapture %}
           </details>
         </div>
       </details>
+
+                <!-- billingAddress (object) -->
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f billingAddress, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>object</code></span>
+              <span class="req"></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The billing address object containing information about the payer's billing address.</div></div>
+
+            <div class="api-children">
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f firstName,3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                  <span class="type"><code>string</code></span>
+                  <span class="req"></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The first name of the payer.</div></div>
+              </details>
+
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f lastName,3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                  <span class="type"><code>string</code></span>
+                  <span class="req"></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The last name of the payer.</div></div>
+              </details>
+
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f streetAddress,3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                  <span class="type"><code>string</code></span>
+                  <span class="req"></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The street address of the payer. Maximum 50 characters long.</div></div>
+              </details>
+
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f coAddress,3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                  <span class="type"><code>string</code></span>
+                  <span class="req"></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The CO-address (if used).</div></div>
+              </details>
+
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f zipCode,3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                  <span class="type"><code>string</code></span>
+                  <span class="req"></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The postal number (ZIP code) of the payer.</div></div>
+              </details>
+
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f city,3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                  <span class="type"><code>string</code></span>
+                  <span class="req"></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The city of the payer.</div></div>
+              </details>
+
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f countryCode,3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                  <span class="type"><code>string</code></span>
+                  <span class="req"></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Country code for country of residence, e.g. <code>SE</code>, <code>NO</code>, or <code>FI</code>.</div></div>
+              </details>
+            </div>
+          </details>
 
       <!-- level 1: device (tag UPDATED to level-1) -->
       <details class="api-item" data-level="1">
