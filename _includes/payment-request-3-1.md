@@ -161,9 +161,9 @@ Content-Type: application/json;version=3.1{% endcapture %}
         "language": "sv-SE",
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],
-            "paymentUrl": "https://example.com/perform-payment", //Seamless View only
+            "paymentUrl": "https://example.com/perform-payment",
             "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-cancelled", //Redirect only
+            "cancelUrl": "https://example.com/payment-cancelled",
             "callbackUrl": "https://api.example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png",
             "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf"

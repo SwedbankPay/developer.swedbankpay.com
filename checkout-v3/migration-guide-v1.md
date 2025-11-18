@@ -31,7 +31,7 @@ fits all structure.
 
 Migrating from individual payment methods to Online Payments v3 does require a
 full new integration. The good news is that even if you are working with a new
-(paymentOrder) resource, the integration is very similar to what you are used
+(`paymentOrder`) resource, the integration is very similar to what you are used
 to with payment method integrations.
 
 We still have support for both Seamless View and Redirect, and the payment flow

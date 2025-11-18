@@ -19,7 +19,7 @@ request here. The response will look like a basic `paymentOrder` response.
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1,3.0{% endcapture %}
+Content-Type: application/json;version=3.x{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {
@@ -33,9 +33,9 @@ Content-Type: application/json;version=3.1,3.0{% endcapture %}
         "language": "sv-SE",
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],
-            "paymentUrl": "https://example.com/perform-payment", //Seamless View only
+            "paymentUrl": "https://example.com/perform-payment",
             "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-cancelled", //Redirect only
+            "cancelUrl": "https://example.com/payment-cancelled",
             "callbackUrl": "https://api.example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png"
         },

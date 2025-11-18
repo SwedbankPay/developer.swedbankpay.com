@@ -31,7 +31,7 @@ field of the request, like the example below.
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {
@@ -44,7 +44,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
+        "productName": "Checkout3",
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], {% if include.integration_mode=="seamless-view" %}
             "paymentUrl": "https://example.com/perform-payment", {% endif %}
@@ -315,7 +315,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">Used to tag the payment as Online Payments v3.0. Mandatory for Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.</div></div>
+        <div class="desc"><div class="indent-1">Used to tag the payment as Online Payments v3.0. Mandatory for Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field. Not in use for v3.1.</div></div>
       </details>
 
       <!-- implementation -->
@@ -1024,7 +1024,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 ## Request Delivery Info Response
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
+Content-Type: application/json; charset=utf-8; version=<PaymentOrderVersion>
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{

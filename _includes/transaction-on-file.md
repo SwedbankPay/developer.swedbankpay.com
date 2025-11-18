@@ -55,7 +55,7 @@ Content-Type: application/json{% endcapture %}
         "description": "Create TransactionOnFileToken",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO", {% if documentation_section contains "checkout-v3" %}
-        "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
+        "productName": "Checkout3",
         {% endif %}
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],

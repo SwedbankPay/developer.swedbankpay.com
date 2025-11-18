@@ -118,7 +118,7 @@ request and response below:
 {% capture request_header %}POST /psp/paymentorders/{{ page.payment_order_id }}/captures HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.0    // Version optional, can be set in `productName`{% endcapture %}
+Content-Type: application/json;version=3.0{% endcapture %}
 
 {% capture request_content %}{
     "transaction": {
@@ -655,7 +655,7 @@ no captures can be performed later.
 {% capture request_header %}POST /psp/paymentorders/{{ page.payment_order_id }}/cancellations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.0     // Version optional, can be set in `productName`{% endcapture %}
+Content-Type: application/json;version=3.0{% endcapture %}
 
 {% capture request_content %}{
     "transaction": {
@@ -946,7 +946,7 @@ If we want to reverse a previously captured amount, we need to perform
 {% capture request_header %}POST /psp/paymentorders/{{ page.payment_order_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.0     // Version optional, can be set in `productName`{% endcapture %}
+Content-Type: application/json;version=3.0{% endcapture %}
 
 {% capture request_content %}{
     "transaction": {

@@ -40,7 +40,7 @@ The initial request should look like this:
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {
@@ -52,7 +52,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "generateRecurrenceToken": true, {% if documentation_section contains "checkout-v3" %}
-        "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header{% endif %}
+        "productName": "Checkout3",{% endif %}
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], {% if include.integration_mode=="seamless-view" %}
             "paymentUrl": "https://example.com/perform-payment", {% endif %}
@@ -240,7 +240,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">Used to tag the payment as Online Payments v3.0. Mandatory for Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.</div></div>
+        <div class="desc"><div class="indent-1">Used to tag the payment as Online Payments v3.0. Mandatory for Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field. Not in use for v3.1.</div></div>
       </details>
 
       <!-- implementation (optional) -->
@@ -776,7 +776,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 ## Initial Recur Response
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
+Content-Type: application/json; charset=utf-8; version=<PaymentOrderVersion>
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
@@ -1181,7 +1181,7 @@ field.
 {% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 
 {% include code-example.html
     title='Request'
@@ -1196,7 +1196,7 @@ initial payment response, but with an expanded `paid` field.
 {% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 
 {% include code-example.html
     title='Request'
@@ -1213,7 +1213,7 @@ with an expanded `paid` field.
 {% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 
 {% include code-example.html
     title='Request'
@@ -1255,7 +1255,7 @@ needed.
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {
@@ -1267,7 +1267,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
         "description": "Test Recurrence",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",  {% if documentation_section contains "checkout-v3" %}
-        "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header {% endif %}
+        "productName": "Checkout3", {% endif %}
         "urls": {
             "callbackUrl": "https://example.com/payment-callback"  // Callbacks will only be sent for Trustly
         },
@@ -1449,7 +1449,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">Used to tag the payment as Online Payments v3.0. Mandatory for Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.</div></div>
+        <div class="desc"><div class="indent-1">Used to tag the payment as Online Payments v3.0. Mandatory for Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field. Not in use for v3.1.</div></div>
       </details>
 
       <!-- implementation (optional) -->
