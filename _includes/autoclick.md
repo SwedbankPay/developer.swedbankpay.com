@@ -963,6 +963,7 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
             <summary>
               <span class="field">{% f description, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
+              <span class="req">{% icon check %}</span>
               <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ description_md | markdownify }}</div></div>
