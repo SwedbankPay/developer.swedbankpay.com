@@ -29,7 +29,7 @@ the request, like the example below.
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
+Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {
@@ -1066,7 +1066,7 @@ Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 ## Response
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=<PaymentOrderVersion>
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{

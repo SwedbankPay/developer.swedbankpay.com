@@ -932,7 +932,7 @@ Content-Type: application/json;version=3.x
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=<PaymentOrderVersion>
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
 api-supported-versions: 3.x/2.0
 
 {

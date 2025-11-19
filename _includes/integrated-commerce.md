@@ -36,7 +36,7 @@ from a regular `GET` request.
 {% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
+Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% include code-example.html
     title='Request'
@@ -48,7 +48,7 @@ Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 {% capture request_header %}QUERY /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
+Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
   "referenceCode": 1717224235360011
@@ -63,7 +63,7 @@ Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 ## GET And QUERY Response
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=<PaymentOrderVersion>
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{

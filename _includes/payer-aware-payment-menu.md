@@ -84,7 +84,7 @@ A Payer Aware Payment Menu request can look like this.
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-CContent-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
+CContent-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {
@@ -1153,7 +1153,7 @@ CContent-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 ## Payer Aware Payment Menu Response
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=<PaymentOrderVersion>
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
@@ -1688,7 +1688,7 @@ the operation(s) available for them.
 {% capture request_header %}GET /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
+Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% include code-example.html
     title='GET Tokens Request'
@@ -1698,7 +1698,7 @@ Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 ## GET Tokens Response
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=<PaymentOrderVersion>
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
@@ -1903,7 +1903,7 @@ You can remove the tokens by using the following `PATCH` request.
 {% capture request_header %}PATCH /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
+Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
   "state": "Deleted",
@@ -1942,7 +1942,7 @@ Content-Type: application/json;version=<PaymentOrderVersion>{% endcapture %}
 Which will provide this response.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=<PaymentOrderVersion>
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
