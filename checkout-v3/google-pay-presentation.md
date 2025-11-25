@@ -74,18 +74,20 @@ After creating the business profile, you will be able to see your Merchant ID on
 the top right corner of the page. We need that ID in order to activate Google
 Pay for you.
 
-However, be sure to register your domain/package and submit screenshots of your
-integration for approval. Login to
+However, be sure to register your domain/package and submit screenshots of
+your integration for approval. Login to
 [Google Pay&trade; & Wallet Console][google-pay-profile]{:target="_blank"}, go
 to the **Google Pay&trade; API tab**, upload the screenshots and submit your
-integration for approval. The screenshots should be of the entire buyflow
-process (ex: add to cart, checkout, payment, confirmation - if available). Your
+integration for approval. You should provide visuals for 5 steps of the purchase
+flow (e.g. add to cart, checkout, payment and confirmation - where the
+confirmation screenshot can be used for both screenshot 4 and 5). Your
 **Merchant ID** will only work in production environment once Google complete
 their review and approve your submitted integration.
 
 We have provided approved integration screenshots which you can use to make the
-process more convenient.
-<button class="btn btn-tertiary ml-3 w-100" type="button" onclick="downloadScreenshots()">
+process easier.
+
+<button class="btn btn-tertiary ml-3 w-80" type="button" onclick="downloadScreenshots()">
   <span>Download screenshots</span>
   <i class="at-download-arrow-down ml-2" aria-hidden="true"></i>
 </button>
