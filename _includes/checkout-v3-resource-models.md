@@ -1197,25 +1197,10 @@ api-supported-versions: 3.x{% endcapture %}
         "initiatedBy" "System"
       },
       {
-        "created": "2020-03-04T01:00:15.00Z",
-        "name": "CheckinInitiated",
-        "initiatedBy" "System"
-      },
-      {
-        "created": "2020-03-04T01:00:16.00Z",
-        "name": "PayerDetailsRetrieved",
-        "initiatedBy" "System"
-      },
-      {
-        "created": "2020-03-04T01:00:20.00Z",
-        "name": "PayerCheckedIn",
-        "initiatedBy" "Consumer"
-      },
-      {
         "created": "2020-03-04T01:01:01.01Z",
         "name": "PaymentInstrumentSelected",
         "instrument": "CreditCard",
-        "initiatedBy" "Consumer"
+        "initiatedBy" "Payer"
       },
       {
         "created": "2020-03-04T01:03:01.01Z",
@@ -1223,26 +1208,26 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard",
         "number": 123456,
         "prefill": true,
-        "initiatedBy" "Consumer"
+        "initiatedBy" "Payer"
       },
       {
         "created": "2020-03-04T01:03:01.01Z",
         "name": "PaymentAttemptAborted",
         "number": 123456,
         "instrument": "CreditCard",
-        "initiatedBy" "Consumer"
+        "initiatedBy" "Payer"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentInstrumentSelected",
         "instrument": "Vipps",
-        "initiatedBy" "Consumer"
+        "initiatedBy" "Payer"
       },
       {
         "created": "2020-03-04T03:01:01.01Z",
         "name": "PaymentInstrumentSelected",
         "instrument": "CreditCard",
-        "initiatedBy" "Consumer"
+        "initiatedBy" "Payer"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
@@ -1250,14 +1235,14 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard",
         "number": 123457,
         "prefill": true,
-        "initiatedBy" "Consumer"
+        "initiatedBy" "Payer"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentAttemptFailed",
         "instrument": "CreditCard",
         "number": 123457,
-        "initiatedBy" "Consumer"
+        "initiatedBy" "Payer"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
@@ -1265,14 +1250,14 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard",
         "number": 123458,
         "prefill": true,
-        "initiatedBy" "Consumer"
+        "initiatedBy" "Payer"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentPaid",
         "instrument": "CreditCard"
         "number": 123458,
-        "initiatedBy" "Consumer"
+        "initiatedBy" "Payer"
       },
       {
         "created": "2020-03-05T02:01:01.01Z",
