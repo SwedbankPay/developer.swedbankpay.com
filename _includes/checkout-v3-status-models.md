@@ -40,8 +40,8 @@ captured transaction has been reversed. The transaction will now have status
 `Reversed` instead of `Paid`. It will contain fields from both the cancelled
 description and paid section.
 
-*   `Aborted` is returned when the merchant has aborted the payment or if the payer
-cancelled the payment in the redirect integration (on the redirect page).
+*   `Aborted` is returned when the merchant has aborted the payment or if the
+payer cancelled the payment in the redirect integration (on the redirect page).
 
 ## Aborted
 
