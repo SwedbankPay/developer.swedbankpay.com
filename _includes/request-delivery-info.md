@@ -19,9 +19,9 @@ add the field `restrictedToDeliveryInfoInstruments` and setting it to `true`.
 This will leave out all payment methods which can't return delivery information.
 
 You are currently only able to request delivery information from **Apple Pay**,
-**Click to Pay** and **Google Pay&trade;**, but we will add support for more
-payment methods going forward. No changes are required at your (the merchant's)
-end to be able to offer more payment methods at a later time.
+**Click to Pay**, **Google Pay&trade;** and **MobilePay** but we will add
+support for more payment methods going forward. No changes are required at your
+(the merchant's) end to be able to offer more payment methods at a later time.
 
 ## Request Delivery Info Request
 
@@ -1042,13 +1042,18 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "language": "sv-SE",
         "availableInstruments": [
-            "CreditCard",
-            "Invoice-PayExFinancingSe",
-            "Invoice-PayMonthlyInvoiceSe",
-            "Swish",
-            "CreditAccount",
-            "Trustly"
-        ], {% if include.integration_mode=="seamless-view" %}
+            "MobilePay",
+            "ApplePay",
+            "GooglePay",
+            "ClickToPay"
+        ],
+        "viewableInstruments": [
+            "MobilePay",
+            "ApplePay",
+            "GooglePay",
+            "ClickToPay"
+        ],
+        {% if include.integration_mode=="seamless-view" %}
         "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}
         "instrumentMode": false,
@@ -1102,6 +1107,12 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           "rel":"update-order",
           "method":"PATCH",
           "contentType":"application/json"
+        },
+                {
+          "method": "GET",
+          "href": "https://api.externalintegration.payex.com/psp/paymentsessions/4191e1a6c4ab452aa9c4ed38754f11a700748c2128b9d50026326e3b0f0d2d63?_tc_tid=e635a1eb395c92380cfacb64caa22bac",
+          "rel": "view-paymentsession",
+          "contentType": "application/json"
         },
         {
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
@@ -1275,6 +1286,15 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">A list of payment methods available for this payment.</div></div>
+      </details>
+
+            <!-- viewableInstruments -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f viewableInstruments %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">A list of payment methods with viewable delivery information.</div></div>
       </details>
 
       <!-- implementation -->

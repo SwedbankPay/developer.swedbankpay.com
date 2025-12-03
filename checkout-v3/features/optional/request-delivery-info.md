@@ -7,6 +7,7 @@ description: |
                 <span class="badge badge-default">Apple Pay</span>
                 <span class="badge badge-default">Click to Pay</span>
                 <span class="badge badge-default">Google Pay&trade;</span>
+                <span class="badge badge-default">MobilePay</span>
               </span>
 menu_order: 2900
 ---
