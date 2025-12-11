@@ -53,14 +53,6 @@ confirmation screenshot can be used for both screenshot 4 and 5). Your
 **Merchant ID** will only work in production environment once Google complete
 their review and approve your submitted integration.
 
-We have provided approved integration screenshots which you can use to make the
-process easier.
-
-<button class="btn btn-tertiary ml-3 w-80" type="button" onclick="downloadScreenshots()">
-  <span>Download screenshots</span>
-  <i class="at-download-arrow-down ml-2" aria-hidden="true"></i>
-</button>
-
 Unless you have provided us with your **Merchant ID** as part of signing your
 agreement with Swedbank Pay, you can e-mail us it at
 **agreement@swedbankpay.com** together with **Name**, **Organizational** and
