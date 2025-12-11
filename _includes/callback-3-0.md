@@ -30,8 +30,9 @@ about this update.
 
 ### Why Is The Callback Important?
 
-Providing a `callbackUrl` in `POST` requests is **mandatory**. Below we provide
-three example scenarios of why this is important:
+**If you have callback enabled**, providing a `callbackUrl` in `POST` requests
+is **mandatory**. Below we provide three example scenarios of why this is
+important:
 
 1.  If the payer closes the payment window, the merchant will never know what
     happened to the payment if `callbackUrl` is not implemented.
