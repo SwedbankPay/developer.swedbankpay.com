@@ -4,10 +4,10 @@
 
 ### Callback v3.1
 
-{% include alert.html type="warning" icon="warning" body="While the callback
-feature is mandatory, we would like to emphasize that it is mainly a fail-safe
-feature. We strongly advice that it is not your primary mean of checking for
-payment updates." %}
+{% include alert.html type="warning" icon="warning" body="This feature is only
+available for merchants who have a specific agreement with Swedbank Pay. As the
+callback is mainly a fail-safe feature, we strongly advice that it is not your
+primary mean of checking for payment updates." %}
 
 <div class="slab mb-5">
   <ul class="toc-list" role="navigation" aria-label="Article content">
