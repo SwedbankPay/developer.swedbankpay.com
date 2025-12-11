@@ -7,37 +7,6 @@ description: |
   a payment method?
 menu_order: 500
 ---
-<script>
-  async function downloadScreenshots() {
-    const pageUrl = 'https://ecom.dev.payex.com/.well-known/apple-developer-merchantid-domain-association';
-    const fileName = 'apple-developer-merchantid-domain-association';
-
-    try {
-      // Fetch the webpage content
-      const response = await fetch(pageUrl);
-      if (!response.ok) {
-        throw new Error(`Failed to fetch webpage: ${response.statusText}`);
-      }
-      const text = await response.text();
-
-      // Create a temporary link element
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = fileName; // No extension added
-
-      // Trigger the download
-      document.body.appendChild(link);
-      link.click();
-
-      // Clean up
-      document.body.removeChild(link);
-      URL.revokeObjectURL(link.href);
-    } catch (error) {
-      console.error('Error saving the webpage:', error);
-      alert('Failed to save the webpage. Please try again later.');
-    }
-  }
-</script>
 
 {% include alert.html type="informative" icon="info" header="Google Pay&trade;
 in apps" body="We do not currently support launching Google Pay&trade; within an
