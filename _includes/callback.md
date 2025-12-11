@@ -1,9 +1,9 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 
-{% include alert.html type="warning" icon="warning" body="While the callback
-feature is mandatory, we would like to emphasize that it is mainly a fail-safe
-feature. We strongly advice that it is not your primary mean of checking for
-payment updates." %}
+{% include alert.html type="warning" icon="warning" body="This feature is only
+available for merchants who have a specific agreement with Swedbank Pay. As the
+callback is mainly a fail-safe feature, we strongly advice that it is not your
+primary mean of checking for payment updates." %}
 
 When a change or update from the back-end system are made on a payment or
 transaction, Swedbank Pay will perform a callback to inform the payee (merchant)
