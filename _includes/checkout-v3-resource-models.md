@@ -1,13 +1,23 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
 {% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
+<!-- Captures for tables -->
+{%- capture amount_md -%}{% include fields/amount.md %}{%- endcapture -%}
+{%- capture id_md -%}{% include fields/id.md resource="paymentorder" %}{%- endcapture -%}
+{%- capture number_md -%}{% include fields/number.md resource="paymentorder" %}{%- endcapture -%}
+{% capture order_items_md %}{% include fields/order-items.md %}{% endcapture %}
+{%- capture payee_ref_md -%}{% include fields/payee-reference.md %}{%- endcapture -%}
+{% capture receipt_ref_md %}{% include fields/receipt-reference.md %}{% endcapture %}
+{%- capture ua_md -%}{% include fields/user-agent.md %}{%- endcapture -%}
+{% capture vat_amount_md %}{% include fields/vat-amount.md %}{% endcapture %}
+<!-- Captures for tables -->
 
 ## Aborted
 
 {% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/aborted HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x{% endcapture %}
 
 {% include code-example.html
     title='Request'
@@ -15,8 +25,8 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     %}
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
-api-supported-versions: 3.x/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentorder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -31,9 +41,6 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     header=response_header
     json= response_content
     %}
-
-<!-- Captures for markdown-includes -->
-{%- capture id_md -%}{% include fields/id.md resource="paymentorder" %}{%- endcapture -%}
 
 <div class="api-compact" aria-label="Response">
   <div class="header">
@@ -83,7 +90,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 {% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/cancelled HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x{% endcapture %}
 
 {% include code-example.html
     title='Request'
@@ -91,8 +98,8 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     %}
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
-api-supported-versions: 3.x/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -135,11 +142,6 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     json= response_content
     %}
 
-{% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
-{% capture id_paymentorder_md %}{% include fields/id.md resource="paymentorder" %}{% endcapture %}
-{% capture number_md %}{% include fields/number.md %}{% endcapture %}
-{% capture payee_ref_md %}{% include fields/payee-reference.md %}{% endcapture %}
-
 <div class="api-compact" aria-label="Payment Order – Cancelled (No Required)">
   <div class="header">
     <div>Field</div>
@@ -170,7 +172,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">{{ id_paymentorder_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -356,7 +358,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 {% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/failed HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x{% endcapture %}
 
 {% include code-example.html
     title='Request'
@@ -364,8 +366,8 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     %}
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
-api-supported-versions: 3.x/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -391,8 +393,6 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     header=response_header
     json= response_content
     %}
-
-{% capture id_paymentorder_md %}{% include fields/id.md resource="paymentorder" %}{% endcapture %}
 
 <div class="api-compact" aria-label="Response">
   <div class="header">
@@ -424,7 +424,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">{{ id_paymentorder_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
       </details>
       <details class="api-item" data-level="1">
         <summary>
@@ -505,7 +505,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 {% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/failedattempts HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x{% endcapture %}
 
 {% include code-example.html
     title='Request'
@@ -513,8 +513,8 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     %}
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
-api-supported-versions: 3.x/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentorder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -581,9 +581,6 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     json= response_content
     %}
 
-{% capture id_paymentorder_md %}{% include fields/id.md resource="paymentorder" %}{% endcapture %}
-{% capture number_paymentorder_md %}{% include fields/number.md resource="paymentorder" %}{% endcapture %}
-
 <div class="api-compact" aria-label="Response">
   <div class="header">
     <div>Field</div>
@@ -614,7 +611,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">{{ id_paymentorder_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
       </details>
       <!-- failedAttemptList -->
       <details class="api-item" data-level="1">
@@ -629,9 +626,9 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           <details class="api-item" data-level="2">
             <summary>
               <span class="field">{% f created, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
+              <span class="type"><code>date(string)</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">The ISO-8601 date of when the payment order was created.</div></div>
+            <div class="desc"><div class="indent-2">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the payment order was created.</div></div>
           </details>
 
           <details class="api-item" data-level="2">
@@ -647,7 +644,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
               <span class="field">{% f number, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>integer</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">{{ number_paymentorder_md | markdownify }}</div></div>
+            <div class="desc"><div class="indent-2">{{ number_md | markdownify }}</div></div>
           </details>
 
           <details class="api-item" data-level="2">
@@ -800,8 +797,6 @@ api-supported-versions: 3.x{% endcapture %}
     json= response_content
     %}
 
-{% capture id_paymentorder_md %}{% include fields/id.md resource="paymentorder" %}{% endcapture %}
-
 <div class="api-compact" aria-label="Response">
   <div class="header">
     <div>Field</div>
@@ -832,7 +827,7 @@ api-supported-versions: 3.x{% endcapture %}
           <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">{{ id_paymentorder_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
       </details>
 
       <!-- LEVEL 1: postpurchaseFailedAttemptList -->
@@ -848,9 +843,9 @@ api-supported-versions: 3.x{% endcapture %}
           <details class="api-item" data-level="2">
             <summary>
               <span class="field">{% f created, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
+              <span class="type"><code>date(string)</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">The ISO-8601 date of when the payment order was created.</div></div>
+            <div class="desc"><div class="indent-2">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the payment order was created.</div></div>
           </details>
 
           <details class="api-item" data-level="2">
@@ -959,7 +954,7 @@ api-supported-versions: 3.x{% endcapture %}
 {% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/financialtransactions HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x{% endcapture %}
 
 {% include code-example.html
     title='Request'
@@ -967,8 +962,8 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     %}
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
-api-supported-versions: 3.x/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentorder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -1030,14 +1025,6 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     json= response_content
     %}
 
-{% capture id_paymentorder_md %}{% include fields/id.md resource="paymentorder" %}{% endcapture %}
-{% capture number_paymentorder_md %}{% include fields/number.md resource="paymentorder" %}{% endcapture %}
-{% capture amount_md %}{% include fields/amount.md %}{% endcapture %}
-{% capture vat_amount_md %}{% include fields/vat-amount.md %}{% endcapture %}
-{% capture payee_ref_md %}{% include fields/payee-reference.md %}{% endcapture %}
-{% capture receipt_ref_md %}{% include fields/receipt-reference.md %}{% endcapture %}
-{% capture order_items_md %}{% include fields/order-items.md %}{% endcapture %}
-
 <div class="api-compact" aria-label="Response">
   <div class="header">
     <div>Field</div>
@@ -1068,7 +1055,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">{{ id_paymentorder_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
       </details>
 
       <!-- LEVEL 1: financialTransactionsList -->
@@ -1092,17 +1079,17 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           <details class="api-item" data-level="2">
             <summary>
               <span class="field">{% f created, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
+              <span class="type"><code>date(string)</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">The ISO-8601 date of when the payment order was created.</div></div>
+            <div class="desc"><div class="indent-2">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the payment order was created.</div></div>
           </details>
 
           <details class="api-item" data-level="2">
             <summary>
               <span class="field">{% f updated, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
+              <span class="type"><code>date(string)</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">The ISO-8601 date of when the payment order was updated.</div></div>
+            <div class="desc"><div class="indent-2">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the payment order was updated.</div></div>
           </details>
 
           <details class="api-item" data-level="2">
@@ -1118,7 +1105,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
               <span class="field">{% f number, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>integer</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">{{ number_paymentorder_md | markdownify }}</div></div>
+            <div class="desc"><div class="indent-2">{{ number_md | markdownify }}</div></div>
           </details>
 
           <details class="api-item" data-level="2">
@@ -1183,7 +1170,7 @@ should occur, updates will be available in the list below.
 {% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/history HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x{% endcapture %}
 
 {% include code-example.html
     title='Request'
@@ -1191,8 +1178,8 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     %}
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
-api-supported-versions: 3.x/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentorder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -1210,25 +1197,10 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         "initiatedBy" "System"
       },
       {
-        "created": "2020-03-04T01:00:15.00Z",
-        "name": "CheckinInitiated",
-        "initiatedBy" "System"
-      },
-      {
-        "created": "2020-03-04T01:00:16.00Z",
-        "name": "PayerDetailsRetrieved",
-        "initiatedBy" "System"
-      },
-      {
-        "created": "2020-03-04T01:00:20.00Z",
-        "name": "PayerCheckedIn",
-        "initiatedBy" "Consumer"
-      },
-      {
         "created": "2020-03-04T01:01:01.01Z",
         "name": "PaymentInstrumentSelected",
         "instrument": "CreditCard",
-        "initiatedBy" "Consumer"
+        "initiatedBy" "Payer"
       },
       {
         "created": "2020-03-04T01:03:01.01Z",
@@ -1236,26 +1208,26 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         "instrument": "CreditCard",
         "number": 123456,
         "prefill": true,
-        "initiatedBy" "Consumer"
+        "initiatedBy" "Payer"
       },
       {
         "created": "2020-03-04T01:03:01.01Z",
         "name": "PaymentAttemptAborted",
         "number": 123456,
         "instrument": "CreditCard",
-        "initiatedBy" "Consumer"
+        "initiatedBy" "Payer"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentInstrumentSelected",
         "instrument": "Vipps",
-        "initiatedBy" "Consumer"
+        "initiatedBy" "Payer"
       },
       {
         "created": "2020-03-04T03:01:01.01Z",
         "name": "PaymentInstrumentSelected",
         "instrument": "CreditCard",
-        "initiatedBy" "Consumer"
+        "initiatedBy" "Payer"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
@@ -1263,14 +1235,14 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         "instrument": "CreditCard",
         "number": 123457,
         "prefill": true,
-        "initiatedBy" "Consumer"
+        "initiatedBy" "Payer"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentAttemptFailed",
         "instrument": "CreditCard",
         "number": 123457,
-        "initiatedBy" "Consumer"
+        "initiatedBy" "Payer"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
@@ -1278,14 +1250,14 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         "instrument": "CreditCard",
         "number": 123458,
         "prefill": true,
-        "initiatedBy" "Consumer"
+        "initiatedBy" "Payer"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentPaid",
         "instrument": "CreditCard"
         "number": 123458,
-        "initiatedBy" "Consumer"
+        "initiatedBy" "Payer"
       },
       {
         "created": "2020-03-05T02:01:01.01Z",
@@ -1360,8 +1332,6 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     json= response_content
     %}
 
-{% capture id_paymentorder_md %}{% include fields/id.md resource="paymentorder" %}{% endcapture %}
-
 <div class="api-compact" aria-label="Response">
   <div class="header">
     <div>Field</div>
@@ -1392,7 +1362,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">{{ id_paymentorder_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
       </details>
 
       <!-- LEVEL 1: historyList -->
@@ -1408,9 +1378,9 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           <details class="api-item" data-level="2">
             <summary>
               <span class="field">{% f created %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
+              <span class="type"><code>date(string)</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">The ISO-8601 date of when the history event was created.</div></div>
+            <div class="desc"><div class="indent-2">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the history event was created.</div></div>
           </details>
 
           <details class="api-item" data-level="2">
@@ -1638,7 +1608,7 @@ while MobilePay does return this field, the value present is actually a
 {% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x{% endcapture %}
 
 {% include code-example.html
     title='Request'
@@ -1648,8 +1618,8 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 ### Card `Paid` Resource
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
-api-supported-versions: 3.x/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -1722,8 +1692,8 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
-api-supported-versions: 3.x/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -1766,8 +1736,8 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
-api-supported-versions: 3.x/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -1809,8 +1779,8 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
-api-supported-versions: 3.x/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -1852,8 +1822,8 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
-api-supported-versions: 3.x/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -1896,8 +1866,8 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
-api-supported-versions: 3.x/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -1938,8 +1908,8 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
-api-supported-versions: 3.x/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -1972,8 +1942,8 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
-api-supported-versions: 3.x/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -2004,8 +1974,8 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
-api-supported-versions: 3.x/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -2036,8 +2006,8 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
-api-supported-versions: 3.x/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -2064,12 +2034,6 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     header=response_header
     json= response_content
     %}
-
-<!-- Captures for markdown-includes -->
-{%- capture id_md -%}{% include fields/id.md resource="paymentorder" %}{%- endcapture -%}
-{%- capture number_md -%}{% include fields/number.md resource="paymentorder" %}{%- endcapture -%}
-{%- capture payee_ref_md -%}{% include fields/payee-reference.md %}{%- endcapture -%}
-{%- capture amount_md -%}{% include fields/amount.md %}{%- endcapture -%}
 
 <div class="api-compact" aria-label="Response">
   <div class="header">
@@ -2256,8 +2220,8 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 ## Payer
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
-api-supported-versions: 3.x/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentorder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -2281,6 +2245,17 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       "zipCode": "zipCode",
       "city": "city",
       "countryCode": "countryCode"
+    },
+    "billingAddress": {
+      "firstName": "firstname/companyname",
+      "lastName": "lastname",
+      "email": "karl.anderssson@mail.se",
+      "msisdn": "+46759123456",
+      "streetAddress": "string",
+      "coAddress": "string",
+      "city": "Solna",
+      "zipCode": "17674",
+      "countryCode": "SE"
     },
     "device": {
       "detectionAccuracy": 48,
@@ -2306,10 +2281,6 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     header=response_header
     json= response_content
     %}
-
-<!-- Captures for markdown-includes -->
-{%- capture id_md -%}{% include fields/id.md resource="paymentorder" %}{%- endcapture -%}
-{%- capture ua_md -%}{% include fields/user-agent.md %}{%- endcapture -%}
 
 <div class="api-compact" aria-label="Response">
   <div class="header">
@@ -2508,6 +2479,81 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           </details>
         </div>
       </details>
+
+                <!-- billingAddress (object) -->
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f billingAddress, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>object</code></span>
+              <span class="req"></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The billing address object containing information about the payer's billing address.</div></div>
+
+            <div class="api-children">
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f firstName,3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                  <span class="type"><code>string</code></span>
+                  <span class="req"></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The first name of the payer.</div></div>
+              </details>
+
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f lastName,3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                  <span class="type"><code>string</code></span>
+                  <span class="req"></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The last name of the payer.</div></div>
+              </details>
+
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f streetAddress,3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                  <span class="type"><code>string</code></span>
+                  <span class="req"></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The street address of the payer. Maximum 50 characters long.</div></div>
+              </details>
+
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f coAddress,3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                  <span class="type"><code>string</code></span>
+                  <span class="req"></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The CO-address (if used).</div></div>
+              </details>
+
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f zipCode,3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                  <span class="type"><code>string</code></span>
+                  <span class="req"></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The postal number (ZIP code) of the payer.</div></div>
+              </details>
+
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f city,3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                  <span class="type"><code>string</code></span>
+                  <span class="req"></span>
+                </summary>
+                <div class="desc"><div class="indent-3">The city of the payer.</div></div>
+              </details>
+
+              <details class="api-item" data-level="3">
+                <summary>
+                  <span class="field">{% f countryCode,3 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                  <span class="type"><code>string</code></span>
+                  <span class="req"></span>
+                </summary>
+                <div class="desc"><div class="indent-3">Country code for country of residence, e.g. <code>SE</code>, <code>NO</code>, or <code>FI</code>.</div></div>
+              </details>
+            </div>
+          </details>
 
       <!-- level 1: device (tag UPDATED to level-1) -->
       <details class="api-item" data-level="1">
@@ -2746,6 +2792,297 @@ api-supported-versions: 3.x{% endcapture %}
     header=response_header
     json= response_content
     %}
+
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
+
+  <!-- Level 0 (original order, all nodes CLOSED by default) -->
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The payment order object.</div></div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f reversed, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc"><div class="indent-0">The reversed object.</div></div>
+
+    <!-- Level 1/2: children of reversed (exact original order) -->
+    <div class="api-children">
+      <!-- level 1 -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
+      </details>
+
+      <!-- level 1 PARENT: instrument -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f instrument %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">The payment method used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a <code>capture</code> is needed, we recommend using <code>operations</code> or the <code>transactionType</code> field.</div></div>
+
+        <!-- level 2 CHILDREN of instrument (moved under instrument so they toggle correctly) -->
+        <div class="api-children">
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f number, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>integer</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ number_md | markdownify }}</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f payeeReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string(30)</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{{ payee_ref_md | markdownify }}</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f orderReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string(50)</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The order reference should reflect the order reference found in the merchant's systems.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f transactionType, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">This will either be set to <code>Authorization</code> or <code>Sale</code>. Can be used to understand if there is a need for doing a <code>capture</code> on this payment order. Swedbank Pay recommends using the different <code>operations</code> to figure out if a <code>capture</code> is needed.</div></div>
+          </details>
+        </div>
+      </details>
+
+      <!-- level 1 -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f amount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
+      </details>
+
+      <!-- level 1 -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f submittedAmount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">This field will display the initial payment order amount, not including any method specific discounts or fees. The final payment order amount will be displayed in the <code>amount</code> field.</div></div>
+      </details>
+
+      <!-- level 1 -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f feeAmount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">If the payment method used had a unique fee, it will be displayed in this field.</div></div>
+      </details>
+
+      <!-- level 1 -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f discountAmount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>integer</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">If the payment method used had a unique discount, it will be displayed in this field.</div></div>
+      </details>
+
+      <!-- level 1: tokens (array) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f tokens %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>array</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">A list of tokens connected to the payment.</div></div>
+
+        <div class="api-children">
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f type, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">{% f payment, 0 %}, <code>recurrence</code>, <code>transactionOnFile</code> or <code>unscheduled</code>. The different types of available tokens.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f token, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The token <code>guid</code>.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f name, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The name of the token. In the example, a masked version of a card number.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f expiryDate, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The expiry date of the token.</div></div>
+          </details>
+        </div>
+      </details>
+
+      <!-- level 1: details (object) -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f details %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>object</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">Details connected to the payment.</div></div>
+
+               <div class="api-children">
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f nonPaymentToken, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The result of our own card tokenization. Activated in POS for the merchant or merchant group.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f externalNonPaymentToken, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">
+              The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc.
+              For Mass Transit merchants, transactions will be populated with the <code>paymentAccountReference</code>.
+            </div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f paymentAccountReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">
+              The result of an external tokenization. The value will vary depending on card types, acquirers, customers, etc.
+              For Mass Transit merchants, the <code>paymentAccountReference</code> will also populate the externalNonPaymentToken field.
+            </div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f cardType, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2"><code>Credit Card</code> or <code>Debit Card</code>. Indicates the type of card used for the authorization.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f maskedPan, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The masked PAN number of the card.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f maskedDPan, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">
+              A masked version of a network token representing the card. It will only appear if the chosen payment method is tokenized and the card used is tokenized by Visa or MasterCard.
+            </div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f expiryDate, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The month and year of when the card expires.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f issuerAuthorizationApprovalCode, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Payment reference code provided by the issuer.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f acquirerTransactionType, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2"><code>3DSECURE</code> or <code>STANDARD</code>. Indicates the transaction type of the acquirer.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f acquirerStan, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f acquirerTerminalId, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The ID of the acquirer terminal.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f acquirerTransactionTime, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>date(string)</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time of the acquirer transaction.</div></div>
+          </details>
+
+          <!-- corrected spelling -->
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f transactionInitiator, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The party which initiated the transaction. <code>MERCHANT</code> or <code>CARDHOLDER</code>.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f bin, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The first six digits of the maskedPan.</div></div>
+          </details>
+        </div>
+      </details>
+    </div>
+  </details>
+</div>
 
 ### Apple Pay `Reversed` Resource
 
@@ -3086,183 +3423,3 @@ api-supported-versions: 3.x{% endcapture %}
     header=response_header
     json= response_content
     %}
-
-
-<!-- Captures for markdown-includes -->
-{%- capture id_md -%}{% include fields/id.md resource="paymentorder" %}{%- endcapture -%}
-{%- capture number_md -%}{% include fields/number.md resource="paymentorder" %}{%- endcapture -%}
-{%- capture payee_ref_md -%}{% include fields/payee-reference.md %}{%- endcapture -%}
-{%- capture amount_md -%}{% include fields/amount.md %}{%- endcapture -%}
-
-<div class="api-compact" aria-label="Response">
-  <div class="header">
-    <div>Field</div>
-    <div>Type</div>
-  </div>
-
-  <!-- Level 0 (original order, all nodes CLOSED by default) -->
-  <details class="api-item" data-level="0">
-    <summary>
-      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-      <span class="type"><code>object</code></span>
-    </summary>
-    <div class="desc"><div class="indent-0">The payment order object.</div></div>
-  </details>
-
-  <details class="api-item" data-level="0">
-    <summary>
-      <span class="field">{% f reversed, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-      <span class="type"><code>object</code></span>
-    </summary>
-    <div class="desc"><div class="indent-0">The reversed object.</div></div>
-
-    <!-- Level 1/2: children of reversed (exact original order) -->
-    <div class="api-children">
-      <!-- level 1 -->
-      <details class="api-item" data-level="1">
-        <summary>
-          <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
-        </summary>
-        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
-      </details>
-
-      <!-- level 1 PARENT: instrument -->
-      <details class="api-item" data-level="1">
-        <summary>
-          <span class="field">{% f instrument %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
-        </summary>
-        <div class="desc"><div class="indent-1">The payment method used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a <code>capture</code> is needed, we recommend using <code>operations</code> or the <code>transactionType</code> field.</div></div>
-
-        <!-- level 2 CHILDREN of instrument (moved under instrument so they toggle correctly) -->
-        <div class="api-children">
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f number, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>integer</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">{{ number_md | markdownify }}</div></div>
-          </details>
-
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f payeeReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string(30)</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">{{ payee_ref_md | markdownify }}</div></div>
-          </details>
-
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f orderReference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string(50)</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">The order reference should reflect the order reference found in the merchant's systems.</div></div>
-          </details>
-
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f transactionType, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">This will either be set to <code>Authorization</code> or <code>Sale</code>. Can be used to understand if there is a need for doing a <code>capture</code> on this payment order. Swedbank Pay recommends using the different <code>operations</code> to figure out if a <code>capture</code> is needed.</div></div>
-          </details>
-        </div>
-      </details>
-
-      <!-- level 1 -->
-      <details class="api-item" data-level="1">
-        <summary>
-          <span class="field">{% f amount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>integer</code></span>
-        </summary>
-        <div class="desc"><div class="indent-1">{{ amount_md | markdownify }}</div></div>
-      </details>
-
-      <!-- level 1 -->
-      <details class="api-item" data-level="1">
-        <summary>
-          <span class="field">{% f submittedAmount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>integer</code></span>
-        </summary>
-        <div class="desc"><div class="indent-1">This field will display the initial payment order amount, not including any method specific discounts or fees. The final payment order amount will be displayed in the <code>amount</code> field.</div></div>
-      </details>
-
-      <!-- level 1 -->
-      <details class="api-item" data-level="1">
-        <summary>
-          <span class="field">{% f feeAmount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>integer</code></span>
-        </summary>
-        <div class="desc"><div class="indent-1">If the payment method used had a unique fee, it will be displayed in this field.</div></div>
-      </details>
-
-      <!-- level 1 -->
-      <details class="api-item" data-level="1">
-        <summary>
-          <span class="field">{% f discountAmount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>integer</code></span>
-        </summary>
-        <div class="desc"><div class="indent-1">If the payment method used had a unique discount, it will be displayed in this field.</div></div>
-      </details>
-
-      <!-- level 1: tokens (array) -->
-      <details class="api-item" data-level="1">
-        <summary>
-          <span class="field">{% f tokens %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>array</code></span>
-        </summary>
-        <div class="desc"><div class="indent-1">A list of tokens connected to the payment.</div></div>
-
-        <div class="api-children">
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f type, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">{% f payment, 0 %}, <code>recurrence</code>, <code>transactionOnFile</code> or <code>unscheduled</code>. The different types of available tokens.</div></div>
-          </details>
-
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f token, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">The token <code>guid</code>.</div></div>
-          </details>
-
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f name, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">The name of the token. In the example, a masked version of a card number.</div></div>
-          </details>
-
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f expiryDate, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">The expiry date of the token.</div></div>
-          </details>
-        </div>
-      </details>
-
-      <!-- level 1: details (object) -->
-      <details class="api-item" data-level="1">
-        <summary>
-          <span class="field">{% f details %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>object</code></span>
-        </summary>
-        <div class="desc"><div class="indent-1">Details connected to the payment.</div></div>
-
-        <div class="api-children">
-          <!-- (rest of level-2 fields under details unchanged) -->
-          <!-- ... -->
-        </div>
-      </details>
-    </div>
-  </details>
-</div>

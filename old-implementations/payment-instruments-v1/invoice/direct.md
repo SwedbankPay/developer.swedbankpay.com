@@ -147,10 +147,10 @@ Content-Type: application/json{% endcapture %}
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f currency %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">NOK, SEK, DKK, USD or EUR.</div></div>
+        <div class="desc"><div class="indent-1">The currency of the payment in the ISO 4217 format (e.g. <code>DKK</code>, <code>EUR</code>, <code>NOK</code> or <code>SEK</code>). Some payment methods are only available with selected currencies.</div></div>
       </details>
 
       <!-- prices (object) -->
@@ -224,7 +224,7 @@ Content-Type: application/json{% endcapture %}
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f language %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         {% capture language_md %}{% include fields/language.md %}{% endcapture %}
@@ -524,18 +524,18 @@ Content-Type: application/json{% endcapture %}
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f created %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>date(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment was created.</div></div>
+        <div class="desc"><div class="indent-1">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the payment was created.</div></div>
       </details>
 
       <!-- updated -->
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f updated %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>date(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment was updated.</div></div>
+        <div class="desc"><div class="indent-1">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the payment was updated.</div></div>
       </details>
 
       <!-- state -->
@@ -592,7 +592,7 @@ Content-Type: application/json{% endcapture %}
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f language %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
         </summary>
         {% capture language_md %}{% include fields/language.md %}{% endcapture %}
         <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>

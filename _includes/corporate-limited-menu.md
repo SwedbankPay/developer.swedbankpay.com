@@ -16,7 +16,7 @@ card.
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {
@@ -112,10 +112,10 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f currency %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">The currency of the payment.</div></div>
+        <div class="desc"><div class="indent-1">The currency of the payment in the ISO 4217 format (e.g. <code>DKK</code>, <code>EUR</code>, <code>NOK</code> or <code>SEK</code>). Some payment methods are only available with selected currencies.</div></div>
       </details>
 
       <!-- amount (required) -->
@@ -162,7 +162,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f language %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">The language of the payer.</div></div>

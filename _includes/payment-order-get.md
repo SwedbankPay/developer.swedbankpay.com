@@ -20,7 +20,7 @@ through the sub-resources `payments` and `currentPayment`.
 {% capture request_content %}GET /psp/paymentorders/{{ page.payment_order_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% include code-example.html
     title='Request'
@@ -131,18 +131,18 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f created %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>date(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was created.</div></div>
+        <div class="desc"><div class="indent-1">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the payment order was created.</div></div>
       </details>
 
       <!-- updated -->
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f updated %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>date(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was updated.</div></div>
+        <div class="desc"><div class="indent-1">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the payment order was updated.</div></div>
       </details>
 
       <!-- operation -->
@@ -167,9 +167,9 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f currency %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The currency of the payment order.</div></div>
+        <div class="desc"><div class="indent-1">The currency of the payment order in the ISO 4217 format (e.g. <code>DKK</code>, <code>EUR</code>, <code>NOK</code> or <code>SEK</code>). Some payment methods are only available with selected currencies.</div></div>
       </details>
 
       <!-- amount -->
@@ -212,7 +212,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f language %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>
       </details>

@@ -85,7 +85,7 @@ information.
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {
@@ -94,7 +94,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
         "description": "Test Verification",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",  {% if documentation_section contains "checkout-v3" %}
-        "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header{% endif %}
+        "productName": "Checkout3",{% endif %}
         "generateUnscheduledToken": true,
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],

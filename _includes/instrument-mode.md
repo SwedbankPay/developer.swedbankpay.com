@@ -81,7 +81,7 @@ An example with invoice as the payment method of choice.
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {
@@ -93,7 +93,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE", {% if documentation_section contains "checkout-v3" %}
-        "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header {% endif %}
+        "productName": "Checkout3", {% endif %}
         "urls":
             "hostUrls": [ "https://example.com", "https://example.net" ],
             "paymentUrl": "https://example.com/perform-payment",
@@ -419,7 +419,7 @@ the following `PATCH` request, here with Swish as an example.
 {% capture request_header %}PATCH /psp/{{ include.api_resource }}/paymentorders/{{ page.payment_id }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
   "paymentorder": {

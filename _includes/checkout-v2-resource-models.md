@@ -13,7 +13,7 @@ while MobilePay does return this field, the value present is actually a
 {% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=2.0      // Version optional for 2.0{% endcapture %}
+Content-Type: application/json;version=2.0{% endcapture %}
 
 {% include code-example.html
     title='Request'
@@ -614,9 +614,9 @@ api-supported-versions: 2.0{% endcapture %}
       <details class="api-item" data-level="2">
         <summary>
           <span class="field">{% f acquirerTransactionTime, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>date(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-2">The ISO-8601 date and time of the acquirer transaction.</div></div>
+        <div class="desc"><div class="indent-2">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time of the acquirer transaction.</div></div>
       </details>
 
       <details class="api-item" data-level="2">

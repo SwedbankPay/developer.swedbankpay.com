@@ -23,7 +23,7 @@ by setting the `generateMotoPayment` to `true`.
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {
@@ -35,7 +35,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
+        "productName": "Checkout3",
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], {% if include.integration_mode=="seamless-view" %}
             "paymentUrl": "https://example.com/perform-payment", {% endif %}
@@ -143,10 +143,34 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 Request field not covered in the common Checkout redirect or seamless view
 table:
 
-{:.table .table-striped}
-| Field                    | Type         | Description                                                                                                                                                                                                               |
-| :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| {% f generateMotoPayment %}     | `bool`      | Set to `true` if the payment order is a MOTO payment, `false` if not. |
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">The paymentOrder object.</div>
+    </div>
+
+    <div class="api-children">
+        <details class="api-item" data-level="1">
+            <summary>
+                <span class="field">{% f generateMotoPayment,1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+                <span class="type"><code>bool</code></span>
+            </summary>
+            <div class="desc"><div class="indent-1">Set to <code>true</code> if the payment order is a MOTO payment, <code>false</code> if not.</div></div>
+        </details>
+    </div>
+  </details>
+</div>
+
+
 
 {% if include.integration_mode=="redirect" %}
 

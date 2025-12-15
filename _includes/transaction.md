@@ -31,7 +31,7 @@ When a transaction is created it will have one of three states:
 {% capture request_header %}GET /psp/paymentorders/{{ page.payment_id }}/currentpayment HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0     // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% include code-example.html
     title='Request'

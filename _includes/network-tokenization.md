@@ -65,7 +65,7 @@ this.
 {% capture request_header %}GET /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0 {% endcapture %}
+Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% include code-example.html
     title='GET Tokens Request'
@@ -131,9 +131,12 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 | {% f lastFourDpan, 2 %}                 | `string` | The last four digits of the DPAN (Network Token).                                           |
 | {% f issuerName, 2 %}               | `string`  | The name of the issuer. |
 
-*   We advise you to implement automatic deletion of tokens when end-users
+{% include alert.html type="warning" icon="warning" header="Deleting Tokens"
+body="We advise you to implement automatic deletion of tokens when end-users
 choose to end the service with the you. This is to avoid unnecessary cost on
-your end, as you are invoiced monthly for each active token.
+your end, as you are invoiced monthly for each active token." %}
+
+*   Learn more about [deleting tokens][delete-tokens].
 
 *   Please note that the new field `maskedDpan` is present when using Network
 Tokenization. DPAN is the network token representing the card and thus,
@@ -143,6 +146,7 @@ what `maskedDpan` is or that it’s being used, but you as a merchant need to ke
 track of it. See the [Paid resource for cards][paid-resource-model].
 
 [card]: /old-implementations/payment-instruments-v1/card/
+[delete-tokens]: /checkout-v3/features/optional/delete-token/
 [paid-resource-model]: /checkout-v3/technical-reference/resource-sub-models#card-paid-resource
 [one-click]: /checkout-v3/features/optional/one-click-payments/
 [unscheduled]: /checkout-v3/features/optional/unscheduled

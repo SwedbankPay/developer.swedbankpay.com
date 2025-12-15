@@ -36,18 +36,122 @@ payment method's specific section to make sure.
     json= response_content
     %}
 
-{:.table .table-striped}
-| Field                 | Type      | Description                                                                                                                                                                                                                                         |
-| :-------------------- | :-------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`                | `string`  | The URL that identifies the error type. This is the **only field usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from. |
-| `title`               | `string`  | The title contains a human readable description of the error.                                                                                                                                                                                       |
-| `detail`              | `string`  | A detailed, human readable description of the error and how you can recover from it.                                                                                                                                                                |
-| `instance`            | `string`  | The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in.                                                                                       |
-| `status`              | `integer` | The HTTP status code that the problem was served with.                                                                                                                                                                                              |
-| `action`              | `string`  | The `action` indicates how the error can be recovered from.                                                                                                                                                                                         |
-| `problems`            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
-| {% f name %}        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
-| {% f description %} | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f type, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The URL that identifies the error type. This is the <strong>only field usable for programmatic identification</strong> of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from.
+      </div>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f title, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The title contains a human readable description of the error.
+      </div>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f detail, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        A detailed, human readable description of the error and how you can recover from it.
+      </div>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f instance, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in.
+      </div>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f status, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>integer</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The HTTP status code that the problem was served with.
+      </div>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f action, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The <code>action</code> indicates how the error can be recovered from.
+      </div>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f problems, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>array</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The array of problem detail objects.
+      </div>
+    </div>
+
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f name %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            The name of the field, header, object, entity or likewise that was erroneous.
+          </div>
+        </div>
+      </details>
+
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f description %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            The human readable description of what was wrong with the field, header, object, entity or likewise identified by <code>name</code>.
+          </div>
+        </div>
+      </details>
+    </div>
+  </details>
+</div>
 
 All common problem types will have a URL in the format
 `https://api.payex.com/psp/errordetail/<error-type>`. The **URL is an identifier**

@@ -27,7 +27,7 @@ initial `Purchase` request.
 
 {% capture request_header %}PATCH /psp/paymentorders/{{ page.payment_order_id }} HTTP/1.1
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {
@@ -409,18 +409,18 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f created %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>date(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment was created.</div></div>
+        <div class="desc"><div class="indent-1">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the payment was created.</div></div>
       </details>
 
       <!-- updated -->
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f updated %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>date(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment was updated.</div></div>
+        <div class="desc"><div class="indent-1">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the payment was updated.</div></div>
       </details>
 
       <!-- state -->
@@ -512,7 +512,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f language %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
         </summary>
         {% capture language_md %}{% include fields/language.md %}{% endcapture %}
         <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>

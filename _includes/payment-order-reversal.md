@@ -33,7 +33,7 @@ If we want to reverse a previously captured amount, we need to perform
 {% capture request_header %}POST /psp/paymentorders/{{ page.payment_order_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.0/2.0{% endcapture %}
 
 {% capture request_content %}{
     "transaction": {
@@ -407,18 +407,18 @@ api-supported-versions: 3.0/2.0{% endcapture %}
           <details class="api-item" data-level="2">
             <summary>
               <span class="field">{% f created, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
+              <span class="type"><code>date(string)</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was created.</div></div>
+            <div class="desc"><div class="indent-2">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the transaction was created.</div></div>
           </details>
 
           <!-- transaction.updated -->
           <details class="api-item" data-level="2">
             <summary>
               <span class="field">{% f updated, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
+              <span class="type"><code>date(string)</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">The ISO-8601 date and time of when the transaction was updated.</div></div>
+            <div class="desc"><div class="indent-2">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the transaction was updated.</div></div>
           </details>
 
           <!-- transaction.type -->

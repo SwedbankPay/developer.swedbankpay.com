@@ -144,10 +144,10 @@ Content-Type: application/json{% endcapture %}
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f currency %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">NOK or SEK.</div></div>
+        <div class="desc"><div class="indent-1">The currency of the payment in the ISO 4217 format (e.g. <code>DKK</code>, <code>EUR</code>, <code>NOK</code> or <code>SEK</code>). Some payment methods are only available with selected currencies.</div></div>
       </details>
 
       <!-- prices (object) -->
@@ -230,7 +230,7 @@ Content-Type: application/json{% endcapture %}
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f language %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         {% capture language_md %}{% include fields/language.md %}{% endcapture %}

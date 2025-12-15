@@ -1,9 +1,9 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 
-{% include alert.html type="warning" icon="warning" body="While the callback
-feature is mandatory, we would like to emphasize that it is mainly a fail-safe
-feature. We strongly advice that it is not your primary mean of checking for
-payment updates." %}
+{% include alert.html type="warning" icon="warning" body="This feature is only
+available for merchants who have a specific agreement with Swedbank Pay. As the
+callback is mainly a fail-safe feature, we strongly advice that it is not your
+primary mean of checking for payment updates." %}
 
 When a change or update from the back-end system are made on a payment or
 transaction, Swedbank Pay will perform a callback to inform the payee (merchant)
@@ -11,11 +11,15 @@ about this update.
 
 ## Why Is The Callback Important?
 
-Providing a `callbackUrl` in `POST` requests is **mandatory**. Below we provide
-three example scenarios of why this is important:
+**If you have callback enabled**, providing a `callbackUrl` in `POST` requests
+is **mandatory**. Below we provide three example scenarios of why this is
+important:
 
 1.  If the payer closes the payment window, the merchant will never know what
-    happened to the payment if `callbackUrl` is not implemented.
+    happened to the payment if `callbackUrl` is not implemented. Please note
+    that this only applies if there has been an attempt at completing the
+    payment, resulting in either a successful or failed transaction, or e.g. an
+    external timeout.
 2.  If the payer stops up in a payment app such as Vipps or Swish, the payer
     will never come back to the merchant. This means that the merchant won't
     know what happened to the payment unless `callbackUrl` is implemented.

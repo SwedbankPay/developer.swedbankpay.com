@@ -170,11 +170,19 @@ download) in English, and e-mail it to **agreement@swedbankpay.com** together
 with **Name**, **Organizational** and **Customer number**. Your acceptance is
 needed before we can activate Apple Pay for you.
 
+## Supported Devices
+
+Apple Pay will only be available on Apple devices like iPads, iPhones, Apple
+Watches, Apple Vision Pro and Mac models with a compatible iOS and browser. The
+easiest way to keep up with the devices currently supported is by
+[visiting Apple directly][apple-pay-support]{:target="_blank"}.
+
 {% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Introduction" %}
 
 [apple-pay-sup-agreement]: /assets/documents/supplementary-agreement-ecommerce.docx
 [apple-pay-tc-sign-sweden]: https://signup.swedbankpay.com/se/applepay
 [apple-pay-tc-sign-norway]: https://signup.swedbankpay.com/no/applepay
+[apple-pay-support]: https://support.apple.com/en-us/102896
 [apple-pay-verification-file]: /assets/documents/apple-ecom
 [display-ui]: /checkout-v3/get-started/display-ui

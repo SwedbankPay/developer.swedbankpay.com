@@ -77,14 +77,14 @@ Content-Type: application/json{% endcapture %}
 | {% icon check %}︎ | {% f payment, 0 %}                    | `object`     | The `payment` object.                                                                                                                                                                                                                                     |
 | {% icon check %}︎ | {% f operation %}          | `string`     | {% include fields/operation.md resource="payment" %}                                                                                                                                                                                                                                                |
 | {% icon check %}︎ | {% f intent %}             | `string`     | `Authorization`                                                                                                                                                                                                                                           |
-| {% icon check %}︎ | {% f currency %}           | `string`     | NOK                                                                                                                                                                                                                                                       |
+| {% icon check %}︎ | {% f currency %}           | `enum(string)`     | The currency of the payment order in the ISO 4217 format (e.g. <code>DKK</code>, <code>EUR</code>, <code>NOK</code> or <code>SEK</code>). Some payment methods are only available with selected currencies.                                                                                                                                                                                                                                                       |
 | {% icon check %}︎ | {% f prices %}             | `object`     | The [`prices`](/old-implementations/payment-instruments-v1/vipps/technical-reference/prices) object.                                                                                                                                                                                                                            |
 | {% icon check %}︎ | {% f type, 2 %}              | `string`     | `vipps`                                                                                                                                                                                                                                                   |
 | {% icon check %}︎ | {% f amount, 2 %}            | `integer`    | {% include fields/amount.md currency="NOK" %}                                                                                                                                                                                                  |
 | {% icon check %}︎ | {% f vatAmount, 2 %}         | `integer`    | {% include fields/vat-amount.md currency="NOK" %}                                                                                                                                                                                               |
 | {% icon check %}︎ | {% f description %}        | `string(40)` | {% include fields/description.md %}                                                                                                                                                                              |
 | {% icon check %}︎ | {% f userAgent %}          | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                         |
-| {% icon check %}︎ | {% f language %}           | `string`     | {% include fields/language.md %}                                                                                                                                                                                          |
+| {% icon check %}︎ | {% f language %}           | `enum(string)`     | {% include fields/language.md %}                                                                                                                                                                                          |
 | {% icon check %}︎ | {% f urls %}               | `object`     | The object containing URLs relevant for the `payment`.                                                                                                                                                                                                    |
 | {% icon check %}︎ | {% f hostUrls, 2 %}          | `array`      | The array of valid host URLs.                                                                                                                                                                                 |
 | {% icon check %}︎ | {% f completeUrl, 2 %}       | `string`     | {% include fields/complete-url.md resource="payment" %} |
@@ -185,13 +185,12 @@ payment resource, what the access token is authorized to do, etc.
 | `rel`    | The name of the relation the operation has to the current resource. |
 | `method` | The HTTP method to use when performing the operation.               |
 
-The operations should be performed as described in each response and not as
-described here in the documentation.
-Always use the `href` and `method` as specified in the response by finding
-the appropriate operation based on its `rel` value.
-The only thing that should be hard coded in the client is the value of the
-`rel` and the request that will be sent in the HTTP body of the request for
-the given operation.
+The operations listed in this documentation are examples. Refer to your actual
+response for the correct information. Always use the `href` and `method` as
+specified in the response by finding the appropriate operation based on its
+`rel` value. The only thing that should be hard coded in the client is the value
+of the `rel` and the request that will be sent in the HTTP body of the request
+for the given operation.
 
 {:.table .table-striped}
 | Operation                | Description                                                                      |

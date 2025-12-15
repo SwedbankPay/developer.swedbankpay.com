@@ -1,3 +1,7 @@
+<!-- Captures for tables -->
+{%- capture id_md -%}{% include fields/id.md resource="paymentOrder" %}{%- endcapture -%}
+<!-- Captures for tables -->
+
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 
 {% if api_resource == "paymentorders" %}
@@ -18,7 +22,7 @@ for logging purposes. You have to either add back the original behavior, or
 replace it with your own custom logic. If you do not do this, you may risk
 undefined behavior or, at worst, a broken payment flow." %}
 
-## `onAborted`
+## onAborted
 
 {% include events/on-aborted.md %}
 
@@ -37,7 +41,9 @@ This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnAborted",
-    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
+    "paymentOrder": { 
+        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    },
     "redirectUrl": "https://example.com/cancelled"
 }{% endcapture %}
 
@@ -47,15 +53,59 @@ This is the object that is provided if you override the event:
     json= response_content
     %}
 
-{:.table .table-striped}
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
 
-| Field         | Type     | Description                                                     |
-| :------------ | :------- | :-------------------------------------------------------------  |
-| `event`       | `string` | The name of the event raised.                                            |
-| {% f paymentOrder.id, 0 %}          | `string` | {% include fields/id.md resource="paymentOrder" %} |
-| `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment.          |
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f event, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-1">
+        The name of the event raised.
+      </div>
+    </div>
+  </details>
 
-## `onCheckoutLoaded`
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The paymentOrder object
+      </div>
+    </div>
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+            <span class="field">{% f id, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
+      </details>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f redirectUrl, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The URL the user will be redirect to after a cancelled payment.
+      </div>
+    </div>
+  </details>
+</div>
+
+## onCheckoutLoaded
 
 {% include events/on-checkout-loaded.md %}
 
@@ -67,8 +117,10 @@ with the following event argument object:
 
 {% capture response_content %}{
     "event": "OnCheckoutLoaded",
-    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
-    "bodyHeight": "[clientHeight of iframe content]"
+    "paymentOrder": { 
+        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    },
+    "bodyHeight": 800
 }{% endcapture %}
 
 {% include code-example.html
@@ -77,14 +129,59 @@ with the following event argument object:
     json= response_content
     %}
 
-{:.table .table-striped}
-| Field        | Type     | Description                                                           |
-| :----------- | :------- | :--------------------------------------                                  |
-| `event`      | `string` | The name of the event raised.                                            |
-| {% f paymentOrder.id, 0 %}         | `string` | {% include fields/id.md resource="paymentOrder" %} |
-| `bodyHeight` | `string` | The height of the client's iframe content.                               |
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
 
-## `onCheckoutResized`
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f event, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The name of the event raised.
+      </div>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The paymentOrder object
+      </div>
+    </div>
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+            <span class="field">{% f id, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
+      </details>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f bodyHeight, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The height of the client's iframe content.
+      </div>
+    </div>
+  </details>
+</div>
+
+## onCheckoutResized
 
 {% include events/on-checkout-resized.md %}
 
@@ -101,8 +198,10 @@ This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnCheckoutResized",
-    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
-    "bodyHeight": "[clientHeight of iframe content]"
+    "paymentOrder": { 
+        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    },
+    "bodyHeight": 800
 }{% endcapture %}
 
 {% include code-example.html
@@ -111,15 +210,59 @@ This is the object that is provided if you override the event:
     json= response_content
     %}
 
-{:.table .table-striped}
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
 
-| Field        | Type     | Description                                                           |
-| :----------- | :------- | :--------------------------------------                               |
-| `event`      | `string` | The name of the event raised.                                         |
-| {% f paymentOrder.id, 0 %}     | `string` | {% include fields/id.md resource="paymentOrder" %}  |
-| `bodyHeight` | `string` | The height of the client's iframe content.                            |
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f event, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The name of the event raised.
+      </div>
+    </div>
+  </details>
 
-## `onError`
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The paymentOrder object
+      </div>
+    </div>
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+            <span class="field">{% f id, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
+      </details>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f bodyHeight, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The height of the client's iframe content.
+      </div>
+    </div>
+  </details>
+</div>
+
+## onError
 
 {% include events/on-error.md %}
 
@@ -133,8 +276,10 @@ This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnError",
-    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
-    "details": "English descriptive text of the error"
+    "paymentOrder": { 
+        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    },
+    "details": "Some error"
 }{% endcapture %}
 
 {% include code-example.html
@@ -143,15 +288,59 @@ This is the object that is provided if you override the event:
     json= response_content
     %}
 
-{:.table .table-striped}
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
 
-| Field       | Type     | Description                                                            |
-| :---------- | :------- | :-------------------------------------------------------------         |
-| `event`     | `string` | The name of the event raised.                                            |
-| {% f paymentOrder.id, 0 %}        | `string` | {% include fields/id.md resource="paymentOrder" %} |
-| `details`   | `string` | A human readable and descriptive text of the error.                      |
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f event, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The name of the event raised.
+      </div>
+    </div>
+  </details>
 
-## `onEventNotification`
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The paymentOrder object
+      </div>
+    </div>
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+            <span class="field">{% f id, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
+      </details>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f details, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        A human readable and descriptive text of the error.
+      </div>
+    </div>
+  </details>
+</div>
+
+## onEventNotification
 
 {% include events/on-event-notification.md %}
 
@@ -166,11 +355,10 @@ This is the object that is provided if you override the event:
 
  {% capture response_content %}{
      "event": "OnEventNotification",
-     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
-     "sourceEvent": "OnPaid | OnFailed | OnAborted | OnPaymentAttemptAborted |
-      OnOutOfViewReidrect | OnTermsOfServiceRequested | OnCheckoutResized |
-      OnCheckoutLoaded | OnConsumerGuestSelected | OnInstrumentSelected |
-      OnError | OnPaymentAttemptStarted | OnPaymentAttemptFailed"
+     "paymentOrder": { 
+        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    },
+     "sourceEvent": "OnPaid"
  }{% endcapture %}
 
 {% include code-example.html
@@ -179,15 +367,62 @@ This is the object that is provided if you override the event:
     json= response_content
     %}
 
-{:.table .table-striped}
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
 
-| Field         | Type     | Description                                                |
-| :--------     | :------- | :--------------------------------------------------------- |
-| `event`     | `string` | The name of the event raised.                                            |
-| {% f paymentOrder.id, 0 %}        | `string` | {% include fields/id.md resource="paymentOrder" %} |
-| `sourceEvent` | `string` | A human readable and descriptive text with the event name.             |
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f event, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The name of the event raised.
+      </div>
+    </div>
+  </details>
 
-## `onInstrumentSelected`
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The paymentOrder object
+      </div>
+    </div>
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+            <span class="field">{% f id, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
+      </details>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f sourceEvent, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        A human readable and descriptive text with the event name.  <code>OnFailed</code> | <code>OnAborted</code> | <code>OnPaymentAttemptAborted</code> |
+      <code>OnOutOfViewReidrect</code> | <code>OnTermsOfServiceRequested</code> | <code>OnCheckoutResized</code> |
+      <code>OnCheckoutLoaded</code> | <code>OnConsumerGuestSelected</code> | <code>OnInstrumentSelected</code> |
+      <code>OnError</code> | <code>OnPaymentAttemptStarted</code> | <code>OnPaymentAttemptFailed</code>
+      </div>
+    </div>
+  </details>
+</div>
+
+## onInstrumentSelected
 
 {% include events/on-instrument-selected.md %}
 
@@ -203,8 +438,10 @@ This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnInstrumentSelected",
-    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
-    "instrument": "creditcard | vipps | swish | invoice",
+    "paymentOrder": { 
+        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    },
+    "instrument": "creditcard"
 }{% endcapture %}
 
 {% include code-example.html
@@ -213,15 +450,59 @@ This is the object that is provided if you override the event:
     json= response_content
     %}
 
-{:.table .table-striped}
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
 
-| Field        | Type     | Description                                                           |
-| :----------- | :------- | :--------------------------------------                               |
-| `event`     | `string` | The name of the event raised.                                                    |
-| {% f paymentOrder.id, 0 %}        | `string` | {% include fields/id.md resource="paymentOrder" %}         |
-| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The payment method selected by the user. |
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f event, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The name of the event raised.
+      </div>
+    </div>
+  </details>
 
-## `onOutOfViewOpen`
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The paymentOrder object
+      </div>
+    </div>
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+            <span class="field">{% f id, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
+      </details>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f instrument, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        <code>Creditcard</code>, <code>vipps</code>, <code>swish</code>, <code>invoice</code>. The payment method selected by the user.
+      </div>
+    </div>
+  </details>
+</div>
+
+## onOutOfViewOpen
 
 {% include events/on-out-of-view-open.md %}
 
@@ -237,7 +518,9 @@ This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnOutOfViewOpen",
-    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
+    "paymentOrder": { 
+        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    },
     "openUrl": "https://example.com/external"
 }{% endcapture %}
 
@@ -247,15 +530,59 @@ This is the object that is provided if you override the event:
     json= response_content
     %}
 
-{:.table .table-striped}
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
 
-| Field        | Type     | Description                                                           |
-| :----------- | :------- | :--------------------------------------                               |
-| `event`      | `string` | The name of the event raised.                                            |
-| {% f paymentOrder.id, 0 %}         | `string` | {% include fields/id.md resource="paymentOrder" %} |
-| `openUrl`    | `string` | The external URL where the user will be redirected.                      |
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f event, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The name of the event raised.
+      </div>
+    </div>
+  </details>
 
-## `onOutOfViewRedirect`
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The paymentOrder object
+      </div>
+    </div>
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+            <span class="field">{% f id, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
+      </details>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f openUrl, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The external URL where the user will be redirected.
+      </div>
+    </div>
+  </details>
+</div>
+
+## onOutOfViewRedirect
 
 {% include events/on-out-of-view-redirect.md %}
 
@@ -273,7 +600,9 @@ This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnOutOfViewRedirect",
-    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
+    "paymentOrder": { 
+        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    },
     "redirectUrl": "https://example.com/external"
 }{% endcapture %}
 
@@ -283,15 +612,59 @@ This is the object that is provided if you override the event:
     json= response_content
     %}
 
-{:.table .table-striped}
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
 
-| Field        | Type     | Description                                                           |
-| :----------- | :------- | :--------------------------------------                                  |
-| `event`      | `string` | The name of the event raised.                                            |
-| {% f paymentOrder.id, 0 %}         | `string` | {% include fields/id.md resource="paymentOrder" %} |
-| `redirectUrl` | `string` | The external URL where the user will be redirected.                     |
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f event, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The name of the event raised.
+      </div>
+    </div>
+  </details>
 
-## `onPaid`
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The paymentOrder object
+      </div>
+    </div>
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+            <span class="field">{% f id, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
+      </details>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f redirectUrl, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The external URL where the user will be redirected.
+      </div>
+    </div>
+  </details>
+</div>
+
+## onPaid
 
 {% include events/on-paid.md %}
 
@@ -311,7 +684,9 @@ This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnPaid",
-    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
+    "paymentOrder": { 
+        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    },
     "redirectUrl": "https://example.com/success"
 }{% endcapture %}
 
@@ -321,15 +696,59 @@ This is the object that is provided if you override the event:
     json= response_content
     %}
 
-{:.table .table-striped}
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
 
-| Field         | Type     | Description                                                         |
-| :------------ | :------- | :-------------------------------------------------------------      |
-| `event`       | `string` | The name of the event raised.                                            |
-| {% f paymentOrder.id, 0 %}          | `string` | {% include fields/id.md resource="paymentOrder" %} |
-| `redirectUrl` | `string` | The URL the user will be redirected to after completing the payment.       |
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f event, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The name of the event raised.
+      </div>
+    </div>
+  </details>
 
-## `onPaymentAttemptAborted`
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The paymentOrder object
+      </div>
+    </div>
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+            <span class="field">{% f id, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
+      </details>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f redirectUrl, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The URL the user will be redirected to after completing the payment.
+      </div>
+    </div>
+  </details>
+</div>
+
+## onPaymentAttemptAborted
 
 This event mirrors `onPaymentAborted` from Checkout v2.
 
@@ -345,7 +764,9 @@ This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnPaymentAttemptAborted",
-    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
+    "paymentOrder": { 
+        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    },
     "redirectUrl": "https://example.com/cancelled"
 }{% endcapture %}
 
@@ -355,15 +776,59 @@ This is the object that is provided if you override the event:
     json= response_content
     %}
 
-{:.table .table-striped}
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
 
-| Field         | Type     | Description                                                    |
-| :------------ | :------- | :------------------------------------------------------------- |
-| `event`       | `string` | The name of the event raised.                                            |
-| {% f paymentOrder.id, 0 %}          | `string` | {% include fields/id.md resource="paymentOrder" %} |
-| `redirectUrl` | `string` | The URL the user will be redirected to after a cancelled payment.          |
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f event, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The name of the event raised.
+      </div>
+    </div>
+  </details>
 
-## `onPaymentAttemptFailed`
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The paymentOrder object
+      </div>
+    </div>
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+            <span class="field">{% f id, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
+      </details>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f redirectUrl, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The URL the user will be redirected to after a cancelled payment.
+      </div>
+    </div>
+  </details>
+</div>
+
+## onPaymentAttemptFailed
 
 This event mirrors `onPaymentTransactionFailed` from Checkout v2.
 
@@ -378,8 +843,10 @@ This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnPaymentAttemptFailed",
-    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
-    "details": "[HttpCode ProblemTitle]"
+    "paymentOrder": { 
+        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    },
+    "details": "Some error"
 }{% endcapture %}
 
 {% include code-example.html
@@ -388,15 +855,60 @@ This is the object that is provided if you override the event:
     json= response_content
     %}
 
-{:.table .table-striped}
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Description</div>
+  </div>
 
-| Field     | Type     | Description                                         |
-| :-------- | :------- | :-------------------------------------------------- |
-| `event`       | `string` | The name of the event raised.                                            |
-| {% f paymentOrder.id, 0 %}          | `string` | {% include fields/id.md resource="paymentOrder" %} |
-| `details` | `string` | A human readable and descriptive text of the error.                          |
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f event, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The name of the event raised.
+      </div>
+    </div>
+  </details>
 
-## `onPaymentAttemptStarted`
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The paymentOrder object
+      </div>
+    </div>
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+            <span class="field">{% f id, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
+      </details>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f details, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        A human readable and descriptive text of the error.
+      </div>
+    </div>
+  </details>
+</div>
+
+## onPaymentAttemptStarted
 
 This event mirrors `onPaymentCreated` from Checkout v2.
 
@@ -410,8 +922,10 @@ This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnPaymentAttemptStarted",
-    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
-    "instrument": "creditcard",
+    "paymentOrder": { 
+        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    },
+    "instrument": "creditcard"
 }{% endcapture %}
 
 {% include code-example.html
@@ -420,15 +934,60 @@ This is the object that is provided if you override the event:
     json= response_content
     %}
 
-{:.table .table-striped}
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Description</div>
+  </div>
 
-| Field        | Type     | Description                                                                                     |
-| :----------- | :------- | :---------------------------------------------------------------------------------------------- |
-| `event`       | `string` | The name of the event raised.                                                                  |
-| {% f paymentOrder.id, 0 %}          | `string` | {% include fields/id.md resource="paymentOrder" %}                       |
-| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The payment method selected when initiating the payment. |
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f event, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The name of the event raised.
+      </div>
+    </div>
+  </details>
 
-## `onTermsOfServiceRequested`
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The paymentOrder object
+      </div>
+    </div>
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+            <span class="field">{% f id, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
+      </details>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f instrument, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        <code>Creditcard</code>, <code>vipps</code>, <code>swish</code>, <code>invoice</code>. The payment method selected when initiating the payment.
+      </div>
+    </div>
+  </details>
+</div>
+
+## onTermsOfServiceRequested
 
 {% include events/on-terms-of-service-requested.md %}
 
@@ -445,7 +1004,9 @@ This is the object that is provided if you override the event:
 
  {% capture response_content %}{
      "event": "OnTermsOfServiceRequested",
-     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}"},
+     "paymentOrder": { 
+        "id": "/psp/paymentorders/{{ page.payment_id }}"
+     },
      "termsOfServiceUrl": "https://example.org/terms.html"
  }{% endcapture %}
 
@@ -455,10 +1016,55 @@ This is the object that is provided if you override the event:
     json= response_content
     %}
 
-{:.table .table-striped}
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Description</div>
+  </div>
 
-| Field                | Type     | Description                                         |
-| :--------            | :------- | :---------------------------------------------------|
-| `event`              | `string` | The name of the event raised.                                  |
-| {% f paymentOrder.id, 0 %}       | `string` | {% include fields/id.md resource="paymentOrder" %} |
-| `termsOfServiceUrl`  | `string` | The URL containing Terms of Service and conditions.            |
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f event, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The name of the event raised.
+      </div>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f paymentOrder, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The paymentOrder object
+      </div>
+    </div>
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+            <span class="field">{% f id, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ id_md | markdownify }}</div></div>
+      </details>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f termsOfServiceUrl, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-0">
+        The URL containing Terms of Service and conditions.
+      </div>
+    </div>
+  </details>
+</div>

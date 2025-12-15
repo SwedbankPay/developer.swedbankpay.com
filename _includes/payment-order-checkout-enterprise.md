@@ -173,10 +173,10 @@ Content-Type: application/json
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f currency %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">The currency of the payment.</div></div>
+        <div class="desc"><div class="indent-1">The currency of the payment in the ISO 4217 format (e.g. <code>DKK</code>, <code>EUR</code>, <code>NOK</code> or <code>SEK</code>). Some payment methods are only available with selected currencies.</div></div>
       </details>
 
       <!-- amount -->
@@ -223,7 +223,7 @@ Content-Type: application/json
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f language %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">The language of the payer.</div></div>
@@ -236,7 +236,7 @@ Content-Type: application/json
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">Used to tag the payment as Online Payments v3.0. Mandatory for Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.</div></div>
+        <div class="desc"><div class="indent-1">Used to tag the payment as Online Payments v3.0. Mandatory for Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field. Not in use for v3.1.</div></div>
       </details>
 
       <!-- implementation (optional) -->
@@ -973,18 +973,18 @@ Content-Type: application/json
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f created %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>date(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was created.</div></div>
+        <div class="desc"><div class="indent-1">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the payment order was created.</div></div>
       </details>
 
       <!-- updated -->
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f updated %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>date(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was updated.</div></div>
+        <div class="desc"><div class="indent-1">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the payment order was updated.</div></div>
       </details>
 
       <!-- operation -->
@@ -1009,9 +1009,9 @@ Content-Type: application/json
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f currency %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The currency of the payment order.</div></div>
+        <div class="desc"><div class="indent-1">The currency of the payment order in the ISO 4217 format (e.g. <code>DKK</code>, <code>EUR</code>, <code>NOK</code> or <code>SEK</code>). Some payment methods are only available with selected currencies.</div></div>
       </details>
 
       <!-- amount -->
@@ -1054,7 +1054,7 @@ Content-Type: application/json
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f language %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>
       </details>

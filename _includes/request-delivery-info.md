@@ -19,9 +19,9 @@ add the field `restrictedToDeliveryInfoInstruments` and setting it to `true`.
 This will leave out all payment methods which can't return delivery information.
 
 You are currently only able to request delivery information from **Apple Pay**,
-**Click to Pay** and **Google Pay&trade;**, but we will add support for more
-payment methods going forward. No changes are required at your (the merchant's)
-end to be able to offer more payment methods at a later time.
+**Click to Pay**, **Google Pay&trade;** and **MobilePay** but we will add
+support for more payment methods going forward. No changes are required at your
+(the merchant's) end to be able to offer more payment methods at a later time.
 
 ## Request Delivery Info Request
 
@@ -31,7 +31,7 @@ field of the request, like the example below.
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {
@@ -44,7 +44,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
+        "productName": "Checkout3",
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], {% if include.integration_mode=="seamless-view" %}
             "paymentUrl": "https://example.com/perform-payment", {% endif %}
@@ -252,10 +252,10 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f currency %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">The currency of the payment.</div></div>
+        <div class="desc"><div class="indent-1">The currency of the payment in the ISO 4217 format (e.g. <code>DKK</code>, <code>EUR</code>, <code>NOK</code> or <code>SEK</code>). Some payment methods are only available with selected currencies.</div></div>
       </details>
 
       <!-- amount -->
@@ -302,7 +302,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f language %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
         <div class="desc"><div class="indent-1">The language of the payer.</div></div>
@@ -315,7 +315,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">Used to tag the payment as Online Payments v3.0. Mandatory for Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.</div></div>
+        <div class="desc"><div class="indent-1">Used to tag the payment as Online Payments v3.0. Mandatory for Online Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field. Not in use for v3.1.</div></div>
       </details>
 
       <!-- implementation -->
@@ -1042,13 +1042,18 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "language": "sv-SE",
         "availableInstruments": [
-            "CreditCard",
-            "Invoice-PayExFinancingSe",
-            "Invoice-PayMonthlyInvoiceSe",
-            "Swish",
-            "CreditAccount",
-            "Trustly"
-        ], {% if include.integration_mode=="seamless-view" %}
+            "MobilePay",
+            "ApplePay",
+            "GooglePay",
+            "ClickToPay"
+        ],
+        "viewableInstruments": [
+            "MobilePay",
+            "ApplePay",
+            "GooglePay",
+            "ClickToPay"
+        ],
+        {% if include.integration_mode=="seamless-view" %}
         "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}
         "instrumentMode": false,
@@ -1103,6 +1108,12 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           "method":"PATCH",
           "contentType":"application/json"
         },
+                {
+          "method": "GET",
+          "href": "https://api.externalintegration.payex.com/psp/paymentsessions/4191e1a6c4ab452aa9c4ed38754f11a700748c2128b9d50026326e3b0f0d2d63?_tc_tid=e635a1eb395c92380cfacb64caa22bac",
+          "rel": "view-paymentsession",
+          "contentType": "application/json"
+        },
         {
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
           "rel": "abort",
@@ -1153,18 +1164,18 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f created %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>date(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was created.</div></div>
+        <div class="desc"><div class="indent-1">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the payment order was created.</div></div>
       </details>
 
       <!-- updated -->
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f updated %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>date(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The ISO-8601 date of when the payment order was updated.</div></div>
+        <div class="desc"><div class="indent-1">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the payment order was updated.</div></div>
       </details>
 
       <!-- operation -->
@@ -1218,9 +1229,9 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f currency %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The currency of the payment order.</div></div>
+        <div class="desc"><div class="indent-1">The currency of the payment order in the ISO 4217 format (e.g. <code>DKK</code>, <code>EUR</code>, <code>NOK</code> or <code>SEK</code>). Some payment methods are only available with selected currencies.</div></div>
       </details>
 
       <!-- amount -->
@@ -1263,7 +1274,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f language %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
         </summary>
         <div class="desc"><div class="indent-1">{% include fields/language.md %}</div></div>
       </details>
@@ -1275,6 +1286,15 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           <span class="type"><code>string</code></span>
         </summary>
         <div class="desc"><div class="indent-1">A list of payment methods available for this payment.</div></div>
+      </details>
+
+            <!-- viewableInstruments -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f viewableInstruments %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+        </summary>
+        <div class="desc"><div class="indent-1">A list of payment methods with viewable delivery information.</div></div>
       </details>
 
       <!-- implementation -->

@@ -341,17 +341,17 @@ api-supported-versions: 3.1{% endcapture %}
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f created, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>date(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The ISO-8601 date and time of when the transaction was created.</div></div>
+        <div class="desc"><div class="indent-1">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the transaction was created.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f updated, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>date(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The ISO-8601 date and time of when the transaction was updated.</div></div>
+        <div class="desc"><div class="indent-1">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the transaction was updated.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -373,9 +373,9 @@ api-supported-versions: 3.1{% endcapture %}
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f currency, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The currency of the payment order.</div></div>
+        <div class="desc"><div class="indent-1">The currency of the payment order in the ISO 4217 format (e.g. <code>DKK</code>, <code>EUR</code>, <code>NOK</code> or <code>SEK</code>). Some payment methods are only available with selected currencies.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -488,7 +488,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f orderItems, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>orderItems</code> resource where information about the order items can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/features/optional/order-items/">Order Items</a>resource where information about the order items can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -496,7 +496,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f urls, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>urls</code> resource where all URLs related to the payment order can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/urls/">urls</a> resource where all URLs related to the payment order can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -504,7 +504,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f payeeInfo, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>payeeInfo</code> resource where information related to the payee can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/payee-info/">payeeInfo</a> resource where information related to the payee can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -512,7 +512,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f payer, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>payer</code> resource where information about the payer can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#payer">payer</a>  resource where information about the payer can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -520,7 +520,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f history, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>history</code> resource where information about the payment's history can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#history">history</a> resource where information about the payment's history can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -528,7 +528,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f failed, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>failed</code> resource where information about the failed transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#failed">failed</a> resource where information about the failed transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -536,7 +536,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f aborted, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>aborted</code> resource where information about the aborted transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#aborted">aborted</a> resource where information about the aborted transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -544,7 +544,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f paid, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>paid</code> resource where information about the paid transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#paid">paid</a> resource where information about the paid transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -552,7 +552,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f cancelled, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>cancelled</code> resource where information about the cancelled transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#cancelled">cancelled</a> resource where information about the cancelled transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -560,7 +560,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f reversed, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>cancelled</code> resource where information about the reversed transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#reversed">reversed</a> resource where information about the reversed transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -568,7 +568,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f financialTransactions, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>financialTransactions</code> resource where information about the financial transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#financialtransactions">financialTransactions</a> resource where information about the financial transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -576,7 +576,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f failedAttempts, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>failedAttempts</code> resource where information about the failed attempts can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#failedattempts">failedAttempts</a> resource where information about the failed attempts can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -584,7 +584,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f postPurchaseFailedAttempts, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>postPurchaseFailedAttempts</code> resource where information about the failed capture, cancel or reversal attempts can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#postpurchasefailedattempts">postPurchaseFailedAttempts</a> resource where information about the failed capture, cancel or reversal attempts can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -592,7 +592,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f metadata, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>metadata</code> resource where information about the metadata can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/metadata">metadata</a> resource where information about the metadata can be retrieved.</div></div>
       </details>
     </div>
   </details>
@@ -843,18 +843,18 @@ api-supported-versions: 3.1{% endcapture %}
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f created, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>date(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The ISO-8601 date and time of when the transaction was created.</div></div>
+        <div class="desc"><div class="indent-1">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the transaction was created.</div></div>
       </details>
 
       <!-- updated -->
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f updated, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>date(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The ISO-8601 date and time of when the transaction was updated.</div></div>
+        <div class="desc"><div class="indent-1">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the transaction was updated.</div></div>
       </details>
 
       <!-- operation -->
@@ -879,9 +879,9 @@ api-supported-versions: 3.1{% endcapture %}
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f currency, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The currency of the payment order.</div></div>
+        <div class="desc"><div class="indent-1">The currency of the payment order in the ISO 4217 format (e.g. <code>DKK</code>, <code>EUR</code>, <code>NOK</code> or <code>SEK</code>). Some payment methods are only available with selected currencies.</div></div>
       </details>
 
       <!-- amount -->
@@ -1007,7 +1007,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f orderItems, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>orderItems</code> resource where information about the order items can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/features/optional/order-items/">Order Items</a> resource where information about the order items can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -1015,7 +1015,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f urls, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>urls</code> resource where all URLs related to the payment order can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/urls/">urls</a> resource where all URLs related to the payment order can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -1023,7 +1023,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f payeeInfo, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>payeeInfo</code> resource where information related to the payee can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/payee-info/">payeeInfo</a> resource where information related to the payee can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -1031,7 +1031,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f payer, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>payer</code> resource where information about the payer can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#payer">payer</a> resource where information about the payer can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -1039,7 +1039,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f history, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>history</code> resource where information about the payment's history can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#history">history</a> resource where information about the payment's history can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -1047,7 +1047,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f failed, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>failed</code> resource where information about the failed transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#failed">failed</a> resource where information about the failed transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -1055,7 +1055,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f aborted, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>aborted</code> resource where information about the aborted transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#aborted">aborted</a> resource where information about the aborted transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -1063,7 +1063,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f paid, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>paid</code> resource where information about the paid transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#paid">paid</a> resource where information about the paid transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -1071,7 +1071,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f cancelled, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>cancelled</code> resource where information about the cancelled transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#cancelled">cancelled</a> resource where information about the cancelled transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -1079,7 +1079,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f reversed, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>cancelled</code> resource where information about the reversed transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#reversed">reversed</a> resource where information about the reversed transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -1087,7 +1087,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f financialTransactions, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>financialTransactions</code> resource where information about the financial transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#financialtransactions">financialTransactions</a> resource where information about the financial transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -1095,7 +1095,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f failedAttempts, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>failedAttempts</code> resource where information about the failed attempts can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#failedattempts">failedAttempts</a> resource where information about the failed attempts can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -1103,7 +1103,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f postPurchaseFailedAttempts, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>postPurchaseFailedAttempts</code> resource where information about the failed capture, cancel or reversal attempts can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#postpurchasefailedattempts">postPurchaseFailedAttempts</a> resource where information about the failed capture, cancel or reversal attempts can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -1111,7 +1111,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f metadata, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>metadata</code> resource where information about the metadata can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/metadata">metadata</a> resource where information about the metadata can be retrieved.</div></div>
       </details>
 
     </div>
@@ -1566,18 +1566,18 @@ api-supported-versions: 3.1{% endcapture %}
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f created, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>date(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The ISO-8601 date and time of when the transaction was created.</div></div>
+        <div class="desc"><div class="indent-1">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the transaction was created.</div></div>
       </details>
 
       <!-- updated -->
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f updated, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>date(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The ISO-8601 date and time of when the transaction was updated.</div></div>
+        <div class="desc"><div class="indent-1">The <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>{:target="_blank"} date and time when the transaction was updated.</div></div>
       </details>
 
       <!-- operation -->
@@ -1602,9 +1602,9 @@ api-supported-versions: 3.1{% endcapture %}
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f currency, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
+          <span class="type"><code>enum(string)</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The currency of the payment order.</div></div>
+        <div class="desc"><div class="indent-1">The currency of the payment order in the ISO 4217 format (e.g. <code>DKK</code>, <code>EUR</code>, <code>NOK</code> or <code>SEK</code>). Some payment methods are only available with selected currencies.</div></div>
       </details>
 
       <!-- amount -->
@@ -1730,7 +1730,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f orderItems, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>orderItems</code> resource where information about the order items can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/features/optional/order-items/">Order Items</a> resource where information about the order items can be retrieved.</div></div>
       </details>
 
       <!-- urls link -->
@@ -1739,7 +1739,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f urls, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>urls</code> resource where all URLs related to the payment order can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/urls/">urls</a> resource where all URLs related to the payment order can be retrieved.</div></div>
       </details>
 
       <!-- payeeInfo link -->
@@ -1748,7 +1748,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f payeeInfo, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>payeeInfo</code> resource where information related to the payee can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/payee-info/">payeeInfo</a> resource where information related to the payee can be retrieved.</div></div>
       </details>
 
       <!-- payer link -->
@@ -1757,7 +1757,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f payer, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>payer</code> resource where information about the payer can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#payer">payer</a> resource where information about the payer can be retrieved.</div></div>
       </details>
 
       <!-- history link -->
@@ -1766,7 +1766,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f history, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>history</code> resource where information about the payment's history can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#history">history</a> resource where information about the payment's history can be retrieved.</div></div>
       </details>
 
       <!-- failed link -->
@@ -1775,7 +1775,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f failed, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>failed</code> resource where information about the failed transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#failed">failed</a> resource where information about the failed transactions can be retrieved.</div></div>
       </details>
 
       <!-- aborted link -->
@@ -1784,7 +1784,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f aborted, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>aborted</code> resource where information about the aborted transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#aborted">aborted</a> resource where information about the aborted transactions can be retrieved.</div></div>
       </details>
 
       <!-- paid link -->
@@ -1793,7 +1793,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f paid, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>paid</code> resource where information about the paid transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#paid">paid</a> resource where information about the paid transactions can be retrieved.</div></div>
       </details>
 
       <!-- cancelled link -->
@@ -1802,7 +1802,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f cancelled, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>cancelled</code> resource where information about the cancelled transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#cancelled">cancelled</a> resource where information about the cancelled transactions can be retrieved.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
@@ -1810,7 +1810,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f reversed, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>cancelled</code> resource where information about the reversed transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#reversed">reversed</a> resource where information about the reversed transactions can be retrieved.</div></div>
       </details>
 
       <!-- financialTransactions link -->
@@ -1819,7 +1819,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f financialTransactions, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>financialTransactions</code> resource where information about the financial transactions can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#financialtransactions">financialTransactions</a> resource where information about the financial transactions can be retrieved.</div></div>
       </details>
 
       <!-- failedAttempts link -->
@@ -1828,7 +1828,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f failedAttempts, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>failedAttempts</code> resource where information about the failed attempts can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#failedattempts">failedAttempts</a> resource where information about the failed attempts can be retrieved.</div></div>
       </details>
 
       <!-- postPurchaseFailedAttempts link -->
@@ -1837,7 +1837,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f postPurchaseFailedAttempts, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>postPurchaseFailedAttempts</code> resource where information about the failed capture, cancel or reversal attempts can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/resource-sub-models/#postpurchasefailedattempts">postPurchaseFailedAttempts</a> resource where information about the failed capture, cancel or reversal attempts can be retrieved.</div></div>
       </details>
 
       <!-- metadata link -->
@@ -1846,7 +1846,7 @@ api-supported-versions: 3.1{% endcapture %}
           <span class="field">{% f metadata, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>object</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The id for the <code>metadata</code> resource where information about the metadata can be retrieved.</div></div>
+        <div class="desc"><div class="indent-1">The id for the <a href="https://developer.swedbankpay.com/checkout-v3/technical-reference/metadata">metadata</a> resource where information about the metadata can be retrieved.</div></div>
       </details>
     </div>
   </details>
