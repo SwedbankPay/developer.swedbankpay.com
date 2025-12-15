@@ -7,6 +7,33 @@ menu_order: 2
 has_release_notes: true
 ---
 
+## 15 December 2025
+
+### Version 5.3.13
+
+The last release of the year is more iteration and maintenance than it is new
+content. The changes going live before we gift-wrap 2025 are:
+
+More code example tables have been changed to the new, more user-friendly
+alternative which partially went live in 5.3.12.
+
+The table descriptions of the fields for currency, time/date and language have
+gotten a a touch up with better examples and a more accurate type.
+
+Comments in code examples have been removed to make them more copy/paste
+friendly.
+
+We have added a paragraph about which devices, browsers and operative systems
+that support [Apple Pay][apple-pay]. To ensure correct and updated information,
+we are linking directly to Apple's page.
+
+As we have switched off [callback][callback-3-1] as the default for **new**
+merchants, we have added a disclaimer stating that callback needs an agreement
+to be activated.
+
+There's also an assortment of mended links, bug fixes, typo correction and minor
+rewrites.
+
 ## 28 October 2025
 
 ### Version 5.3.12
