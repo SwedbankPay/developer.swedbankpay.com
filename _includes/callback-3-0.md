@@ -35,7 +35,10 @@ is **mandatory**. Below we provide three example scenarios of why this is
 important:
 
 1.  If the payer closes the payment window, the merchant will never know what
-    happened to the payment if `callbackUrl` is not implemented.
+    happened to the payment if `callbackUrl` is not implemented. Please note
+    that this only applies if there has been an attempt at completing the
+    payment, resulting in either a successful or failed transaction, or e.g. an
+    external timeout.
 2.  If the payer stops up in a payment app such as Vipps or Swish, the payer
     will never come back to the merchant. This means that the merchant won't
     know what happened to the payment unless `callbackUrl` is implemented.
