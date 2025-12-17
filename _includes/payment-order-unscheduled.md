@@ -1430,7 +1430,7 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
         "productName": "Checkout3",
         {% endif %}
         "urls": {
-            "callbackUrl": "https://example.com/payment-callback" // Callbacks will only be sent for Trustly
+            "callbackUrl": "https://example.com/payment-callback"
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}"
