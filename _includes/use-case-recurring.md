@@ -106,8 +106,8 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 {% capture response_content %}{
     "paid": {
     "id": "/psp/paymentorders/08349122-aa53-40e8-dd36-08dbbb319d19/paid",
-    "instrument": "CreditCard", // Instrument used
-    "number": 40126707630, // Transaction number associated with the action
+    "instrument": "CreditCard",
+    "number": 40126707630,
     "tokens":[
         {
           "type": "unscheduled",
@@ -121,7 +121,6 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           "name": "522661******3406",
           "expiryDate": "12/2033"
         }
-       // ... other details
     ]
 }{% endcapture %}
 

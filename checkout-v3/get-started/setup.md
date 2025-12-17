@@ -36,7 +36,7 @@ with Swedbank Pay is required. Please contact Swedbank Pay Sales at
 ## Step 1: Sign Up For A Test Account
 
 Your test account request should be sent to:
-[testaccount@swedbankpay.com](mailto:testaccount@swedbankpay.com) in order to
+[testaccount@swedbankpay.se](mailto:testaccount@swedbankpay.se) in order to
 create an account for you, we need some specific information from your side:
 
 *   **Company name:** Your company name.

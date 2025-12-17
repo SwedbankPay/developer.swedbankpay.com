@@ -1667,7 +1667,7 @@ api-supported-versions: 3.x{% endcapture %}
       "paymentAccountReference": "43f6b6d2cbd30c36627ec02247259",
       "cardBrand": "Visa",
       "cardType": "Credit",
-      "maskedPan": "492500******0004", // Same format as maskedDpan for enrolled network tokenization cards
+      "maskedPan": "492500******0004",
       "maskedDPan": "***********1234",
       "expiryDate": "12/2022",
       "issuerAuthorizationApprovalCode": "L00302",

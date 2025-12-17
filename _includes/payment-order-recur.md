@@ -1269,7 +1269,7 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
         "language": "nb-NO",  {% if documentation_section contains "checkout-v3" %}
         "productName": "Checkout3", {% endif %}
         "urls": {
-            "callbackUrl": "https://example.com/payment-callback"  // Callbacks will only be sent for Trustly
+            "callbackUrl": "https://example.com/payment-callback"
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}"
