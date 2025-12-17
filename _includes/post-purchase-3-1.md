@@ -237,8 +237,8 @@ api-supported-versions: 3.1{% endcapture %}
     "currency": "SEK",
     "amount": 1500,
     "vatAmount": 375,
-    "remainingCaptureAmount": 0, // Only present after a partial capture
-    "remainingCancellationAmount": 0, // Only present after a partial capture
+    "remainingCaptureAmount": 0,
+    "remainingCancellationAmount": 0,
     "remainingReversalAmount": 1500,
     "description": "Test Purchase",
     "initiatingSystemUserAgent": "<should be set by the system calling POST:/psp/paymentorders>",
@@ -1466,8 +1466,8 @@ api-supported-versions: 3.1{% endcapture %}
     "currency": "SEK",
     "amount": 1500,
     "vatAmount": 375,
-    "remainingCaptureAmount": 0, // Only present after a partial reversal
-    "remainingReversalAmount": 0, // Only present after a partial reversal
+    "remainingCaptureAmount": 0,
+    "remainingReversalAmount": 0,
     "description": "Test Purchase",
     "initiatingSystemUserAgent": "<should be set by the system calling POST:/psp/paymentorders>",
     "language": "sv-SE",
