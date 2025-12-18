@@ -24,6 +24,6 @@ jobs:
           creds: '{"clientId":"${{ secrets.SUBSCRIPTION_CLIENT_ID_PROD }}","clientSecret":"${{ secrets.SUBSCRIPTION_CLIENT_SECRET_PROD }}","subscriptionId":"${{ secrets.SUBSCRIPTION_ID_PROD }}","tenantId":"${{ secrets.TENANT_ID }}"}'
 
       - name: deploy
-        uses: azure/CLI@v2.1.0
+        uses: azure/CLI@v2.2.0
         with:
           inlineScript: az storage blob upload-batch -s _site -d "\$web" --account-name proddevelopersa1 --overwrite
