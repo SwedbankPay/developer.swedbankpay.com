@@ -6,14 +6,13 @@ description: |
 menu_order: 11
 ---
 
-As parts of the PCI-DSS best practice becomes requirements with
-[PCI-DSS v4][pci]{:target="_blank"} coming in April 2025, using the
-[Seamless View][seamless-view] integration to display the payment UI will give
-merchants more responsibilities than they currently have. This is because
-Seamless View is hosted by you. As the Redirect integration is hosted by
-Swedbank Pay, we also handle these responsibilities.
+As parts of the PCI-DSS best practice became requirements with
+[PCI-DSS v4][pci]{:target="_blank"} in April 2025, using the
+[Seamless View][seamless-view] integration to display the payment UI puts more responsibilities on merchants than before. This is because Seamless View is
+hosted by you. As the Redirect integration is hosted by Swedbank Pay, we also
+handle these responsibilities.
 
-The updated requirements will include stricter controls and monitoring,
+The PCI-DSS v4 requirements include stricter controls and monitoring,
 particularly around the security of your checkout process. Merchants are
 responsible for ensuring the integrity of the HTML script used in their
 integration, including monitoring what is loaded into or over it. Specifically,
