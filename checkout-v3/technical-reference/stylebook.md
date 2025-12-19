@@ -2,7 +2,7 @@
 title: Stylebook
 permalink: /:path/stylebook/
 description: |
-  Guidelines for Payment UI adapters.
+  How we designed out payment menu.
 hide_from_sidebar: true
 menu_order: 2700
 ---
