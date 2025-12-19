@@ -2,7 +2,7 @@
 title: Stylebook
 permalink: /:path/stylebook/
 description: |
-  How we designed out payment menu.
+  How we designed our payment menu.
 hide_from_sidebar: true
 menu_order: 2700
 ---

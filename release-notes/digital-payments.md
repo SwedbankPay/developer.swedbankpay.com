@@ -9,7 +9,7 @@ has_release_notes: true
 
 ## 15 December 2025
 
-### Version 5.3.13
+### Documentation v5.3.13
 
 The last release of the year is more iteration and maintenance than it is new
 content. The changes going live before we gift-wrap 2025 are:
@@ -36,7 +36,7 @@ rewrites.
 
 ## 28 October 2025
 
-### Version 5.3.12
+### Documentation v5.3.12
 
 The first steps of a major code table facelift is going live! [Get Started][3-1]
 has been fitted with a more user-friendly. expandable edition of the tables
