@@ -65,4 +65,4 @@ This component is designed to comply with WCAG 2.2 AA.
 - Focus indicators are clearly visible during keyboard navigation.
 - States such as selected, disabled, and error are clearly distinguishable.
 
-For general accessibility requirements, see [Accessability](../accessibility)
+For general accessibility requirements, see [Accessibility](../accessibility)

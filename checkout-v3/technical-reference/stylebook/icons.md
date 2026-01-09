@@ -52,4 +52,4 @@ Icons are designed to support comprehension and must not replace text.
 - Interactive icons have visible focus indicators.
 - Decorative icons are hidden from assistive technology.
 
-For general accessibility requirements, see [Accessability](../accessibility)
+For general accessibility requirements, see [Accessibility](../accessibility)
