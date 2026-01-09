@@ -3,7 +3,7 @@ title: Form fields
 permalink: /:path/form-fields/
 description: |
   Form fields
-menu_order: 1400
+menu_order: 1500
 ---
 
 # Form Fields
@@ -47,10 +47,10 @@ Disabled fields are:
 
 Form fields are designed to comply with WCAG 2.2 AA.
 
+- All fields and controls are operable using a keyboard only.
+- Focus order follows a logical reading order.
 - All fields have visible labels.
 - Error states are communicated using text in addition to visual styling.
-- Focus indicators are clearly visible for keyboard navigation.
-- Form fields meet minimum touch target size requirements.
+- Focus indicators are clearly visible during keyboard navigation.
 
-For general accessibility requirements, see
-[Design Foundations](../design-foundations.md).
+For general accessibility requirements, see [Accessability](../accessibility)

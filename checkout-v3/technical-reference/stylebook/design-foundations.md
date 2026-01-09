@@ -18,17 +18,18 @@ alignment with the checkout.
 
 All UI elements comply with **WCAG 2.2 AA**.
 
-Key requirements:
-- Text contrast: minimum 4.5:1
-- Non-text UI elements (borders, icons, focus indicators): minimum 3:1
-- Focus indicators are always visible
-- Color is never the only means of conveying information
-- Interactive elements meet minimum touch target size
+Key requirements include:
+- All functionality is operable using a keyboard only.
+- A logical and predictable tab order is maintained.
+- Focus indicators are always visible.
+- Minimum contrast requirements are met for text and non-text UI elements.
+- Color is not the only means of conveying information.
+- Interactive elements meet minimum touch target size requirements.
 
 All components and states described in this stylebook are designed to meet these
 requirements.
 
-[More information](https://www.swedbankpay.com/information/wcag)
+[More information](../accessibility)
 
 ---
 

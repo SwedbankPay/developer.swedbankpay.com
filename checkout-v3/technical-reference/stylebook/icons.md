@@ -3,7 +3,7 @@ title: Icons
 permalink: /:path/icons/
 description: |
  Icons
-menu_order: 1200
+menu_order: 1300
 ---
 
 # Icons
@@ -48,9 +48,8 @@ Icons must meet non-text contrast requirements (3:1).
 
 Icons are designed to support comprehension and must not replace text.
 
-- Icons are never the sole means of conveying information.
+- Interactive icons are operable using a keyboard.
 - Interactive icons have visible focus indicators.
 - Decorative icons are hidden from assistive technology.
 
-For general accessibility requirements, see
-[Design Foundations](../design-foundations.md).
+For general accessibility requirements, see [Accessability](../accessibility)

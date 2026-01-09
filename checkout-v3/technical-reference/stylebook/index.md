@@ -8,34 +8,60 @@ menu_order: 2700
 anchor_headings: false
 ---
 
-{:.heading-line}
-
 # Stylebook
 
 This stylebook describes the visual design, interaction patterns, and
-accessibility requirements for the checkout.
+accessibility principles used in the checkout.
 
-It is intended for merchants and partners who integrate with the checkout and
-want their surrounding UI to visually align with it.
+It is intended for merchants, partners, and developers who integrate with the
+checkout and want their surrounding user interface to visually align with it.
 
-The stylebook focuses on **visual consistency and accessibility**, not on
-business logic or payment flows.
+The purpose of this stylebook is to support **visual consistency** and
+**accessible user experiences**, not to define payment logic or business rules.
 
 ---
 
 ## Scope
 
-Included:
-- Color usage and surfaces
-- Typography and icons
-- UI components and states
-- Accessibility requirements (WCAG 2.2 AA)
+This stylebook covers:
 
-Not included:
-- Payment logic
-- Validation rules
+- Design foundations such as color usage, surfaces, and spacing
+- Typography and icon usage
+- UI components and interaction states
+- Accessibility requirements in accordance with WCAG 2.2 AA
+
+This stylebook does not cover:
+
+- Payment flows or validation logic
 - Backend or API behavior
+- Functional requirements outside the user interface
 
 ---
+
+## Accessibility
+
+All UI patterns described in this stylebook are designed to comply with
+**WCAG 2.2 AA**.
+
+Accessibility requirements are defined centrally in **Design Foundations** and
+are applied consistently across components, states, and form fields.
+
+---
+
+## How to use this stylebook
+
+Use this stylebook as a reference when styling user interfaces that appear
+before or after the checkout, or when embedding the checkout in a broader user
+journey.
+
+- Start with **Design Foundations** to understand the core visual principles.
+- Follow **Typography** and **Icons** for consistent text and icon usage.
+- Use **Components** and **Form Fields** for concrete implementation guidance.
+- Refer to **States** to ensure consistent interaction behavior.
+- Review **Examples** for correct and incorrect usage.
+
+---
+
+## Contents
 
 {% include card-list.html %}

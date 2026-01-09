@@ -3,7 +3,7 @@ title: States & Interaction
 permalink: /:path/states/
 description: |
   States & Interaction
-menu_order: 1300
+menu_order: 1400
 ---
 
 # States
@@ -60,9 +60,9 @@ Disabled components:
 
 This component is designed to comply with WCAG 2.2 AA.
 
+- All interactive functionality is operable using a keyboard.
 - Interactive elements have sufficient touch target size.
-- Focus indicators are clearly visible for keyboard navigation.
+- Focus indicators are clearly visible during keyboard navigation.
 - States such as selected, disabled, and error are clearly distinguishable.
 
-For general accessibility requirements, see
-[Design Foundations](../design-foundations.md).
+For general accessibility requirements, see [Accessability](../accessibility)

@@ -3,7 +3,7 @@ title: Components
 permalink: /:path/components/
 description: |
   Components
-menu_order: 1500
+menu_order: 1600
 ---
 
 # Components
@@ -155,12 +155,11 @@ Disabled buttons:
 
 ### Accessibility
 
-All components must comply with **WCAG 2.2 AA**.
+This component is designed to comply with WCAG 2.2 AA.
 
-- Interactive components have sufficient touch target size.
-- Focus indicators are clearly visible for keyboard navigation.
-- Icons do not replace text for critical information.
+- All interactive functionality is operable using a keyboard.
+- Interactive elements have sufficient touch target size.
+- Focus indicators are clearly visible during keyboard navigation.
 - States such as selected, disabled, and error are clearly distinguishable.
 
-For general accessibility requirements, see
-[Design Foundations](../design-foundations).
+For general accessibility requirements, see [Accessability](../accessibility)

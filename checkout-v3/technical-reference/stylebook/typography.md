@@ -3,7 +3,7 @@ title: Typography
 permalink: /:path/typography/
 description: |
   Typography
-menu_order: 1100
+menu_order: 1200
 ---
 
 # Typography
