@@ -30,11 +30,11 @@ Used for:
 - Section headers in mobile layouts
 
 **Properties**
-- Font family: Swedbank Headline
-- Font size: 20px
-- Font weight: 700
-- Line height: 28px (140%)
-- Color: `--Text-Default`
+- Font family: `Swedbank Headline`
+- Font size: `20px`
+- Font weight: `700`
+- Line height: `28px` (140%)
+- Color: `#2F2424`
 
 ---
 
@@ -46,11 +46,11 @@ Used for:
 - Supporting text
 
 **Properties**
-- Font family: Arial
-- Font size: 16px
-- Font weight: 400
-- Line height: 24px (150%)
-- Color: `--Text-Default`
+- Font family: `Arial`
+- Font size: `16px`
+- Font weight: `400`
+- Line height: `24px` (150%)
+- Color: `#2F2424`
 
 ---
 

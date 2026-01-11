@@ -40,8 +40,8 @@ Focus indicators are always visible and clearly distinguishable.
 The selected state indicates the active option.
 
 **Properties**
-- Border radius: 8px
-- Border: 3px solid `--Functional-Base-1`
+- Border radius: `8px`
+- Border: `3px solid #2F2424`
 
 Selected state must be clearly distinguishable without relying on color alone.
 
@@ -53,6 +53,9 @@ Disabled components:
 - Are not interactive
 - Are not focusable
 - Are visually distinct but still readable
+
+**Properties**
+- Border: `3px solid #EBE7E2`
 
 ---
 

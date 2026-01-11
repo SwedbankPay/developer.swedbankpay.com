@@ -54,6 +54,8 @@ requirements described in this stylebook.
 
 ---
 
+#### Want to learn more about Accessability?
+
 [Swedbank Pay and Accessibility](https://www.swedbankpay.com/information/wcag)
 
 [WCAG 2.2. Quick Reference Guide](https://www.w3.org/WAI/WCAG22/quickref/)

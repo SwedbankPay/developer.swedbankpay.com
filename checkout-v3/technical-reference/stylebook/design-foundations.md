@@ -38,16 +38,16 @@ requirements.
 Colors are defined using functional tokens rather than decorative names.
 
 ### Backgrounds
-- Page background: `--Background-BG-White`
-- Surface background: `--Background-BG-White`
+- Page background: `#FFF`
+- Surface background: `#FFF`
 
 ### Text
-- Default text: `--Text-Default`
+- Default text: `#2F2424`
 - Muted text: defined in Typography
 
 ### Functional colors
-- Primary action: `--Functional-Base-1`
-- Borders: `--Functional-Base-4`
+- Primary action: `#2F2424`
+- Borders: `#A38B80`
 
 Color combinations must meet WCAG contrast requirements.
 

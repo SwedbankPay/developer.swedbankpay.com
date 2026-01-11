@@ -40,8 +40,8 @@ A card may contain:
 ### Card container
 
 **Visual properties**
-- Background color: `var(--Background-BG-White, #FFFFFF)`
-- Border: `1px solid var(--Functional-Base-4, #D4C4BC)`
+- Background color: `#FFFFFF`
+- Border: `1px solid #D4C4BC`
 - Border radius: `16px`
 - Padding: `16px`
 - Internal spacing (gap): `48px`
@@ -55,7 +55,7 @@ Cards must have sufficient contrast against the surrounding background.
 The card title identifies the payment method and is always visible in the
 collapsed state.
 
-Card titles use **Title 3 (Mobile)** as defined in
+Card titles use **Title** as defined in
 [Typography](./typography.md).
 
 ---
@@ -76,7 +76,7 @@ Descriptions are optional but recommended for clarity.
 Payment method icons visually identify the payment option.
 
 - Icon height: `40px`
-- Width: auto (maintain aspect ratio)
+- Width: `auto` (maintain aspect ratio)
 
 Icons follow the rules defined in [Icons](./icons.md) and must not be the only
 means of conveying information.
@@ -106,7 +106,7 @@ The selected state is defined in [States](./states.md).
 
 **Visual properties**
 - Border radius: `8px`
-- Border: `3px solid var(--Functional-Base-1, #2F2424)`
+- Border: `3px solid #2F2424`
 
 The selected state must be clearly distinguishable and meet WCAG contrast
 requirements for non-text UI components.
@@ -130,8 +130,8 @@ possible.
 - Height: `62px`
 - Padding: `16px`
 - Border radius: `8px`
-- Background color: `var(--Functional-Base-1, #2F2424)`
-- Content alignment: centered
+- Background color: `#2F2424`
+- Content alignment: `centered`
 - Internal spacing (gap): `8px`
 
 Button text must have sufficient contrast against the background.
