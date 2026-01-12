@@ -33,6 +33,18 @@ field is focused, filled, or in an error state.
 
 ---
 
+### Vertical spacing
+
+Form fields use consistent vertical spacing to maintain a clear visual hierarchy
+and improve readability.
+
+- Spacing between label and input: `8px`
+- Spacing within a form field (error and help text): visually grouped with the input
+
+The spacing between form fields follows the card content spacing.
+
+---
+
 ## Text input
 
 Text inputs are full-width and clearly defined using borders and spacing.
