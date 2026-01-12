@@ -2,7 +2,7 @@
 title: Typography
 permalink: /:path/typography/
 description: |
-  Typography establishes hierarchy and readability throughout the checkout.
+  Defines typographic styles used across the checkout.
 menu_order: 1200
 ---
 

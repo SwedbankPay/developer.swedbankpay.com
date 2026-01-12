@@ -2,7 +2,7 @@
 title: Design Foundations
 permalink: /:path/design-foundations/
 description: |
- Design foundations define the visual principles and design tokens used across all components. 
+ Define the visual principles and design tokens used across all components. 
 menu_order: 1000
 ---
 
@@ -78,7 +78,8 @@ Borders are used to define component boundaries and selected states.
 
 - Default border width: `1px`
 - Selected state border width: `3px`
-- Border radius is defined per component
+- Border radius is defined per component or form field and documented in the
+relevant section.
 
 Borders must meet non-text contrast requirements (3:1).
 

@@ -2,7 +2,7 @@
 title: Form fields
 permalink: /:path/form-fields/
 description: |
-  Form fields are used to collect user input.
+  Defines general behavior and requirements for form fields.
 menu_order: 1500
 ---
 

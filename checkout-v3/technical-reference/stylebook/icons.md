@@ -2,7 +2,7 @@
 title: Icons
 permalink: /:path/icons/
 description: |
- Icons support recognition and comprehension. They are used sparingly and never as the sole carrier of information.
+ Defines general rules for icon usage across the checkout.
 menu_order: 1300
 ---
 

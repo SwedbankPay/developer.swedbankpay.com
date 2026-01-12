@@ -2,14 +2,15 @@
 title: Accessibility Checklist
 permalink: /:path/accessibility/
 description: |
- Use this checklist to verify that UI implementations align with the accessibility requirements described in this stylebook.
+ A practical checklist for verifying that user interfaces meet the accessibility requirements defined in this stylebook.
 menu_order: 1100
 ---
 
 ## WCAG 2.2 AA – Quick Checklist
 
-Use this checklist to verify that user interface implementations align with the
-accessibility requirements described in this stylebook.
+Use this checklist as a final verification step when implementing or reviewing
+user interfaces. The checklist helps ensure that accessibility requirements
+defined in this stylebook have been met before release.
 
 ---
 

@@ -2,7 +2,7 @@
 title: Components
 permalink: /:path/components/
 description: |
-  Components are reusable UI building blocks used throughout the checkout.
+  Define how design tokens and visual principles are applied.
 menu_order: 1600
 ---
 
