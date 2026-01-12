@@ -26,14 +26,17 @@ Component-specific icon usage is described in the relevant component sections.
 
 ## Sizes
 
-Icons must not be arbitrarily scaled.
+Icon sizes are defined per usage context to ensure consistent alignment and
+touch target behavior.
 
-{:.table .table-plain}
+Icons must not be resized outside of these definitions.
 
-| Context | Size |
-| :----- | :--- |
-| Payment method icon     |40px height    |
-| Inline / action icon    | 24×24px |
+### Payment method icons
+- Fixed height: `40px`
+- Width: auto (maintain aspect ratio)
+
+### Inline / action icons
+- Fixed size: `24×24px`
 
 ---
 
