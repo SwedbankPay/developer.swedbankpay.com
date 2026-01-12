@@ -20,6 +20,19 @@ other input controls.
 
 ---
 
+### Label placement
+
+Form field labels are placed above the input field.
+
+- Labels are always visible.
+- Labels are not placed inside the input field.
+- Placeholder text must not be used as a replacement for labels.
+
+Labels clearly describe the purpose of the field and remain visible when the
+field is focused, filled, or in an error state.
+
+---
+
 ## Text input
 
 Text inputs are full-width and clearly defined using borders and spacing.
