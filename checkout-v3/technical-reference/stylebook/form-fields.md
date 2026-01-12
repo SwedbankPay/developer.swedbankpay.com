@@ -37,6 +37,13 @@ Inputs must:
 - Padding: `16px`
 - Border radius: `8px` (default)
 
+### Validation success state
+
+**Input**
+- Border color: `#31a3ae`
+- Success icon color: `#31a3ae`
+- A success icon is displayed inside the input on the right side
+
 ### Typography
 
 Text inputs use the standard body text style defined in

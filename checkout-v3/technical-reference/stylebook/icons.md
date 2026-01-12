@@ -26,6 +26,8 @@ Component-specific icon usage is described in the relevant component sections.
 
 ## Sizes
 
+Icons must not be arbitrarily scaled.
+
 {:.table .table-plain}
 
 | Context | Size |
@@ -33,11 +35,7 @@ Component-specific icon usage is described in the relevant component sections.
 | Payment method icon     |40px height    |
 | Inline / action icon    | 24×24px |
 
-Icons must not be arbitrarily scaled.
-
 ---
-
-## Color usage
 
 ## Color usage
 
@@ -52,9 +50,7 @@ Icons must meet non-text contrast requirements (3:1).
 
 ### Accessibility
 
-Icons are designed to support comprehension and must not replace text.
-
-Icons may be decorative or interactive. Decorative icons do not receive focus
+Icons are designed to support comprehension and must not replace text. Icons may be decorative or interactive. Decorative icons do not receive focus
 and do not convey essential information.
 
 - Interactive icons are operable using a keyboard.
