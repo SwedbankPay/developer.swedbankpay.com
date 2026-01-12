@@ -52,7 +52,7 @@ requirements.
 - Borders: `#A38B80`
 
 ### Status colors
-- Success: `#2F2424`
+- Success: `#31A3AE`
 - Error: `#D82E2A`
 
 Color combinations must meet WCAG contrast requirements.
