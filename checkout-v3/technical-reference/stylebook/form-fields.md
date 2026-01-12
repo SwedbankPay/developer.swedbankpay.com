@@ -20,7 +20,7 @@ other input controls.
 
 ---
 
-### Label placement
+## Label placement
 
 Form field labels are placed above the input field.
 
