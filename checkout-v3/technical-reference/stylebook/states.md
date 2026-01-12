@@ -41,11 +41,14 @@ Focus indicators are always visible and clearly distinguishable.
 
 The selected state indicates the active option.
 
-**Properties**
-- Border radius: `8px`
-- Border: `3px solid #2F2424`
+The selected state is visually emphasized to clearly distinguish it from
+unselected options. The visual treatment may vary depending on component type
+(for example border, background, or icon changes).
 
 Selected state must be clearly distinguishable without relying on color alone.
+
+Specific visual implementations are defined in the relevant component and form
+field sections.
 
 ---
 
@@ -56,8 +59,38 @@ Disabled components:
 - Are not focusable
 - Are visually distinct but still readable
 
-**Properties**
-- Border: `3px solid #EBE7E2`
+Disabled state is communicated using reduced visual emphasis. The exact visual
+treatment depends on the component type (for example muted background, border,
+or text styling).
+
+Specific visual implementations are defined in the relevant component and form
+field sections.
+
+---
+
+## Success
+
+The success state indicates that an action or input has been completed
+successfully.
+
+Success is communicated using visual cues such as borders or icons and must not
+rely on color alone.
+
+Specific implementations of success states are defined in the relevant component
+and form field sections.
+
+---
+
+## Error
+
+The error state indicates that user input or an action requires correction.
+
+Error states are clearly distinguishable and communicated using multiple cues,
+such as visual styling and explanatory text. Error indication must not rely on
+color alone.
+
+Specific implementations of error states are defined in the relevant component
+and form field sections.
 
 ---
 

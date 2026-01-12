@@ -40,8 +40,8 @@ requirements.
 ## Color system
 
 ### Backgrounds
-- Page background: `#FFF`
-- Surface background: `#FFF`
+- Page background: `#FFFFFF`
+- Surface background: `#FFFFFF`
 
 ### Text
 - Default text: `#2F2424`
@@ -50,6 +50,10 @@ requirements.
 ### Functional colors
 - Primary action: `#2F2424`
 - Borders: `#A38B80`
+
+### Status colors
+- Success: `#2F2424`
+- Error: `#D82E2A`
 
 Color combinations must meet WCAG contrast requirements.
 
