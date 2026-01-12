@@ -239,19 +239,36 @@ are:
 
 *   `Failed`
 
-Returned when a payment has failed. You will find an error message in
-[the `Failed` response][failed].
+Returned when a payment has failed. You can find an error message in [the
+`Failed` response][failed].
+
+You can't trigger this with One-Time payments as of today, as multiple attempts
+are allowed, but for recurring or unscheduled purchases the status will be set
+to `Failed` when they fail, as we only allow one attempt for these payment
+operations.
+
+This might change when we implement fraud prevention features into the system.
+Then the full `paymentOrder` can be set to failed if the fraud prevention system
+recommends not going through with the payment, regardless of the payment method
+used. This will be decided when we implement fraud prevention, and is meant as
+an example of when the failed status might be used for One-Time payments.
 
 *   `Cancelled`
 
-Returned when an authorized amount has been fully cancelled. It will contain
-fields from both the cancelled description and paid section.
+We return this status if the **full** authorization is cancelled and there
+is no `Capture` done on the payment. This is not possible for one-phase
+transactions, so it will only be testable using card transactions. If there are
+any captures done, even if the captured amount is smaller than the authorization
+(partial captures), the status will stay to `Paid`.
+
 See the [`Cancelled` response][cancelled].
 
 *   `Aborted`
 
-Returned when the merchant has aborted the payment, or if the payer cancelled
-the payment in the redirect integration. See the [`Aborted` response][aborted].
+This status is returned if it is set by the merchant when they call the abort
+function on `PaymentOrder`, or by the end-user if the `paymentOrder` is
+implemented by a redirect from the merchant. See the
+[`Aborted` response][aborted].
 
 ### Next Steps
 
