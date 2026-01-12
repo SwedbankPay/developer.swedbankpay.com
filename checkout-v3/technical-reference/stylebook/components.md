@@ -2,15 +2,18 @@
 title: Components
 permalink: /:path/components/
 description: |
-  Components
+  Components are reusable UI building blocks used throughout the checkout.
 menu_order: 1600
 ---
 
 # Components
 
-Components are reusable UI building blocks used throughout the checkout.
-They follow the design principles and tokens defined in the Design Foundations
-and must comply with the accessibility requirements described in this stylebook.
+Components define how design tokens and visual principles are applied to
+concrete UI elements.
+
+Component specifications describe structure, usage, and visual properties,
+while foundational rules such as color roles, typography styles, and spacing
+principles are defined elsewhere in the stylebook.
 
 ---
 
@@ -161,5 +164,6 @@ This component is designed to comply with WCAG 2.2 AA.
 - Interactive elements have sufficient touch target size.
 - Focus indicators are clearly visible during keyboard navigation.
 - States such as selected, disabled, and error are clearly distinguishable.
+- Focus order follows a logical reading order.
 
-For general accessibility requirements, see [Accessibility](../accessibility)
+For general accessibility requirements, see [Design Foundations](../design-foundations)

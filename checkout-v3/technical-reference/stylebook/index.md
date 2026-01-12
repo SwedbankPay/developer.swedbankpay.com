@@ -13,8 +13,8 @@ anchor_headings: false
 This stylebook describes the visual design, interaction patterns, and
 accessibility principles used in the checkout.
 
-It is intended for merchants, partners, and developers who integrate with the
-checkout and want their surrounding user interface to visually align with it.
+It is intended for stores, partners, and developers who integrate with the
+checkout and want their user interface to visually align with the checkout.
 
 The purpose of this stylebook is to support **visual consistency** and
 **accessible user experiences**, not to define payment logic or business rules.
@@ -30,12 +30,6 @@ This stylebook covers:
 - UI components and interaction states
 - Accessibility requirements in accordance with WCAG 2.2 AA
 
-This stylebook does not cover:
-
-- Payment flows or validation logic
-- Backend or API behavior
-- Functional requirements outside the user interface
-
 ---
 
 ## Accessibility
@@ -44,7 +38,11 @@ All UI patterns described in this stylebook are designed to comply with
 **WCAG 2.2 AA**.
 
 Accessibility requirements are defined centrally in **Design Foundations** and
-are applied consistently across components, states, and form fields.
+applied consistently across components, states, and form fields.
+
+The **Accessibility Checklist** provides a practical verification guide and can
+be used to review implementations and ensure that accessibility requirements
+have been met.
 
 ---
 

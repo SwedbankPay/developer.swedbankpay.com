@@ -2,7 +2,7 @@
 title: Form fields
 permalink: /:path/form-fields/
 description: |
-  Form fields
+  Form fields are used to collect user input.
 menu_order: 1500
 ---
 
@@ -10,6 +10,13 @@ menu_order: 1500
 
 Form fields are used to collect user input and must be clear, accessible, and
 forgiving.
+
+This section defines general behavior and requirements for form fields.
+Component-specific implementations are described in the relevant component
+sections.
+
+These guidelines apply to all form fields, including text inputs, selects, and
+other input controls.
 
 ---
 
@@ -22,15 +29,55 @@ Inputs must:
 - Provide clear focus indicators
 - Clearly communicate error states
 
+### Visual properties
+
+- Background color: `#FFFFFF`
+- Text color: `#2F2424`
+- Border: `1px solid #A38B80`
+- Padding: `16px`
+- Border radius: `8px` (default)
+
+### Typography
+
+Text inputs use the standard body text style defined in
+[Typography](./typography.md).
+
+### Joined input pattern
+
+Inputs may be visually joined to an adjacent element (for example an icon
+container or action area). In this pattern, the adjacent border and radius
+are removed to create a continuous combined control.
+
 ---
 
 ## Error handling
 
-Errors are communicated using:
-- Text
-- Visual state changes
+Validation errors are communicated using **multiple cues**:
+- A red input border
+- An error message below the field
+- A warning icon inside the field (right side)
 
-Color alone is not used to indicate errors.
+Error states must not rely on color alone.
+
+### Validation error state
+
+When a field has a validation error:
+
+**Input**
+- Border color: `#D82E2A`
+- A warning icon is displayed inside the input on the right side
+
+**Error message**
+- The error message is displayed directly below the field.
+
+**Error message typography**
+- Color: `#D82E2A`
+- Font: `0.875rem Arial`
+- Line height: `1.25rem`
+- Spacing above message: `8px`
+
+The warning icon is supplementary; the error message text is required and must be
+clear and specific.
 
 ---
 
@@ -52,5 +99,6 @@ Form fields are designed to comply with WCAG 2.2 AA.
 - All fields have visible labels.
 - Error states are communicated using text in addition to visual styling.
 - Focus indicators are clearly visible during keyboard navigation.
+- Text remains readable when resized up to 200%.
 
-For general accessibility requirements, see [Accessibility](../accessibility)
+For general accessibility requirements, see [Design Foundations](../design-foundations)

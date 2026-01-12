@@ -2,13 +2,18 @@
 title: Typography
 permalink: /:path/typography/
 description: |
-  Typography
+  Typography establishes hierarchy and readability throughout the checkout.
 menu_order: 1200
 ---
 
 # Typography
 
-Typography establishes hierarchy and readability throughout the checkout.
+This section defines typographic styles used across the checkout.
+Typography styles are applied consistently through components and states.
+
+Font sizes are defined using `rem` units to ensure that text scales according to
+user browser settings and accessibility requirements. Pixel values are provided
+as a visual reference based on the original design specifications.
 
 ---
 
@@ -31,9 +36,9 @@ Used for:
 
 **Properties**
 - Font family: `Swedbank Headline`
-- Font size: `20px`
+- Font size: `1.25rem` (20px)
 - Font weight: `700`
-- Line height: `28px` (140%)
+- Line height: `1.4` (28px)
 - Color: `#2F2424`
 
 ---
@@ -47,9 +52,9 @@ Used for:
 
 **Properties**
 - Font family: `Arial`
-- Font size: `16px`
+- Font size: `1rem` (16px)
 - Font weight: `400`
-- Line height: `24px` (150%)
+- Line height: `1.5` (24px)
 - Color: `#2F2424`
 
 ---

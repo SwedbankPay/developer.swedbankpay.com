@@ -2,13 +2,13 @@
 title: Examples
 permalink: /:path/examples/
 description: |
-  Examples
+  This section demonstrates correct and incorrect usage of components and styles.
 menu_order: 1700
 ---
 
 # Examples
 
-This section demonstrates correct and incorrect usage of components and styles.
+
 
 ---
 

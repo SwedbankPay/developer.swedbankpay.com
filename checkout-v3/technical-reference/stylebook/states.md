@@ -2,13 +2,15 @@
 title: States & Interaction
 permalink: /:path/states/
 description: |
-  States & Interaction
+  States describe how components visually respond to interaction and context.
 menu_order: 1400
 ---
 
 # States
 
 States describe how components visually respond to interaction and context.
+These states apply consistently across all interactive components unless
+otherwise specified.
 
 ---
 
@@ -61,11 +63,11 @@ Disabled components:
 
 ### Accessibility
 
-This component is designed to comply with WCAG 2.2 AA.
+These states are designed to comply with WCAG 2.2 AA.
 
 - All interactive functionality is operable using a keyboard.
 - Interactive elements have sufficient touch target size.
 - Focus indicators are clearly visible during keyboard navigation.
 - States such as selected, disabled, and error are clearly distinguishable.
 
-For general accessibility requirements, see [Accessibility](../accessibility)
+For general accessibility requirements, see [Design Foundations](../design-foundations)

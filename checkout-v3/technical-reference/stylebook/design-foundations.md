@@ -2,15 +2,17 @@
 title: Design Foundations
 permalink: /:path/design-foundations/
 description: |
- Design Foundations
+ Design foundations define the visual principles and design tokens used across all components. 
 menu_order: 1000
 ---
 
 # Design Foundations
 
-Design foundations define the visual principles and design tokens used across
-all components. These rules must be followed consistently to ensure visual
-alignment with the checkout.
+Design foundations describe functional roles and design principles rather than
+component-specific implementations.
+
+How colors, spacing, borders, and other tokens are applied to individual UI
+components is defined in the relevant **component** and **form field** sections.
 
 ---
 
@@ -25,17 +27,17 @@ Key requirements include:
 - Minimum contrast requirements are met for text and non-text UI elements.
 - Color is not the only means of conveying information.
 - Interactive elements meet minimum touch target size requirements.
+- Text can be resized up to 200% without loss of content or functionality.
+- Layout adapts to text resizing without causing content clipping or horizontal scrolling.
 
 All components and states described in this stylebook are designed to meet these
 requirements.
 
-[More information](../accessibility)
+[Accessibility Checklist](../accessibility)
 
 ---
 
 ## Color system
-
-Colors are defined using functional tokens rather than decorative names.
 
 ### Backgrounds
 - Page background: `#FFF`
@@ -43,7 +45,7 @@ Colors are defined using functional tokens rather than decorative names.
 
 ### Text
 - Default text: `#2F2424`
-- Muted text: defined in Typography
+- Muted text: `#72605E`
 
 ### Functional colors
 - Primary action: `#2F2424`
