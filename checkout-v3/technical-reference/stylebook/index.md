@@ -56,7 +56,7 @@ journey.
 - Follow **Typography** and **Icons** for consistent text and icon usage.
 - Use **Components** and **Form Fields** for concrete implementation guidance.
 - Refer to **States** to ensure consistent interaction behavior.
-- Review **Examples** for correct and incorrect usage.
+- Review **Examples** for illustrations of how the components and interaction patterns are used together.
 
 ---
 
