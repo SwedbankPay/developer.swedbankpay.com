@@ -9,7 +9,7 @@ The only extra call that is needed when using a cloud connected terminal compare
 
 The method is a member of the ISwpTrmIf_1 interface.
 
- **Task<bool> DoPairingAsync(string pairingCode);**
+ Method signature: **Task<bool> DoPairingAsync(string pairingCode);**
 
 {:.code-view-header}
 **Note that call to DoPairing is done after call to Start**
