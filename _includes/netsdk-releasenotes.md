@@ -1,4 +1,35 @@
 
+## 5 December 2025
+
+### .Net SDK 1.3.25339
+
+* Added support for Loyalty before Auth
+
+## 24 November 2025
+
+### .Net SDK 1.3.25328
+
+* Added support for cloud
+* changed order of Payment Arguments
+
+## 10 September 2025
+
+### .Net SDK 1.3.25253
+
+* This release updates the library’s logging dependencies from NLog v4 to NLog v6.
+  Applications that directly use NLog alongside this library must also update to NLog v6 for compatibility.
+  If your application does not use NLog directly, no changes are required on your side.
+
+## 9 September 2025
+
+### .Net SDK 1.3.25252
+
+* Added custom version handling
+* Added support for tips
+* Added Loyalty flag to SaleAppInfo
+* Added Card Acqusition data
+* Various bugfixes and Improvements
+
 ## 30 April 2025
 
 ### .Net SDK 1.3.25120.1
