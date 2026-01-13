@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '~> 2.7'
+ruby '~> 3.4.7'
 
 group :jekyll_plugins do
   # Necessary to prevent Jekyll errors. See https://github.com/github/personal-website/issues/166

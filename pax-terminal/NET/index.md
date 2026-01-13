@@ -17,8 +17,7 @@ changes this interface can stay the same.
 
 It offers both synchronous and asynchronous methods and for the [simplest form of implementation][client-style] it just takes a few calls to make a transaction.
 
-As of now the SDK is not prepared for the cloud connection, but will be in a
-near future.
+The SDK supports both LAN and cloud connection with no differences more than an extra call for doing the pairing with a cloud connected terminal.
 
 In the future there may be other variants of the interface and usage within the
 SDK, but this version will stay the same and once an implementation has been
