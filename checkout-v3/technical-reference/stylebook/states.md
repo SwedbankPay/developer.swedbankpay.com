@@ -2,7 +2,7 @@
 title: States & Interaction
 permalink: /:path/states/
 description: |
-  States describe how components visually respond to interaction and context.
+  How components visually respond to interaction and context.
 menu_order: 1400
 ---
 
@@ -41,11 +41,11 @@ Focus indicators are always visible and clearly distinguishable.
 
 The selected state indicates the active option.
 
-The selected state is visually emphasized to clearly distinguish it from
-unselected options. The visual treatment may vary depending on component type
-(for example border, background, or icon changes).
+It is visually emphasized to clearly distinguish it from unselected options. The
+visual treatment may vary depending on component type (for example border,
+background, or icon changes).
 
-Selected state must be clearly distinguishable without relying on color alone.
+Selected states must be clearly distinguishable without relying on color alone.
 
 Specific visual implementations are defined in the relevant component and form
 field sections.
@@ -57,9 +57,9 @@ field sections.
 Disabled components:
 - Are not interactive
 - Are not focusable
-- Are visually distinct but still readable
+- Are visually distinct, but still readable
 
-Disabled state is communicated using reduced visual emphasis. The exact visual
+A disabled state is communicated using reduced visual emphasis. The exact visual
 treatment depends on the component type (for example muted background, border,
 or text styling).
 

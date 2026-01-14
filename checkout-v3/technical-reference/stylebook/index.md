@@ -1,7 +1,7 @@
 ---
 title: Stylebook
 description: |
-  How we designed our payment menu.
+  How we designed our payment UI.
 permalink: /:path/
 redirect_from: /checkout-v3/features/technical-reference/stylebook/
 menu_order: 2700
@@ -11,10 +11,10 @@ anchor_headings: false
 # Stylebook
 
 This stylebook describes the visual design, interaction patterns, and
-accessibility principles used in the checkout.
+accessibility principles used in the payment UI.
 
-It is intended for stores, partners, and developers who integrate with the
-checkout and want their user interface to visually align with the checkout.
+It is intended for stores, partners, and developers who integrate with us and
+want their user interface to visually align with the payment UI.
 
 The purpose of this stylebook is to support **visual consistency** and
 **accessible user experiences**, not to define payment logic or business rules.
@@ -25,10 +25,10 @@ The purpose of this stylebook is to support **visual consistency** and
 
 This stylebook covers:
 
-- Design foundations such as color usage, surfaces, and spacing
-- Typography and icon usage
-- UI components and interaction states
-- Accessibility requirements in accordance with WCAG 2.2 AA
+-   Design foundations such as color usage, surfaces, and spacing
+-   Typography and icon usage
+-   UI components and interaction states
+-   Accessibility requirements in accordance with WCAG 2.2 AA
 
 ---
 
@@ -49,14 +49,15 @@ have been met.
 ## How to use this stylebook
 
 Use this stylebook as a reference when styling user interfaces that appear
-before or after the checkout, or when embedding the checkout in a broader user
-journey.
+before or after the payment UI, or when embedding the payment UI in a broader
+user journey.
 
-- Start with **Design Foundations** to understand the core visual principles.
-- Follow **Typography** and **Icons** for consistent text and icon usage.
-- Use **Components** and **Form Fields** for concrete implementation guidance.
-- Refer to **States** to ensure consistent interaction behavior.
-- Review **Examples** for illustrations of how the components and interaction patterns are used together.
+-   Start with **Design Foundations** to understand the core visual principles.
+-   Follow **Typography** and **Icons** for consistent text and icon usage.
+-   Use **Components** and **Form Fields** for concrete implementation guidance.
+-   Refer to **States** to ensure consistent interaction behavior.
+-   Review **Examples** for illustrations of how the components and interaction
+  patterns are used together.
 
 ---
 

@@ -9,7 +9,7 @@ menu_order: 1700
 # Examples
 
 This section illustrates how the components and interaction patterns described
-in this stylebook are used together in real checkout flows.
+in the stylebook are used together in real payment UI flows.
 
 ---
 

@@ -2,13 +2,13 @@
 title: Typography
 permalink: /:path/typography/
 description: |
-  Defines typographic styles used across the checkout.
+  Defines typographic styles used across the payment UI.
 menu_order: 1200
 ---
 
 # Typography
 
-This section defines typographic styles used across the checkout.
+This section defines typographic styles used across the payment UI.
 Typography styles are applied consistently through components and states.
 
 Font sizes are defined using `rem` units to ensure that text scales according to
