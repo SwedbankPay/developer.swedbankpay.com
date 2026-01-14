@@ -2,7 +2,7 @@
 title: Icons
 permalink: /:path/icons/
 description: |
- Defines general rules for icon usage across the checkout.
+ Defines general rules for icon usage across the payment UI.
 menu_order: 1300
 ---
 
@@ -11,7 +11,7 @@ menu_order: 1300
 Icons support recognition and comprehension. They are used sparingly and never
 as the sole carrier of information.
 
-This section defines general rules for icon usage across the checkout.
+This section defines general rules for icon usage across the payment UI.
 Component-specific icon usage is described in the relevant component sections.
 
 ---

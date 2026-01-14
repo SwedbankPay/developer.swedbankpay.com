@@ -24,9 +24,9 @@ other input controls.
 
 Form field labels are placed above the input field.
 
-- Labels are always visible.
-- Labels are not placed inside the input field.
-- Placeholder text must not be used as a replacement for labels.
+-   Labels are always visible.
+-   Labels are not placed inside the input field.
+-   Placeholder text must not be used as a replacement for labels.
 
 Labels clearly describe the purpose of the field and remain visible when the
 field is focused, filled, or in an error state.
@@ -50,24 +50,26 @@ The spacing between form fields follows the card content spacing.
 Text inputs are full-width and clearly defined using borders and spacing.
 
 Inputs must:
-- Have visible labels
-- Provide clear focus indicators
-- Clearly communicate error states
+
+-   Have visible labels
+-   Provide clear focus indicators
+-   Clearly communicate error states
 
 ### Visual properties
 
-- Background color: `#FFFFFF`
-- Text color: `#2F2424`
-- Border: `1px solid #A38B80`
-- Padding: `16px`
-- Border radius: `8px` (default)
+-   Background color: `#FFFFFF`
+-   Text color: `#2F2424`
+-   Border: `1px solid #A38B80`
+-   Padding: `16px`
+-   Border radius: `8px` (default)
 
 ### Validation success state
 
 **Input**
-- Border color: `#31a3ae`
-- Success icon color: `#31a3ae`
-- A success icon is displayed inside the input on the right side
+
+-   Border color: `#31a3ae`
+-   Success icon color: `#31a3ae`
+-   A success icon is displayed inside the input on the right side
 
 ### Typography
 
@@ -85,9 +87,10 @@ are removed to create a continuous combined control.
 ## Error handling
 
 Validation errors are communicated using **multiple cues**:
-- A red input border
-- An error message below the field
-- A warning icon inside the field (right side)
+
+-   A red input border
+-   An error message below the field
+-   A warning icon inside the field (right side)
 
 Error states must not rely on color alone.
 
@@ -96,29 +99,33 @@ Error states must not rely on color alone.
 When a field has a validation error:
 
 **Input**
-- Border color: `#D82E2A`
-- A warning icon is displayed inside the input on the right side
+
+-   Border color: `#D82E2A`
+-   A warning icon is displayed inside the input on the right side
 
 **Error message**
-- The error message is displayed directly below the field.
+
+-   The error message is displayed directly below the field.
 
 **Error message typography**
-- Color: `#D82E2A`
-- Font: `0.875rem Arial`
-- Line height: `1.25rem`
-- Spacing above message: `8px`
 
-The warning icon is supplementary; the error message text is required and must be
-clear and specific.
+-   Color: `#D82E2A`
+-   Font: `0.875rem Arial`
+-   Line height: `1.25rem`
+-   Spacing above message: `8px`
+
+The warning icon is supplementary; the error message text is required and must
+be clear and specific.
 
 ---
 
 ## Disabled fields
 
 Disabled fields are:
-- Clearly distinguishable
-- Readable
-- Not focusable or editable
+
+-   Clearly distinguishable
+-   Readable
+-   Not focusable or editable
 
 ---
 
@@ -126,11 +133,11 @@ Disabled fields are:
 
 Form fields are designed to comply with WCAG 2.2 AA.
 
-- All fields and controls are operable using a keyboard only.
-- Focus order follows a logical reading order.
-- All fields have visible labels.
-- Error states are communicated using text in addition to visual styling.
-- Focus indicators are clearly visible during keyboard navigation.
-- Text remains readable when resized up to 200%.
+-   All fields and controls are operable using a keyboard only.
+-   Focus order follows a logical reading order.
+-   All fields have visible labels.
+-   Error states are communicated using text in addition to visual styling.
+-   Focus indicators are clearly visible during keyboard navigation.
+-   Text remains readable when resized up to 200%.
 
 For general accessibility requirements, see [Design Foundations](../design-foundations)
