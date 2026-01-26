@@ -318,8 +318,10 @@ standard that combine dates, time and timezone data into a string, e.g.
 ### Locale
 
 When defining locale, we use the combination of [language][iso-639-1]{:target="_blank"}
-and [country codes][iso-3166]{:target="_blank"}. Our payment menu UI is
-currently limited to `nb-NO`, `sv-SE`, `da-DK` `fi-FI` and `en-US`.
+and [country codes][iso-3166]{:target="_blank"}. Our payment menu is currently
+available Danish `da-DK`, English `en-US`, Estonian `ee-EE`, Finnish `fi-FI`,
+French `fr-FR`, German `de-DE`, Latvian `lv-LV`, Lithuanian `lt-LT`, Norwegian
+`nb-NO`, Polish `pl-PL`, Russian `ru-RU`, Spanish `es-ES` and Swedish `sv-SE`.
 
 ### Monetary Amounts
 
