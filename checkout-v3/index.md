@@ -58,10 +58,12 @@ this section. We recommend [getting started here][get-started].
 
 ### Availability
 
-This implementation is available in Danish `da-DK`, English (US) `en-US`,
-Finnish `fi-FI`, Norwegian `nb-NO`, and Swedish `sv-SE`. You can choose the
-contents of your payment UI from the following payment methods, somewhat
-depending on which countries you are operating.
+This implementation is available in Danish `da-DK`, English `en-US`, Estonian
+`ee-EE`, Finnish `fi-FI`, French `fr-FR`, German `de-DE`, Latvian `lv-LV`,
+Lithuanian `lt-LT`, Norwegian `nb-NO`, Polish `pl-PL`, Russian `ru-RU`, Spanish
+`es-ES` and Swedish `sv-SE`. You can choose the contents of your payment UI from
+the following payment methods, somewhat depending on which countries you are
+operating.
 
 {% include alert.html type="informative" icon="info" header="Requirements and
 Recommendations" body="We have gathered useful integration recommendations for
