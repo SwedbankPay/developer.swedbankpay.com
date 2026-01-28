@@ -70,29 +70,26 @@ After creating the business profile, you will be able to see your Merchant ID on
 the top right corner of the page. We need that ID in order to activate Google
 Pay for you.
 
-However, be sure to register your domain/package and submit screenshots of
-your integration for approval. Login to
-[Google Pay&trade; & Wallet Console][google-pay-profile]{:target="_blank"}, go
-to the **Google Pay&trade; API tab**, upload the screenshots and submit your
+However, be sure to register your domain/package and submit screenshots of your
+integration for approval. Login to [Google Pay&trade; & Wallet Console][google-pay-profile]{:target="_blank"},
+go to the **Google Pay&trade; API tab**, upload the screenshots and submit your
 integration for approval. You should provide visuals for 5 steps of the purchase
 flow (e.g. add to cart, checkout, payment and confirmation - where the
-confirmation screenshot can be used for both screenshot 4 and 5). Your
-**Merchant ID** will only work in production environment once Google complete
-their review and approve your submitted integration.
-
-We have provided pre-approved integration screenshots to ease this part of the
-process. The images in the ZIP file are named with the corresponding purchase
-steps where they should be uploaded.
+confirmation screenshot can be used for both screenshot 4 and 5). We have
+provided pre-approved integration screenshots to ease this part of the process.
+The images in the ZIP file are named with the corresponding purchase steps where
+they should be uploaded.
 
 <button class="btn btn-tertiary ml-3 w-80" type="button" onclick="downloadScreenshots()">
   <span>Download screenshots</span>
   <i class="at-download-arrow-down ml-2" aria-hidden="true"></i>
 </button>
 
-Unless you have provided us with your **Merchant ID** as part of signing your
-agreement with Swedbank Pay, you can e-mail us it at
-**agreement@swedbankpay.com** together with **Name**, **Organizational** and
-**Customer number**.
+Your **Merchant ID** will only work in production environment once Google
+complete their review and approve your submitted integration. Unless you have
+provided us with your **Merchant ID** as part of signing your agreement with
+Swedbank Pay, you can e-mail us it at **agreement@swedbankpay.com** together
+with **Name**, **Organizational** and **Customer number**.
 
 ### Implementation Paths
 
@@ -108,7 +105,7 @@ and the
 [Google Pay Web Developer Documentation][web-googlepay-devdoc]{:target="_blank"},
 [Google Pay Web Integration Checklist][web-googlepay-checklist]{:target="_blank"}
 and the
-[Google Pay Web Brand Guidelines][web-googlepay-brand-guidelines].{:target="_blank"}
+[Google Pay Web Brand Guidelines][web-googlepay-brand-guidelines]{:target="_blank"}.
 
 **Do you as a merchant need to take additional steps with regards to the**
 **Google Pay&trade; payment button or other hosted components to your website?**

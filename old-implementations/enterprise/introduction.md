@@ -29,7 +29,7 @@ by Swedbank Pay.
 Read more about our two integration alternatives by clicking the links below.
 
 This implementation is available in Danish `da-DK`, English `en-US`, Estonian
-`ee-EE`, Finnish `fi-FI`, French `fr-FR`, German `de-DE`, Latvian `lv-LV`,
+`et-EE`, Finnish `fi-FI`, French `fr-FR`, German `de-DE`, Latvian `lv-LV`,
 Lithuanian `lt-LT`, Norwegian `nb-NO`, Polish `pl-PL`, Russian `ru-RU`, Spanish
 `es-ES` and Swedish `sv-SE`.
 

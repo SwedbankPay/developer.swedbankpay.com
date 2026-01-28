@@ -5,7 +5,7 @@
             Danish
         {%- when "de-DE" -%}
             German
-        {%- when "ee-EE" -%}
+        {%- when "et-EE" -%}
             Estonian
         {%- when "en-US" -%}
             English (US)
