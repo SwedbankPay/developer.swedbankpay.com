@@ -172,9 +172,14 @@ needed before we can activate Apple Pay for you.
 
 ## Supported Devices
 
-Apple Pay will only be available on Apple devices like iPads, iPhones, Apple
-Watches, Apple Vision Pro and Mac models with a compatible iOS and browser. The
-easiest way to keep up with the devices currently supported is by
+Apple Pay is available on Apple devices like iPads, iPhones, Apple Watches,
+Apple Vision Pro and Mac models with a compatible iOS and browser.
+
+For other browsers than Safari, non-Apple devices or Apple devices which are too
+old to process Apple Pay transactions, a QR code will appear on-screen so the
+payment can be completed on a supported device.
+
+The easiest way to keep up with currently supported devices is by
 [visiting Apple directly][apple-pay-support]{:target="_blank"}.
 
 {% include iterator.html prev_href="/checkout-v3/"
