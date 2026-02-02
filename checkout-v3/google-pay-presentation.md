@@ -100,18 +100,30 @@ with **Name**, **Organizational** and **Customer number**.
 
 {% capture acc-1 %}
 {: .p .pl-3 .pr-3  }
-[Google Pay Android Developer Documentation][android-googlepay-devdoc]{:target="_blank"},
-[Google Pay Android Integration Checklist][android-googlepay-checklist]{:target="_blank"}
-and the
-[Google Pay Android Brand Guidelines][android-googlepay-brand-guidelines].
+  <a href="https://developers.google.com/pay/api/android" target="_blank" rel="noopener">
+    Google Pay Android Developer Documentation
+  </a>,
+  <a href="https://developers.google.com/pay/api/android/guides/resources/integration-checklist" target="_blank" rel="noopener">
+    Google Pay Android Integration Checklist
+  </a>
+  and the
+  <a href="https://pay.google.com/brand-guidelines/android" target="_blank" rel="noopener">
+    Google Pay Android Brand Guidelines
+  </a>.
 {% endcapture %}
 {% include accordion-table.html content=acc-1 header_text='Which Google Pay&trade; documentation and guidelines should android merchants use?' header_expand_css='font-weight-normal' %}
 {% capture acc-2 %}
 {: .p .pl-3 .pr-3  }
-[Google Pay Web Developer Documentation][web-googlepay-devdoc]{:target="_blank"},
-[Google Pay Web Integration Checklist][web-googlepay-checklist]{:target="_blank"}
-and the
-[Google Pay Web Brand Guidelines][web-googlepay-brand-guidelines]{:target="_blank"}.
+  <a href="https://developers.google.com/pay/api/web" target="_blank" rel="noopener">
+    Google Pay Web Developer Documentation
+  </a>,
+  <a href="https://developers.google.com/pay/api/web/guides/resources/integration-checklist" target="_blank" rel="noopener">
+    Google Pay Web Integration Checklist
+  </a>
+  and the
+  <a href="https://pay.google.com/brand-guidelines/web" target="_blank" rel="noopener">
+    Google Pay Web Brand Guidelines
+  </a>.
 {% endcapture %}
 {% include accordion-table.html content=acc-2 header_text='Which Google Pay&trade; documentation and guidelines should web merchants use?' header_expand_css='font-weight-normal' %}
 {% capture acc-3 %}
@@ -122,10 +134,16 @@ up, the option to pay with Google Pay&trade; should appear in your
 implementation as long as the end user's device supports Google Pay&trade;.
 
 {: .p .pl-3 .pr-3  }
-Please remember that you do must adhere to Google Pay&trade; API's
-[Acceptable Use Policy][acceptable-use-policy]{:target="_blank"} and accept the
-terms defined in the Google Pay&trade; API's
-[Terms of Service][google-pay-tos]{:target="_blank"}.
+  Please remember that you must adhere to the Google Pay&trade; API’s
+  <a href="https://developers.google.com/pay/acceptable-use-policy"
+     target="_blank" rel="noopener">
+    Acceptable Use Policy
+  </a>
+  and accept the terms defined in the Google Pay&trade; API’s
+  <a href="https://developers.google.com/pay/terms"
+     target="_blank" rel="noopener">
+    Terms of Service
+  </a>.
 {% endcapture %}
 {% include accordion-table.html content=acc-3 header_text='Are additional steps needed with regards to the Google Pay&trade; payment button or other hosted components to my website?' header_expand_css='font-weight-normal' %}
 {% capture acc-4 %}
@@ -136,12 +154,18 @@ up, the option to pay with Google Pay&trade; should appear in your
 implementation as long as the end user's device supports Google Pay&trade;.
 
 {: .p .pl-3 .pr-3  }
-Please remember that you do must adhere to Google Pay&trade; API's
-[Acceptable Use Policy][acceptable-use-policy]{:target="_blank"} and accept the
-terms defined in the Google Pay&trade; API's
-[Terms of Service][google-pay-tos]{:target="_blank"}.
+  Please remember that you must adhere to the Google Pay&trade; API’s
+  <a href="https://developers.google.com/pay/acceptable-use-policy"
+     target="_blank" rel="noopener">
+    Acceptable Use Policy
+  </a>
+  and accept the terms defined in the Google Pay&trade; API’s
+  <a href="https://developers.google.com/pay/terms"
+     target="_blank" rel="noopener">
+    Terms of Service
+  </a>.
 {% endcapture %}
-{% include accordion-table.html content=acc-4 header_text='If the Swedbank Pay SDK generates an [IsReadyToPayRequest][irtp-request] or a [PaymentDataRequest][pd-request] on behalf of me, do I need to take additional steps before the Google Pay&trade; functionality is available?' header_expand_css='font-weight-normal' %}
+{% include accordion-table.html content=acc-4 header_text='If the Swedbank Pay SDK generates an <a href="https://developers.google.com/pay/api/web/reference/object#IsReadyToPayRequest" target="_blank" rel="noopener">IsReadyToPayRequest</a> or a <a href="https://developers.google.com/pay/api/web/reference/object#PaymentDataRequest" target="_blank" rel="noopener">PaymentDataRequest</a> on behalf of me, do I need to take additional steps before the Google Pay&trade; functionality is available?' header_expand_css='font-weight-normal' %}
 
 ### Implementation Details
 
@@ -171,11 +195,15 @@ where Google Pay is supported.
 {% include accordion-table.html content=acc-3 header_text='Which authorization methods do Swedbank Pay accept?' header_expand_css='font-weight-normal' %}
 {% capture acc-4 %}
 {: .p .pl-3 .pr-3  }
-Any merchant onboarded with Swedbank Pay who's been given access to
-Google Pay&trade;, can [request the payer to provide billing address][req-con-address]
-in relation to shipping them physical goods. These are encrypted and can only be
-accessed by the merchant that requested the billing details and is deleted after
-30 days.
+  Any merchant onboarded with Swedbank Pay who’s been given access to
+  Google Pay&trade; can
+  <a href="https://developers.google.com/pay/api/web/guides/resources/payment-data-cryptography#billing-address"
+     target="_blank" rel="noopener">
+    request the payer to provide a billing address
+  </a>
+  in relation to shipping them physical goods. These details are encrypted and
+  can only be accessed by the merchant that requested the billing details and
+  are deleted after 30 days.
 {% endcapture %}
 {% include accordion-table.html content=acc-4 header_text='Are there any requirements regarding the billing address to be submitted by the developer for address verification?' header_expand_css='font-weight-normal' %}
 {% capture acc-5 %}
