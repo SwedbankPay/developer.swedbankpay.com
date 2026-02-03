@@ -66,11 +66,11 @@ there." %}
 You need to sign up for a **Google Developer Account** and
 [create a **business profile** and **payment profile**][google-pay-profile]{:target="_blank"}.
 
-After creating the business profile, you will be able to see your Merchant ID on
+After creating the business profile, you will be able to see your Merchant ID in
 the top right corner of the page. We need that ID in order to activate Google
 Pay for you.
 
-However, be sure to register your domain/package and submit screenshots of your
+Be sure to register your domain/package and submit screenshots of your
 integration for approval. Login to [Google Pay&trade; & Wallet Console][google-pay-profile]{:target="_blank"}, go to the **Google Pay&trade; API tab** to upload and submit
 the screenshots. You should provide visuals for 5 steps of the purchase flow
 (e.g. add to cart, checkout, payment and confirmation - where the confirmation
@@ -100,30 +100,30 @@ with **Name**, **Organizational** and **Customer number**.
 
 {% capture acc-1 %}
 {: .p .pl-3 .pr-3  }
-  <a href="https://developers.google.com/pay/api/android" target="_blank" rel="noopener">
-    Google Pay Android Developer Documentation
-  </a>,
-  <a href="https://developers.google.com/pay/api/android/guides/resources/integration-checklist" target="_blank" rel="noopener">
-    Google Pay Android Integration Checklist
-  </a>
-  and the
-  <a href="https://pay.google.com/brand-guidelines/android" target="_blank" rel="noopener">
-    Google Pay Android Brand Guidelines
-  </a>.
+<a href="https://developers.google.com/pay/api/android" target="_blank" rel="noopener">
+Google Pay Android Developer Documentation
+</a>,
+<a href="https://developers.google.com/pay/api/android/guides/resources/integration-checklist" target="_blank" rel="noopener">
+Google Pay Android Integration Checklist
+</a>
+and the
+<a href="https://pay.google.com/brand-guidelines/android" target="_blank" rel="noopener">
+Google Pay Android Brand Guidelines
+</a>.
 {% endcapture %}
 {% include accordion-table.html content=acc-1 header_text='Which Google Pay&trade; documentation and guidelines should android merchants use?' header_expand_css='font-weight-normal' %}
 {% capture acc-2 %}
 {: .p .pl-3 .pr-3  }
-  <a href="https://developers.google.com/pay/api/web" target="_blank" rel="noopener">
-    Google Pay Web Developer Documentation
-  </a>,
-  <a href="https://developers.google.com/pay/api/web/guides/resources/integration-checklist" target="_blank" rel="noopener">
-    Google Pay Web Integration Checklist
-  </a>
-  and the
-  <a href="https://pay.google.com/brand-guidelines/web" target="_blank" rel="noopener">
-    Google Pay Web Brand Guidelines
-  </a>.
+<a href="https://developers.google.com/pay/api/web" target="_blank" rel="noopener">
+Google Pay Web Developer Documentation
+</a>,
+<a href="https://developers.google.com/pay/api/web/guides/resources/integration-checklist" target="_blank" rel="noopener">
+Google Pay Web Integration Checklist
+</a>
+and the
+<a href="https://pay.google.com/brand-guidelines/web" target="_blank" rel="noopener">
+Google Pay Web Brand Guidelines
+</a>.
 {% endcapture %}
 {% include accordion-table.html content=acc-2 header_text='Which Google Pay&trade; documentation and guidelines should web merchants use?' header_expand_css='font-weight-normal' %}
 {% capture acc-3 %}
@@ -131,39 +131,39 @@ with **Name**, **Organizational** and **Customer number**.
 No additional steps are required. Contact Customer Operations after signing up
 with Google, and give them your **Merchant ID** to setup your contract. Once set
 up, the option to pay with Google Pay&trade; should appear in your
-implementation as long as the end user's device supports Google Pay&trade;.
+implementation as long as the end user's device supports it.
 
 {: .p .pl-3 .pr-3  }
-  Please remember that you must adhere to the Google Pay&trade; API’s
-  <a href="https://developers.google.com/pay/acceptable-use-policy"
-     target="_blank" rel="noopener">
-    Acceptable Use Policy
-  </a>
-  and accept the terms defined in the Google Pay&trade; API’s
-  <a href="https://developers.google.com/pay/terms"
-     target="_blank" rel="noopener">
-    Terms of Service
-  </a>.
+Please remember that you must adhere to the Google Pay&trade; API’s
+ <a href="https://developers.google.com/pay/acceptable-use-policy"
+    target="_blank" rel="noopener">
+Acceptable Use Policy
+ </a>
+and accept the terms defined in the Google Pay&trade; API’s
+ <a href="https://developers.google.com/pay/terms"
+    target="_blank" rel="noopener">
+Terms of Service
+ </a>.
 {% endcapture %}
-{% include accordion-table.html content=acc-3 header_text='Are additional steps needed with regards to the Google Pay&trade; payment button or other hosted components to my website?' header_expand_css='font-weight-normal' %}
+{% include accordion-table.html content=acc-3 header_text='Are additional steps needed with regards to the Google Pay&trade; payment button or other components hosted on my website?' header_expand_css='font-weight-normal' %}
 {% capture acc-4 %}
 {: .p .pl-3 .pr-3  }
 No additional steps are required. Contact Customer Operations after signing up
 with Google, and give them your **Merchant ID** to setup your contract. Once set
 up, the option to pay with Google Pay&trade; should appear in your
-implementation as long as the end user's device supports Google Pay&trade;.
+implementation as long as the end user's device supports it.
 
 {: .p .pl-3 .pr-3  }
-  Please remember that you must adhere to the Google Pay&trade; API’s
-  <a href="https://developers.google.com/pay/acceptable-use-policy"
-     target="_blank" rel="noopener">
-    Acceptable Use Policy
-  </a>
-  and accept the terms defined in the Google Pay&trade; API’s
-  <a href="https://developers.google.com/pay/terms"
-     target="_blank" rel="noopener">
-    Terms of Service
-  </a>.
+Please remember that you must adhere to the Google Pay&trade; API’s
+ <a href="https://developers.google.com/pay/acceptable-use-policy"
+    target="_blank" rel="noopener">
+Acceptable Use Policy
+ </a>
+and accept the terms defined in the Google Pay&trade; API’s
+ <a href="https://developers.google.com/pay/terms"
+    target="_blank" rel="noopener">
+Terms of Service
+ </a>.
 {% endcapture %}
 {% include accordion-table.html content=acc-4 header_text='If the Swedbank Pay SDK generates an <a href="https://developers.google.com/pay/api/web/reference/object#IsReadyToPayRequest" target="_blank" rel="noopener">IsReadyToPayRequest</a> or a <a href="https://developers.google.com/pay/api/web/reference/object#PaymentDataRequest" target="_blank" rel="noopener">PaymentDataRequest</a> on behalf of me, do I need to take additional steps before the Google Pay&trade; functionality is available?' header_expand_css='font-weight-normal' %}
 
@@ -195,15 +195,15 @@ where Google Pay is supported.
 {% include accordion-table.html content=acc-3 header_text='Which authorization methods do Swedbank Pay accept?' header_expand_css='font-weight-normal' %}
 {% capture acc-4 %}
 {: .p .pl-3 .pr-3  }
-  Any merchant onboarded with Swedbank Pay who’s been given access to
-  Google Pay&trade; can
-  <a href="https://developers.google.com/pay/api/web/guides/resources/payment-data-cryptography#billing-address"
-     target="_blank" rel="noopener">
-    request the payer to provide a billing address
-  </a>
-  in relation to shipping them physical goods. These details are encrypted and
-  can only be accessed by the merchant that requested the billing details and
-  are deleted after 30 days.
+Any merchant onboarded with Swedbank Pay who’s been given access to
+Google Pay&trade; can
+ <a href="https://developers.google.com/pay/api/web/guides/resources/payment-data-cryptography#billing-address"
+    target="_blank" rel="noopener">
+request the payer to provide a billing address
+ </a>
+in relation to shipping them physical goods. These details are encrypted and
+can only be accessed by the merchant that requested the billing details and
+are deleted after 30 days.
 {% endcapture %}
 {% include accordion-table.html content=acc-4 header_text='Are there any requirements regarding the billing address to be submitted by the developer for address verification?' header_expand_css='font-weight-normal' %}
 {% capture acc-5 %}
