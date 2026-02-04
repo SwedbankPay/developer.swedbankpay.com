@@ -74,7 +74,7 @@ Inputs must:
 ### Typography
 
 Text inputs use the standard body text style defined in
-[Typography](./typography.md).
+[Typography](/checkout-v3/technical-reference/stylebook/typography/).
 
 ### Joined input pattern
 

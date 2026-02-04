@@ -3,7 +3,7 @@
 
 {% if documentation_section contains "checkout-v3" %}
 
-## CompleteUrl
+## CompleteUrl {#complete-url-checkout-v3}
 
 This URL will be used by Swedbank Pay when a payment is `Completed` or `Failed`.
 If your integration subscribes to the `onPaid` and possibly the `onFailed`
@@ -15,7 +15,7 @@ final status (`Completed` or `Failed`).
 
 {% else %}
 
-## CompleteUrl
+## CompleteUrl {#complete-url}
 
 This URL will be used by Swedbank Pay when a payment is `Completed` or `Failed`.
 If your integration subscribes to the `onPaymentCompleted` and possibly the

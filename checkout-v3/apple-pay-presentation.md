@@ -189,5 +189,4 @@ The easiest way to keep up with currently supported devices is by
 [apple-pay-tc-sign-sweden]: https://signup.swedbankpay.com/se/applepay
 [apple-pay-tc-sign-norway]: https://signup.swedbankpay.com/no/applepay
 [apple-pay-support]: https://support.apple.com/en-us/102896
-[apple-pay-verification-file]: /assets/documents/apple-ecom
 [display-ui]: /checkout-v3/get-started/display-ui

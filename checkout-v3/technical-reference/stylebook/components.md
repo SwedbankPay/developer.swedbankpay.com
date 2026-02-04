@@ -63,7 +63,7 @@ The card title identifies the payment method and is always visible in the
 collapsed state.
 
 Card titles use **Title** as defined in
-[Typography](./typography.md).
+[Typography](/checkout-v3/technical-reference/stylebook/typography/).
 
 ---
 
@@ -72,7 +72,7 @@ Card titles use **Title** as defined in
 The card description provides a short explanatory text below the title.
 
 Descriptions use the standard body text style defined in
-[Typography](./typography.md).
+[Typography](/checkout-v3/technical-reference/stylebook/typography/).
 
 Descriptions are optional but recommended for clarity.
 
@@ -85,7 +85,7 @@ Payment method icons visually identify the payment option.
 -   Icon height: `40px`
 -   Width: `auto` (maintain aspect ratio)
 
-Icons follow the rules defined in [Icons](./icons.md) and must not be the only
+Icons follow the rules defined in [Icons](/checkout-v3/technical-reference/stylebook/icons/) and must not be the only
 means of conveying information.
 
 ---
@@ -101,7 +101,7 @@ content.
 The icon changes orientation when the card is expanded.
 Expand/collapse must never be communicated by color alone.
 
-Icon usage follows the rules defined in [Icons](./icons.md).
+Icon usage follows the rules defined in [Icons](/checkout-v3/technical-reference/stylebook/icons/).
 
 ---
 
@@ -109,7 +109,7 @@ Icon usage follows the rules defined in [Icons](./icons.md).
 
 The selected state indicates the currently active payment method.
 
-The selected state is defined in [States](./states.md).
+The selected state is defined in [States](/checkout-v3/technical-reference/stylebook/states/).
 
 **Visual properties**
 

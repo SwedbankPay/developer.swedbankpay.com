@@ -2407,7 +2407,7 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
 {:.text-center}
 ![Register account flow chart][register-flow]
 
+(https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format)
+
 [register-flow]: /assets/img/checkout/RegisterAccount-Flow.png
 [select-flow]: /assets/img/checkout/SelectAccount-Flow.png
-
-(https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format)

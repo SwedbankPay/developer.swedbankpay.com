@@ -1,4 +1,3 @@
-
 {: .h2 .pt-3}
 
 ### Display Redirect

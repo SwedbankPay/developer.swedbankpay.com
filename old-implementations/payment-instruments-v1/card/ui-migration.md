@@ -152,7 +152,6 @@ For further details, refer to section 4.6.3 and 11.6.1 in this [PCI-DSS document
 [post-response]: /old-implementations/payment-instruments-v1/card/redirect#card-payment-response
 [post-request]: /old-implementations/payment-instruments-v1/card/redirect#card-payment-request
 [seamless-view]: /old-implementations/payment-instruments-v1/card/seamless-view
-[redirect]: /old-implementations/payment-instruments-v1/card/redirect
 [da]: https://www.swedbankpay.dk/risiko-og-sikkerhed/pci-sadan-bliver-du-pavirket
 [fi]: https://www.swedbankpay.fi/riskit-ja-turvallisuus/nain-pci-vaikuttaa-sinuun
 [no]: https://www.swedbankpay.no/risiko-og-sikkerhet/pci-slik-pavirkes-du

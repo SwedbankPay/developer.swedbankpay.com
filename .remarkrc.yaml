@@ -9,24 +9,23 @@ plugins:
   - remark-lint-code-block-style: fenced
   - remark-lint-definition-case
   - remark-lint-definition-spacing
-  - remark-lint-fenced-code-flag
+  - [remark-lint-fenced-code-flag, false]
   - remark-lint-fenced-code-marker
   - remark-lint-file-extension
   - remark-lint-final-definition
   - remark-lint-final-newline
   - remark-lint-hard-break-spaces
-  - remark-lint-heading-increment
+  - [remark-lint-heading-increment, false]
   - remark-lint-heading-style: atx
   - remark-lint-link-title-style
   - remark-lint-list-item-bullet-indent
   - remark-lint-list-item-content-indent
   - remark-lint-maximum-heading-length: 120
-  - remark-lint-no-auto-link-without-protocol
   - remark-lint-no-blockquote-without-marker
   - remark-lint-no-consecutive-blank-lines
   - remark-lint-no-duplicate-definitions
   - remark-lint-no-duplicate-headings
-  - remark-lint-no-emphasis-as-heading
+  - [remark-lint-no-emphasis-as-heading, false]
   - remark-lint-no-empty-url
   - remark-lint-no-file-name-articles
   - remark-lint-no-file-name-consecutive-dashes
@@ -36,7 +35,6 @@ plugins:
   - remark-lint-no-heading-content-indent
   - remark-lint-no-heading-indent
   - remark-lint-no-heading-like-paragraph
-  - remark-lint-no-inline-padding
   - remark-lint-no-literal-urls
   - remark-lint-no-multiple-toplevel-headings
   - remark-lint-no-reference-like-url

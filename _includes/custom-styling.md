@@ -109,7 +109,6 @@ script.onload = function () {
 }
 ```
 
-[contact]: mailto:sales.swedbankpay@swedbank.se
 [playground]: https://playground.swedbankpay.com
 [wcag-documentation]: https://www.w3.org/WAI/WCAG22/quickref/
 [wcag-presentation]: https://www.swedbankpay.com/information/wcag

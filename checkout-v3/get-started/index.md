@@ -106,12 +106,10 @@ when we get there.
 [delete-token]: /checkout-v3/features/optional/delete-token/
 [e-mail]: mailto:support.psp@swedbankpay.se
 [https]: /checkout-v3/get-started/fundamental-principles#connection-and-protocol
-[json]: https://www.json.org/
 [migrate]: /checkout-v3/migrate
 [modules-sdks]: /checkout-v3/modules-sdks/
 [nwt]: /checkout-v3/features/customize-payments/network-tokenization/
 [post-purchase]: /checkout-v3/get-started/post-purchase/
-[rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [set-rec]: /checkout-v3/features/balancing-the-books/settlement-reconciliation/#report-samples
 [test-cards]: /checkout-v3/test-data/#network-tokenization
 [unscheduled]: /checkout-v3/features/optional/unscheduled/

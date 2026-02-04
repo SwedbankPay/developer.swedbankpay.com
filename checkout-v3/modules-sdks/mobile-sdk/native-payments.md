@@ -213,7 +213,7 @@ on the `availableInstruments` parameter. This list of payment methods that
 can be used for payments. These instrument object also contain saved payment
 method data. This could be saved credit cards or known MSISDN for the user.
 
-## Swish
+## Swish {#swish-android}
 
 The Swish payment method is represented as an available instrument through
 `AvailableInstrument.Swish(prefills)`. The `prefills` contains `SwishPrefill`
@@ -244,7 +244,7 @@ informed by the problem by receiving the `SessionProblemOccurred` payment state,
 where the `problem` parameter will have the `type` value
 `"https://api.payex.com/psp/errordetail/paymentorders/clientapplaunchfailed"`.
 
-## Saved Credit Cards
+## Saved Credit Cards {#saved-credit-cards-android}
 
 If you have created your payment order as
 [payer aware][payer-aware-payment-menu] by providing a `payerReference` value,
@@ -350,7 +350,7 @@ PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
 }
 ```
 
-## New Credit Card
+## New Credit Card {#new-credit-card-android}
 
 Apart from saved credit cards, you can also give the user the option to enter
 new credit card details to perform the payment. There are several scenarios
@@ -592,7 +592,7 @@ The `availableInstruments` array provided in the
 can be used for payments. These instrument object also contain saved payment
 method data. This could be saved credit cards or known MSISDN for the user.
 
-## Swish
+## Swish {#swish-ios}
 
 The Swish payment method is represented as an available instrument through
 `SwedbankPaySDK.AvailableInstrument.swish(prefills:)`. The `prefills` contains
@@ -623,7 +623,7 @@ the `sessionProblemOccurred(problem:)` delegate method, and provide a problem
 with type `type` parameter set to
 `"https://api.payex.com/psp/errordetail/paymentorders/clientapplaunchfailed"`.
 
-## Saved Credit Cards
+## Saved Credit Cards {#saved-credit-cards-ios}
 
 If you have created your payment order as
 [payer aware][payer-aware-payment-menu] by providing a `payerReference` value,
@@ -692,7 +692,7 @@ func sdkProblemOccurred(problem: SwedbankPaySDK.PaymentSessionProblem) {
 }
 ```
 
-## New Credit Card
+## New Credit Card {#new-credit-card-ios}
 
 Apart from saved credit cards, you can also give the user the option to enter
 new credit card details to perform the payment. There are several scenarios
@@ -1209,7 +1209,7 @@ sequenceDiagram
 [ios-bare-minimum-payment-session]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-sdk-payment-session
 [problem-technical-reference]: /checkout-v3/technical-reference/problems/
 [usage]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#usage
-[android-saved-credit-cards]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#saved-credit-cards
+[android-saved-credit-cards]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#saved-credit-cards-android
 [detailed-usage-flows]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#detailed-usage-flows
 [problem-handling]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#problem-handling
 [session-url]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#the-session-url

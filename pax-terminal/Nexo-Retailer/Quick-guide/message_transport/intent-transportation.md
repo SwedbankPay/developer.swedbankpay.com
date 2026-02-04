@@ -1,6 +1,6 @@
 ---
 title: Message Transport On Device
-permalink: /:path/intent_transportation/
+permalink: /:path/intent-transportation/
 hide_from_sidebar: false
 description: |
     Messages sent internallay in the terminal to and from the Swedbank Pay Payment App are sent

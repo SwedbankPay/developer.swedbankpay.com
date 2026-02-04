@@ -219,15 +219,4 @@ environment to ensure the customers details are kept safe.
 {% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Introduction" %}
 
-[acceptable-use-policy]: https://payments.developers.google.com/terms/aup
-[android-googlepay-brand-guidelines]: https://developers.google.com/pay/api/android/guides/brand-guidelines
-[android-googlepay-checklist]: https://developers.google.com/pay/api/android/guides/test-and-deploy/integration-checklist
-[android-googlepay-devdoc]: https://developers.google.com/pay/api/android/
 [google-pay-profile]: https://pay.google.com/business/console/
-[google-pay-tos]: https://payments.developers.google.com/terms/sellertos
-[irtp-request]: https://developers.google.com/pay/api/web/reference/request-objects#IsReadyToPayRequest
-[pd-request]: https://developers.google.com/pay/api/web/reference/request-objects#PaymentDataRequest
-[web-googlepay-brand-guidelines]: https://developers.google.com/pay/api/web/guides/brand-guidelines
-[web-googlepay-checklist]: https://developers.google.com/pay/api/web/guides/test-and-deploy/integration-checklist
-[web-googlepay-devdoc]: https://developers.google.com/pay/api/web/
-[req-con-address]: /checkout-v3/features/optional/request-delivery-info

@@ -99,5 +99,3 @@ production and staging environment need separate tokens. " %}
                          prev_title="Back to Get Started"
                          next_href="/checkout-v3/get-started/payment-request"
                          next_title="Start Integrating" %}
-
-[testsuite]: https://www.postman.com/swedbankpay/swedbank-pay-online/collection/000bv9t/testsuite

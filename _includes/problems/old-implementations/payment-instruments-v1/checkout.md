@@ -85,7 +85,7 @@ exists but is deleted, the API will return the error `TokenInactive`.
 
 Examples of the error messages are presented below.
 
-### InputError
+### InputError {#inputerror-token-problems}
 
 `InputError` for a `RecurrenceToken`:
 
@@ -609,7 +609,7 @@ Content-Type: application/json{% endcapture %}
     json= response_content
     %}
 
-### `inputerror`
+### `inputerror` {#inputerror-swish}
 
 Refer to the `detail` field in the problem response for a more specific error
 message. The error could be caused by:

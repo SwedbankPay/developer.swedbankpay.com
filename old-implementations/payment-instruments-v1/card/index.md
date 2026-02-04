@@ -178,7 +178,6 @@ sequenceDiagram
 
 [card-payment]: /assets/img/payments/card-payment.png
 [create-payment]: /old-implementations/payment-instruments-v1/card/technical-reference/create-payment
-[payout]: /old-implementations/payment-instruments-v1/card/features/optional/payout
 [purchase]: /old-implementations/payment-instruments-v1/card/features/core/purchase
 [recur]: /old-implementations/payment-instruments-v1/card/features/optional/recur
 [redirect]: /old-implementations/payment-instruments-v1/card/redirect

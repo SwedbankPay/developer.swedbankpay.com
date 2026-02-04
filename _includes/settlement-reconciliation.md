@@ -330,9 +330,9 @@ be downloaded below. **Make sure that you choose the examples from your**
 *   [XLSX Transaction List][v2-trans-list-xlsx]
 *   [XML Transaction List][v2-trans-list-xml]
 
-[balance-report-sbp-pdf]: /assets/documents/r1234-0001-redov.service.pdf
 [checkout-v2]: /old-implementations/{{ checkout_version }}
 [checkout-v3]: /{{ checkout_version }}
+[balance-report-sbp-pdf]: /assets/documents/r1234-0001-redov.service.pdf
 [trans-list-sbp-xlsx]: /assets/documents/transaktionsstatistik-redovisningsservice.xlsx
 [trans-list-sbp-xml]: /assets/documents/transaktionsstatistik-redovisningsservice.xml
 [transaction-list]: #transaction-list

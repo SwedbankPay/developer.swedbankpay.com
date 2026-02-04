@@ -310,7 +310,7 @@ in the initial purchase.
 You can add the field `noCvc` set to `true` in the `creditcard` object,
 containing card specific feature fields. This disables the CVC field.
 
-## One-Click Request Displaying A Specific Card
+## One-Click Request Displaying A Specific Card {#one-click-specific-card-payment-instruments}
 
 {% capture request_header %}POST {{ purchase_url }} HTTP/1.1
 Host: {{ page.api_host }}
@@ -362,7 +362,7 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
     json= request_content
     %}
 
-## One-Click Request Displaying A Specific Card
+## One-Click Request Displaying A Specific Card {#one-click-specific-card}
 
 {% capture request_header %}POST {{ purchase_url }} HTTP/1.1
 Host: {{ page.api_host }}
@@ -888,7 +888,6 @@ Content-Type: application/json{% endcapture %}
 <!--lint disable final-definition -->
 
 [card]: /old-implementations/payment-instruments-v1/card
-[one-click-image]: /assets/img/checkout/new-one-click.png
 [create-card-payment]: /old-implementations/payment-instruments-v1/card/technical-reference/create-payment
 [paid-resource]: /checkout-v3/technical-reference/status-models#paid
 [verify]: /checkout-v3/features/optional/verify

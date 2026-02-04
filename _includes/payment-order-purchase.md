@@ -90,7 +90,6 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
     json= request_content
     %}
 
-
 <div class="api-compact" aria-label="Request">
   <div class="header">
     <div>Field</div>
@@ -824,7 +823,6 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     header=response_header
     json= response_content
     %}
-
 
 <div class="api-compact" aria-label="Response">
   <div class="header">

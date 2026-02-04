@@ -1,4 +1,3 @@
-
 ## 5 December 2025
 
 ### .Net SDK 1.3.25339 
@@ -51,14 +50,10 @@
 *   Only send continue_processing if Continue is called. Don't send
     continue_processing automatically on Payment.
 
-## 15 April 2024
-
 ### .Net SDK 1.3.24129
 
 *   PaymentRequetsResult now with new properties, MerchantReceiptBlob,
     MerchantReceiptBlobNoHeader and SignatureBlock.
-
-## 15 April 2024
 
 ### .Net SDK 1.3.24075
 
@@ -114,8 +109,6 @@
     converted to local time and caused problem when an other timezone was used.
 *   [PaymentRequetsResult][paymentrequestresult] has now a lot of properties to
     make values easily available.
-
-## 16 January 2024
 
 ### .Net SDK version 1.3.23348
 

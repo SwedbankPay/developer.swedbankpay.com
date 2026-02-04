@@ -1390,7 +1390,7 @@ match the `paymentOrder` response from the initial purchase.
 
 {% if documentation_section contains "checkout-v3" %}
 
-## After The Unscheduled Purchase
+## After The Unscheduled Purchase {#after-the-unscheduled-purchase-checkout-v3}
 
 Please remember that the `unscheduled` request will reserve the amount, but not
 charge it. You will (i.e. when you are ready to ship purchased physical
@@ -1400,7 +1400,7 @@ it if needed.
 
 {% else %}
 
-## After The Unscheduled Purchase
+## After The Unscheduled Purchase {#after-the-unscheduled-purchase}
 
 Please remember that the `unscheduled` request will reserve the amount, but not
 charge it. You will (i.e. when you are ready to ship purchased physical
