@@ -20,30 +20,30 @@ To test a checked-in user in the Playground, please use the following test data:
 
 ### Checkout test data for Norway
 
-{:.table .table-striped}
-| Type            | Data                         | Description                                                           |
-| :-------------- | :--------------------------- | :-------------------------------------------------------------------- |
-| `Email`         | `olivia.nyhuus@swedbankpay.com`    | The e-mail address of the payer.                                      |
-| `Mobile number` | `+47 98765432`               | The mobile phone number of the payer. Format Norway: `+47 99999999`.  |
-| `SSN`           | `{{ page.consumer_ssn_no }}` | The social security number of the payer. Format Norway: `DDMMYYXXXXX` |
-| `ZipCode`       | `1642`                       | The city zip code. Format Norway: `XXXX`                              |
+{:.table .table-striped .enable-code-copy}
+| Type          | Data                         | Description                                                         |
+| :-------------| :--------------------------- | :------------------------------------------------------------------ |
+| Email         | `olivia.nyhuus@swedbankpay.com`    | The e-mail address of the payer.                              |
+| MSISDN | `+47 98765432`               | The mobile phone number of the payer. Format Norway: +47 99999999.  |
+| SSN           | `{{ page.consumer_ssn_no }}` | The social security number of the payer. Format Norway: DDMMYYXXXXX |
+| ZipCode       | `1642`                       | The city zip code. Format Norway: XXXX                              |
 
 ### Checkout test data for Sweden
 
-{:.table .table-striped}
-| Type            | Data                         | Description                                                             |
-| :-------------- | :--------------------------- | :---------------------------------------------------------------------- |
-| `Email`         | `leia.ahlstrom@swedbankpay.com`    | The e-mail address of the payer.                                        |
-| `Mobile number` | `+46 739000001`              | The mobile phone number of the payer. Format Sweden: `+46 707777777`.   |
-| `SSN`           | `{{ page.consumer_ssn_se }}` | The social security number of the payer. Format Sweden: `YYYYMMDDXXXX`. |
-| `ZipCode`       | `17674`                      | The city zip code. Format Sweden: `XXXXX`                               |
+{:.table .table-striped .enable-code-copy}
+| Type            | Data                         | Description                                                         |
+| :-------------- | :--------------------------- | :------------------------------------------------------------------ |
+| Email         | `leia.ahlstrom@swedbankpay.com`    | The e-mail address of the payer.                                |
+| MSISDN | `+46 739000001`              | The mobile phone number of the payer. Format Sweden: +46 707777777.   |
+| SSN           | `{{ page.consumer_ssn_se }}` | The social security number of the payer. Format Sweden: YYYYMMDDXXXX. |
+| ZipCode       | `17674`                      | The city zip code. Format Sweden: XXXXX                               |
 
 ### Checkout test data for Denmark
 
-{:.table .table-striped}
-| Type            | Data          | Description                                                          |
-| :-------------- | :------------ | :------------------------------------------------------------------- |
-| `Mobile number` | `+4522222222` | The mobile phone number of the payer. Format Denmark: `+45 22222222` |
+{:.table .table-striped .enable-code-copy}
+| Type            | Data          | Description                                                      |
+| :-------------- | :------------ | :--------------------------------------------------------------- |
+| MSISDN | `+4522222222` | The mobile phone number of the payer. Format Denmark: +45 22222222 |
 
 ## Credit Card Test Data
 
@@ -56,7 +56,7 @@ institutions.
 
 ### 3-D Secure Cards
 
-{:.table .table-striped}
+{:.table .table-striped .enable-code-copy}
 | Card type  | Card number        | Expiry                   | CVC   | Type of test data   |
 | :--------- | :----------------- | :----------------------- | :-----| :------------------ |
 | Visa       | `4761739001010416` | After the current month  | Any   | 3-D Secure enrolled |
@@ -101,7 +101,7 @@ If you want to test Network Tokenization without card updates, simply use one of
 our other MasterCard or Visa test cards. You still need to be configured against
 our internal acquirer (loopback).
 
-{:.table .table-striped}
+{:.table .table-striped .enable-code-copy}
 | Card type  | Card number        | Expiry | CVC   | Type of test data   |
 | :--------- | :----------------- | :----  | :---- | :------------------ |
 | MasterCard | `5510000000001232` | 04/35  | Any   | Frictionless        |
@@ -109,7 +109,7 @@ our internal acquirer (loopback).
 | Visa       | `4111112000003211` | 09/35  | Any   | Frictionless        |
 | Visa       | `4111112000006545` | 11/35  | Any   | Challenge           |
 
-{:.table .table-striped}
+{:.table .table-striped .enable-code-copy}
 | Card type  | Card number        | Expiry | CVC   | Type of test data   |
 | :--------- | :----------------- | :----  | :---- | :------------------ |
 | MasterCard | `5510000000009631` | 08/35  | Any   | Rejected during tokenization |
@@ -123,7 +123,7 @@ A selection of cards not connected to Network Tokenization or 3D-Secure.
 
 ### Visa
 
-{:.table .table-striped}
+{:.table .table-striped .enable-code-copy}
 | Card number        | Expiry                  | CVC  |
 | :----------------- | :---------------------- | :--- |
 | `4925000000000004` | After the current month | Any  |
@@ -132,7 +132,7 @@ A selection of cards not connected to Network Tokenization or 3D-Secure.
 
 ### MasterCard
 
-{:.table .table-striped}
+{:.table .table-striped .enable-code-copy}
 | Card number        | Expiry                  | CVC  |
 | :----------------- | :---------------------- | :--- |
 | `5226600159865967` | After the current month | Any  |
@@ -142,21 +142,21 @@ A selection of cards not connected to Network Tokenization or 3D-Secure.
 
 ### American Express
 
-{:.table .table-striped}
+{:.table .table-striped .enable-code-copy}
 | Card number       | Expiry                  | CVC            | Type of test data |
 | :---------------- | :---------------------- | :------------  | :---------------- |
 | `377601000000000` | After the current month | Any (4 digits) | Amex & loopback   |
 
 ### Maestro
 
-{:.table .table-striped}
+{:.table .table-striped .enable-code-copy}
 | Card number        | Expiry                   | CVC   |
 | :----------------- | :----------------------- | :---- |
 | `6764429999947470` | After the current month  | Any   |
 
 ### Dankort
 
-{:.table .table-striped}
+{:.table .table-striped .enable-code-copy}
 | Card number        | Expiry                   | CVC   |
 | :----------------- | :----------------------- | :---- |
 | `5019994016316467` | After the current month  | Any   |
@@ -164,7 +164,7 @@ A selection of cards not connected to Network Tokenization or 3D-Secure.
 
 ### Visa/DanKort
 
-{:.table .table-striped}
+{:.table .table-striped .enable-code-copy}
 | Card number        | Expiry                   | CVC   |
 | :----------------- | :----------------------- | :---- |
 | `4571994016401817` | After the current month  | Any   |
@@ -172,7 +172,7 @@ A selection of cards not connected to Network Tokenization or 3D-Secure.
 
 ### Forbrugsforeningen
 
-{:.table .table-striped}
+{:.table .table-striped .enable-code-copy}
 | Card number        | Expiry                   | CVC   |
 | :----------------- | :----------------------- | :---- |
 | `6007220000000004` | After the current month  | Any   |
@@ -194,23 +194,23 @@ environment.
 The amounts that can be used to trigger error codes
 (`transactionThirdPartyError`):
 
-{:.table .table-striped}
+{:.table .table-striped .enable-code-copy}
 | Amount   | Error Code                                | Description                                     |
 | :------- | :---------------------------------------- | :---------------------------------------------- |
-| `900313` | `REJECTED_BY_ACQUIRER_INVALID_AMOUNT`     | Invalid amount, response-code: 13               |
-| `900330` | `REJECTED_BY_ACQUIRER_FORMAT_ERROR`       | Format error, response-code: 30                 |
-| `900334` | `REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD`     | Possible fraud, response-code: 34               |
-| `900343` | `REJECTED_BY_ACQUIRER_CARD_STOLEN`        | Card stolen, response-code: 43                  |
-| `900354` | `REJECTED_BY_ACQUIRER_CARD_EXPIRED`       | Card expired, response-code: 54                 |
-| `900351` | `REJECTED_BY_ACQUIRER`                    | Unknown error, response-code: 51                |
-| `900359` | `REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD`     | Possible fraud, response-code: 59               |
-| `900361` | `REJECTED_BY_ACQUIRER_INSUFFICIENT_FUNDS` | Insufficient funds, response-code: 61           |
-| `900362` | `REJECTED_BY_ACQUIRER`                    | Unknown error, response-code: 62                |
-| `900391` | `ACQUIRER_HOST_OFFLINE`                   | Acquirer host offline, response-code: 91        |
-| `952400` | `DONOTRETRY`                              | Transaction declined, do not retry              |
-| `952507` | `MODIFICATIONSREQUIRED`                   | Transaction is declined and needs modifications |
-| `952100` | `DAILYLIMITEXCEEDED`                      | The daily attempt limit has been exceeded       |
-| `952100` | `MONTHLYLIMITEXCEEDED`                    | The monthly attempt limit has been exceeded     |
+| `900313` | REJECTED_BY_ACQUIRER_INVALID_AMOUNT       | Invalid amount, response-code: 13               |
+| `900330` | REJECTED_BY_ACQUIRER_FORMAT_ERROR         | Format error, response-code: 30                 |
+| `900334` | REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD       | Possible fraud, response-code: 34               |
+| `900343` | REJECTED_BY_ACQUIRER_CARD_STOLEN          | Card stolen, response-code: 43                  |
+| `900354` | REJECTED_BY_ACQUIRER_CARD_EXPIRED         | Card expired, response-code: 54                 |
+| `900351` | REJECTED_BY_ACQUIRER                      | Unknown error, response-code: 51                |
+| `900359` | REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD       | Possible fraud, response-code: 59               |
+| `900361` | REJECTED_BY_ACQUIRER_INSUFFICIENT_FUNDS   | Insufficient funds, response-code: 61           |
+| `900362` | REJECTED_BY_ACQUIRER                      | Unknown error, response-code: 62                |
+| `900391` | ACQUIRER_HOST_OFFLINE                     | Acquirer host offline, response-code: 91        |
+| `952400` | DONOTRETRY                                | Transaction declined, do not retry              |
+| `952507` | MODIFICATIONSREQUIRED                     | Transaction is declined and needs modifications |
+| `952100` | DAILYLIMITEXCEEDED                        | The daily attempt limit has been exceeded       |
+| `952100` | MONTHLYLIMITEXCEEDED                      | The monthly attempt limit has been exceeded     |
 
 The `DAILYLIMITEXCEEDED` must be performed 10 times to be triggered, and the
 `MONTHLYLIMITEXCEEDED` has to be performed 15 times to be triggered. The
@@ -221,25 +221,25 @@ The `DAILYLIMITEXCEEDED` must be performed 10 times to be triggered, and the
 
 ### Invoice test data for Norway
 
-{:.table .table-striped}
-| Type    | Data             |
-| :------ | :--------------- |
-| SSN     | 26026708248      |
-| Name    | Olivia Nyhuus    |
-| Address | Saltnestoppen 43 |
-| City    | 1642 Saltnes     |
+{:.table .table-striped .enable-code-copy}
+| Type    | Data               |
+| :------ | :---------------   |
+| SSN     | `26026708248`      |
+| Name    | `Olivia Nyhuus`    |
+| Address | `Saltnestoppen 43` |
+| City    | `1642 Saltnes`     |
 
 ### Invoice test data for Sweden
 
-{:.table .table-striped}
-| Type    | Data            | Alternative data        |
-| :------ | :-------------- | :---------------------- |
-| SSN     | 600307-1161     | 971020-2392             |
-| Name    | Azra Oliveira   | Leia Ahlström           |
-| Address | Helgestavägen 9 | Hökvägen 5              |
-| City    | 19792 Bro       | 17674 Järfälla          |
-| MSISDN  |                 | +46739000001            |
-| email   |                 | leia.ahlstrom@swedbankpay.com |
+{:.table .table-striped .enable-code-copy}
+| Type    | Data              | Alternative data                |
+| :------ | :--------------   | :----------------------         |
+| SSN     | `600307-1161`     | `971020-2392`                   |
+| Name    | `Azra Oliveira`   | `Leia Ahlström`                 |
+| Address | `Helgestavägen 9` | `Hökvägen 5`                    |
+| City    | `19792 Bro`       | `17674 Järfälla`                |
+| MSISDN  |                   | `+46739000001`                  |
+| Email   |                   | `leia.ahlstrom@swedbankpay.com` |
 
 ## Invoice Service Test Data
 
@@ -254,13 +254,14 @@ fake service with no app involved. To trigger an error message, set the
 `description` value in `POST` Create Payment or `Create` Payment Order to one of
 the following values:
 
-{:.table .table-striped}
+{:.table .table-striped .enable-code-copy}
 | Description | Simulates                                      |
 | :---------- | :--------------------------------------------- |
-| RF07        | Transaction declined                           |
-| TM01        | Swish timed out before the payment was started |
-| BANKIDCL    | Payer cancelled BankId signing                 |
+| `RF07`      | Transaction declined                           |
+| `TM01`      | Swish timed out before the payment was started |
+| `BANKIDCL`  | Payer cancelled BankId signing                 |
 
 [otp-challenge-form]: /assets/img/new-otp-challenge-form.png
 [playground]: https://playground.swedbankpay.com
 [testsuite]: https://www.postman.com/swedbankpay/swedbank-pay-online/collection/000bv9t/testsuite
+
