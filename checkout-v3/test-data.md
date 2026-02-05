@@ -20,7 +20,7 @@ To test a checked-in user in the Playground, please use the following test data:
 
 ### Checkout test data for Norway
 
-{:.table .table-striped .enable-code-copy}
+{:.table .table-striped .test-data .enable-code-copy}
 | Type          | Data                         | Description                                                         |
 | :-------------| :--------------------------- | :------------------------------------------------------------------ |
 | Email         | `olivia.nyhuus@swedbankpay.com`    | The e-mail address of the payer.                              |
@@ -30,7 +30,7 @@ To test a checked-in user in the Playground, please use the following test data:
 
 ### Checkout test data for Sweden
 
-{:.table .table-striped .enable-code-copy}
+{:.table .table-striped .test-data .enable-code-copy}
 | Type            | Data                         | Description                                                         |
 | :-------------- | :--------------------------- | :------------------------------------------------------------------ |
 | Email         | `leia.ahlstrom@swedbankpay.com`    | The e-mail address of the payer.                                |
@@ -40,7 +40,7 @@ To test a checked-in user in the Playground, please use the following test data:
 
 ### Checkout test data for Denmark
 
-{:.table .table-striped .enable-code-copy}
+{:.table .table-striped .test-data .enable-code-copy}
 | Type            | Data          | Description                                                      |
 | :-------------- | :------------ | :--------------------------------------------------------------- |
 | MSISDN | `+4522222222` | The mobile phone number of the payer. Format Denmark: +45 22222222 |
@@ -56,11 +56,11 @@ institutions.
 
 ### 3-D Secure Cards
 
-{:.table .table-striped .enable-code-copy}
+{:.table .table-striped .test-data .enable-code-copy}
 | Card type  | Card number        | Expiry                   | CVC   | Type of test data   |
 | :--------- | :----------------- | :----------------------- | :-----| :------------------ |
-| Visa       | `4761739001010416` | After the current month  | Any   | 3-D Secure enrolled |
-| MasterCard | `5226612199533406` | After the current month  | Any   | 3-D Secure enrolled |
+| MasterCard | `5226612199533406` | Any  | Any   | 3-D Secure enrolled |
+| Visa       | `4761739001010416` | Any  | Any   | 3-D Secure enrolled |
 
 ### 3-D Secure 2
 
@@ -101,19 +101,15 @@ If you want to test Network Tokenization without card updates, simply use one of
 our other MasterCard or Visa test cards. You still need to be configured against
 our internal acquirer (loopback).
 
-{:.table .table-striped .enable-code-copy}
+{:.table .table-striped .test-data .enable-code-copy}
 | Card type  | Card number        | Expiry | CVC   | Type of test data   |
 | :--------- | :----------------- | :----  | :---- | :------------------ |
 | MasterCard | `5510000000001232` | 04/35  | Any   | Frictionless        |
 | MasterCard | `5510000000002347` | 06/35  | Any   | Challenge           |
-| Visa       | `4111112000003211` | 09/35  | Any   | Frictionless        |
-| Visa       | `4111112000006545` | 11/35  | Any   | Challenge           |
-
-{:.table .table-striped .enable-code-copy}
-| Card type  | Card number        | Expiry | CVC   | Type of test data   |
-| :--------- | :----------------- | :----  | :---- | :------------------ |
 | MasterCard | `5510000000009631` | 08/35  | Any   | Rejected during tokenization |
 | MasterCard | `5510000000005431` | 02/35  | Any   | Rejected during tokenization |
+| Visa       | `4111112000003211` | 09/35  | Any   | Frictionless        |
+| Visa       | `4111112000006545` | 11/35  | Any   | Challenge           |
 | Visa       | `4111112000004565` | 07/35  | Any   | Rejected during tokenization |
 | Visa       | `4111112000007899` | 12/35  | Any   | Rejected during tokenization |
 
@@ -121,61 +117,23 @@ our internal acquirer (loopback).
 
 A selection of cards not connected to Network Tokenization or 3D-Secure.
 
-### Visa
-
-{:.table .table-striped .enable-code-copy}
-| Card number        | Expiry                  | CVC  |
-| :----------------- | :---------------------- | :--- |
-| `4925000000000004` | After the current month | Any  |
-| `4581097032723517` | After the current month | Any  |
-| `4581099940323133` | After the current month | Any  |
-
-### MasterCard
-
-{:.table .table-striped .enable-code-copy}
-| Card number        | Expiry                  | CVC  |
-| :----------------- | :---------------------- | :--- |
-| `5226600159865967` | After the current month | Any  |
-| `5226603115488031` | After the current month | Any  |
-| `5226604266737382` | After the current month | Any  |
-| `5226600156995650` | After the current month | Any  |
-
-### American Express
-
-{:.table .table-striped .enable-code-copy}
-| Card number       | Expiry                  | CVC            | Type of test data |
-| :---------------- | :---------------------- | :------------  | :---------------- |
-| `377601000000000` | After the current month | Any (4 digits) | Amex & loopback   |
-
-### Maestro
-
-{:.table .table-striped .enable-code-copy}
-| Card number        | Expiry                   | CVC   |
-| :----------------- | :----------------------- | :---- |
-| `6764429999947470` | After the current month  | Any   |
-
-### Dankort
-
-{:.table .table-striped .enable-code-copy}
-| Card number        | Expiry                   | CVC   |
-| :----------------- | :----------------------- | :---- |
-| `5019994016316467` | After the current month  | Any   |
-| `5019994001307083` | After the current month  | Any   |
-
-### Visa/DanKort
-
-{:.table .table-striped .enable-code-copy}
-| Card number        | Expiry                   | CVC   |
-| :----------------- | :----------------------- | :---- |
-| `4571994016401817` | After the current month  | Any   |
-| `4571994016471869` | After the current month  | Any   |
-
-### Forbrugsforeningen
-
-{:.table .table-striped .enable-code-copy}
-| Card number        | Expiry                   | CVC   |
-| :----------------- | :----------------------- | :---- |
-| `6007220000000004` | After the current month  | Any   |
+{:.table .table-striped .test-data .enable-code-copy}
+| Card type            | Card number        | Expiry | CVC  | Type of test data |
+| :------------------- | :----------------- | :----- | :--- | :---------------- |
+| American Express     | `377601000000000`  | Any    | Any  | Amex & loopback   |
+| Dankort              | `5019994016316467` | Any    | Any  |
+| Dankort              | `5019994001307083` | Any    | Any  |
+| Forbrugsforeningen   | `6007220000000004` | Any    | Any  |
+| Maestro              | `6764429999947470` | Any    | Any  |
+| MasterCard           | `5226600159865967` | Any    | Any  |
+| MasterCard           | `5226603115488031` | Any    | Any  |
+| MasterCard           | `5226604266737382` | Any    | Any  |
+| MasterCard           | `5226600156995650` | Any    | Any  |
+| Visa                 | `4925000000000004` | Any    | Any  |
+| Visa                 | `4581097032723517` | Any    | Any  |
+| Visa                 | `4581099940323133` | Any    | Any  |
+| Visa/Dankort         | `4571994016401817` | Any    | Any  |
+| Visa/Dankort         | `4571994016471869` | Any    | Any  |
 
 ## Failure Testing Cards
 
@@ -194,23 +152,23 @@ environment.
 The amounts that can be used to trigger error codes
 (`transactionThirdPartyError`):
 
-{:.table .table-striped .enable-code-copy}
-| Amount   | Error Code                                | Description                                     |
-| :------- | :---------------------------------------- | :---------------------------------------------- |
-| `900313` | REJECTED_BY_ACQUIRER_INVALID_AMOUNT       | Invalid amount, response-code: 13               |
-| `900330` | REJECTED_BY_ACQUIRER_FORMAT_ERROR         | Format error, response-code: 30                 |
-| `900334` | REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD       | Possible fraud, response-code: 34               |
-| `900343` | REJECTED_BY_ACQUIRER_CARD_STOLEN          | Card stolen, response-code: 43                  |
-| `900354` | REJECTED_BY_ACQUIRER_CARD_EXPIRED         | Card expired, response-code: 54                 |
-| `900351` | REJECTED_BY_ACQUIRER                      | Unknown error, response-code: 51                |
-| `900359` | REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD       | Possible fraud, response-code: 59               |
-| `900361` | REJECTED_BY_ACQUIRER_INSUFFICIENT_FUNDS   | Insufficient funds, response-code: 61           |
-| `900362` | REJECTED_BY_ACQUIRER                      | Unknown error, response-code: 62                |
-| `900391` | ACQUIRER_HOST_OFFLINE                     | Acquirer host offline, response-code: 91        |
-| `952400` | DONOTRETRY                                | Transaction declined, do not retry              |
-| `952507` | MODIFICATIONSREQUIRED                     | Transaction is declined and needs modifications |
-| `952100` | DAILYLIMITEXCEEDED                        | The daily attempt limit has been exceeded       |
-| `952100` | MONTHLYLIMITEXCEEDED                      | The monthly attempt limit has been exceeded     |
+{:.table .table-striped .test-data .enable-code-copy}
+| Code | Amount   | Error Code                                | Description                                     |
+| :--- | :------- | :---------------------------------------- | :---------------------------------------------- |
+| 13   | `900313` | REJECTED_BY_ACQUIRER_INVALID_AMOUNT       | Invalid amount, response-code: 13               |
+| 30   | `900330` | REJECTED_BY_ACQUIRER_FORMAT_ERROR         | Format error, response-code: 30                 |
+| 34   | `900334` | REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD       | Possible fraud, response-code: 34               |
+| 43   | `900343` | REJECTED_BY_ACQUIRER_CARD_STOLEN          | Card stolen, response-code: 43                  |
+| 54   | `900354` | REJECTED_BY_ACQUIRER_CARD_EXPIRED         | Card expired, response-code: 54                 |
+| 51   | `900351` | REJECTED_BY_ACQUIRER                      | Unknown error, response-code: 51                |
+| 59   | `900359` | REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD       | Possible fraud, response-code: 59               |
+| 61   | `900361` | REJECTED_BY_ACQUIRER_INSUFFICIENT_FUNDS   | Insufficient funds, response-code: 61           |
+| 62   | `900362` | REJECTED_BY_ACQUIRER                      | Unknown error, response-code: 62                |
+| 91   | `900391` | ACQUIRER_HOST_OFFLINE                     | Acquirer host offline, response-code: 91        |
+| N/A  | `952400` | DONOTRETRY                                | Transaction declined, do not retry              |
+| N/A  | `952507` | MODIFICATIONSREQUIRED                     | Transaction is declined and needs modifications |
+| N/A  | `952100` | DAILYLIMITEXCEEDED                        | The daily attempt limit has been exceeded       |
+| N/A  | `952100` | MONTHLYLIMITEXCEEDED                      | The monthly attempt limit has been exceeded     |
 
 The `DAILYLIMITEXCEEDED` must be performed 10 times to be triggered, and the
 `MONTHLYLIMITEXCEEDED` has to be performed 15 times to be triggered. The
@@ -221,7 +179,7 @@ The `DAILYLIMITEXCEEDED` must be performed 10 times to be triggered, and the
 
 ### Invoice test data for Norway
 
-{:.table .table-striped .enable-code-copy}
+{:.table .table-striped .test-data .enable-code-copy}
 | Type    | Data               |
 | :------ | :---------------   |
 | SSN     | `26026708248`      |
@@ -231,7 +189,7 @@ The `DAILYLIMITEXCEEDED` must be performed 10 times to be triggered, and the
 
 ### Invoice test data for Sweden
 
-{:.table .table-striped .enable-code-copy}
+{:.table .table-striped .test-data .enable-code-copy}
 | Type    | Data              | Alternative data                |
 | :------ | :--------------   | :----------------------         |
 | SSN     | `600307-1161`     | `971020-2392`                   |
@@ -254,7 +212,7 @@ fake service with no app involved. To trigger an error message, set the
 `description` value in `POST` Create Payment or `Create` Payment Order to one of
 the following values:
 
-{:.table .table-striped .enable-code-copy}
+{:.table .table-striped .test-data .enable-code-copy}
 | Description | Simulates                                      |
 | :---------- | :--------------------------------------------- |
 | `RF07`      | Transaction declined                           |
