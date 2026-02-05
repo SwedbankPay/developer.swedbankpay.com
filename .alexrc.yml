@@ -1,16 +1,22 @@
 allow:
+  - abort
+  - aborted
   - american
   - attacks
   - basically
   - black
   - blacklist
+  - blind
   - buried
   - clearly
   - color
   - colors
+  - dad-mom
   - deposit
   - desire
   - dirty
+  - disabled
+  - dummy
   - easy
   - execute
   - executed
@@ -20,8 +26,10 @@ allow:
   - failed
   - failure
   - failures
+  - fraud
   - funeral
   - german
+  - hang
   - harder
   - hook
   - hooks
@@ -32,7 +40,10 @@ allow:
   - liberal
   - lies
   - master
+  - native
+  - normal
   - obvious
+  - obviously
   - of-course
   - period
   - POP
@@ -44,10 +55,12 @@ allow:
   - remains
   - savage
   - simple
+  - simply
   - special
+  - straightforward
+  - traps
   - white
   - whitelist
   - whitelisting
   - whitespace
-  - straightforward
   - bigger
