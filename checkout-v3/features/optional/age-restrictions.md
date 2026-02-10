@@ -6,7 +6,7 @@ description: |
               <span class="d-block mt-3">
                 <span class="badge badge-default">Swish</span>
               </span>
-menu_order: 1700
+menu_order: 1500
 ---
 
 {% include payment-order-age-restrictions.md %}
