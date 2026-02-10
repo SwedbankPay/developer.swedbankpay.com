@@ -10,7 +10,7 @@ description: |
                 <span class="badge badge-default">Trustly</span>
                 <span class="badge badge-default">Vipps</span>
               </span>
-menu_order: 2600
+menu_order: 2300
 ---
 
 {% include payment-link.md %}
