@@ -53,7 +53,7 @@ menu_order: 700
  </div>
  <br/>
  <ul>
- <li>Speed: Transactions are completed with a single touch.</li>
+ <li>Speed: Pay instantly with one touch – even from WEB via a QR code that opens Apple Pay on your own device.</li>
  <li>Security: Built-in encryption and biometric authentication (Face ID or Touch ID) ensure every payment is safe. Your customer’s card details are never shared.</li>
  <li>Wide Reach: Apple Pay works online, in apps, and in stores, making it easier for customers to pay wherever they are.</li>
  <li>Higher Conversions: Customers are more likely to complete purchases with quick, frictionless checkouts.</li>
