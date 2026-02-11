@@ -1,3 +1,4 @@
+
 {: .h2 .pt-3 }
 
 ### Display Seamless View
@@ -83,6 +84,8 @@ Among the operations in the POST `paymentOrder` response, you will find the
 {: .h2 }
 
 ### Load the Seamless View
+
+{% include alert-nested-iframe-unsupported.md %}
 
 To display the UI, we need to take the `href` from the `POST` request and add
 it to a `script` element on the webpage. Once the script has loaded in, we can
