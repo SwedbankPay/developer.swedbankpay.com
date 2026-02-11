@@ -84,6 +84,8 @@ Among the operations in the POST `paymentOrder` response, you will find the
 
 ### Load the Seamless View
 
+{% include alert-nested-iframe-unsupported.md %}
+
 To display the UI, we need to take the `href` from the `POST` request and add
 it to a `script` element on the webpage. Once the script has loaded in, we can
 then use the `payex.hostedView.checkout().open()` function on the clientscript
