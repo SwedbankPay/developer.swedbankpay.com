@@ -26,7 +26,7 @@ Swedbank Pay.
 {:.table .table-striped}
 |            Platform          | Module                                                           | Repository                                    |
 | :--------------------------: | :--------------------------------------------------------------- | :-------------------------------------------- |
-|   ![WooCommerce][woo-icon]   | [Swedbank Pay Payment Menu for WooCommerce][woo-checkout-link]{:target="_blank"}   | [`…woocommerce-checkout`][woo-checkout-repo]{:target="_blank"}  |
+|   ![WooCommerce][woo-icon]   | [Swedbank Pay Payment Menu for WooCommerce][woo-checkout-link]{:target="_blank"}   | [`…woocommerce-paymentmenu`][woo-checkout-repo]{:target="_blank"}  |
 
 ## Official SDKs
 
@@ -46,6 +46,7 @@ our SDK payments.
 |            Platform      | SDK                                          | Repository                     |
 | :----------------------: | :------------------------------------------- | :----------------------------- |
 | ![Android][android-icon] | [Swedbank Pay SDK for Android][android-link]{:target="_blank"} | [`…sdk-android`][android-repo]{:target="_blank"} |
+|   ![.NET][dotnet-icon]   | [Swedbank Pay SDK for .NET][dotnet-link]{:target="_blank"}     | [`…sdk-dotnet`][dotnet-repo]{:target="_blank"}   |
 |     ![iOS][ios-icon]     | [Swedbank Pay SDK for iOS][ios-link]{:target="_blank"}         | [`…sdk-ios`][ios-repo]{:target="_blank"}         |
 
 ### Unofficial SDKs
@@ -55,23 +56,7 @@ our SDK payments.
 {:.table .table-striped}
 |            Platform      | SDK                                          | Repository                     |
 | :----------------------: | :------------------------------------------- | :----------------------------- |
-|   ![.NET][dotnet-icon]   | [Swedbank Pay SDK for .NET][dotnet-link]{:target="_blank"}     | [`…sdk-dotnet`][dotnet-repo]{:target="_blank"}   |
 |     ![PHP][php-icon]     | [Swedbank Pay SDK for PHP][php-link]{:target="_blank"}         | [`…sdk-php`][php-repo]{:target="_blank"}         |
-
-## Official Libraries
-
-**Software libraries** are bundles of code often used by an *SDK* or in a
-*Module* to solve one or a set of specific problems.
-
-### Unofficial Libraries
-
-{% include alert-unsupported.md type='libraries' %}
-
-{:.table .table-striped}
-|            Platform      | Library                                                     | Repository                            |
-| :----------------------: | :---------------------------------------------------------- | :------------------------------------ |
-| ![WooCommerce][woo-icon] | [Swedbank Pay Core plugin for WooCommerce][woo-core-link]{:target="_blank"}   | [`…woocommerce-core`][woo-core-repo]{:target="_blank"}  |
-|   ![.NET][dotnet-icon]   | [Swedbank Pay SDK Extensions for .NET][dotnet-link]{:target="_blank"}         | [`…sdk-dotnet`][dotnet-repo]{:target="_blank"}          |
 
 [android-icon]: /assets/img/logos/android.svg
 [android-link]: https://search.maven.org/artifact/com.swedbankpay.mobilesdk/mobilesdk
@@ -85,9 +70,7 @@ our SDK payments.
 [php-icon]: /assets/img/logos/php.svg
 [php-link]: https://packagist.org/packages/swedbank-pay/swedbank-pay-sdk-php
 [php-repo]: https://github.com/SwedbankPay/swedbank-pay-sdk-php
-[woo-checkout-link]: https://wordpress.org/plugins/swedbank-pay-payment-menu/
+[woo-checkout-link]: https://docs.krokedil.com/swedbank-pay-payment-menu/get-started/introduction/
 [woo-checkout-repo]: https://github.com/SwedbankPay/swedbank-pay-woocommerce-paymentmenu
-[woo-core-link]: https://packagist.org/packages/swedbank-pay/swedbank-pay-woocommerce-core
-[woo-core-repo]: https://github.com/SwedbankPay/swedbank-pay-woocommerce-core
 [woo-icon]: /assets/img/logos/woocommerce.svg
 [woocommerce]: https://woocommerce.com/
