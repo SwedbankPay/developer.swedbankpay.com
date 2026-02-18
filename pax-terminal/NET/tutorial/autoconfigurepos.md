@@ -1,5 +1,5 @@
 ---
-title: Automatically Configure POS for Terminal
+title: Automatically Configure POS for LAN Terminal
 description: |
     Easier configuration of POS by picking up the terminal address from the configuration message 
 permalink: /:path/autoconfigurepos/
