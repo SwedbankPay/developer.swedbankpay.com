@@ -204,6 +204,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     <div class="indent-0">{{ operations_md | markdownify }}</div>
   </div>
 </details>
+</div>
 
 ### Instrument Parameters - CreditCard
 
@@ -214,14 +215,14 @@ api-supported-versions: 3.x/2.0{% endcapture %}
          "expiryDate" : "12/2028",
          "expiryPan": "12/2028",
          "issuerName": "Name of issuer if present",
-         "lastFourPan": "0004"
+         "lastFourPan": "0004",
          "bin": "492500",
          "cardHolderType": "Consumer",
          "cardType": "Debit",
          "countryCode": "752",
          "lastFourDPan": "1234",
          "expiryDPan": "02/2029"
-      },
+      }
    }
 }{% endcapture %}
 
@@ -380,6 +381,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
   </div>
 </details>
+</div>
 
 ### Instrument Parameters - Trustly
 
@@ -446,6 +448,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
   </div>
 </details>
+</div>
 
 ## GET All Payer Tokens
 
@@ -725,9 +728,6 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
           </div></div>
         </details>
 
-      </div>
-    </details>
-
   </div>
 </details>
 
@@ -741,6 +741,7 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
     <div class="indent-0">{{ operations_md | markdownify }}</div>
   </div>
 </details>
+</div>
 
 ## GET Archived Payer Tokens
 
@@ -1040,6 +1041,7 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
     <div class="indent-0">{{ operations_md | markdownify }}</div>
   </div>
 </details>
+</div>
 
 ## PATCH Update Display Name
 
@@ -1271,6 +1273,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     <div class="indent-0">{{ operations_md | markdownify }}</div>
   </div>
 </details>
+</div>
 
 ## PATCH Archive Single Payer Token
 
@@ -1525,6 +1528,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     <div class="indent-0">{{ operations_md | markdownify }}</div>
   </div>
 </details>
+</div>
 
 ## PATCH Archive All Payer Tokens
 
@@ -1847,9 +1851,6 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
           </div></div>
         </details>
 
-      </div>
-    </details>
-
   </div>
 </details>
 
@@ -1863,3 +1864,4 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
     <div class="indent-0">{{ operations_md | markdownify }}</div>
   </div>
 </details>
+</div>
