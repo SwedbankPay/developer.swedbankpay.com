@@ -344,7 +344,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
             <span class="field">{% f cardType %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
             <span class="type"><code>string</code></span>
           </summary>
-          <div class="desc"><>
+          <div class="desc">
             <div class="indent-2">Indicates if the card is a <code>Debit</code> or <code>Credit</code> card.</div>
           </div>
         </details>
@@ -378,6 +378,9 @@ api-supported-versions: 3.x/2.0{% endcapture %}
             <div class="indent-2">The expiry of the card's DPAN (network token).</div>
           </div>
         </details>
+
+      </div>
+    </details>
 
   </div>
 </details>
@@ -728,6 +731,9 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
           </div></div>
         </details>
 
+      </div>
+    </details>
+
   </div>
 </details>
 
@@ -1064,6 +1070,14 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
     json= request_content
     %}
 
+<div class="api-compact" aria-label="PATCH Update Display Name Request">
+
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+    <div>Required</div>
+  </div>
+
   <!-- LEVEL 0 -->
     <div class="api-children">
       <details class="api-item" data-level="0">
@@ -1076,7 +1090,6 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
       </details>
 
   </div>
-</details>
 </div>
 
 ## PATCH Update Display Name Response
@@ -1326,7 +1339,6 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
       </details>
 
   </div>
-</details>
 </div>
 
 ## PATCH Archive Single Payer Token Response
@@ -1582,7 +1594,6 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
       </details>
 
   </div>
-</details>
 </div>
 
 ## PATCH Archive All Payer Tokens Response
@@ -1850,6 +1861,9 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
             Additional information connected to the token.
           </div></div>
         </details>
+
+      </div>
+    </details>
 
   </div>
 </details>
