@@ -335,7 +335,7 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
             <summary>
               <span class="field">{% f callbackUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
-              <span class="req">{% icon check %}</span>
+              <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ callback_url_md | markdownify }} For recurring transactions, the callback will only be sent for Trustly transactions, not card.</div></div>
           </details>
@@ -1613,12 +1613,12 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
         <div class="desc"><div class="indent-1">The URL to the <code>urls</code> resource where all URLs related to the payment order can be retrieved.</div></div>
       </details>
 
-      <!-- callbackUrl (req) -->
+      <!-- callbackUrl -->
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f callbackUrl, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
-          <span class="req">{% icon check %}</span>
+          <span class="req"></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ callback_url_md | markdownify }} For recurring transactions, the callback will only be sent for Trustly transactions, not card.</div></div>
       </details>

@@ -39,7 +39,7 @@ important:
     that this only applies if there has been an attempt at completing the
     payment, resulting in either a successful or failed transaction, or e.g. an
     external timeout.
-2.  If the payer stops up in a payment app such as Vipps or Swish, the payer
+2.  If the payer stops in a payment app such as Vipps or Swish, the payer
     will never come back to the merchant. This means that the merchant won't
     know what happened to the payment unless `callbackUrl` is implemented.
 3.  If a payer experiences a network error or something else happens that
