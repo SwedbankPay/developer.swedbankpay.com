@@ -303,7 +303,7 @@ Content-Type: application/json
             <summary>
               <span class="field">{% f callbackUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
-              <span class="req">{% icon check %}</span>
+              <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ callback_url_md | markdownify }}</div></div>
           </details>
