@@ -81,5 +81,3 @@ sequenceDiagram
   activate SwedbankPay
   SwedbankPay-->>-Merchant: transaction resource
 ```
-
-[transaction-resource]: /old-implementations/payment-instruments-v1/vipps/technical-reference/transactions

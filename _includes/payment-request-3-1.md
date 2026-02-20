@@ -4,7 +4,7 @@
 
 {: .h2 }
 
-### Payment order v3.1
+### Payment Order v3.1
 
 <div class="slab mb-5">
   <ul class="toc-list" role="navigation" aria-label="Article content">
@@ -322,7 +322,7 @@ Content-Type: application/json;version=3.1{% endcapture %}
             <summary>
               <span class="field">{% f callbackUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
-              <span class="req">{% icon check %}</span>
+              <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ callback_url_md | markdownify }}</div></div>
           </details>

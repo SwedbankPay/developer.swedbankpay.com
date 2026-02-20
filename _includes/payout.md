@@ -1470,12 +1470,12 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
         </summary>
         <div class="desc"><div class="indent-1">The <code>urls</code> object, containing the URLs relevant for the payment order.</div></div>
         <div class="api-children">
-          <!-- callbackUrl (required) -->
+          <!-- callbackUrl -->
           <details class="api-item" data-level="2">
             <summary>
               <span class="field">{% f callbackUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
-              <span class="req">{% icon check %}</span>
+              <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ callback_url_md | markdownify }}</div></div>
           </details>
@@ -2407,7 +2407,7 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
 {:.text-center}
 ![Register account flow chart][register-flow]
 
+(https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format)
+
 [register-flow]: /assets/img/checkout/RegisterAccount-Flow.png
 [select-flow]: /assets/img/checkout/SelectAccount-Flow.png
-
-(https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format)

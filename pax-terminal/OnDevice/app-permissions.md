@@ -1,5 +1,5 @@
 ---
-permalink: /:path/app_permissions/
+permalink: /:path/app-permissions/
 title: App Permissions For ECR On Device
 description: Prerequisites
 menu_order: 160

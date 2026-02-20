@@ -1,6 +1,6 @@
 ---
 title: Message Transport over LAN or WLAN
-permalink: /:path/lan_or_wlan_transportation/
+permalink: /:path/lan-or-wlan-transportation/
 hide_from_sidebar: false
 description: |
     Messages over LAN or WLAN are sent using HTTP/1.1 Post.

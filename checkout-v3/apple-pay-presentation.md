@@ -53,7 +53,7 @@ menu_order: 700
  </div>
  <br/>
  <ul>
- <li>Speed: Transactions are completed with a single touch.</li>
+ <li>Speed: Pay instantly with one touch – even from WEB via a QR code that opens Apple Pay on your own device.</li>
  <li>Security: Built-in encryption and biometric authentication (Face ID or Touch ID) ensure every payment is safe. Your customer’s card details are never shared.</li>
  <li>Wide Reach: Apple Pay works online, in apps, and in stores, making it easier for customers to pay wherever they are.</li>
  <li>Higher Conversions: Customers are more likely to complete purchases with quick, frictionless checkouts.</li>
@@ -172,9 +172,14 @@ needed before we can activate Apple Pay for you.
 
 ## Supported Devices
 
-Apple Pay will only be available on Apple devices like iPads, iPhones, Apple
-Watches, Apple Vision Pro and Mac models with a compatible iOS and browser. The
-easiest way to keep up with the devices currently supported is by
+Apple Pay is available on Apple devices like iPads, iPhones, Apple Watches,
+Apple Vision Pro and Mac models with a compatible iOS and browser.
+
+For other browsers than Safari, non-Apple devices or Apple devices which are too
+old to process Apple Pay transactions, a QR code will appear on-screen so the
+payment can be completed on a supported device.
+
+The easiest way to keep up with currently supported devices is by
 [visiting Apple directly][apple-pay-support]{:target="_blank"}.
 
 {% include iterator.html prev_href="/checkout-v3/"
@@ -184,5 +189,4 @@ easiest way to keep up with the devices currently supported is by
 [apple-pay-tc-sign-sweden]: https://signup.swedbankpay.com/se/applepay
 [apple-pay-tc-sign-norway]: https://signup.swedbankpay.com/no/applepay
 [apple-pay-support]: https://support.apple.com/en-us/102896
-[apple-pay-verification-file]: /assets/documents/apple-ecom
 [display-ui]: /checkout-v3/get-started/display-ui

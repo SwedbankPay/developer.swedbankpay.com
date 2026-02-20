@@ -1,3 +1,64 @@
+## 5 December 2025
+
+### .Net SDK 1.3.25339 
+
+* Added support for Loyalty before Auth
+
+## 24 November 2025
+
+### .Net SDK 1.3.25328
+
+* Added support for cloud
+* changed order of Payment Arguments
+
+## 10 September 2025
+
+### .Net SDK 1.3.25253
+
+* This release updates the library’s logging dependencies from NLog v4 to NLog v6.
+  Applications that directly use NLog alongside this library must also update to NLog v6 for compatibility.
+  If your application does not use NLog directly, no changes are required on your side.
+
+## 9 September 2025
+
+### .Net SDK 1.3.25252
+
+* Added custom version handling
+* Added support for tips
+* Added Loyalty flag to SaleAppInfo
+* Added Card Acqusition data
+* Various bugfixes and Improvements
+
+## 5 December 2025
+
+### .Net SDK 1.3.25339
+
+* Added support for Loyalty before Auth
+
+## 24 November 2025
+
+### .Net SDK 1.3.25328
+
+* Added support for cloud
+* changed order of Payment Arguments
+
+## 10 September 2025
+
+### .Net SDK 1.3.25253
+
+* This release updates the library’s logging dependencies from NLog v4 to NLog v6.
+  Applications that directly use NLog alongside this library must also update to NLog v6 for compatibility.
+  If your application does not use NLog directly, no changes are required on your side.
+
+## 9 September 2025
+
+### .Net SDK 1.3.25252
+
+* Added custom version handling
+* Added support for tips
+* Added Loyalty flag to SaleAppInfo
+* Added Card Acqusition data
+* Various bugfixes and Improvements
 
 ## 30 April 2025
 
@@ -20,14 +81,10 @@
 *   Only send continue_processing if Continue is called. Don't send
     continue_processing automatically on Payment.
 
-## 15 April 2024
-
 ### .Net SDK 1.3.24129
 
 *   PaymentRequetsResult now with new properties, MerchantReceiptBlob,
     MerchantReceiptBlobNoHeader and SignatureBlock.
-
-## 15 April 2024
 
 ### .Net SDK 1.3.24075
 
@@ -83,8 +140,6 @@
     converted to local time and caused problem when an other timezone was used.
 *   [PaymentRequetsResult][paymentrequestresult] has now a lot of properties to
     make values easily available.
-
-## 16 January 2024
 
 ### .Net SDK version 1.3.23348
 

@@ -15,6 +15,7 @@ The start method initializes the PAXTrmImp_1 instance and starts the listener if
     {
         public ISwpTrmIf_1 PAX = {get; internal set; } = null;
         public bool ClientOnly {get; set} = false;
+        public bool CloudConnection {get; set;} = true;
         .
         .
         .
@@ -31,7 +32,7 @@ The start method initializes the PAXTrmImp_1 instance and starts the listener if
             if (ClientOnly) {
                 si.SaleCapabilities = SaleCapabilitiesEnum.PrinterReceipt.ToString();
             }
-
+            si.TerminalConnectionType = CloudConnection ? TerminalConnectionTypes.CLOUD : TerminalConnectionTypes.LAN;
             // Initialize and start listener unless ClientOnly
             PAX.Start(si);
     .
@@ -63,6 +64,8 @@ namespace SwpTrmLib
         //     To use Client Only Mode use only the value SaleCapabilitiesEnum.PrinterReceipt.
         public string SaleCapabilities
         public SaleTerminalEnvironment SaleTerminalEnvironment { get; set; }
+        public OperatorLanguages OperatorLanguage {get; set;} = OperatorLanguages.undefined;
+        public TerminalConnectionTypes TerminalConnectionType {get; set;} = TerminalConnectionType.LAN;
     }
 }
 ```
@@ -76,6 +79,8 @@ namespace SwpTrmLib
 | SoftwareVersion | string | Version of the application |
 | POIID | string | Identifies the POI for retrieving correct parameters and software |
 | ForceAcquisitionReference | bool | If `true`, the terminal requires a CardAcquisitionRequest ahead of any PaymentRequest |
+| SaleCapabilities | string | Capabilities of the POS that decides terminal's behaviour. If only "PrinterReceipt", a listener will not be started. Client only mode. |
+| TerminalConnectionType | TerminalConnectionTypes | LAN or Cloud |
 
 {% include iterator.html next_href="/pax-terminal/NET/tutorial/quick-guide/open" next_title="Next" %}
 {% include iterator.html prev_href="/pax-terminal/NET/tutorial/quick-guide/" prev_title="Back" %}

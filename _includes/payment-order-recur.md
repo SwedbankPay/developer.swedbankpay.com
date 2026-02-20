@@ -307,7 +307,7 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
             <summary>
               <span class="field">{% f callbackUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
-              <span class="req">{% icon check %}</span>
+              <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">{% include fields/callback-url.md %} For recurring transactions, the callback will only be sent for Trustly transactions, not card.</div></div>
           </details>
@@ -1231,7 +1231,7 @@ match the `paymentOrder` response from the initial purchase.
 
 {% if documentation_section contains "checkout-v3" %}
 
-## After The Recurring Purchase
+## After The Recurring Purchase {#after-recurring-purchase-checkout-v3}
 
 Please remember that the `recur` request will reserve the amount, but not charge
 it. You will (i.e. when you are ready to ship purchased physical products) have
@@ -1240,7 +1240,7 @@ recurring purchase. You can also [Cancel][payment-order-cancel] it if needed.
 
 {% else %}
 
-## After The Recurring Purchase
+## After The Recurring Purchase {#after-recurring-purchase}
 
 Please remember that the `recur` request will reserve the amount, but not charge
 it. You will (i.e. when you are ready to ship purchased physical products) have

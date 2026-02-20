@@ -170,8 +170,6 @@ table:
   </details>
 </div>
 
-
-
 {% if include.integration_mode=="redirect" %}
 
 To authorize the payment, find the operation with `rel` equal to

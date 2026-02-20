@@ -339,7 +339,7 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
             <summary>
               <span class="field">{% f callbackUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
-              <span class="req">{% icon check %}</span>
+              <span class="req"></span>
             </summary>
             {% capture callback_url_md %}{% include fields/callback-url.md %}{% endcapture %}
             <div class="desc"><div class="indent-2">{{ callback_url_md | markdownify }}</div></div>

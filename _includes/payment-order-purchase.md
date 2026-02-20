@@ -90,7 +90,6 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
     json= request_content
     %}
 
-
 <div class="api-compact" aria-label="Request">
   <div class="header">
     <div>Field</div>
@@ -272,7 +271,7 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
             <summary>
               <span class="field">{% f callbackUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
-              <span class="req">{% icon check %}</span>
+              <span class="req"></span>
             </summary>
             <div class="desc">
               <div class="indent-2">{% capture _inc_callback %}{% include fields/callback-url.md %}{% endcapture %}{{ _inc_callback | markdownify }}</div>
@@ -824,7 +823,6 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     header=response_header
     json= response_content
     %}
-
 
 <div class="api-compact" aria-label="Response">
   <div class="header">

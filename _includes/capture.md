@@ -109,7 +109,6 @@ Content-Type: application/json{% endcapture %}
   </details>
 </div>
 
-
 ## Capture Response
 
 {% capture response_header %}HTTP/1.1 200 OK

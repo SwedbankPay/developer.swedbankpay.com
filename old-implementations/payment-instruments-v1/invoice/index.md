@@ -97,4 +97,3 @@ sequenceDiagram
 [fincon-invoice-redirect]: /assets/img/payments/fincon-invoice-redirect-first-en.png
 [purchase]: /old-implementations/payment-instruments-v1/invoice/technical-reference/create-payment
 [setup-mail-norway]: mailto:ehandelsetup@swedbankpay.no
-[setup-mail-sweden]: mailto:ehandelsetup@swedbankpay.se

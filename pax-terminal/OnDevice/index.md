@@ -15,4 +15,4 @@ The message protocol is [nexo Retailer][nexoretailer] but instead of sending mes
 {% include card-list.html %}
 
 [nexoretailer]: /pax-terminal/Nexo-Retailer/
-[broadcastintent]: /pax-terminal/Nexo-Retailer/Quick-guide/message_transport/intent_transportation
+[broadcastintent]: /pax-terminal/Nexo-Retailer/Quick-guide/message_transport/intent-transportation

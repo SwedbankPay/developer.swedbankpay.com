@@ -1,5 +1,5 @@
 
-{: .h2 .pt-3}
+{: .h2 .pt-3 }
 
 ### Display Redirect
 
@@ -12,12 +12,12 @@
     </li>
     <li>
       <a href="#redirect-sequence-diagram">
-        Redirect Sequence Diagram  
+        Redirect Sequence Diagram
       </a>
     </li>
     <li>
       <a href="#redirect---next-steps">
-        Redirect - Next Steps  
+        Redirect - Next Steps
       </a>
     </li>
   </ul>

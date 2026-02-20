@@ -335,7 +335,7 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
             <summary>
               <span class="field">{% f callbackUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
-              <span class="req">{% icon check %}</span>
+              <span class="req"></span>
             </summary>
             <div class="desc"><div class="indent-2">{{ callback_url_md | markdownify }} For recurring transactions, the callback will only be sent for Trustly transactions, not card.</div></div>
           </details>
@@ -1390,7 +1390,7 @@ match the `paymentOrder` response from the initial purchase.
 
 {% if documentation_section contains "checkout-v3" %}
 
-## After The Unscheduled Purchase
+## After The Unscheduled Purchase {#after-the-unscheduled-purchase-checkout-v3}
 
 Please remember that the `unscheduled` request will reserve the amount, but not
 charge it. You will (i.e. when you are ready to ship purchased physical
@@ -1400,7 +1400,7 @@ it if needed.
 
 {% else %}
 
-## After The Unscheduled Purchase
+## After The Unscheduled Purchase {#after-the-unscheduled-purchase}
 
 Please remember that the `unscheduled` request will reserve the amount, but not
 charge it. You will (i.e. when you are ready to ship purchased physical
@@ -1613,12 +1613,12 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
         <div class="desc"><div class="indent-1">The URL to the <code>urls</code> resource where all URLs related to the payment order can be retrieved.</div></div>
       </details>
 
-      <!-- callbackUrl (req) -->
+      <!-- callbackUrl -->
       <details class="api-item" data-level="1">
         <summary>
           <span class="field">{% f callbackUrl, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
-          <span class="req">{% icon check %}</span>
+          <span class="req"></span>
         </summary>
         <div class="desc"><div class="indent-1">{{ callback_url_md | markdownify }} For recurring transactions, the callback will only be sent for Trustly transactions, not card.</div></div>
       </details>

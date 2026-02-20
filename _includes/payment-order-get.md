@@ -348,5 +348,6 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 </div>
 
 -----------------------------------------
-[payment-menu]: /old-implementations/payment-menu-v2
+
 [checkout]: /{{ documentation_section }}
+[payment-menu]: /old-implementations/payment-menu-v2

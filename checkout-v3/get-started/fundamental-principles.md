@@ -311,15 +311,17 @@ All currencies are expressed according to the
 
 ### Dates
 
-All dates are expressed according to the [ISO 8601][ISO-8601]{:target="_blank"}
+All dates are expressed according to the [ISO 8601][iso-8601]{:target="_blank"}
 standard that combine dates, time and timezone data into a string, e.g.
 `2018-09-14T13:21:57.6627579Z`.
 
 ### Locale
 
 When defining locale, we use the combination of [language][iso-639-1]{:target="_blank"}
-and [country codes][iso-3166]{:target="_blank"}. Our payment menu UI is
-currently limited to `nb-NO`, `sv-SE`, `da-DK` `fi-FI` and `en-US`.
+and [country codes][iso-3166]{:target="_blank"}. Our payment menu is currently
+available Danish `da-DK`, English `en-US`, Estonian `et-EE`, Finnish `fi-FI`,
+French `fr-FR`, German `de-DE`, Latvian `lv-LV`, Lithuanian `lt-LT`, Norwegian
+`nb-NO`, Polish `pl-PL`, Russian `ru-RU`, Spanish `es-ES` and Swedish `sv-SE`.
 
 ### Monetary Amounts
 
@@ -503,7 +505,7 @@ For technical questions:
 [iso-3166]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 [iso-4217]: https://en.wikipedia.org/wiki/ISO_4217
 [iso-639-1]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
-[ISO-8601]: https://en.wikipedia.org/wiki/ISO_8601
+[iso-8601]: https://en.wikipedia.org/wiki/ISO_8601
 [java-tls]: https://blogs.oracle.com/java/post/jdk-8-will-use-tls-12-as-default
 [json]: https://www.json.org/
 [node-tls]: https://stackoverflow.com/a/44635449/61818

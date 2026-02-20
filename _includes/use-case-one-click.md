@@ -1,4 +1,3 @@
-
 ## Supported Payment Methods
 
 Looking to get started with One-Click or "Payer Aware Menu" to reduce

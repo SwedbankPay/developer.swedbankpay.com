@@ -1,4 +1,3 @@
-
 ## Supported Payment Methods
 
 Looking to get started with recurring services? They are currently supported
