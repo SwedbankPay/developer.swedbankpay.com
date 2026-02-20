@@ -11,7 +11,7 @@ primary mean of checking for payment updates." %}
 
 <div class="slab mb-5">
   <ul class="toc-list" role="navigation" aria-label="Article content">
-    <li><a href="#why-is-the-callback-important">Why Is The Callback Important?</a></li>
+    <li><a href="#why-is-the-callback-useful">Why Is The Callback Useful?</a></li>
     <li><a href="#technical-information">Technical Information</a></li>
     <li><a href="#callback-ip-addresses">Callback IP Addresses</a></li>
     <li><a href="#faq--change-of-ip-addresses-for-callbacks">FAQ – Change of IP Addresses for Callbacks</a></li>
