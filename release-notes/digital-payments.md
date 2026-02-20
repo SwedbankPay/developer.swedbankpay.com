@@ -7,6 +7,43 @@ menu_order: 2
 has_release_notes: true
 ---
 
+## 20 February 2026
+
+### Documentation v5.3.15
+
+A mixed bag of updates this time around. Let's dive into it!
+
+We can proudly present the [Stylebook][stylebook], which is a walkthrough of our
+visual design, interaction patterns and accessibility principles. It is intended
+for stores, partners, and developers who integrate with us and want their user
+interface to visually align with the payment UI.
+
+An update of supported languages for payment orders. Up until now, payment
+orders were available in Danish, English, Finnish, Norwegian and Swedish. We
+have expanded the range of languages to include Estonian, French, German,
+Latvian, Lithuanian, Polish, Russian and Spanish.
+
+A handful of new GET and PATCH requests and responses have been documented as
+the Payer Service went live a short time ago. As this regards tokens, we have
+grouped them together with the existing Delete Tokens section, and renamed it
+[Token Handling][token-handling].
+
+QR codes are now available for [Apple Pay][apple-pay] transactions, which makes
+it possible to convert even when the payer is on an unsupported device.
+
+The [Google Pay presentation][google-pay] was a tough read. To make it more
+reader friendly, we cleaned up some text and added accordion tables to questions
+regarding implementations.
+
+Feedback told us that the explanations of the different statuses under
+[Validate Status][validate-status] was a bit anemic, so we beefed them up.
+
+A copy to clipboard function has been added to [test data][test-data].
+
+Our new provider Krokedil is now in charge of the
+[WooCommerce module][sdk-modules], and our .NET SDK has been upgraded to
+_Supported_.
+
 ## 15 December 2025
 
 ### Documentation v5.3.13
@@ -1414,12 +1451,14 @@ more convenient for both the integration and the payer.
 [seamless-view-events-onaborted]: /checkout-v3/technical-reference/seamless-view-events#onaborted
 [seamless-view-events-card]: /old-implementations/payment-instruments-v1/card/technical-reference/seamless-view-events
 [stat-resp]: /checkout-v3/technical-reference/status-models/
+[stylebook]: /checkout-v3/technical-reference/stylebook/
 [swish]: /old-implementations/payment-instruments-v1/swish
 [swish-abort]: /old-implementations/payment-instruments-v1/swish/after-payment#abort
 [technical-reference]: /old-implementations/checkout-v2/technical-reference/
 [terminology]: /checkout-v3/get-started/terminology
 [test-data]: /checkout-v3/test-data
 [token04]: /checkout-v3/technical-reference/problems/#creditcard-payments-mit---do-not-try-again--excessive-reattempts
+[token-handling]: /checkout-v3/features/optional/token-handling/
 [token-problems]: /checkout-v3/technical-reference/problems/#token-problems
 [tos-url]: /checkout-v3/features/customize-ui/tos
 [trustly-pres]: /checkout-v3/trustly-presentation
