@@ -23,9 +23,9 @@ of checking for payment updates." %}
 
 When a change or update from the back-end system is made on a payment or
 transaction, Swedbank Pay will perform a callback to inform the payee (merchant)
-about this update. **If you have callback enabled**, providing a `callbackUrl`
-in `POST` requests is **mandatory**. Do **not** include this parameter in your
-request if you haven't implemented a callback endpoint.
+about this update. The callback is **optional**, but you need to include a
+`callbackUrl` in your `POST` request to use it. Do **not** include this
+parameter in your request if you haven't implemented a callback endpoint.
 
 {: .h2 }
 
