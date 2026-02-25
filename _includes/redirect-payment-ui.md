@@ -107,24 +107,24 @@ rect rgba(238, 112, 35, 0.05)
         Merchant ->>+ SwedbankPay: GET <paymentorder.id>
         SwedbankPay ->>- Merchant: Status: Paid
     end
-
+    
     Merchant -->>- Payer: Show Purchase complete
     deactivate Payer
-
-    opt PaymentOrder Callback (if callbackUrls is set) ①
+    
+    alt If callbackUrls is set
         SwedbankPay ->> Merchant: POST Purchase Callback
     end
-end
 
-rect rgba(81,43,43,0.1)
-    note right of Payer: Capture
-    Merchant ->>+ SwedbankPay: rel:capture
-    SwedbankPay -->>- Merchant: Capture status
-    note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Methods that support <br>Authorizations.
+    alt If purchase don't require shipping
+      note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Methods that support <br>Authorizations.
+      Merchant ->>+ SwedbankPay: rel:capture
+      SwedbankPay -->>- Merchant: Capture status
+    end
+
 end
 ```
 
-*   ① Read more about [callback][payments-callback] handling in the technical reference.
+Read more in our [technical reference][technical-reference].
 
 {: .text-right}
 [Top of page](#display-redirect)
@@ -145,4 +145,4 @@ read more about how this is done.
                          next_title="Validate Status" %}
 
 [redirect-payments-only-menu]: /assets/img/redirect-wcag.png
-[payments-callback]: /checkout-v3/features/payment-operations/callback
+[technical-reference]: /checkout-v3/technical-reference
