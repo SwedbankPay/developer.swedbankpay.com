@@ -13,13 +13,17 @@ updates:
     - dependency-name: ffi
     - dependency-name: rubocop
 
-- package-ecosystem: npm
   directory: "/"
   schedule:
     interval: daily
     time: "03:00"
     timezone: Europe/Oslo
   open-pull-requests-limit: 99
+
+  ignore:
+    - dependency-name: minimatch
+      versions:
+        - ">=10.0.0 <10.2.2"
 
 - package-ecosystem: github-actions
   directory: "/"
