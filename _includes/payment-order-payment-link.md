@@ -82,7 +82,7 @@ When clicking the payment link, the payer will be directed to a payment
 page similar to the example below, where payment information can be entered.
 
 {:.text-center}
-![screenshot of the payment UI][payment-ui]{:height="620px" width="475px"}
+![screenshot of the payment UI][payment-ui]
 
 ## Options
 
