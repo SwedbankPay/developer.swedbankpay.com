@@ -82,7 +82,7 @@ When clicking the payment link, the payer will be directed to a payment
 page similar to the example below, where payment information can be entered.
 
 {:.text-center}
-![screenshot of the payment UI][payment-ui]
+![screenshot of the payment UI][redirect-payments-only-menu]
 
 ## Options
 
@@ -218,4 +218,4 @@ sequenceDiagram
 [checkout-v3]: /checkout-v3/get-started/payment-request/
 [checkout-v31]: /checkout-v3/get-started/payment-request/#payment-order-v31
 [technical-reference-callback]: /checkout-v3/features/payment-operations/callback
-[payment-ui]: /assets/img/redirect-wcag.png
+[redirect-payments-only-menu]: /assets/img/redirect-wcag.png
