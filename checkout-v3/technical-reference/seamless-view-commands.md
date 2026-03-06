@@ -6,4 +6,4 @@ description: |
 menu_order: 2500
 ---
 
-{% include checkout-v3-commands.md %}
+{% include checkout-v3-functions.md %}

@@ -10,7 +10,7 @@
     {% assign product="Seamless View" %}
 {% endif %}
 
-## {{ product }} Commands
+## {{ product }} Functions
 
 During operation in the {{ product }}, you have several options on interacting
 with the client script, as described below.
@@ -18,7 +18,7 @@ with the client script, as described below.
 ## Initialization / Configuration
 
 After placing the client script onto your website, you can start to use the
-commands to load in the payment UI, but before you can open up the UI you need
+functions to load in the payment UI, but before you can open up the UI you need
 to configure it.
 This involves giving the payment UI a place to load in the iFrame.
 Provide the location where we can embed our iFrame INSIDE OF, by adding the
@@ -102,8 +102,8 @@ payex.hostedView.checkout({
     </summary>
     <div class="desc">
       <div class="indent-1">
-        Specify the integration used for the UI. Values include "HostedView",
-        "Redirect" and "App".
+        Specify the integration used for the UI. Values include `HostedView`,
+        `Redirect` and `App`.
       </div>
     </div>
   </details>
@@ -115,7 +115,7 @@ special agreement with us).
 
 ## Open
 
-This command is used to open up the Payment UI inside of the specified
+This function is used to open up the Payment UI inside of the specified
 container.
 
 {:.code-view-header}
@@ -125,7 +125,7 @@ container.
 payex.hostedView.checkout().open();
 ```
 
-Take care not to run this command multiple times, as this will open up multiple
+Take care not to run this function multiple times, as this will open up multiple
 payment windows at the same time.
 
 ## Update
@@ -233,9 +233,9 @@ payex.hostedView.checkout().cancel();
 
 Allows you to resume the payment flow in cases where you have subscribed to the
 `onPaymentButtonPressed` function. If you do, you HAVE to send the `resume`
-command to be able to finish the payment flow.
+function to be able to finish the payment flow.
 
-If you do not run the command with valid input before `2 minutes` has passed,
+If you do not run the function with valid input before `2 minutes` has passed,
 `resume` will be called automatically with the `confirmation` value of `false`.
 
 {:.code-view-header}
