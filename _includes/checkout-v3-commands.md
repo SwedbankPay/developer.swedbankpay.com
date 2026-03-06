@@ -188,6 +188,10 @@ payex.hostedView.checkout().update({
   </details>
 </div>
 
+If you want more details about how to style the Payment UI, check out our
+section on the [Custom Styling][custom-styling] (only for merchants with a
+special agreement with us).
+
 ## Refresh
 
 Used to refresh the UI in case you have updated the Payment, like
