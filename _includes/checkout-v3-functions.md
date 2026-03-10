@@ -19,9 +19,8 @@ with the client script, as described below.
 
 After placing the client script onto your website, you can start to use the
 functions to load in the payment UI, but before you can open up the UI you need
-to configure it.
-This involves giving the payment UI a place to load in the iFrame.
-Provide the location where we can embed our iFrame INSIDE OF, by adding the
+to configure it. This involves giving the payment UI a place to load in the
+iFrame. Provide the location we can embed our iFrame _inside of_ by adding the
 ID as the "container" in the object. See the example below.
 
 {:.code-view-header}
@@ -232,7 +231,7 @@ payex.hostedView.checkout().cancel();
 ## Resume
 
 Allows you to resume the payment flow in cases where you have subscribed to the
-`onPaymentButtonPressed` function. If you do, you HAVE to send the `resume`
+`onPaymentButtonPressed` function. If you do, you _have_ to send the `resume`
 function to be able to finish the payment flow.
 
 If you do not run the function with valid input before `2 minutes` has passed,
