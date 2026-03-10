@@ -11,13 +11,13 @@
       </a>
     </li>
     <li>
-      <a href="#how-seamless-view-looks">
-        How Seamless View Looks
+      <a href="#seamless-view-events">
+        Seamless View Events
       </a>
     </li>
     <li>
-      <a href="#seamless-view-events">
-        Seamless View Events
+      <a href="#how-seamless-view-looks">
+        How Seamless View Looks
       </a>
     </li>
     <li>
@@ -87,21 +87,48 @@ Among the operations in the POST `paymentOrder` response, you will find the
 
 {% include alert-nested-iframe-unsupported.md %}
 
-To display the UI, we need to take the `href` from the `POST` request and add
-it to a `script` element on the webpage. Once the script has loaded in, we can
-then use the `payex.hostedView.checkout().open()` function on the clientscript
-to show the menu.
+Section Keywords:
+
+*   Container - The HTML element where the payment UI iframe is rendered.
+*   Client script - The script returned from the payment creation `POST` response
+which loads the payment UI on your page.
+*   Events - Optional handlers which allow you to respond to events from the
+payment UI.
+*   Functions - Client-side actions used to control the payment UI, such as
+opening, refreshing, or updating the view.
+
+As advised by [WCAG v2.2][wcag]{:target="_blank"} section **1.3.1** and
+**2.4.3**, we recommend that you mark the container where you host you iframe
+as either `<main>` or `role=<main>`.
+
+{:.code-view-header}
+**HTML**
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Swedbank Pay example container!</title>
+    </head>
+    <body>
+        <main id="payex-checkout"></main>
+        <!-- Here you can specify your own javascript file -->
+        <script src="<Your-JavaScript-File-Here>"></script>
+    </body>
+</html>
+```
+
+To display the UI, use the `href` from the `POST` request and add it to a
+`script` element on the webpage. This URL points to the client script that loads
+the payment UI.
+
+When the script has loaded, you can call `payex.hostedView.checkout().open()` to
+render the payment menu.
 
 There are a few parameters we can set to further customize the menu itself,
 which are shown in the example below. This includes the place we want to
 open up the menu (container), the language we want the menu to
 display (culture), and any events we want to override.
-
-To help customers using assistive technologies, we recommend that you mark the
-DOM element where you host our seamless view window as either `<main>` or
-`role="main"`. With this implemented, users can easily skip to the Payment UI if
-their tools allows for it. This is advised by [WCAG v2.2][wcag]{:target="_blank"}
-section **1.3.1** and **2.4.3**.
 
 {:.code-view-header}
 **JavaScript**
@@ -133,22 +160,97 @@ script.onload = function() {
 document.body.insertAdjacentElement("afterbegin", script);
 ```
 
-{:.code-view-header}
-**HTML**
+{: .h3 }
 
-```html
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Swedbank Pay Checkout is Awesome!</title>
-    </head>
-    <body>
-        <div id="payex-checkout"></div>
-        <!-- Here you can specify your own javascript file -->
-        <script src="<Your-JavaScript-File-Here>"></script>
-    </body>
-</html>
+#### Configuration of the Script
+
+After placing the client script onto your website and providing it with a
+container, you can start using the functions to load the payment UI, but before
+you can _open_ the UI, you need to configure it.
+
+{:.code-view-header}
+**Configuring the UI**
+
+```js
+payex.hostedView.checkout({
+    container: "string",
+    culture: "en-US",
+    style: { "object" },
+    integration: "HostedView"
+});
 ```
+
+<div class="api-compact" aria-label="Response">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f container, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+      <span class="req">{% icon check %}</span>
+    </summary>
+    <div class="desc">
+      <div class="indent-1">
+        The <code>id</code> of the <code>DOM</code> element you want to embed
+        the Payment UI inside.
+      </div>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f culture, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-1">
+        Locale identifier string for the language the Payment UI should launch
+        with. Examples include <code>sv-SE</code>, <code>nb-NO</code> and
+        <code>en-US</code>. if the input is invalid, the culture will default to
+        <code>en-US</code>. If no culture is set, it will default to whatever is
+        set in the payment order.
+      </div>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f style, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>object</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-1">
+        Key/Value object with the details of the colors and borders you want for
+        the various components of the payment button.
+      </div>
+    </div>
+  </details>
+
+  <details class="api-item" data-level="0">
+    <summary>
+      <span class="field">{% f integration, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+      <span class="type"><code>string</code></span>
+    </summary>
+    <div class="desc">
+      <div class="indent-1">
+        Specify the integration used for the UI. Values include
+        <code>HostedView</code>, <code>Redirect</code> and <code>App</code>.
+      </div>
+    </div>
+  </details>
+</div>
+
+{: .text-right}
+[Top of page](#display-seamless-view)
+
+{: .h2 }
+
+### Seamless View Events & Functions
+
+{% include card-list.html card_list=page.card_list col_class="col-lg-4" %}
 
 {: .text-right}
 [Top of page](#display-seamless-view)
@@ -166,31 +268,6 @@ their preferred payment method and pay.
 
 Once the payer completes their purchase, you can then perform a GET towards the
 `paymentOrders` resource to check the purchase state.
-
-{: .text-right}
-[Top of page](#display-seamless-view)
-
-{: .h2 }
-
-### Seamless View Events
-
-When you integrate using the Seamless View implementation, you can override one
-or more of our Seamless View events. This ranges from changing what happens
-when the payer completes or cancels their payment, to when we resize the
-payment menu itself. While optional, this gives you more flexibility and
-control over the payment flow, during and after the payer completes and/or
-cancels their payment attempt.
-
-Events like `onPaid` allows you avoid redirecting to the `completeUrl` once
-the payer completes or cancels the payment. This allows you to check the
-payment, or just close the payment window and display a receipt on the same
-page. Other events like `onPaymentAttemptFailed` can allow you to keep tabs on
-the amount of failed attempts, for example if you want to show a warning or
-a message if the payer is unable to complete a payment after several tries.
-
-For the full list over the different events you can override, check out the
-[Seamless View Events][seamless-view-events] page, also available in the
-feature section.
 
 {: .text-right}
 [Top of page](#display-seamless-view)
