@@ -3,7 +3,7 @@ title: Token Handling
 permalink: /:path/token-handling/
 redirect_from: /checkout-v3/features/optional/delete-token/
 description: All things token related.
-menu_order: 2700
+menu_order: 2800
 ---
 
 {% include payer-tokens.md %}
