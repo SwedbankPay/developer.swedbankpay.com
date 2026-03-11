@@ -10,14 +10,6 @@ tab_list:
   content_src: redirect-payment-ui.md
 - title: Seamless View
   content_src: seamless-view-payment-ui.md
-card_list:
-- title: Seamless View Events
-  description: |
-    Notifications you receive from Swedbank Pay about events during the payment flow.
-  url:  /checkout-v3/technical-reference/seamless-view-events{:target="_blank"}
-- title: Seamless View Functions
-  description: Actions you can use to control the payment UI.
-  url: /checkout-v3/technical-reference/seamless-view-functions{:target="_blank"}
 ---
 
 {: .h2 }
