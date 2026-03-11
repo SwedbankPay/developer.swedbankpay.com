@@ -19,7 +19,7 @@ card_list:
       </a>
     </li>
     <li>
-      <a href="#seamless-view-events">
+      <a href="#seamless-view-events-and-functions">
         Seamless View Events
       </a>
     </li>
@@ -256,7 +256,7 @@ payex.hostedView.checkout({
 
 {: .h2 }
 
-### Seamless View Events & Functions
+### Seamless View Events and Functions
 
 {% include card-list.html card_list=page.card_list col_class="col-lg-4" %}
 
