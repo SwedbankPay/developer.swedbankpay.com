@@ -1,4 +1,12 @@
-
+---
+card_list:
+- title: Seamless View Events
+  description: Placeholder text.
+  url:  /checkout-v3/technical-reference/seamless-view-events
+- title: Seamless View Functions
+  description: Placeholder text.
+  url: /checkout-v3/technical-reference/seamless-view-functions
+---
 {: .h2 .pt-3 }
 
 ### Display Seamless View
