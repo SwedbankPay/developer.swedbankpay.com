@@ -1,12 +1,3 @@
----
-card_list:
-- title: Seamless View Events
-  description: Placeholder text.
-  url:  /checkout-v3/technical-reference/seamless-view-events
-- title: Seamless View Functions
-  description: Placeholder text.
-  url: /checkout-v3/technical-reference/seamless-view-functions
----
 {: .h2 .pt-3 }
 
 ### Display Seamless View
@@ -192,6 +183,7 @@ payex.hostedView.checkout({
   <div class="header">
     <div>Field</div>
     <div>Type</div>
+    <div>Required</div>
   </div>
 
   <details class="api-item" data-level="0">
@@ -216,9 +208,8 @@ payex.hostedView.checkout({
     <div class="desc">
       <div class="indent-1">
         Locale identifier string for the language the Payment UI should launch
-        with. Examples include <code>sv-SE</code>, <code>nb-NO</code> and
-        <code>en-US</code>. if the input is invalid, the culture will default to
-        <code>en-US</code>. If no culture is set, it will default to whatever is
+        with: <code>da-DK</code>, <code>de-DE</code>, <code>et-EE</code>, <code>en-US</code>, <code>es-ES</code>, <code>fi-FI</code>, <code>fr-FR</code>, <code>lt-LT</code>, <code>lv-LV</code>, <code>nb-NO</code>, <code>pl-PL</code>, <code>ru-RU</code> or sv-SE</code>. if the input is invalid, the culture will default to
+        <code>en-US</code>. If no culture is set, it will default to the language
         set in the payment order.
       </div>
     </div>
@@ -232,7 +223,8 @@ payex.hostedView.checkout({
     <div class="desc">
       <div class="indent-1">
         Key/Value object with the details of the colors and borders you want for
-        the various components of the payment button.
+        the various components of the payment button. Read more about your options
+        for <a href="https://developer.swedbankpay.com/checkout-v3/features/customize-ui/">customizing your UI</a>.
       </div>
     </div>
   </details>
@@ -244,8 +236,7 @@ payex.hostedView.checkout({
     </summary>
     <div class="desc">
       <div class="indent-1">
-        Specify the integration used for the UI. Values include
-        <code>HostedView</code>, <code>Redirect</code> and <code>App</code>.
+        Specify the integration used for the UI: <code>HostedView</code> (Seamless View), <code>Redirect</code> and <code>App</code>.
       </div>
     </div>
   </details>
@@ -258,7 +249,18 @@ payex.hostedView.checkout({
 
 ### Seamless View Events and Functions
 
-{% include card-list.html card_list=page.card_list col_class="col-lg-4" %}
+When you integrate using the Seamless View implementation, you can subscribe to
+events, which are notifications from our system about actions that have
+happened. There are also functions, which are command messages you can send to
+us, either to trigger actions or override the events.
+
+These range from changing what happens when the payer completes or cancels their
+payment, to when we resize the payment menu itself. While optional, this gives
+you more flexibility and control over the payment flow, during and after the
+payer completes and/or cancels their payment attempt.
+
+Check out the sections for Seamless View [Events][seamless-view-events] or
+[Functions][seamless-view-functions] for complete lists of both.
 
 {: .text-right}
 [Top of page](#display-seamless-view)
@@ -528,7 +530,9 @@ read more about how this is done.
                          next_href="/checkout-v3/get-started/validate-status"
                          next_title="Validate Status" %}
 
+[cyu]: /checkout-v3/features/customize-ui/
 [seamless-view-events]: /checkout-v3/technical-reference/seamless-view-events
+[seamless-view-functions]: /checkout-v3/technical-reference/seamless-view-functions
 [seamless-enterprise-menu]: /assets/img/wcag-seamless.png
 [payments-callback]: /checkout-v3/features/payment-operations/callback
 [payments-seamless-view-events]: /checkout-v3/technical-reference/seamless-view-events
