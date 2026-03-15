@@ -115,7 +115,8 @@ our internal acquirer (loopback).
 
 ### Misc Cards
 
-A selection of cards not connected to Network Tokenization or 3D-Secure.
+A selection of cards not connected to Network Tokenization or 3D-Secure. Note
+that American Express har 4 digit CVCs, all other have 3 digits.
 
 {:.table .table-striped .test-data .enable-code-copy}
 | Card type            | Card number        | Expiry | CVC  | Type of test data |
@@ -222,4 +223,3 @@ the following values:
 [otp-challenge-form]: /assets/img/new-otp-challenge-form.png
 [playground]: https://playground.swedbankpay.com
 [testsuite]: https://www.postman.com/swedbankpay/swedbank-pay-online/collection/000bv9t/testsuite
-
