@@ -1,5 +1,3 @@
-{: .h2 .pt-3 }
-
 ### Display Seamless View
 
 <div class="slab mb-5">
@@ -11,7 +9,7 @@
     </li>
     <li>
       <a href="#seamless-view-events-and-functions">
-        Seamless View Events
+        Seamless View Events and Functions
       </a>
     </li>
     <li>
@@ -26,7 +24,7 @@
     </li>
     <li>
       <a href="#change-from-seamless-view-to-redirect-ui">
-        Change From Seamless View To Redirect UI
+        Change from Seamless View to Redirect UI
       </a>
       <ul role="list">
         <li>
@@ -48,7 +46,7 @@
     </li>
     <li>
       <a href="#monitoring-the-script-url">
-        Monitoring The Script URL
+        Monitoring the Script URL
       </a>
     </li>
     <li>
@@ -107,7 +105,7 @@ as either `<main>` or `role=<main>`.
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Swedbank Pay example container!</title>
+        <title>Swedbank Pay Example Container</title>
     </head>
     <body>
         <main id="payex-checkout"></main>
@@ -117,9 +115,9 @@ as either `<main>` or `role=<main>`.
 </html>
 ```
 
-To display the UI, use the `href` from the `POST` request and add it to a
-`script` element on the webpage. This URL points to the client script that loads
-the payment UI.
+To display the UI, use the `href` from the previously created
+[`POST` request][payment-request] and add it to a `script` element on the
+webpage. This URL points to the client script that loads the payment UI.
 
 When the script has loaded, you can call `payex.hostedView.checkout().open()` to
 render the payment menu.
@@ -208,7 +206,7 @@ payex.hostedView.checkout({
     <div class="desc">
       <div class="indent-1">
         Locale identifier string for the language the Payment UI should launch
-        with: <code>da-DK</code>, <code>de-DE</code>, <code>et-EE</code>, <code>en-US</code>, <code>es-ES</code>, <code>fi-FI</code>, <code>fr-FR</code>, <code>lt-LT</code>, <code>lv-LV</code>, <code>nb-NO</code>, <code>pl-PL</code>, <code>ru-RU</code> or sv-SE</code>. if the input is invalid, the culture will default to
+        with: <code>da-DK</code>, <code>de-DE</code>, <code>et-EE</code>, <code>en-US</code>, <code>es-ES</code>, <code>fi-FI</code>, <code>fr-FR</code>, <code>lt-LT</code>, <code>lv-LV</code>, <code>nb-NO</code>, <code>pl-PL</code>, <code>ru-RU</code> or <code>sv-SE</code>. if the input is invalid, the culture will default to
         <code>en-US</code>. If no culture is set, it will default to the language
         set in the payment order.
       </div>
@@ -535,6 +533,7 @@ read more about how this is done.
 [seamless-view-functions]: /checkout-v3/technical-reference/seamless-view-functions
 [seamless-enterprise-menu]: /assets/img/wcag-seamless.png
 [payments-callback]: /checkout-v3/features/payment-operations/callback
+[payment-request]: /checkout-v3/get-started/payment-request/
 [payments-seamless-view-events]: /checkout-v3/technical-reference/seamless-view-events
 [custom-logo]: /checkout-v3/features/customize-ui/custom-logo/
 [post-response]: /checkout-v3/get-started/payment-request/#payment-order-response-v31
