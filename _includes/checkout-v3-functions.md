@@ -29,10 +29,9 @@ ID as the "container" in the object. See the example below.
 ```js
 payex.hostedView.checkout({
     container: "string",
-    culture: "string",
+    culture: "en-US",
     style: { "object" },
-    theme: "string",
-    integration: "string"
+    integration: "HostedView"
 });
 ```
 
@@ -40,17 +39,19 @@ payex.hostedView.checkout({
   <div class="header">
     <div>Field</div>
     <div>Type</div>
+    <div>Required</div>
   </div>
 
   <details class="api-item" data-level="0">
     <summary>
       <span class="field">{% f container, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
       <span class="type"><code>string</code></span>
+      <span class="req">{% icon check %}</span>
     </summary>
     <div class="desc">
       <div class="indent-1">
-        Required: The ID of the DOM element you want to embed the Payment UI
-        inside of.
+        The <code>id</code> of the <code>DOM</code> element you want to embed
+        the Payment UI inside.
       </div>
     </div>
   </details>
@@ -63,8 +64,9 @@ payex.hostedView.checkout({
     <div class="desc">
       <div class="indent-1">
         Locale identifier string for the language the Payment UI should launch
-        with.
-        Examples includes: sv-SE, nb-NO and en-US
+        with: <code>da-DK</code>, <code>de-DE</code>, <code>et-EE</code>, <code>en-US</code>, <code>es-ES</code>, <code>fi-FI</code>, <code>fr-FR</code>, <code>lt-LT</code>, <code>lv-LV</code>, <code>nb-NO</code>, <code>pl-PL</code>, <code>ru-RU</code> or <code>sv-SE</code>. if the input is invalid, the culture will default to
+        <code>en-US</code>. If no culture is set, it will default to the language
+        set in the payment order.
       </div>
     </div>
   </details>
@@ -77,19 +79,8 @@ payex.hostedView.checkout({
     <div class="desc">
       <div class="indent-1">
         Key/Value object with the details of the colors and borders you want for
-        the various components of the payment button.
-      </div>
-    </div>
-  </details>
-
-  <details class="api-item" data-level="0">
-    <summary>
-      <span class="field">{% f theme, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-      <span class="type"><code>string</code></span>
-    </summary>
-    <div class="desc">
-      <div class="indent-1">
-        Used to define which style set the Payment UI should use.
+        the various components of the payment button. Read more about your options
+        for <a href="https://developer.swedbankpay.com/checkout-v3/features/customize-ui/">customizing your UI</a>.
       </div>
     </div>
   </details>
@@ -101,8 +92,7 @@ payex.hostedView.checkout({
     </summary>
     <div class="desc">
       <div class="indent-1">
-        Specify the integration used for the UI. Values include `HostedView`,
-        `Redirect` and `App`.
+        Specify the integration used for the UI: <code>HostedView</code> (Seamless View), <code>Redirect</code> and <code>App</code>.
       </div>
     </div>
   </details>
@@ -137,8 +127,7 @@ Allows you to update the language and/or the style of the Payment UI.
 ```javascript
 payex.hostedView.checkout().update({
     culture: "string",
-    style: { "object" },
-    theme: "string"
+    style: { "object" }
 });
 ```
 
@@ -146,6 +135,7 @@ payex.hostedView.checkout().update({
   <div class="header">
     <div>Field</div>
     <div>Type</div>
+    <div>Required</div>
   </div>
 
   <details class="api-item" data-level="0">
@@ -170,18 +160,6 @@ payex.hostedView.checkout().update({
       <div class="indent-1">
         Key/Value object with the details of the colors and borders you want for
         the various components of the payment button.
-      </div>
-    </div>
-  </details>
-
-  <details class="api-item" data-level="0">
-    <summary>
-      <span class="field">{% f theme, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-      <span class="type"><code>string</code></span>
-    </summary>
-    <div class="desc">
-      <div class="indent-1">
-        Deprecated: Used to define which style set the Payment UI should use.
       </div>
     </div>
   </details>
