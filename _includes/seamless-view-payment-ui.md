@@ -1,3 +1,6 @@
+
+{: .h2 .pt-3 }
+
 ### Display Seamless View
 
 <div class="slab mb-5">
