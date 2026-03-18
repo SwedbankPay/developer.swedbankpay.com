@@ -65,11 +65,11 @@ When your customer has initiated a purchase, you need to create a payment order.
 Start by performing a `POST` request towards the `paymentorder` resource with
 payer information and a `completeUrl`.
 
-`POST`, `PATCH`, `GET` and `PUT` requests use this header for v3.1:
+`POST`, `PATCH`, and `PUT` requests use this header for v3.1:
 
 `Content-Type: application/json;version=3.1`
 
-`GET` requests can also use this header:
+`GET` requests should use this header:
 
 `Accept: application/json;version=3.1`
 

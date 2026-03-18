@@ -62,7 +62,6 @@ we provide useful integration recommendations.
 ### Create Payment Order v3.0
 
 When your customer has initiated a purchase, you need to create a payment order.
-
 Start by performing a `POST` request towards the `paymentorder` resource
 with payer information and a `completeUrl`.
 
@@ -70,7 +69,7 @@ with payer information and a `completeUrl`.
 
 `Content-Type: application/json;version=3.0`
 
-`GET` requests use this header:
+`GET` requests should use this header:
 
 `Accept: application/json;version=3.0`
 
