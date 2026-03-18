@@ -1,4 +1,3 @@
-
 {: .h2 .pt-3 }
 
 ### Display Seamless View
@@ -112,7 +111,6 @@ as either `<main>` or `role=<main>`.
     </head>
     <body>
         <main id="payex-checkout"></main>
-        <!-- Here you can specify your own javascript file -->
         <script src="<Your-JavaScript-File-Here>"></script>
     </body>
 </html>
@@ -131,12 +129,9 @@ open up the menu (container), the language we want the menu to
 display (culture), and any events we want to override.
 
 {:.code-view-header}
-**JavaScript**
+**Your-JavaScript-File-Here**
 
 ```js
-// For this example, we'll be simply adding in the view-checkout link right in
-// the script. In your own solution, it's recommended that your backend
-// generates the payment and passes the operation to your frontend.
 const url = new URL("https://ecom.externalintegration.payex.com/checkout/client/1c168a5f971f0cacd00124d1b9ee13e5ecf6e3e74e59cb510035973b38c2c3b3?culture=sv-SE&_tc_tid=123a825592f2002942e5f13eee012b11");
 
 const script = document.createElement("script");
@@ -144,18 +139,7 @@ script.src = url.href;
 script.type = "text/javascript";
 script.id = "payex-checkout-script";
 script.onload = function() {
-    payex.hostedView.checkout({
-        // The container is the ID of the HTML element you want to place
-        // our solution inside of.
-        container: {
-            checkout: "payex-checkout"
-        },
-        culture: "sv-SE",
-        // This is where you can add your own seamless events.
-        // See the section "Events" down below for more information.
-        onError: Function = (data) => console.error("onError", data),
-        onEventNotification: Function = (data) => console.log("onEventNotification", data)
-    }).open();
+    payex.hostedView.checkout({container: {checkout: "payex-checkout"}}).open();
 }
 document.body.insertAdjacentElement("afterbegin", script);
 ```
@@ -173,7 +157,7 @@ you can _open_ the UI, you need to configure it.
 
 ```js
 payex.hostedView.checkout({
-    container: "string",
+    container: { "checkout": "string" },
     culture: "en-US",
     style: { "object" },
     integration: "HostedView"
@@ -190,14 +174,24 @@ payex.hostedView.checkout({
   <details class="api-item" data-level="0">
     <summary>
       <span class="field">{% f container, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-      <span class="type"><code>string</code></span>
+      <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
-    <div class="desc">
-      <div class="indent-1">
-        The <code>id</code> of the <code>DOM</code> element you want to embed
-        the Payment UI inside.
-      </div>
+    <div class="desc"><div class="indent-0">The container object</div></div>
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f checkout %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            The <code>id</code> of the <code>DOM</code> element you want to
+            embed the Payment UI inside.
+          </div>
+        </div>
+      </details>
     </div>
   </details>
 
@@ -502,6 +496,7 @@ not listed here.
 For further details, refer to section 4.6.3 and 11.6.1 in this [PCI-DSS document][pci-url].
 
 {:.table .table-striped}
+
 | URL                       | Description                                                                                                  |
 | :------------------------ | :----------------------------------------------------------------------------------------------------------- |
 | https://*.cdn-apple.com   | URL needed for Apple Pay.                                                                                    |
@@ -531,7 +526,6 @@ read more about how this is done.
                          next_href="/checkout-v3/get-started/validate-status"
                          next_title="Validate Status" %}
 
-[cyu]: /checkout-v3/features/customize-ui/
 [seamless-view-events]: /checkout-v3/technical-reference/seamless-view-events
 [seamless-view-functions]: /checkout-v3/technical-reference/seamless-view-functions
 [seamless-enterprise-menu]: /assets/img/wcag-seamless.png

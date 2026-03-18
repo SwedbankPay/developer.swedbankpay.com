@@ -28,7 +28,7 @@ ID as the "container" in the object. See the example below.
 
 ```js
 payex.hostedView.checkout({
-    container: "string",
+    container: { "checkout": "string" },
     culture: "en-US",
     style: { "object" },
     integration: "HostedView"
@@ -45,14 +45,24 @@ payex.hostedView.checkout({
   <details class="api-item" data-level="0">
     <summary>
       <span class="field">{% f container, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-      <span class="type"><code>string</code></span>
+      <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
-    <div class="desc">
-      <div class="indent-1">
-        The <code>id</code> of the <code>DOM</code> element you want to embed
-        the Payment UI inside.
-      </div>
+    <div class="desc"><div class="indent-0">The container object</div></div>
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f checkout %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            The <code>id</code> of the <code>DOM</code> element you want to
+            embed the Payment UI inside.
+          </div>
+        </div>
+      </details>
     </div>
   </details>
 
