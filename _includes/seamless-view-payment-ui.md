@@ -158,7 +158,7 @@ you can _open_ the UI, you need to configure it.
 
 ```js
 payex.hostedView.checkout({
-    container: "string",
+    container: { "checkout": "string" },
     culture: "en-US",
     style: { "object" },
     integration: "HostedView"
@@ -175,14 +175,24 @@ payex.hostedView.checkout({
   <details class="api-item" data-level="0">
     <summary>
       <span class="field">{% f container, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-      <span class="type"><code>string</code></span>
+      <span class="type"><code>object</code></span>
       <span class="req">{% icon check %}</span>
     </summary>
-    <div class="desc">
-      <div class="indent-1">
-        The <code>id</code> of the <code>DOM</code> element you want to embed
-        the Payment UI inside.
-      </div>
+    <div class="desc"><div class="indent-0">The container object</div></div>
+    <div class="api-children">
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f checkout %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc">
+          <div class="indent-1">
+            The <code>id</code> of the <code>DOM</code> element you want to
+            embed the Payment UI inside.
+          </div>
+        </div>
+      </details>
     </div>
   </details>
 
@@ -470,8 +480,8 @@ To ensure compliance, we recommend implementing Content Security
 Policy rules to monitor and authorize scripts.
 
 Merchants must whitelist the following domains to restrict browser content
-retrieval to approved sources. While https://*.payex.com and
-https://*.swedbankpay.com cover most payment methods, digital wallets such as
+retrieval to approved sources. While https://_.payex.com and
+https://_.swedbankpay.com cover most payment methods, digital wallets such as
 Apple Pay, Click to Pay, and Google Pay are delivered via Payair. Alongside the
 Payair URL, these wallets may also generate URLs from Apple, Google, MasterCard,
 and Visa. See the table below for more information.
@@ -487,6 +497,7 @@ not listed here.
 For further details, refer to section 4.6.3 and 11.6.1 in this [PCI-DSS document][pci-url].
 
 {:.table .table-striped}
+
 | URL                       | Description                                                                                                  |
 | :------------------------ | :----------------------------------------------------------------------------------------------------------- |
 | https://*.cdn-apple.com   | URL needed for Apple Pay.                                                                                    |
@@ -516,7 +527,6 @@ read more about how this is done.
                          next_href="/checkout-v3/get-started/validate-status"
                          next_title="Validate Status" %}
 
-[cyu]: /checkout-v3/features/customize-ui/
 [seamless-view-events]: /checkout-v3/technical-reference/seamless-view-events
 [seamless-view-functions]: /checkout-v3/technical-reference/seamless-view-functions
 [seamless-enterprise-menu]: /assets/img/wcag-seamless.png
