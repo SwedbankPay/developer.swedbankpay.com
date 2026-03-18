@@ -1,4 +1,3 @@
-
 {: .h2 .pt-3 }
 
 ### Display Seamless View
@@ -480,8 +479,8 @@ To ensure compliance, we recommend implementing Content Security
 Policy rules to monitor and authorize scripts.
 
 Merchants must whitelist the following domains to restrict browser content
-retrieval to approved sources. While https://_.payex.com and
-https://_.swedbankpay.com cover most payment methods, digital wallets such as
+retrieval to approved sources. While https://*.payex.com and
+https://*.swedbankpay.com cover most payment methods, digital wallets such as
 Apple Pay, Click to Pay, and Google Pay are delivered via Payair. Alongside the
 Payair URL, these wallets may also generate URLs from Apple, Google, MasterCard,
 and Visa. See the table below for more information.
