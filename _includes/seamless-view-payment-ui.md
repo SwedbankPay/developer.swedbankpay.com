@@ -112,7 +112,6 @@ as either `<main>` or `role=<main>`.
     </head>
     <body>
         <main id="payex-checkout"></main>
-        <!-- Here you can specify your own javascript file -->
         <script src="<Your-JavaScript-File-Here>"></script>
     </body>
 </html>
@@ -131,12 +130,9 @@ open up the menu (container), the language we want the menu to
 display (culture), and any events we want to override.
 
 {:.code-view-header}
-**JavaScript**
+**Your-JavaScript-File-Here**
 
 ```js
-// For this example, we'll be simply adding in the view-checkout link right in
-// the script. In your own solution, it's recommended that your backend
-// generates the payment and passes the operation to your frontend.
 const url = new URL("https://ecom.externalintegration.payex.com/checkout/client/1c168a5f971f0cacd00124d1b9ee13e5ecf6e3e74e59cb510035973b38c2c3b3?culture=sv-SE&_tc_tid=123a825592f2002942e5f13eee012b11");
 
 const script = document.createElement("script");
@@ -144,18 +140,7 @@ script.src = url.href;
 script.type = "text/javascript";
 script.id = "payex-checkout-script";
 script.onload = function() {
-    payex.hostedView.checkout({
-        // The container is the ID of the HTML element you want to place
-        // our solution inside of.
-        container: {
-            checkout: "payex-checkout"
-        },
-        culture: "sv-SE",
-        // This is where you can add your own seamless events.
-        // See the section "Events" down below for more information.
-        onError: Function = (data) => console.error("onError", data),
-        onEventNotification: Function = (data) => console.log("onEventNotification", data)
-    }).open();
+    payex.hostedView.checkout({container: {checkout: "payex-checkout"}}).open();
 }
 document.body.insertAdjacentElement("afterbegin", script);
 ```
