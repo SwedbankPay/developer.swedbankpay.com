@@ -45,7 +45,7 @@ To test a checked-in user in the Playground, please use the following test data:
 | :-------------- | :------------ | :--------------------------------------------------------------- |
 | MSISDN | `+4522222222` | The mobile phone number of the payer. Format Denmark: +45 22222222 |
 
-## Credit Card Test Data
+## Card Test Data
 
 With regards to card payments, our external integration test environment is
 connected to our POS system instead of a fake service. It is set up with an
