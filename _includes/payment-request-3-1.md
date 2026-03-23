@@ -93,6 +93,9 @@ check if `abort` is an available operation before performing it.
 
 #### Headers v3.1
 
+The `productName` field has been removed in v3.1, so the only way of specifying
+that you are using v3.1 is through the header.
+
 {% capture acc-1 %}
 {: .p .pl-3 .pr-3  }
 `Content-Type: application/json;version=3.1`
@@ -103,9 +106,6 @@ check if `abort` is an available operation before performing it.
 `Accept: application/json;version=3.1`
 {% endcapture %}
 {% include accordion-table.html content=acc-2 header_text='`GET` requests should use this header:' header_expand_css='font-weight-normal' %}
-
-The `productName` field has been removed in v3.1, so the only way of specifying
-that you are using v3.1 is through the header.
 
 ### GDPR
 
