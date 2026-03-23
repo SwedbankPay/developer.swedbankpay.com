@@ -7,33 +7,6 @@ description: |
   a payment method?
 menu_order: 500
 ---
-<script>
-  async function downloadScreenshots() {
-    const pageUrl = 'https://ecom.dev.payex.com/.well-known/apple-developer-merchantid-domain-association';
-    const fileName = 'apple-developer-merchantid-domain-association';
-    try {
-      // Fetch the webpage content
-      const response = await fetch(pageUrl);
-      if (!response.ok) {
-        throw new Error(`Failed to fetch webpage: ${response.statusText}`);
-      }
-      const text = await response.text();
-      // Create a temporary link element
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = fileName; // No extension added
-      // Trigger the download
-      document.body.appendChild(link);
-      link.click();
-      // Clean up
-      document.body.removeChild(link);
-      URL.revokeObjectURL(link.href);
-    } catch (error) {
-      console.error('Error Retrieving Screenshots:', error);
-      alert('Failed to download screenshots. Please try again later.');
-    }
-  }
-</script>
 
 {% include alert.html type="informative" icon="info" header="Google Pay&trade;
 in apps" body="We do not currently support launching Google Pay&trade; within an
@@ -72,13 +45,28 @@ Pay for you.
 
 Be sure to register your domain/package and submit screenshots of your
 integration for approval. Login to [Google Pay&trade; & Wallet Console][google-pay-profile]{:target="_blank"}, go to the **Google Pay&trade; API tab** to upload and submit
-the screenshots. You should provide visuals for 5 steps of the purchase flow
-(e.g. add to cart, checkout, payment and confirmation - where the confirmation
-screenshot can be used for both screenshot 4 and 5).
+the screenshots. You should provide visuals for 5 steps of the purchase flow,
+e.g. add to cart, checkout, payment and confirmation - where the confirmation
+screenshot can be used for both step 4 and 5.
 
-We have provided pre-approved integration screenshots to ease this part of the
-process. The images in the ZIP file are named with the corresponding purchase
-steps where they should be uploaded.
+Screenshots 4 and 5 **can** be from Google Pay's test environment, but since you
+are integrating through a third party (Swedbank Pay), you won't be able to reach
+the Google Pay API Payment screen. In these cases, live purchases in a
+production environment is needed. To do that, our setup team needs to activate
+Google Pay and be provided with your Google Pay Merchant ID.
+
+For new integrations, setup needs to run acceptance tests before they go live,
+and Google Pay can't be activated before these tests are approved. This means
+that Google Pay will be a two-stage rocket, as you will have to be live with an
+integration before we can activate and finalize the Google Pay registration
+process for you.
+
+Screenshot Examples:
+
+*   [Step 1: Selecting Google Pay][screenshot-1]{:target="_blank"}
+*   [Step 2: Ready for purchase][screenshot-2]{:target="_blank"}
+*   [Step 3: Browsing an item or service][screenshot-3]{:target="_blank"}
+*   [Step 4 and 5: Google Pay API payment screen][screenshot-4-5]{:target="_blank"}
 
 If you are using the **Redirect** implementation, you need to register
 **ecom.payex.com**, and not your own page, as the domain. This is because the
@@ -90,11 +78,6 @@ complete their review and approve your submitted integration. Unless you have
 provided us with your **Merchant ID** as part of signing your agreement with
 Swedbank Pay, you can e-mail us it at **agreement@swedbankpay.com** together
 with **Name**, **Organizational** and **Customer number**.
-
-<button class="btn btn-tertiary ml-3 w-80" type="button" onclick="downloadScreenshots()">
-  <span>Download screenshots</span>
-  <i class="at-download-arrow-down ml-2" aria-hidden="true"></i>
-</button>
 
 ### Implementation Paths
 
@@ -220,3 +203,7 @@ environment to ensure the customers details are kept safe.
                          prev_title="Back to Introduction" %}
 
 [google-pay-profile]: https://pay.google.com/business/console/
+[screenshot-1]: /assets/img/screenshot-1.png
+[screenshot-2]: /assets/img/screenshot-2.png
+[screenshot-3]: /assets/img/screenshot-3.png
+[screenshot-4-5]: /assets/img/screenshot-4-5.png
