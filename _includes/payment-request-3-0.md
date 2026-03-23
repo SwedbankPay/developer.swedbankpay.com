@@ -65,13 +65,13 @@ When your customer has initiated a purchase, you need to create a payment order.
 Start by performing a `POST` request towards the `paymentorder` resource
 with payer information and a `completeUrl`.
 
-{% include alert.html type="informative" icon="info" body="`POST`, `PATCH` and `PUT` requests use this header for v3.0:
+**`POST`, `PATCH` and `PUT` requests use this header for v3.0:**
 
-`Content-Type: application/json;version=3.0`
+**`Content-Type: application/json;version=3.0`.**
 
-`GET` requests should use this header:
+**`GET` requests should use this header:**
 
-`Accept: application/json;version=3.0`" %}
+**`Accept: application/json;version=3.0`.**
 
 We have added `productName` to the payment order request in this integration.
 You can find it in the `paymentorder` field. This is no longer required, but is
