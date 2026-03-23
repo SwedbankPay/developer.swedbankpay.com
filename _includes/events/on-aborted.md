@@ -1,6 +1,5 @@
 {%- capture event -%}
-Triggered when the payer clicks the "Abort" link on the redirect page in Payment
-Menu.
+Triggered when the payer aborts the payment from the Payment UI.
 {%- endcapture -%}
 {%- comment -%}
 The following chain of Liquid filters converts newlines to spaces and removes
