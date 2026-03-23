@@ -45,9 +45,28 @@ Pay for you.
 
 Be sure to register your domain/package and submit screenshots of your
 integration for approval. Login to [Google Pay&trade; & Wallet Console][google-pay-profile]{:target="_blank"}, go to the **Google Pay&trade; API tab** to upload and submit
-the screenshots. You should provide visuals for 5 steps of the purchase flow
-(e.g. add to cart, checkout, payment and confirmation - where the confirmation
-screenshot can be used for both screenshot 4 and 5).
+the screenshots. You should provide visuals for 5 steps of the purchase flow,
+e.g. add to cart, checkout, payment and confirmation - where the confirmation
+screenshot can be used for both step 4 and 5.
+
+Screenshots 4 and 5 **can** be from Google Pay's test enviroment, but since you
+are integrating through a third party (Swedbank Pay), you won't be able to reach
+the Google Pay API Payment screen. In these cases, live purchases in a
+production environment is needed. To do that, our setup team needs to activate
+Google Pay and be provided with your Google Pay Merchant ID.
+
+For new integrations, setup needs to run acceptance tests before they go live,
+and Google Pay can't be activated before these tests are approved. This means
+that Google Pay will be a two-stage rocket, as you will have to be live with an
+integration before we can activate and finalize the Google Pay registration
+process for you.
+
+Screenshot Examples:
+
+*   [Step 1: Selecting Google Pay][screenshot-1]{:target="_blank"}
+*   [Step 2: Ready for purchase][screenshot-2]{:target="_blank"}
+*   [Step 3: Browsing an item or service][screenshot-3]{:target="_blank"}
+*   [Step 4 and 5: Google Pay API payment screen][screenshot-4-5]{:target="_blank"}
 
 If you are using the **Redirect** implementation, you need to register
 **ecom.payex.com**, and not your own page, as the domain. This is because the
@@ -184,3 +203,7 @@ environment to ensure the customers details are kept safe.
                          prev_title="Back to Introduction" %}
 
 [google-pay-profile]: https://pay.google.com/business/console/
+[screenshot-1]: /assets/img/screenshot-1.png
+[screenshot-2]: /assets/img/screenshot-2.png
+[screenshot-3]: /assets/img/screenshot-3.png
+[screenshot-4-5]: /assets/img/screenshot-4-5.png
