@@ -49,7 +49,7 @@ the screenshots. You should provide visuals for 5 steps of the purchase flow,
 e.g. add to cart, checkout, payment and confirmation - where the confirmation
 screenshot can be used for both step 4 and 5.
 
-Screenshots 4 and 5 **can** be from Google Pay's test enviroment, but since you
+Screenshots 4 and 5 **can** be from Google Pay's test environment, but since you
 are integrating through a third party (Swedbank Pay), you won't be able to reach
 the Google Pay API Payment screen. In these cases, live purchases in a
 production environment is needed. To do that, our setup team needs to activate
