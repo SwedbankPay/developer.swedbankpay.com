@@ -65,17 +65,6 @@ When your customer has initiated a purchase, you need to create a payment order.
 Start by performing a `POST` request towards the `paymentorder` resource with
 payer information and a `completeUrl`.
 
-**`POST`, `PATCH`, and `PUT` requests use this header for v3.1:**
-
-**`Content-Type: application/json;version=3.1`**
-
-**`GET` requests should use this header:**
-
-**`Accept: application/json;version=3.1`.**
-
-The `productName` field has been removed in v3.1, so the only way of specifying
-that you are using v3.1 is through the header.
-
 To accompany the new version, we have also added a
 [v3.1 post-purchase section][post-31], [v3.1 callback][callback-31], a new
 resource model for [`failedPostPurchaseAttempts`][fppa] and additions to the
@@ -99,6 +88,24 @@ Swish or Vipps apps, `abort` is unavailable.
 
 To avoid unnecessary calls, we recommend doing a `GET` on your `paymentOrder` to
 check if `abort` is an available operation before performing it.
+
+{: .h4 }
+
+#### Headers v3.1
+
+{% capture acc-1 %}
+{: .p .pl-3 .pr-3  }
+`Content-Type: application/json;version=3.1`
+{% endcapture %}
+{% include accordion-table.html content=acc-1 header_text='`POST`, `PATCH`, and `PUT` requests use this header:' header_expand_css='font-weight-normal' %}
+{% capture acc-2 %}
+{: .p .pl-3 .pr-3  }
+`Accept: application/json;version=3.1`
+{% endcapture %}
+{% include accordion-table.html content=acc-2 header_text='`GET` requests should use this header:' header_expand_css='font-weight-normal' %}
+
+The `productName` field has been removed in v3.1, so the only way of specifying
+that you are using v3.1 is through the header.
 
 ### GDPR
 
