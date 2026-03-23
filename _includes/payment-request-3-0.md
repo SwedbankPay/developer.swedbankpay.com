@@ -98,12 +98,12 @@ Swish or Vipps apps, `abort` is unavailable.
 {: .p .pl-3 .pr-3  }
 `Content-Type: application/json;version=3.0`
 {% endcapture %}
-{% include accordion-table.html content=acc-1 header_text='`POST`, `PATCH`, and `PUT` requests use this header:' header_expand_css='font-weight-normal' %}
+{% include accordion-table.html content=acc-1 header_text='`POST`, `PATCH`, and `PUT` requests use this header' header_expand_css='font-weight-normal' %}
 {% capture acc-2 %}
 {: .p .pl-3 .pr-3  }
 `Accept: application/json;version=3.0`
 {% endcapture %}
-{% include accordion-table.html content=acc-2 header_text='`GET` requests should use this header:' header_expand_css='font-weight-normal' %}
+{% include accordion-table.html content=acc-2 header_text='`GET` requests should use this header' header_expand_css='font-weight-normal' %}
 
 ### GDPR
 
