@@ -13,6 +13,7 @@ tab_list:
 ---
 
 {: .h2 }
+
 ### Display Payment UI
 
 There are a couple of decisions to be made when presenting your payment UI. You

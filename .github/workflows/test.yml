@@ -36,7 +36,7 @@ jobs:
             --site-url=https://developer.swedbankpay.com
 
       - name: Upload site
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: build-site
           path: _site
@@ -46,7 +46,7 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/download-artifact@v7
+      - uses: actions/download-artifact@v8
         with:
           name: build-site
           path: _site

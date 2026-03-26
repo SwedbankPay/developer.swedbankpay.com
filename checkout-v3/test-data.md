@@ -45,7 +45,7 @@ To test a checked-in user in the Playground, please use the following test data:
 | :-------------- | :------------ | :--------------------------------------------------------------- |
 | MSISDN | `+4522222222` | The mobile phone number of the payer. Format Denmark: +45 22222222 |
 
-## Credit Card Test Data
+## Card Test Data
 
 With regards to card payments, our external integration test environment is
 connected to our POS system instead of a fake service. It is set up with an
@@ -115,7 +115,8 @@ our internal acquirer (loopback).
 
 ### Misc Cards
 
-A selection of cards not connected to Network Tokenization or 3D-Secure.
+A selection of cards not connected to Network Tokenization or 3D-Secure. Note
+that American Express har 4 digit CVCs, all other have 3 digits.
 
 {:.table .table-striped .test-data .enable-code-copy}
 | Card type            | Card number        | Expiry | CVC  | Type of test data |
@@ -222,4 +223,3 @@ the following values:
 [otp-challenge-form]: /assets/img/new-otp-challenge-form.png
 [playground]: https://playground.swedbankpay.com
 [testsuite]: https://www.postman.com/swedbankpay/swedbank-pay-online/collection/000bv9t/testsuite
-

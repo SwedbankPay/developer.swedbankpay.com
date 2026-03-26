@@ -62,17 +62,8 @@ we provide useful integration recommendations.
 ### Create Payment Order v3.0
 
 When your customer has initiated a purchase, you need to create a payment order.
-
 Start by performing a `POST` request towards the `paymentorder` resource
 with payer information and a `completeUrl`.
-
-`POST`, `PATCH` and `PUT` requests use this header for v3.0:
-
-`Content-Type: application/json;version=3.0`
-
-`GET` requests use this header:
-
-`Accept: application/json;version=3.0`
 
 We have added `productName` to the payment order request in this integration.
 You can find it in the `paymentorder` field. This is no longer required, but is
@@ -98,6 +89,21 @@ have `abort`, which you can read about in the [payment operations][abort-feature
 You can only use `abort` if the payer **has not** completed an `authorize` or a
 `sale`. If the payer is performing an action at a 3rd party, like the MobilePay,
 Swish or Vipps apps, `abort` is unavailable.
+
+{: .h4 }
+
+#### Headers v3.0
+
+{% capture acc-1 %}
+{: .p .pl-3 .pr-3  }
+`Content-Type: application/json;version=3.0`
+{% endcapture %}
+{% include accordion-table.html content=acc-1 header_text='`POST`, `PATCH`, and `PUT` requests use this header' header_expand_css='font-weight-normal' %}
+{% capture acc-2 %}
+{: .p .pl-3 .pr-3  }
+`Accept: application/json;version=3.0`
+{% endcapture %}
+{% include accordion-table.html content=acc-2 header_text='`GET` requests should use this header' header_expand_css='font-weight-normal' %}
 
 ### GDPR
 

@@ -3,7 +3,7 @@ title: States & Interaction
 permalink: /:path/states/
 description: |
   How components visually respond to interaction and context.
-menu_order: 1400
+menu_order: 3500
 ---
 
 # States

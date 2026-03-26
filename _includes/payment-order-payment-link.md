@@ -3,19 +3,17 @@
 
 ## Introduction
 
-Payment Link is available for Online Payments v3.1 and v3, Checkout v2, Payment
-Menu v2 and the payment methods listed below, using the redirect platform and
-Swedbank Pay hosted payment page.
+When using Online Payments v3.1 and v3 and the Redirect integration, Payment
+Link is available for the payment methods listed below:
 
-*   [Checkout 3.1][checkout-v31]
-*   [Checkout 3.0][checkout-v3]
-*   [Checkout 2.0][checkout-v2]
-*   [Payment Menu v2][payment-menu]
-*   [Card][card]
-*   [MobilePay Online][mobilepay]
-*   [Swish][swish]
-*   [Vipps][vipps]
-*   [Trustly][trustly]
+*   Apple Pay
+*   Card
+*   Click to Pay
+*   Google Pay
+*   MobilePay Online
+*   Swish
+*   Vipps
+*   Trustly
 
 When the payer starts the purchase process in your merchant or webshop site, you
 need to make a `POST` request towards Swedbank Pay with your *Purchase*
@@ -73,36 +71,32 @@ receipt when the payment is done.
 
 ## API Requests
 
-The API requests depend on the payment method you are using when
-implementing the Payment Link scenario, see [purchase flow][purchase-flow].
-One-phase payment methods will not implement `capture`, `cancellation` or
-`reversal`.
-The options you can choose from when creating a payment with key `operation`
-set to `Purchase` are listed below.
+The API requests depend on the payment method you are using when implementing
+the Payment Link scenario. One-phase payment methods will not implement
+`capture`, `cancellation` or `reversal`. The options you can choose from when
+creating a payment with key `operation` set to `Purchase` are listed below.
 
 ## How It Looks
 
 When clicking the payment link, the payer will be directed to a payment
-page similar to the examples below, where payment information can be entered.
+page similar to the example below, where payment information can be entered.
 
 {:.text-center}
-![screenshot of the redirect card payment page][card-payment]{:height="620px" width="475px"}
+![screenshot of the payment UI][redirect-payments-only-menu]
 
 ## Options
 
 All valid options when posting a payment with operation `Purchase`, are
 described in each payment method's respective API reference. Please see the
-general sequence diagrams for more information about one-phase (e.g.
-[Swish][swish] and [Trustly][trustly]) and two-phase (e.g. [Card][card],
-[MobilePay Online][mobilepay] and [Vipps][vipps]) payments.
+general sequence diagrams for more information about one-phase and two-phase
+payments.
 
 {% if show_authorization %}
 
 ## Authorization
 
 When using two-phase payment methods you reserve the amount with an
-authorization, and you will have to specify that the *intent* of the *purchase*
-is `Authorize`. The amount will be reserved but not charged. You have to make a
+authorization. The amount will be reserved but not charged. You have to make a
 `Capture` or `Cancel` request later (i.e. when you are ready to ship the
 purchased products).
 
@@ -111,32 +105,27 @@ purchased products).
 ## Capture
 
 Capture can only be performed on a payment with a successfully authorized
-transaction. It is possible to do a part-capture where you only capture a
-smaller amount than the authorized amount. You can do more captures on the
-same payment up to the total authorization amount later.
-
-If you want the credit card to be charged right away, you will have to specify
-that the *intent* of the purchase is `AutoCapture`. The card will be charged and
-you don't need to do any more financial operations to this purchase.
+transaction. It is possible to do a partial capture of a smaller amount than the
+authorized amount. You can do more captures on the same payment up to the total
+authorization amount later.
 
 ## Cancel
 
-Cancel can only be done on an authorized transaction. If you cancel after
-doing a part-capture you will cancel the difference between the captured amount
-and the authorized amount.
+Cancel can only be done on an authorized transaction. If you cancel after doing
+a partial capture you will cancel the difference between the captured amount and
+the authorized amount.
 
 ## Reversal
 
-Reversal can only be done on a payment where there are some captured amount not
-yet reversed.
+Reversal can only be done on a payment where a captured amount is not yet
+reversed.
 
 ## General
 
 When implementing the Payment Link scenario, it is optional to set a
 [`callbackURL`][technical-reference-callback] in the `POST` request. If
-callbackURL is set Swedbank Pay will send a request to this URL when the
-payer has completed the payment. [See the Callback API description
-here][technical-reference-callback].
+`callbackURL` is set Swedbank Pay will send a request to this URL when the
+payer has completed the payment.
 
 ## Purchase Flow
 
@@ -226,15 +215,7 @@ sequenceDiagram
     [See the Callback API description here][technical-reference-callback].
 
 [abort]: /checkout-v3/features/payment-operations/abort
-[card-payment]: /assets/img/payments/card-payment.png
-[card]: /old-implementations/payment-instruments-v1/card
-[checkout-v2]: /old-implementations/checkout-v2/
 [checkout-v3]: /checkout-v3/get-started/payment-request/
 [checkout-v31]: /checkout-v3/get-started/payment-request/#payment-order-v31
-[mobilepay]: /old-implementations/payment-instruments-v1/mobile-pay
-[payment-menu]: /old-implementations/payment-menu-v2
-[purchase-flow]: /old-implementations/payment-instruments-v1/card/features/core/purchase
-[swish]: /old-implementations/payment-instruments-v1/swish
 [technical-reference-callback]: /checkout-v3/features/payment-operations/callback
-[vipps]: /old-implementations/payment-instruments-v1/vipps
-[trustly]: /old-implementations/payment-instruments-v1/trustly
+[redirect-payments-only-menu]: /assets/img/redirect-wcag.png

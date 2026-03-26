@@ -1,15 +1,14 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 
-{% include alert.html type="warning" icon="warning" body="This feature is only
-available for merchants who have a specific agreement with Swedbank Pay. As the
-callback is mainly a fail-safe feature, we strongly advice that it is not your
-primary mean of checking for payment updates." %}
+{% include alert.html type="warning" icon="warning" body="As the callback is
+mainly a fail-safe feature, we strongly advice that it is not your primary mean
+of checking for payment updates." %}
 
-When a change or update from the back-end system are made on a payment or
+When a change or update from the back-end system is made on a payment or
 transaction, Swedbank Pay will perform a callback to inform the payee (merchant)
-about this update. **If you have callback enabled**, providing a `callbackUrl`
-in `POST` requests is **mandatory**. If you haven't implemented a callback
-endpoint, you shouldn't include this parameter in your request.
+about this update. The callback is **optional**, but you need to include a
+`callbackUrl` in your `POST` request to use it. Do **not** include this
+parameter in your request if you haven't implemented a callback endpoint.
 
 ## Why Is The Callback Useful?
 

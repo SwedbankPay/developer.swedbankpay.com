@@ -2,9 +2,8 @@
 title: Accessibility Checklist
 permalink: /:path/accessibility/
 description: |
- A practical checklist for verifying that user interfaces meet the accessibility
-requirements defined in this stylebook.
-menu_order: 1100
+  A checklist to make sure you are accessibility compliant.
+menu_order: 2900
 ---
 
 ## WCAG 2.2 AA – Quick Checklist
