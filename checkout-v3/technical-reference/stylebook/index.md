@@ -4,7 +4,7 @@ description: |
   How we designed our payment UI.
 permalink: /:path/
 redirect_from: /checkout-v3/features/technical-reference/stylebook/
-menu_order: 2700
+menu_order: 2800
 anchor_headings: false
 ---
 

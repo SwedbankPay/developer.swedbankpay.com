@@ -68,10 +68,12 @@ Screenshot Examples:
 *   [Step 3: Browsing an item or service][screenshot-3]{:target="_blank"}
 *   [Step 4 and 5: Google Pay API payment screen][screenshot-4-5]{:target="_blank"}
 
-If you are using the **Redirect** implementation, you need to register
+Choose "web integration" when you are on the Google Pay API setup flow. If you
+are going the **Redirect** implementation route, you need to register
 **ecom.payex.com**, and not your own page, as the domain. This is because the
 payment is generated from Swedbank Pay, and Google Pay needs to recognize that
-as the authorized origin of the request.
+as the authorized origin of the request. If you are using the **Seamless**
+implentation, enter your own domain url, as this will be the origin.
 
 Your **Merchant ID** will only work in production environment once Google
 complete their review and approve your submitted integration. Unless you have

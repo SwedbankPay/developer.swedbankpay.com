@@ -3,7 +3,7 @@ title: Icons
 permalink: /:path/icons/
 description: |
  Defines general rules for icon usage across the payment UI.
-menu_order: 1300
+menu_order: 3400
 ---
 
 # Icons

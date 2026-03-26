@@ -3,7 +3,7 @@ title: Examples
 permalink: /:path/examples/
 description: |
   Illustrates how the components and interaction patterns are used together.
-menu_order: 1700
+menu_order: 3200
 ---
 
 # Examples
