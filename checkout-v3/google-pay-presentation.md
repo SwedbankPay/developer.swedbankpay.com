@@ -73,7 +73,7 @@ are going the **Redirect** implementation route, you need to register
 **ecom.payex.com**, and not your own page, as the domain. This is because the
 payment is generated from Swedbank Pay, and Google Pay needs to recognize that
 as the authorized origin of the request. If you are using the **Seamless**
-implentation, enter your own domain url, as this will be the origin.
+implementation, enter your own domain url, as this will be the origin.
 
 Your **Merchant ID** will only work in production environment once Google
 complete their review and approve your submitted integration. Unless you have
