@@ -3,7 +3,7 @@ title: Design Foundations
 permalink: /:path/design-foundations/
 description: |
  Define the visual principles and design tokens used across all components.
-menu_order: 1000
+menu_order: 3100
 ---
 
 # Design Foundations

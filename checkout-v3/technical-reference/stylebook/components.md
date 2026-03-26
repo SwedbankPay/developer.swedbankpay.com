@@ -3,7 +3,7 @@ title: Components
 permalink: /:path/components/
 description: |
   How design tokens and visual principles are applied.
-menu_order: 1600
+menu_order: 3000
 ---
 
 # Components
