@@ -7,6 +7,35 @@ menu_order: 2
 has_release_notes: true
 ---
 
+## 26 March 2026
+
+### Documentation v5.3.16
+
+Before we head off to the mountains, we are dropping off a few easter eggs for
+you.
+
+Our sequence diagrams have gotten a facelift, with new colors and improved
+readability. Find one and give it a click to see it yourself!
+
+We have also done some changes to the [Google Pay][google-pay] setup, so the
+approval process for your integration will, hopefully, run even smoother.
+
+A new section regarding [Seamless View Functions][svf] have been added, doing a
+deep dive into how you can interact with the client script. While we were in
+those neck of the woods, we rewrote parts of the [Display UI][display-ui]
+section to make it easier to follow, and made the code examples less
+complicated.
+
+A clarification regarding [callbacks][callback]: The callback is optional, but
+you need to include a `callbackUrl` in your request to use it. Do not include
+this parameter in your request if you haven't implemented a callback endpoint.
+
+Another new section is how to add a [payment button delay][pbd], which makes the
+payment button wait for a callback before proceeding with the payment.
+
+Digital wallets have been added to our [payment link][payment-menu-payment-link]
+section.
+
 ## 20 February 2026
 
 ### Documentation v5.3.15
@@ -1415,6 +1444,7 @@ more convenient for both the integration and the payer.
 [pay-op]: /checkout-v3/features/payment-operations/
 [pax-net-sdk]: https://developer.stage.swedbankpay.com/pax-terminal/NET/
 [pax-terminal]: /pax-terminal/
+[pbd]: /checkout-v3/features/optional/delay-pay-button/
 [pmv2]: /old-implementations/payment-menu-v2/ui-migration/
 [pp-3-1]: /checkout-v3/get-started/post-purchase/
 [prices]: /old-implementations/checkout-v2/technical-reference/prices
@@ -1441,6 +1471,7 @@ more convenient for both the integration and the payer.
 [status-model-paid]: /checkout-v3/technical-reference/status-models#paid
 [status-model-paid-v2]: /old-implementations/checkout-v2/technical-reference/status-models#paid
 [storing-uri]: /checkout-v3/get-started/fundamental-principles#storing-urls
+[svf]: /checkout-v3/technical-reference/seamless-view-functions/
 [swish-api-errors]: /old-implementations/payment-instruments-v1/swish/technical-reference/problems
 [swish-direct-mcom]: /old-implementations/payment-instruments-v1/swish/direct#step-2b-create-m-commerce-sale-transaction
 [swish-direct]: /old-implementations/payment-instruments-v1/swish/direct
