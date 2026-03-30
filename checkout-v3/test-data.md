@@ -8,43 +8,6 @@ description: |
 menu_order: 6
 ---
 
-## Swedbank Pay Checkout Test Data
-
-When implementing Online Payments, you can use the test data related to the
-different payment methods listed below. To see Online Payments in live action,
-please visit the [Playground][playground]{:target="_blank"}. If you want an even
-more technical introduction, you can also try our ready to use
-[collection of Online Payments APIs][testsuite]{:target="_blank"}
-
-To test a checked-in user in the Playground, please use the following test data:
-
-### Checkout test data for Norway
-
-{:.table .table-striped .test-data .enable-code-copy}
-| Type          | Data                         | Description                                                         |
-| :-------------| :--------------------------- | :------------------------------------------------------------------ |
-| Email         | `olivia.nyhuus@swedbankpay.com`    | The e-mail address of the payer.                              |
-| MSISDN | `+47 98765432`               | The mobile phone number of the payer. Format Norway: +47 99999999.  |
-| SSN           | `{{ page.consumer_ssn_no }}` | The social security number of the payer. Format Norway: DDMMYYXXXXX |
-| ZipCode       | `1642`                       | The city zip code. Format Norway: XXXX                              |
-
-### Checkout test data for Sweden
-
-{:.table .table-striped .test-data .enable-code-copy}
-| Type            | Data                         | Description                                                         |
-| :-------------- | :--------------------------- | :------------------------------------------------------------------ |
-| Email         | `leia.ahlstrom@swedbankpay.com`    | The e-mail address of the payer.                                |
-| MSISDN | `+46 739000001`              | The mobile phone number of the payer. Format Sweden: +46 707777777.   |
-| SSN           | `{{ page.consumer_ssn_se }}` | The social security number of the payer. Format Sweden: YYYYMMDDXXXX. |
-| ZipCode       | `17674`                      | The city zip code. Format Sweden: XXXXX                               |
-
-### Checkout test data for Denmark
-
-{:.table .table-striped .test-data .enable-code-copy}
-| Type            | Data          | Description                                                      |
-| :-------------- | :------------ | :--------------------------------------------------------------- |
-| MSISDN | `+4522222222` | The mobile phone number of the payer. Format Denmark: +45 22222222 |
-
 ## Card Test Data
 
 With regards to card payments, our external integration test environment is
@@ -136,7 +99,7 @@ that American Express har 4 digit CVCs, all other have 3 digits.
 | Visa/Dankort         | `4571994016401817` | Any    | Any  |
 | Visa/Dankort         | `4571994016471869` | Any    | Any  |
 
-## Failure Testing Cards
+## Card Error Testing
 
 There are two different ways of testing Card Payments error scenarios. You can
 test 3-D Secure errors using our 3-D Secure emulator, or you can use specific
@@ -175,6 +138,43 @@ The `DAILYLIMITEXCEEDED` must be performed 10 times to be triggered, and the
 `MONTHLYLIMITEXCEEDED` has to be performed 15 times to be triggered. The
 `SuspensionWarning` response message appears when the two limit exceeds have
 5 attempts left (i.e. after 5 daily or 10 monthly attempts).
+
+## Checkout Test Data
+
+When implementing Online Payments, you can use the test data related to the
+different payment methods listed below. To see Online Payments in live action,
+please visit the [Playground][playground]{:target="_blank"}. If you want an even
+more technical introduction, you can also try our ready to use
+[collection of Online Payments APIs][testsuite]{:target="_blank"}
+
+To test a checked-in user in the Playground, please use the following test data:
+
+### Checkout test data for Norway
+
+{:.table .table-striped .test-data .enable-code-copy}
+| Type          | Data                         | Description                                                         |
+| :-------------| :--------------------------- | :------------------------------------------------------------------ |
+| Email         | `olivia.nyhuus@swedbankpay.com`    | The e-mail address of the payer.                              |
+| MSISDN | `+47 98765432`               | The mobile phone number of the payer. Format Norway: +47 99999999.  |
+| SSN           | `{{ page.consumer_ssn_no }}` | The social security number of the payer. Format Norway: DDMMYYXXXXX |
+| ZipCode       | `1642`                       | The city zip code. Format Norway: XXXX                              |
+
+### Checkout test data for Sweden
+
+{:.table .table-striped .test-data .enable-code-copy}
+| Type            | Data                         | Description                                                         |
+| :-------------- | :--------------------------- | :------------------------------------------------------------------ |
+| Email         | `leia.ahlstrom@swedbankpay.com`    | The e-mail address of the payer.                                |
+| MSISDN | `+46 739000001`              | The mobile phone number of the payer. Format Sweden: +46 707777777.   |
+| SSN           | `{{ page.consumer_ssn_se }}` | The social security number of the payer. Format Sweden: YYYYMMDDXXXX. |
+| ZipCode       | `17674`                      | The city zip code. Format Sweden: XXXXX                               |
+
+### Checkout test data for Denmark
+
+{:.table .table-striped .test-data .enable-code-copy}
+| Type            | Data          | Description                                                      |
+| :-------------- | :------------ | :--------------------------------------------------------------- |
+| MSISDN | `+4522222222` | The mobile phone number of the payer. Format Denmark: +45 22222222 |
 
 ## Invoice Test Data
 
