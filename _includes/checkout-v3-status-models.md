@@ -859,6 +859,7 @@ api-supported-versions: 3.x{% endcapture %}
             "paymentAccountReference": "43f6b6d2cbd30c36627ec02247259",
             "cardBrand": "Visa",
             "cardType": "Credit",
+            "issuingBank": "Swedbank",
             "maskedPan": "492500******0004",
             "maskedDPan": "************0004",
             "expiryDate": "12/2022",
@@ -906,6 +907,7 @@ api-supported-versions: 3.x{% endcapture %}
           "externalNonPaymentToken": "1234567890",
           "cardBrand": "Visa",
           "cardType": "Credit",
+          "issuingBank": "Swedbank",
           "maskedDPan": "************0004",
           "expiryDate": "12/0023",
           "issuerAuthorizationApprovalCode": "L00392",
@@ -948,6 +950,7 @@ api-supported-versions: 3.x{% endcapture %}
           "externalNonPaymentToken": "1234567890",
           "cardBrand": "Visa",
           "cardType": "Credit",
+          "issuingBank": "Swedbank",
           "maskedPan": "492500******0004",
           "maskedDPan": "************0004",
           "expiryDate": "12/0023",
@@ -991,6 +994,7 @@ api-supported-versions: 3.x{% endcapture %}
           "externalNonPaymentToken": "1234567890",
           "cardBrand": "Visa",
           "cardType": "Credit",
+          "issuingBank": "Swedbank",
           "maskedPan": "492500******0004",
           "maskedDPan": "************0004",
           "expiryDate": "12/0023",
@@ -1037,6 +1041,7 @@ api-supported-versions: 3.x{% endcapture %}
             "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
             "externalNonPaymentToken": "1234567890",
             "cardBrand": "Visa",
+            "issuingBank": "Swedbank",
             "maskedPan": "492500******0004",
             "maskedDPan": "************0004",
             "expiryDate": "12/2022",
@@ -1086,6 +1091,7 @@ api-supported-versions: 3.x{% endcapture %}
             "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
             "externalNonPaymentToken": "1234567890"
             "cardBrand": "Visa",
+            "issuingBank": "Swedbank",
             "maskedDPan": "************0004",
             "acquirerTransactionType": "WALLET",
             "acquirerTerminalId": "99488282",
@@ -1393,6 +1399,14 @@ Response fields not covered in the [`Initialized`]({{ techref_url }}/technical-r
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2"><code>Credit Card</code> or <code>Debit Card</code>. Indicates the type of card used for the authorization.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f issuingBank, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Name of the bank who issued the card. Helpful for merchants when issuers have e.g. discounts or campaigns.</div></div>
           </details>
 
           <details class="api-item" data-level="2">

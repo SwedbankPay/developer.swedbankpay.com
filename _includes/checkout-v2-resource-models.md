@@ -198,6 +198,7 @@ api-supported-versions: 2.0{% endcapture %}
         "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
         "externalNonPaymentToken": "1234567890",
         "cardBrand": "Visa",
+        "issuingBank": "Swedbank",
         "acquirerTransactionType": "WALLET",
         "acquirerTerminalId": "99488282",
         "acquirerTransactionTime": "2022-09-05T09:54:05Z",
