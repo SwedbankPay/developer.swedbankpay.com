@@ -28,21 +28,20 @@ undefined behavior or, at worst, a broken payment flow." %}
 
 This event mirrors `onPaymentCanceled` from Checkout v2.
 
-This event can be overridden if you want to handle the payer aborting their
-payment attempt in the Swedbank Pay payment frame. Do note that only the
-Redirect integration provides a cancel button. Using a Seamless integration,
-you will have to provide your own button, link or method to allow the payer
-to cancel the payment from your site.
+This event triggers when the payment is aborted. As the Seamless View payment
+menu doesn't have a cancel button (present in the Redirect integration), you
+need to provide this button for the payer at your end. When the payment is
+canceled, we recommend sending an API request aborting the payment so it can't
+be completed at a later time. When we receive the request, an abort event will
+be raised the next time the UI fetches information from the server. Because of
+that, you should also refresh after aborting, as this will trigger the event.
 
-If you do not override the event, the payer will be redirected to the
-`cancelUrl` in the same tab if possible.
-
-This is the object that is provided if you override the event:
+The object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnAborted",
-    "paymentOrder": { 
-        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    "paymentOrder": {
+        "id": "/psp/paymentorders/{{ page.payment_id }}"
     },
     "redirectUrl": "https://example.com/cancelled"
 }{% endcapture %}
@@ -117,8 +116,8 @@ with the following event argument object:
 
 {% capture response_content %}{
     "event": "OnCheckoutLoaded",
-    "paymentOrder": { 
-        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    "paymentOrder": {
+        "id": "/psp/paymentorders/{{ page.payment_id }}"
     },
     "bodyHeight": 800
 }{% endcapture %}
@@ -198,8 +197,8 @@ This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnCheckoutResized",
-    "paymentOrder": { 
-        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    "paymentOrder": {
+        "id": "/psp/paymentorders/{{ page.payment_id }}"
     },
     "bodyHeight": 800
 }{% endcapture %}
@@ -276,8 +275,8 @@ This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnError",
-    "paymentOrder": { 
-        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    "paymentOrder": {
+        "id": "/psp/paymentorders/{{ page.payment_id }}"
     },
     "details": "Some error"
 }{% endcapture %}
@@ -355,8 +354,8 @@ This is the object that is provided if you override the event:
 
  {% capture response_content %}{
      "event": "OnEventNotification",
-     "paymentOrder": { 
-        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+     "paymentOrder": {
+        "id": "/psp/paymentorders/{{ page.payment_id }}"
     },
      "sourceEvent": "OnPaid"
  }{% endcapture %}
@@ -438,8 +437,8 @@ This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnInstrumentSelected",
-    "paymentOrder": { 
-        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    "paymentOrder": {
+        "id": "/psp/paymentorders/{{ page.payment_id }}"
     },
     "instrument": "creditcard"
 }{% endcapture %}
@@ -518,8 +517,8 @@ This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnOutOfViewOpen",
-    "paymentOrder": { 
-        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    "paymentOrder": {
+        "id": "/psp/paymentorders/{{ page.payment_id }}"
     },
     "openUrl": "https://example.com/external"
 }{% endcapture %}
@@ -600,8 +599,8 @@ This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnOutOfViewRedirect",
-    "paymentOrder": { 
-        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    "paymentOrder": {
+        "id": "/psp/paymentorders/{{ page.payment_id }}"
     },
     "redirectUrl": "https://example.com/external"
 }{% endcapture %}
@@ -684,8 +683,8 @@ This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnPaid",
-    "paymentOrder": { 
-        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    "paymentOrder": {
+        "id": "/psp/paymentorders/{{ page.payment_id }}"
     },
     "redirectUrl": "https://example.com/success"
 }{% endcapture %}
@@ -764,8 +763,8 @@ This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnPaymentAttemptAborted",
-    "paymentOrder": { 
-        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    "paymentOrder": {
+        "id": "/psp/paymentorders/{{ page.payment_id }}"
     },
     "redirectUrl": "https://example.com/cancelled"
 }{% endcapture %}
@@ -843,8 +842,8 @@ This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnPaymentAttemptFailed",
-    "paymentOrder": { 
-        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    "paymentOrder": {
+        "id": "/psp/paymentorders/{{ page.payment_id }}"
     },
     "details": "Some error"
 }{% endcapture %}
@@ -922,8 +921,8 @@ This is the object that is provided if you override the event:
 
 {% capture response_content %}{
     "event": "OnPaymentAttemptStarted",
-    "paymentOrder": { 
-        "id": "/psp/paymentorders/{{ page.payment_id }}" 
+    "paymentOrder": {
+        "id": "/psp/paymentorders/{{ page.payment_id }}"
     },
     "instrument": "creditcard"
 }{% endcapture %}
@@ -1004,7 +1003,7 @@ This is the object that is provided if you override the event:
 
  {% capture response_content %}{
      "event": "OnTermsOfServiceRequested",
-     "paymentOrder": { 
+     "paymentOrder": {
         "id": "/psp/paymentorders/{{ page.payment_id }}"
      },
      "termsOfServiceUrl": "https://example.org/terms.html"
