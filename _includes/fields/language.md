@@ -7,7 +7,7 @@
         {% when "mobilepay" %}
             Allowed locale code values: `da-DK`, `fi-FI` or `en-US`.
         {% when "paymentorders" %}
-            Allowed locale code values: `da-DK`, `de-DE`, `et-EE`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, `lt-LT`, `lv-LV`, `nb-NO`, `pl-PL`, `ru-RU`, or `sv-SE`.
+            Allowed locale code values: `da-DK`, `de-DE`, `et-EE`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, `lt-LT`, `lv-LV`, `nb-NO`, `pl-PL`, `ru-RU`, or `sv-SE`. The payment UI will default to `en-US` if the input is invalid.
         {% else %}
             Allowed locale code values: `sv-SE`, `nb-NO` or `en-US`.
     {%- endcase -%}
