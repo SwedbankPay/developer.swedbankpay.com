@@ -90,20 +90,11 @@ You can only use `abort` if the payer **has not** completed an `authorize` or a
 `sale`. If the payer is performing an action at a 3rd party, like the MobilePay,
 Swish or Vipps apps, `abort` is unavailable.
 
-{: .h4 }
+{% include alert.html type="informative" icon="info" header="Headers v3.0"
+body="`Content-Type: application/json;version=3.0` for POST`,`PATCH` and `PUT`
+ requests.<br><br>
 
-#### Headers v3.0
-
-{% capture acc-1 %}
-{: .p .pl-3 .pr-3  }
-`Content-Type: application/json;version=3.0`
-{% endcapture %}
-{% include accordion-table.html content=acc-1 header_text='`POST`, `PATCH`, and `PUT` requests use this header' header_expand_css='font-weight-normal' %}
-{% capture acc-2 %}
-{: .p .pl-3 .pr-3  }
-`Accept: application/json;version=3.0`
-{% endcapture %}
-{% include accordion-table.html content=acc-2 header_text='`GET` requests should use this header' header_expand_css='font-weight-normal' %}
+ `Accept: application/json;version=3.0` for `GET` requests." %}
 
 ### GDPR
 
