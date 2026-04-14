@@ -91,10 +91,10 @@ You can only use `abort` if the payer **has not** completed an `authorize` or a
 Swish or Vipps apps, `abort` is unavailable.
 
 {% include alert.html type="informative" icon="info" header="Headers v3.0"
-body="`Content-Type: application/json;version=3.0` for POST`,`PATCH` and `PUT`
- requests.<br><br>
+body="`Content-Type: application/json;version=3.0` for `POST`,`PATCH` and `PUT`
+requests.<br><br>
 
- `Accept: application/json;version=3.0` for `GET` requests." %}
+`Accept: application/json;version=3.0` for `GET` requests." %}
 
 ### GDPR
 

@@ -93,10 +93,10 @@ check if `abort` is an available operation before performing it.
 body="As `productName` has been removed in v3.1, you must specify the API via
 the headers by including `version=3.1`.<br><br>
 
-`Content-Type: application/json;version=3.1` for POST`, `PATCH` and `PUT`
- requests.<br><br>
+`Content-Type: application/json;version=3.1` for `POST`, `PATCH` and `PUT`
+requests.<br><br>
 
- `Accept: application/json;version=3.1` for `GET` requests." %}
+`Accept: application/json;version=3.1` for `GET` requests." %}
 
 ### GDPR
 
