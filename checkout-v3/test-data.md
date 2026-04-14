@@ -22,8 +22,8 @@ institutions.
 {:.table .table-striped .test-data .enable-code-copy}
 | Card type  | Card number        | Expiry                   | CVC   | Type of test data   |
 | :--------- | :----------------- | :----------------------- | :-----| :------------------ |
-| MasterCard | `5226612199533406` | Any  | Any   | 3-D Secure enrolled |
-| Visa       | `4761739001010416` | Any  | Any   | 3-D Secure enrolled |
+| MasterCard | `5226612199533406` | Any                      | Any   | 3-D Secure enrolled |
+| Visa       | `4761739001010416` | Any                      | Any   | 3-D Secure enrolled |
 
 ### 3-D Secure 2
 
