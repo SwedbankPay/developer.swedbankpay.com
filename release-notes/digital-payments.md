@@ -7,6 +7,19 @@ menu_order: 2
 has_release_notes: true
 ---
 
+## 21 April 2026
+
+### Documentation v5.3.17
+
+A small release with mainly maintenance and cosmetic updates this time around,
+but a couple of treats are included too.
+
+Information about the issuing bank has been included in the [`Paid`][paid]
+resource. Useful for merchants when issuers have e.g. campaigns or discounts.
+
+If an invalid language code is entered when generating a payment order, it will
+now default to `en-US`.
+
 ## 26 March 2026
 
 ### Documentation v5.3.16
@@ -1429,6 +1442,7 @@ more convenient for both the integration and the payer.
 [one-click]: /old-implementations/payment-instruments-v1/card/features/optional/one-click-payments
 [optional-features]: /old-implementations/checkout-v2/features/optional/
 [order-items]: /checkout-v3/features/optional/order-items
+[paid]: /checkout-v3/technical-reference/resource-sub-models/#paid
 [payment-orders]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
 [payment-order-update]: /checkout-v3/features/core/update
 [payment-request]: /checkout-v3/get-started/payment-request
