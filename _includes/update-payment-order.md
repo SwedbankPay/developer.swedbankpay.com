@@ -509,7 +509,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           <span class="type"><code>enum(string)</code></span>
         </summary>
         {% capture language_md %}{% include fields/language.md %}{% endcapture %}
-        <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">The payment UI language. Valid values are code>da-DK</code>, <code>de-DE</code>, <code>et-EE</code>, <code>en-US</code>, <code>es-ES</code>, <code>fi-FI</code>, <code>fr-FR</code>, <code>lt-LT</code>, <code>lv-LV</code>, <code>nb-NO</code>, <code>pl-PL</code>, <code>ru-RU</code> or <code>sv-SE</code>. If the input is invalid, the language will default to <code>en-US</code>.</div></div>
       </details>
 
       <!-- urls (link) -->

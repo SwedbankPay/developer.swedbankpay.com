@@ -223,6 +223,26 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
         <div class="desc"><div class="indent-1">The description of the payment order.</div></div>
       </details>
 
+      <!-- userAgent -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f userAgent %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">{{ user_agent_md | markdownify }}</div></div>
+      </details>
+
+      <!-- language -->
+      <details class="api-item" data-level="1">
+        <summary>
+          <span class="field">{% f language %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>enum(string)</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-1">The payment UI language. Valid values are code>da-DK</code>, <code>de-DE</code>, <code>et-EE</code>, <code>en-US</code>, <code>es-ES</code>, <code>fi-FI</code>, <code>fr-FR</code>, <code>lt-LT</code>, <code>lv-LV</code>, <code>nb-NO</code>, <code>pl-PL</code>, <code>ru-RU</code> or <code>sv-SE</code>. If the input is invalid, the language will default to <code>en-US</code>.</div></div>
+      </details>
+
       <!-- generateRecurrenceToken (optional boolean) -->
       <details class="api-item" data-level="1">
         <summary>
@@ -1438,7 +1458,7 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
           <span class="type"><code>enum(string)</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">The payment UI language. Valid values are code>da-DK</code>, <code>de-DE</code>, <code>et-EE</code>, <code>en-US</code>, <code>es-ES</code>, <code>fi-FI</code>, <code>fr-FR</code>, <code>lt-LT</code>, <code>lv-LV</code>, <code>nb-NO</code>, <code>pl-PL</code>, <code>ru-RU</code> or <code>sv-SE</code>. If the input is invalid, the language will default to <code>en-US</code>.</div></div>
       </details>
 
       {% if documentation_section contains "checkout-v3" %}

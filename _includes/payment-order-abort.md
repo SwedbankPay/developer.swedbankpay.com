@@ -577,7 +577,6 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json;version=3.x{% endcapture %}
 
 {% capture request_content %}{
-{
   "paymentorder": {
     "operation": "PaymentAttemptAborted",
     "abortReason": "AbortedByUI"

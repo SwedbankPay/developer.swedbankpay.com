@@ -1,6 +1,6 @@
 {% capture techref_url %}{% include utils/documentation-section-url.md %}{% endcapture %}
 
-{% include alert.html type="informative" icon="info" body="If you hesitate which version to use, we recommend the version marked with *." %}
+{% include alert.html type="informative" icon="info" body="If you are unsure about which version to use, we recommend the version marked with *." %}
 
 {: .h2 }
 
@@ -90,20 +90,11 @@ You can only use `abort` if the payer **has not** completed an `authorize` or a
 `sale`. If the payer is performing an action at a 3rd party, like the MobilePay,
 Swish or Vipps apps, `abort` is unavailable.
 
-{: .h4 }
+{% include alert.html type="informative" icon="info" header="Headers v3.0"
+body="`Content-Type: application/json;version=3.0` for `POST`,`PATCH` and `PUT`
+requests.<br><br>
 
-#### Headers v3.0
-
-{% capture acc-1 %}
-{: .p .pl-3 .pr-3  }
-`Content-Type: application/json;version=3.0`
-{% endcapture %}
-{% include accordion-table.html content=acc-1 header_text='`POST`, `PATCH`, and `PUT` requests use this header' header_expand_css='font-weight-normal' %}
-{% capture acc-2 %}
-{: .p .pl-3 .pr-3  }
-`Accept: application/json;version=3.0`
-{% endcapture %}
-{% include accordion-table.html content=acc-2 header_text='`GET` requests should use this header' header_expand_css='font-weight-normal' %}
+`Accept: application/json;version=3.0` for `GET` requests." %}
 
 ### GDPR
 
@@ -278,7 +269,7 @@ Content-Type: application/json;version=3.0{% endcapture %}
           <span class="type"><code>enum(string)</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-1">{{ language_md | markdownify }}</div></div>
+        <div class="desc"><div class="indent-1">The payment UI language. Valid values are code>da-DK</code>, <code>de-DE</code>, <code>et-EE</code>, <code>en-US</code>, <code>es-ES</code>, <code>fi-FI</code>, <code>fr-FR</code>, <code>lt-LT</code>, <code>lv-LV</code>, <code>nb-NO</code>, <code>pl-PL</code>, <code>ru-RU</code> or <code>sv-SE</code>. If the input is invalid, the language will default to <code>en-US</code>.</div></div>
       </details>
 
       <details class="api-item" data-level="1">

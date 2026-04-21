@@ -204,7 +204,7 @@ payex.hostedView.checkout({
     <div class="desc">
       <div class="indent-1">
         Locale identifier string for the language the Payment UI should launch
-        with: <code>da-DK</code>, <code>de-DE</code>, <code>et-EE</code>, <code>en-US</code>, <code>es-ES</code>, <code>fi-FI</code>, <code>fr-FR</code>, <code>lt-LT</code>, <code>lv-LV</code>, <code>nb-NO</code>, <code>pl-PL</code>, <code>ru-RU</code> or <code>sv-SE</code>. if the input is invalid, the culture will default to
+        with: <code>da-DK</code>, <code>de-DE</code>, <code>et-EE</code>, <code>en-US</code>, <code>es-ES</code>, <code>fi-FI</code>, <code>fr-FR</code>, <code>lt-LT</code>, <code>lv-LV</code>, <code>nb-NO</code>, <code>pl-PL</code>, <code>ru-RU</code> or <code>sv-SE</code>. If the input is invalid, the culture will default to
         <code>en-US</code>. If no culture is set, it will default to the language
         set in the payment order.
       </div>

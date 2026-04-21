@@ -9,7 +9,15 @@ menu_order: 700
 ---
 <script>
   async function downloadDomainFile() {
-    const pageUrl = 'https://ecom.dev.payex.com/.well-known/apple-developer-merchantid-domain-association';
+    const hostname = window.location.hostname;
+    const envUrlMap = {
+      'developer.swedbankpay.com': 'https://ecom.payex.com',
+      'developer.stage.swedbankpay.com': 'https://ecom.stage.payex.com',
+      'developer.dev.swedbankpay.com': 'https://ecom.dev.payex.com',
+      'localhost': 'https://ecom.dev.payex.com',
+    };
+    const baseUrl = envUrlMap[hostname] || 'https://ecom.payex.com';
+    const pageUrl = `${baseUrl}/.well-known/apple-developer-merchantid-domain-association`;
     const fileName = 'apple-developer-merchantid-domain-association';
 
     try {
