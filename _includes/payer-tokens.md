@@ -1,3 +1,4 @@
+
 ## GET Single Payer Token
 
 A GET request used when you need to retrieve a single token.
@@ -6,8 +7,7 @@ A GET request used when you need to retrieve a single token.
 
 {% capture request_header %}GET /online/payer/payees/<payeeId>/tokens/<tokenId> HTTP/1.1
 Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0{% endcapture %}
+Authorization: Bearer <AccessToken>{% endcapture %}
 
 {% include code-example.html
     title='GET Single Payer Token Request'
@@ -462,8 +462,7 @@ payer's `payerReference`.
 
 {% capture request_header %}GET /online/payer/payees/{{payeeId}}/payers/{{payerReference}}/tokens HTTP/1.1
 Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0{% endcapture %}
+Authorization: Bearer <AccessToken>{% endcapture %}
 
 {% include code-example.html
     title='GET All Payer Tokens Request'
@@ -1057,8 +1056,7 @@ A PATCH request used to update a payer token's display name.
 
 {% capture request_header %}PATCH /online/payer/payees/<payeeId>/tokens/<tokenId>/displaynames HTTP/1.1
 Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0{% endcapture %}
+Authorization: Bearer <AccessToken>{% endcapture %}
 
 {% capture request_content %}{
 "displayName" : "Example"
@@ -1296,8 +1294,7 @@ A PATCH request used to archive a single, specific payer token.
 
 {% capture request_header %}PATCH /online/payer/payees/<payeeId>/tokens/<tokenId>/archives HTTP/1.1
 Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0{% endcapture %}
+Authorization: Bearer <AccessToken>{% endcapture %}
 
 {% capture request_content %}{
   "reason" : "description",
@@ -1551,8 +1548,7 @@ A PATCH request used to archive all tokens linked to a specific
 
 {% capture request_header %}PATCH /online/payer/payees/<payeeId>/payers/<payerReference>/archives HTTP/1.1
 Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0{% endcapture %}
+Authorization: Bearer <AccessToken>{% endcapture %}
 
 {% capture request_content %}{
   "reason" : "description",

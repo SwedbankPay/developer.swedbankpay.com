@@ -1,4 +1,4 @@
-{% include alert.html type="informative" icon="info" body="If you hesitate which version to use, we recommend the version marked with *." %}
+{% include alert.html type="informative" icon="info" body="If you are unsure about which version to use, we recommend the version marked with *." %}
 
 {: .h2 }
 
