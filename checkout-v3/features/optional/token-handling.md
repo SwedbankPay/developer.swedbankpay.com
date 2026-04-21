@@ -6,6 +6,8 @@ description: All things token related.
 menu_order: 2800
 ---
 
+The Payer Service API is dedicated solely to token handling.
+
 {% include payer-tokens.md %}
 
 ## Delete Unscheduled, Recurrence Or Payment Tokens

@@ -1406,7 +1406,7 @@ Response fields not covered in the [`Initialized`]({{ techref_url }}/technical-r
               <span class="field">{% f issuingBank, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
-            <div class="desc"><div class="indent-2">Name of the bank who issued the card. Helpful for merchants when issuers have e.g. discounts or campaigns.</div></div>
+            <div class="desc"><div class="indent-2">Name of the bank who issued the card. Helpful for merchants when issuers have e.g. discounts or campaigns. Currently not available for Visa cards when using Vipps, MobilePay or Apple Pay.</div></div>
           </details>
 
           <details class="api-item" data-level="2">
