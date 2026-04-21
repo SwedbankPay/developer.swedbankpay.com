@@ -256,7 +256,7 @@ Content-Type: application/json{% endcapture %}
           <span class="field">{% f issuingBank %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
         </summary>
-        <div class="desc"><div class="indent-1">The name of the bank that issued the card. Helpful for merchants when issuers have e.g. discounts or campaigns. Currently not available for Visa cards when using Vipps, MobilePay or Apple Pay.</div></div>
+        <div class="desc"><div class="indent-1">The name of the bank that issued the card. Helpful for merchants when issuers have e.g. discounts or campaigns.</div></div>
       </details>
 
       <details class="api-item" data-level="1">
