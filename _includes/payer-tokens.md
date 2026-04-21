@@ -757,8 +757,7 @@ A GET request used to retrieve all archived tokens by a payee using the payer's
 
 {% capture request_header %}GET /online/payer/payees/<payeeId>/payers/<payerReference>/archives HTTP/1.1
 Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0{% endcapture %}
+Authorization: Bearer <AccessToken>{% endcapture %}
 
 {% include code-example.html
     title='GET Archived Tokens Request'
@@ -838,7 +837,6 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
       "contentType": "application/json"
     }
   ]
-}
 }{% endcapture %}
 
 {% include code-example.html
