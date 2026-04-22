@@ -65,11 +65,6 @@ orders were available in Danish, English, Finnish, Norwegian and Swedish. We
 have expanded the range of languages to include Estonian, French, German,
 Latvian, Lithuanian, Polish, Russian and Spanish.
 
-A handful of new GET and PATCH requests and responses have been documented as
-the Payer Service went live a short time ago. As this regards tokens, we have
-grouped them together with the existing Delete Tokens section, and renamed it
-[Token Handling][token-handling].
-
 QR codes are now available for [Apple Pay][apple-pay] transactions, which makes
 it possible to convert even when the payer is on an unsupported device.
 
@@ -1399,7 +1394,7 @@ more convenient for both the integration and the payer.
 [cv2]: /old-implementations/checkout-v2/ui-migration/
 [integrated-commerce]: /checkout-v3/features/optional/integrated-commerce
 [data-protection]: /old-implementations/checkout-v2/data-protection
-[delete-payment-tokens]: /checkout-v3/features/optional/token-handling
+[delete-payment-tokens]: /checkout-v3/features/optional/delete-tokens
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [design-guide]: https://design.swedbankpay.com/
 [display-ui]: /checkout-v3/get-started/display-ui
@@ -1503,7 +1498,6 @@ more convenient for both the integration and the payer.
 [terminology]: /checkout-v3/get-started/terminology
 [test-data]: /checkout-v3/test-data
 [token04]: /checkout-v3/technical-reference/problems/#creditcard-payments-mit---do-not-try-again--excessive-reattempts
-[token-handling]: /checkout-v3/features/optional/token-handling/
 [token-problems]: /checkout-v3/technical-reference/problems/#token-problems
 [tos-url]: /checkout-v3/features/customize-ui/tos
 [trustly-pres]: /checkout-v3/trustly-presentation

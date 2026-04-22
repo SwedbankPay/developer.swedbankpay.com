@@ -6,7 +6,7 @@ description: |
               <span class="d-block mt-3">
                 <span class="badge badge-default">Card</span>
               </span>
-menu_order: 2600
+menu_order: 2700
 ---
 
 {% include payment-order-recur.md %}
