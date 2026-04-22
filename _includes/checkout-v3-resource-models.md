@@ -1207,6 +1207,7 @@ api-supported-versions: 3.x{% endcapture %}
         "name": "PaymentAttemptStarted",
         "instrument": "CreditCard",
         "number": 123456,
+        "amount": 1000,
         "prefill": true,
         "initiatedBy" "Payer"
       },
@@ -1214,6 +1215,7 @@ api-supported-versions: 3.x{% endcapture %}
         "created": "2020-03-04T01:03:01.01Z",
         "name": "PaymentAttemptAborted",
         "number": 123456,
+        "amount": 1000,
         "instrument": "CreditCard",
         "initiatedBy" "Payer"
       },
@@ -1234,6 +1236,7 @@ api-supported-versions: 3.x{% endcapture %}
         "name": "PaymentAttemptStarted",
         "instrument": "CreditCard",
         "number": 123457,
+        "amount": 1000,
         "prefill": true,
         "initiatedBy" "Payer"
       },
@@ -1242,6 +1245,7 @@ api-supported-versions: 3.x{% endcapture %}
         "name": "PaymentAttemptFailed",
         "instrument": "CreditCard",
         "number": 123457,
+        "amount": 1000,
         "initiatedBy" "Payer"
       },
       {
@@ -1249,6 +1253,7 @@ api-supported-versions: 3.x{% endcapture %}
         "name": "PaymentAttemptStarted",
         "instrument": "CreditCard",
         "number": 123458,
+        "amount": 1000,
         "prefill": true,
         "initiatedBy" "Payer"
       },
@@ -1257,6 +1262,7 @@ api-supported-versions: 3.x{% endcapture %}
         "name": "PaymentPaid",
         "instrument": "CreditCard"
         "number": 123458,
+        "amount": 1000,
         "initiatedBy" "Payer"
       },
       {
@@ -1264,6 +1270,7 @@ api-supported-versions: 3.x{% endcapture %}
         "name": "PaymentPartiallyCaptured",
         "instrument": "CreditCard"
         "number": 123459,
+        "amount": 1000,
         "initiatedBy" "Merchant"
       },
       {
@@ -1271,6 +1278,7 @@ api-supported-versions: 3.x{% endcapture %}
         "name": "PaymentPartiallyCaptured",
         "instrument": "CreditCard"
         "number": 123460,
+        "amount": 1000,
         "initiatedBy" "Merchant"
       },
       {
@@ -1278,6 +1286,7 @@ api-supported-versions: 3.x{% endcapture %}
         "name": "PaymentPartiallyReversed",
         "instrument": "CreditCard"
         "number": 123461,
+        "amount": 1000,
         "initiatedBy" "Merchant"
       },
       {
@@ -1285,6 +1294,7 @@ api-supported-versions: 3.x{% endcapture %}
         "name": "PaymentCapturedFailed",
         "instrument": "CreditCard",
         "number": 123462,
+        "amount": 1000,
         "initiatedBy" "Merchant"
       },
       {
@@ -1292,6 +1302,7 @@ api-supported-versions: 3.x{% endcapture %}
         "name": "PaymentPartiallyCapturedFailed",
         "instrument": "CreditCard",
         "number": 123463,
+        "amount": 1000,
         "initiatedBy" "Merchant"
       },
       {
@@ -1299,6 +1310,7 @@ api-supported-versions: 3.x{% endcapture %}
         "name": "PaymentReversedFailed",
         "instrument": "CreditCard",
         "number": 123464,
+        "amount": 1000,
         "initiatedBy" "Merchant"
       },
       {
@@ -1306,6 +1318,7 @@ api-supported-versions: 3.x{% endcapture %}
         "name": "PaymentPartiallyReversedFailed",
         "instrument": "CreditCard",
         "number": 123465,
+        "amount": 1000,
         "initiatedBy" "Merchant"
       },
       {
@@ -1313,6 +1326,7 @@ api-supported-versions: 3.x{% endcapture %}
         "name": "PaymentCancelledFailed",
         "instrument": "CreditCard",
         "number": 123466,
+        "amount": 1000,
         "initiatedBy" "Merchant"
       },
       {
@@ -1320,6 +1334,7 @@ api-supported-versions: 3.x{% endcapture %}
         "name": "PaymentPartiallyCancelledFailed",
         "instrument": "CreditCard",
         "number": 123467,
+        "amount": 1000,
         "initiatedBy" "Merchant"
       }
     ]
@@ -1405,6 +1420,14 @@ api-supported-versions: 3.x{% endcapture %}
               <span class="type"><code>integer</code></span>
             </summary>
             <div class="desc"><div class="indent-2">Payment number associated with the event.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f amount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>integer</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The amount of the payment associated with the event. Shown in the lowest monetary unit of the selected currency.</div></div>
           </details>
 
           <details class="api-item" data-level="2">
