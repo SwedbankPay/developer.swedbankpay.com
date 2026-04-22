@@ -1,14 +1,10 @@
 ---
-title: Token Handling
-permalink: /:path/token-handling/
+title: Delete Tokens
+permalink: /:path/delete-tokens/
 redirect_from: /checkout-v3/features/optional/delete-token/
-description: All things token related.
-menu_order: 2800
+description: Everything you need to delete tokens.
+menu_order: 1700
 ---
-
-The Payer Service API is dedicated solely to token handling.
-
-{% include payer-tokens.md %}
 
 ## Delete Unscheduled, Recurrence Or Payment Tokens
 

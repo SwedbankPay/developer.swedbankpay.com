@@ -9,7 +9,7 @@ description: |
                 <span class="badge badge-default">Google Pay&trade;</span>
                 <span class="badge badge-default">MobilePay</span>
               </span>
-menu_order: 2700
+menu_order: 2800
 ---
 
 {% include request-delivery-info.md %}
