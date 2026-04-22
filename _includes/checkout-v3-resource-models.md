@@ -1189,18 +1189,18 @@ api-supported-versions: 3.x{% endcapture %}
       {
         "created": "2020-03-04T01:00:00.00Z",
         "name": "PaymentCreated",
-        "initiatedBy" "Payee"
+        "initiatedBy": "Payee"
       },
       {
         "created": "2020-03-04T01:01:00.00Z",
         "name": "PaymentLoaded",
-        "initiatedBy" "PaymentGateway"
+        "initiatedBy": "PaymentGateway"
       },
       {
         "created": "2020-03-04T01:01:01.01Z",
         "name": "PaymentInstrumentSelected",
         "instrument": "CreditCard",
-        "initiatedBy" "Payer"
+        "initiatedBy": "Payer"
       },
       {
         "created": "2020-03-04T01:03:01.01Z",
@@ -1217,19 +1217,19 @@ api-supported-versions: 3.x{% endcapture %}
         "number": 123456,
         "amount": 1000,
         "instrument": "CreditCard",
-        "initiatedBy" "Payer"
+        "initiatedBy": "Payer"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentInstrumentSelected",
         "instrument": "Vipps",
-        "initiatedBy" "Payer"
+        "initiatedBy": "Payer"
       },
       {
         "created": "2020-03-04T03:01:01.01Z",
         "name": "PaymentInstrumentSelected",
         "instrument": "CreditCard",
-        "initiatedBy" "Payer"
+        "initiatedBy": "Payer"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
@@ -1238,7 +1238,7 @@ api-supported-versions: 3.x{% endcapture %}
         "number": 123457,
         "amount": 1000,
         "prefill": true,
-        "initiatedBy" "Payer"
+        "initiatedBy": "Payer"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
@@ -1246,7 +1246,7 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard",
         "number": 123457,
         "amount": 1000,
-        "initiatedBy" "Payer"
+        "initiatedBy": "Payer"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
@@ -1255,7 +1255,7 @@ api-supported-versions: 3.x{% endcapture %}
         "number": 123458,
         "amount": 1000,
         "prefill": true,
-        "initiatedBy" "Payer"
+        "initiatedBy": "Payer"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
@@ -1263,7 +1263,7 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard"
         "number": 123458,
         "amount": 1000,
-        "initiatedBy" "Payer"
+        "initiatedBy": "Payer"
       },
       {
         "created": "2020-03-05T02:01:01.01Z",
@@ -1271,7 +1271,7 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard"
         "number": 123459,
         "amount": 1000,
-        "initiatedBy" "Payee"
+        "initiatedBy": "Payee"
       },
       {
         "created": "2020-03-06T02:01:01.01Z",
@@ -1279,7 +1279,7 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard"
         "number": 123460,
         "amount": 1000,
-        "initiatedBy" "Payee"
+        "initiatedBy": "Payee"
       },
       {
         "created": "2020-03-07T02:01:01.01Z",
@@ -1287,7 +1287,7 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard"
         "number": 123461,
         "amount": 1000,
-        "initiatedBy" "Payee"
+        "initiatedBy": "Payee"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
@@ -1295,7 +1295,7 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard",
         "number": 123462,
         "amount": 1000,
-        "initiatedBy" "Payee"
+        "initiatedBy": "Payee"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
@@ -1303,7 +1303,7 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard",
         "number": 123463,
         "amount": 1000,
-        "initiatedBy" "Payee"
+        "initiatedBy": "Payee"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
@@ -1311,7 +1311,7 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard",
         "number": 123464,
         "amount": 1000,
-        "initiatedBy" "Payee"
+        "initiatedBy": "Payee"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
@@ -1319,7 +1319,7 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard",
         "number": 123465,
         "amount": 1000,
-        "initiatedBy" "Payee"
+        "initiatedBy": "Payee"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
@@ -1327,7 +1327,7 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard",
         "number": 123466,
         "amount": 1000,
-        "initiatedBy" "Payee"
+        "initiatedBy": "Payee"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
@@ -1335,7 +1335,7 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard",
         "number": 123467,
         "amount": 1000,
-        "initiatedBy" "Payee"
+        "initiatedBy": "Payee"
       }
     ]
   }
