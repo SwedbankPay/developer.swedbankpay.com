@@ -1189,12 +1189,12 @@ api-supported-versions: 3.x{% endcapture %}
       {
         "created": "2020-03-04T01:00:00.00Z",
         "name": "PaymentCreated",
-        "initiatedBy" "Merchant"
+        "initiatedBy" "Payee"
       },
       {
         "created": "2020-03-04T01:01:00.00Z",
         "name": "PaymentLoaded",
-        "initiatedBy" "System"
+        "initiatedBy" "PaymentGateway"
       },
       {
         "created": "2020-03-04T01:01:01.01Z",
@@ -1271,7 +1271,7 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard"
         "number": 123459,
         "amount": 1000,
-        "initiatedBy" "Merchant"
+        "initiatedBy" "Payee"
       },
       {
         "created": "2020-03-06T02:01:01.01Z",
@@ -1279,7 +1279,7 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard"
         "number": 123460,
         "amount": 1000,
-        "initiatedBy" "Merchant"
+        "initiatedBy" "Payee"
       },
       {
         "created": "2020-03-07T02:01:01.01Z",
@@ -1287,7 +1287,7 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard"
         "number": 123461,
         "amount": 1000,
-        "initiatedBy" "Merchant"
+        "initiatedBy" "Payee"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
@@ -1295,7 +1295,7 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard",
         "number": 123462,
         "amount": 1000,
-        "initiatedBy" "Merchant"
+        "initiatedBy" "Payee"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
@@ -1303,7 +1303,7 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard",
         "number": 123463,
         "amount": 1000,
-        "initiatedBy" "Merchant"
+        "initiatedBy" "Payee"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
@@ -1311,7 +1311,7 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard",
         "number": 123464,
         "amount": 1000,
-        "initiatedBy" "Merchant"
+        "initiatedBy" "Payee"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
@@ -1319,7 +1319,7 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard",
         "number": 123465,
         "amount": 1000,
-        "initiatedBy" "Merchant"
+        "initiatedBy" "Payee"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
@@ -1327,7 +1327,7 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard",
         "number": 123466,
         "amount": 1000,
-        "initiatedBy" "Merchant"
+        "initiatedBy" "Payee"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
@@ -1335,7 +1335,7 @@ api-supported-versions: 3.x{% endcapture %}
         "instrument": "CreditCard",
         "number": 123467,
         "amount": 1000,
-        "initiatedBy" "Merchant"
+        "initiatedBy" "Payee"
       }
     ]
   }
@@ -1436,6 +1436,14 @@ api-supported-versions: 3.x{% endcapture %}
               <span class="type"><code>bool</code></span>
             </summary>
             <div class="desc"><div class="indent-2">Indicates if payment info was prefilled or not.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f initiatedBy %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The party who initiated the event. <code>Payer</code>, <code>Payee</code> or <code>PaymentGateway</code>.</div></div>
           </details>
         </div>
       </details>
