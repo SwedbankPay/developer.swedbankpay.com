@@ -7,7 +7,7 @@ description: |
                   <span class="badge badge-default">Card</span>
                   <span class="badge badge-default">Trustly</span>
                 </span>
-menu_order: 3000
+menu_order: 3100
 ---
 
 {% include payment-order-verify.md %}
