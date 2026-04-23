@@ -1209,7 +1209,7 @@ api-supported-versions: 3.x{% endcapture %}
         "number": 123456,
         "amount": 1000,
         "prefill": true,
-        "initiatedBy" "Payer"
+        "initiatedBy": "Payer"
       },
       {
         "created": "2020-03-04T01:03:01.01Z",
