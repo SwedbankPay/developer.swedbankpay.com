@@ -1,5 +1,5 @@
 We are adding a subscribable callback method called `onPaymentButtonPressed`,
-which controls if and when the payment button should delay exection.
+which controls if and when the payment button should delay execution.
 
 If subscribed to, the payment button will – instead of executing the payment
 directly – execute the callback method and add an event listener for the
