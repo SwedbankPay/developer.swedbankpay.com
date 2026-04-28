@@ -1184,6 +1184,28 @@ If we want to reverse a previously captured amount, we need to perform
 `reversal` against the accompanying `href` returned in the
 `operations` list.
 
+#### Asynchronous Reversals
+
+Some payment methods process reversals asynchronously. In these instances, the
+`PaymentOrder` may return `202 Accepted` instead of the usual `200 OK`, but with
+the standard `PaymentOrder` response body. The initialized reversal transaction
+is not visible in the response.
+
+Once the reversal is completed, whether successful or failed, the merchant
+receives a payee callback. The merchant should then `GET` the payment order to
+check the final transaction state. Successful reversals appear in
+`financialTransactions`; failed reversals appear in
+`postPurchaseFailedAttempts`.
+
+While a reversal is pending, no additional post-purchase operations can be
+initiated on the same payment order. The fact that expected post-purchase
+operations are not included in the response can be used as an indication that we
+have a post-purchase operation that is still being processed. The process period
+may be up to 3 days for asynchronous reverals.
+
+This requires that a `callbackUrl` is configured by the merchant and present in
+the request.
+
 {: .text-right}
 [Top of page](#post-purchase-v31)
 
