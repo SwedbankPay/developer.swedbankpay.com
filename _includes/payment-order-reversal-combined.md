@@ -33,7 +33,7 @@ While a reversal is pending, no additional post-purchase operations can be
 initiated on the same payment order. The fact that expected post-purchase
 operations are not included in the response can be used as an indication that we
 have a post-purchase operation that is still being processed. The process period
-may be up to 3 days for asynchronous reverals.
+may be up to 3 days for asynchronous reversals.
 
 This requires that a `callbackUrl` is configured by the merchant and present in
 the request.
