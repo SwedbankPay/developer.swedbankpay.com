@@ -1,10 +1,20 @@
 ---
 title: Delete Tokens
-permalink: /:path/delete-tokens/
+permalink: /:path/token-handling/
 redirect_from: /checkout-v3/features/optional/delete-token/
 description: Everything you need to delete tokens.
-menu_order: 1700
+menu_order: 2800
 ---
+
+## Payer Service APIs
+
+A library of APIs meant for merchants using the Payer Service API.
+
+{% include payer-tokens.md %}
+
+## Legacy Token APIs
+
+APIs for merchants not yet using the Payer Service API.
 
 ## Delete Unscheduled, Recurrence Or Payment Tokens
 

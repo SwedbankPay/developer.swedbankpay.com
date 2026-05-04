@@ -1394,7 +1394,7 @@ more convenient for both the integration and the payer.
 [cv2]: /old-implementations/checkout-v2/ui-migration/
 [integrated-commerce]: /checkout-v3/features/optional/integrated-commerce
 [data-protection]: /old-implementations/checkout-v2/data-protection
-[delete-payment-tokens]: /checkout-v3/features/optional/delete-tokens
+[delete-payment-tokens]: /checkout-v3/features/optional/token-handling
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [design-guide]: https://design.swedbankpay.com/
 [display-ui]: /checkout-v3/get-started/display-ui
