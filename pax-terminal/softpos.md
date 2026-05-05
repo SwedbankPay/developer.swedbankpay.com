@@ -98,30 +98,37 @@ devices.
 {:.table .table-striped}
 | Manufacturer             | Models  |
 | :----------------------- | :----------- |
-| Google                  | Pixel (3, 4, 5, 6, 6 Pro, 7a)          |
-| Motorola                  | G31, G54         |
-| Nokia                  | 6.2, G20          |
+| Google                   | Pixel (3, 4, 5, 6, 6 Pro, 7a, 8, 9)          |
+| Motorola                 | G31, G54         |
+| Nokia                    | 6.2, G20          |
+| Nothing Phone            | Nothing Phone 3a Pro          |
 | OnePlus                  | 7T Pro, 8 Pro, 9 5G, Pro 5G, 10 Pro 5G          |
-| Samsung                  | A15, A21s, A22 (+, 5G), A32 (+, 5G), A33 5G, A34, A35, A40, A51, A52 (+ 5G, s5G), A54, A71, S10 (+, e, 5G, Lite), S20 (+ 5G, +5G, FE, FE 5G, Ultra 5G), S21 (+, 5G, +5G, FE, FE 5G, Ultra 5G) S22 (+, 5G, Ultra), S23, Xcover (+ Pro, Field pro, 4S, 5, 5 Enterprise)        |
-| Sony                  | Xperia 10V         |
+| Samsung                  | A15, A21s, A22 (+, 5G), A26, A32 (+, 5G), A33 5G, A34, A35, A36, A40, A51, A52 (+ 5G, s5G), A54, A56, A71, S10 (+, e, 5G, Lite), S20 (+, 5G, +5G, FE, FE 5G, Ultra 5G), S21 (+, 5G, +5G, FE, FE 5G, Ultra 5G) S22 (+, 5G, Ultra), S23, Xcover (+ Pro, Field pro, 4S, 5, 5 Enterprise)        |
+| Sony                     | Xperia 10V         |
 
 #### Enterprise Devices
 
 {:.table .table-striped}
 | Manufacturer             | Models  |
 | :----------------------- | :----------- |
-| Bluebird                 | EF501        |
-| Elo                      | M50C        |
-| Honeywell                | CT40        |
-| Imin*                    | SWIFT 2 PRO         |
-| Point Mobile             | PM45, PM67, PM75, PM85         |
-| Sunmi*                | V2s, V2s plus, L2H, D3 mini, T3 Pro max, V3 MIX |
-| Telpo                  | M1       |
+| Bluebird                 | EF501, HF550X |
+| Elo                      | M50C, M51, Elo Pay 22-inch |
+| Honeywell                | CT40, CT30P, CT37, CT45P, CT70, EDA10A |
+| iMin*                    | Swift 2 PRO, Lark1 |
+| Landi*                   | M20 (only GMS), M20SE (only GMS), C20DS |
+| Memor                    | Memor 17 |
+| Mobiwire                 | MobiPrint5, MobiGo2 |
+| Oona/AAVA                | Oona 10", Oona 8", Oona1W |
+| Orderman                 | 10 |
+| Point Mobile             | PM45, PM67, PM75, PM85 |
+| RCH                      | APE3, A15 |
+| Sunmi*                   | V2s, V2s Plus, L2H, L2s PRO, D3 MINI-Single screen, V3 MIX, V3H, Flex3 |
+| Telpo                    | M1K, M8       |
 | Unitech                  | EA630, PA768         |
-| Urovo                  | CT58, DT50         |
-| Zebra                  | TC52, TC57, CC6000, EC55        |
+| Urovo                    | CT58, DT50, DT66     |
+| Zebra                    | TC21, TC22, TC27, TC52, TC57, TC58, CC6000, EC55, TC53E, KC50        |
 
-*Also available in Imin and/or Sumni stores respectively
+*Also available in iMin, Landi and/or Sumni stores respectively.
 
 #### Unsupported Devices (Non-Exhaustive)
 
