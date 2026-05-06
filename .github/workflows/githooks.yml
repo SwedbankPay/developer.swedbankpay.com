@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
     - name: Shellcheck
-      uses: bewuethr/shellcheck-action@bad56883bc6879ed84fc800174a1248bff99b221 # v2.1
+      uses: bewuethr/shellcheck-action@80bac2daa9fcf95d648200a793d00060857e6dc4 # v2.3.0
 
   commit-msg:
     runs-on: ubuntu-latest
