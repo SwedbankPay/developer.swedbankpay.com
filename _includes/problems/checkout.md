@@ -180,7 +180,7 @@ the following URL structure:
 
 We will be making a change in the error messages that are given in response in
 the e-commerce API if the requested `Payment`/`One-Click`/`Recur`/`Unscheduled`
-token does not exist or is deleted.
+token does not exist or is archived.
 
 The following new `errorType` will be introduced (only for Payment Order):
 `https://api.payex.com/psp/errordetail/paymentorders/paymenttokeninactive`
@@ -191,7 +191,7 @@ Order:
 
 First, a check is made to verify if the token exists or not. If it does not
 exist, the API returns an error of the type `InputError`. If, however, the token
-exists but is deleted, the API will return the error `TokenInactive`.
+exists but is archived, the API will return the error `TokenInactive`.
 
 Examples of the error messages are presented below.
 

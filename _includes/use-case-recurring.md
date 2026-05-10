@@ -150,35 +150,22 @@ interval). Modify the parameters in the `Purchase`/`Verify` request as follows:
 ## Removal of Payment Method Details
 
  When conditions like error codes or payer requests to remove details are met,
- you'll need to delete associated tokens. Here are two methods:
+ you'll need to archive associated tokens. There are two methods available:
 
-*   Deletion of all tokens:
+*   Archive all tokens:
 
  Send a `PATCH` call to the base URL with the endpoint
- `/psp/paymentorders/payerOwnedTokens/<payerReference>`.
+`/online/payer/payees/<payeeId>/payers/<payerReference>/archives`.
 
-*   Deletion of a singular token:
+*   Archive a singular token:
 
-Use the URL `/psp/paymentorders/unscheduledTokens/<TokenValue>`.
+Use the URL `/online/payer/payees/<payeeId>/tokens/<tokenId>/archives`.
 
-*   Both scenarios generate the same response.
+Full request and response for the two `PATCH` calls can be found in the Token
+Handling section under [archive all][archive-all]{:target="_blank"} or
+[archive single][archive-single]{:target="_blank"} token respectively.
 
-{% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
-api-supported-versions: 3.x/2.0{% endcapture %}
-
-{% capture response_content %}{
-"state": "Deleted",
-"comment": "Comment on why the deletion is happening"
-}{% endcapture %}
-
-{% include code-example.html
-    title='Response'
-    header=response_header
-    json= response_content
-    %}
-
-### Common causes that triggers the need for deletion
+### Common causes that triggers the need for archivation
 
 *   Your customer requests their information to be removed.
 
@@ -197,17 +184,19 @@ compiled relevant documentation below.
 
 *   [Verify][verify] (operation to store details with no sum).
 
-*   [Deletion of tokens][delete-token].
+*   [Archive tokens][delete-token].
 
 *   [Callback][callback] (asynchronous update).
 
 *   Post-purchase: [Capture][capture], [Cancel][cancel], [Reversal][reversal].
 
 [basic-request]: /checkout-v3/get-started/payment-request/#create-payment-order-v31
+[archive-single]: /checkout-v3/features/optional/token-handling/#patch-archive-single-payer-token
+[archive-all]: /checkout-v3/features/optional/token-handling/#patch-archive-all-payer-tokens
 [callback]: /checkout-v3/features/payment-operations/callback
 [cancel]: /checkout-v3/features/payment-operations/cancel
 [capture]: /checkout-v3/features/payment-operations/payment-order-capture
-[delete-token]: /checkout-v3/features/optional/delete-token
+[delete-token]: /checkout-v3/features/optional/token-handling
 [get-started]: /checkout-v3/get-started/#the-basic-implementation
 [paid]: https://api.externalintegration.payex.com/psp/paymentorders/<PaymentOrderIdHere>/paid
 [recur]: /checkout-v3/features/optional/recur

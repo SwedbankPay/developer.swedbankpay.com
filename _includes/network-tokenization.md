@@ -55,20 +55,18 @@ Do you want to give it a go? Test cards and a guide is in the
     replaced by the issuer. This would help the customer to understand that a
     new and valid card is stored. It is also recommended that you add
     information that the card has been updated automatically by the issuer.
-    Retrieving the updated card information is done using `payerOwnedTokens`,
-    and should be done when the end-user logs in, goes to “My cards” or at a
-    similar point that makes sense in your portal.
+    Retrieving the updated card information is done by performing the `GET`
+    request shown below, and should be done when the end-user logs in, goes to
+    “My cards” or at a similar point that makes sense in your portal.
 
-The `GET` request to retrieve updated card information should look similar to
-this.
 
-{% capture request_header %}GET /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
+{% capture request_header %}GET /online/payer/payees/<payeeId>/payers/<payerReference>/tokens HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0{% endcapture %}
+{% endcapture %}
 
 {% include code-example.html
-    title='GET Tokens Request'
+    title='GET All Payer Tokens Request'
     header=request_header
     %}
 
@@ -77,46 +75,79 @@ Content-Type: application/json; charset=utf-8; version=3.x/2.0
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
-  "payerOwnedTokens": {
-        "id": "/psp/paymentorders/payerownedtokens/{payerReference}",
-        "payerReference": "{payerReference}",
-        "tokens": [
-            {
-                "token": "{token}",
-                "tokenType": "Unscheduled",
-                "instrument": "CreditCard",
-                "instrumentDisplayName": "492500******0004",
-                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
-                "instrumentParameters": {
-                    "expiryDate": "12/2025",
-                    "cardBrand": "Visa",
-                    "lastFourPan": "0004",
-                    "lastFourDPan": "8188",
-                    "issuerName": "BankName"
-                },
-                "operations": [
-                    {
-                        "method": "PATCH",
-                        "href": "https://api.internaltest.payex.com/psp/paymentorders/unscheduledtokens/e2f06785-805d-4605-bf40-426a725d313d",
-                        "rel": "delete-unscheduledtokens",
-                        "contentType": "application/json"
-                    }
-                ]
-            }
-        ]
-    },
-    "operations": [
-        {
-            "method": "PATCH",
-            "href": "https://api.internaltest.payex.com/psp/paymentorders/payerOwnedPaymentTokens/{payerReference}",
-            "rel": "delete-payerownedtokens",
-            "contentType": "application/json"
-        }
+{
+  "tokens": {
+    "id": "/online/payer/payees/<payeeid>/payers/<payerReference>/tokens",
+    "payerReference": "{payerReference}",
+    "migratedFromConsumerProfile": true
+    "tokenlist": [
+      {
+         "id" : "<resourceId>",
+         "payerReference" : "<payerReference>",
+         "token": "<Guid>",
+         "tokenType": "TransactionOnFile",
+         "instrument": "Trustly",
+         "instrumentDisplayName" : "Custom value, or default depending on instrument",
+         "correlationsId": "e2f06785-805d-4605-bf40-426a725d313d",
+         "state": "Archived",
+         "archivedBy": "TOKEN_ISSUER",
+         "archiveReason": "Comment with reason for archive",
+         "instrumentParameters": {
+           ...
+         }
+        "operations": [...]
+      },
+      {
+         "id" : "<resourceId>",
+         "payerReference" : "<payerReference>",
+         "token": "<Guid>",
+         "tokenType": "Unscheduled",
+         "instrument": "CreditCard|Trustly|CarPay",
+         "instrumentDisplayName" : "Custom value, or default depending on instrument",
+         "correlationsId": "e2f06785-805d-4605-bf40-426a725d313d",
+         "state": "Active",
+         "instrumentParameters": {
+           ...
+         }
+        "operations": [...]
+      },
+      {
+         "id" : "<resourceId>",
+         "payerReference" : "<payerReference>",
+         "token": "<Guid>",
+         "tokenType": "Payment",
+         "instrument": "CreditCard",
+         "instrumentDisplayName" : "Custom value, or default depending on instrument",
+         "correlationsId": "e2f06785-805d-4605-bf40-426a725d313d",
+         "state": "Archived",
+         "archivedBy": "PAYEE",
+         "archiveReason": "Comment with reason for archive",
+         "instrumentParameters": {
+           ...
+         }
+        "operations": [...]
+      }
     ]
+  },
+  "operations": [
+    {
+      "method": "GET",
+      "href": "https://api.<environment>.swedbankpay.com/online/payer/payees/<guid>/payers/<payerReference>/tokens",
+      "rel": "get-payer-tokens",
+      "contentType": "application/json"
+    },
+    {
+      "method": "PATCH",
+      "href": "https://api.<environment>.swedbankpay.com/online/payer/payees/<guid>/payers/<payerReference>/archives",
+      "rel": "archive-payer-tokens",
+      "contentType": "application/json"
+    }
+  ]
+}
 }{% endcapture %}
 
 {% include code-example.html
-    title='GET Tokens Response'
+    title='GET All Payer Tokens Response'
     header=response_header
     json= response_content
     %}

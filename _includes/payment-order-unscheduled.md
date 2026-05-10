@@ -31,7 +31,7 @@ and connected. You do that by adding the field `generateUnscheduledToken` in the
 purchase to activate the token. You can also use [Verify][verify] to activate
 tokens.
 
-(Read more about [deleting the unscheduled token][delete-token] here.)
+(Read more about how to [archive the unscheduled token][delete-token] here.)
 
 ## Initial Unscheduled Request
 
@@ -1890,7 +1890,7 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 <!--lint disable final-definition -->
 
-[delete-token]: {{ features_url }}/optional/delete-token
+[delete-token]: {{ features_url }}/optional/token-handling
 [paid-resource-model]: {{ techref_url }}/technical-reference/resource-sub-models#paid
 [old-payment-order-cancel]: /old-implementations/checkout-v2/after-payment#cancel
 [old-payment-order-capture]: /old-implementations/checkout-v2/capture

@@ -70,7 +70,7 @@ Before we do acceptance tests you need to make sure the following is in place:
 *   That you receive order confirmations/receipts by e-mail that contain order
 number, transaction number, price and the merchant/store's contact information.
 *   If you intend to use [unscheduled] or [recur] purchases,
-  you need to be able to send requests for [deleting tokens][delete-token].
+  you need to be able to send requests for [archiving tokens][delete-token].
 *   Make sure that you can handle [network tokens][nwt] by using our
   [test cards][test-cards] for that specific case.
 *   If you expose any transactional data or information such as masked PANs - an
@@ -103,7 +103,7 @@ when we get there.
                          next_title="Start Integrating" %}
 
 [basic-implementation]: /assets/img/checkout/devp-get-started.png
-[delete-token]: /checkout-v3/features/optional/delete-token/
+[delete-token]: /checkout-v3/features/optional/token-handling/
 [e-mail]: mailto:support.psp@swedbankpay.se
 [https]: /checkout-v3/get-started/fundamental-principles#connection-and-protocol
 [migrate]: /checkout-v3/migrate

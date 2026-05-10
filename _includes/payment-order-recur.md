@@ -31,7 +31,7 @@ and connected. You do that by adding the field `generateRecurrenceToken` in the
 `PaymentOrder` request and set the value to `true`. The payer must complete the
 purchase to activate the token.
 
-(Read more about [deleting the recurrence token][delete-token] here.)
+(Read more about how to [archive the recurrence token][delete-token] here.)
 
 ## Initial Recur Request
 
@@ -1815,7 +1815,7 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 <!--lint disable final-definition -->
 
-[delete-token]: {{ features_url }}/optional/delete-token
+[delete-token]: {{ features_url }}/optional/token-handling
 [paid-resource-model]: {{ techref_url }}/technical-reference/resource-sub-models#paid
 [old-payment-order-cancel]: /old-implementations/checkout-v2/after-payment#cancel
 [old-payment-order-capture]: /old-implementations/checkout-v2/capture
