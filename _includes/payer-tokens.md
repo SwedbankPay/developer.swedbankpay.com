@@ -460,7 +460,7 @@ payer's `payerReference`.
 
 ## GET All Payer Tokens Request
 
-{% capture request_header %}GET /online/payer/payees/{{payeeId}}/payers/{{payerReference}}/tokens HTTP/1.1
+{% capture request_header %}GET /online/payer/payees/<payeeId>/payers/<payerReference>/tokens HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>{% endcapture %}
 

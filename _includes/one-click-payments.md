@@ -125,13 +125,12 @@ When the initial purchase is successful, a `paymentToken` is linked to
 the payment. You can return the value by performing a `GET` request towards the
 payment resource with the `payerReference` included.
 
-{% capture request_header %}GET /psp/paymentorders/payerownedtokens/{{ page.payment_token }} HTTP/1.1
+{% capture request_header %}GET /online/payer/payees/<payeeId>/payers/<payerReference>/tokens HTTP/1.1
 Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0{% endcapture %}
+Authorization: Bearer <AccessToken>{% endcapture %}
 
 {% include code-example.html
-    title='Get Request Payment Resource'
+    title='GET All Payer Tokens Request'
     header=request_header
     %}
 
@@ -696,19 +695,18 @@ in a validation error.
 
 {% endif %}
 
-## Delete Payment Token
+## Archive Payment Token
 
-If you need to delete a `paymentToken`, you have two options. The first is by
-`payerReference`, which deletes all payment, recurrence and/or unscheduled
-tokens associated with the payer. The second is by `paymentToken`, which only
-deletes a specific token.
+If you need to archive a `paymentToken`, you have two options. The first is to
+archive all payment, recurrence and/or unscheduled tokens associated with the
+payer. The second is to only archive a specific token.
 
 {% include alert.html type="warning"
                       icon="warning"
                       body="Please note that this call does not erase the card
   number stored at Swedbank Pay.
   A card number is automatically deleted six months after a successful
-  `Delete payment token` request.
+  `Archive payment token` request.
   If you want card information removed at an earlier date, you need to contact
   [ehandelsetup@swedbankpay.dk](mailto:ehandelsetup@swedbankpay.dk),
   [verkkokauppa.setup@swedbankpay.fi](mailto:verkkokauppa.setup@swedbankpay.fi),
@@ -716,25 +714,23 @@ deletes a specific token.
   [ehandelsetup@swedbankpay.se](mailto:ehandelsetup@swedbankpay.se);
   and supply them with the relevant transaction reference or payment token." %}
 
-If you want to delete tokens by `payerReference`, the request and response
-should look like the below. You should retrieve the tokens by performing a `GET`
-towards the payerReference below before doing the `PATCH`, to make sure you have
-the correct token input.
+If you want to archive all tokens, the request and response should look like the
+example below. You should retrieve the tokens by performing a `GET` before doing
+the `PATCH`, to make sure you have the correct token input.
 
-## Delete Payment Token Request
+## Archive Payment Token Request
 
-{% capture request_header %}PATCH /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
+{% capture request_header %}PATCH /online/payer/payees/<payeeId>/payers/<payerReference>/archives HTTP/1.1
 Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0{% endcapture %}
+Authorization: Bearer <AccessToken>{% endcapture %}
 
 {% capture request_content %}{
-  "state": "Deleted",
-  "comment": "Comment stating why this is being deleted"
+  "reason" : "description",
+  "updatedBy": "SWEDBANK_PAY"
 }{% endcapture %}
 
 {% include code-example.html
-    title='Request'
+    title='PATCH Archive All Payer Tokens Request'
     header=request_header
     json= request_content
     %}
@@ -744,48 +740,93 @@ TODO: Remove pipes from the above code example and add a field table
       explaining each field here.
 {% endcomment %}
 
-## Delete Payment Token Response
+## Archive Payment Token Response
 
 {% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.x/2.0
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
-    "payerOwnedTokens": {
-        "id": "/psp/paymentorders/payerownedtokens/123456",
-        "payerReference": "123456",
-        "tokens": [
-            {
-                "tokenType": "Payment",
-                "token": "7fc5e705-d2c4-4c8b-8ff7-d40c355d6916",
-                "instrument": "CreditCard",
-                "instrumentDisplayName": "522661******3406",
-                "instrumentParameters": {
-                    "expiryDate": "12/2033",
-                    "cardBrand": "MasterCard"
-                }
-            },
-            {
-                "tokenType": "Payment",
-                "token": "ddd3ddf7-58ab-43f2-8d72-3a1899f33252",
-                "instrument": "CreditCard",
-                "instrumentDisplayName": "476173******0416",
-                "instrumentParameters": {
-                    "expiryDate": "12/2033",
-                    "cardBrand": "Visa"
-                }
-            }
-        ]
+{
+  "tokens": {
+    "id": "/online/payer/payees/<payeeid>/payers/<payerReference>/tokens",
+    "payerReference": "{payerReference}",
+    "migratedFromConsumerProfile": false
+    "tokenlist": [
+      {
+         "id" : "<resourceId>",
+         "payerReference" : "<payerReference>",
+         "token": "<Guid>",
+         "tokenType": "Payment",
+         "instrument": "CreditCard",
+         "instrumentDisplayName" : "Custom value, or default depending on instrument",
+         "correlationsId": "e2f06785-805d-4605-bf40-426a725d313d",
+         "state": "Archived",
+         "archivedBy": "PAYEE",
+         "archiveReason": "Comment with reason for archive",
+         "instrumentParameters": {
+           ...
+         }
+        "operations": [...]
+      },
+      {
+         "id" : "<resourceId>",
+         "payerReference" : "<payerReference>",
+         "token": "<Guid>",
+         "tokenType": "Unscheduled",
+         "instrument": "Trustly",
+         "instrumentDisplayName" : "Custom value, or default depending on instrument",
+         "correlationsId": "e2f06785-805d-4605-bf40-426a725d313d",
+         "state": "Archived",
+         "archivedBy": "SWEDBANK_PAY",
+         "archiveReason": "Comment with reason for archive",
+         "instrumentParameters": {
+           ...
+         }
+        "operations": [...]
+      },
+      {
+         "id" : "<resourceId>",
+         "payerReference" : "<payerReference>",
+         "token": "<Guid>",
+         "tokenType": "Recurrence",
+         "instrument": "CreditCard",
+         "instrumentDisplayName" : "Custom value, or default depending on instrument",
+         "correlationsId": "e2f06785-805d-4605-bf40-426a725d313d",
+         "state": "Archived",
+         "archivedBy": "TOKEN_ISSUER",
+         "archiveReason": "Comment with reason for archive",
+         "instrumentParameters": {
+           ...
+         }
+        "operations": [...]
+      }
+    ]
+  },
+  "operations": [
+    {
+      "method": "GET",
+      "href": "https://api.<environment>.swedbankpay.com/online/payer/payees/<guid>/payers/<payerReference>/tokens",
+      "rel": "get-payer-tokens",
+      "contentType": "application/json"
+    },
+    {
+      "method": "PATCH",
+      "href": "https://api.<environment>.swedbankpay.com/online/payer/payees/<guid>/payers/<payerReference>/archives",
+      "rel": "archive-payer-tokens",
+      "contentType": "application/json"
     }
+  ]
+}
 }{% endcapture %}
 
 {% include code-example.html
-    title='Response'
+    title='PATCH Archive All Payer Tokens Response'
     header=response_header
     json= response_content
     %}
 
-## Deleting Single Tokens
+## Archive Single Tokens
 
 {% if documentation_section contains "checkout" %}
 
@@ -793,7 +834,7 @@ For single token deletions, the request and response should look like this. In
 this example, the token is connected to a card. For Trustly transactions, it
 will be a masked account number.
 
-## Delete Single Token Request For Checkout Integrations
+## Archive Single Token Request For Checkout Integrations
 
 {% capture request_header %}PATCH /psp/paymentorders/paymenttokens/{{ page.payment_token }} HTTP/1.1
 Host: {{ page.api_host }}
@@ -811,7 +852,7 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
     json= request_content
     %}
 
-## Delete Single Token Response For Checkout Integrations
+## Archive Single Token Response For Checkout Integrations
 
 {% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1
@@ -837,48 +878,71 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 {% else %}
 
 For single token deletions, the request and response should look like this. In
-this example, the token is a payment token and is connected to a card.
+this example, the token is an unscheduled token and connected to Trustly.
 
-## Delete Single Token Request
+## Archive Single Token Request
 
-{% capture request_header %}PATCH /psp/creditcard/payments/instrumentData/{{ page.payment_token }} HTTP/1.1
+{% capture request_header %}PATCH /online/payer/payees/<payeeId>/tokens/<tokenId>/archives HTTP/1.1
 Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json{% endcapture %}
+Authorization: Bearer <AccessToken>{% endcapture %}
 
 {% capture request_content %}{
-  "state": "Deleted",
-  "comment": "Comment on why the deletion is happening",
-  "tokenType" : "PaymentToken"
+  "reason" : "description",
+  "updatedBy": "PAYEE"
 }{% endcapture %}
 
 {% include code-example.html
-    title='Request'
+    title='PATCH Archive Single Payer Token Request'
     header=request_header
     json= request_content
     %}
 
-## Delete Single Token Response
+## Archive Single Token Response
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
-  "instrumentData": {
-    "id": "/psp/creditcard/payments/instrumentdata/12345678-1234-1234-1234-123456789000",
-    "paymentToken": "12345678-1234-1234-1234-123456789000",
-    "payeeId": "61c65499-de5c-454e-bf4c-043f22538d49",
-    "isDeleted": true,
-    "isPayeeToken": false,
-    "cardBrand": "Visa",
-    "maskedPan": "123456xxxxxx1111",
-    "expiryDate": "MM/YYYY",
-    "tokenType" : "PaymentToken"
-  }
+   "token": {
+     "id" : "<resourceId>",
+     "payerReference" : "<payerReference>",
+     "token": "<Guid>",
+     "tokenType": "Unscheduled",
+     "instrument": "Trustly",
+     "instrumentDisplayName" : "Custom value, or default depending on instrument",
+     "correlationsId": "e2f06785-805d-4605-bf40-426a725d313d",
+     "state": "Archived",
+     "archivedBy": "PAYEE",
+     "archiveReason": "Comment with reason for archive",
+     "instrumentParameters": {
+       ...
+    }
+  },
+  "operations": [
+    {
+       "method": "GET",
+       "href": "https://api.<environment>.swedbankpay.com/online/payer/payees/<guid>/tokens/<token>-<tokenType>",
+       "rel": "get-token",
+       "contentType": "application/json"
+    },
+    {
+       "method": "PATCH",
+       "href": "https://api.<environment>.swedbankpay.com/online/payer/payees/<guid>/tokens/<token>-<tokenType>/displaynames",
+       "rel": "update-displayname",
+       "contentType": "application/json"
+     },
+     {
+        "method": "PATCH",
+        "href": "https://api.<environment>.swedbankpay.com/online/payer/payees/<guid>/tokens/<token>-<tokenType>/archives",
+        "rel": "archive-token",
+        "contentType": "application/json"
+     }
+   ]
 }{% endcapture %}
 
 {% include code-example.html
-    title='Response'
+    title='PATCH Archive Single Payer Token Response'
     header=response_header
     json= response_content
     %}

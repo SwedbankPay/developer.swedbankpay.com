@@ -153,31 +153,21 @@ overall payment experience for your customers.
 
 ## Removal of Payment Method Details
 
-When certain conditions arise, such as encountering specific error codes or
-receiving requests from the payer to remove their details, it becomes necessary
-to initiate the deletion of associated tokens. Here are two methods:
+ When conditions like error codes or payer requests to remove details are met,
+ you'll need to archive associated tokens. There are two methods available:
 
-*   Deletion of all Tokens:
-Send a `PATCH` call to the base URL with the endpoint
-`/psp/paymentorders/payerOwnedTokens/<payerReference>`.
+*   Archive all tokens:
 
-This operation is only available for “Payer Aware Menu”.
+ Send a `PATCH` call to the base URL with the endpoint
+`/online/payer/payees/<payeeId>/payers/<payerReference>/archives`.
 
-*   Deletion of a singular Token:
-Use the URL `/psp/paymentorders/paymenttokens/<TokenValue>`.
+*   Archive a singular token:
 
-Both scenarios generate the same response:
+Use the URL `/online/payer/payees/<payeeId>/tokens/<tokenId>/archives`.
 
-{% capture response_content %}{
-"state": "Deleted",
-"comment": "Comment on why the deletion is happening"
-}{% endcapture %}
-
-{% include code-example.html
-    title='Token Deletion Response'
-    header=response_header
-    json= response_content
-    %}
+Full request and response for the two `PATCH` calls can be found in the Token
+Handling section under [archive all][archive-all]{:target="_blank"} or
+[archive single][archive-single]{:target="_blank"} token respectively.
 
 ## Common causes that triggers the need for deletion
 
@@ -190,3 +180,5 @@ Both scenarios generate the same response:
 [pam1]: /assets/img/PAM1.JPG
 [get-started]: /checkout-v3/get-started/#the-basic-implementation
 [testsuite]: https://www.postman.com/swedbankpay/swedbank-pay-online/folder/ds51yb3/one-click-payerawaremenu
+[archive-single]: /checkout-v3/features/optional/token-handling/#patch-archive-single-payer-token
+[archive-all]: /checkout-v3/features/optional/token-handling/#patch-archive-all-payer-tokens
