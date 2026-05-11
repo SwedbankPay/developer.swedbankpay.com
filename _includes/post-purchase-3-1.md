@@ -1186,10 +1186,10 @@ If we want to reverse a previously captured amount, we need to perform
 
 #### Asynchronous Reversals
 
-Some payment methods process reversals asynchronously. In these instances, the
-`PaymentOrder` may return `202 Accepted` instead of the usual `200 OK`, but with
-the standard `PaymentOrder` response body. The initialized reversal transaction
-is not visible in the response.
+Banklink (currently available in the Baltics only) processes reversals
+asynchronously. In this instances, the `PaymentOrder` may return `202 Accepted`
+instead of the usual `200 OK`, but with the standard `PaymentOrder` response
+body. The initialized reversal transaction is not visible in the response.
 
 Once the reversal is completed, whether successful or failed, the merchant
 receives a payee callback. The merchant should then `GET` the payment order to
