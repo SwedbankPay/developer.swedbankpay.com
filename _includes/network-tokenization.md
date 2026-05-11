@@ -146,7 +146,7 @@ what `maskedDpan` is or that it’s being used, but you as a merchant need to ke
 track of it. See the [Paid resource for cards][paid-resource-model].
 
 [card]: /old-implementations/payment-instruments-v1/card/
-[delete-tokens]: /checkout-v3/features/optional/token-handling
+[delete-tokens]: /checkout-v3/features/optional/delete-tokens
 [paid-resource-model]: /checkout-v3/technical-reference/resource-sub-models#card-paid-resource
 [one-click]: /checkout-v3/features/optional/one-click-payments/
 [unscheduled]: /checkout-v3/features/optional/unscheduled
