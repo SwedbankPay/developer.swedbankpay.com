@@ -1,6 +1,6 @@
 ---
 title: Delete Tokens
-permalink: /:path/delete-tokens/
+permalink: /:path/delete-token/
 description: Everything you need to delete tokens.
 menu_order: 1700
 ---

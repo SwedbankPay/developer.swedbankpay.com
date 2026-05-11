@@ -1678,7 +1678,7 @@ It is possible to query for all active payment tokens registered on a specific
 `payerReference`. After doing so, you can either remove all tokens or a subset
 of the tokens registered on the payer. This is the easiest way of cleaning up
 all data for **Payments Only** implementations. It is also possible to
-[delete a single token][delete-tokens] if you wish to do that.
+[delete a single token][delete-token] if you wish to do that.
 
 ## GET Tokens Request
 
@@ -2082,7 +2082,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
   </details>
 </div>
 
-[delete-tokens]: /checkout-v3/features/optional/delete-tokens
+[delete-token]: /checkout-v3/features/optional/delete-token
 [tokens]: {{ features_url }}/optional/payer-aware-payment-menu#tokens
 [verify]: {{ features_url }}/optional/verify
 [trustly-presentation]: /checkout-v3/trustly-presentation
