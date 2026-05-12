@@ -361,11 +361,11 @@ sequenceDiagram
 
     alt HTTP 200
         M-->>SP: 2xx Success
-        Note over SP: Callback acknowledged\nNo further retries
+        Note over SP: Callback OK, no retries
     else Any HTTP != 2xx
         M-->>SP: 4xx / 5xx / other
 
-        Note over SP: Callback NOT acknowledged\nRetry schedule triggered
+        Note over SP: Callback NOT OK, retry triggered
 
         SP->>M: Retry #1 (after 30 sec)
         M-->>SP: non-2xx
