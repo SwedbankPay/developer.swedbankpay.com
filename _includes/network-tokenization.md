@@ -82,8 +82,9 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         "payerReference": "{payerReference}",
         "tokens": [
             {
-                "token": "{token}",
                 "tokenType": "Unscheduled",
+                "token": "{token}",
+                "networkTokenized": true,
                 "instrument": "CreditCard",
                 "instrumentDisplayName": "492500******0004",
                 "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
@@ -124,19 +125,29 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 {:.table .table-striped .mb-5}
 | Field                          | Type      | Description    |
 | :----------------------------- | :-------- | :------------------- |
-| {% f instrumentParameters %}   | `integer` | A list of additional information connected to the token. Depending on the payment method, it can e.g. be `expiryDate`, `cardBrand`, `email`, `msisdn` or `zipCode`.|
-| {% f expiryDate, 2 %}      | `string`  | The expiry date of the card currently connected to the network token.                                  |
-| {% f cardBrand, 2 %}                 | `string` | The brand of the card currently connected to the network token.                                          |
-| {% f lastFourPan, 2 %}               | `string`  | The last four digits of the PAN connected to the network token. |
-| {% f lastFourDpan, 2 %}                 | `string` | The last four digits of the DPAN (Network Token).                                           |
-| {% f issuerName, 2 %}               | `string`  | The name of the issuer. |
+| {% f payerOwnedTokens %}               | `object`  | The `payerOwnedTokens` object containing information about the payer. |
+| {% f id, 1 %}               | `string`  |  The relative URL and unique identifier of the resource.  |
+| {% f payerReference, 1 %}               | `string`  | A reference used to recognize the payer. |
+| {% f tokens, 1 %}               | `array`  | A list of the tokens connected to the payer. |
+| {% f tokenType, 2 %}               | `string`  | The different types of available tokens: `payment`, `recurrence`, `transactionOnFile` or `unscheduled`. |
+| {% f token, 2 %}               | `string`  | The token `guid`. |
+| {% f networkTokenized, 2 %}               | `string`  | Indicates if the card has been successfully enrolled into Network Tokenization. Either `true` or `false`. |
+| {% f instrument, 2 %}               | `array`  | The payment method connected to the token. |
+| {% f instrumentDisplayName, 2 %}               | `array`  | Payment method value connected to the token. |
+| {% f correlationId, 2 %}               | `array`  | A unique ID used in the system. Makes it easier to see cards, accounts etc. connected to the token. |
+| {% f instrumentParameters, 2 %}   | `integer` | A list of additional information connected to the token. Depending on the payment method, it can e.g. be `expiryDate`, `cardBrand`, `email`, `msisdn` or `zipCode`.|
+| {% f expiryDate, 3 %}      | `string`  | The expiry date of the card currently connected to the network token.                                  |
+| {% f cardBrand, 3 %}                 | `string` | The brand of the card currently connected to the network token.                                          |
+| {% f lastFourPan, 3 %}               | `string`  | The last four digits of the PAN connected to the network token. |
+| {% f lastFourDpan, 3 %}                 | `string` | The last four digits of the DPAN (Network Token).                                           |
+| {% f issuerName, 3 %}               | `string`  | The name of the issuer. |
 
 {% include alert.html type="warning" icon="warning" header="Deleting Tokens"
 body="We advise you to implement automatic deletion of tokens when end-users
 choose to end the service with the you. This is to avoid unnecessary cost on
 your end, as you are invoiced monthly for each active token." %}
 
-*   Learn more about [token handling][delete-token].
+*   Learn more about [deleting tokens][delete-token].
 
 *   Please note that the new field `maskedDpan` is present when using Network
 Tokenization. DPAN is the network token representing the card and thus,

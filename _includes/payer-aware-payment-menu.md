@@ -1709,6 +1709,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
             {
                 "token": "{paymentToken}",
                 "tokenType": "Payment",
+                "networkTokenized": true,
                 "instrument": "CreditCard",
                 "instrumentDisplayName": "492500******0004",
                 "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
@@ -1748,6 +1749,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
             {
                 "token": "{token}",
                 "tokenType": "Unscheduled",
+                "networkTokenized": false,
                 "instrument": "CreditCard",
                 "instrumentDisplayName": "492500******0004",
                 "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
@@ -1965,6 +1967,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
             {
                 "token": "{paymentToken}",
                 "tokenType": "Unscheduled",
+                "networkTokenized": true,
                 "instrument": "CreditCard",
                 "instrumentDisplayName": "492500******0004",
                 "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
@@ -2042,6 +2045,14 @@ api-supported-versions: 3.x/2.0{% endcapture %}
               <span class="type"><code>string</code></span>
             </summary>
             <div class="desc"><div class="indent-2">{% f payment, 0 %}, <code>recurrence</code>, <code>transactionOnFile</code> or <code>unscheduled</code>. The different types of available tokens.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f networkTokenized, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>bool</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Indicates if the card has been successfully enrolled into Network Tokenization. Either <code>true</code> or <code>false</code>.</div></div>
           </details>
 
           <details class="api-item" data-level="2">
