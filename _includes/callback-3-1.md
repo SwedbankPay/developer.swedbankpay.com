@@ -81,7 +81,8 @@ callback attempts and unintended retry behavior.
     *   432 seconds
     *   864 seconds
     *   1265 seconds
-*   A callback should return a `200 OK` response.
+*   The callback needs a `200 OK` response from you, and will retry until a
+    response is received, up to a max limit of 8 times.
 
 To understand the nature of the callback, the type of transaction, its status,
 etc., you need to perform a `GET` request on the received URL and inspect the
@@ -717,19 +718,45 @@ Pay, and the two `GET` requests that you make to get the updated status.
 
 ```mermaid
 sequenceDiagram
-    Participant Merchant
-    Participant SwedbankPay as Swedbank Pay
+    participant SP as Swedbank Pay
+    participant M as Merchant
 
-    activate SwedbankPay
-    SwedbankPay->>+Merchant: POST <callbackUrl>
-    deactivate SwedbankPay
-    note left of Merchant: Callback by Swedbank Pay
-    Merchant-->>+SwedbankPay: HTTP response
-    Merchant->>+SwedbankPay: GET {{ api_resource }} payment
-    deactivate Merchant
-    note left of Merchant: First API request
-    SwedbankPay-->>+Merchant: payment resource
-    deactivate SwedbankPay
+    Note over SP,M: Callback flow from Swedbank Pay PaymentOrder API
+
+    SP->>M: POST <callbackUrl>
+
+    alt HTTP 200
+        M-->>SP: 2xx Success
+        Note over SP: Callback acknowledged\nNo further retries
+    else Any HTTP != 2xx
+        M-->>SP: 4xx / 5xx / other
+
+        Note over SP: Callback NOT acknowledged\nRetry schedule triggered
+
+        SP->>M: Retry #1 (after 30 sec)
+        M-->>SP: non-2xx
+
+        SP->>M: Retry #2 (after 60 sec)
+        M-->>SP: non-2xx
+
+        SP->>M: Retry #3 (after 360 sec)
+        M-->>SP: non-2xx
+
+        SP->>M: Retry #4 (after 432 sec)
+        M-->>SP: non-2xx
+
+        SP->>M: Retry #5 (after 864 sec)
+        M-->>SP: non-2xx
+
+        SP->>M: Retry #6 (after 1265 sec)
+        M-->>SP: non-2xx
+
+        Note over SP: Stops retrying after final attempt
+    end
+
+    Note over M: Merchant can fetch latest state
+    M->>SP: GET /paymentorders/{id}
+    SP-->>M: payment resource
 ```
 
 {: .text-right}
