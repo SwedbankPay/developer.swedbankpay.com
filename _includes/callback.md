@@ -349,38 +349,26 @@ Pay, and the two `GET` requests that you make to get the updated status.
 
 ```mermaid
 sequenceDiagram
+title: Callback from PaymentOrder API
     participant SP as Swedbank Pay
     participant M as Merchant
-
-    Note over SP,M: Callback flow from Swedbank Pay PaymentOrder API
 
     SP->>M: POST <callbackUrl>
 
     alt HTTP 200
         M-->>SP: 2xx Success
         Note over SP: Callback OK, no retries
+
     else Any HTTP != 2xx
         M-->>SP: 4xx / 5xx / other
 
-        Note over SP: Callback NOT OK, retry triggered
+        Note over SP: Retry schedule:
+        Note over SP: 30s, 60s, 360s, 432s, 864s, 1265s
 
-        SP->>M: Retry #1 (after 30 sec)
-        M-->>SP: non-2xx
-
-        SP->>M: Retry #2 (after 60 sec)
-        M-->>SP: non-2xx
-
-        SP->>M: Retry #3 (after 360 sec)
-        M-->>SP: non-2xx
-
-        SP->>M: Retry #4 (after 432 sec)
-        M-->>SP: non-2xx
-
-        SP->>M: Retry #5 (after 864 sec)
-        M-->>SP: non-2xx
-
-        SP->>M: Retry #6 (after 1265 sec)
-        M-->>SP: non-2xx
+        loop Retry until success or max attempts reached
+            SP->>M: Retry callback
+            M-->>SP: non-2xx
+        end
 
         Note over SP: Stops retrying after final attempt
     end

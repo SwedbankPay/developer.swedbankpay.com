@@ -255,6 +255,7 @@ request.
 
 ```mermaid
 sequenceDiagram
+title: Seamless View
     activate Merchant
     Merchant->>-SwedbankPay: POST /psp/vipps/payments
     activate SwedbankPay

@@ -67,6 +67,7 @@ shows the steps in a [purchase][purchase] process.
 
 ```mermaid
 sequenceDiagram
+title: Invoice Flow
     Payer->>Merchant: Start purchase
     activate Merchant
     note left of Merchant: First API request

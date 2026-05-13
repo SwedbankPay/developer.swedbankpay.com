@@ -33,6 +33,7 @@ The most commonly used event notifications are those informing about parameter u
 
 ```mermaid
 sequenceDiagram
+title: Event Notifications
 participant POS
 participant Terminal
 Terminal->>POS: EventNotification SaleAdmin

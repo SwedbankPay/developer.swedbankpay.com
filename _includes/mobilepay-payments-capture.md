@@ -52,6 +52,7 @@ authorization amount.
 
 ```mermaid
 sequenceDiagram
+title: MobilePay Capture
     participant SwedbankPay as Swedbank Pay
 
     Merchant->>SwedbankPay: POST <mobilepay capture>

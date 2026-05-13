@@ -142,6 +142,7 @@ Content-Type: application/json{% endcapture %}
 
 ```mermaid
 sequenceDiagram
+title: Invoice Capture
   participant SwedbankPay as Swedbank Pay
 
   Merchant->>SwedbankPay: Post <Invoice captures>

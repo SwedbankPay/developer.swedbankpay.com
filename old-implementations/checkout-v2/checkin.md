@@ -289,6 +289,7 @@ is illustrated in the sequence diagram below.
 
 ```mermaid
 sequenceDiagram
+title: Checkin
     participant Consumer
     participant Merchant
     participant SwedbankPay as Swedbank Pay

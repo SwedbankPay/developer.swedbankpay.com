@@ -96,6 +96,7 @@ Secure. This process has two alternative outcomes:
 
 ```mermaid
 sequenceDiagram
+title: Purchase
     participant Payer
     participant Merchant
     participant SwedbankPay as Swedbank Pay
@@ -124,6 +125,7 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
+title: Purchase
     participant Payer
     participant Merchant
     participant SwedbankPay as Swedbank Pay

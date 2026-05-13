@@ -1138,6 +1138,7 @@ api-supported-versions: 3.1{% endcapture %}
 
 ```mermaid
 sequenceDiagram
+title: Reversal
     participant SwedbankPay as Swedbank Pay
 
     Merchant->>SwedbankPay: POST < {{ include.api_resource }} reversal>

@@ -236,6 +236,7 @@ request.
 
 ```mermaid
 sequenceDiagram
+title: Seamless View
     participant Merchant
     participant SwedbankPay as Swedbank Pay
     participant MobilePayApp as MobilePay App

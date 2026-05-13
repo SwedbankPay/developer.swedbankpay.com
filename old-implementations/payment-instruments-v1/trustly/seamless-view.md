@@ -249,6 +249,7 @@ Trustly payment process.
 
 ```mermaid
 sequenceDiagram
+title: Seamless View
     participant SwedbankPay as Swedbank Pay
     participant Merchant
     participant Consumer

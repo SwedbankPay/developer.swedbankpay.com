@@ -634,6 +634,7 @@ before performing a cancel for the remaining reserved funds.
 
 ```mermaid
 sequenceDiagram
+title: Cancel v3.1
     participant SwedbankPay as Swedbank Pay
 
     Merchant->>SwedbankPay: POST < {{ include.api_resource }} cancellation>

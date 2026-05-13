@@ -210,6 +210,7 @@ in this flow. Go to the [Callback][callback-url] section to view the complete fl
 
 ```mermaid
 sequenceDiagram
+title: Redirect
     activate Browser
     Browser->>-Merchant: Start purchase
     activate Merchant

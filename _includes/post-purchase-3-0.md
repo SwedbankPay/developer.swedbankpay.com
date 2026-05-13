@@ -595,6 +595,7 @@ api-supported-versions: 3.0{% endcapture %}
 
 ```mermaid
 sequenceDiagram
+title: Capture v3.0
     participant Merchant
     participant SwedbankPay as Swedbank Pay
 
@@ -900,6 +901,7 @@ before performing a cancel for the remaining reserved funds.
 
 ```mermaid
 sequenceDiagram
+title: Cancel v3.0
     participant SwedbankPay as Swedbank Pay
 
 

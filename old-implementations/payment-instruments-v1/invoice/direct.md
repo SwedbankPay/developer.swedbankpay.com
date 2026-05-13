@@ -798,6 +798,7 @@ an authorized transaction.
 
 ```mermaid
 sequenceDiagram
+title: Direct Invoice
     Payer->>Merchant: Start purchase (collect SSN and postal number)
     activate Merchant
     note left of Merchant: First API request

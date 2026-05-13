@@ -248,6 +248,7 @@ Notice that there are two ways of performing the payment:
 
 ```mermaid
 sequenceDiagram
+title: Seamless View Payment Menu
     participant Consumer
     participant Merchant
     participant SwedbankPay as Swedbank Pay

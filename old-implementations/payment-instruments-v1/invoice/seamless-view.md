@@ -548,6 +548,7 @@ invoice process.
 
 ```mermaid
 sequenceDiagram
+title: Purchase
     Payer->>Merchant: Start purchase
     activate Merchant
     note left of Merchant: First API request

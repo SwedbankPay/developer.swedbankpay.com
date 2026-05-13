@@ -68,6 +68,7 @@ between the capture amount and the authorization amount.
 
 ```mermaid
 sequenceDiagram
+title: Cancel
     participant SwedbankPay as Swedbank Pay
 
     Merchant->>SwedbankPay: POST <mobilepay cancellation>
@@ -132,6 +133,7 @@ captured amount not yet reversed.
 
 ```mermaid
 sequenceDiagram
+title: Reversal
   participant SwedbankPay as Swedbank Pay
 
   Merchant->>SwedbankPay: POST <mobilepay reversal>

@@ -194,6 +194,7 @@ notification from Trustly that the payment has gone through yet.
 
 ```mermaid
 sequenceDiagram
+title: Redirect
     participant SwedbankPay as Swedbank Pay
     participant Merchant
     participant Consumer

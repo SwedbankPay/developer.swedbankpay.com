@@ -222,6 +222,7 @@ Note that in this diagram, the Payer refers to the merchant front-end
 
 ```mermaid
 sequenceDiagram
+title: Seamless View
     participant Payer
     participant Merchant
     participant SwedbankPay as Swedbank Pay

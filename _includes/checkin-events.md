@@ -8,6 +8,7 @@ through JavaScript event callbacks which can be implemented in the
 object.
 
 ```mermaid
+title: Checkin
 sequenceDiagram
   participant Consumer
   participant Merchant

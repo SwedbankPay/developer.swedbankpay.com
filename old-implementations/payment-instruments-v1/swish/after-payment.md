@@ -175,6 +175,7 @@ sales transaction.
 
 ```mermaid
 sequenceDiagram
+title: Reversal
   activate Merchant
   Merchant->>- SwedbankPay: POST <Swish reversal>
   activate  SwedbankPay

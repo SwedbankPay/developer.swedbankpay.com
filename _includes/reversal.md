@@ -139,6 +139,7 @@ Content-Type: application/json{% endcapture %}
 
 ```mermaid
 sequenceDiagram
+title: Reversal
   activate Merchant
   Merchant->>-SwedbankPay: POST [reversals]
   activate SwedbankPay

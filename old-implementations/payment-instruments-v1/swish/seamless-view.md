@@ -288,6 +288,7 @@ in this flow. Go to the [Callback][callback] section to view the complete flow.
 
 ```mermaid
 sequenceDiagram
+title: Seamless View
     activate Browser
     Browser->>-Merchant: Start Purchase
     activate Merchant

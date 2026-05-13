@@ -81,6 +81,7 @@ Additionally, your merchant backend must have the appropriate
 
 ```mermaid
 sequenceDiagram
+title: iOS Usage
     participant App
     participant SDK
     participant Merchant
@@ -429,6 +430,7 @@ in the SDK are welcome.
 
 ```mermaid
 sequenceDiagram
+title: Payment URL and External Applications
     participant SDK
     participant Web as Web View
     participant Safari
@@ -449,6 +451,7 @@ navigation and override it to reload the payment menu instead.
 
 ```mermaid
 sequenceDiagram
+title: Payment URL and External Applications
     participant Page as 3rd Party Page
     participant Web as Web View
     participant SDK
@@ -498,6 +501,7 @@ method.
 
 ```mermaid
 sequenceDiagram
+title: Payment URL and External Applications
     participant Page as 3rd Party Page
     participant Safari
     participant App as Application
@@ -544,6 +548,7 @@ link to the payment url (but see below).
 
 ```mermaid
 sequenceDiagram
+title: Payment URL and External Applications
     participant User
     participant Page as 3rd Party Page
     participant Safari
@@ -599,6 +604,7 @@ the SDK handle the url.
 
 ```mermaid
 sequenceDiagram
+title: Payment URL and External Applications
     participant User
     participant Page as 3rd Party Page
     participant Safari
