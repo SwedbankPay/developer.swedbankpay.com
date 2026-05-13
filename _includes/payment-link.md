@@ -171,6 +171,7 @@ There are three alternative outcomes of a card payment:
 
 ```mermaid
 sequenceDiagram
+title: Payment Link
     activate Payer
     Payer->>-MerchantOrderSystem: payer starts purchase
     activate MerchantOrderSystem

@@ -228,6 +228,7 @@ in this flow. Go to the [Callback][callback-url] section to view the complete fl
 
 ```mermaid
 sequenceDiagram
+title: E-Commerce Direct
     activate Browser
     Browser->>-Merchant: Start purchase
     activate Merchant
@@ -411,6 +412,7 @@ in this flow. Go to the [Callback][callback-url] section to view the complete fl
 
 ```mermaid
 sequenceDiagram
+title: M-Commerce Direct
     activate Browser
     Browser->>-Merchant: Start purchase
     activate Merchant

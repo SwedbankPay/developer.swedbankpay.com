@@ -823,6 +823,7 @@ api-supported-versions: 3.1{% endcapture %}
 
 ```mermaid
 sequenceDiagram
+title: Capture Checkout v2
     participant Merchant
     participant SwedbankPay as Swedbank Pay
 
@@ -840,6 +841,7 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
+title: Capture v3.1
     participant Merchant
     participant SwedbankPay as Swedbank Pay
 

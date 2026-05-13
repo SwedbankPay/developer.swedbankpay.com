@@ -345,6 +345,7 @@ the process of a complete purchase.
 
 ```mermaid
 sequenceDiagram
+title: Redirect
   participant Payer
   participant Merchant
   participant SwedbankPay as Swedbank Pay

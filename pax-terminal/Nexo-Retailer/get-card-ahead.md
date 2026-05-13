@@ -14,6 +14,7 @@ The possibility to read one or more cards before the payment is actually made, m
 
 ```mermaid
 sequenceDiagram
+title: Advanced Loyalty
 participant POS
 participant Terminal
     POS->>Terminal: EnableService Request StartTransaction
@@ -38,6 +39,7 @@ A CardAcquisition is aborted using an `AbortRequest` but the enabled service is 
 
 ```mermaid
 sequenceDiagram
+title: Advanced Loyalty Abort
 participant POS
 participant Terminal
     POS->>Terminal: EnableService Request StartTransaction
@@ -59,6 +61,7 @@ The enabled service Transaction state lasts from the EnableService response unti
 
 ```mermaid
 sequenceDiagram
+title: Advanced Loyalty Abort
 participant POS
 participant Terminal
     POS->>Terminal: EnableService Request StartTransaction
@@ -125,13 +128,14 @@ Following a successful CardAcquisitionResponse the terminal will show "Please wa
 
 ```mermaid
 sequenceDiagram
+title: Proceed with PIN
 participant POS
 participant Terminal
 POS->>Terminal: CardAcquisitionRequest
 Terminal->>POS: CardAcquisitionResponse Success
 Note left of Terminal: Terminal shows "Please wait"
 POS->>Terminal: DisplayRequest "continue_processing"
-alt Contactless 
+alt Contactless
 Note left of Terminal: Terminal shows "Awaiting amount"
 else Chip inserted
 Note left of Terminal: Terminal shows "Enter PIN"

@@ -1,7 +1,7 @@
 ---
 title: Ask for transaction status
 permalink: /:path/transactionstatus/
-description: Ask for result of last transaction or for any previously made transaction in near time. 
+description: Ask for result of last transaction or for any previously made transaction in near time.
 menu_order: 60
 ---
 
@@ -11,6 +11,7 @@ The transaction status request is used for retrieving the transaction result for
 
 ```mermaid
 sequenceDiagram
+title: Transaction Status
 participant POS
 participant Terminal
     POS->>+Terminal: Http POST PaymentRequest
@@ -57,7 +58,7 @@ An earlier transaction may be found if still in the database of the terminal. Ad
 
 ```xml
 <SaleToPOIRequest>
-    <MessageHeader ProtocolVersion="3.1" MessageClass="Service" MessageCategory="TransactionStatus" MessageType="Request" ServiceID="002141" SaleID="1" POIID="A-POIID"/> 
+    <MessageHeader ProtocolVersion="3.1" MessageClass="Service" MessageCategory="TransactionStatus" MessageType="Request" ServiceID="002141" SaleID="1" POIID="A-POIID"/>
     <TransactionStatusRequest>
         <MessageReference MessageCategory=”Payment” ServiceID=”002131” SaleID=”1” POIID=”A-POIID”/>
     </TransactionStatusRequest>

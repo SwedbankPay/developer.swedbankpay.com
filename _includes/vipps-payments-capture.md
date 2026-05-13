@@ -76,6 +76,7 @@ do more captures on the same payment up to the total authorization amount later.
 
 ```mermaid
 sequenceDiagram
+title: Vipps Capture
   activate Merchant
   Merchant->>-SwedbankPay: POST [Vipps captures]
   activate SwedbankPay

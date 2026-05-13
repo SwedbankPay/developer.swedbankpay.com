@@ -151,6 +151,7 @@ transaction list. Below is a sequence diagram detailing the interaction.
 
 ```mermaid
 sequenceDiagram
+title: Reconciliation
     participant SwedbankPay as Swedbank Pay
 
     activate Merchant

@@ -500,6 +500,7 @@ The diagram also shows the process of a complete purchase in high level.
 
 ```mermaid
 sequenceDiagram
+title: Invoice Purchase
     Payer->>Merchant: Start purchase
     activate Merchant
     note left of Merchant: First API request

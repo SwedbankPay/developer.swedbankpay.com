@@ -10,6 +10,7 @@ A reversal is an immediate financial correction on a successful transaction that
 
 ```mermaid
 sequenceDiagram
+title: Reversal
 participant POS
 participant Terminal
     POS->>Terminal: Http POST PaymentRequest

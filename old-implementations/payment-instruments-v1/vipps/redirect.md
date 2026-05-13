@@ -329,6 +329,7 @@ request.
 
 ```mermaid
 sequenceDiagram
+title: Redirect
     participant Browser
     participant Merchant
     participant SwedbankPay as Swedbank Pay

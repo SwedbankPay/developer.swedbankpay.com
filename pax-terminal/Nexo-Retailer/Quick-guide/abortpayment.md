@@ -36,6 +36,7 @@ body= "The AbortRequest does not give a nexo message response. The Http status c
 
 ```mermaid
 sequenceDiagram
+title: Abort Request
 participant POS
 participant Terminal
     POS->>+Terminal: Http POST PaymentRequest

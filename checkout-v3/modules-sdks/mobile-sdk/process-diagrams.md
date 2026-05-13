@@ -25,6 +25,7 @@ API, you will need to create the Configuration yourself.
 
 ```mermaid
 sequenceDiagram
+title: Initialization
     alt Using Merchant Backend
         alt Android
             App ->> SDK: MerchantBackendConfiguration.Builder(backendUrl)...build()
@@ -73,6 +74,7 @@ explicitly.
 
 ```mermaid
 sequenceDiagram
+title: Initialization
     participant User
     participant App
     participant SDK
@@ -128,6 +130,7 @@ cached, and thus only needs to be made once per App session.
 
 ```mermaid
 sequenceDiagram
+title: Merchant Backend: Discover Endpoints
     participant SDK
     participant Backend
 
@@ -148,6 +151,7 @@ then used when creating the payment order in the next step.
 
 ```mermaid
 sequenceDiagram
+title: Optional Checkin
     participant Conf as Configuration
     participant SDK
     participant Backend
@@ -192,6 +196,7 @@ depends on the exact payment instrument chosen.
 
 ```mermaid
 sequenceDiagram
+title: Begin Checkout
     participant Conf as Configuration
     participant SDK
     participant Backend
@@ -255,6 +260,7 @@ the browser on both platforms (but see below for iOS details).
 
 ```mermaid
 sequenceDiagram
+title: External Content
     participant App
     participant SDK
     participant WebView
@@ -359,6 +365,7 @@ process:
 
 ```mermaid
 sequenceDiagram
+title: Return from browser
     participant User
     participant Browser
     participant Backend
@@ -438,6 +445,7 @@ your app.
 
 ```mermaid
 sequenceDiagram
+title: Payment Completion
     participant User
     participant App
     participant SDK

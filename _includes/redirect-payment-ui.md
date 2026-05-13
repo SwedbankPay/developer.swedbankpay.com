@@ -76,6 +76,7 @@ Note that in this diagram, the Payer refers to the merchant front-end
 
 ```mermaid
 sequenceDiagram
+title: Redirect Payment UI
 participant Payer
 participant Merchant
 participant SwedbankPay as Swedbank Pay
@@ -107,10 +108,10 @@ rect rgba(238, 112, 35, 0.05)
         Merchant ->>+ SwedbankPay: GET <paymentorder.id>
         SwedbankPay ->>- Merchant: Status: Paid
     end
-    
+
     Merchant -->>- Payer: Show Purchase complete
     deactivate Payer
-    
+
     alt If callbackUrls is set
         SwedbankPay ->> Merchant: POST Purchase Callback
     end

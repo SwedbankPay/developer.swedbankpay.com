@@ -209,6 +209,7 @@ credit card payment:
 
 ```mermaid
 sequenceDiagram
+title: Verify
     participant Payer
     participant Merchant
     participant SwedbankPay as Swedbank Pay

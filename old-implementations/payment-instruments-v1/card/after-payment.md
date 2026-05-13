@@ -277,6 +277,7 @@ Content-Type: application/json{% endcapture %}
 
 ```mermaid
 sequenceDiagram
+title: Cancel
   activate Merchant
   Merchant->>-SwedbankPay: POST [creditcard cancellactions]
   activate SwedbankPay
@@ -601,6 +602,7 @@ Content-Type: application/json{% endcapture %}
 
 ```mermaid
 sequenceDiagram
+title: Reversal
   activate Merchant
   Merchant->>-SwedbankPay: POST [creditcard reversals]
   activate SwedbankPay
