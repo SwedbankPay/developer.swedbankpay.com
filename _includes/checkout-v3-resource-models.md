@@ -1189,138 +1189,153 @@ api-supported-versions: 3.x{% endcapture %}
       {
         "created": "2020-03-04T01:00:00.00Z",
         "name": "PaymentCreated",
-        "initiatedBy" "Merchant"
+        "initiatedBy": "Payee"
       },
       {
         "created": "2020-03-04T01:01:00.00Z",
         "name": "PaymentLoaded",
-        "initiatedBy" "System"
+        "initiatedBy": "PaymentGateway"
       },
       {
         "created": "2020-03-04T01:01:01.01Z",
         "name": "PaymentInstrumentSelected",
         "instrument": "CreditCard",
-        "initiatedBy" "Payer"
+        "initiatedBy": "Payer"
       },
       {
         "created": "2020-03-04T01:03:01.01Z",
         "name": "PaymentAttemptStarted",
         "instrument": "CreditCard",
         "number": 123456,
+        "amount": 1000,
         "prefill": true,
-        "initiatedBy" "Payer"
+        "initiatedBy": "Payer"
       },
       {
         "created": "2020-03-04T01:03:01.01Z",
         "name": "PaymentAttemptAborted",
         "number": 123456,
+        "amount": 1000,
         "instrument": "CreditCard",
-        "initiatedBy" "Payer"
+        "initiatedBy": "Payer"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentInstrumentSelected",
         "instrument": "Vipps",
-        "initiatedBy" "Payer"
+        "initiatedBy": "Payer"
       },
       {
         "created": "2020-03-04T03:01:01.01Z",
         "name": "PaymentInstrumentSelected",
         "instrument": "CreditCard",
-        "initiatedBy" "Payer"
+        "initiatedBy": "Payer"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentAttemptStarted",
         "instrument": "CreditCard",
         "number": 123457,
+        "amount": 1000,
         "prefill": true,
-        "initiatedBy" "Payer"
+        "initiatedBy": "Payer"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentAttemptFailed",
         "instrument": "CreditCard",
         "number": 123457,
-        "initiatedBy" "Payer"
+        "amount": 1000,
+        "initiatedBy": "Payer"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentAttemptStarted",
         "instrument": "CreditCard",
         "number": 123458,
+        "amount": 1000,
         "prefill": true,
-        "initiatedBy" "Payer"
+        "initiatedBy": "Payer"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentPaid",
         "instrument": "CreditCard"
         "number": 123458,
-        "initiatedBy" "Payer"
+        "amount": 1000,
+        "initiatedBy": "Payer"
       },
       {
         "created": "2020-03-05T02:01:01.01Z",
         "name": "PaymentPartiallyCaptured",
         "instrument": "CreditCard"
         "number": 123459,
-        "initiatedBy" "Merchant"
+        "amount": 1000,
+        "initiatedBy": "Payee"
       },
       {
         "created": "2020-03-06T02:01:01.01Z",
         "name": "PaymentPartiallyCaptured",
         "instrument": "CreditCard"
         "number": 123460,
-        "initiatedBy" "Merchant"
+        "amount": 1000,
+        "initiatedBy": "Payee"
       },
       {
         "created": "2020-03-07T02:01:01.01Z",
         "name": "PaymentPartiallyReversed",
         "instrument": "CreditCard"
         "number": 123461,
-        "initiatedBy" "Merchant"
+        "amount": 1000,
+        "initiatedBy": "Payee"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentCapturedFailed",
         "instrument": "CreditCard",
         "number": 123462,
-        "initiatedBy" "Merchant"
+        "amount": 1000,
+        "initiatedBy": "Payee"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentPartiallyCapturedFailed",
         "instrument": "CreditCard",
         "number": 123463,
-        "initiatedBy" "Merchant"
+        "amount": 1000,
+        "initiatedBy": "Payee"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentReversedFailed",
         "instrument": "CreditCard",
         "number": 123464,
-        "initiatedBy" "Merchant"
+        "amount": 1000,
+        "initiatedBy": "Payee"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentPartiallyReversedFailed",
         "instrument": "CreditCard",
         "number": 123465,
-        "initiatedBy" "Merchant"
+        "amount": 1000,
+        "initiatedBy": "Payee"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentCancelledFailed",
         "instrument": "CreditCard",
         "number": 123466,
-        "initiatedBy" "Merchant"
+        "amount": 1000,
+        "initiatedBy": "Payee"
       },
       {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentPartiallyCancelledFailed",
         "instrument": "CreditCard",
         "number": 123467,
-        "initiatedBy" "Merchant"
+        "amount": 1000,
+        "initiatedBy": "Payee"
       }
     ]
   }
@@ -1409,10 +1424,26 @@ api-supported-versions: 3.x{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
+              <span class="field">{% f amount %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>integer</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The amount of the payment associated with the event. Shown in the lowest monetary unit of the selected currency.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
               <span class="field">{% f prefill %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>bool</code></span>
             </summary>
             <div class="desc"><div class="indent-2">Indicates if payment info was prefilled or not.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
+              <span class="field">{% f initiatedBy %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>string</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">The party who initiated the event. <code>Payer</code>, <code>Payee</code> or <code>PaymentGateway</code>.</div></div>
           </details>
         </div>
       </details>

@@ -24,8 +24,11 @@ of checking for payment updates." %}
 When a change or update from the back-end system is made on a payment or
 transaction, Swedbank Pay will perform a callback to inform the payee (merchant)
 about this update. The callback is **optional**, but you need to include a
-`callbackUrl` in your `POST` request to use it. Do **not** include this
-parameter in your request if you haven't implemented a callback endpoint.
+`callbackUrl` in your `POST` request to use it. **Important**: You must not
+include a `callbackUrl` unless you have implemented and verified a fully
+functional callback endpoint capable of receiving and handling callbacks.
+Providing a `callbackUrl` without a working endpoint may result in failed
+callback attempts and unintended retry behavior.
 
 {: .h2 }
 
@@ -78,7 +81,8 @@ parameter in your request if you haven't implemented a callback endpoint.
     *   432 seconds
     *   864 seconds
     *   1265 seconds
-*   A callback should return a `200 OK` response.
+*   The callback needs a `200 OK` response from you, and will retry until a
+    response is received, up to a max limit of 8 times.
 
 To understand the nature of the callback, the type of transaction, its status,
 etc., you need to perform a `GET` request on the received URL and inspect the
@@ -348,19 +352,33 @@ Pay, and the two `GET` requests that you make to get the updated status.
 
 ```mermaid
 sequenceDiagram
-    Participant Merchant
-    Participant SwedbankPay as Swedbank Pay
+title: Callback from PaymentOrder API
+    participant SP as Swedbank Pay
+    participant M as Merchant
 
-    activate SwedbankPay
-    SwedbankPay->>+Merchant: POST <callbackUrl>
-    deactivate SwedbankPay
-    note left of Merchant: Callback by Swedbank Pay
-    Merchant-->>+SwedbankPay: HTTP response
-    Merchant->>+SwedbankPay: GET {{ api_resource }} payment
-    deactivate Merchant
-    note left of Merchant: First API request
-    SwedbankPay-->>+Merchant: payment resource
-    deactivate SwedbankPay
+    SP->>M: POST <callbackUrl>
+
+    alt HTTP 200
+        M-->>SP: 2xx Success
+        Note over SP: Callback OK, no retries
+
+    else Any HTTP != 2xx
+        M-->>SP: 4xx / 5xx / other
+
+        Note over SP: Retry schedule:
+        Note over SP: 30s, 60s, 360s, 432s, 864s, 1265s
+
+        loop Retry until success or max attempts reached
+            SP->>M: Retry callback
+            M-->>SP: non-2xx
+        end
+
+        Note over SP: Stops retrying after final attempt
+    end
+
+    Note over M: Merchant can fetch latest state
+    M->>SP: GET /paymentorders/{id}
+    SP-->>M: payment resource
 ```
 
 {: .text-right}

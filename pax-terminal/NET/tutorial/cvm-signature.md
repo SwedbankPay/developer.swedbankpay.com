@@ -14,13 +14,14 @@ The flow of a CVM signature transaction always needs to be implemented and works
 
 ```mermaid
 sequenceDiagram
+title: Signature Approved Transaction
 participant POS
 participant NetSDK
 
 POS->>+NetSDK: PaymentRequestAsync
 NetSDK->>POS: EventCallback PrintRequestEventCallback
 Note over POS: Print the merchant's receipt
-NetSDK->>POS: ConfirmationHandler 
+NetSDK->>POS: ConfirmationHandler
 Note over POS: Display message.<br>Let operator respond by<br>approving or refusing
 alt
   Note over POS: Signature accepted

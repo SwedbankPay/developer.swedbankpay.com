@@ -758,6 +758,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
             {
                 "tokenType": "Payment",
                 "token": "7fc5e705-d2c4-4c8b-8ff7-d40c355d6916",
+                "networkTokenized": true,
                 "instrument": "CreditCard",
                 "instrumentDisplayName": "522661******3406",
                 "instrumentParameters": {

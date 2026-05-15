@@ -88,6 +88,7 @@ capture, you will only cancel the remaining authorized amount.
 
 ```mermaid
 sequenceDiagram
+title: Cancel
   participant SwedbankPay as Swedbank Pay
 
   Merchant->>SwedbankPay: Post <Invoice cancellations>
@@ -169,6 +170,7 @@ some captured amount not yet reversed.
 
 ```mermaid
 sequenceDiagram
+title: Reversal
     participant SwedbankPay as Swedbank Pay
 
     Merchant->>SwedbankPay: Post <Invoice reversals>

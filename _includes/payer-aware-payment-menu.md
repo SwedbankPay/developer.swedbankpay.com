@@ -1677,8 +1677,8 @@ if you try.
 It is possible to query for all active payment tokens registered on a specific
 `payerReference`. After doing so, you can either remove all tokens or a subset
 of the tokens registered on the payer. This is the easiest way of cleaning up
-all data for **Payments Only** implementations. It is also possible to [delete a
-single token][delete-tokens] if you wish to do that.
+all data for **Payments Only** implementations. It is also possible to
+[delete a single token][delete-token] if you wish to do that.
 
 ## GET Tokens Request
 
@@ -1709,6 +1709,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
             {
                 "token": "{paymentToken}",
                 "tokenType": "Payment",
+                "networkTokenized": true,
                 "instrument": "CreditCard",
                 "instrumentDisplayName": "492500******0004",
                 "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
@@ -1748,6 +1749,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
             {
                 "token": "{token}",
                 "tokenType": "Unscheduled",
+                "networkTokenized": false,
                 "instrument": "CreditCard",
                 "instrumentDisplayName": "492500******0004",
                 "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
@@ -1965,6 +1967,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
             {
                 "token": "{paymentToken}",
                 "tokenType": "Unscheduled",
+                "networkTokenized": true,
                 "instrument": "CreditCard",
                 "instrumentDisplayName": "492500******0004",
                 "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
@@ -2046,6 +2049,14 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
           <details class="api-item" data-level="2">
             <summary>
+              <span class="field">{% f networkTokenized, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+              <span class="type"><code>bool</code></span>
+            </summary>
+            <div class="desc"><div class="indent-2">Indicates if the card has been successfully enrolled into Network Tokenization. Either <code>true</code> or <code>false</code>.</div></div>
+          </details>
+
+          <details class="api-item" data-level="2">
+            <summary>
               <span class="field">{% f instrument, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
               <span class="type"><code>string</code></span>
             </summary>
@@ -2082,7 +2093,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
   </details>
 </div>
 
-[delete-tokens]: {{ features_url }}/optional/delete-token
+[delete-token]: /checkout-v3/features/optional/delete-token
 [tokens]: {{ features_url }}/optional/payer-aware-payment-menu#tokens
 [verify]: {{ features_url }}/optional/verify
 [trustly-presentation]: /checkout-v3/trustly-presentation

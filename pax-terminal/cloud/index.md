@@ -13,6 +13,7 @@ The message protocol and flow of messages is described under [nexo Retailer][nex
 
 ```mermaid
 sequenceDiagram
+title: Cloud Connection
 participant POS
 participant Cloud as Swedbank Pay Cloud
     POS->>Cloud: Retrieve an AccessToken

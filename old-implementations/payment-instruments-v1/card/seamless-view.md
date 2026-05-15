@@ -175,6 +175,7 @@ is raised with the following event argument object:
 
 ```mermaid
 sequenceDiagram
+title: Seamless View Events
     participant Payer
     participant Merchant
     participant SwedbankPay as Swedbank Pay

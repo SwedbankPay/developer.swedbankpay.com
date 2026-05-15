@@ -16,6 +16,7 @@ To make it a little more acceptable one probably wants to be able to abort using
 
 ```mermaid
 sequenceDiagram
+title: Quick Guide Happy Flow
 participant POS
 participant Terminal
     POS->>+Terminal: Http POST LoginRequest
@@ -48,6 +49,7 @@ The decision of having the terminal to send requests or not is made when sending
 
 ```mermaid
 sequenceDiagram
+title: Happy Flow Full Integration
 participant POS
 participant Terminal
     POS->>+Terminal: Http POST LoginRequest

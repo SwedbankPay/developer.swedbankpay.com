@@ -7,6 +7,12 @@ menu_order: 4
 has_release_notes: true
 ---
 
+## 15 May 2026
+
+### Documentation v5.3.18
+
+List of [proven devices][proven-devices] updated.
+
 ## 1 April 2025
 
 ### Documentation v5.3.6
@@ -27,4 +33,5 @@ introduction. Head over to the brand new section to read about it!
 
 [rn-hub]: /release-notes/
 [mdr]: /pax-terminal/softpos/#minimum-device-requirements
+[proven-devices]: /pax-terminal/softpos/#proven-devices
 [softpos]: /pax-terminal/softpos/

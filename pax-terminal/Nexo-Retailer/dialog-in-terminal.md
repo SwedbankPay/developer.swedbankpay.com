@@ -8,12 +8,13 @@ The terminal offers at the moment three different possibilities to communicate w
 
 ```mermaid
 sequenceDiagram
+title: Dialog with customer
 participant POS
 participant Terminal
 participant Customer
 POS->>Terminal: InputRequest type: Confirmation
 Note right of POS: Would you like membership?
-Note left of Terminal: Terminal displays the<br/>message together with two<br/>touch buttons on the display.<br/>Red and green 
+Note left of Terminal: Terminal displays the<br/>message together with two<br/>touch buttons on the display.<br/>Red and green
 Customer->>Terminal: Green button pressed
 Terminal->POS: InputResponse Confirmation true
 POS->>Terminal: InputRequest type DigitString
@@ -65,7 +66,7 @@ Note that when the InputRequest is responded to the terminal goes back to displa
 
 Worth mentioning about an InputResponse is that it has two results with a `Result` attribute. One for OutputResult and one for InputResult. This differs
 from other responses.
-The InputResult is the essential of this message. If the `Result` attribute is `Failure` the `ConfirmedFlag` is empty. A failure is probably due to abort from POS system.  
+The InputResult is the essential of this message. If the `Result` attribute is `Failure` the `ConfirmedFlag` is empty. A failure is probably due to abort from POS system.
 
 {:.code-view-header}
 **Example where customer pressed green button on the sceen or the key pad**

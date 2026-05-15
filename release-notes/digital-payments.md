@@ -7,6 +7,27 @@ menu_order: 2
 has_release_notes: true
 ---
 
+## 15 May 2026
+
+### Documentation v5.3.18
+
+We are still working on big things, so the Constitution Day release is another
+small one, but there are a few treats anyway.
+
+Information about [callbacks][callback] has been added, regarding the necessity
+of receiving a response from merchants to avoid a retry loop.
+
+We have also introduced a field to indicate if a stored card is enrolled into
+[Network Tokenization][nwt] or not. The purpose is to make it easier for
+merchants to see if an enrollment was successful.
+
+A section about [asynchronous reversals][async-rev], which is used by the Baltic
+payment method Banklink, has been included.
+
+An initiatedBy field has been added to the [History][history] resource.
+
+We have also done some cosmetic touchups of sequence diagrams.
+
 ## 21 April 2026
 
 ### Documentation v5.3.17
@@ -1343,6 +1364,7 @@ more convenient for both the integration and the payer.
 [apple-pay]: /checkout-v3/apple-pay-presentation
 [api-collection]: https://www.postman.com/swedbankpay/swedbank-pay-online/overview
 [astopb]: /checkout-v3/features/customize-ui/action-specific-text-on-payment-button
+[async-rev]: /checkout-v3/features/payment-operations/reversal/#asynchronous-reversals
 [authorization-timeouts]: /old-implementations/checkout-v2/capture
 [av-tok]: /pax-terminal/Nexo-Retailer/tokenization/
 [azure-faq]: /checkout-v3/get-started/fundamental-principles/#migration-of-e-commerce-to-microsoft-azure---faq
@@ -1394,7 +1416,7 @@ more convenient for both the integration and the payer.
 [cv2]: /old-implementations/checkout-v2/ui-migration/
 [integrated-commerce]: /checkout-v3/features/optional/integrated-commerce
 [data-protection]: /old-implementations/checkout-v2/data-protection
-[delete-payment-tokens]: /checkout-v3/features/optional/delete-tokens
+[delete-payment-tokens]: /checkout-v3/features/optional/delete-token
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [design-guide]: https://design.swedbankpay.com/
 [display-ui]: /checkout-v3/get-started/display-ui
@@ -1413,6 +1435,7 @@ more convenient for both the integration and the payer.
 [get-started]: /checkout-v3/get-started
 [go-live]: /checkout-v3/get-started/#get-ready-to-go-live
 [google-pay]: /checkout-v3/google-pay-presentation
+[history]: /checkout-v3/technical-reference/resource-sub-models/#history
 [home-technical-information]: /checkout-v3/get-started/fundamental-principles
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [inacc]: /checkout-v3/technical-reference/problems/#installment-account-problems

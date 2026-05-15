@@ -76,6 +76,7 @@ defaultConfig {
 
 ```mermaid
 sequenceDiagram
+title: Android Usage
     participant App
     participant SDK
     participant Merchant

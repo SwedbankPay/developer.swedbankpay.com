@@ -15,6 +15,7 @@ When a card has been read using `GetPaymentInstrument` and the amount is still n
 
 ```mermaid
 sequenceDiagram
+title: Continue
 participant SaleSystem
 participant SDK
 participant Terminal

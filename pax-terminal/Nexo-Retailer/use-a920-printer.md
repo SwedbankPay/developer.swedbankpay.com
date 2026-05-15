@@ -11,6 +11,7 @@ The `PrintRequest` may be sent at any time during a `login session` when no othe
 
 ```mermaid
 sequenceDiagram
+title: Use A920pro printer
 participant POS
 participant A920pro
 

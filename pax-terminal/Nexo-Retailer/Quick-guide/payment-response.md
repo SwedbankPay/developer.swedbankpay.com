@@ -22,6 +22,7 @@ If the full integration is made and the login was made with SaleCapabilities inc
 
 ```mermaid
 sequenceDiagram
+title: Payment Response
 POS->>+Terminal: Http POST PaymentRequest
 Terminal->>POS: Http POST DisplayRequest
 POS->>Terminal: rsp 204 - no content
@@ -36,19 +37,19 @@ Note over Terminal: Merchant receipt
 POS->>Terminal: rsp 204 - no content
 Terminal->>POS: Http POST InputRequest Confirmation
 Note over Terminal: Is signature OK?
-alt 
+alt
     Note right of POS: Approve signature
     POS->>Terminal: rsp 200 InputResponse True
     Terminal->>POS: Http POST DisplayRequest
     Note over Terminal: "Approved"
     POS->>Terminal: rsp 204 - no content
-else 
+else
     Note right of POS: Disapprove signature
     POS->>Terminal: rsp 200 InputResponse False
     Terminal->>POS: Http POST DisplayRequest
     Note over Terminal: "Disapproved"
     POS->>Terminal: rsp 204 - no content
-end 
+end
 Terminal->>-POS: rsp 200 PaymentResponse Success/Failure
 Terminal->>POS: Http POST DisplayRequest
 Note over Terminal: "Welcome"
@@ -62,6 +63,7 @@ The following sequence diagram shows how a purchase that is apporoved with a car
 
 ```mermaid
 sequenceDiagram
+title: Payment Response
 POS->>+Terminal: Http POST PaymentRequest
 Terminal->>-POS: Http Response 200 PaymentResponse
 Note over Terminal: JSON: Merchant receipt data<br>Mandatory.Payment.SignatureBlock<br>is true
@@ -72,10 +74,10 @@ alt Approve
 else Don't approve
     Note right of POS: Disapprove signature
     POS->>Terminal: Http POST ReversalRequest
-    Terminal->>POS: Http Response 200 
+    Terminal->>POS: Http Response 200
     Note over Terminal: includes new customer receipt
     Note over POS: Print customer receipt
-end 
+end
 Note over Terminal: Ready for new request
 ```
 

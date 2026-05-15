@@ -61,6 +61,7 @@ card payment:
 
 ```mermaid
 sequenceDiagram
+title: Mobile Payments
     participant Payer
     participant Merchant
     participant SwedbankPay as Swedbank Pay
@@ -88,6 +89,7 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
+title: Mobile Payments
     participant Payer
     participant Merchant
     participant SwedbankPay as Swedbank Pay

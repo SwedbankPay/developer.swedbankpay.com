@@ -7,7 +7,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
 
       - name: build
         run: |
@@ -19,11 +19,11 @@ jobs:
             --site-url=https://developer.swedbankpay.com
 
       - name: login
-        uses: azure/login@v3.0.0
+        uses: azure/login@532459ea530d8321f2fb9bb10d1e0bcf23869a43 # v3.0.0
         with:
           creds: '{"clientId":"${{ secrets.SUBSCRIPTION_CLIENT_ID_PROD }}","clientSecret":"${{ secrets.SUBSCRIPTION_CLIENT_SECRET_PROD }}","subscriptionId":"${{ secrets.SUBSCRIPTION_ID_PROD }}","tenantId":"${{ secrets.TENANT_ID }}"}'
 
       - name: deploy
-        uses: azure/CLI@v3.0.0
+        uses: azure/CLI@9eb25b8360668fb0ecbafa808d40e2197b2f5f52 # v3.0.0
         with:
           inlineScript: az storage blob upload-batch -s _site -d "\$web" --account-name proddevelopersa1 --overwrite

@@ -645,18 +645,18 @@ api-supported-versions: 3.x{% endcapture %}
                 {
                     "created": "2024-12-05T14:19:17.1687855Z",
                     "name": "PaymentCreated",
-                    "initiatedBy": "Merchant"
+                    "initiatedBy": "Payee"
                 },
                 {
                     "created": "2024-12-05T14:19:17.1687855Z",
                     "name": "PaymentInstrumentSet",
                     "instrument": "Swish",
-                    "initiatedBy": "Merchant"
+                    "initiatedBy": "Payee"
                 },
                 {
                     "created": "2024-12-05T14:19:26.5750791Z",
                     "name": "PaymentLoaded",
-                    "initiatedBy": "System"
+                    "initiatedBy": "PaymentGateway"
                 },
                 {
                     "created": "2024-12-05T14:19:37.7938659Z",

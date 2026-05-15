@@ -55,6 +55,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
             {
                 "tokenType": "Payment",
                 "token": "{paymentToken}",
+                "networkTokenized": true,
                 "instrument": "CreditCard",
                 "instrumentDisplayName": "492500******0004",
                 "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",

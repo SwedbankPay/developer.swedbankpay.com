@@ -323,6 +323,7 @@ do more captures on the same payment up to the total authorization amount later.
 
 ```mermaid
 sequenceDiagram
+title: Card Capture
   activate Merchant
   Merchant->>-SwedbankPay: POST [Credit card captures]
   activate SwedbankPay

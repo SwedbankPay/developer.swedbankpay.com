@@ -36,6 +36,7 @@ happy flow would look like this:
 
 ```mermaid
 sequenceDiagram
+title: Native Payments Usage
     participant App
     participant SDK
 
@@ -834,7 +835,7 @@ var paymentMenuStyle: [String: Any] {
     let cssString = styleText.trimmingCharacters(in: .whitespacesAndNewlines)
     return parse(text: cssString) ?? [:]
 }
-    
+
 private func parse(text: String) -> [String: Any]? {
     let context = JSContext()
     let jsResult = context?.evaluateScript(
@@ -960,6 +961,7 @@ An example flow for presenting a "More payment methods" for the user:
 
 ```mermaid
 sequenceDiagram
+title: Payment Menu Fallback
     participant App
     participant SDK
 
@@ -1064,6 +1066,7 @@ multiple outcomes:
 
 ```mermaid
 sequenceDiagram
+title: Detailed Usage Flows
     participant App
     participant SDK
     participant Ext as External App
@@ -1155,6 +1158,7 @@ your payment order.
 
 ```mermaid
 sequenceDiagram
+title: Present methods before payment order creation
     participant App
     participant SDK
     participant Backend as Merchant Backend

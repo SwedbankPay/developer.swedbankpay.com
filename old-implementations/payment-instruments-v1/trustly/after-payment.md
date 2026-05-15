@@ -93,6 +93,7 @@ Content-Type: application/json{% endcapture %}
 
 ```mermaid
 sequenceDiagram
+title: Reversal
     participant SwedbankPay as Swedbank Pay
     participant Merchant
 

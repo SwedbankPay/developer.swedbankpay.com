@@ -75,6 +75,7 @@ selection available:
 
 ```mermaid
 sequenceDiagram
+title: Redirect
     participant Payer
     participant Merchant
     participant SwedbankPay as Swedbank Pay
