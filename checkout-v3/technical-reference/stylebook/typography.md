@@ -20,7 +20,7 @@ as a visual reference based on the original design specifications.
 ## Font families
 
 -   Headings: `Swedbank Headline`
--   Body text: `Arial`
+-   Body text: `Roboto`
 
 Ligatures are disabled:
 
@@ -56,7 +56,7 @@ Used for:
 
 **Properties**
 
--   Font family: `Arial`
+-   Font family: `Roboto`
 -   Font size: `1rem` (16px)
 -   Font weight: `400`
 -   Line height: `1.5` (24px)

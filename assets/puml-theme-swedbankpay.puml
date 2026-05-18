@@ -117,7 +117,7 @@ skinparam backgroundColor           "transparent"
 skinparam useBetaStyle              false
 skinparam creoleMonospacedFont      "Consolas"
 skinparam defaultMonospacedFontName "Consolas"
-skinparam defaultFontName           "Arial"
+skinparam defaultFontName           "Roboto"
 skinparam defaultFontSize           16
 skinparam dpi                       100
 skinparam shadowing                 false

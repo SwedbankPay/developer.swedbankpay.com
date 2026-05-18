@@ -110,7 +110,7 @@ When a field has a validation error:
 **Error message typography**
 
 -   Color: `#D82E2A`
--   Font: `0.875rem Arial`
+-   Font: `0.875rem Roboto`
 -   Line height: `1.25rem`
 -   Spacing above message: `8px`
 
