@@ -5,6 +5,107 @@
 {% endcapture %}
 {% assign token_url=token_url | strip %}
 
+## Mapping payerOwnedTokens vs. Payer API
+
+What is `payerOwnedTokens`?
+
+`payerOwnedTokens` was a `PaymentOrder` API endpoint (v2.0/v3.0/v3.1) used to
+retrieve and update tokens asssociated to a specific `payerReference`. This
+endpoint will be removed in v3.2 and replaced by the Payer API.
+
+What is Payer API?
+
+Payer API is the new, authoritative service used to retrieve, update and manage
+tokens for a payer.
+
+### At A Glance
+
+{:.table .table-striped}
+| Old (`PaymentOrder` API)    | New (Payer API)  | Description    |
+| :-------------------------------------- | :--------------------------------------- | :--------------------------------------- |
+| `GET /payerownedtokens/<payerReference>`      | `GET /online/payers/<payerReference>`    | Retrieve active tokens for a payer          |
+| `PATCH /payerownedtokens/<payerReference>`    | `PATCH /online/payers/<payerReference>`  | Archive all tokens for a payer         |
+| `GET /paymenttokens/<token>`            | `GET /online/payers/tokens/<tokenId>`    | Retrieve a single token                        |
+| `PATCH /paymenttokens/<token>`          | `PATCH /online/payers/tokens/<tokenId>`  | Archive or update token             |
+
+### Code Examples
+
+*   Retrieve all tokens for a payer
+
+{% capture request_header %}GET /psp/paymentorders/payerownedtokens/<payerReference>
+Host: {{ page.api_host }}
+Authorization: Bearer <token>{% endcapture %}
+
+{% include code-example.html
+    title='Old (PaymentOrder API) GET All Tokens Request'
+    header=request_header
+    %}
+
+{% capture request_header %}GET /online/payers/<payerReference>
+Host: {{ page.api_host }}
+Authorization: Bearer <token>{% endcapture %}
+
+{% include code-example.html
+    title='New (Payer API) GET All Tokens Request'
+    header=request_header
+    %}
+
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
+
+{% capture response_content %}{{
+  "tokens": {
+    "id": "/online/payers/<payerReference>",
+    "payerReference": "customer-123",
+    "tokensList": [
+      {
+        "id": "/online/payers/tokens/abcd-1234",
+        "token": "abcd-1234",
+        "tokenType": "Payment",
+        "instrument": "CreditCard",
+        "displayName": "492500******0004",
+        "state": "Active"
+      }
+    ]
+  }
+}{% endcapture %}
+
+{% include code-example.html
+    title='GET All Tokens Response'
+    header=response_header
+    json= response_content
+    %}
+
+*   Archive all tokens for a payer
+
+Old:
+HTTP PATCH /psp/paymentorders/payerownedtokens/<payerReference>
+Authorization: Bearer <token>
+
+New:
+HTTP PATCH /online/payers/<payerReference>/archives
+Authorization: Bearer <token>
+
+*   Retrieve a single token
+
+Old:
+HTTP GET /psp/paymentorders/paymenttokens/<tokenid>
+Authorization: Bearer <token>
+
+New:
+HTTP GET /online/payers/tokens/{tokenIdentifier}
+Authorization: Bearer <token>
+
+### Important Differences
+
+*   Payer API gives ypu a more structured and long-term token handling.
+
+*   All new integrations must use the Payer API, not `payerOwnedTokens`.
+
+*   Token types and status (Active/Archived) are the same, but the Payer API has
+more detailed fields and better support for the token lifecycle.
+
 ## Delete {{ token_field_name }} Request
 
 {% capture request_header %}PATCH {{ token_url }} HTTP/1.1
