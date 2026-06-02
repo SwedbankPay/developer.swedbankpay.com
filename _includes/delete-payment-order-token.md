@@ -21,6 +21,7 @@ tokens for a payer.
 ### At A Glance
 
 {:.table .table-striped}
+
 | Old (`PaymentOrder` API)    | New (Payer API)  | Description    |
 | :-------------------------------------- | :--------------------------------------- | :--------------------------------------- |
 | `GET /payerownedtokens/<payerReference>`      | `GET /online/payers/<payerReference>`    | Retrieve active tokens for a payer          |
@@ -54,7 +55,8 @@ Authorization: Bearer <token>{% endcapture %}
 Content-Type: application/json; charset=utf-8; version=3.x/2.0
 api-supported-versions: 3.x/2.0{% endcapture %}
 
-{% capture response_content %}{{
+{% capture response_content %}{% raw %}
+{
   "tokens": {
     "id": "/online/payers/<payerReference>",
     "payerReference": "customer-123",
@@ -69,33 +71,54 @@ api-supported-versions: 3.x/2.0{% endcapture %}
       }
     ]
   }
-}{% endcapture %}
+}
+{% endraw %}{% endcapture %}
 
 {% include code-example.html
-    title='GET All Tokens Response'
+    title='Retrieve All Tokens Response'
     header=response_header
     json= response_content
     %}
 
-*   Archive all tokens for a payer
+*   Archive All Tokens
 
-Old:
-HTTP PATCH /psp/paymentorders/payerownedtokens/<payerReference>
-Authorization: Bearer <token>
+{% capture request_header %}HTTP PATCH /psp/paymentorders/payerownedtokens/<payerReference>
+Host: {{ page.api_host }}
+Authorization: Bearer <token>{% endcapture %}
 
-New:
-HTTP PATCH /online/payers/<payerReference>/archives
-Authorization: Bearer <token>
+{% include code-example.html
+    title='Old (PaymentOrder API) Archive All Tokens Request'
+    header=request_header
+    %}
 
-*   Retrieve a single token
+{% capture request_header %}HTTP PATCH /online/payers/<payerReference>/archives
+Host: {{ page.api_host }}
+Authorization: Bearer <token>{% endcapture %}
 
-Old:
-HTTP GET /psp/paymentorders/paymenttokens/<tokenid>
-Authorization: Bearer <token>
+{% include code-example.html
+    title='New (Payer API) Archive All Tokens Request'
+    header=request_header
+    %}
 
-New:
+*   Retrieve Single Token
+
+{% capture request_header %}HTTP GET /psp/paymentorders/paymenttokens/<tokenid>
+Host: {{ page.api_host }}
+Authorization: Bearer <token>{% endcapture %}
+
+{% include code-example.html
+    title='Old (PaymentOrder API) Retrieve Single Token Request'
+    header=request_header
+    %}
+
 HTTP GET /online/payers/tokens/{tokenIdentifier}
-Authorization: Bearer <token>
+Host: {{ page.api_host }}
+Authorization: Bearer <token>{% endcapture %}
+
+{% include code-example.html
+    title='New (Payer API) Retrieve Single Token Request'
+    header=request_header
+    %}
 
 ### Important Differences
 
