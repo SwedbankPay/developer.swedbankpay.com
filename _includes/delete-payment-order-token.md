@@ -5,6 +5,7 @@
 {% endcapture %}
 {% assign token_url=token_url | strip %}
 
+
 ## Delete {{ token_field_name }} Request
 
 {% capture request_header %}PATCH {{ token_url }} HTTP/1.1
