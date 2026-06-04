@@ -1,9 +1,15 @@
 ---
-title: Delete Tokens
-permalink: /:path/delete-token/
-description: Everything you need to delete tokens.
-menu_order: 1700
+title: Token Handling
+permalink: /:path/token-handing/
+description: Everything you need know about tokens.
+menu_order: 2800
 ---
+
+{% include payer-tokens.md %}
+
+## Old APIs
+
+You can still use the old APIs to manage tokens. Here is everything you need.
 
 ## Delete Unscheduled, Recurrence Or Payment Tokens
 

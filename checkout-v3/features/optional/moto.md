@@ -6,7 +6,7 @@ description: |
                   <span class="d-block mt-3">
                     <span class="badge badge-default">Card</span>
                   </span>
-menu_order: 1900
+menu_order: 1800
 ---
 
 {% include payment-order-moto.md %}

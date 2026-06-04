@@ -103,7 +103,7 @@ when we get there.
                          next_title="Start Integrating" %}
 
 [basic-implementation]: /assets/img/checkout/devp-get-started.png
-[delete-token]: /checkout-v3/features/optional/delete-token
+[delete-token]: /checkout-v3/features/optional/token-handlling
 [e-mail]: mailto:support.psp@swedbankpay.se
 [https]: /checkout-v3/get-started/fundamental-principles#connection-and-protocol
 [migrate]: /checkout-v3/migrate
