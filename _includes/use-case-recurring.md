@@ -207,7 +207,7 @@ compiled relevant documentation below.
 [callback]: /checkout-v3/features/payment-operations/callback
 [cancel]: /checkout-v3/features/payment-operations/cancel
 [capture]: /checkout-v3/features/payment-operations/payment-order-capture
-[delete-token]: /checkout-v3/features/optional/token-handlling
+[delete-token]: /checkout-v3/features/optional/token-handling
 [get-started]: /checkout-v3/get-started/#the-basic-implementation
 [paid]: https://api.externalintegration.payex.com/psp/paymentorders/<PaymentOrderIdHere>/paid
 [recur]: /checkout-v3/features/optional/recur

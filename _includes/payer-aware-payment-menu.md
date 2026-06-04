@@ -2093,7 +2093,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
   </details>
 </div>
 
-[delete-token]: /checkout-v3/features/optional/token-handlling
+[delete-token]: /checkout-v3/features/optional/token-handling
 [tokens]: {{ features_url }}/optional/payer-aware-payment-menu#tokens
 [verify]: {{ features_url }}/optional/verify
 [trustly-presentation]: /checkout-v3/trustly-presentation
