@@ -51,7 +51,7 @@ jobs:
           name: build-site
           path: _site
       - name: Set up Ruby 2.7
-        uses: ruby/setup-ruby@afeafc3d1ab54a631816aba4c914a0081c12ff2f # v1
+        uses: ruby/setup-ruby@89f90524b88a01fe6e0b732220432cc6142926af # v1
         with:
           ruby-version: 2.7
           rubygems: 3.3.22
