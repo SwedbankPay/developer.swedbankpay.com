@@ -12,8 +12,6 @@ endpoint will be removed in v3.2 and replaced by the Payer API.
 Payer API is the new, authoritative service used to retrieve, update and manage
 tokens for a payer.
 
-### At A Glance
-
 {:.table .table-striped}
 
 | Old (`PaymentOrder` API)    | New (Payer API)  | Description    |
@@ -25,11 +23,11 @@ tokens for a payer.
 
 ### Code Examples
 
-For full request/response examples, see the API list below.
+All the Payer API requests/responses you'll need.
 
 #### Retrieve All Payer Tokens
 
-{% capture request_header %}GET /psp/paymentorders/payerownedtokens/<payerReference>
+{% capture request_header %}GET /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <token>{% endcapture %}
 
@@ -38,7 +36,7 @@ Authorization: Bearer <token>{% endcapture %}
     header=request_header
     %}
 
-{% capture request_header %}GET /online/payers/<payerReference>/tokens
+{% capture request_header %}GET /online/payers/<payerReference>/tokens HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <token>{% endcapture %}
 
@@ -78,7 +76,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
 #### Archive All Tokens
 
-{% capture request_header %}HTTP PATCH /psp/paymentorders/payerownedtokens/<payerReference>
+{% capture request_header %}HTTP PATCH /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <token>{% endcapture %}
 
@@ -87,7 +85,7 @@ Authorization: Bearer <token>{% endcapture %}
     header=request_header
     %}
 
-{% capture request_header %}HTTP PATCH /online/payers/<payerReference>/archive
+{% capture request_header %}HTTP PATCH /online/payers/<payerReference>/archives HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <token>{% endcapture %}
 
@@ -98,7 +96,7 @@ Authorization: Bearer <token>{% endcapture %}
 
 #### Retrieve Single Token
 
-{% capture request_header %}HTTP GET /psp/paymentorders/paymenttokens/<tokenid>
+{% capture request_header %}HTTP GET /psp/paymentorders/paymenttokens/<tokenid> HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <token>{% endcapture %}
 
@@ -107,7 +105,7 @@ Authorization: Bearer <token>{% endcapture %}
     header=request_header
     %}
 
-{% capture request_header %}HTTP GET /online/payers/tokens/<tokenIdentifier>
+{% capture request_header %}HTTP GET /online/payers/tokens/<tokenIdentifier> HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <token>{% endcapture %}
 
@@ -124,6 +122,10 @@ Authorization: Bearer <token>{% endcapture %}
 
 *   Token types and status (Active/Archived) are the same, but the Payer API has
 more detailed fields and better support for the token lifecycle.
+
+## New (Payer) APIs
+
+All Payer APIs with requests and responses.
 
 ## GET Single Payer Token
 
@@ -147,39 +149,50 @@ Content-Type: application/json; charset=utf-8; version=3.x/2.0
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
-   "token": {
-     "id" : "<resourceId>",
-     "payerReference" : "<payerReference>",
-     "token": "<Guid>",
-     "tokenType": "Unscheduled",
-     "instrument": "Trustly",
-     "instrumentDisplayName" : "Custom value, or default depending on instrument",
-     "correlationsId": "e2f06785-805d-4605-bf40-426a725d313d",
-     "state": "Active",
-     "instrumentParameters": {
-       ...
+    "id": "/tokens/<token>-<tokenType>",
+    "payerReference": "<payerReference>",
+    "migratedFromConsumerProfile": false,
+    "token": {
+        "operations": [
+            {
+                "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokenType>",
+                "rel": "get-token",
+                "method": "GET",
+                "contentType": "application/json"
+            },
+            {
+                "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokenType>/archives",
+                "rel": "archive-token",
+                "method": "PATCH",
+                "contentType": "application/json"
+            },
+            {
+                "href": "https://api.<enviroment>.swedbankpay.com/online/payers/tokens/<token>-<tokenType>/displaynames",
+                "rel": "update-displayname",
+                "method": "PATCH",
+                "contentType": "application/json"
+            }
+        ],
+        "id": "/online/payers/tokens/<token>-<tokenType>",
+        "payerReference": "<payerReference>",
+        "token": "bc898d02-2423-4e02-822c-8dfb136f2ca6",
+        "tokenType": "Payment",
+        "instrument": "CreditCard",
+        "displayName": "0416",
+        "correlationId": "8e7752b2-016f-4b9f-ac39-2844907d8f9c",
+        "state": "Active",
+        "networkTokenized": false,
+        "instrumentParameters": {
+            "cardBrand": "Visa",
+            "expiryPan": "12/2055",
+            "issuerName": "Utl. Visa",
+            "bin": "476173",
+            "cardholderType": "Unknown",
+            "cardType": "Credit",
+            "countryCode": "999",
+            "lastFourPan": "0416"
+        }
     }
-  },
-  "operations": [
-    {
-       "method": "GET",
-       "href": "https://api.<environment>.swedbankpay.com/online/payers/payees/<guid>/tokens/<token>-<tokenType>",
-       "rel": "get-token",
-       "contentType": "application/json"
-    },
-    {
-       "method": "PATCH",
-       "href": "https://api.<environment>.swedbankpay.com/online/payers/payees/<guid>/tokens/<token>-<tokenType>/displaynames",
-       "rel": "update-displayname",
-       "contentType": "application/json"
-     },
-     {
-        "method": "PATCH",
-        "href": "https://api.<environment>.swedbankpay.com/online/payers/payees/<guid>/tokens/<token>-<tokenType>/archives",
-        "rel": "archive-token",
-        "contentType": "application/json"
-     }
-   ]
 }{% endcapture %}
 
 {% include code-example.html
@@ -196,6 +209,36 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     <div>Field</div>
     <div>Type</div>
   </div>
+  <!-- LEVEL 0: id -->
+<details class="api-item" data-level="0">
+  <summary>
+    <span class="field">{% f id, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="type"><code>string</code></span>
+  </summary>
+  <div class="desc">
+    <div class="indent-0">The token ID.</div>
+  </div>
+
+  <!-- LEVEL 0: payerReference -->
+<details class="api-item" data-level="0">
+  <summary>
+    <span class="field">{% f payerReference, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="type"><code>object</code></span>
+  </summary>
+  <div class="desc">
+    <div class="indent-0">The reference used to recognize the payer in the absence of SSN and/or a secure login.</div>
+  </div>
+
+    <!-- LEVEL 0: migratedFromConsumerProfile -->
+<details class="api-item" data-level="0">
+  <summary>
+    <span class="field">{% f migratedFromConsumerProfile, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="type"><code>bool</code></span>
+  </summary>
+  <div class="desc">
+    <div class="indent-0"><code>True</code> or <code>false</code>, indicates if the token was migrated from a consumer profile or not.</div>
+  </div>
+
 <!-- LEVEL 0: token -->
 <details class="api-item" data-level="0">
   <summary>
@@ -208,6 +251,16 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
   <!-- LEVEL 1: children of token -->
   <div class="api-children">
+
+      <details class="api-item" data-level="1">
+  <summary>
+    <span class="field">{% f operations %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="type"><code>array</code></span>
+  </summary>
+  <div class="desc">
+    <div class="indent-0">{{ operations_md | markdownify }}</div>
+  </div>
+</details>
 
     <details class="api-item" data-level="1">
       <summary>
@@ -303,7 +356,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         <span class="type"><code>string</code></span>
       </summary>
       <div class="desc"><div class="indent-1">
-        The reason why the token was archived.
+       Present if the token state is <code>Archived</code> and indicates the reason why the token was archived.
       </div></div>
     </details>
 
@@ -316,9 +369,6 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         A list of additional information connected to the token. The content may differ depending on the payment method.
       </div></div>
     </details>
-
-  </div>
-</details>
 
 <!-- LEVEL 0: operations -->
 <details class="api-item" data-level="0">
@@ -586,7 +636,7 @@ payer's `payerReference`.
 
 ## GET All Payer Tokens Request
 
-{% capture request_header %}GET /online/payers/<payerReference>/tokens HTTP/1.1
+{% capture request_header %}GET /online/payers/<payerReference> HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>{% endcapture %}
 
@@ -598,75 +648,68 @@ Authorization: Bearer <AccessToken>{% endcapture %}
 ## Get All Payer Tokens Response
 
 {% capture response_content %}{
-{
-  "tokens": {
-    "id": "/online/payers/payees/<payeeid>/payers/<payerReference>/tokens",
-    "payerReference": "{payerReference}",
-    "migratedFromConsumerProfile": true
-    "tokenlist": [
-      {
-         "id" : "<resourceId>",
-         "payerReference" : "<payerReference>",
-         "token": "<Guid>",
-         "tokenType": "TransactionOnFile",
-         "instrument": "Trustly",
-         "instrumentDisplayName" : "Custom value, or default depending on instrument",
-         "correlationsId": "e2f06785-805d-4605-bf40-426a725d313d",
-         "state": "Archived",
-         "archivedBy": "TOKEN_ISSUER",
-         "archiveReason": "Comment with reason for archive",
-         "instrumentParameters": {
-           ...
-         }
-        "operations": [...]
-      },
-      {
-         "id" : "<resourceId>",
-         "payerReference" : "<payerReference>",
-         "token": "<Guid>",
-         "tokenType": "Unscheduled",
-         "instrument": "CreditCard|Trustly|CarPay",
-         "instrumentDisplayName" : "Custom value, or default depending on instrument",
-         "correlationsId": "e2f06785-805d-4605-bf40-426a725d313d",
-         "state": "Active",
-         "instrumentParameters": {
-           ...
-         }
-        "operations": [...]
-      },
-      {
-         "id" : "<resourceId>",
-         "payerReference" : "<payerReference>",
-         "token": "<Guid>",
-         "tokenType": "Payment",
-         "instrument": "CreditCard",
-         "instrumentDisplayName" : "Custom value, or default depending on instrument",
-         "correlationsId": "e2f06785-805d-4605-bf40-426a725d313d",
-         "state": "Archived",
-         "archivedBy": "PAYEE",
-         "archiveReason": "Comment with reason for archive",
-         "instrumentParameters": {
-           ...
-         }
-        "operations": [...]
-      }
-    ]
-  },
-  "operations": [
-    {
-      "method": "GET",
-      "href": "https://api.<environment>.swedbankpay.com/online/payers/payees/<guid>/payers/<payerReference>/tokens",
-      "rel": "get-payer-tokens",
-      "contentType": "application/json"
+    "tokens": {
+        "id": "/online/payers/<payerReference>",
+        "payerReference": "<payerReference>",
+        "migratedFromConsumerProfile": false,
+        "tokenList": [
+            {
+                "operations": [
+                    {
+                        "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokenType>",
+                        "rel": "get-token",
+                        "method": "GET",
+                        "contentType": "application/json"
+                    },
+                    {
+                        "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokenType>/archives",
+                        "rel": "archive-token",
+                        "method": "PATCH",
+                        "contentType": "application/json"
+                    },
+                    {
+                        "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokenType>/displaynames",
+                        "rel": "update-displayname",
+                        "method": "PATCH",
+                        "contentType": "application/json"
+                    }
+                ],
+                "id": "/online/payers/tokens/<token>-<tokenType>e",
+                "payerReference": "<payerReference>",
+                "token": "d771a8fd-bc38-4d95-a0c9-ecfeae274d6b",
+                "tokenType": "Recurrence",
+                "instrument": "CreditCard",
+                "displayName": "0416",
+                "correlationId": "8e7752b2-016f-4b9f-ac39-2844907d8f9c",
+                "state": "Active",
+                "networkTokenized": false,
+                "instrumentParameters": {
+                    "cardBrand": "Visa",
+                    "expiryPan": "12/2055",
+                    "issuerName": "Utl. Visa",
+                    "bin": "476173",
+                    "cardholderType": "Unknown",
+                    "cardType": "Credit",
+                    "countryCode": "999",
+                    "lastFourPan": "0416"
+                }
+            }
+        ]
     },
-    {
-      "method": "PATCH",
-      "href": "https://api.<environment>.swedbankpay.com/online/payers/payees/<guid>/payers/<payerReference>/archives",
-      "rel": "archive-payer-tokens",
-      "contentType": "application/json"
-    }
-  ]
-}
+    "operations": [
+        {
+            "href": "https://api.<environment>.swedbankpay.com/online/payers/<payerReference>",
+            "rel": "get-payer-tokens",
+            "method": "GET",
+            "contentType": "application/json"
+        },
+        {
+            "href": "https://api.<environment>.swedbankpay.com/online/payers/<payerReference>/archives",
+            "rel": "archive-payer-tokens",
+            "method": "PATCH",
+            "contentType": "application/json"
+        }
+    ]
 }{% endcapture %}
 
 {% include code-example.html
@@ -696,6 +739,16 @@ Authorization: Bearer <AccessToken>{% endcapture %}
 
   <!-- LEVEL 1: children of tokens -->
   <div class="api-children">
+
+<details class="api-item" data-level="1">
+  <summary>
+    <span class="field">{% f operations %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="type"><code>array</code></span>
+  </summary>
+  <div class="desc">
+    <div class="indent-0">{{ operations_md | markdownify }}</div>
+  </div>
+</details>
 
     <details class="api-item" data-level="1">
       <summary>
@@ -881,7 +934,7 @@ A GET request used to retrieve all archived tokens by a payee using the payer's
 
 ## GET Archived Payer Tokens Request
 
-{% capture request_header %}GET /online/payers/<payerReference>/archived-tokens HTTP/1.1
+{% capture request_header %}GET /online/payers/<payerReference>/archives HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>{% endcapture %}
 
@@ -893,76 +946,52 @@ Authorization: Bearer <AccessToken>{% endcapture %}
 ## GET Archived Payer Tokens Response
 
 {% capture response_content %}{
-{
-  "tokens": {
-    "id": "/online/payers/payees/<payeeid>/payers/<payerReference>/tokens",
-    "payerReference": "{payerReference}",
-    "migratedFromConsumerProfile": false
-    "tokenlist": [
-      {
-         "id" : "<resourceId>",
-         "payerReference" : "<payerReference>",
-         "token": "<Guid>",
-         "tokenType": "Payment",
-         "instrument": "CreditCard",
-         "instrumentDisplayName" : "Custom value, or default depending on instrument",
-         "correlationsId": "e2f06785-805d-4605-bf40-426a725d313d",
-         "state": "Archived",
-         "archivedBy": "PAYEE",
-         "archiveReason": "Comment with reason for archive",
-         "instrumentParameters": {
-           ...
-         }
-        "operations": [...]
-      },
-      {
-         "id" : "<resourceId>",
-         "payerReference" : "<payerReference>",
-         "token": "<Guid>",
-         "tokenType": "Unscheduled",
-         "instrument": "Trustly",
-         "instrumentDisplayName" : "Custom value, or default depending on instrument",
-         "correlationsId": "e2f06785-805d-4605-bf40-426a725d313d",
-         "state": "Archived",
-         "archivedBy": "SWEDBANK_PAY",
-         "archiveReason": "Comment with reason for archive",
-         "instrumentParameters": {
-           ...
-         }
-        "operations": [...]
-      },
-      {
-         "id" : "<resourceId>",
-         "payerReference" : "<payerReference>",
-         "token": "<Guid>",
-         "tokenType": "Recurrence",
-         "instrument": "CreditCard",
-         "instrumentDisplayName" : "Custom value, or default depending on instrument",
-         "correlationsId": "e2f06785-805d-4605-bf40-426a725d313d",
-         "state": "Archived",
-         "archivedBy": "TOKEN_ISSUER",
-         "archiveReason": "Comment with reason for archive",
-         "instrumentParameters": {
-           ...
-         }
-        "operations": [...]
-      }
-    ]
-  },
-  "operations": [
-    {
-      "method": "GET",
-      "href": "https://api.<environment>.swedbankpay.com/online/payers/payees/<guid>/payers/<payerReference>/tokens",
-      "rel": "get-payer-tokens",
-      "contentType": "application/json"
+    "tokens": {
+        "id": "/<payerReference>/archives",
+        "payerReference": "<payerReference>",
+        "migratedFromConsumerProfile": false,
+        "tokenList": [
+            {
+                "operations": [
+                    {
+                        "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokenType>",
+                        "rel": "get-token",
+                        "method": "GET",
+                        "contentType": "application/json"
+                    }
+                ],
+                "id": "/online/payers/tokens/<token>-<tokenType>",
+                "payerReference": "<payerReference>",
+                "token": "bc898d02-2423-4e02-822c-8dfb136f2ca6",
+                "tokenType": "Payment",
+                "instrument": "CreditCard",
+                "displayName": "updated name",
+                "correlationId": "8e7752b2-016f-4b9f-ac39-2844907d8f9c",
+                "state": "Archived",
+                "archivedBy": "PAYEE",
+                "archiveReason": "string",
+                "networkTokenized": false,
+                "instrumentParameters": {
+                    "cardBrand": "Visa",
+                    "expiryPan": "12/2055",
+                    "issuerName": "Utl. Visa",
+                    "bin": "476173",
+                    "cardholderType": "Unknown",
+                    "cardType": "Credit",
+                    "countryCode": "999",
+                    "lastFourPan": "0416"
+                }
+            }
+        ]
     },
-    {
-      "method": "PATCH",
-      "href": "https://api.<environment>.swedbankpay.com/online/payers/payees/<guid>/payers/<payerReference>/archives",
-      "rel": "archive-payer-tokens",
-      "contentType": "application/json"
-    }
-  ]
+    "operations": [
+        {
+            "href": "https://api.<environment>.swedbankpay.com/online/payers/<payerReference>/archives",
+            "rel": "get-archived-payer-tokens",
+            "method": "GET",
+            "contentType": "application/json"
+        }
+    ]
 }{% endcapture %}
 
 {% include code-example.html
@@ -992,6 +1021,16 @@ Authorization: Bearer <AccessToken>{% endcapture %}
 
   <!-- LEVEL 1: children of tokens -->
   <div class="api-children">
+
+  <details class="api-item" data-level="1">
+  <summary>
+    <span class="field">{% f operations %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="type"><code>array</code></span>
+  </summary>
+  <div class="desc">
+    <div class="indent-0">{{ operations_md | markdownify }}</div>
+  </div>
+</details>
 
     <details class="api-item" data-level="1">
       <summary>
@@ -1178,12 +1217,12 @@ A PATCH request used to update a payer token's display name.
 
 ## PATCH Update Display Name Request
 
-{% capture request_header %}PATCH /online/payers/tokens/<tokenIdentifier>/displayname HTTP/1.1
+{% capture request_header %}PATCH /online/payers/tokens/<tokenIdentifier>/displaynames HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>{% endcapture %}
 
 {% capture request_content %}{
-"displayName" : "Example"
+"displayName" : "Updated display name"
 }{% endcapture %}
 
 {% include code-example.html
@@ -1221,39 +1260,50 @@ Content-Type: application/json; charset=utf-8; version=3.x/2.0
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
-   "token": {
-     "id" : "<resourceId>",
-     "payerReference" : "<payerReference>",
-     "token": "<Guid>",
-     "tokenType": "Unscheduled",
-     "instrument": "Trustly",
-     "instrumentDisplayName" : "Custom value, or default depending on instrument",
-     "correlationsId": "e2f06785-805d-4605-bf40-426a725d313d",
-     "state": "Active",
-     "instrumentParameters": {
-       ...
+    "id": "/tokens/bc898d02-2423-4e02-822c-8dfb136f2ca6-OneClick/displaynames",
+    "payerReference": "<payerReference>",
+    "migratedFromConsumerProfile": false,
+    "token": {
+        "operations": [
+            {
+                "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokenType>",
+                "rel": "get-token",
+                "method": "GET",
+                "contentType": "application/json"
+            },
+            {
+                "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokenType>/archives",
+                "rel": "archive-token",
+                "method": "PATCH",
+                "contentType": "application/json"
+            },
+            {
+                "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokenType>/displaynames",
+                "rel": "update-displayname",
+                "method": "PATCH",
+                "contentType": "application/json"
+            }
+        ],
+        "id": "/online/payers/tokens/<token>-<tokenType>",
+        "payerReference": "<payerReference>",
+        "token": "bc898d02-2423-4e02-822c-8dfb136f2ca6",
+        "tokenType": "Payment",
+        "instrument": "CreditCard",
+        "displayName": "updated name",
+        "correlationId": "8e7752b2-016f-4b9f-ac39-2844907d8f9c",
+        "state": "Active",
+        "networkTokenized": false,
+        "instrumentParameters": {
+            "cardBrand": "Visa",
+            "expiryPan": "12/2055",
+            "issuerName": "Utl. Visa",
+            "bin": "476173",
+            "cardholderType": "Unknown",
+            "cardType": "Credit",
+            "countryCode": "999",
+            "lastFourPan": "0416"
+        }
     }
-  },
-  "operations": [
-    {
-       "method": "GET",
-       "href": "https://api.<environment>.swedbankpay.com/online/payers/payees/<guid>/tokens/<token>-<tokenType>",
-       "rel": "get-token",
-       "contentType": "application/json"
-    },
-    {
-       "method": "PATCH",
-       "href": "https://api.<environment>.swedbankpay.com/online/payers/payees/<guid>/tokens/<token>-<tokenType>/displaynames",
-       "rel": "update-displayname",
-       "contentType": "application/json"
-     },
-     {
-        "method": "PATCH",
-        "href": "https://api.<environment>.swedbankpay.com/online/payers/payees/<guid>/tokens/<token>-<tokenType>/archives",
-        "rel": "archive-token",
-        "contentType": "application/json"
-     }
-   ]
 }{% endcapture %}
 
 {% include code-example.html
@@ -1270,6 +1320,36 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     <div>Field</div>
     <div>Type</div>
   </div>
+  <!-- LEVEL 0: id -->
+<details class="api-item" data-level="0">
+  <summary>
+    <span class="field">{% f token, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="type"><code>object</code></span>
+  </summary>
+  <div class="desc">
+    <div class="indent-0">The token object.</div>
+  </div>
+
+  <!-- LEVEL 0: payerReference -->
+<details class="api-item" data-level="0">
+  <summary>
+    <span class="field">{% f payerReference, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="type"><code>object</code></span>
+  </summary>
+  <div class="desc">
+    <div class="indent-0">The reference used to recognize the payer in the absence of SSN and/or a secure login..</div>
+  </div>
+
+    <!-- LEVEL 0: migratedFromConsumerProfile -->
+<details class="api-item" data-level="0">
+  <summary>
+    <span class="field">{% f migratedFromConsumerProfile, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="type"><code>bool</code></span>
+  </summary>
+  <div class="desc">
+    <div class="indent-0"><code>True</code> or <code>false</code>, indicating if the token was migrated from a consumer profile or not.</div>
+  </div>
+
 <!-- LEVEL 0: token -->
 <details class="api-item" data-level="0">
   <summary>
@@ -1283,6 +1363,16 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
   <!-- LEVEL 1: children of token -->
   <div class="api-children">
+
+<details class="api-item" data-level="1">
+  <summary>
+    <span class="field">{% f operations %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="type"><code>array</code></span>
+  </summary>
+  <div class="desc">
+    <div class="indent-0">{{ operations_md | markdownify }}</div>
+  </div>
+</details>
 
     <details class="api-item" data-level="1">
       <summary>
@@ -1416,7 +1506,7 @@ A PATCH request used to archive a single, specific payer token.
 
 ## PATCH Archive Single Payer Token Request
 
-{% capture request_header %}PATCH /online/payers/tokens/<tokenIdentifier>/archive HTTP/1.1
+{% capture request_header %}PATCH /online/payers/tokens/<tokenIdentifier>/archives HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>{% endcapture %}
 
@@ -1447,7 +1537,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-0">An explanation for why the tokens are being archived.</div></div>
+        <div class="desc"><div class="indent-0">An explanation of why the tokens are being archived.</div></div>
       </details>
 
       <details class="api-item" data-level="0">
@@ -1469,41 +1559,40 @@ Content-Type: application/json; charset=utf-8; version=3.x/2.0
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
-   "token": {
-     "id" : "<resourceId>",
-     "payerReference" : "<payerReference>",
-     "token": "<Guid>",
-     "tokenType": "Unscheduled",
-     "instrument": "Trustly",
-     "instrumentDisplayName" : "Custom value, or default depending on instrument",
-     "correlationsId": "e2f06785-805d-4605-bf40-426a725d313d",
-     "state": "Archived",
-     "archivedBy": "PAYEE",
-     "archiveReason": "Comment with reason for archive",
-     "instrumentParameters": {
-       ...
+    "id": "/tokens/<token>-<tokenType>/archives",
+    "payerReference": "<payerReference>",
+    "migratedFromConsumerProfile": false,
+    "token": {
+        "operations": [
+            {
+                "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokenType>",
+                "rel": "get-token",
+                "method": "GET",
+                "contentType": "application/json"
+            }
+        ],
+        "id": "/online/payers/tokens/<token>-<tokenType>",
+        "payerReference": "<payerReference>",
+        "token": "bc898d02-2423-4e02-822c-8dfb136f2ca6",
+        "tokenType": "Payment",
+        "instrument": "CreditCard",
+        "displayName": "updated name",
+        "correlationId": "8e7752b2-016f-4b9f-ac39-2844907d8f9c",
+        "state": "Archived",
+        "archivedBy": "PAYEE",
+        "archiveReason": "string",
+        "networkTokenized": false,
+        "instrumentParameters": {
+            "cardBrand": "Visa",
+            "expiryPan": "12/2055",
+            "issuerName": "Utl. Visa",
+            "bin": "476173",
+            "cardholderType": "Unknown",
+            "cardType": "Credit",
+            "countryCode": "999",
+            "lastFourPan": "0416"
+        }
     }
-  },
-  "operations": [
-    {
-       "method": "GET",
-       "href": "https://api.<environment>.swedbankpay.com/online/payers/payees/<guid>/tokens/<token>-<tokenType>",
-       "rel": "get-token",
-       "contentType": "application/json"
-    },
-    {
-       "method": "PATCH",
-       "href": "https://api.<environment>.swedbankpay.com/online/payers/payees/<guid>/tokens/<token>-<tokenType>/displaynames",
-       "rel": "update-displayname",
-       "contentType": "application/json"
-     },
-     {
-        "method": "PATCH",
-        "href": "https://api.<environment>.swedbankpay.com/online/payers/payees/<guid>/tokens/<token>-<tokenType>/archives",
-        "rel": "archive-token",
-        "contentType": "application/json"
-     }
-   ]
 }{% endcapture %}
 
 {% include code-example.html
@@ -1520,6 +1609,36 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     <div>Field</div>
     <div>Type</div>
   </div>
+  <!-- LEVEL 0: id -->
+<details class="api-item" data-level="0">
+  <summary>
+    <span class="field">{% f token, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="type"><code>object</code></span>
+  </summary>
+  <div class="desc">
+    <div class="indent-0">The token object.</div>
+  </div>
+
+  <!-- LEVEL 0: payerReference -->
+<details class="api-item" data-level="0">
+  <summary>
+    <span class="field">{% f payerReference, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="type"><code>object</code></span>
+  </summary>
+  <div class="desc">
+    <div class="indent-0">The reference used to recognize the payer in the absence of SSN and/or a secure login..</div>
+  </div>
+
+    <!-- LEVEL 0: migratedFromConsumerProfile -->
+<details class="api-item" data-level="0">
+  <summary>
+    <span class="field">{% f migratedFromConsumerProfile, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="type"><code>bool</code></span>
+  </summary>
+  <div class="desc">
+    <div class="indent-0"><code>True</code> or <code>false</code>, indicating if the token was migrated from a consumer profile or not.</div>
+  </div>
+
 <!-- LEVEL 0: token -->
 <details class="api-item" data-level="0">
   <summary>
@@ -1533,6 +1652,16 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
   <!-- LEVEL 1: children of token -->
   <div class="api-children">
+
+<details class="api-item" data-level="1">
+  <summary>
+    <span class="field">{% f operations %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="type"><code>array</code></span>
+  </summary>
+  <div class="desc">
+    <div class="indent-0">{{ operations_md | markdownify }}</div>
+  </div>
+</details>
 
     <details class="api-item" data-level="1">
       <summary>
@@ -1670,7 +1799,7 @@ A PATCH request used to archive all tokens linked to a specific
 
 ## PATCH Archive All Payer Tokens Request
 
-{% capture request_header %}PATCH /online/payers/<payerReference>/archive HTTP/1.1
+{% capture request_header %}PATCH /online/payers/<payerReference>/archives HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>{% endcapture %}
 
@@ -1701,7 +1830,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-0">An explanation for why the tokens are being archived.</div></div>
+        <div class="desc"><div class="indent-0">An explanation of why the tokens are being archived.</div></div>
       </details>
 
       <details class="api-item" data-level="0">
@@ -1719,77 +1848,81 @@ Authorization: Bearer <AccessToken>{% endcapture %}
 ## PATCH Archive All Payer Tokens Response
 
 {% capture response_content %}{
-{
-  "tokens": {
-    "id": "/online/payers/payees/<payeeid>/payers/<payerReference>/tokens",
-    "payerReference": "{payerReference}",
-    "migratedFromConsumerProfile": false
-    "tokenlist": [
-      {
-         "id" : "<resourceId>",
-         "payerReference" : "<payerReference>",
-         "token": "<Guid>",
-         "tokenType": "Payment",
-         "instrument": "CreditCard",
-         "instrumentDisplayName" : "Custom value, or default depending on instrument",
-         "correlationsId": "e2f06785-805d-4605-bf40-426a725d313d",
-         "state": "Archived",
-         "archivedBy": "PAYEE",
-         "archiveReason": "Comment with reason for archive",
-         "instrumentParameters": {
-           ...
-         }
-        "operations": [...]
-      },
-      {
-         "id" : "<resourceId>",
-         "payerReference" : "<payerReference>",
-         "token": "<Guid>",
-         "tokenType": "Unscheduled",
-         "instrument": "Trustly",
-         "instrumentDisplayName" : "Custom value, or default depending on instrument",
-         "correlationsId": "e2f06785-805d-4605-bf40-426a725d313d",
-         "state": "Archived",
-         "archivedBy": "SWEDBANK_PAY",
-         "archiveReason": "Comment with reason for archive",
-         "instrumentParameters": {
-           ...
-         }
-        "operations": [...]
-      },
-      {
-         "id" : "<resourceId>",
-         "payerReference" : "<payerReference>",
-         "token": "<Guid>",
-         "tokenType": "Recurrence",
-         "instrument": "CreditCard",
-         "instrumentDisplayName" : "Custom value, or default depending on instrument",
-         "correlationsId": "e2f06785-805d-4605-bf40-426a725d313d",
-         "state": "Archived",
-         "archivedBy": "TOKEN_ISSUER",
-         "archiveReason": "Comment with reason for archive",
-         "instrumentParameters": {
-           ...
-         }
-        "operations": [...]
-      }
-    ]
-  },
-  "operations": [
-    {
-      "method": "GET",
-      "href": "https://api.<environment>.swedbankpay.coms/payees/<guid>/payers/<payerReference>/tokens",
-      "rel": "get-payer-tokens",
-      "contentType": "application/json"
+    "tokens": {
+        "id": "/online/payers/<payerReference>/archives",
+        "payerReference": "<payerReference>",
+        "migratedFromConsumerProfile": false,
+        "tokenList": [
+            {
+                "operations": [
+                    {
+                        "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokentType>",
+                        "rel": "get-token",
+                        "method": "GET",
+                        "contentType": "application/json"
+                    }
+                ],
+                "id": "/online/payers/tokens/<token>-<tokentType>",
+                "payerReference": "<payerReference>",
+                "token": "7afd5f9c-d8e1-430e-991d-521a1cdf27a0",
+                "tokenType": "Payment",
+                "instrument": "CreditCard",
+                "displayName": "3406",
+                "correlationId": "b5c14a0d-e098-4a49-9019-abcd181176c5",
+                "state": "Archived",
+                "archivedBy": "PAYEE",
+                "archiveReason": "string",
+                "networkTokenized": false,
+                "instrumentParameters": {
+                    "cardBrand": "MasterCard",
+                    "expiryPan": "12/2055",
+                    "bin": "522661",
+                    "cardholderType": "Consumer",
+                    "cardType": "Credit",
+                    "countryCode": "752",
+                    "lastFourPan": "3406"
+                }
+            },
+            {
+                "operations": [
+                    {
+                        "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokentType>",
+                        "rel": "get-token",
+                        "method": "GET",
+                        "contentType": "application/json"
+                    }
+                ],
+                "id": "/online/payers/tokens/<token>-<tokenType>",
+                "payerReference": "<payerReference>",
+                "token": "ba22800f-01a2-46e5-bb06-ec8af9cf49d3",
+                "tokenType": "Recurrence",
+                "instrument": "CreditCard",
+                "displayName": "3406",
+                "correlationId": "b5c14a0d-e098-4a49-9019-abcd181176c5",
+                "state": "Archived",
+                "archivedBy": "PAYEE",
+                "archiveReason": "string",
+                "networkTokenized": false,
+                "instrumentParameters": {
+                    "cardBrand": "MasterCard",
+                    "expiryPan": "12/2055",
+                    "bin": "522661",
+                    "cardholderType": "Consumer",
+                    "cardType": "Credit",
+                    "countryCode": "752",
+                    "lastFourPan": "3406"
+                }
+            }
+        ]
     },
-    {
-      "method": "PATCH",
-      "href": "https://api.<environment>.swedbankpay.com/online/payers/payees/<guid>/payers/<payerReference>/archives",
-      "rel": "archive-payer-tokens",
-      "contentType": "application/json"
-    }
-  ]
-}
+    "operations": [
+        {
+            "href": "https://api.<environment>.swedbankpay.com/online/payers/<payerReference>/archives",
+            "rel": "get-archived-payer-tokens",
+            "method": "GET",
+            "contentType": "application/json"
+        }
+    ]
 }{% endcapture %}
 
 {% include code-example.html
@@ -1806,10 +1939,10 @@ Authorization: Bearer <AccessToken>{% endcapture %}
     <div>Field</div>
     <div>Type</div>
   </div>
-<!-- LEVEL 0: tokens -->
+<!-- LEVEL 0: token -->
 <details class="api-item" data-level="0">
   <summary>
-    <span class="field">{% f tokens, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="field">{% f token, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
     <span class="type"><code>object</code></span>
   </summary>
 
@@ -1817,8 +1950,18 @@ Authorization: Bearer <AccessToken>{% endcapture %}
     <div class="indent-0">The token object.</div>
   </div>
 
-  <!-- LEVEL 1: children of tokens -->
+  <!-- LEVEL 1: children of token -->
   <div class="api-children">
+
+<details class="api-item" data-level="1">
+  <summary>
+    <span class="field">{% f operations %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="type"><code>array</code></span>
+  </summary>
+  <div class="desc">
+    <div class="indent-0">{{ operations_md | markdownify }}</div>
+  </div>
+</details>
 
     <details class="api-item" data-level="1">
       <summary>
