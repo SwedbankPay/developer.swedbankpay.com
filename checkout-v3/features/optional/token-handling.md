@@ -7,7 +7,7 @@ menu_order: 2800
 
 {% include payer-tokens.md %}
 
-## Old (`payerOwnedTokens`) APIs
+## Old (payerOwnedTokens) APIs
 
 You can still use the old APIs to manage tokens. Here is everything you need.
 
