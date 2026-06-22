@@ -9,26 +9,25 @@ endpoint will be removed in v3.2 and replaced by the Payer API.
 
 **What is Payer API?**
 
-Payer API is the new, authoritative service used to retrieve, update and manage
-tokens for a payer.
+Payer API is the new, authoritative service used to retrieve, update and manage tokens for a payer.
 
 {:.table .table-striped}
 
 | Old (`PaymentOrder` API)    | New (Payer API)  | Description    |
 | :------ | :------ | :------ |
-| `GET /payerownedtokens/<payerReference>`      | `GET /online/payers/<payerReference>`    | Retrieve active tokens for a payer          |
-| `PATCH /payerownedtokens/<payerReference>`    | `PATCH /online/payers/<payerReference>`  | Archive all tokens for a payer         |
-| `GET /paymenttokens/<token>`            | `GET /online/payers/tokens/<tokenId>`    | Retrieve a single token                        |
-| `PATCH /paymenttokens/<token>`          | `PATCH /online/payers/tokens/<tokenId>`  | Archive or update token             |
+| `GET /payerownedtokens/<payerReference>`      | `GET /online/payers/<payerReference>`    | Retrieves active tokens for a payer          |
+| `PATCH /payerownedtokens/<payerReference>`    | `PATCH /online/payers/<payerReference>`  | Archives all tokens for a payer         |
+| `GET /paymenttokens/<token>`            | `GET /online/payers/tokens/<tokenId>`    | Retrieves a single token                        |
+| `PATCH /paymenttokens/<token>`          | `PATCH /online/payers/tokens/<tokenId>`  | Archives or updates token             |
 
 ### Code Examples
 
 All the Payer API requests/responses you'll need.
 
-#### Retrieve All Payer Tokens
+#### GET All Payer Tokens
 
 {% capture request_header %}GET /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
-Host: {{ page.api_host }}
+Host: api.externalintegration.swedbankpay.com
 Authorization: Bearer <token>{% endcapture %}
 
 {% include code-example.html
@@ -37,7 +36,7 @@ Authorization: Bearer <token>{% endcapture %}
     %}
 
 {% capture request_header %}GET /online/payers/<payerReference>/tokens HTTP/1.1
-Host: {{ page.api_host }}
+Host: api.externalintegration.swedbankpay.com
 Authorization: Bearer <token>{% endcapture %}
 
 {% include code-example.html
@@ -56,8 +55,8 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     "payerReference": "customer-123",
     "tokensList": [
       {
-        "id": "/online/payers/tokens/abcd-1234",
-        "token": "abcd-1234",
+        "id": "/online/payers/tokens/<token>-<tokenType>",
+        "token": "<token>",
         "tokenType": "Payment",
         "instrument": "CreditCard",
         "displayName": "492500******0004",
@@ -69,7 +68,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 {% endraw %}{% endcapture %}
 
 {% include code-example.html
-    title='Retrieve All Tokens Response'
+    title='GET All Tokens Response'
     header=response_header
     json= response_content
     %}
@@ -77,7 +76,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 #### Archive All Tokens
 
 {% capture request_header %}PATCH /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
-Host: {{ page.api_host }}
+Host: api.externalintegration.swedbankpay.com
 Authorization: Bearer <token>{% endcapture %}
 
 {% include code-example.html
@@ -86,7 +85,7 @@ Authorization: Bearer <token>{% endcapture %}
     %}
 
 {% capture request_header %}PATCH /online/payers/<payerReference>/archives HTTP/1.1
-Host: {{ page.api_host }}
+Host: api.externalintegration.swedbankpay.com
 Authorization: Bearer <token>{% endcapture %}
 
 {% include code-example.html
@@ -94,23 +93,23 @@ Authorization: Bearer <token>{% endcapture %}
     header=request_header
     %}
 
-#### Retrieve Single Token
+#### GET Single Token
 
 {% capture request_header %}GET /psp/paymentorders/paymenttokens/<tokenid> HTTP/1.1
-Host: {{ page.api_host }}
+Host: api.externalintegration.swedbankpay.com
 Authorization: Bearer <token>{% endcapture %}
 
 {% include code-example.html
-    title='Old (PaymentOrder API) Retrieve Single Token Request'
+    title='Old (PaymentOrder API) GET Single Token Request'
     header=request_header
     %}
 
-{% capture request_header %}GET /online/payers/tokens/<tokenIdentifier> HTTP/1.1
-Host: {{ page.api_host }}
+{% capture request_header %}GET /online/payers/tokens/<token>-<tokenType> HTTP/1.1
+Host: api.externalintegration.swedbankpay.com
 Authorization: Bearer <token>{% endcapture %}
 
 {% include code-example.html
-    title='New (Payer API) Retrieve Single Token Request'
+    title='New (Payer API) GET Single Token Request'
     header=request_header
     %}
 
@@ -131,10 +130,10 @@ All Payer APIs with requests and responses.
 
 A GET request used when you need to retrieve a single token.
 
-## GET Single Payer Token Request
+### GET Single Payer Token Request
 
-{% capture request_header %}GET /online/payers/tokens/<tokenIdentifier> HTTP/1.1
-Host: {{ page.api_host }}
+{% capture request_header %}GET /online/payers/tokens/<token>-<tokenType> HTTP/1.1
+Host: api.externalintegration.swedbankpay.com
 Authorization: Bearer <AccessToken>{% endcapture %}
 
 {% include code-example.html
@@ -142,7 +141,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
     header=request_header
     %}
 
-## GET Single Payer Token Response
+### GET Single Payer Token Response
 
 {% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.x/2.0
@@ -155,7 +154,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     "token": {
         "operations": [
             {
-                "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokenType>",
+                "href": "https://api.externalintegration.swedbankpay.com/online/payers/tokens/<token>-<tokenType>",
                 "rel": "get-token",
                 "method": "GET",
                 "contentType": "application/json"
@@ -163,7 +162,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         ],
         "id": "/online/payers/tokens/<token>-<tokenType>",
         "payerReference": "<payerReference>",
-        "token": "216d79a2-4ddb-41ed-a46d-7f7ef467933a",
+        "token": "<token>",
         "tokenType": "Payment",
         "instrument": "Trustly",
         "displayName": "*****232",
@@ -620,10 +619,10 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 A GET request used to retrieve all payer tokens linked to a payee using the
 payer's `payerReference`.
 
-## GET All Payer Tokens Request
+### GET All Payer Tokens Request
 
 {% capture request_header %}GET /online/payers/<payerReference> HTTP/1.1
-Host: {{ page.api_host }}
+Host: api.externalintegration.swedbankpay.com
 Authorization: Bearer <AccessToken>{% endcapture %}
 
 {% include code-example.html
@@ -631,7 +630,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
     header=request_header
     %}
 
-## Get All Payer Tokens Response
+### Get All Payer Tokens Response
 
 {% capture response_content %}{
     "tokens": {
@@ -642,19 +641,19 @@ Authorization: Bearer <AccessToken>{% endcapture %}
             {
                 "operations": [
                     {
-                        "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokenType>",
+                        "href": "https://api.externalintegration.swedbankpay.com/online/payers/tokens/<token>-<tokenType>",
                         "rel": "get-token",
                         "method": "GET",
                         "contentType": "application/json"
                     },
                     {
-                        "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokenType>/archives",
+                        "href": "https://api.externalintegration.swedbankpay.com/online/payers/tokens/<token>-<tokenType>/archives",
                         "rel": "archive-token",
                         "method": "PATCH",
                         "contentType": "application/json"
                     },
                     {
-                        "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokenType>/displaynames",
+                        "href": "https://api.externalintegration.swedbankpay.com/online/payers/tokens/<token>-<tokenType>/displaynames",
                         "rel": "update-displayname",
                         "method": "PATCH",
                         "contentType": "application/json"
@@ -662,7 +661,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
                 ],
                 "id": "/online/payers/tokens/<token>-<tokenType>e",
                 "payerReference": "<payerReference>",
-                "token": "d771a8fd-bc38-4d95-a0c9-ecfeae274d6b",
+                "token": "<token>",
                 "tokenType": "Recurrence",
                 "instrument": "CreditCard",
                 "displayName": "0416",
@@ -684,13 +683,13 @@ Authorization: Bearer <AccessToken>{% endcapture %}
     },
     "operations": [
         {
-            "href": "https://api.<environment>.swedbankpay.com/online/payers/<payerReference>",
+            "href": "https://api.externalintegration.swedbankpay.com/online/payers/<payerReference>",
             "rel": "get-payer-tokens",
             "method": "GET",
             "contentType": "application/json"
         },
         {
-            "href": "https://api.<environment>.swedbankpay.com/online/payers/<payerReference>/archives",
+            "href": "https://api.externalintegration.swedbankpay.com/online/payers/<payerReference>/archives",
             "rel": "archive-payer-tokens",
             "method": "PATCH",
             "contentType": "application/json"
@@ -918,10 +917,10 @@ Authorization: Bearer <AccessToken>{% endcapture %}
 A GET request used to retrieve all archived tokens by a payee using the payer's
 `payerReference`.
 
-## GET Archived Payer Tokens Request
+### GET Archived Payer Tokens Request
 
 {% capture request_header %}GET /online/payers/<payerReference>/archives HTTP/1.1
-Host: {{ page.api_host }}
+Host: api.externalintegration.swedbankpay.com
 Authorization: Bearer <AccessToken>{% endcapture %}
 
 {% include code-example.html
@@ -929,7 +928,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
     header=request_header
     %}
 
-## GET Archived Payer Tokens Response
+### GET Archived Payer Tokens Response
 
 {% capture response_content %}{
     "tokens": {
@@ -940,7 +939,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
             {
                 "operations": [
                     {
-                        "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokenType>",
+                        "href": "https://api.externalintegration.swedbankpay.com/online/payers/tokens/<token>-<tokenType>",
                         "rel": "get-token",
                         "method": "GET",
                         "contentType": "application/json"
@@ -948,7 +947,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
                 ],
                 "id": "/online/payers/tokens/<token>-<tokenType>",
                 "payerReference": "<payerReference>",
-                "token": "bc898d02-2423-4e02-822c-8dfb136f2ca6",
+                "token": "<token>",
                 "tokenType": "Payment",
                 "instrument": "CreditCard",
                 "displayName": "updated name",
@@ -972,7 +971,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
     },
     "operations": [
         {
-            "href": "https://api.<environment>.swedbankpay.com/online/payers/<payerReference>/archives",
+            "href": "https://api.externalintegration.swedbankpay.com/online/payers/<payerReference>/archives",
             "rel": "get-archived-payer-tokens",
             "method": "GET",
             "contentType": "application/json"
@@ -1201,10 +1200,10 @@ Authorization: Bearer <AccessToken>{% endcapture %}
 
 A PATCH request used to update a payer token's display name.
 
-## PATCH Update Display Name Request
+### PATCH Update Display Name Request
 
-{% capture request_header %}PATCH /online/payers/tokens/<tokenIdentifier>/displaynames HTTP/1.1
-Host: {{ page.api_host }}
+{% capture request_header %}PATCH /online/payers/tokens/<token><tokenType>/displaynames HTTP/1.1
+Host: api.externalintegration.swedbankpay.com
 Authorization: Bearer <AccessToken>{% endcapture %}
 
 {% capture request_content %}{
@@ -1239,7 +1238,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
   </div>
 </div>
 
-## PATCH Update Display Name Response
+### PATCH Update Display Name Response
 
 {% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.x/2.0
@@ -1252,19 +1251,19 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     "token": {
         "operations": [
             {
-                "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokenType>",
+                "href": "https://api.externalintegration.swedbankpay.com/online/payers/tokens/<token>-<tokenType>",
                 "rel": "get-token",
                 "method": "GET",
                 "contentType": "application/json"
             },
             {
-                "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokenType>/archives",
+                "href": "https://api.externalintegration.swedbankpay.com/online/payers/tokens/<token>-<tokenType>/archives",
                 "rel": "archive-token",
                 "method": "PATCH",
                 "contentType": "application/json"
             },
             {
-                "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokenType>/displaynames",
+                "href": "https://api.externalintegration.swedbankpay.com/online/payers/tokens/<token>-<tokenType>/displaynames",
                 "rel": "update-displayname",
                 "method": "PATCH",
                 "contentType": "application/json"
@@ -1272,7 +1271,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         ],
         "id": "/online/payers/tokens/<token>-<tokenType>",
         "payerReference": "<payerReference>",
-        "token": "bc898d02-2423-4e02-822c-8dfb136f2ca6",
+        "token": "<token>",
         "tokenType": "Payment",
         "instrument": "CreditCard",
         "displayName": "updated name",
@@ -1493,10 +1492,10 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
 A PATCH request used to archive a single, specific payer token.
 
-## PATCH Archive Single Payer Token Request
+### PATCH Archive Single Payer Token Request
 
-{% capture request_header %}PATCH /online/payers/tokens/<tokenIdentifier>/archives HTTP/1.1
-Host: {{ page.api_host }}
+{% capture request_header %}PATCH /online/payers/tokens/<token>-<tokenType>/archives HTTP/1.1
+Host: api.externalintegration.swedbankpay.com
 Authorization: Bearer <AccessToken>{% endcapture %}
 
 {% capture request_content %}{
@@ -1526,7 +1525,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-0">An explanation of why the tokens are being archived.</div></div>
+        <div class="desc"><div class="indent-0">An explanation of why the token is being archived.</div></div>
       </details>
 
       <details class="api-item" data-level="0">
@@ -1535,13 +1534,13 @@ Authorization: Bearer <AccessToken>{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-0">Indicates who archived the token: <code>PAYEE</code>, <code>SWEDBANK_PAY</code> or <code>TOKEN_ISSUER</code>.</div></div>
+        <div class="desc"><div class="indent-0">Indicates who archived the token: <code>PAYEE</code>, <code>CONSUMER</code>, <code>ONLINE</code> or <code>TOKENISSUER</code>.</div></div>
       </details>
 
   </div>
 </div>
 
-## PATCH Archive Single Payer Token Response
+### PATCH Archive Single Payer Token Response
 
 {% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.x/2.0
@@ -1554,7 +1553,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     "token": {
         "operations": [
             {
-                "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokenType>",
+                "href": "https://api.externalintegration.swedbankpay.com/online/payers/tokens/<token>-<tokenType>",
                 "rel": "get-token",
                 "method": "GET",
                 "contentType": "application/json"
@@ -1562,7 +1561,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         ],
         "id": "/online/payers/tokens/<token>-<tokenType>",
         "payerReference": "<payerReference>",
-        "token": "bc898d02-2423-4e02-822c-8dfb136f2ca6",
+        "token": "<token>",
         "tokenType": "Payment",
         "instrument": "CreditCard",
         "displayName": "updated name",
@@ -1789,15 +1788,15 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 A PATCH request used to archive all tokens linked to a specific
 `payerReference`.
 
-## PATCH Archive All Payer Tokens Request
+### PATCH Archive All Payer Tokens Request
 
 {% capture request_header %}PATCH /online/payers/<payerReference>/archives HTTP/1.1
-Host: {{ page.api_host }}
+Host: api.externalintegration.swedbankpay.com
 Authorization: Bearer <AccessToken>{% endcapture %}
 
 {% capture request_content %}{
   "reason" : "description",
-  "updatedBy": "SWEDBANK_PAY"
+  "updatedBy": "PAYEE"
 }{% endcapture %}
 
 {% include code-example.html
@@ -1831,13 +1830,13 @@ Authorization: Bearer <AccessToken>{% endcapture %}
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
-        <div class="desc"><div class="indent-0">Indicates who archived the tokens: <code>PAYEE</code>, <code>SWEDBANK_PAY</code> or <code>TOKEN_ISSUER</code>.</div></div>
+        <div class="desc"><div class="indent-0">Indicates who archived the tokens: <code>PAYEE</code>, <code>CONSUMER</code>, <code>ONLINE</code> or <code>TOKENISSUER</code>.</div></div>
       </details>
 
   </div>
 </div>
 
-## PATCH Archive All Payer Tokens Response
+### PATCH Archive All Payer Tokens Response
 
 {% capture response_content %}{
     "tokens": {
@@ -1848,7 +1847,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
             {
                 "operations": [
                     {
-                        "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokentType>",
+                        "href": "https://api.externalintegration.swedbankpay.com/online/payers/tokens/<token>-<tokentType>",
                         "rel": "get-token",
                         "method": "GET",
                         "contentType": "application/json"
@@ -1856,7 +1855,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
                 ],
                 "id": "/online/payers/tokens/<token>-<tokentType>",
                 "payerReference": "<payerReference>",
-                "token": "7afd5f9c-d8e1-430e-991d-521a1cdf27a0",
+                "token": "<token>",
                 "tokenType": "Payment",
                 "instrument": "CreditCard",
                 "displayName": "3406",
@@ -1878,7 +1877,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
             {
                 "operations": [
                     {
-                        "href": "https://api.<environment>.swedbankpay.com/online/payers/tokens/<token>-<tokentType>",
+                        "href": "https://api.externalintegration.swedbankpay.com/online/payers/tokens/<token>-<tokentType>",
                         "rel": "get-token",
                         "method": "GET",
                         "contentType": "application/json"
@@ -1886,7 +1885,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
                 ],
                 "id": "/online/payers/tokens/<token>-<tokenType>",
                 "payerReference": "<payerReference>",
-                "token": "ba22800f-01a2-46e5-bb06-ec8af9cf49d3",
+                "token": "<token>",
                 "tokenType": "Recurrence",
                 "instrument": "CreditCard",
                 "displayName": "3406",
@@ -1909,7 +1908,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
     },
     "operations": [
         {
-            "href": "https://api.<environment>.swedbankpay.com/online/payers/<payerReference>/archives",
+            "href": "https://api.externalintegration.swedbankpay.com/online/payers/<payerReference>/archives",
             "rel": "get-archived-payer-tokens",
             "method": "GET",
             "contentType": "application/json"
