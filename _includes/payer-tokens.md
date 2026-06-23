@@ -16,13 +16,14 @@ Payer API is the new, authoritative service used to retrieve, update and manage 
 | Old (`PaymentOrder` API)    | New (Payer API)  | Description    |
 | :------ | :------ | :------ |
 | `GET /payerownedtokens/<payerReference>`      | `GET /online/payers/<payerReference>`    | Retrieves active tokens for a payer          |
-| `PATCH /payerownedtokens/<payerReference>`    | `PATCH /online/payers/<payerReference>`  | Archives all tokens for a payer         |
-| `GET /paymenttokens/<token>`            | `GET /online/payers/tokens/<tokenId>`    | Retrieves a single token                        |
-| `PATCH /paymenttokens/<token>`          | `PATCH /online/payers/tokens/<tokenId>`  | Archives or updates token             |
+| `PATCH /payerownedtokens/<payerReference>`    | `PATCH /online/payers/<payerReference>/archives`  | Archives all tokens for a payer         |
+| `GET /paymenttokens/<token>`            | `GET /online/payers/tokens/<token-tokenType>`    | Retrieves a single token                        |
+| `PATCH /paymenttokens/<token>`          | `PATCH /online/payers/tokens/<token>-<tokenType>/archives`  | Archives or updates token             |
 
 ### Code Examples
 
-All the Payer API requests/responses you'll need.
+Examples of old versus new API requests. Full request and response examples
+below.
 
 #### GET All Payer Tokens
 
@@ -35,42 +36,13 @@ Authorization: Bearer <token>{% endcapture %}
     header=request_header
     %}
 
-{% capture request_header %}GET /online/payers/<payerReference>/tokens HTTP/1.1
+{% capture request_header %}GET /online/payers/<payerReference> HTTP/1.1
 Host: api.externalintegration.swedbankpay.com
 Authorization: Bearer <token>{% endcapture %}
 
 {% include code-example.html
     title='New (Payer API) GET All Tokens Request'
     header=request_header
-    %}
-
-{% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
-api-supported-versions: 3.x/2.0{% endcapture %}
-
-{% capture response_content %}{% raw %}
-{
-  "tokens": {
-    "id": "/online/payers/<payerReference>",
-    "payerReference": "customer-123",
-    "tokensList": [
-      {
-        "id": "/online/payers/tokens/<token>-<tokenType>",
-        "token": "<token>",
-        "tokenType": "Payment",
-        "instrument": "CreditCard",
-        "displayName": "492500******0004",
-        "state": "Active"
-      }
-    ]
-  }
-}
-{% endraw %}{% endcapture %}
-
-{% include code-example.html
-    title='GET All Tokens Response'
-    header=response_header
-    json= response_content
     %}
 
 #### Archive All Tokens
@@ -95,7 +67,7 @@ Authorization: Bearer <token>{% endcapture %}
 
 #### GET Single Token
 
-{% capture request_header %}GET /psp/paymentorders/paymenttokens/<tokenid> HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/paymenttokens/<token>-<tokenType> HTTP/1.1
 Host: api.externalintegration.swedbankpay.com
 Authorization: Bearer <token>{% endcapture %}
 
@@ -552,7 +524,8 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 {% capture response_content %}{
    "token": {
       "instrumentParameters": {
-         "AccountId": "156",
+         "accountId": "156",
+         "maskedAccountNumber": "***5678"
       },
    }
 }{% endcapture %}
@@ -599,11 +572,21 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
         <details class="api-item" data-level="2">
           <summary>
-            <span class="field">{% f AccountId %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="field">{% f accountId %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
             <span class="type"><code>string</code></span>
           </summary>
           <div class="desc">
             <div class="indent-2">Account identifier provided by Trustly.</div>
+          </div>
+        </details>
+
+        <details class="api-item" data-level="2">
+          <summary>
+            <span class="field">{% f maskedAccountNumber %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+          </summary>
+          <div class="desc">
+            <div class="indent-2">The payer's masked bank account number.</div>
           </div>
         </details>
 
@@ -1202,12 +1185,12 @@ A PATCH request used to update a payer token's display name.
 
 ### PATCH Update Display Name Request
 
-{% capture request_header %}PATCH /online/payers/tokens/<token><tokenType>/displaynames HTTP/1.1
+{% capture request_header %}PATCH /online/payers/tokens/<token>-<tokenType>/displaynames HTTP/1.1
 Host: api.externalintegration.swedbankpay.com
 Authorization: Bearer <AccessToken>{% endcapture %}
 
 {% capture request_content %}{
-"displayName" : "Updated display name"
+"displayName" : "New display name"
 }{% endcapture %}
 
 {% include code-example.html
@@ -1274,7 +1257,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         "token": "<token>",
         "tokenType": "Payment",
         "instrument": "CreditCard",
-        "displayName": "updated name",
+        "displayName": "New display name",
         "correlationId": "8e7752b2-016f-4b9f-ac39-2844907d8f9c",
         "state": "Active",
         "networkTokenized": false,
@@ -1308,11 +1291,11 @@ api-supported-versions: 3.x/2.0{% endcapture %}
   <!-- LEVEL 0: id -->
 <details class="api-item" data-level="0">
   <summary>
-    <span class="field">{% f token, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="field">{% f id, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
     <span class="type"><code>object</code></span>
   </summary>
   <div class="desc">
-    <div class="indent-0">The token object.</div>
+    <div class="indent-0">The token ID.</div>
   </div>
 </details>
 
@@ -1500,7 +1483,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
 
 {% capture request_content %}{
   "reason" : "description",
-  "updatedBy": "PAYEE"
+  "updatedBy": "Payee"
 }{% endcapture %}
 
 {% include code-example.html
@@ -1796,7 +1779,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
 
 {% capture request_content %}{
   "reason" : "description",
-  "updatedBy": "PAYEE"
+  "updatedBy": "Payee"
 }{% endcapture %}
 
 {% include code-example.html
