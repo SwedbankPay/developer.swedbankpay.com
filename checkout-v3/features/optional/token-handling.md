@@ -1,6 +1,6 @@
 ---
 title: Token Handling
-permalink: /:path/token-handing/
+permalink: /:path/token-handling/
 description: Everything you need know about tokens.
 menu_order: 2800
 ---
