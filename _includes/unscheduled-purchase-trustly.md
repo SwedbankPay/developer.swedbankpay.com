@@ -37,5 +37,5 @@ details [here][trustly-remove-payment-token].
 
 <!--lint disable final-definition -->
 
-[trustly-remove-payment-token]: /checkout-v3/features/optional/token-handling
+[trustly-remove-payment-token]: /checkout-v3/features/optional/token-handling/
 [trustly-paymentorder-create]: /checkout-v3/get-started/payment-request/#payment-order-v31

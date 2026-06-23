@@ -81,5 +81,5 @@ the payer right away.
 
 <!--lint disable final-definition -->
 
-[trustly-remove-payment-token]: /checkout-v3/features/optional/token-handling
+[trustly-remove-payment-token]: /checkout-v3/features/optional/token-handling/
 [trustly-paymentorder-create]: /checkout-v3/get-started/payment-request/#create-payment-order-v31
