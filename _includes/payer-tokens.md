@@ -67,7 +67,7 @@ Authorization: Bearer <token>{% endcapture %}
 
 #### GET Single Token
 
-{% capture request_header %}GET /psp/paymentorders/paymenttokens/<token>-<tokenType> HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/paymenttokens/<token> HTTP/1.1
 Host: api.externalintegration.swedbankpay.com
 Authorization: Bearer <token>{% endcapture %}
 
