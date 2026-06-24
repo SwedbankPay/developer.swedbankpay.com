@@ -15,10 +15,11 @@ Payer API is the new, authoritative service used to retrieve, update and manage 
 
 | Old (`PaymentOrder` API)    | New (Payer API)  | Description    |
 | :------ | :------ | :------ |
-| `GET /payerownedtokens/<payerReference>`      | `GET /online/payers/<payerReference>`    | Retrieves active tokens for a payer          |
-| `PATCH /payerownedtokens/<payerReference>`    | `PATCH /online/payers/<payerReference>/archives`  | Archives all tokens for a payer         |
+| `GET /payerOwnedtokens/<payerReference>`      | `GET /online/payers/<payerReference>`    | Retrieves active tokens for a payer          |
+| `PATCH /payerOwnedtokens/<payerReference>`    | `PATCH /online/payers/<payerReference>/archives`  | Archives all tokens for a payer         |
 | `GET /paymenttokens/<token>`            | `GET /online/payers/tokens/<token-tokenType>`    | Retrieves a single token                        |
 | `PATCH /paymenttokens/<token>`          | `PATCH /online/payers/tokens/<token>-<tokenType>/archives`  | Archives or updates token             |
+|         | `PATCH /online/payers/tokens/<token>-<tokenType>/displaynames` | New API witch updates the token's display name           |
 
 ### Code Examples
 
@@ -1208,7 +1209,6 @@ Authorization: Bearer <AccessToken>{% endcapture %}
   </div>
 
   <!-- LEVEL 0 -->
-    <div class="api-children">
       <details class="api-item" data-level="0">
         <summary>
           <span class="field">{% f displayName %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
@@ -1501,7 +1501,6 @@ Authorization: Bearer <AccessToken>{% endcapture %}
   </div>
 
   <!-- LEVEL 0 -->
-    <div class="api-children">
       <details class="api-item" data-level="0">
         <summary>
           <span class="field">{% f reason %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
@@ -1797,7 +1796,6 @@ Authorization: Bearer <AccessToken>{% endcapture %}
   </div>
 
   <!-- LEVEL 0 -->
-    <div class="api-children">
       <details class="api-item" data-level="0">
         <summary>
           <span class="field">{% f reason %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
