@@ -65,6 +65,26 @@ Lithuanian `lt-LT`, Norwegian `nb-NO`, Polish `pl-PL`, Russian `ru-RU`, Spanish
 the following payment methods, somewhat depending on which countries you are
 operating.
 
+#### Browser and Operating System Limitations
+
+We support all major browsers, including (but not limited to) Microsoft Edge,
+Firefox, Google Chrome, and Safari. The same applies to mobile operating systems
+such as Android and iOS.
+
+Minimum Supported Versions:
+
+*   iOS: 15.0 or newer
+
+*   Internet Explorer: Not supported (all versions)
+
+*   iOS versions older than 15.0 are not supported and may not be able to load our
+payment UI.
+
+If a payer is using an unsupported iOS version or browser, they must
+update to a newer version or switch to a supported browser. If their device
+cannot be updated to a supported iOS version, they will need to use another
+device.
+
 {% include alert.html type="informative" icon="info" header="Requirements and
 Recommendations" body="We have gathered useful integration recommendations for
 the specific payment methods. Some of the digital wallets - Apple Pay, Click to
@@ -87,20 +107,6 @@ more." %}
 | ![Swish][swish-logo]             | [Swish][swish]                   | {% flag se %}                |
 | ![Trustly][trustly-logo]         | [Trustly][trustly]               | {% flag se %} {% flag fi %}  |
 | ![Vipps][vipps-logo]             | [Vipps][vipps]                   | {% flag no %}                |
-
-#### Browser And Operative System Limitations
-
-We support all major browsers like (but not limited to) Edge, Firefox, Google
-Chrome and Safari. The same goes for mobile operative systems like Android or
-iOS.
-
-However, there are limitations for iOS versions older than 12.2 and all versions
-of Internet Explorer. Due to their age, they are unable to load our payment
-UI.
-
-Payers using these must update to a newer iOS or switch to a supported browser
-respectively. If their device is too old to update to a viable iOS, they need to
-use another device.
 
 [apple-pay]: /checkout-v3/apple-pay-presentation
 [apple-pay-logo]:/assets/img/applepay-logo.svg
