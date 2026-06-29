@@ -1211,7 +1211,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
   <!-- LEVEL 0 -->
       <details class="api-item" data-level="0">
         <summary>
-          <span class="field">{% f displayName %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="field">{% f displayName, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -1219,7 +1219,6 @@ Authorization: Bearer <AccessToken>{% endcapture %}
       </details>
 
   </div>
-</div>
 
 ### PATCH Update Display Name Response
 
@@ -1503,7 +1502,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
   <!-- LEVEL 0 -->
       <details class="api-item" data-level="0">
         <summary>
-          <span class="field">{% f reason %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="field">{% f reason, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -1512,7 +1511,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
 
       <details class="api-item" data-level="0">
         <summary>
-          <span class="field">{% f updatedBy %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="field">{% f updatedBy, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -1520,7 +1519,6 @@ Authorization: Bearer <AccessToken>{% endcapture %}
       </details>
 
   </div>
-</div>
 
 ### PATCH Archive Single Payer Token Response
 
@@ -1798,7 +1796,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
   <!-- LEVEL 0 -->
       <details class="api-item" data-level="0">
         <summary>
-          <span class="field">{% f reason %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="field">{% f reason, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -1807,7 +1805,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
 
       <details class="api-item" data-level="0">
         <summary>
-          <span class="field">{% f updatedBy %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="field">{% f updatedBy, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
           <span class="type"><code>string</code></span>
           <span class="req">{% icon check %}</span>
         </summary>
@@ -1815,7 +1813,6 @@ Authorization: Bearer <AccessToken>{% endcapture %}
       </details>
 
   </div>
-</div>
 
 ### PATCH Archive All Payer Tokens Response
 
