@@ -54,9 +54,7 @@
   </ul>
 </div>
 
-{: .h2 }
-
-### Mapping payerOwnedTokens vs. Payer API
+## Mapping payerOwnedTokens vs. Payer API
 
 **What is `payerOwnedTokens`?**
 
@@ -171,9 +169,7 @@ more detailed fields and better support for the token lifecycle.
 
 All Payer APIs with requests and responses.
 
-{: .h2 }
-
-### GET Single Payer Token
+## GET Single Payer Token
 
 A GET request used when you need to retrieve a single token.
 
@@ -676,9 +672,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
 [Top of page](#table-of-contents)
 
-{: .h2 }
-
-### GET All Payer Tokens
+## GET All Payer Tokens
 
 A GET request used to retrieve all payer tokens linked to a payee using the
 payer's `payerReference`.
@@ -980,9 +974,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
 
 [Top of page](#table-of-contents)
 
-{: .h2 }
-
-### GET Archived Payer Tokens
+## GET Archived Payer Tokens
 
 A GET request used to retrieve all archived tokens by a payee using the payer's
 `payerReference`.
@@ -1270,9 +1262,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
 
 [Top of page](#table-of-contents)
 
-{: .h2 }
-
-### PATCH Update Display Name
+## PATCH Update Display Name
 
 A PATCH request used to update a payer token's display name.
 
@@ -1566,9 +1556,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
 [Top of page](#table-of-contents)
 
-{: .h2 }
-
-### PATCH Archive Single Payer Token
+## PATCH Archive Single Payer Token
 
 A PATCH request used to archive a single, specific payer token.
 
@@ -1865,9 +1853,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 
 [Top of page](#table-of-contents)
 
-{: .h2 }
-
-### PATCH Archive All Payer Tokens
+## PATCH Archive All Payer Tokens
 
 A PATCH request used to archive all tokens linked to a specific
 `payerReference`.
