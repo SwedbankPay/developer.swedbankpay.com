@@ -1,5 +1,62 @@
+{: .h2 }
 
-## Mapping payerOwnedTokens vs. Payer API
+### Table Of Contents
+
+<div class="slab mb-5">
+  <ul class="toc-list" role="navigation" aria-label="Article content">
+      <li>
+      <a href="#mapping-payerownedtokens-vs-payer-api">
+        Mapping payerOwnedTokens vs. Payer API
+      </a>
+    </li>
+    <li>
+      <a href="#new-payer-apis">
+        New (Payer) APIs
+      </a>
+      <ul role="list">
+        <li>
+          <a href="#get-single-payer-token">
+          GET Single Payer Token
+          </a>
+        </li>
+        <li>
+          <a href="#get-all-payer-tokens-1">
+          GET All Payer Tokens
+          </a>
+        </li>
+        <li>
+          <a href="#get-archived-payer-tokens">
+          GET Archived Payer Tokens
+          </a>
+        </li>
+        <li>
+          <a href="#patch-update-display-name">
+          PATCH Update Display Name
+          </a>
+        </li>
+        <li>
+          <a href="#patch-archive-single-payer-token">
+          PATCH Archive Single Payer Token
+          </a>
+        </li>
+        <li>
+          <a href="#patch-archive-single-payer-token">
+          PATCH Archive All Payer Tokens
+          </a>
+        </li>
+      </ul>
+        <li>
+          <a href="#old-payerownedtokens-apis">
+          Old (payerOwnedTokens) APIs
+          </a>
+        </li>
+    </li>
+  </ul>
+</div>
+
+{: .h2 }
+
+### Mapping payerOwnedTokens vs. Payer API
 
 **What is `payerOwnedTokens`?**
 
@@ -9,17 +66,26 @@ endpoint will be removed in v3.2 and replaced by the Payer API.
 
 **What is Payer API?**
 
-Payer API is the new, authoritative service used to retrieve, update and manage tokens for a payer.
+Payer API is the new, authoritative service used to retrieve, update and manage
+tokens for a payer.
 
 {:.table .table-striped}
 
-| Old (`PaymentOrder` API)    | New (Payer API)  | Description    |
-| :------ | :------ | :------ |
-| `GET /payerOwnedtokens/<payerReference>`      | `GET /online/payers/<payerReference>`    | Retrieves active tokens for a payer          |
-| `PATCH /payerOwnedtokens/<payerReference>`    | `PATCH /online/payers/<payerReference>/archives`  | Archives all tokens for a payer         |
-| `GET /paymenttokens/<token>`            | `GET /online/payers/tokens/<token-tokenType>`    | Retrieves a single token                        |
-| `PATCH /paymenttokens/<token>`          | `PATCH /online/payers/tokens/<token>-<tokenType>/archives`  | Archives or updates token             |
-|         | `PATCH /online/payers/tokens/<token>-<tokenType>/displaynames` | New API witch updates the token's display name           |
+| Old (`PaymentOrder` API)    | New (Payer API)  |
+| :------ | :------ |
+| `GET /payerOwnedtokens/<payerReference>`      | `GET /online/payers/<payerReference>`    |
+| `PATCH /payerOwnedtokens/<payerReference>`    | `PATCH /online/payers/<payerReference>/archives`  |
+| `GET /paymenttokens/<token>`            | `GET /online/payers/tokens/<token-tokenType>`    |
+| `PATCH /paymenttokens/<token>`          | `PATCH /online/payers/tokens/<token>-<tokenType>/archives`  |
+| `N/A`        | `PATCH /online/payers/tokens/<token>-<tokenType>/displaynames` |
+
+**Description:**
+
+1.  Retrieves all active tokens for a payer
+2.  Archives all tokens for a payer
+3.  Retrieves a single token
+4.  Archives a single token
+5.  Updates the token display name
 
 ### Code Examples
 
@@ -95,11 +161,19 @@ Authorization: Bearer <token>{% endcapture %}
 *   Token types and status (Active/Archived) are the same, but the Payer API has
 more detailed fields and better support for the token lifecycle.
 
-## New (Payer) APIs
+{: .text-right}
+
+[Top of page](#table-of-contents)
+
+{: .h2 }
+
+### New (Payer) APIs
 
 All Payer APIs with requests and responses.
 
-## GET Single Payer Token
+{: .h2 }
+
+### GET Single Payer Token
 
 A GET request used when you need to retrieve a single token.
 
@@ -598,7 +672,13 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 </details>
 </div>
 
-## GET All Payer Tokens
+{: .text-right}
+
+[Top of page](#table-of-contents)
+
+{: .h2 }
+
+### GET All Payer Tokens
 
 A GET request used to retrieve all payer tokens linked to a payee using the
 payer's `payerReference`.
@@ -896,7 +976,13 @@ Authorization: Bearer <AccessToken>{% endcapture %}
 </details>
 </div>
 
-## GET Archived Payer Tokens
+{: .text-right}
+
+[Top of page](#table-of-contents)
+
+{: .h2 }
+
+### GET Archived Payer Tokens
 
 A GET request used to retrieve all archived tokens by a payee using the payer's
 `payerReference`.
@@ -1180,7 +1266,13 @@ Authorization: Bearer <AccessToken>{% endcapture %}
 </details>
 </div>
 
-## PATCH Update Display Name
+{: .text-right}
+
+[Top of page](#table-of-contents)
+
+{: .h2 }
+
+### PATCH Update Display Name
 
 A PATCH request used to update a payer token's display name.
 
@@ -1470,7 +1562,13 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 </details>
 </div>
 
-## PATCH Archive Single Payer Token
+{: .text-right}
+
+[Top of page](#table-of-contents)
+
+{: .h2 }
+
+### PATCH Archive Single Payer Token
 
 A PATCH request used to archive a single, specific payer token.
 
@@ -1763,7 +1861,13 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 </details>
 </div>
 
-## PATCH Archive All Payer Tokens
+{: .text-right}
+
+[Top of page](#table-of-contents)
+
+{: .h2 }
+
+### PATCH Archive All Payer Tokens
 
 A PATCH request used to archive all tokens linked to a specific
 `payerReference`.
@@ -2111,3 +2215,7 @@ Authorization: Bearer <AccessToken>{% endcapture %}
   </div>
 </details>
 </div>
+
+{: .text-right}
+
+[Top of page](#table-of-contents)

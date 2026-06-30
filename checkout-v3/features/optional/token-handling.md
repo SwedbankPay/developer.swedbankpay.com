@@ -7,11 +7,15 @@ menu_order: 2800
 
 {% include payer-tokens.md %}
 
-## Old (payerOwnedTokens) APIs
+{: .h2 }
+
+### Old (payerOwnedTokens) APIs
 
 You can still use the old APIs to manage tokens. Here is everything you need.
 
-## Delete Unscheduled, Recurrence Or Payment Tokens
+{: .h2 }
+
+### Delete Unscheduled, Recurrence Or Payment Tokens
 
 Payers should be able to delete tokens connected to them. How to do this is
 described in the example below. Note that the different token types have
@@ -24,7 +28,9 @@ deleting the token. No other states are supported.
 
 {% include delete-payment-order-token.md token_field_name="paymentToken" %}
 
-## Delete payerOwnedToken Request
+{: .h2 }
+
+### Delete payerOwnedToken Request
 
 {% capture request_header %}PATCH /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
 Host: {{ page.api_host }}
@@ -42,7 +48,9 @@ Content-Type: application/json;version=3.1/2.0{% endcapture %}
     json= request_content
     %}
 
-## Delete payerownedToken Response
+{: .h2 }
+
+### Delete payerownedToken Response
 
 {% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1
@@ -86,3 +94,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
     header=response_header
     json= response_content
     %}
+
+{: .text-right}
+
+[Top of page](#table-of-contents)
