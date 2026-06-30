@@ -10,7 +10,7 @@
       </a>
     </li>
     <li>
-      <a href="/#new-payer-apis">
+      <a href="#new-payer-apis">
         New (Payer) APIs
       </a>
       <ul role="list">
