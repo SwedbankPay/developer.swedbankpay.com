@@ -7,13 +7,9 @@ menu_order: 2800
 
 {% include payer-tokens.md %}
 
-{: .h2 }
-
-### Old (payerOwnedTokens) APIs
+## Old (payerOwnedTokens) APIs
 
 You can still use the old APIs to manage tokens. Here is everything you need.
-
-{: .h2 }
 
 ### Delete Unscheduled, Recurrence Or Payment Tokens
 
@@ -27,8 +23,6 @@ deleting the token. No other states are supported.
 {% include delete-payment-order-token.md token_field_name="unscheduledToken" %}
 
 {% include delete-payment-order-token.md token_field_name="paymentToken" %}
-
-{: .h2 }
 
 ### Delete payerOwnedToken Request
 
@@ -47,8 +41,6 @@ Content-Type: application/json;version=3.1/2.0{% endcapture %}
     header=request_header
     json= request_content
     %}
-
-{: .h2 }
 
 ### Delete payerownedToken Response
 
