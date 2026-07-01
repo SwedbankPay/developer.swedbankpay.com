@@ -1890,7 +1890,7 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 <!--lint disable final-definition -->
 
-[delete-token]: {{ features_url }}/optional/delete-token
+[delete-token]: /checkout-v3/features/optional/token-handling
 [paid-resource-model]: {{ techref_url }}/technical-reference/resource-sub-models#paid
 [old-payment-order-cancel]: /old-implementations/checkout-v2/after-payment#cancel
 [old-payment-order-capture]: /old-implementations/checkout-v2/capture

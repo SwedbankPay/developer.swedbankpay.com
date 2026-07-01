@@ -7,6 +7,19 @@ menu_order: 2
 has_release_notes: true
 ---
 
+## 01 July 2026
+
+### Documentation v5.3.19
+
+A small but important release before we clock out for summer.
+
+The new Payer API, a service meant for managing tokens, is going live. 5 new
+APIs have been added to a feature section now named
+[Token Handling[delete-payment-tokens], which also contains the older token APIs.
+
+We have also made some changes to our [browser support][availability], with a
+new cut-off point for iOS. Supported versions are now iOS 15 and newer.
+
 ## 15 May 2026
 
 ### Documentation v5.3.18
@@ -1416,7 +1429,7 @@ more convenient for both the integration and the payer.
 [cv2]: /old-implementations/checkout-v2/ui-migration/
 [integrated-commerce]: /checkout-v3/features/optional/integrated-commerce
 [data-protection]: /old-implementations/checkout-v2/data-protection
-[delete-payment-tokens]: /checkout-v3/features/optional/delete-token
+[delete-payment-tokens]: /checkout-v3/features/optional/token-handling
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [design-guide]: https://design.swedbankpay.com/
 [display-ui]: /checkout-v3/get-started/display-ui
