@@ -10,31 +10,79 @@ menu_order: 5
 
 ## Introduction to v3.1
 
-With our latest API version, v3.1, we have significantly improved the checkout
-experience for both merchants and payers. This version simplifies the
-integration process by reducing the size and complexity of response models,
-addressing gaps identified in v2. Instead of segregating integrations based on
-configurations or product packages, v3.1 provides a unified solution where
-features are controlled through parameters in your requests. This design
-promotes reusability and ease of integration without requiring major changes or
-concessions when adding new features, as the base API remains consistent.
+With v3.1, we have made it much easier for merchants to accept payments online.
 
-## Upgrade Process
+This version gives you a single, unified way to handle all payment types, so you
+don't need to worry about different integrations for different products or
+features. The setup is simpler, and you get all the latest improvements, like
+support for new payment methods and a more consistent experience for both you
+and your costumers.
 
-If you have already integrated with our Checkout v2 API, transitioning to v3.1
-is a straightforward process. The URI and request body remain unchanged from
-Checkout v2, with the only required modification being the addition of
-`;version=3.1` in the HTTP request headers (see the request example below). This
-adjustment ensures that your payment order requests generate the new response
-scheme and functionality seamlessly.
+#### Key Benefits
 
-The upgrade has backwards compatibility, allowing you to generate v3.1 responses
-for transactions conducted through your v2 implementation. Instead of making a
-new integration each time, this eliminates the need to maintain legacy code,
-streamlining your system for a seamless transition. Additionally, this approach
-establishes a foundation for future versions, enabling you - as the merchant -
-to designate the desired version and make adjustments to response processing as
-needed when newer versions are released.
+**Easier integration:** You only need to connect to one API, no matter which
+payment methods you want to offer.
+
+**Consistent experience:** All payment responses look the same, making it easier
+to manage payments and handle updates.
+
+**Future-proof:** New features and payment options are added to **v3.1**, so
+you’re always up to date.
+
+**Flexible:** You can enable or disable features just by changing parameters,
+without major changes to your integration. This means less time spent on
+technical details and more focus on your business.
+
+## v2.0 vs v3.1
+
+{:.table .table-striped}
+
+| Feature/Area | v2.0 (Legacy) | v3.1 (Current) |
+| :------ | :------ | :------ |
+| Response model | Instrument-specific, varies by payment type | Unified PaymentOrder for all operations |
+| Callback Handling | Callback at instrument level | Callbacks only at PaymentOrder level |
+| Version management | Implicit, less predictable | Explicit version headers, more control |
+| Supported instruments | Cards, Swish, Vipps, Buy Now Pay Later | All from v2.0 + Apple Pay, Click to Pay and Google Pay |
+| HATEOAS support | Partial or none | Full HATEOAS: all available actions in response |
+
+## Migration Checklist
+
+Use this checklist when planning and validating a migration from v2.0 to v3.1.
+
+**Update API usage and contracts**
+
+*   Update all Payment Orders calls to use v3.1 endpoints and contract expectations.
+*   Replace any reliance on `?$expand=currentpayment` and `?$expand=payments`.
+*   If needed for UI flows, switch to `?$expand=ongoingpaymentattempt` (Payment UI
+token scope).
+
+**Remove instrument-specific response parsing**
+
+*   Remove parsing of instrument-specific `JObject` responses from post-purchase
+flows.
+*   Parse `PaymentOrderResponse` for POST `/{id}/cancellations` and POST
+`/{id}/reversals`.
+*   Ensure your domain model stores PaymentOrder-level identifiers and status
+transitions.
+
+**Verify callback and status handling**
+
+*   Validate callback handling against PaymentOrder-level resources and identifiers.
+*   Ensure your completion logic uses top-level `paymentOrder.status` only.
+*   Confirm terminal-state handling for `Paid`, `Failed`, `Aborted`, `Cancelled`.
+
+**Add v3.1-only capabilities where relevant**
+
+*   If you support wallets, implement POST `/authorizations` for Apple Pay and
+Google Pay.
+*   If you support one-click, add paymentToken support in `PaymentAttemptStarted`.
+*   Re-test HATEOAS-driven operation handling via the operations array.
+
+**Regression and rollout validation**
+
+*   Run end-to-end tests for purchase, callback, capture, cancel, and reversal.
+*   Validate error handling for `400`, `403`, `404`, and `409` responses.
+*   Run a staged rollout with monitoring before full production cutover.
 
 ## Request Headers v3.1
 
@@ -144,20 +192,20 @@ provided below.
 
 {:.table .table-striped}
 
-| Name    | Description             |
+| Name | Description |
 | :------ | :--------------- |
-| Urls     | This will provide a report indicating the URLs you have supplied for this `paymentOrder`.      |
-| PayeeInfo    | This will provide a report detailing the account and Merchant references that were utilized.  |
+| Urls | This will provide a report indicating the URLs you have supplied for this `paymentOrder`. |
+| PayeeInfo | This will provide a report detailing the account and Merchant references that were utilized. |
 | Payers | If you have provided us with Payer data, it will be attached and stored here. |
 | History | Here, you can track every aspect of the transaction lifecycle. This includes all actions initiated by the Payer within our UI and your management of the transaction (Capture, Cancel, Reversal, etc.), from its initiation to completion. |
-| Failed    | MIT transactions, denoting "Merchant Initiated Transactions," are exclusively presented here if they result in a `Failed` status, along with the corresponding failure reason.     |
-| Aborted    | If the transaction is aborted on your end, you can find the details submitted with the request in this section. |
-| Paid    | In the event of a successful transaction, details about the utilized method, its associated references, and related information will be available here. As a point of reference, this serves as the replacement for `currentPayment`.     |
-| Cancelled    | Information will be available under this node exclusively when a PaymentOrder has been completely canceled and has received the status `Canceled`. |
-| FinancialTransactions    | All post-purchase actions and their references, such as captures and reversals, can be accessed here. This section also serves as the replacement for `currentPayment`.     |
-| FailedAttempts    | All instances of `PaymentOrder`s marked as `Failed` will be in this section. Currently, this pertains specifically to transactions utilizing S2S (server-to-server) functionality, with subscriptions (Recur & Unscheduled Purchase) serving as an example.    |
-| PostPurchaseFailedAttempts    | All failed attempts made by the `Payer` at a third-party will be documented in this section. For instance, if the Payer is denied due to reasons like "Insufficient funds," such instances will be recorded here.     |
-| Metadata    | If you provide us with information in this object, the details will be reported back to you in this section.     |
+| Failed | MIT transactions, denoting "Merchant Initiated Transactions," are exclusively presented here if they result in a `Failed` status, along with the corresponding failure reason. |
+| Aborted | If the transaction is aborted on your end, you can find the details submitted with the request in this section. |
+| Paid | In the event of a successful transaction, details about the utilized method, its associated references, and related information will be available here. As a point of reference, this serves as the replacement for `currentPayment`. |
+| Cancelled | Information will be available under this node exclusively when a PaymentOrder has been completely canceled and has received the status `Canceled`. |
+| FinancialTransactions | All post-purchase actions and their references, such as captures and reversals, can be accessed here. This section also serves as the replacement for `currentPayment`. |
+| FailedAttempts | All instances of `PaymentOrder`s marked as `Failed` will be in this section. Currently, this pertains specifically to transactions utilizing S2S (server-to-server) functionality, with subscriptions (Recur & Unscheduled Purchase) serving as an example. |
+| PostPurchaseFailedAttempts | All failed attempts made by the `Payer` at a third-party will be documented in this section. For instance, if the Payer is denied due to reasons like "Insufficient funds," such instances will be recorded here. |
+| Metadata | If you provide us with information in this object, the details will be reported back to you in this section. |
 
 ## Status Parameter
 
@@ -241,20 +289,20 @@ Further reading available in the [Events section][sv-events].
 
 {:.table .table-striped}
 
-| Event    | Description     |
+| Event | Description |
 | :------ | :--------------- |
-| `onCheckoutLoaded`    | This event will trigger the first time the Checkout is loaded. Subscribe to this event if you need total control over the height of Swedbank Pay’s payment frame. This is the initial height of the frame when loaded.     |
-| `onCheckoutResized`    | This event will trigger every time a UI element changes size.Subscribe to this event if you need total control over the height of Swedbank Pay’s payment frame. The payment methods require individual heights when rendering their content.     |
-| `onError`    | This event will be triggered during terminal errors or if the configuration fails validation. Subscribe to this event if you want some action to occur on your site when an error happens during the payment.     |
-| `onOutOfViewRedirect`    | Triggered when a user is redirected to a separate web page, like 3-D Secure or BankID signing. Subscribe to this event if it is not possible to redirect the payer directly from within Swedbank Pay’s payment frame.     |
-| `onAborted`    | This will be triggered when the payer clicks the "Abort" button. This is only present in the Redirect-implementation and if you have integrated Seamless View (menu embedded), you will need to supply this button/action. When the payer presses your cancel button, we recommend sending an API request aborting the payment so it can’t be completed at a later time. When we receive the request, an abort event will be raised the next time the UI fetches information from the server. Because of that, you should also refresh the script after aborting, as this will trigger the event.     |
-| `onPaymentAttemptAborted`    | This event will trigger when an attempt has been aborted from an external party. One of these examples is from a card-issuers ACS service (3D-Secure verification). This does not mean the transaction in its entirety has failed. It is just the singular attempt that was aborted. More attempts are available to the payer.     |
-| `onPaymentAttemptStarted`    | Triggered when the payer has selected a payment method and actively attempts to perform a payment.     |
-| `onPaid`    | This event triggers when the payer successfully completes their interaction with us. Subscribe to this event if actions are needed on you side other than the default handling of redirecting the payer to your `completeUrl`. Call GET on the paymentOrder to receive the actual payment status and take appropriate actions according to the information displayed here. |
-| `onPaymentAttemptFailed`  | Triggered when a payment has failed, disabling further attempts to perform a payment. |
-| `onInstrumentSelected`    | Triggered when a user actively changes payment method in the Payment Menu. |
-| `onTermsOfServiceRequested`    | Triggered when the user clicks on the “Display terms and conditions” link. Subscribe to this event if you do not want the default handling of the `termsOfServiceUrl`. Swedbank Pay will open the `termsOfServiceUrl` in a new tab within the same browser by default.     |
-| `onEventNotification` | Triggered whenever any other public event is called. It does not prevent their handling. Subscribe to this event in order to log actions that are happening in the payment flow at Swedbank Pay.     |
+| `onCheckoutLoaded` | This event will trigger the first time the Checkout is loaded. Subscribe to this event if you need total control over the height of Swedbank Pay’s payment frame. This is the initial height of the frame when loaded. |
+| `onCheckoutResized` | This event will trigger every time a UI element changes size.Subscribe to this event if you need total control over the height of Swedbank Pay’s payment frame. The payment methods require individual heights when rendering their content. |
+| `onError` | This event will be triggered during terminal errors or if the configuration fails validation. Subscribe to this event if you want some action to occur on your site when an error happens during the payment. |
+| `onOutOfViewRedirect` | Triggered when a user is redirected to a separate web page, like 3-D Secure or BankID signing. Subscribe to this event if it is not possible to redirect the payer directly from within Swedbank Pay’s payment frame. |
+| `onAborted` | This will be triggered when the payer clicks the "Abort" button. This is only present in the Redirect-implementation and if you have integrated Seamless View (menu embedded), you will need to supply this button/action. When the payer presses your cancel button, we recommend sending an API request aborting the payment so it can’t be completed at a later time. When we receive the request, an abort event will be raised the next time the UI fetches information from the server. Because of that, you should also refresh the script after aborting, as this will trigger the event. |
+| `onPaymentAttemptAborted` | This event will trigger when an attempt has been aborted from an external party. One of these examples is from a card-issuers ACS service (3D-Secure verification). This does not mean the transaction in its entirety has failed. It is just the singular attempt that was aborted. More attempts are available to the payer. |
+| `onPaymentAttemptStarted` | Triggered when the payer has selected a payment method and actively attempts to perform a payment. |
+| `onPaid` | This event triggers when the payer successfully completes their interaction with us. Subscribe to this event if actions are needed on you side other than the default handling of redirecting the payer to your `completeUrl`. Call GET on the paymentOrder to receive the actual payment status and take appropriate actions according to the information displayed here. |
+| `onPaymentAttemptFailed` | Triggered when a payment has failed, disabling further attempts to perform a payment. |
+| `onInstrumentSelected` | Triggered when a user actively changes payment method in the Payment Menu. |
+| `onTermsOfServiceRequested` | Triggered when the user clicks on the “Display terms and conditions” link. Subscribe to this event if you do not want the default handling of the `termsOfServiceUrl`. Swedbank Pay will open the `termsOfServiceUrl` in a new tab within the same browser by default. |
+| `onEventNotification` | Triggered whenever any other public event is called. It does not prevent their handling. Subscribe to this event in order to log actions that are happening in the payment flow at Swedbank Pay. |
 
 ### Events no longer needed and/or supported
 
