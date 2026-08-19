@@ -18,10 +18,10 @@ only want to show payment methods which support this in you menu, you can also
 add the field `restrictedToDeliveryInfoInstruments` and setting it to `true`.
 This will leave out all payment methods which can't return delivery information.
 
-You are currently only able to request delivery information from **Apple Pay**,
-**Click to Pay**, **Google Pay&trade;** and **MobilePay** but we will add
-support for more payment methods going forward. No changes are required at your
-(the merchant's) end to be able to offer more payment methods at a later time.
+You are currently only able to request delivery information from **Click to Pay**
+and **MobilePay** but we will add support for more payment methods going
+forward. No changes are required at your (the merchant's) end to be able to
+offer more payment methods at a later time.
 
 ## Request Delivery Info Request
 
@@ -1043,14 +1043,10 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         "language": "sv-SE",
         "availableInstruments": [
             "MobilePay",
-            "ApplePay",
-            "GooglePay",
             "ClickToPay"
         ],
         "viewableInstruments": [
             "MobilePay",
-            "ApplePay",
-            "GooglePay",
             "ClickToPay"
         ],
         {% if include.integration_mode=="seamless-view" %}
