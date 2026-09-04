@@ -119,7 +119,7 @@ Fields removed since v2 include: `currentPayment`,`instrument`, `payments` and
 `state`.
 
 {% capture response_content %}
-    "paymentorder": {
+    "paymentOrder": {
         "currentPayment": //Removed in Checkout v3.1
         "instrument":  //Removed in Checkout v3.1
         "payments": //Removed in Checkout v3.1

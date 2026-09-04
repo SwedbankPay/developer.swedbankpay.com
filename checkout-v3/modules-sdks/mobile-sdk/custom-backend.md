@@ -269,7 +269,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-    "paymentorder": {
+    "paymentOrder": {
         "urls": {
             "hostUrls": ["https://example.com/"],
             "completeUrl": "https://example.com/complete",

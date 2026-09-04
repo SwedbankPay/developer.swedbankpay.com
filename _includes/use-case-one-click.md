@@ -86,7 +86,7 @@ The examples are abbreviated where needed.
 ### Payer Aware Menu and One-Click (for generating details)
 
 {% capture request_content %}{
-   "paymentorder": {
+   "payment=rder": {
    "operation": "Purchase",
    // ... other details
    "generatePaymentToken": "true",
@@ -121,7 +121,7 @@ cards. <<Insert Image PAM1>>
 ### One-Click for Future Transactions
 
 {% capture request_content %}{
-   "paymentorder": {
+   "paymentOrder": {
    "operation": "Purchase",
    // ... other details
    "paymentToken": "b4739476-343e-4d2c-2e14-08dbec1e555a",

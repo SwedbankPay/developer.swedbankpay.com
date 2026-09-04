@@ -42,7 +42,7 @@ Content-Type: application/json; charset=utf-8; version=3.x/2.0
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
-    "paymentorder": {
+    "paymentOrder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}"
     },
     "operations": [

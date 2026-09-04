@@ -34,7 +34,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
-    "paymentorder": {
+    "paymentOrder": {
         "requestDeliveryInfo": true,
         "restrictedToDeliveryInfoInstruments": true,
         "operation": "Purchase",
