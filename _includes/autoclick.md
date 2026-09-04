@@ -32,7 +32,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
-    "paymentorder": {
+    "paymentOrder": {
         "autoClick": true,
         "operation": "Purchase",
         "currency": "SEK",

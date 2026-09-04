@@ -347,7 +347,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
-    "paymentorder": {
+    "paymentOrder": {
         "operation": "Purchase",
         "generatepaymentToken": "true"
     },
@@ -370,7 +370,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
-    "paymentorder": {
+    "paymentOrder": {
         "operation": "Purchase",
         "paymentToken": "{{ page.payment_token }}"
     },
@@ -632,7 +632,7 @@ reference, thereby avoiding redundancy. Including them in a `Verify` will result
 in a validation error.
 
 {% capture request_content %}{
- "paymentorder": {
+ "paymentOrder": {
     "enablePaymentDetailsConsentCheckbox": true,
     "disableStoredPaymentDetails": true,
   }

@@ -16,7 +16,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json;version=3.x
 
 {
-    "paymentorder": {
+    "paymentOrder": {
         "operation": "Purchase",
         "currency": "SEK",
         "amount": 1500,
@@ -936,7 +936,7 @@ Content-Type: application/json; charset=utf-8; version=3.x/2.0
 api-supported-versions: 3.x/2.0
 
 {
-    "paymentorder": {
+    "paymentOrder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",{% if documentation_section contains "payment-menu" %}
         "instrument": "CreditCard",
         "paymentToken" : "{{ page.payment_token }}",{% endif %}
