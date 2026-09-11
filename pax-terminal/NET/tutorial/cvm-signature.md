@@ -27,7 +27,7 @@ NetSDK->>POS: ConfirmationHandler
 Note over POS: Do not display message about verifying<br>the signature. Do not let the cashier<br>have the chance of refusing<br>the transaction.
 POS->>NetSDK: callback(true)
 NetSDK->>-POS: PaymentRequestResult
-Note over NetSDK: Success. Always print the customer's<br>receipt
+Note over POS: Success. Always print the customer's<br>receipt
 ```
 
 **You must respond by using the callback and you must not call Abort.**
