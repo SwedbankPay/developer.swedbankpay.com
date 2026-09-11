@@ -19,7 +19,7 @@
 | PaymentRequest | 1 | | |
 | SaleData | 2 | TokenRequestedType | This will give a token for the card used. Only value available is `Customer` which gives a Card Number Alias which is a one way hash computed locally in the terminal. The CNA is the same for a specific card in all SwedbankPay terminals. |
 | SaleTransactionID | 3 | TimeStamp| Request timestamp local time with offset from GMT. |
-|   | | TransactionID | ID of the transaction set by the POS. This value is seen in `Merchant Portal`, but is not forwareded to clearing. `Note! Max lenght is 35 bytes`|
+|   | | TransactionID | ID of the transaction set by the POS. This value is seen in `Merchant Portal`, but is not forwarded to clearing. `Note! Max length is 35 bytes`|
 | PaymentTransaction | 2 | | |
 | AmountsReq | | RequestedAmount | The total amount of transaction as a decimal value. Use a **'.'** for decimal point if needed. |
 |   | | Currency | As a 3 letter abbrivation - ISO-4217. Available are `SEK`, `NOK`, `DKK`, `EUR`.|

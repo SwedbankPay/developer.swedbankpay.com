@@ -24,7 +24,7 @@ POS->>+NetSDK: PaymentRequestAsync
 NetSDK->>POS: EventCallback PrintRequestEventCallback
 Note over POS: Print the merchant's receipt
 NetSDK->>POS: ConfirmationHandler
-Note over POS: Do not display message about verifying<br>the signature. Do not let the cashier have<br>the chance of refusing the transaction.
+Note over POS: Do not display message about verifying<br>the signature. Do not let the cashier<br>have the chance of refusing<br>the transaction.
 POS->>NetSDK: callback(true)
 NetSDK->>-POS: PaymentRequestResult
 Note over NetSDK: Success. Always print the customer's<br>receipt

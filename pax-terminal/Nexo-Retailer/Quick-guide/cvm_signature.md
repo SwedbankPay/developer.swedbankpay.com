@@ -25,7 +25,7 @@ Terminal->>POS: Http POST PrintRequest
 Note over Terminal: Merchant receipt should be printed.
 POS->>Terminal: rsp 204 - no content
 Terminal->>POS: Http POST InputRequest Confirmation
-Note over Terminal: Do not show the text and don't let the cashier decide.
+Note over Terminal: Do not show the text and don't let the<br>cashier decide.
 Note right of POS: Always approve the transaction
 POS->>Terminal: rsp 200 InputResponse True
 Terminal->>POS: Http POST DisplayRequest
