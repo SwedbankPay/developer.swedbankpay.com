@@ -20,4 +20,4 @@ Please read about responses for [signature approval][cvmsignature].
 
 {% include iterator.html prev_href="/pax-terminal/Nexo-Retailer/Quick-guide/make-payment" prev_title="Back to PaymentRequest" %}
 {% include iterator.html next_href="/pax-terminal/Nexo-Retailer/Quick-guide/reversal" next_title="Reverse successful transaction" %}
-[cvmsignature]: ./cvm_signature
+[cvmsignature]: /pax-terminal/Nexo-Retailer/Quick-guide/cvm_signature
