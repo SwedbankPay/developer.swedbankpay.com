@@ -26,8 +26,8 @@ payment methods you want to offer.
 **Consistent experience:** All payment responses look the same, making it easier
 to manage payments and handle updates.
 
-**Future-proof:** New features and payment options are added to **v3.1**, so
-you’re always up to date.
+**Rigged for the future:** New features and payment options are added to **v3.1**,
+so you’re always up to date.
 
 **Flexible:** You can enable or disable features just by changing parameters,
 without major changes to your integration. This means less time spent on
@@ -71,17 +71,11 @@ transitions.
 *   Ensure your completion logic uses top-level `paymentOrder.status` only.
 *   Confirm terminal-state handling for `Paid`, `Failed`, `Aborted`, `Cancelled`.
 
-**Add v3.1-only capabilities where relevant**
-
-*   If you support wallets, implement POST `/authorizations` for Apple Pay and
-Google Pay.
-*   If you support one-click, add paymentToken support in `PaymentAttemptStarted`.
-*   Re-test HATEOAS-driven operation handling via the operations array.
-
 **Regression and rollout validation**
 
 *   Run end-to-end tests for purchase, callback, capture, cancel, and reversal.
 *   Validate error handling for `400`, `403`, `404`, and `409` responses.
+*   Re-test HATEOAS-driven operation handling via the operations array.
 *   Run a staged rollout with monitoring before full production cutover.
 
 ## Request Headers v3.1
