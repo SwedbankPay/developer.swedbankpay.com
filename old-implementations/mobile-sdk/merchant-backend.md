@@ -134,7 +134,7 @@ Your-Api-Key: secretish
 Content-Type: application/json
 
 {
-    "paymentorder": { "①": "" }
+    "paymentOrder": { "①": "" }
 }
 ```
 
@@ -159,7 +159,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-    "paymentorder": { }
+    "paymentOrder": { }
 }
 ```
 
@@ -171,7 +171,7 @@ HTTP/1.1 201 Created
 Content-Type: application/json
 
 {
-    "paymentorder": {
+    "paymentOrder": {
       "id": "/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce"
     },
     "operations": [
@@ -221,7 +221,7 @@ Content-Type: application/json
 
 {
     "href": "https://api.externalintegration.payex.com/psp/paymentorders/6290caac-90f6-4f10-bb90-08da37ab87d7"
-    "paymentorder": {
+    "paymentOrder": {
         "operation": "SetInstrument",
         "instrument": "CreditCard"
     }
@@ -248,7 +248,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-    "paymentorder": {
+    "paymentOrder": {
         "operation": "SetInstrument",
         "instrument": "CreditCard"
     }
@@ -266,7 +266,7 @@ HTTP/1.1 201 Created
 Content-Type: application/json
 
 {
-    "paymentorder": {
+    "paymentOrder": {
       "id": "/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce"
     },
     "operations": [

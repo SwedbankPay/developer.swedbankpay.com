@@ -23,7 +23,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
-    "paymentorder": {
+    "paymentOrder": {
         "urls": {
             "logoUrl": "https://example.com/logo.png",
             "hostUrls": [ "https://example.com", "https://example.net" ],

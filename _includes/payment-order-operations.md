@@ -13,7 +13,7 @@ payment response, not what you set in the payment request.
 {% if documentation_section contains "checkout-v3" %}
 
 {% capture response_content %}{
-    "paymentorder": {
+    "paymentOrder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
     },
     "operations": [
@@ -83,7 +83,7 @@ payment response, not what you set in the payment request.
 {% else %}
 
 {% capture response_content %}{
-    "paymentorder": {
+    "paymentOrder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
     },
     "operations": [

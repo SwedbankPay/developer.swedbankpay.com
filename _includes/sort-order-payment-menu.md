@@ -63,7 +63,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json;version=3.1,3.0{% endcapture %}
 
 {% capture request_content %}{
-    "paymentorder": {
+    "paymentOrder": {
         "restrictedToInstruments": [
             "Swish",
             "CreditCard",

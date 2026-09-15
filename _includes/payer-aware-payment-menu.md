@@ -87,7 +87,7 @@ Authorization: Bearer <AccessToken>
 CContent-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
-    "paymentorder": {
+    "paymentOrder": {
         "operation": "Purchase",
         "currency": "SEK",
         "amount": 1500,
@@ -1157,7 +1157,7 @@ Content-Type: application/json; charset=utf-8; version=3.x/2.0
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
-    "paymentorder": {
+    "paymentOrder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
         "created": "2020-06-22T10:56:56.2927632Z",
         "updated": "2020-06-22T10:56:56.4035291Z",
@@ -1608,7 +1608,7 @@ This option will not work with `Verify`, and will result in a validation error
 if you try.
 
 {% capture request_content %}{
- "paymentorder": {
+ "paymentOrder": {
     "enablePaymentDetailsConsentCheckbox": true,
     "disableStoredPaymentDetails": true,
   }

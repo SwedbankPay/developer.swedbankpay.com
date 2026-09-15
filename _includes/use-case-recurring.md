@@ -42,7 +42,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
-"paymentorder": {
+"paymentOrder": {
 "operation": "Purchase",
 "currency": "SEK",
 "amount": 1500,
@@ -75,7 +75,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
-"paymentorder": {
+"paymentOrder": {
 "operation": "Verify",
 "currency": "SEK",
 "description": "Test Purchase",

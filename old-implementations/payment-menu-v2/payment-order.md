@@ -33,7 +33,7 @@ The response should include this (abbreviated for brevity):
 Content-Type: application/json{% endcapture %}
 
 {% capture response_content %}{
-    "paymentorder": {
+    "paymentOrder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}"
     },
     "operations": [

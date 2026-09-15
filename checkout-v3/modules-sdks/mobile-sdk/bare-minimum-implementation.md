@@ -28,7 +28,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json;version=3.1
 
 {
-    "paymentorder": {
+    "paymentOrder": {
         "operation": "Purchase",
         "currency": "SEK",
         "amount": 1500,

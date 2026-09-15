@@ -29,7 +29,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json{% endcapture %}
 
 {% capture request_content %}{
-    "paymentorder": {
+    "paymentOrder": {
         "payer": {
             "nationalIdentifier": {
                 "socialSecurityNumber": "{{ page.consumer_ssn_se }}",

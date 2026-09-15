@@ -230,7 +230,7 @@ Your-Api-Key: secretish
 Content-Type: application/json
 
 {
-    "paymentorder": { "①": "" }
+    "paymentOrder": { "①": "" }
 }
 ```
 
@@ -256,7 +256,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-    "paymentorder": { }
+    "paymentOrder": { }
 }
 ```
 
@@ -268,7 +268,7 @@ HTTP/1.1 201 Created
 Content-Type: application/json
 
 {
-    "paymentorder": {
+    "paymentOrder": {
       "id": "/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce"
     },
     "operations": [
@@ -298,7 +298,7 @@ HTTP/1.1 201 Created
 Content-Type: application/json
 
 {
-    "paymentorder": {
+    "paymentOrder": {
       "id": "/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce"
     },
     "operations": [
@@ -339,7 +339,7 @@ Your-Api-Key: secretish
 Content-Type: application/json
 
 {
-    "paymentorder": {
+    "payment=rder": {
         "operation": "SetInstrument",
         "instrument": "CreditCard"
     }
@@ -366,7 +366,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-    "paymentorder": {
+    "paymentOrder": {
         "operation": "SetInstrument",
         "instrument": "CreditCard"
     }
@@ -386,7 +386,7 @@ HTTP/1.1 201 Created
 Content-Type: application/json
 
 {
-    "paymentorder": {
+    "paymentOrder": {
       "id": "/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce"
     },
     "operations": [

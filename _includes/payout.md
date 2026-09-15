@@ -122,7 +122,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
-   "paymentorder": {
+   "paymentOrder": {
         "restrictedToPayoutInstruments": true,
         "generateUnscheduledToken": true,
         "operation": "Verify",
@@ -874,7 +874,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
-    "paymentorder": {
+    "paymentOrder": {
         "operation": "VerifyTrustly",
         "clearingHouse": "SWEDEN",
         "bankNumber": "6112",
@@ -1317,7 +1317,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
-  "paymentorder": {
+  "paymentOrder": {
     "operation": "Payout",
     "productName": "Checkout3",
     "currency": "SEK",
