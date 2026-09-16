@@ -13,7 +13,7 @@ jobs:
           cond: ${{ github.event_name == 'pull_request' }}
           if_true: github-pr-review
           if_false: github-check
-      - uses: reviewdog/action-remark-lint@82225f7db5b4a3caaca3052733b6800fa7d109b0 # v5
+      - uses: reviewdog/action-remark-lint@7c4b1f5f1cf73b426e8b2c1921fb2888d84c55d5 # v5
         with:
           reporter: ${{ steps.reporter.outputs.value }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
