@@ -97,9 +97,9 @@ To see how your reports will look, you can check out our sample reports.
 No need to worry about these steps just yet. We will walk you through everything
 when we get there.
 
-{% include iterator.html next_href="/checkoutv3/get-started/setup"
+{% include iterator.html next_href="/checkout-v3/get-started/setup"
                          next_title="Test Account Setup" %}
-{% include iterator.html next_href="/checkoutv3/get-started/payment-request"
+{% include iterator.html next_href="/checkout-v3/get-started/payment-request"
                          next_title="Start Integrating" %}
 
 [basic-implementation]: /assets/img/checkout/devp-get-started.png
