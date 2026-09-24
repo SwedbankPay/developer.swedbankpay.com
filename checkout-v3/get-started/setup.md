@@ -37,7 +37,7 @@ with Swedbank Pay is required. Please contact Swedbank Pay Sales at
 
 Your test account request should be sent to:
 [testaccount@swedbankpay.se](mailto:testaccount@swedbankpay.se) in order to
-create an account for you, we need some specific information from your side:
+create an account for you, we need some specific information from your side.
 
 *   **Company name:** Your company name.
 
@@ -46,6 +46,12 @@ create an account for you, we need some specific information from your side:
 *   **Technical contact**: Email and phone number.
 
 *   **Commercial contact**: Email and phone number.
+
+{% include alert.html type="informative" icon="info" body="
+**Baltic merchants:** For test accounts and integration support in
+[Estonia](mailto:support-ee@paywerk.co), [Latvia](mailto:support-lv@paywerk.co)
+or [Lithuania](mailto:support-lt@paywerk.co), please contact your local Baltic
+support team." %}
 
 ## Step 2: Wait For Response
 
