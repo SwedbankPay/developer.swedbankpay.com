@@ -32,7 +32,7 @@ TransactionSetup holds properties for a transaction and may be passed as an inpu
 | string |PaymentInstrument |A non PCI regulated payment instrument. Prefix and supplied PAN must be registred in the terminal setup. The normal usage is for giftcards or card numbers that are created on site such as financing.| Optional |
 | List\<[SaleItem][saleitem]\> | SaleItems | Product details for fuel functionality | Optional |
 | bool | SplitPayment | Just a flag sent to host to indicate this sale in part of a complete sale made in the sale system. Does only make sense for certain host. | Optional |
-string |TransactionID |A transaction id that may be set by sale system for tracking. If a transaction is started by calling `GetPayementInstrument`, the transaction id must be set in that call and cannot be changed when later calling `Payment` or `Refund` | Optional |
+string |TransactionID |A transaction id that may be set by sale system for tracking. `Note! Max length is 35`. If a transaction is started by calling `GetPayementInstrument`, the transaction id must be set in that call and cannot be changed when later calling `Payment` or `Refund` | Optional |
 | Nexo.PaymentTypes |type |Normal or Refund | Mandatory if used with `GetPaymentInstrument` or `GetPaymentInstrumentAsync`. Overridden when used with `Refund` or `RefundAsync` |
 
 {:.code-view-header}

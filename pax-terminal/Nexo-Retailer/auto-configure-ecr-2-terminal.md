@@ -5,7 +5,7 @@ description: |
     Easier configuration of POS by picking up the terminal address from the configuration message sent from the terminal when pressing **Save** in terminal's admin menu.
 menu_order: 15
 ---
-When implementing the default mode where both the POS and the terminal are running as severs, there is a way to simplify the configuration. Since the POS system needs to know the address of the terminal and the terminal needs to know the address of the POS, it is possible to just add the address to POS in the terminal. When exiting the terminal's admin menu by pressing Save button, a configuration message is sent to the just entered POS address and port.
+When implementing the default mode where both the POS and the terminal are running as servers (listening for connections), there is a way to simplify the configuration. Since the POS system needs to know the address of the terminal and the terminal needs to know the address of the POS, it is possible to just add the address to POS in the terminal. When exiting the terminal's admin menu by pressing Save button, a configuration message is sent to the just entered POS address and port.
 
 {:.code-view-header}
 **TransmitRequest sent from terminal's Admin menu**
