@@ -1,22 +1,29 @@
+## 25 September 2026
+
+### Versions v5.3.21
+
+*   New requirement for CVM Signature sales.
+*   Describe ways of doing OnDevice solution.
+
 ## 28 October 2025
 
-### Versions 5.3.12
+### Documentation v5.3.12
 
 *   Info about available tokenization from terminal
 
 ## 16 September 2025
 
-### Version 5.3.11
+### Documentation v5.3.11
 
 *   Info about cloud connected PAX terminal
 
 ## 27 June 2025
 
-### Version 5.3.8
+### Documentation v5.3.8
 
 *   Info about Net SDK availability on nuget.org.
 *   Info about ForceAcquisitionReference in SaleApplInfo for Net SDK.
-*   LoyaltyResult may appear in PaymentResponse
+*   LoyaltyResult may appear in PaymentResponse.
 
 ## 1 April 2025
 
