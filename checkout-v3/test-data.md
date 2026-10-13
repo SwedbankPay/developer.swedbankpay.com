@@ -8,6 +8,23 @@ description: |
 menu_order: 6
 ---
 
+## BankID
+
+Some of our payment methods might require BankID to complete the transaction.
+
+### Norway
+
+It is possible to use an SSN such as `Olivia Nyhuus` (see Invoice Test Data) to
+reach BankID and get a prompt for one time code and password. The step by step
+would then be to enter the one time code: `otp` and password `qwer1234`. It is
+also possible to configure the bankID test app as documented [here][nor-bankid].
+
+### Sweden
+
+You can find the demo bankID app link [here][swe-bankid] and read
+`Configure test BankID` for information about how to set it up. This can be
+configured on a computer or a phone.
+
 ## Card Test Data
 
 With regards to card payments, our external integration test environment is
@@ -20,6 +37,7 @@ institutions.
 ### 3-D Secure Cards
 
 {:.table .table-striped .test-data .enable-code-copy}
+
 | Card type  | Card number        | Expiry                   | CVC   | Type of test data   |
 | :--------- | :----------------- | :----------------------- | :-----| :------------------ |
 | MasterCard | `5226612199533406` | Any                      | Any   | 3-D Secure enrolled |
@@ -64,17 +82,22 @@ If you want to test Network Tokenization without card updates, simply use one of
 our other MasterCard or Visa test cards. You still need to be configured against
 our internal acquirer (loopback).
 
+All `Mastercard`s within the bin range `5510000000xxxxxx` and all `Visa` cards
+within `4111112000xxxxxx` will be frictionless, with the exceptions listed in
+the table below.
+
 {:.table .table-striped .test-data .enable-code-copy}
+
 | Card type  | Card number        | Expiry | CVC   | Type of test data   |
 | :--------- | :----------------- | :----  | :---- | :------------------ |
-| MasterCard | `5510000000001232` | 04/35  | Any   | Frictionless        |
+| MasterCard | `5510000000001232` | 04/35  | Any   | Challenge           |
 | MasterCard | `5510000000002347` | 06/35  | Any   | Challenge           |
-| MasterCard | `5510000000009631` | 08/35  | Any   | Rejected during tokenization |
-| MasterCard | `5510000000005431` | 02/35  | Any   | Rejected during tokenization |
-| Visa       | `4111112000003211` | 09/35  | Any   | Frictionless        |
+| MasterCard | `5510000000009631` | 08/35  | Any   | Challenge           |
+| MasterCard | `5510000000005431` | 02/35  | Any   | Challenge           |
+| Visa       | `4111112000003211` | 09/35  | Any   | Challenge           |
 | Visa       | `4111112000006545` | 11/35  | Any   | Challenge           |
-| Visa       | `4111112000004565` | 07/35  | Any   | Rejected during tokenization |
-| Visa       | `4111112000007899` | 12/35  | Any   | Rejected during tokenization |
+| Visa       | `4111112000004565` | 07/35  | Any   | Challenge           |
+| Visa       | `4111112000007899` | 12/35  | Any   | Challenge           |
 
 ### Misc Cards
 
@@ -82,6 +105,7 @@ A selection of cards not connected to Network Tokenization or 3D-Secure. Note
 that American Express har 4 digit CVCs, all other have 3 digits.
 
 {:.table .table-striped .test-data .enable-code-copy}
+
 | Card type            | Card number        | Expiry | CVC  | Type of test data |
 | :------------------- | :----------------- | :----- | :--- | :---------------- |
 | American Express     | `377601000000000`  | Any    | Any  | Amex & loopback   |
@@ -117,6 +141,7 @@ The amounts that can be used to trigger error codes
 (`transactionThirdPartyError`):
 
 {:.table .table-striped .test-data .enable-code-copy}
+
 | Code | Amount   | Error Code                                | Description                                     |
 | :--- | :------- | :---------------------------------------- | :---------------------------------------------- |
 | 13   | `900313` | REJECTED_BY_ACQUIRER_INVALID_AMOUNT       | Invalid amount, response-code: 13               |
@@ -152,6 +177,7 @@ To test a checked-in user in the Playground, please use the following test data:
 ### Checkout test data for Norway
 
 {:.table .table-striped .test-data .enable-code-copy}
+
 | Type          | Data                         | Description                                                         |
 | :-------------| :--------------------------- | :------------------------------------------------------------------ |
 | Email         | `olivia.nyhuus@swedbankpay.com`    | The e-mail address of the payer.                              |
@@ -162,6 +188,7 @@ To test a checked-in user in the Playground, please use the following test data:
 ### Checkout test data for Sweden
 
 {:.table .table-striped .test-data .enable-code-copy}
+
 | Type            | Data                         | Description                                                         |
 | :-------------- | :--------------------------- | :------------------------------------------------------------------ |
 | Email         | `leia.ahlstrom@swedbankpay.com`    | The e-mail address of the payer.                                |
@@ -172,6 +199,7 @@ To test a checked-in user in the Playground, please use the following test data:
 ### Checkout test data for Denmark
 
 {:.table .table-striped .test-data .enable-code-copy}
+
 | Type            | Data          | Description                                                      |
 | :-------------- | :------------ | :--------------------------------------------------------------- |
 | MSISDN | `+4522222222` | The mobile phone number of the payer. Format Denmark: +45 22222222 |
@@ -181,6 +209,7 @@ To test a checked-in user in the Playground, please use the following test data:
 ### Invoice test data for Norway
 
 {:.table .table-striped .test-data .enable-code-copy}
+
 | Type    | Data               |
 | :------ | :---------------   |
 | SSN     | `26026708248`      |
@@ -191,6 +220,7 @@ To test a checked-in user in the Playground, please use the following test data:
 ### Invoice test data for Sweden
 
 {:.table .table-striped .test-data .enable-code-copy}
+
 | Type    | Data              | Alternative data                |
 | :------ | :--------------   | :----------------------         |
 | SSN     | `600307-1161`     | `971020-2392`                   |
@@ -214,6 +244,7 @@ fake service with no app involved. To trigger an error message, set the
 the following values:
 
 {:.table .table-striped .test-data .enable-code-copy}
+
 | Description | Simulates                                      |
 | :---------- | :--------------------------------------------- |
 | `RF07`      | Transaction declined                           |
@@ -221,5 +252,7 @@ the following values:
 | `BANKIDCL`  | Payer cancelled BankId signing                 |
 
 [otp-challenge-form]: /assets/img/new-otp-challenge-form.png
+[nor-bankid]: https://developer.signicat.com/identity-methods/nbid/test/
 [playground]: https://playground.swedbankpay.com
+[swe-bankid]: https://developers.bankid.com/test-portal/testing
 [testsuite]: https://www.postman.com/swedbankpay/swedbank-pay-online/collection/000bv9t/testsuite
