@@ -1,6 +1,7 @@
+
 ## 5 December 2025
 
-### .Net SDK 1.3.25339 
+### .Net SDK 1.3.25339
 
 * Added support for Loyalty before Auth
 
