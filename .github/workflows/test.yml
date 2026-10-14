@@ -36,7 +36,7 @@ jobs:
             --site-url=https://developer.swedbankpay.com
 
       - name: Upload site
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: build-site
           path: _site
@@ -46,12 +46,12 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
           name: build-site
           path: _site
       - name: Set up Ruby 2.7
-        uses: ruby/setup-ruby@e8944e80fb94b20106697132f8c20c665fab29e9 # v1
+        uses: ruby/setup-ruby@e81a8fa391b11a595c1b7ed84177cc0fe02faf83 # v1
         with:
           ruby-version: 2.7
           rubygems: 3.3.22
