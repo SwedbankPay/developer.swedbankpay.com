@@ -1,4 +1,20 @@
 
+## 01 October 2026
+
+### Pax Release 1.3.0.22
+
+PAX-4659 - Optimized flow for APM 2.0
+
+PAX-4642 - Optimized flow for APM 2.0
+
+PAX-4627 - The terminal now sends a receipt when the transaction is cancelled at the PIN dialog after a card has been read via CTLS.
+
+PAX-4626 - The terminal now ignores tips when the POS sends tips = 0, allowing APM transactions to be performed.
+
+PAX-4621 - The payment app no longer comes to the foreground if the POS sends a request while an ongoing APM payment is busy.
+
+PAX-4584 - The terminal no longer prompts the user to confirm that the signature is correct for signature-based purchases.
+
 ## 27 August 2026
 
 ### Pax Release 1.3.0.21
