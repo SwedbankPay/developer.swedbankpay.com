@@ -1,3 +1,141 @@
+## 27 August 2026
+
+### Pax Release 1.3.0.21
+
+PAX-4485 - Fixed an issue where other apps could appear on top of the payment app during a transaction.
+
+PAX-4524 - The ECR server no longer restarts when a new IP address is assigned.
+
+PAX-4546 - Support for a secondary display on the A920 Pro Premium.
+
+PAX-4563 - The keypad backlight on the A35/A30 now turns on when a card is inserted and remains lit during PIN entry.
+
+PAX-4579 - Improved application selection design.
+
+PAX-4587 - The timeout for ECR responses over HTTPS has been increased from 3 to 6 seconds to avoid reversing transactions that have already been approved.
+
+## 28 April 2026
+
+### Pax Release 1.3.0.18
+
+PAX-4459: It is now possible to send TMS receipt settings to the customer's ECR app. The values can be: "ask", "required_only", and "always".
+
+PAX-4448: The PaymentAccountRef value from EMV tag 9F24 is now exposed to the ECR app via the 'CardAcquisition Response'. This is supported for cards/digital wallets where the card issuer has configured 0x9F24.
+
+PAX-4416: When the terminal receives a new login request with a new Sales ID during a transaction, the ongoing transaction is now always aborted before the Sales ID is changed.
+
+PAX-4414: It is now possible to cancel the most recently approved transaction, even if other declined or aborted transactions have occurred afterward.
+
+PAX-4375: The terminal no longer displays the subtitle when asking the cardholder whether they want to pay in installments.
+
+## 09 April 2026
+
+### Pax Release 1.3.0.17
+
+PAX-4428: ECR on Device: The terminal no longer sends an admin_intent message containing the terminal's configuration at startup.
+
+PAX-4392: A920 Pro: The “exit power saving mode when charging” and “screen off timeout” settings can now be controlled via parameters in TMS.
+
+PAX-4363: Fixed an issue where the terminal initiated multiple downloads of the same file.
+
+PAX-4356: The terminal now logs tag 9F24 (Payment Account Reference), where available.
+
+PAX-2352: Stand-alone mode now supports manual purchases, provided the customer has acceptance enabled for a card that allows this functionality. Does not apply to Visa/Mastercard.
+
+## 05 March 2026
+
+### Pax Release 1.3.0.16
+
+PAX-4381: Support for animated images in idle and screensaver modes.
+
+PAX-4367: Fixed an issue with logout requests in ECR-on-device.
+
+PAX-4366: Improved login process.
+
+PAX-4364: Fixed an issue with MasterCard refunds where the cryptogram was sometimes missing.
+
+PAX-4339: The serial number can now be requested from the ECR-on-device app.
+
+PAX-4338: Support for launching the Basestation app from the admin menu.
+
+PAX-4200: Fixed a rare issue where the “interest-free installment payment” dialog would get stuck.
+
+## 27 January 2026
+
+### Pax Release 1.3.0.15
+
+PAX-4333: The terminal now supports German as a language.
+
+PAX-4325: Improved handling of reversals for purchases made with sale items.
+
+PAX-4321: Improved handling of abort requests during PIN entry.
+
+PAX-4301: The terminal now makes more frequent attempts to upload offline transactions than before.
+
+PAX-4294: Support for Uno-X truck cards.
+
+PAX-4253: ChannelID is now stored in the terminal when switching from Cloud to another ECR profile.
+
+PAX-4302: The terminal now separates X and Z reports by operator ID. This is reflected both on the display and on the receipt.
+
+## 04 December 2025
+
+### Pax Release 1.3.0.14
+
+PAX-4300: The payment app now sends DisplayRequest and InputRequest immediately after the ECR-on-device app logs in with the correct SaleCapabilities.
+
+PAX-4255: The terminal now supports Omni Non-Payment Token and can request it from PosPay during CardAcquisition, before authorization.
+
+PAX-4229: It is no longer possible to log in and process payments if the POI is missing.
+
+PAX-4228: The terminal switches POI but uses outdated parameters. During the first login attempt, the correct parameters are now retrieved, and the terminal responds with "busy" to new requests from the POS until the new/correct parameters have been applied and the terminal is ready again.
+
+PAX-4159: The terminal no longer sends a status report to TMS during login. However, it still sends status reports in the following cases: at startup, when logging in with a new POI ID, upon manual request, and automatically every hour.
+
+PAX-4202: A920Pro: When processing refunds, it has been unclear who is required to sign the receipt. In Stand-alone mode, the receipt now clearly specifies who must sign it (the customer or the merchant).
+
+## 28 October 2025
+
+### Pax Release 1.3.0.13
+
+PAX-4271: Addressed an HTTPS issue related to certificate renewal (reported by Ziklo).
+
+PAX-4258: Optimization: Improved handling of log data when plugin applications (e.g., Fuel) are used.
+
+PAX-4220: Issue resolved: The terminal will no longer enter a loop when the host responds with “Missing PIN” (88) even though the PIN has already been entered. The terminal now prompts the customer to enter the PIN again.
+
+PAX-4203: Enhanced logging: Terminal restarts initiated using the physical power button are now also logged (requested by Coop).
+
+PAX-4224: Issue resolved with application selection (Consumer Choice): The menu can no longer be closed until a selection has been made.
+
+PAX-4292: Issue resolved with application selection (Consumer Choice): The terminal now registers and remembers the customer's selection and does not allow the card to be changed until the transaction is completed (reported by Reitan DK).
+
+PAX-3567: Improved update logic: The terminal now provides clearer indications when parameter or software updates are required and automatically starts updates when permitted.
+
+PAX-4161: Improvement: Additional information is now displayed to clarify when cancellation is and is not possible.
+
+## 01 October 2025
+
+### Pax Release 1.3.0.12
+
+PAX-4213: To improve traceability, SalesTransactionId has now been added to the return message sent to VAS for APM transactions (requested by Ziklo).
+
+PAX-4212: Fixed an issue where, in certain scenarios, such as a fallback from a CTLS purchase in offline mode using Dankort in a digital wallet, the terminal could incorrectly prompt the customer to insert the card's chip (reported by Reitan DK).
+
+PAX-4207: New functionality: Support for forwarding PAR (Payment Account Reference) to the POS, provided that the response from the host contains it.
+
+PAX-4204: General product improvement: Stand-alone terminals now return to the main menu if no activity is registered within 30 seconds after a transaction has been initiated (reported by Support – CNMT-131).
+
+PAX-4191: Updated logic for handling signature-based purchases performed on Stand-alone terminals, following the observation of several incorrect behaviors.
+
+PAX-4167: New functionality: Support for Non-Payment Token (same functionality as for Online), which can serve as a bridge between the terminal and e-commerce.
+
+PAX-4166: ECR on Device configuration: The terminal now displays the transaction result (approved/declined) for a longer period before handing control back to the POS.
+
+PAX-4120: Fuel-specific: The terminal now disables the CTLS reader when MiFare DESFire cards are used, allowing the magnetic stripe to be swiped.
+
+PAX-4093: Fix: The terminal no longer cancels a purchase when a display message times out if the purchase has already been approved and the receipt has been delivered (reported by Ziklo).
+
 ## 26 August 2025
 
 ### Pax Release 1.3.0.11
