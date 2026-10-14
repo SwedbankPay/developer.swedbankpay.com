@@ -7,6 +7,12 @@ menu_order: 2
 has_release_notes: true
 ---
 
+## 15 October 2026
+
+### Documentation v5.3.22
+
+Added new test data for BankID and Network Tokenization.
+
 ## 15 September 2026
 
 ### Documentation v5.3.20
