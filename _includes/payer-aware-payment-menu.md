@@ -84,7 +84,7 @@ A Payer Aware Payment Menu request can look like this.
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-CContent-Type: application/json;version=3.x/2.0{% endcapture %}
+Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
     "paymentOrder": {
@@ -1215,19 +1215,19 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/metadata"
         }
     },
-    "operations": [ {% if include.integration_mode=="redirect" %}
+    "operations": [
         {
           "method": "GET",
           "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "redirect-checkout",
           "contentType": "text/html"
-        },{% endif %} {% if include.integration_mode=="seamless-view" %}
+        },
         {
           "method": "GET",
           "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "view-checkout",
           "contentType": "application/javascript"
-        },{% endif %}
+        },
         {
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
           "rel":"update-order",
@@ -1239,13 +1239,19 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           "rel": "abort",
           "method": "PATCH",
           "contentType": "application/json"
-        }{% if documentation_section contains "checkout-v3" %},
+        }
         {
           "href": "https://api.payex.com/psp/paymentorders/{{ page.payment_order_id }}",
           "rel": "abort-paymentattempt",
           "method": "PATCH",
           "contentType": "application/json"
-        }{% endif %}
+        },
+        {
+            "method": "GET",
+            "href": "https://api.stage.payex.com/psp/paymentsessions/ecf2299debe471b2ade9df0e47e997dd590a7da62de1af4b5f71fc935227e996?_tc_tid=e8653437c60e410ca3fd3150395b1156",
+            "rel": "view-paymentsession",
+            "contentType": "application/json"
+        }
     ]
 }{% endcapture %}
 

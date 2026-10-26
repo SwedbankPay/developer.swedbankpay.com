@@ -659,6 +659,8 @@ relevant documentation below.
 
 [Payer identification (Payer Aware Menu)][papm]
 
+[Token handling][token-handling]
+
 [Seamless view events (Embedded menu)][sv-events]
 
 [3-1]: https://developer.swedbankpay.com/checkout-v3/get-started/payment-request/#payment-order-v31
@@ -666,3 +668,4 @@ relevant documentation below.
 [papm]: https://developer.swedbankpay.com/checkout-v3/features/optional/payer-aware-payment-menu
 [post-purchase]: https://developer.swedbankpay.com/checkout-v3/get-started/post-purchase
 [sv-events]: https://developer.swedbankpay.com/checkout-v3/technical-reference/seamless-view-events
+[token-handling]: https://developer.swedbankpay.com/checkout-v3/features/optional/token-handling
