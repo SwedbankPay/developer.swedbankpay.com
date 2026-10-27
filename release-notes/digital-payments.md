@@ -7,6 +7,13 @@ menu_order: 2
 has_release_notes: true
 ---
 
+## 27 October 2026
+
+### Documentation v5.3.23
+
+Updated the [Payer Aware Payment Menu][payer-aware-payment-menu] with new token
+handling APIs.
+
 ## 15 October 2026
 
 ### Documentation v5.3.22
