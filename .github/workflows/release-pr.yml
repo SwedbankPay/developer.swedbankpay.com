@@ -7,7 +7,7 @@ jobs:
     if: ${{ contains(github.ref, 'refs/heads/releases/') }}
     outputs:
       release: ${{ steps.variables.outputs.release }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - id: variables
@@ -17,7 +17,7 @@ jobs:
 
   release-develop-pr:
     if: ${{ contains(github.ref, 'refs/heads/releases/') }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: variables
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -33,7 +33,7 @@ jobs:
 
   release-master-pr:
     if: ${{ contains(github.ref, 'refs/heads/releases/') }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: variables
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

@@ -72,7 +72,7 @@ that payer when building your menu.
 ## GDPR
 
 Remember that you have the responsibility of enforcing GDPR requirements and
-letting the payer remove active payment tokens when they want. It is up to you
+letting the payer archive active payment tokens when they want. It is up to you
 how to implement this functionality on your side, but Swedbank Pay has the API
 you need to make it easy to [clean up old data][tokens]. See more below the main
 `paymentOrder` request example, or follow the hyperlink above.
@@ -84,7 +84,7 @@ A Payer Aware Payment Menu request can look like this.
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-CContent-Type: application/json;version=3.x/2.0{% endcapture %}
+Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
     "paymentOrder": {
@@ -1215,19 +1215,19 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/metadata"
         }
     },
-    "operations": [ {% if include.integration_mode=="redirect" %}
+    "operations": [
         {
           "method": "GET",
           "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "redirect-checkout",
           "contentType": "text/html"
-        },{% endif %} {% if include.integration_mode=="seamless-view" %}
+        },
         {
           "method": "GET",
           "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "view-checkout",
           "contentType": "application/javascript"
-        },{% endif %}
+        },
         {
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
           "rel":"update-order",
@@ -1239,13 +1239,19 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           "rel": "abort",
           "method": "PATCH",
           "contentType": "application/json"
-        }{% if documentation_section contains "checkout-v3" %},
+        }
         {
           "href": "https://api.payex.com/psp/paymentorders/{{ page.payment_order_id }}",
           "rel": "abort-paymentattempt",
           "method": "PATCH",
           "contentType": "application/json"
-        }{% endif %}
+        },
+        {
+            "method": "GET",
+            "href": "https://api.stage.payex.com/psp/paymentsessions/ecf2299debe471b2ade9df0e47e997dd590a7da62de1af4b5f71fc935227e996?_tc_tid=e8653437c60e410ca3fd3150395b1156",
+            "rel": "view-paymentsession",
+            "contentType": "application/json"
+        }
     ]
 }{% endcapture %}
 
@@ -1675,23 +1681,22 @@ if you try.
 ## Tokens
 
 It is possible to query for all active payment tokens registered on a specific
-`payerReference`. After doing so, you can either remove all tokens or a subset
+`payerReference`. After doing so, you can either archive all tokens or a subset
 of the tokens registered on the payer. This is the easiest way of cleaning up
-all data for **Payments Only** implementations. It is also possible to
-[delete a single token][delete-token] if you wish to do that.
+all data. It is also possible to [delete a single token][delete-token] if you
+wish to do that.
 
 ## GET Tokens Request
 
 Querying with a `GET` request will give you a response containing all tokens and
 the operation(s) available for them.
 
-{% capture request_header %}GET /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0{% endcapture %}
+{% capture request_header %}GET /online/payers/tokens/<token>-<tokenType> HTTP/1.1
+Host: api.externalintegration.swedbankpay.com
+Authorization: Bearer <AccessToken>{% endcapture %}
 
 {% include code-example.html
-    title='GET Tokens Request'
+    title='GET Single Payer Token Request'
     header=request_header
     %}
 
@@ -1702,246 +1707,454 @@ Content-Type: application/json; charset=utf-8; version=3.x/2.0
 api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
-  "payerOwnedTokens": {
-        "id": "/psp/paymentorders/payerownedtokens/{payerReference}",
-        "payerReference": "{payerReference}",
-        "tokens": [
+    "id": "/online/payers/tokens/<token>-<tokenType>",
+    "payerReference": "<payerReference>",
+    "migratedFromConsumerProfile": false,
+    "token": {
+        "operations": [
             {
-                "token": "{paymentToken}",
-                "tokenType": "Payment",
-                "networkTokenized": true,
-                "instrument": "CreditCard",
-                "instrumentDisplayName": "492500******0004",
-                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
-                "instrumentParameters": {
-                    "expiryDate": "12/2022",
-                    "cardBrand": "Visa"
-                },
-                "operations": [
-                    {
-                        "method": "PATCH",
-                        "href": "https://api.internaltest.payex.com/psp/paymentorders/paymenttokens/0ecf804f-e68f-404e-8ae6-adeb43052559",
-                        "rel": "delete-paymenttokens",
-                        "contentType": "application/json"
-                    }
-                ]
-            },
-            {
-                "token": "{paymentToken}",
-                "tokenType": "Payment",
-                "instrument": "Invoice-payexfinancingno",
-                "instrumentDisplayName": "260267*****",
-                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
-                "instrumentParameters": {
-                    "email": "hei@hei.no",
-                    "msisdn": "+4798765432",
-                    "zipCode": "1642"
-                },
-                "operations": [
-                    {
-                        "method": "PATCH",
-                        "href": "https://api.internaltest.payex.com/psp/paymentorders/paymenttokens/dd9c1103-3e0f-492a-95a3-a39bb32a6b59",
-                        "rel": "delete-paymenttokens",
-                        "contentType": "application/json"
-                    }
-                ]
-            },
-            {
-                "token": "{token}",
-                "tokenType": "Unscheduled",
-                "networkTokenized": false,
-                "instrument": "CreditCard",
-                "instrumentDisplayName": "492500******0004",
-                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
-                "instrumentParameters": {
-                    "expiryDate": "12/2020",
-                    "cardBrand": "Visa"
-                },
-                "operations": [
-                    {
-                        "method": "PATCH",
-                        "href": "https://api.internaltest.payex.com/psp/paymentorders/unscheduledtokens/e2f06785-805d-4605-bf40-426a725d313d",
-                        "rel": "delete-unscheduledtokens",
-                        "contentType": "application/json"
-                    }
-                ]
+                "href": "https://api.externalintegration.swedbankpay.com/online/payers/tokens/<token>-<tokenType>",
+                "rel": "get-token",
+                "method": "GET",
+                "contentType": "application/json"
             }
-        ]
-    },
-    "operations": [
-        {
-            "method": "PATCH",
-            "href": "https://api.internaltest.payex.com/psp/paymentorders/payerOwnedPaymentTokens/{payerReference}",
-            "rel": "delete-payerownedtokens",
-            "contentType": "application/json"
+        ],
+        "id": "/online/payers/tokens/<token>-<tokenType>",
+        "payerReference": "<payerReference>",
+        "token": "<token>",
+        "tokenType": "Payment",
+        "instrument": "Trustly",
+        "displayName": "*****232",
+        "correlationId": "895e495f71a0b8e9f8085024f2947704a18ada29bc7ef78b59302c414fb6c190c295c088bd1a8707db5f507dd0e8349405414eee393f98538e00b1f7360f0d52",
+        "state": "Archived",
+        "archivedBy": "PAYEE",
+        "archiveReason": "string",
+        "networkTokenized": false,
+        "instrumentParameters": {
+            "maskedAccountNumber": "*****232",
+            "accountId": "6224691047"
         }
-    ]
+    }
 }{% endcapture %}
 
 {% include code-example.html
-    title='Response'
+    title='GET Single Payer Token Response'
     header=response_header
     json= response_content
     %}
 
-<div class="api-compact" aria-label="Response">
+{% capture id_md %}{% include fields/id.md resource="paymentorder" %}{% endcapture %}
+{% capture operations_md %}{% include fields/operations.md %}{% endcapture %}
+
+<div class="api-compact" aria-label="GET Single Payer Token Response">
   <div class="header">
     <div>Field</div>
     <div>Type</div>
   </div>
+  <!-- LEVEL 0: id -->
+<details class="api-item" data-level="0">
+  <summary>
+    <span class="field">{% f id, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="type"><code>string</code></span>
+  </summary>
+  <div class="desc">
+    <div class="indent-0">The token ID.</div>
+  </div>
+</details>
 
-  <!-- Level 0 (root; nodes CLOSED by default) -->
-  <details class="api-item" data-level="0">
-    <summary>
-      <span class="field">{% f payerOwnedTokens, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-      <span class="type"><code>object</code></span>
-    </summary>
-    <div class="desc"><div class="indent-0">The <code>payerOwnedTokens</code> object containing information about the payer relevant for the payment order.</div></div>
+  <!-- LEVEL 0: payerReference -->
+<details class="api-item" data-level="0">
+  <summary>
+    <span class="field">{% f payerReference, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="type"><code>object</code></span>
+  </summary>
+  <div class="desc">
+    <div class="indent-0">The reference used to recognize the payer in the absence of SSN and/or a secure login.</div>
+  </div>
+</details>
 
-    <!-- Children of payerOwnedTokens (Level 1) -->
-    <div class="api-children">
-      <!-- id -->
+    <!-- LEVEL 0: migratedFromConsumerProfile -->
+<details class="api-item" data-level="0">
+  <summary>
+    <span class="field">{% f migratedFromConsumerProfile, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="type"><code>bool</code></span>
+  </summary>
+  <div class="desc">
+    <div class="indent-0"><code>True</code> or <code>false</code>, indicates if the token was migrated from a consumer profile or not.</div>
+  </div>
+</details>
+
+<!-- LEVEL 0: token -->
+<details class="api-item" data-level="0">
+  <summary>
+    <span class="field">{% f token, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="type"><code>object</code></span>
+  </summary>
+  <div class="desc">
+    <div class="indent-0">The token object.</div>
+  </div>
+
+  <!-- LEVEL 1: children of token -->
+  <div class="api-children">
+
       <details class="api-item" data-level="1">
-        <summary>
-          <span class="field">{% f id, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
-        </summary>
-        <div class="desc"><div class="indent-1">{% include fields/id.md resource="paymentorder" %}</div></div>
-      </details>
+  <summary>
+    <span class="field">{% f operations %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="type"><code>array</code></span>
+  </summary>
+  <div class="desc">
+    <div class="indent-0">{{ operations_md | markdownify }}</div>
+  </div>
+</details>
 
-      <!-- payerReference -->
-      <details class="api-item" data-level="1">
-        <summary>
-          <span class="field">{% f payerReference, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>string</code></span>
-        </summary>
-        <div class="desc"><div class="indent-1">A reference used in the Enterprise and Payments Only implementations to recognize the payer when no SSN is stored.</div></div>
-      </details>
+    <details class="api-item" data-level="1">
+      <summary>
+        <span class="field">{% f id %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+        <span class="type"><code>string</code></span>
+      </summary>
+      <div class="desc"><div class="indent-1">The token ID.</div></div>
+    </details>
 
-      <!-- tokens (list) -->
-      <details class="api-item" data-level="1">
-        <summary>
-          <span class="field">{% f tokens, 1 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>array</code></span>
-        </summary>
-        <div class="desc"><div class="indent-1">A list of tokens connected to the payment.</div></div>
+    <details class="api-item" data-level="1">
+      <summary>
+        <span class="field">{% f payerReference %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+        <span class="type"><code>string</code></span>
+      </summary>
+      <div class="desc"><div class="indent-1">
+        The reference used to recognize the payer in the absence of SSN and/or a secure login.
+      </div></div>
+    </details>
 
-        <!-- Children of each token item (Level 2) -->
-        <div class="api-children">
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f token, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">The token <code>guid</code>.</div></div>
-          </details>
+    <details class="api-item" data-level="1">
+      <summary>
+        <span class="field">{% f token %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+        <span class="type"><code>string</code></span>
+      </summary>
+      <div class="desc"><div class="indent-1">The token <code>guid</code>.</div></div>
+    </details>
 
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f tokenType, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">{% f payment, 0 %}, <code>recurrence</code>, <code>transactionOnFile</code> or <code>unscheduled</code>. The different types of available tokens.</div></div>
-          </details>
+    <details class="api-item" data-level="1">
+      <summary>
+        <span class="field">{% f tokenType %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+        <span class="type"><code>string</code></span>
+      </summary>
+      <div class="desc"><div class="indent-1">
+        The available token types: <code>Payment</code>, <code>Recurrence</code>,
+        <code>TransactionOnFile</code> or <code>Unscheduled</code>.
+      </div></div>
+    </details>
 
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f instrument, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">Payment method connected to the token.</div></div>
-          </details>
+    <details class="api-item" data-level="1">
+      <summary>
+        <span class="field">{% f instrument %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+        <span class="type"><code>string</code></span>
+      </summary>
+      <div class="desc"><div class="indent-1">
+        Available payment methods which support tokens: <code>CreditCard</code> or <code>Trustly</code>.
+      </div></div>
+    </details>
 
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f instrumentDisplayName, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">Payment method connected to the token.</div></div>
-          </details>
+    <details class="api-item" data-level="1">
+      <summary>
+        <span class="field">{% f instrumentDisplayName %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+        <span class="type"><code>string</code></span>
+      </summary>
+      <div class="desc"><div class="indent-1">
+        The displayed payment method name. Either a custom value or the default instrument name.
+      </div></div>
+    </details>
 
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f correlationId, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">A unique ID used in the system. Makes it easier to see cards, accounts etc. the token is connected to.</div></div>
-          </details>
+    <details class="api-item" data-level="1">
+      <summary>
+        <span class="field">{% f correlationsId %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+        <span class="type"><code>string</code></span>
+      </summary>
+      <div class="desc"><div class="indent-1">
+        A unique ID (guid) used in the system. Makes it easier to trace cards, accounts etc. connected to the token.
+      </div></div>
+    </details>
 
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f instrumentParameters, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>object</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">A list of additional information connected to the token. Depending on the payment method, it can e.g. be <code>expiryDate</code>, <code>cardBrand</code>, <code>email</code>, <code>msisdn</code> or <code>zipCode</code>.</div></div>
-          </details>
+    <details class="api-item" data-level="1">
+      <summary>
+        <span class="field">{% f state %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+        <span class="type"><code>string</code></span>
+      </summary>
+      <div class="desc"><div class="indent-1">
+        The state of the token. Can either be <code>Active</code> or <code>Archived</code>.
+      </div></div>
+    </details>
 
-          <details class="api-item" data-level="2">
-            <summary>
-                <span class="field">{% f operations, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-                <span class="type"><code>array</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">{% include fields/operations.md resource="token" %}</div></div>
-          </details>
-        </div>
-      </details>
-    </div>
-  </details>
+    <details class="api-item" data-level="1">
+      <summary>
+        <span class="field">{% f archivedBy %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+        <span class="type"><code>string</code></span>
+      </summary>
+      <div class="desc"><div class="indent-1">
+        Present if the token state is <code>Archived</code> and indicates who archived it.
+        Can either be <code>PAYEE</code>, <code>SWEDBANK_PAY</code> or <code>TOKEN_ISSUER</code>.
+      </div></div>
+    </details>
 
-  <!-- Level 0 sibling: operations -->
-  <details class="api-item" data-level="0">
-    <summary>
-      <span class="field">{% f operations, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-      <span class="type"><code>array</code></span>
-    </summary>
-    <div class="desc"><div class="indent-0">{% include fields/operations.md resource="token" %}</div></div>
-  </details>
+    <details class="api-item" data-level="1">
+      <summary>
+        <span class="field">{% f archiveReason %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+        <span class="type"><code>string</code></span>
+      </summary>
+      <div class="desc"><div class="indent-1">
+       Present if the token state is <code>Archived</code> and indicates the reason why the token was archived.
+      </div></div>
+    </details>
+
+    <details class="api-item" data-level="1">
+      <summary>
+        <span class="field">{% f instrumentParameters %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+        <span class="type"><code>object</code></span>
+      </summary>
+      <div class="desc"><div class="indent-1">
+        A list of additional information connected to the token. The content may differ depending on the payment method.
+      </div></div>
+    </details>
+
+<!-- LEVEL 0: operations -->
+<details class="api-item" data-level="0">
+  <summary>
+    <span class="field">{% f operations, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="type"><code>array</code></span>
+  </summary>
+  <div class="desc">
+    <div class="indent-0">{{ operations_md | markdownify }}</div>
+  </div>
+</details>
 </div>
-
-## PATCH Request For Removing Tokens
-
-You can remove the tokens by using the following `PATCH` request.
-
-{% capture request_header %}PATCH /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0{% endcapture %}
-
-{% capture request_content %}{
-  "state": "Deleted",
-  "comment": "Some words about why the tokens are being deleted"
+</details>
+</div>
+{% capture response_content %}{
+   "token": {
+      "instrumentParameters": {
+         "cardBrand": "Visa",
+         "expiryDate" : "12/2028",
+         "expiryPan": "12/2028",
+         "issuerName": "Name of issuer if present",
+         "lastFourPan": "0004",
+         "bin": "492500",
+         "cardHolderType": "Consumer",
+         "cardType": "Debit",
+         "countryCode": "752",
+         "lastFourDPan": "1234",
+         "expiryDPan": "02/2029"
+      }
+   }
 }{% endcapture %}
 
 {% include code-example.html
-    title='Request'
+    title='Instrument Parameters - CreditCard'
+    header=response_header
+    json= response_content
+    %}
+
+{% capture id_md %}{% include fields/id.md resource="paymentorder" %}{% endcapture %}
+{% capture operations_md %}{% include fields/operations.md %}{% endcapture %}
+
+<div class="api-compact" aria-label="Instrument Parameters - CreditCard">
+  <div class="header">
+    <div>Field</div>
+    <div>Type</div>
+  </div>
+<!-- LEVEL 0: token -->
+<details class="api-item" data-level="0">
+  <summary>
+    <span class="field">{% f token, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+    <span class="type"><code>object</code></span>
+  </summary>
+
+  <div class="desc">
+    <div class="indent-0">The token object.</div>
+  </div>
+
+  <!-- LEVEL 1: children of token -->
+  <div class="api-children">
+
+    <details class="api-item" data-level="1">
+      <summary>
+        <span class="field">{% f instrumentParameters %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+        <span class="type"><code>object</code></span>
+      </summary>
+
+      <div class="desc">
+        <div class="indent-1">
+          A list of additional information connected to the token.
+        </div>
+      </div>
+
+      <!-- LEVEL 2: fields inside instrumentParameters object -->
+      <div class="api-children">
+
+        <details class="api-item" data-level="2">
+          <summary>
+            <span class="field">{% f cardBrand %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+          </summary>
+          <div class="desc">
+            <div class="indent-2"><code>Visa</code>, <code>MC</code>, etc. The brand of the card.</div>
+          </div>
+        </details>
+
+        <details class="api-item" data-level="2">
+          <summary>
+            <span class="field">{% f expiryDate %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+          </summary>
+          <div class="desc">
+            <div class="indent-2">The month and year when the card expires.</div>
+          </div>
+        </details>
+
+        <details class="api-item" data-level="2">
+          <summary>
+            <span class="field">{% f expiryPan %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+          </summary>
+          <div class="desc">
+            <div class="indent-2">Expiry date of the card's PAN.</div>
+          </div>
+        </details>
+
+        <details class="api-item" data-level="2">
+          <summary>
+            <span class="field">{% f issuerName %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+          </summary>
+          <div class="desc">
+            <div class="indent-2">Expiry date of the card's PAN.</div>
+          </div>
+        </details>
+
+        <details class="api-item" data-level="2">
+          <summary>
+            <span class="field">{% f lastFourPan %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+          </summary>
+          <div class="desc">
+            <div class="indent-2">The last four digits of the card's PAN.</div>
+          </div>
+        </details>
+
+        <details class="api-item" data-level="2">
+          <summary>
+            <span class="field">{% f bin %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+          </summary>
+          <div class="desc">
+            <div class="indent-2">The first six digits of the card's PAN.</div>
+          </div>
+        </details>
+
+        <details class="api-item" data-level="2">
+          <summary>
+            <span class="field">{% f cardHolderType %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+          </summary>
+          <div class="desc">
+            <div class="indent-2">Indicates if the card holder is <code>Corporate</code> or a <code>Consumer</code>.</div>
+          </div>
+        </details>
+
+        <details class="api-item" data-level="2">
+          <summary>
+            <span class="field">{% f cardType %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+          </summary>
+          <div class="desc">
+            <div class="indent-2">Indicates if the card is a <code>Debit</code> or <code>Credit</code> card.</div>
+          </div>
+        </details>
+
+        <details class="api-item" data-level="2">
+          <summary>
+            <span class="field">{% f countryCode %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+          </summary>
+          <div class="desc">
+            <div class="indent-2">Expiry date of the card's PAN.</div>
+          </div>
+        </details>
+
+        <details class="api-item" data-level="2">
+          <summary>
+            <span class="field">{% f lastFourDPan %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+          </summary>
+          <div class="desc">
+            <div class="indent-2">The last four digits of the card's DPAN (network token).</div>
+          </div>
+        </details>
+
+        <details class="api-item" data-level="2">
+          <summary>
+            <span class="field">{% f expiryDPan %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+            <span class="type"><code>string</code></span>
+          </summary>
+          <div class="desc">
+            <div class="indent-2">The expiry of the card's DPAN (network token).</div>
+          </div>
+        </details>
+
+      </div>
+    </details>
+
+  </div>
+</details>
+</div>
+
+## PATCH Archive All Tokens Request
+
+You can archive all active tokens by using the following `PATCH` request.
+
+{% capture request_header %}PATCH /online/payers/<payerReference>/archives HTTP/1.1
+Host: api.externalintegration.swedbankpay.com
+Authorization: Bearer <AccessToken>{% endcapture %}
+
+{% capture request_content %}{
+  "reason" : "description",
+  "updatedBy": "Payee"
+}{% endcapture %}
+
+{% include code-example.html
+    title='PATCH Archive All Payer Tokens Request'
     header=request_header
     json= request_content
     %}
 
-<div class="api-compact" aria-label="Request">
+<div class="api-compact" aria-label="PATCH Archive All Payer Tokens Request">
+
   <div class="header">
     <div>Field</div>
     <div>Type</div>
+    <div>Required</div>
   </div>
 
-  <!-- Level 0 (root; node closed by default) -->
-  <details class="api-item" data-level="0">
-    <summary>
-      <span class="field">{% f state, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-      <span class="type"><code>object</code></span>
-    </summary>
-    <div class="desc"><div class="indent-0">The state you want the token to be in.</div></div>
-  </details>
-  <details class="api-item" data-level="0">
-    <summary>
-      <span class="field">{% f comment, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-      <span class="type"><code>object</code></span>
-    </summary>
-    <div class="desc"><div class="indent-0">Explanation as to why the token is being deleted.</div></div>
-  </details>
-</div>
+  <!-- LEVEL 0 -->
+      <details class="api-item" data-level="0">
+        <summary>
+          <span class="field">{% f reason, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-0">An explanation of why the tokens are being archived.</div></div>
+      </details>
 
-Which will provide this response.
+      <details class="api-item" data-level="0">
+        <summary>
+          <span class="field">{% f updatedBy, 0 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
+          <span class="type"><code>string</code></span>
+          <span class="req">{% icon check %}</span>
+        </summary>
+        <div class="desc"><div class="indent-0">Indicates who archived the tokens: <code>PAYEE</code>, <code>CONSUMER</code>, <code>ONLINE</code> or <code>TOKENISSUER</code>.</div></div>
+      </details>
+
+  </div>
+
+## PATCH Archive All Tokens Response
 
 {% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.x/2.0
@@ -2093,7 +2306,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
   </details>
 </div>
 
-[delete-token]: /checkout-v3/features/optional/token-handling
+[delete-token]: /checkout-v3/features/optional/token-handling/#get-single-payer-token
 [tokens]: {{ features_url }}/optional/payer-aware-payment-menu#tokens
 [verify]: {{ features_url }}/optional/verify
 [trustly-presentation]: /checkout-v3/trustly-presentation
