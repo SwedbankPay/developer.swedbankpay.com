@@ -103,7 +103,7 @@ more." %}
 | ![MobilePay][mobilepay-logo]     | [MobilePay][mobilepay]           | {% flag dk %} {% flag fi %}  |
 | ![PayEx][payex-logo]             | Installment Account              | {% flag se %} {% flag no %}  |
 | ![PayEx][payex-logo]             | Invoice                          | {% flag se %} {% flag no %}  |
-| ![PayEx][payex-logo].            | Monthly Payments                 | {% flag se %}                |
+| ![PayEx][payex-logo]             | Monthly Payments                 | {% flag se %}                |
 | ![Swish][swish-logo]             | [Swish][swish]                   | {% flag se %}                |
 | ![Trustly][trustly-logo]         | [Trustly][trustly]               | {% flag se %} {% flag fi %}  |
 | ![Vipps][vipps-logo]             | [Vipps][vipps]                   | {% flag no %}                |
