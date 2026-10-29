@@ -101,9 +101,9 @@ more." %}
 | ![Click to Pay][c2p-logo]        | [Click to Pay][click-to-pay]     |  ![EarthIcon][earth-icon]    |
 | ![Google Pay][google-pay-logo]   | [Google Pay][google-pay]&trade;  |  ![EarthIcon][earth-icon]    |
 | ![MobilePay][mobilepay-logo]     | [MobilePay][mobilepay]           | {% flag dk %} {% flag fi %}  |
-| ![Swedbank Pay][swp-logo]        | Swedbank Pay Installment Account | {% flag se %} {% flag no %}  |
-| ![Swedbank Pay][swp-logo]        | Swedbank Pay Invoice             | {% flag no %} {% flag se %}  |
-| ![Swedbank Pay][swp-logo]        | Swedbank Pay Monthly Payments    | {% flag se %}                |
+| ![PayEx][payex-logo]             | Installment Account              | {% flag se %} {% flag no %}  |
+| ![PayEx][payex-logo]             | Invoice                          | {% flag se %} {% flag no %}  |
+| ![PayEx][payex-logo].            | Monthly Payments                 | {% flag se %}                |
 | ![Swish][swish-logo]             | [Swish][swish]                   | {% flag se %}                |
 | ![Trustly][trustly-logo]         | [Trustly][trustly]               | {% flag se %} {% flag fi %}  |
 | ![Vipps][vipps-logo]             | [Vipps][vipps]                   | {% flag no %}                |
@@ -119,6 +119,7 @@ more." %}
 [google-pay-logo]: /assets/img/googlepay-logo.svg
 [mobilepay-logo]: /assets/img/icon-mobilepay-simple.svg
 [mobilepay]: /checkout-v3/mobilepay-presentation
+[payex-logo]: /assets/img/payex-logo.svg
 [vipps-logo]: /assets/img/icon-vipps-simple.svg
 [swp-logo]: /assets/img/swedbank-pay-vertical-black.svg
 [swish-logo]: /assets/img/icon-swish-simple.svg
