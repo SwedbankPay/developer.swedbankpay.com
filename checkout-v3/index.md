@@ -119,9 +119,8 @@ more." %}
 [google-pay-logo]: /assets/img/googlepay-logo.svg
 [mobilepay-logo]: /assets/img/icon-mobilepay-simple.svg
 [mobilepay]: /checkout-v3/mobilepay-presentation
-[payex-logo]: /assets/img/payex-logo.svg
+[payex-logo]: /assets/img/payex.svg
 [vipps-logo]: /assets/img/icon-vipps-simple.svg
-[swp-logo]: /assets/img/swedbank-pay-vertical-black.svg
 [swish-logo]: /assets/img/icon-swish-simple.svg
 [trustly-logo]: /assets/img/icon-trustly-new.svg
 [trustly]: /checkout-v3/trustly-presentation
