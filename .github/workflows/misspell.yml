@@ -13,7 +13,7 @@ jobs:
           cond: ${{ github.event_name == 'pull_request' }}
           if_true: github-pr-review
           if_false: github-check
-      - uses: reviewdog/action-misspell@3467363dab5b42db2b1372c5fd2b1771fea2ea48 # v1
+      - uses: reviewdog/action-misspell@840bfbe9f804da9afb0bd739dc4689012f3fdd2d # v1
         with:
           reporter: ${{ steps.reporter.outputs.value }}
           ignore: cancelled
