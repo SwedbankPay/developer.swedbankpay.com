@@ -7,6 +7,12 @@ menu_order: 4
 has_release_notes: true
 ---
 
+## 20 November 2026
+
+### Documentation v5.3.24
+
+Info regarding the availability of [proven devices][proven-devices] updated.
+
 ## 15 May 2026
 
 ### Documentation v5.3.18

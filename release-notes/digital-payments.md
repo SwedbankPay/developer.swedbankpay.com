@@ -7,6 +7,14 @@ menu_order: 2
 has_release_notes: true
 ---
 
+## 20 November 2026
+
+### Documentation v5.3.24
+
+Updated [Request Delivery Information][[request-delivery-information]] with new
+wallets, and miscellaneous maintenance.
+
+
 ## 27 October 2026
 
 ### Documentation v5.3.23
