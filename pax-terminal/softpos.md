@@ -59,6 +59,7 @@ The Pay SoftPos app is delivered via Google Play Store. Mobile device management
 systems can orchestrate the installation on individual devices.
 
 {:.table .table-striped}
+
 | Feature                  | Stand-Alone  | AppSwitch            |
 | :----------------------- | :----------- | :------------------- |
 | Payment                  | Yes          | Yes                  |
@@ -87,6 +88,7 @@ SoftPos to work. The device(s):
 *   Must have a stable internet connection.
 *   Must be Google Mobile Services certified and enabled.
 *   Must be a single screen device.
+*   Must have support for Google Play.
 
 ## Proven Devices
 
@@ -96,6 +98,7 @@ devices.
 #### Consumer Devices
 
 {:.table .table-striped}
+
 | Manufacturer             | Models  |
 | :----------------------- | :----------- |
 | Google                   | Pixel (3, 4, 5, 6, 6 Pro, 7a, 8, 9)          |
@@ -109,6 +112,7 @@ devices.
 #### Enterprise Devices
 
 {:.table .table-striped}
+
 | Manufacturer             | Models  |
 | :----------------------- | :----------- |
 | Bluebird                 | EF501, HF550X |
@@ -128,7 +132,7 @@ devices.
 | Urovo                    | CT58, DT50, DT66     |
 | Zebra                    | TC21, TC22, TC27, TC52, TC57, TC58, CC6000, EC55, TC53E, KC50        |
 
-*Also available in iMin, Landi and/or Sumni stores respectively.
+*Pay SoftPos is currently only available on Google Play.
 
 #### Unsupported Devices (Non-Exhaustive)
 
@@ -136,6 +140,7 @@ Devices not adhering to the full Softpay Mobile Device Policy and PCI/MPoC
 requirements are unsupported.
 
 {:.table .table-striped}
+
 | Manufacturer             | Models  |
 | :----------------------- | :----------- |
 | Huawei                  | All devices        |
