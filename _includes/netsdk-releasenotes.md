@@ -1,22 +1,103 @@
 
+## 20 November 2026
+
+### .Net SDK 1.3.26302
+
+*   Fixed a packaging issue where the Netstandard 2.0 version of the library was
+  not correctly included in the NuGet package.
+
+## 20 November 2026
+
+### .Net SDK 1.3.26259
+
+*   Restored Netstandard 2.0 support alongside .NET 10 (multi-targeting)
+*   Added CloudConfigFolder to SaleApplInfo, allowing the cloud configuration
+  file location to be customized
+*   GetLastTransactionResult now targets message category "Payment" instead of
+  "All"
+*   Added ReverseByTransactionId and ReverseByTransactionIdAsync to support
+  manual reversal by POI transaction ID and timestamp
+*   SwpIfConfig.EventFallbackDelayMs enables events to be delivered on a
+  thread-pool thread when the captured SynchronizationContext has not delivered
+  them. -1 (default) disables the fallback, so events are delivered only on the
+  captured context. This only affects applications where a
+  SynchronizationContext exists.
+*   IConfirmationResult.Confirmation(bool) remains the supported method.
+  Confirmed(bool) is kept as an Obsolete alias and will be removed in a future
+  release.
+*   The ServiceID is now echoed back from the request alongside DeviceID, per
+  the Nexo requirement that a response always carries the same ServiceID as its
+  request.
+
+## 20 November 2026
+
+### .Net SDK 1.3.26201
+
+*   Fixed silent callback drop when SynchronizationContext is stale (FireEvent
+    now guarantees exactly-once delivery)
+*   Added configurable FallbackDelayMs to FireEvent for async UI consumers
+*   Fixed PaymentType, Reference and Amount not being populated when terminal
+  suppresses CustomerReceiptData
+*   Migrated to .NET 10
+
+## 20 November 2026
+
+### .Net SDK 1.3.26056
+
+*   Updated B2C config URL
+*   Added fix to potential deadlock in doOpen()
+*   Tests added for cloud mode
+
 ## 5 December 2025
 
-### .Net SDK 1.3.25339
+### .Net SDK 1.3.25338
 
-* Added support for Loyalty before Auth
+*   Added support for Loyalty before Auth
 
 ## 24 November 2025
 
 ### .Net SDK 1.3.25328
 
-* Added support for cloud
-* changed order of Payment Arguments
+*   Added support for cloud
+*   changed order of Payment Arguments
 
 ## 10 September 2025
 
 ### .Net SDK 1.3.25253
 
-* This release updates the library’s logging dependencies from NLog v4 to NLog v6.
+*   This release updates the library’s logging dependencies from NLog v4 to NLog
+  v6. Applications that directly use NLog alongside this library must also
+  update to NLog v6 for compatibility. If your application does not use NLog
+  directly, no changes are required on your side.
+
+## 9 September 2025
+
+### .Net SDK 1.3.25252
+
+*   Added custom version handling
+*   Added support for tips
+*   Added Loyalty flag to SaleAppInfo
+*   Added Card Acqusition data
+*   Various bugfixes and Improvements
+
+## 5 December 2025
+
+### .Net SDK 1.3.25339
+
+*   Added support for Loyalty before Auth
+
+## 24 November 2025
+
+### .Net SDK 1.3.25328
+
+*   Added support for cloud
+*   changed order of Payment Arguments
+
+## 10 September 2025
+
+### .Net SDK 1.3.25253
+
+*   This release updates the library’s logging dependencies from NLog v4 to NLog v6.
   Applications that directly use NLog alongside this library must also update to NLog v6 for compatibility.
   If your application does not use NLog directly, no changes are required on your side.
 
@@ -24,42 +105,11 @@
 
 ### .Net SDK 1.3.25252
 
-* Added custom version handling
-* Added support for tips
-* Added Loyalty flag to SaleAppInfo
-* Added Card Acqusition data
-* Various bugfixes and Improvements
-
-## 5 December 2025
-
-### .Net SDK 1.3.25339
-
-* Added support for Loyalty before Auth
-
-## 24 November 2025
-
-### .Net SDK 1.3.25328
-
-* Added support for cloud
-* changed order of Payment Arguments
-
-## 10 September 2025
-
-### .Net SDK 1.3.25253
-
-* This release updates the library’s logging dependencies from NLog v4 to NLog v6.
-  Applications that directly use NLog alongside this library must also update to NLog v6 for compatibility.
-  If your application does not use NLog directly, no changes are required on your side.
-
-## 9 September 2025
-
-### .Net SDK 1.3.25252
-
-* Added custom version handling
-* Added support for tips
-* Added Loyalty flag to SaleAppInfo
-* Added Card Acqusition data
-* Various bugfixes and Improvements
+*   Added custom version handling
+*   Added support for tips
+*   Added Loyalty flag to SaleAppInfo
+*   Added Card Acqusition data
+*   Various bugfixes and Improvements
 
 ## 30 April 2025
 
