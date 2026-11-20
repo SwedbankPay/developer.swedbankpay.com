@@ -18,10 +18,10 @@ only want to show payment methods which support this in you menu, you can also
 add the field `restrictedToDeliveryInfoInstruments` and setting it to `true`.
 This will leave out all payment methods which can't return delivery information.
 
-You are currently only able to request delivery information from **Click to Pay**
-and **MobilePay** but we will add support for more payment methods going
-forward. No changes are required at your (the merchant's) end to be able to
-offer more payment methods at a later time.
+You are currently able to request delivery information from **Apple Pay**,
+**Click to Pay**, **Google Pay** and **MobilePay**, but we will add support for
+more payment methods going forward. No changes are required at your (the
+merchant's) end to be able to offer more payment methods at a later time.
 
 ## Request Delivery Info Request
 
@@ -142,41 +142,6 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
                 "suspiciousAccountActivity": "01"
             }
         }, {% endif %}
-        "orderItems": [
-            {
-                "reference": "P1",
-                "name": "Product1",
-                "type": "PRODUCT",
-                "class": "ProductGroup1",
-                "itemUrl": "https://example.com/products/123",
-                "imageUrl": "https://example.com/product123.jpg",
-                "description": "Product 1 description",
-                "discountDescription": "Volume discount",
-                "quantity": 5,
-                "quantityUnit": "pcs",
-                "unitPrice": 300,
-                "discountPrice": 0,
-                "vatPercent": 2500,
-                "amount": 1500,
-                "vatAmount": 375
-            },
-            {
-                "reference": "I1",
-                "name": "InvoiceFee",
-                "type": "PAYMENT_FEE",
-                "class": "Fees",
-                "description": "Fee for paying with Invoice",
-                "quantity": 1,
-                "quantityUnit": "pcs",
-                "unitPrice": 1900,
-                "vatPercent": 0,
-                "amount": 1900,
-                "vatAmount": 0,
-                "restrictedToInstruments": [
-                    "Invoice-PayExFinancingSe"
-                ]
-            }
-        ],
         "riskIndicator": {
             "deliveryEmailAddress": "olivia.nyhuus@swedbankpay.com",
             "deliveryTimeFrameIndicator": "01",
@@ -746,157 +711,6 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
         </div>
       </details>
 
-      <!-- orderItems (array) -->
-      <details class="api-item" data-level="1">
-        <summary>
-          <span class="field">{% f orderItems %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-          <span class="type"><code>array</code></span>
-          <span class="req">{% icon check %}</span>
-        </summary>
-        <div class="desc"><div class="indent-1">{% include fields/order-items.md %}</div></div>
-
-        <div class="api-children">
-          <!-- Typical order item fields -->
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f reference, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
-              <span class="req">{% icon check %}</span>
-            </summary>
-            <div class="desc"><div class="indent-2">A reference that identifies the order item.</div></div>
-          </details>
-
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f name, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
-              <span class="req">{% icon check %}</span>
-            </summary>
-            <div class="desc"><div class="indent-2">The name of the order item.</div></div>
-          </details>
-
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f type, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
-              <span class="req">{% icon check %}</span>
-            </summary>
-            <div class="desc"><div class="indent-2"><code>PRODUCT</code>, <code>SERVICE</code>, <code>SHIPPING_FEE</code>, <code>PAYMENT_FEE</code> <code>DISCOUNT</code>, <code>VALUE_CODE</code> or <code>OTHER</code>.</div></div>
-          </details>
-
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f class, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
-              <span class="req">{% icon check %}</span>
-            </summary>
-            <div class="desc"><div class="indent-2">Classification of the order item. No spaces; must match <code>[\w-]*</code>.</div></div>
-          </details>
-
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f itemUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">URL to a page that can display the purchased item, product or similar.</div></div>
-          </details>
-
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f imageUrl, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">URL to an image of the order item.</div></div>
-          </details>
-
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f description, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">{% include fields/description.md %}</div></div>
-          </details>
-
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f discountDescription, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">Human readable description of the possible discount.</div></div>
-          </details>
-
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f quantity, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>number</code></span>
-              <span class="req">{% icon check %}</span>
-            </summary>
-            <div class="desc"><div class="indent-2">The 4 decimal precision quantity of order items being purchased.</div></div>
-          </details>
-
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f quantityUnit, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>string</code></span>
-              <span class="req">{% icon check %}</span>
-            </summary>
-            <div class="desc"><div class="indent-2">The unit of the quantity, such as <code>pcs</code>, <code>grams</code>, or similar.</div></div>
-          </details>
-
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f unitPrice, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>integer</code></span>
-              <span class="req">{% icon check %}</span>
-            </summary>
-            <div class="desc"><div class="indent-2">The price per unit of order item, including VAT.</div></div>
-          </details>
-
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f discountPrice, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>integer</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">If the order item is purchased at a discounted price. This field should contain that price, including VAT.</div></div>
-          </details>
-
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f vatPercent, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>integer</code></span>
-              <span class="req">{% icon check %}</span>
-            </summary>
-            <div class="desc"><div class="indent-2">The percent value of the VAT multiplied by 100, so <code>25%</code> becomes <code>2500</code>.</div></div>
-          </details>
-
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f amount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>integer</code></span>
-              <span class="req">{% icon check %}</span>
-            </summary>
-            <div class="desc"><div class="indent-2">{% include fields/amount.md %}</div></div>
-          </details>
-
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f vatAmount, 2 %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>integer</code></span>
-              <span class="req">{% icon check %}</span>
-            </summary>
-            <div class="desc"><div class="indent-2">{% include fields/vat-amount.md %}</div></div>
-          </details>
-
-          <details class="api-item" data-level="2">
-            <summary>
-              <span class="field">{% f restrictedToInstruments %}<i aria-hidden="true" class="chev swepay-icon-plus-add"></i></span>
-              <span class="type"><code>array</code></span>
-            </summary>
-            <div class="desc"><div class="indent-2">Restrict this order line to certain instruments. Requires agreement with Swedbank Pay.</div></div>
-          </details>
-        </div>
-      </details>
-
       <!-- riskIndicator (sibling to orderItems) -->
       <details class="api-item" data-level="1">
         <summary>
@@ -1042,12 +856,16 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "language": "sv-SE",
         "availableInstruments": [
-            "MobilePay",
-            "ClickToPay"
+            "ApplePay",
+            "ClickToPay",
+            "GooglePay",
+            "MobilePay"
         ],
         "viewableInstruments": [
-            "MobilePay",
-            "ClickToPay"
+            "ApplePay",
+            "ClickToPay",
+            "GooglePay",
+            "MobilePay"
         ],
         {% if include.integration_mode=="seamless-view" %}
         "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
